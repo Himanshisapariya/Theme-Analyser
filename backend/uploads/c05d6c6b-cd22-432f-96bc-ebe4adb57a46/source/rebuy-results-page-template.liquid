@@ -1,0 +1,1512 @@
+{% raw %}
+<script id="rebuy-smart-search-results-sidebar-template" type="text/template">
+    <div id="rebuy-smart-search-results-sidebar">
+        <div v-if="shouldShowResultsPage()">
+            <!--- Search Input Section -->
+            <div class="rebuy-smart-search-results-page__header-section rebuy-smart-search-results-page-sidebar__header-section">
+                <div
+                    v-if="resultsPage.searchQuery && shouldShowSearchBar()"
+                    class="rebuy-smart-search-results-page__input-section rebuy-smart-search-results-page-sidebar__input-section"
+                >
+                    <label for="rebuy-smart-search-results-page-sidebar__input" class="sr-only">Search for products</label>
+
+                    <div class="rebuy-smart-search-results-page__input-search-container">
+                        <label for="searchInput" class="sr-only">Enter a Search Term</label>
+                        <input
+                            id="searchInput"
+                            type="text"
+                            class="rebuy-smart-search-results-page-sidebar__input rebuy-input"
+                            :placeholder="placeholderText()"
+                            id="rebuy-smart-search-results-page-sidebar__input"
+                            v-model="resultsPage.searchQuery.searchTerm"
+                            @input="debouncedSearch($event.target.value)"
+                            @keydown.enter.stop.prevent="checkKeywordSearch"
+                        />
+
+                        <div v-if="resultsPage?.isLoadingSearchTerm" class="rebuy-smart-search-results-page__loader">
+                            <span> </span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="rebuy-smart-search-results-page__context-section rebuy-smart-search-results-page-sidebar__context-section">
+                    <div class="rebuy-smart-search-results-page-sidebar__context-left">
+                        <h5 class="rebuy-smart-search-results-page-sidebar__result-title" v-html="pageTitle()"></h5>
+                    </div>
+
+                    <div  v-if="shouldShowSortBy()" class="rebuy-smart-search-results-page-sidebar__context-right">
+                        <!-- Sort By Desktop -->
+                        <div
+                             v-if="getSortFilters().length && sortByStyle() === 'sortBySelect'"
+                            class="rebuy-smart-search-results-page__sort-by rebuy-smart-search-results-page-sidebar__sort-by rebuy-smart-search-results-page-sidebar__sort-by--desktop"
+                        >
+                            <label
+                                for="rebuy-smart-search-sort-options"
+                                class="rebuy-smart-search-results-page-sidebar__sort-by-label"
+                                >Sort By</label
+                            >
+
+                            <div class="rebuy-filter-select-menu">
+                                <select
+                                    id="rebuy-smart-search-sort-options"
+                                    class="rebuy-select"
+                                    v-model="resultsPage.searchQuery.sortBy.field"
+                                    v-on:change="($event) => handleUpdateSearchQuery('sort_by', $event.target.value)"
+                                >
+                                    <option
+                                        v-for="filter in getSortFilters()"
+                                        v-if="filter.enabled"
+                                        v-bind:value="filter.key"
+                                    >
+                                        {{ filter.label || filter.name }}
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div
+                            v-if="getSortFilters().length && sortByStyle() === 'sortByDropdown'"
+                            class="rebuy-smart-search-results-page-sidebar__dropdown-menu-container rebuy-smart-search-results-page-sidebar__sort-by--desktop"
+                        >
+                            <button
+                                aria-label="Open product filters dropdown"
+                                @click.stop="handleToggleFilterModal('sort')"
+                                @keydown="(e) => handleKeyboardSubmitPrevent(e)"
+                                @keyup="(e) => handleKeyboardSubmit(e, () => { handleToggleFilterModal('product'); })"
+                                class="rebuy-smart-search-results-page-sidebar__dropdown-menu-trigger"
+                            >
+                                Sort By:
+                                <span class="rebuy-smart-search-results-page-sidebar__dropdown-menu-title">
+                                    {{getSortByLabel(resultsPage.searchQuery.sortBy.field)}}
+                                </span>
+                                <rebuy-icon name="chevron-down" v-bind:class="[resultsPage?.sortFiltersVisible ? 'filter-open' : 'filter-close']"></rebuy-icon>
+                            </button>
+
+                            <ul
+                                id="sortSelectMenu"
+                                v-if="resultsPage?.sortFiltersVisible"
+                                class="rebuy-smart-search-results-page-sidebar__dropdown-menu"
+                            >
+                                <li
+                                    v-for="filter in getSortFilters()"
+                                    v-if="filter.enabled"
+                                    class="rebuy-smart-search-results-page-sidebar__dropdown-menu-list-item"
+                                    :class="{'rebuy-smart-search-results-page-sidebar__dropdown-menu-list-item--active': resultsPage.searchQuery.sortBy.field === filter.key}"
+                                    @click="handleUpdateSearchQuery('sort_by', filter.key)"
+                                >
+                                    {{filter.label || filter.name}}
+                                </li>
+                            </ul>
+                        </div>
+
+                        <!-- Sort By Trigger (for Mobile) -->
+                        <div
+                            class="rebuy-smart-search-results-page-sidebar__filter-trigger gts rebuy-smart-search-results-page-sidebar__filter-trigger--mobile"
+                        >
+                            <button
+                                class="rebuy-smart-search-results-page-sidebar__filter-mobile-facets"
+                                @click="showFilterFlyout()"
+                            >
+                                <svg
+                                    class="rebuy-smart-search-results-page-sidebar__filter-mobile-facets-icon"
+                                    aria-hidden="true"
+                                    focusable="false"
+                                    role="presentation"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 20 20"
+                                    fill="none"
+                                >
+                                    <path
+                                        fill-rule="evenodd"
+                                        d="M4.833 6.5a1.667 1.667 0 1 1 3.334 0 1.667 1.667 0 0 1-3.334 0ZM4.05 7H2.5a.5.5 0 0 1 0-1h1.55a2.5 2.5 0 0 1 4.9 0h8.55a.5.5 0 0 1 0 1H8.95a2.5 2.5 0 0 1-4.9 0Zm11.117 6.5a1.667 1.667 0 1 0-3.334 0 1.667 1.667 0 0 0 3.334 0ZM13.5 11a2.5 2.5 0 0 1 2.45 2h1.55a.5.5 0 0 1 0 1h-1.55a2.5 2.5 0 0 1-4.9 0H2.5a.5.5 0 0 1 0-1h8.55a2.5 2.5 0 0 1 2.45-2Z"
+                                        fill="currentColor"
+                                    ></path>
+                                </svg>
+
+                                <span class="rebuy-smart-search-results-page-sidebar__filter-mobile-facets-label"
+                                    >Filter and sort</span
+                                >
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--- End Search Input Section -->
+
+            <!--- Main Section -->
+            <div class="rebuy-smart-search-results-page__main-section rebuy-smart-search-results-page-sidebar__main-section gts">
+                <!--- Filters Section -->
+                <div v-if="shouldShowAggregatedFilters() || hasSelectedFilters()" class="rebuy-smart-search-results-page__filter-section rebuy-smart-search-results-page-sidebar__filter-section gts">
+                    <h6
+                        class="rebuy-smart-search-results-page-sidebar__filter-section-title rebuy-title"
+                    >
+                        Filters
+                    </h6>
+
+                    <!--- Selected Filters -->
+                    <div
+                        v-if="hasSelectedFilters() && shouldShowSelectedFilters()"
+                        class="rebuy-smart-search-results-page__selected-filters rebuy-smart-search-results-page-sidebar__selected-filters"
+                    >
+                        <div
+                            class="rebuy-smart-search-results-page__selected-filters-header rebuy-smart-search-results-page-sidebar__selected-filters-header"
+                        >
+                            <h6 class="rebuy-smart-search-results-page-sidebar__filter-list-title">Selected Filter</h6>
+
+                            <button
+                                v-on:click="resetFilters()"
+                                class="rebuy-smart-search-results-page__selected-filters-reset rebuy-smart-search-results-page-sidebar__selected-filters-reset"
+                            >
+                                Reset
+                            </button>
+                        </div>
+
+                        <div
+                            class="rebuy-smart-search-results-page__selected-filters-body rebuy-smart-search-results-page-sidebar__selected-filters-body"
+                        >
+                            <div
+                                v-if="resultsPage.hasAdjustedPriceFilter"
+                                class="rebuy-smart-search-results-page__selected-filter-tag rebuy-smart-search-results-page-sidebar__selected-filter-tag"
+                            >
+                                <span class="rebuy-smart-search-results-page__selected-tag-label">
+                                    <span>
+                                        <span v-html="shopCurrencySymbol()"> </span>
+
+                                        <span v-html="resultsPage.filterPrice.min"> </span>
+                                    </span>
+
+                                    <span>-</span>
+
+                                    <span>
+                                        <span v-html="shopCurrencySymbol()"> </span>
+
+                                        <span v-html="handleMaximumPriceFilterLabel()"> </span>
+                                    </span>
+                                </span>
+
+                                <button
+                                    type="button"
+                                    class="rebuy-smart-search-results-page__selected-filter-tag-remove rebuy-smart-search-results-page-sidebar__selected-filter-tag-remove"
+                                    v-bind:alt="handleRemovingFilterLabel('price')"
+                                    v-bind:aria-label="handleRemovingFilterLabel('price')"
+                                    v-on:click="handleRemovingFilter('price')"
+                                >
+                                    <rebuy-icon name="x"></rebuy-icon>
+                                </button>
+                            </div>
+
+                            <div v-if="hasSelectedFilter('availability')">
+                                <div
+                                    class="rebuy-smart-search-results-page__selected-filter-tag rebuy-smart-search-results-page-sidebar__selected-filter-tag"
+                                >
+                                    <span
+                                        v-html="handleAvailabilityFilterLabel()"
+                                        class="rebuy-smart-search-results-page__selected-tag-label"
+                                    ></span>
+
+                                    <button
+                                        type="button"
+                                        class="rebuy-smart-search-results-page__selected-filter-tag-remove rebuy-smart-search-results-page-sidebar__selected-filter-tag-remove"
+                                        v-bind:alt="handleRemovingFilterLabel('availability')"
+                                        v-bind:aria-label="handleRemovingFilterLabel('availability')"
+                                        v-on:click="handleRemovingFilter('availability')"
+                                    >
+                                        <rebuy-icon name="x"></rebuy-icon>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div
+                                v-for="(tag, index) in resultsPage.searchQuery.filters.tags"
+                                class="rebuy-smart-search-results-page__selected-filter-tag rebuy-smart-search-results-page-sidebar__selected-filter-tag"
+                            >
+                                <span v-html="formatTagValue(tag)" class="rebuy-smart-search-results-page__selected-tag-label"></span>
+
+                                <button
+                                    type="button"
+                                    class="rebuy-smart-search-results-page__selected-filter-tag-remove rebuy-smart-search-results-page-sidebar__selected-filter-tag-remove"
+                                    v-bind:alt="handleRemovingFilterLabel('product-tags', tag)"
+                                    v-bind:aria-label="handleRemovingFilterLabel('product-tags', tag)"
+                                    v-on:click="handleRemovingFilter('product-tags', tag)"
+                                >
+                                    <rebuy-icon name="x"></rebuy-icon>
+                                </button>
+                            </div>
+
+                            <div
+                                v-for="(category, index) in resultsPage.searchQuery.filters.categories"
+                                class="rebuy-smart-search-results-page__selected-filter-tag rebuy-smart-search-results-page-sidebar__selected-filter-tag"
+                            >
+                                <span v-html="category" class="rebuy-smart-search-results-page__selected-tag-label"></span>
+
+                                <button
+                                    type="button"
+                                    class="rebuy-smart-search-results-page__selected-filter-tag-remove rebuy-smart-search-results-page-sidebar__selected-filter-tag-remove"
+                                    v-bind:alt="handleRemovingFilterLabel('product-type', category)"
+                                    v-bind:aria-label="handleRemovingFilterLabel('product-type', category)"
+                                    v-on:click="handleRemovingFilter('product-type', category)"
+                                >
+                                    <rebuy-icon name="x"></rebuy-icon>
+                                </button>
+                            </div>
+
+                            <div
+                                v-for="(vendor, index) in resultsPage.searchQuery.filters.vendors"
+                                class="rebuy-smart-search-results-page__selected-filter-tag rebuy-smart-search-results-page-sidebar__selected-filter-tag"
+                            >
+                                <span v-html="vendor" class="rebuy-smart-search-results-page__selected-tag-label"></span>
+
+                                <button
+                                    type="button"
+                                    class="rebuy-smart-search-results-page__selected-filter-tag-remove rebuy-smart-search-results-page-sidebar__selected-filter-tag-remove"
+                                    v-bind:alt="handleRemovingFilterLabel('vendor', vendor)"
+                                    v-bind:aria-label="handleRemovingFilterLabel('vendor', vendor)"
+                                    v-on:click="handleRemovingFilter('vendor', vendor)"
+                                >
+                                    <rebuy-icon name="x"></rebuy-icon>
+                                </button>
+                            </div>
+
+                            <div
+                                v-for="(option, index) in resultsPage.searchQuery.filters.options"
+                                class="rebuy-smart-search-results-page__selected-filter-tag rebuy-smart-search-results-page-sidebar__selected-filter-tag"
+                            >
+                                <span v-html="getReadableFilterValue(option)" class="rebuy-smart-search-results-page__selected-tag-label"></span>
+
+                                <button
+                                    type="button"
+                                    class="rebuy-smart-search-results-page__selected-filter-tag-remove rebuy-smart-search-results-page-sidebar__selected-filter-tag-remove"
+                                    v-bind:alt="handleRemovingFilterLabel('option', option)"
+                                    v-bind:aria-label="handleRemovingFilterLabel('option', option)"
+                                    v-on:click="handleRemovingFilter('option', option)"
+                                >
+                                    <rebuy-icon name="x"></rebuy-icon>
+                                </button>
+                            </div>
+
+                            <div
+                                v-for="(metafieldValue, index) in resultsPage.searchQuery.filters.metafields"
+                                class="rebuy-smart-search-results-page__selected-filter-tag rebuy-smart-search-results-page-sidebar__selected-filter-tag"
+                            >
+                                <span v-html="getReadableFilterValue(metafieldValue)" class="rebuy-smart-search-results-page__selected-tag-label"></span>
+
+                                <button
+                                    type="button"
+                                    class="rebuy-smart-search-results-page__selected-filter-tag-remove rebuy-smart-search-results-page-sidebar__selected-filter-tag-remove"
+                                    v-bind:alt="handleRemovingFilterLabel('metafields', metafieldValue)"
+                                    v-bind:aria-label="handleRemovingFilterLabel('metafields', metafieldValue)"
+                                    v-on:click="handleRemovingFilter('metafields', metafieldValue)"
+                                >
+                                    <rebuy-icon name="x"></rebuy-icon>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Filters Options Desktop -->
+                    <div>
+                        <ul
+                            v-if="resultsPage?.hasLoadedInitialSearchResults"
+                            class="rebuy-smart-search-results-page__filter-list-container rebuy-smart-search-results-page-sidebar__filter-container"
+                        >
+                            <li
+                                v-for="(filter, index) in resultsPage.mappedAggregatedFilters"
+                                class="rebuy-smart-search-results-page-sidebar__filter-list"
+                            >
+                                <div
+                                    v-if="hasFilterEnabled(filter)"
+                                    class="rebuy-smart-search-results-page-sidebar__filter-list-container"
+                                >
+                                    <div class="rebuy-smart-search-results-page-sidebar__filter-list-header">
+                                        <button
+                                            class="rebuy-smart-search-results-page-sidebar__filter-list-toggle"
+                                            type="button"
+                                            v-bind:alt="filter.isExpanded ? 'Close ' + filter.name : 'Open ' + filter.name"
+                                            v-bind:aria-label="filter.isExpanded ? 'Close ' + filter.name : 'Open ' + filter.name"
+                                            v-on:click="handleToggleFilterExpansion(filter, index)"
+                                        >
+                                            <h5
+                                                class="rebuy-smart-search-results-page-sidebar__filter-list-title"
+                                                v-html="getFilterName(filter)"
+                                            ></h5>
+                                            <div v-if="filterDropDownStyle('plusMinus')">
+                                                <rebuy-icon v-if="filter.isExpanded" name="minus"></rebuy-icon>
+
+                                                <rebuy-icon v-if="!filter.isExpanded" name="plus"></rebuy-icon>
+                                            </div>
+
+                                            <div v-if="filterDropDownStyle('chevron')">
+                                                <rebuy-icon name="chevron-down" v-bind:class="[filter.isExpanded ? 'filter-open' : 'filter-close']"></rebuy-icon>
+                                            </div>
+                                        </button>
+                                    </div>
+
+                                    <div
+                                        v-bind:class="[filter.isExpanded ? 'active' : '']"
+                                        class="rebuy-smart-search-results-page-sidebar__filter-list-body"
+                                    >
+                                        <!-- Product tags filter-->
+                                        <ul
+                                            v-if="filter.type === 'product-tags'"
+                                            class="rebuy-smart-search-results-page__filter-option rebuy-smart-search-results-page__filter-product-tags"
+                                        >
+                                            <li
+                                                v-for="value in filter.values"
+                                                class="rebuy-smart-search-results-page__filter-option-list rebuy-smart-search-results-page-sidebar__filter-list"
+                                            >
+                                                <input
+                                                    :id="'rebuy-option-tag-'+  value.tags"
+                                                    type="checkbox"
+                                                    class="rebuy-checkbox"
+                                                    :checked="hasSelectedFilter('product-tags', value.tags)"
+                                                    v-on:change="handleUpdateSearchQuery(filter.type, value.tags)"
+                                                />
+
+                                                <label
+                                                    :for="'rebuy-option-tag-'+ value.tags"
+                                                    class="rebuy-smart-search-results-page__filter-option-checkbox-label"
+                                                >
+                                                    {{ formatTagValue(value.tags) }}
+                                                    <span v-if="shouldShowProductFilterCount()" class="rebuy-smart-search-results-page__filter-label">
+                                                        ({{value.numProducts}})
+                                                    </span>
+                                                </label>
+                                            </li>
+                                        </ul>
+
+                                        <!-- Product vendor filter-->
+                                        <ul
+                                            v-if="filter.type === 'vendor'"
+                                            class="rebuy-smart-search-results-page__filter-option rebuy-smart-search-results-page__filter-vendor"
+                                        >
+                                            <li
+                                                v-for="(value, index) in filter.values"
+                                                :key="index"
+                                                class="rebuy-smart-search-results-page__filter-option-list rebuy-smart-search-results-page-sidebar__filter-list"
+                                            >
+                                                <input
+                                                    :id="'rebuy-option-vendor-' + value.vendorAsTag"
+                                                    type="checkbox"
+                                                    class="rebuy-checkbox"
+                                                    :checked="hasSelectedFilter('vendor', value.vendorAsTag)"
+                                                    v-on:change="handleUpdateSearchQuery(filter.type, value.vendorAsTag)"
+                                                />
+
+                                                <label
+                                                    :for="'rebuy-option-vendor-' + value.vendorAsTag"
+                                                    class="rebuy-smart-search-results-page__filter-option-checkbox-label"
+                                                >
+                                                    {{value.vendorAsTag}}
+
+                                                    <span v-if="shouldShowProductFilterCount()" class="rebuy-smart-search-results-page__filter-label">
+                                                        ({{value.numProducts}})
+                                                    </span>
+                                                </label>
+                                            </li>
+                                        </ul>
+
+                                        <!-- Product availability filter-->
+                                        <ul
+                                            v-if="filter.type === 'availability'"
+                                            class="rebuy-smart-search-results-page__filter-option rebuy-smart-search-results-page__filter-availability"
+                                        >
+                                            <li
+                                                class="rebuy-smart-search-results-page__filter-option-list rebuy-smart-search-results-page-sidebar__filter-list"
+                                            >
+                                                <label class="rebuy-radio-label">
+                                                    <input
+                                                        class="radio-input rebuy-radio"
+                                                        v-on:click="handleUpdateSearchQuery('availability', 'available')"
+                                                        :checked="hasSelectedFilter('availability', 'available')"
+                                                        v-bind:value="true"
+                                                        type="radio"
+                                                        v-bind:disabled="!hasInStockAvailabilityFilter(filter.values)"
+                                                    />
+                                                    <span
+                                                        class="radio-label"
+                                                        v-bind:class="[!hasInStockAvailabilityFilter(filter.values)  ? 'disabled' : '']"
+                                                    >
+                                                        Available
+                                                        <span
+                                                            v-if="hasInStockAvailabilityFilter(filter.values) && shouldShowProductFilterCount()"
+                                                            v-html="numsOfAvailabilityFilter(filter.values, 'available')"
+                                                            class="rebuy-smart-search-results-page__filter-label"
+                                                        >
+                                                        </span>
+                                                    </span>
+                                                </label>
+                                            </li>
+
+                                            <li
+                                                class="rebuy-smart-search-results-page__filter-option-list rebuy-smart-search-results-page-sidebar__filter-list"
+                                            >
+                                                <label class="rebuy-radio-label">
+                                                    <input
+                                                        class="radio-input rebuy-radio"
+                                                        v-on:click="handleUpdateSearchQuery('availability', 'soldOut')"
+                                                        :checked="hasSelectedFilter('availability', 'soldOut')"
+                                                        v-bind:value="false"
+                                                        type="radio"
+                                                        v-bind:disabled="!hasSoldOutAvailabilityFilter(filter.values)"
+                                                    />
+
+                                                    <span
+                                                        class="radio-label"
+                                                        v-bind:class="[!hasSoldOutAvailabilityFilter(filter.values)  ? 'disabled' : '']"
+                                                    >
+                                                        Sold Out
+                                                        <span
+                                                            v-if="hasSoldOutAvailabilityFilter(filter.values) && shouldShowProductFilterCount()"
+                                                            class="rebuy-smart-search-results-page__filter-label"
+                                                            v-html="numsOfAvailabilityFilter(filter.values, 'soldOut')"
+                                                        >
+                                                        </span>
+                                                    </span>
+                                                </label>
+                                            </li>
+                                        </ul>
+
+                                        <!-- Product type filter-->
+                                        <ul
+                                            v-if="filter.type === 'product-type'"
+                                            class="rebuy-smart-search-results-page__filter-option rebuy-smart-search-results-page__filter-product-type"
+                                        >
+                                            <li
+                                                v-for="value in filter.values"
+                                                class="rebuy-smart-search-results-page__filter-option-list rebuy-smart-search-results-page-sidebar__filter-list"
+                                            >
+                                                <input
+                                                    :id="'rebuy-option-product-type-' + value.categories"
+                                                    type="checkbox"
+                                                    class="rebuy-checkbox"
+                                                    :checked="hasSelectedFilter('product-type', value.categories)"
+                                                    v-on:change="handleUpdateSearchQuery(filter.type, value.categories)"
+                                                />
+
+                                                <label
+                                                    :for="'rebuy-option-product-type-' + value.categories"
+                                                    class="rebuy-smart-search-results-page__filter-option-checkbox-label"
+                                                >
+                                                    {{value.categories}}
+
+                                                    <span v-if="shouldShowProductFilterCount()" class="rebuy-smart-search-results-page__filter-label">
+                                                        ({{value.numProducts}})
+                                                    </span>
+                                                </label>
+                                            </li>
+                                        </ul>
+
+                                        <!-- Product price filter-->
+                                        <div
+                                            v-if="filter.type === 'price'"
+                                            class="rebuy-smart-search-results-page__filter-option rebuy-smart-search-results-page__filter-price"
+                                        >
+                                            <div class="rebuy-smart-search-results-page__filter-price-block">
+                                                <label
+                                                    for="rebuy-option-price-from"
+                                                    v-html="shopCurrencySymbol()"
+                                                    class="rebuy-smart-search-results-page__filter-price-label"
+                                                >
+                                                </label>
+
+                                                <input
+                                                    id="rebuy-option-price-from"
+                                                    type="number"
+                                                    class="rebuy-input rebuy-smart-search-results-page__filter-price-input"
+                                                    placeholder="From"
+                                                    v-bind:value="resultsPage.filterPrice.min"
+                                                    min="0"
+                                                    :max="resultsPage.filterPrice.max"
+                                                    v-on:change="handleUpdateSearchQuery('price', 'min', {
+                                                    min: resultsPage.filterPrice.min,
+                                                    max: resultsPage.filterPrice.max,
+                                                    price: $event.target.valueAsNumber,
+                                                })"
+                                                />
+                                            </div>
+
+                                            <div class="rebuy-smart-search-results-page__filter-price-dash">-</div>
+
+                                            <div class="rebuy-smart-search-results-page__filter-price-block">
+                                                <label
+                                                    for="rebuy-option-price-to"
+                                                    v-html="shopCurrencySymbol()"
+                                                    class="rebuy-smart-search-results-page__filter-price-label"
+                                                >
+                                                </label>
+
+                                                <input
+                                                    id="rebuy-option-price-to"
+                                                    type="number"
+                                                    class="rebuy-input rebuy-smart-search-results-page__filter-price-input"
+                                                    placeholder="To"
+                                                    v-bind:value="resultsPage.filterPrice.max"
+                                                    :min="resultsPage.filterPrice.min"
+                                                    v-on:change="handleUpdateSearchQuery('price', 'max', {
+                                                    min: resultsPage.filterPrice.min,
+                                                    max: resultsPage.filterPrice.max,
+                                                    price: $event.target.valueAsNumber,
+                                                })"
+                                                />
+                                            </div>
+                                        </div>
+
+                                        <!-- Product Option filter-->
+                                        <ul
+                                            v-if="filter.type === 'product-option'"
+                                            class="rebuy-smart-search-results-page__filter-option rebuy-smart-search-results-page__filter-product-option"
+                                        >
+                                            <li
+                                                v-for="(optionGroupValue, key) in filter.values"
+                                                class="rebuy-smart-search-results-page__filter-option-list"
+                                            >
+                                                <input
+                                                    :id="'rebuy-option-product-type-' + key"
+                                                    type="checkbox"
+                                                    class="rebuy-checkbox"
+                                                    :checked="hasSelectedFilter('product-options', getProductOptionFilterString(filter, key))"
+                                                    v-on:change="handleUpdateSearchQuery('product-options', getProductOptionFilterString(filter, key), key)"
+                                                />
+
+                                                <label
+                                                    :for="'rebuy-option-product-type-' + key"
+                                                    class="rebuy-smart-search-results-page__filter-option-checkbox-label"
+                                                >
+                                                    {{key}}
+
+                                                    <span v-if="shouldShowProductFilterCount()" class="rebuy-smart-search-results-page__filter-label">
+                                                        ({{optionGroupValue.numProducts}})
+                                                    </span>
+                                                </label>
+                                            </li>
+                                        </ul>
+
+                                        <!-- Product metafield filter-->
+                                        <ul
+                                            v-if="filter.type === 'product-metafield' || filter.type === 'variant-metafield'"
+                                            class="rebuy-smart-search-results-page__filter-option rebuy-smart-search-results-page__filter-product-type"
+                                        >
+                                            <li
+                                                v-for="metafieldValue in filter.values"
+                                                class="rebuy-smart-search-results-page__filter-option-list rebuy-smart-search-results-page-sidebar__filter-list"
+                                            >
+                                                <input
+                                                    :id="'rebuy-metafield-' + filter.type + '-' + filter.key + '-' + metafieldValue.value"
+                                                    type="checkbox"
+                                                    class="rebuy-checkbox"
+                                                    :checked="hasSelectedFilter(filter.type, getMetafieldFilterString(filter, metafieldValue))"
+                                                    v-on:change="handleUpdateSearchQuery(filter.type, getMetafieldFilterString(filter, metafieldValue), metafieldValue.readableValue ?? metafieldValue.value)"
+                                                />
+
+                                                <label
+                                                    :for="'rebuy-metafield-' + filter.type + '-' + filter.key + '-' + metafieldValue.value"
+                                                    class="rebuy-smart-search-results-page__filter-option-checkbox-label"
+                                                >
+                                                    <span v-html="metafieldValue.readableValue ? metafieldValue.readableValue : metafieldValue.value"></span>
+
+                                                    <span v-if="shouldShowProductFilterCount()" class="rebuy-smart-search-results-page__filter-label">
+                                                        ({{metafieldValue.numProducts}})
+                                                    </span>
+                                                </label>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+
+                        <!--- Filter Skeleton -->
+                        <div
+                            v-if="!resultsPage?.hasLoadedInitialSearchResults"
+                            class="rebuy-smart-search-results-page__filter-skeleton rebuy-smart-search-results-page-sidebar__filter-skeleton"
+                        >
+                            <div></div>
+                        </div>
+                        <!--- End Filter Skeleton -->
+                    </div>
+                </div>
+                <!--- End Filters Section -->
+
+                <!--- Results Section -->
+
+                <div class="rebuy-smart-search-results-page__results-section rebuy-smart-search-results-page-sidebar__result-section">
+                    <div>
+                        <h6 class="rebuy-smart-search-results-page-sidebar__result-section-title">Products</h6>
+
+                        <div class="rebuy-smart-search-results-page__container" v-bind:class="[resultsPage.resultsGridColumns, productListColumnClass()]">
+                            <!--- Product Skeleton -->
+
+                            <div
+                                v-if="!resultsPage?.hasLoadedInitialSearchResults"
+                                v-for="product of skeletonProducts"
+                                class="rebuy-smart-search-results-page__product-skeleton"
+                            >
+                                <div class="rebuy-smart-search-results-page__product-skeleton"></div>
+                            </div>
+
+                            <!--- End Product Skeleton -->
+
+                            <div
+                                v-if="resultsPage?.hasLoadedInitialSearchResults && resultsPage?.searchResults?.products?.length > 0"
+                                v-for="(product, index) of resultsPage?.searchResults?.products"
+                                :id="'rebuy-product-id-'+ product.id"
+                                :key="product.id + '-product-' + index"
+                                class="rebuy-smart-search-results-page__product rebuy-smart-search-results-page-sidebar__product"
+                                :style="productImageRatio()"
+                                :class="'rebuy-results-page-product-id-' + product.id"
+                            >
+                                <!-- Image container -->
+                                <a
+                                    class="rebuy-product-media rebuy-smart-search-results-page__product-media rebuy-smart-search-results-page__absolute-image-container"
+                                    v-bind:href="learnMoreURL(product)"
+                                    v-on:click="learnMore(product, index)"
+                                    v-bind:alt="'View ' + product.name"
+                                >
+                                    <div v-if="shouldShowFeaturedBadge(product)" class="rebuy-smart-search-results-page__promoted-tag">
+                                        Featured
+                                    </div>
+
+                                    <img
+                                        v-bind:src="getProductImage(product, product.selected_variant)"
+                                        v-bind:srcset="generateImgSrcset(product)"
+                                        class="rebuy-smart-search-results-page__product-image rebuy-smart-search-results-page__absolute-image rebuy-smart-search-results-page__absolute-image--zoomed"
+                                        v-bind:alt="'Image of ' + product.name"
+                                    />
+                                </a>
+
+                                <!-- Product Info -->
+                                <div class="rebuy-smart-search-results-page__product-detail">
+
+                                    <div class="rebuy-product-info">
+                                        <!-- Product Title -->
+                                        <a
+                                            :class="productInfoClass()"
+                                            class="rebuy-product-title"
+                                            v-bind:href="learnMoreURL(product)"
+                                            v-on:click="learnMore(product, index)"
+                                            v-html="product.name"
+                                            v-bind:alt="'View ' + product.name"
+                                        >
+                                        </a>
+
+                                        <!-- Product Review -->
+                                        <div class="rebuy-product-review" v-if="shouldDisplayResultsPageProductRating(product)" aria-label="product star rating" :class="productInfoClass()">
+                                            <span class="rebuy-star-rating" :style="{ width: starRatingSize.width + 'px', height: starRatingSize.height + 'px' }">
+                                                <span
+                                                    v-if="product.reviews.star_rating"
+                                                    class="rebuy-star-rating-value sr-only"
+                                                    v-html="product.ratings.average + ' stars out of 5 stars'"
+                                                >
+                                                </span>
+
+                                                <!-- Default star rating (no custom colors) -->
+                                                <template v-if="!shouldDisplayStyledProductReviews()">
+                                                    <span class="rebuy-star-rating-background"></span>
+                                                    <span class="rebuy-star-rating-foreground" v-bind:style="{ width: getProductReviewRatingPercentage(product) }"></span>
+                                                </template>
+
+                                                <!-- Styled star rating with custom colors -->
+                                                <template v-if="shouldDisplayStyledProductReviews()">
+                                                    <span class="rebuy-star-rating" :style="{ width: starRatingSize.width + 'px', height: starRatingSize.height + 'px' }">
+                                                        <span class="rebuy-star-rating-container">
+                                                        <!-- Background stars (unfilled) -->
+                                                        <svg :width="starRatingSize.width" :height="starRatingSize.height" viewBox="0 0 80 14" xmlns="http://www.w3.org/2000/svg" class="rebuy-star-svg-background">
+                                                            <g class="rebuy-star-background-fill" fill-rule="evenodd">
+                                                                <path d="M71.996 11.368l-3.94 2.42c-.474.292-.756.096-.628-.443l1.074-4.53-3.507-3.022c-.422-.363-.324-.693.24-.74l4.602-.37 1.778-4.3c.21-.51.55-.512.762 0l1.78 4.3 4.602.37c.552.046.666.37.237.74l-3.507 3.02 1.075 4.532c.127.536-.147.74-.628.444l-3.94-2.422zM55.996 11.368l-3.94 2.42c-.474.292-.756.096-.628-.443l1.074-4.53-3.507-3.022c-.422-.363-.324-.693.24-.74l4.602-.37 1.778-4.3c.21-.51.55-.512.762 0l1.78 4.3 4.602.37c.552.046.666.37.237.74l-3.507 3.02 1.075 4.532c.127.536-.147.74-.628.444l-3.94-2.422zM40.123 11.368l-3.94 2.42c-.475.292-.756.096-.63-.443l1.076-4.53-3.508-3.022c-.422-.363-.324-.693.24-.74l4.602-.37 1.778-4.3c.21-.51.55-.512.762 0l1.778 4.3 4.603.37c.554.046.667.37.24.74l-3.508 3.02 1.075 4.532c.127.536-.147.74-.628.444l-3.94-2.422zM24.076 11.368l-3.94 2.42c-.475.292-.757.096-.63-.443l1.076-4.53-3.507-3.022c-.422-.363-.324-.693.238-.74l4.603-.37 1.78-4.3c.21-.51.55-.512.76 0l1.78 4.3 4.602.37c.554.046.667.37.24.74l-3.508 3.02 1.074 4.532c.127.536-.146.74-.628.444l-3.94-2.422zM8.123 11.368l-3.94 2.42c-.475.292-.756.096-.63-.443l1.076-4.53L1.12 5.792c-.422-.363-.324-.693.24-.74l4.602-.37 1.778-4.3c.21-.51.55-.512.762 0l1.778 4.3 4.603.37c.554.046.667.37.24.74l-3.508 3.02 1.075 4.532c.127.536-.147.74-.628.444l-3.94-2.422z"/>
+                                                            </g>
+                                                        </svg>
+                                                        <!-- Foreground stars (filled) - clipped by wrapper -->
+                                                        <span
+                                                            class="rebuy-star-svg-foreground-wrapper"
+                                                            v-bind:style="{
+                                                                width: starRatingWidth(product) + 'px'
+                                                            }"
+                                                        >
+                                                            <svg :width="starRatingSize.width" :height="starRatingSize.height" viewBox="0 0 80 14" xmlns="http://www.w3.org/2000/svg" class="rebuy-star-svg-foreground">
+                                                            <g class="rebuy-star-foreground-fill" fill-rule="evenodd">
+                                                                <path d="M71.996 11.368l-3.94 2.42c-.474.292-.756.096-.628-.443l1.074-4.53-3.507-3.022c-.422-.363-.324-.693.24-.74l4.602-.37 1.778-4.3c.21-.51.55-.512.762 0l1.78 4.3 4.602.37c.552.046.666.37.237.74l-3.507 3.02 1.075 4.532c.127.536-.147.74-.628.444l-3.94-2.422zM55.996 11.368l-3.94 2.42c-.474.292-.756.096-.628-.443l1.074-4.53-3.507-3.022c-.422-.363-.324-.693.24-.74l4.602-.37 1.778-4.3c.21-.51.55-.512.762 0l1.78 4.3 4.602.37c.552.046.666.37.237.74l-3.507 3.02 1.075 4.532c.127.536-.147.74-.628.444l-3.94-2.422zM40.123 11.368l-3.94 2.42c-.475.292-.756.096-.63-.443l1.076-4.53-3.508-3.022c-.422-.363-.324-.693.24-.74l4.602-.37 1.778-4.3c.21-.51.55-.512.762 0l1.778 4.3 4.603.37c.554.046.667.37.24.74l-3.508 3.02 1.075 4.532c.127.536-.147.74-.628.444l-3.94-2.422zM24.076 11.368l-3.94 2.42c-.475.292-.757.096-.63-.443l1.076-4.53-3.507-3.022c-.422-.363-.324-.693.238-.74l4.603-.37 1.78-4.3c.21-.51.55-.512.76 0l1.78 4.3 4.602.37c.554.046.667.37.24.74l-3.508 3.02 1.074 4.532c.127.536-.146.74-.628.444l-3.94-2.422zM8.123 11.368l-3.94 2.42c-.475.292-.756.096-.63-.443l1.076-4.53L1.12 5.792c-.422-.363-.324-.693.24-.74l4.602-.37 1.778-4.3c.21-.51.55-.512.762 0l1.778 4.3 4.603.37c.554.046.667.37.24.74l-3.508 3.02 1.075 4.532c.127.536-.147.74-.628.444l-3.94-2.422z"/>
+                                                            </g>
+                                                        </svg>
+                                                        </span>
+                                                    </span>
+                                                </template>
+                                            </span>
+
+                                            <span class="rebuy-review-count" v-html="getProductReviewCountHtml(product)"></span>
+                                        </div>
+
+                                        <!-- Product Price -->
+                                        <div class="rebuy-product-price" :class="productInfoClass()">
+                                            <div v-if="productOnSale(product)">
+                                                <span class="rebuy-money sale">
+                                                    <span class="sr-only">Sale price</span>
+                                                    <span v-html="formatMoney(product.selected_variant.price)"></span>
+                                                </span>
+
+                                                <span class="rebuy-money compare-at">
+                                                    <span class="sr-only">Original price</span>
+                                                    <span v-html="formatMoney(product.selected_variant.compareAtPrice)"></span>
+                                                </span>
+                                            </div>
+
+                                            <div v-if="!productOnSale(product)">
+                                                <span class="rebuy-money">
+                                                    <span class="sr-only">Price</span>
+                                                    <span v-html="formatMoney(product.selected_variant.price)"></span>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Product Options -->
+                                    <div class="rebuy-product-options" v-if="shouldShowVariantSelector(product)">
+                                        <select
+                                            title="Select product variant"
+                                            id="rebuy-smart-search-results-variant-select"
+                                            class="rebuy-select"
+                                            v-bind:aria-label="'variant of ' + product.name"
+                                            v-model="product.selected_variant_id"
+                                            v-on:change="selectVariant(product)"
+                                        >
+                                            <option
+                                                v-for="variant in product.variants"
+                                                v-bind:value="variant.id"
+                                                v-html="variant.name"
+                                            ></option>
+                                        </select>
+                                    </div>
+
+                                    <!-- Add-to-cart -->
+                                    <div class="rebuy-product-actions" v-if="shouldShowAddToCart(product)">
+                                        <button
+                                            class="rebuy-button rebuy-smart-search-results-page__cta"
+                                            v-bind:class="{ working: (product.status != 'ready' && product.status != 'selecting') }"
+                                            v-bind:disabled="!(variantAvailable(product.selected_variant)) || (product.status != 'ready' && product.status != 'selecting')"
+                                            v-bind:aria-label="buttonAriaLabel(product)"
+                                            v-on:click="addToCart(product)"
+                                            type="button"
+                                        >
+                                            <span v-html="buttonLabel(product)"></span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div
+                            v-if="resultsPage?.hasLoadedInitialSearchResults && (!resultsPage?.searchResults?.products || resultsPage?.searchResults?.products?.length <= 0)"
+                        >
+                            <p v-html="notFoundMessage()"></p>
+                        </div>
+                    </div>
+
+                    <!--- Pagination -->
+                    <div v-if="handleGeneratingPageList()?.length > 1">
+                        <div
+                            v-if="shouldRenderDefaultPagination()"
+                            class="rebuy-smart-search-results-page__pagination rebuy-smart-search-results-page-sidebar__pagination-section"
+                            v-bind:class="shouldDisplayAmountPerPage() ? 'rebuy-smart-search-results-page__range' : ''"
+                        >
+
+                            <!--- Range Selection -->
+                            <div v-if="shouldDisplayAmountPerPage()" class="rebuy-range-selection">
+                                <label
+                                    class="rebuy-range-selection-label"
+                                    v-bind:class="isAmountPerPageSelectionDisabled() && 'rebuy-range-selection-disabled'"
+                                >
+                                    Per page
+                                </label>
+                                <select
+                                    title="Select products per page"
+                                    id="rebuy-smart-search-results-per-page-select"
+                                    class="rebuy-select"
+                                    v-bind:class="isAmountPerPageSelectionDisabled() && 'rebuy-range-selection-disabled'"
+                                    aria-label="products per page"
+                                    v-model="resultsPage.searchQuery.pageSize"
+                                    v-on:change="handleUpdatePaginationRange($event.target.value)"
+                                    v-bind:disabled="isAmountPerPageSelectionDisabled()"
+                                >
+                                    <option
+                                        v-for="productsPerPage in pageRangeSelection()"
+                                        v-bind:value="productsPerPage.value"
+                                    >
+                                        {{productsPerPage.value}}
+                                    </option>
+                                </select>
+                            </div>
+
+                            <!--- Page Selection -->
+                            <ul
+                                v-if="handleGeneratingPageList()?.length > 1"
+                                class="rebuy-smart-search-results-page__pagination rebuy-smart-search-results-page-sidebar__pagination"
+                            >
+                                <li class="rebuy-smart-search-results-page__pagination-label">
+                                    <button
+                                        v-bind:disabled="resultsPage?.isLoadingSearchTerm"
+                                        v-on:click="handleUpdatingPageCount('decrement')"
+                                        class="rebuy-smart-search-results-page__pagination-page rebuy-smart-search-results-page__pagination-arrow"
+                                        v-bind:class="{
+                                            'rebuy-smart-search-results-page__pagination-arrow--disabled': parseInt(resultsPage.searchQuery.currentPage) === 1
+                                        }"
+                                    >
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                            <path d="M15.7049 7.41L14.2949 6L8.29492 12L14.2949 18L15.7049 16.59L11.1249 12L15.7049 7.41Z" fill="currentColor"/>
+                                        </svg>
+                                    </button>
+                                </li>
+
+                                <li
+                                    v-for="(pageNumber, index) in handleGeneratingPageList()"
+                                    :key="pageNumber + '-pagination-' + index"
+                                    class="rebuy-smart-search-results-page__pagination-label"
+                                    v-bind:class="[parseInt(pageNumber) === parseInt(resultsPage.searchQuery.currentPage)  ? 'active' : '']"
+                                >
+                                    <button
+                                        v-on:click="handleUpdatingPageCount('manual', pageNumber)"
+                                        @keydown="(e) => handleKeyboardSubmitPrevent(e)"
+                                        @keyup="(e) => handleKeyboardSubmit(e, () => { handleUpdatingPageCount('manual', pageNumber); })"
+                                        class="rebuy-smart-search-results-page__pagination-page"
+                                        v-bind:disabled="resultsPage?.isLoadingSearchTerm"
+                                    >
+
+                                        <span v-if="pageNumber">
+                                            {{ pageNumber }}
+                                        </span>
+
+                                        <span
+                                            v-if="!pageNumber"
+                                            class="rebuy-smart-search-results-page__pagination-icon--disabled"
+                                            >
+                                            <rebuy-icon name="more-horizontal" class="rebuy-button-icon"></rebuy-icon>
+                                        </span>
+                                    </button>
+                                </li>
+
+                                <li class="rebuy-smart-search-results-page__pagination-label">
+                                    <button
+                                        v-bind:disabled="resultsPage?.isLoadingSearchTerm"
+                                        v-on:click="handleUpdatingPageCount('increment')"
+                                        class="rebuy-smart-search-results-page__pagination-page rebuy-smart-search-results-page__pagination-arrow"
+                                        v-bind:class="{
+                                            'rebuy-smart-search-results-page__pagination-arrow--disabled': parseInt(resultsPage.searchQuery.currentPage) === parseInt(resultsPage.searchResultsHeaderMetaData?.['search-page-total'])
+                                        }"
+                                    >
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                            <path d="M9.70492 6L8.29492 7.41L12.8749 12L8.29492 16.59L9.70492 18L15.7049 12L9.70492 6Z" fill="currentColor"/>
+                                        </svg>
+                                    </button>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <!--- Load More button -->
+                        <div v-if="shouldRenderLoadMore()" class="rebuy-smart-search-results-page__continuous-scroll">
+                            <button
+                                v-if="!hasReachedLastPage()"
+                                v-on:click="handleUpdatingPageCount('continuous')"
+                                class="rebuy-button rebuy-smart-search-results-page__continuous-scroll-button"
+                                v-bind:disabled="resultsPage?.isLoadingSearchTerm"
+                            >
+                                {{ getLoadMoreText() }}
+                            </button>
+                        </div>
+
+                        <!--- Continuous Scroll loading spinner -->
+                        <div v-if="shouldRenderContinuousScroll()" class="rebuy-smart-search-results-page__continuous-scroll">
+                            <div v-if="resultsPage?.isLoadingSearchTerm" class="rebuy-smart-search-results-page__continuous-scroll-loader">
+                                <span> </span>
+                            </div>
+                        </div>
+
+                    </div>
+                    <!--- End Pagination -->
+                </div>
+
+                <!--- End Results Section -->
+            </div>
+            <!--- End Main Section -->
+
+            <!--- Filter Flyout Section -->
+            <div
+                id="rebuy-smart-search-results-filter-flyout"
+                role="dialog"
+                aria-modal="true"
+                aria-labelledby="filter-flyout-sidebar"
+                v-bind:aria-hidden="!resultsPage.filterVisible ? 'true' : 'false'"
+            >
+                <div
+                    class="rebuy-smart-search-results-page__flyout rebuy-smart-search-results-page__flyout"
+                    v-bind:class="[resultsPage.filterVisible ? 'is-visible' : '']"
+                >
+                    <div class="rebuy-smart-search-results-page__flyout-inner">
+                        <div class="rebuy-smart-search-results-page__flyout-header rebuy-smart-search-results-page__flyout-header">
+                            <h6 class="rebuy-smart-search-results-page__flyout-header-title" v-html="filterAndSortTitle()"></h6>
+
+                            <button
+                                class="rebuy-smart-search-results-page__flyout-close rebuy-smart-search-results-page__flyout-header-close"
+                                type="button"
+                                v-on:click="hideFilterFlyout()"
+                                aria-label="Close Filter Flyout"
+                            >
+                                <rebuy-icon name="x"></rebuy-icon>
+                            </button>
+                        </div>
+
+                        <div class="rebuy-smart-search-results-page__flyout-body rebuy-smart-search-results-page__flyout-body">
+                            <!--- Selected Filters -->
+                            <div
+                                v-if="hasSelectedFilters() && shouldShowSelectedFilters()"
+                                class="rebuy-smart-search-results-page__selected-filters rebuy-smart-search-results-page__flyout-selected-filters  rebuy-smart-search-results-page-sidebar__selected-filters"
+                            >
+                                <div
+                                    class="rebuy-smart-search-results-page__selected-filters-header rebuy-smart-search-results-page__flyout-selected-filters-header rebuy-smart-search-results-page-sidebar__selected-filters-header"
+                                >
+                                    <h6 class="rebuy-smart-search-results-page-sidebar__filter-list-title">Selected Filter</h6>
+
+                                    <button
+                                        v-on:click="resetFilters()"
+                                        class="rebuy-smart-search-results-page__selected-filters-reset rebuy-smart-search-results-page-sidebar__selected-filters-reset"
+                                    >
+                                        Reset
+                                    </button>
+                                </div>
+
+                                <div
+                                    class="rebuy-smart-search-results-page__selected-filters-body rebuy-smart-search-results-page-sidebar__selected-filters-body"
+                                >
+                                    <div
+                                        v-if="resultsPage.hasAdjustedPriceFilter"
+                                        class="rebuy-smart-search-results-page__selected-filter-tag rebuy-smart-search-results-page-sidebar__selected-filter-tag"
+                                    >
+                                        <span class="rebuy-smart-search-results-page__selected-tag-label">
+                                            <span>
+                                                <span v-html="shopCurrencySymbol()"> </span>
+
+                                                <span v-html="resultsPage.filterPrice.min"> </span>
+                                            </span>
+
+                                            <span>-</span>
+
+                                            <span>
+                                                <span v-html="shopCurrencySymbol()"> </span>
+
+                                                <span v-html="handleMaximumPriceFilterLabel()"> </span>
+                                            </span>
+                                        </span>
+
+                                        <button
+                                            type="button"
+                                            class="rebuy-smart-search-results-page__selected-filter-tag-remove rebuy-smart-search-results-page-sidebar__selected-filter-tag-remove"
+                                            alt="Remove price filter"
+                                            aria-label="Remove price filter"
+                                            v-on:click="handleRemovingFilter('price')"
+                                        >
+                                            <rebuy-icon name="x"></rebuy-icon>
+                                        </button>
+                                    </div>
+
+                                    <div v-if="hasSelectedFilter('availability')">
+                                        <div
+                                            class="rebuy-smart-search-results-page__selected-filter-tag rebuy-smart-search-results-page-sidebar__selected-filter-tag"
+                                        >
+                                            <span
+                                                v-html="handleAvailabilityFilterLabel()"
+                                                class="rebuy-smart-search-results-page__selected-tag-label"
+                                            ></span>
+
+                                            <button
+                                                type="button"
+                                                class="rebuy-smart-search-results-page__selected-filter-tag-remove rebuy-smart-search-results-page-sidebar__selected-filter-tag-remove"
+                                                v-bind:aria-label="handleRemovingFilterLabel('availability')"
+                                                v-bind:aria-label="handleRemovingFilterLabel('availability')"
+                                                v-on:click="handleRemovingFilter('availability')"
+                                            >
+                                                <rebuy-icon name="x"></rebuy-icon>
+                                            </button>
+                                        </div>
+                                    </div>
+
+                                    <div
+                                        v-for="(tag, index) in resultsPage.searchQuery.filters.tags"
+                                        class="rebuy-smart-search-results-page__selected-filter-tag rebuy-smart-search-results-page-sidebar__selected-filter-tag"
+                                    >
+                                        <span
+                                            v-html="formatTagValue(tag)"
+                                            class="rebuy-smart-search-results-page__selected-tag-label"
+                                        ></span>
+
+                                        <button
+                                            type="button"
+                                            class="rebuy-smart-search-results-page__selected-filter-tag-remove rebuy-smart-search-results-page-sidebar__selected-filter-tag-remove"
+                                            v-bind:alt="'Remove ' + tag + ' tag filter'"
+                                            v-bind:aria-label="'Remove ' + tag + ' tag filter'"
+                                            v-on:click="handleRemovingFilter('product-tags', tag)"
+                                        >
+                                            <rebuy-icon name="x"></rebuy-icon>
+                                        </button>
+                                    </div>
+
+                                    <div
+                                        v-for="(category, index) in resultsPage.searchQuery.filters.categories"
+                                        class="rebuy-smart-search-results-page__selected-filter-tag rebuy-smart-search-results-page-sidebar__selected-filter-tag"
+                                    >
+                                        <span v-html="category" class="rebuy-smart-search-results-page__selected-tag-label"></span>
+
+                                        <button
+                                            type="button"
+                                            class="rebuy-smart-search-results-page__selected-filter-tag-remove rebuy-smart-search-results-page-sidebar__selected-filter-tag-remove"
+                                            v-bind:alt="'Remove ' + category + ' product type filter'"
+                                            v-bind:aria-label="'Remove ' + category + ' product type filter'"
+                                            v-on:click="handleRemovingFilter('product-type', category)"
+                                        >
+                                            <rebuy-icon name="x"></rebuy-icon>
+                                        </button>
+                                    </div>
+
+                                    <div
+                                        v-for="(vendor, index) in resultsPage.searchQuery.filters.vendors"
+                                        class="rebuy-smart-search-results-page__selected-filter-tag rebuy-smart-search-results-page-sidebar__selected-filter-tag"
+                                    >
+                                        <span v-html="vendor" class="rebuy-smart-search-results-page__selected-tag-label"></span>
+
+                                        <button
+                                            type="button"
+                                            class="rebuy-smart-search-results-page__selected-filter-tag-remove rebuy-smart-search-results-page-sidebar__selected-filter-tag-remove"
+                                            v-bind:alt="'Remove ' + vendor + ' vendor filter'"
+                                            v-bind:aria-label="'Remove ' + vendor + ' vendor filter'"
+                                            v-on:click="handleRemovingFilter('vendor', vendor)"
+                                        >
+                                            <rebuy-icon name="x"></rebuy-icon>
+                                        </button>
+                                    </div>
+
+                                    <div
+                                        v-for="(option, index) in resultsPage.searchQuery.filters.options"
+                                        class="rebuy-smart-search-results-page__selected-filter-tag rebuy-smart-search-results-page-sidebar__selected-filter-tag"
+                                    >
+                                        <span
+                                            v-html="getReadableFilterValue(option)"
+                                            class="rebuy-smart-search-results-page__selected-tag-label">
+                                        </span>
+
+                                        <button
+                                            type="button"
+                                            class="rebuy-smart-search-results-page__selected-filter-tag-remove rebuy-smart-search-results-page-sidebar__selected-filter-tag-remove"
+                                            v-bind:alt="handleRemovingFilterLabel('option', option)"
+                                            v-bind:aria-label="handleRemovingFilterLabel('option', option)"
+                                            v-on:click="handleRemovingFilter('option', option)"
+                                        >
+                                            <rebuy-icon name="x"></rebuy-icon>
+                                        </button>
+                                    </div>
+
+                                    <div
+                                        v-for="(metafieldValue, index) in resultsPage.searchQuery.filters.metafields"
+                                        class="rebuy-smart-search-results-page__selected-filter-tag rebuy-smart-search-results-page-sidebar__selected-filter-tag"
+                                    >
+                                        <span v-html="getReadableFilterValue(metafieldValue)" class="rebuy-smart-search-results-page__selected-tag-label"></span>
+
+                                        <button
+                                            type="button"
+                                            class="rebuy-smart-search-results-page__selected-filter-tag-remove rebuy-smart-search-results-page-sidebar__selected-filter-tag-remove"
+                                            v-bind:alt="handleRemovingFilterLabel('metafields', metafieldValue)"
+                                            v-bind:aria-label="handleRemovingFilterLabel('metafields', metafieldValue)"
+                                            v-on:click="handleRemovingFilter('metafields', metafieldValue)"
+                                        >
+                                            <rebuy-icon name="x"></rebuy-icon>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Sort By -->
+                            <div
+                                v-if="getSortFilters().length && sortByStyle() === 'sortBySelect'"
+                                class="rebuy-smart-search-results-page__flyout-sort-by rebuy-smart-search-results-page__sort-by rebuy-smart-search-results-page-sidebar__sort-by rebuy-smart-search-results-page-sidebar__sort-by--mobile"
+                            >
+                                <label
+                                    for="rebuy-smart-search-sort-options"
+                                    class="rebuy-smart-search-results-page-sidebar__sort-by-label"
+                                    >Sort By</label
+                                >
+
+                                <div class="rebuy-filter-select-menu">
+                                    <select
+                                        id="rebuy-smart-search-sort-options"
+                                        v-model="resultsPage.searchQuery.sortBy.field"
+                                        class="rebuy-select"
+                                        v-on:change="($event) => handleUpdateSearchQuery('sort_by', $event.target.value)"
+                                    >
+                                        <option
+                                            v-for="filter in getSortFilters()"
+                                            v-if="filter.enabled"
+                                            v-bind:value="filter.key"
+                                        >
+                                            {{ filter.label || filter.name }}
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div
+                                v-if="getSortFilters().length && sortByStyle() === 'sortByDropdown'"
+                                class="rebuy-smart-search-results-page-sidebar__dropdown-menu-container"
+                            >
+                                <button
+                                    aria-label="Open product filters dropdown"
+                                    @click.stop="handleToggleFilterModal('sort')"
+                                    @keydown="(e) => handleKeyboardSubmitPrevent(e)"
+                                    @keyup="(e) => handleKeyboardSubmit(e, () => { handleToggleFilterModal('product'); })"
+                                    class="rebuy-smart-search-results-page-sidebar__dropdown-menu-trigger"
+                                >
+                                    Sort By:
+                                    <span class="rebuy-smart-search-results-page-sidebar__dropdown-menu-title">
+                                        {{getSortByLabel(resultsPage.searchQuery.sortBy.field)}}
+                                    </span>
+                                    <rebuy-icon name="chevron-down" v-bind:class="[resultsPage?.sortFiltersVisible ? 'filter-open' : 'filter-close']"></rebuy-icon>
+                                </button>
+
+                                <ul
+                                    id="sortSelectMenu"
+                                    v-if="resultsPage?.sortFiltersVisible"
+                                    class="rebuy-smart-search-results-page-sidebar__dropdown-menu"
+                                >
+                                    <li
+                                        v-for="filter in getSortFilters()"
+                                        v-if="filter.enabled"
+                                        class="rebuy-smart-search-results-page-sidebar__dropdown-menu-list-item"
+                                        :class="{'rebuy-smart-search-results-page-sidebar__dropdown-menu-list-item--active': resultsPage.searchQuery.sortBy.field === filter.key}"
+                                        @click="handleUpdateSearchQuery('sort_by', filter.key)"
+                                    >
+                                        {{filter.label || filter.name}}
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <!-- Filters -->
+                            <ul
+                                v-if="resultsPage?.hasLoadedInitialSearchResults && shouldShowAggregatedFilters()"
+                                class="rebuy-smart-search-results-page__filter-list-container rebuy-smart-search-results-page-sidebar__filter-container"
+                            >
+                                <li
+                                    v-for="(filter, index) in resultsPage.mappedAggregatedFilters"
+                                    class="rebuy-smart-search-results-page-sidebar__filter-list"
+                                >
+                                    <div
+                                        v-if="hasFilterEnabled(filter)"
+                                        class="rebuy-smart-search-results-page-sidebar__filter-list-container"
+                                    >
+                                        <div class="rebuy-smart-search-results-page-sidebar__filter-list-header">
+                                            <button
+                                                class="rebuy-smart-search-results-page-sidebar__filter-list-toggle"
+                                                type="button"
+                                                v-bind:alt="filter.isExpanded ? 'Close ' + filter.name : 'Open ' + filter.name"
+                                                v-bind:aria-label="filter.isExpanded ? 'Close ' + filter.name : 'Open ' + filter.name"
+                                                v-on:click="handleToggleFilterExpansion(filter, index)"
+                                            >
+                                                <h6
+                                                    class="rebuy-smart-search-results-page-sidebar__filter-list-title"
+                                                    v-html="getFilterName(filter)"
+                                                ></h6>
+                                                <div v-if="filterDropDownStyle('plusMinus')">
+                                                    <rebuy-icon v-if="filter.isExpanded" name="minus"></rebuy-icon>
+
+                                                    <rebuy-icon v-if="!filter.isExpanded" name="plus"></rebuy-icon>
+                                                </div>
+
+                                                <div v-if="filterDropDownStyle('chevron')">
+                                                    <rebuy-icon name="chevron-down" v-bind:class="[filter.isExpanded ? 'filter-open' : 'filter-close']"></rebuy-icon>
+                                                </div>
+                                            </button>
+                                        </div>
+
+                                        <div
+                                            v-bind:class="[filter.isExpanded ? 'active' : '']"
+                                            class="rebuy-smart-search-results-page-sidebar__filter-list-body"
+                                        >
+                                            <ul
+                                                v-if="filter.type === 'product-tags'"
+                                                class="rebuy-smart-search-results-page__filter-option rebuy-smart-search-results-page__filter-product-tags"
+                                            >
+                                                <li
+                                                    v-for="value in filter.values"
+                                                    class="rebuy-smart-search-results-page__filter-option-list rebuy-smart-search-results-page-sidebar__filter-list"
+                                                >
+                                                    <input
+                                                        :id="'rebuy-option-tag-'+  value.tags"
+                                                        type="checkbox"
+                                                        class="rebuy-checkbox"
+                                                        :checked="hasSelectedFilter('product-tags', value.tags)"
+                                                        v-on:change="handleUpdateSearchQuery(filter.type, value.tags)"
+                                                    />
+
+                                                    <label
+                                                        :for="'rebuy-option-tag-'+ value.tags"
+                                                        class="rebuy-smart-search-results-page__filter-option-checkbox-label"
+                                                    >
+                                                        {{ formatTagValue(value.tags) }}
+                                                        <span v-if="shouldShowProductFilterCount()" class="rebuy-smart-search-results-page__filter-label">
+                                                            ({{value.numProducts}})
+                                                        </span>
+                                                    </label>
+                                                </li>
+                                            </ul>
+
+                                            <ul
+                                                v-if="filter.type === 'availability'"
+                                                class="rebuy-smart-search-results-page__filter-option rebuy-smart-search-results-page__filter-availability"
+                                            >
+                                                <li
+                                                    class="rebuy-smart-search-results-page__filter-option-list rebuy-smart-search-results-page-sidebar__filter-list"
+                                                >
+                                                    <label class="rebuy-radio-label">
+                                                        <input
+                                                            class="radio-input rebuy-radio"
+                                                            v-on:click="handleUpdateSearchQuery('availability', 'available')"
+                                                            :checked="hasSelectedFilter('availability', 'available')"
+                                                            v-bind:value="true"
+                                                            type="radio"
+                                                            v-bind:disabled="!hasInStockAvailabilityFilter(filter.values)"
+                                                        />
+                                                        <span
+                                                            class="radio-label"
+                                                            v-bind:class="[!hasInStockAvailabilityFilter(filter.values)  ? 'disabled' : '']"
+                                                        >
+                                                            Available
+                                                            <span
+                                                                v-if="hasInStockAvailabilityFilter(filter.values) &&shouldShowProductFilterCount()"
+                                                                v-html="numsOfAvailabilityFilter(filter.values, 'available')"
+                                                                class="rebuy-smart-search-results-page__filter-label"
+                                                            >
+                                                            </span>
+                                                        </span>
+                                                    </label>
+                                                </li>
+
+                                                <li
+                                                    class="rebuy-smart-search-results-page__filter-option-list rebuy-smart-search-results-page-sidebar__filter-list"
+                                                >
+                                                    <label class="rebuy-radio-label">
+                                                        <input
+                                                            class="radio-input rebuy-radio"
+                                                            v-on:click="handleUpdateSearchQuery('availability', 'soldOut')"
+                                                            :checked="hasSelectedFilter('availability', 'soldOut')"
+                                                            v-bind:value="false"
+                                                            type="radio"
+                                                            v-bind:disabled="!hasSoldOutAvailabilityFilter(filter.values)"
+                                                        />
+
+                                                        <span
+                                                            class="radio-label"
+                                                            v-bind:class="[!hasSoldOutAvailabilityFilter(filter.values)  ? 'disabled' : '']"
+                                                        >
+                                                            Sold Out
+                                                            <span
+                                                                v-if="hasSoldOutAvailabilityFilter(filter.values) && shouldShowProductFilterCount()"
+                                                                class="rebuy-smart-search-results-page__filter-label"
+                                                                v-html="numsOfAvailabilityFilter(filter.values, 'soldOut')"
+                                                            >
+                                                            </span>
+                                                        </span>
+                                                    </label>
+                                                </li>
+                                            </ul>
+
+                                            <ul
+                                                v-if="filter.type === 'vendor'"
+                                                class="rebuy-smart-search-results-page__filter-option rebuy-smart-search-results-page__filter-vendor"
+                                            >
+                                                <li
+                                                    v-for="(value, index) in filter.values"
+                                                    :key="index"
+                                                    class="rebuy-smart-search-results-page__filter-option-list rebuy-smart-search-results-page-sidebar__filter-list"
+                                                >
+                                                    <input
+                                                        :id="'rebuy-option-vendor-' + value.vendorAsTag"
+                                                        type="checkbox"
+                                                        class="rebuy-checkbox"
+                                                        :checked="hasSelectedFilter('vendor', value.vendorAsTag)"
+                                                        v-on:change="handleUpdateSearchQuery(filter.type, value.vendorAsTag)"
+                                                    />
+
+                                                    <label
+                                                        :for="'rebuy-option-vendor-' + value.vendorAsTag"
+                                                        class="rebuy-smart-search-results-page__filter-option-checkbox-label"
+                                                    >
+                                                        {{value.vendorAsTag}}
+
+                                                        <span v-if="shouldShowProductFilterCount()" class="rebuy-smart-search-results-page__filter-label">
+                                                            ({{value.numProducts}})
+                                                        </span>
+                                                    </label>
+                                                </li>
+                                            </ul>
+
+                                            <ul
+                                                v-if="filter.type === 'product-type'"
+                                                class="rebuy-smart-search-results-page__filter-option rebuy-smart-search-results-page__filter-product-type"
+                                            >
+                                                <li
+                                                    v-for="value in filter.values"
+                                                    class="rebuy-smart-search-results-page__filter-option-list rebuy-smart-search-results-page-sidebar__filter-list"
+                                                >
+                                                    <input
+                                                        :id="'rebuy-option-product-type-' + value.categories"
+                                                        type="checkbox"
+                                                        class="rebuy-checkbox"
+                                                        :checked="hasSelectedFilter('product-type', value.categories)"
+                                                        v-on:change="handleUpdateSearchQuery(filter.type, value.categories)"
+                                                    />
+
+                                                    <label
+                                                        :for="'rebuy-option-product-type-' + value.categories"
+                                                        class="rebuy-smart-search-results-page__filter-option-checkbox-label"
+                                                    >
+                                                        {{value.categories}}
+
+                                                        <span v-if="shouldShowProductFilterCount()" class="rebuy-smart-search-results-page__filter-label">
+                                                            ({{value.numProducts}})
+                                                        </span>
+                                                    </label>
+                                                </li>
+                                            </ul>
+
+                                            <div
+                                                v-if="filter.type === 'price'"
+                                                class="rebuy-smart-search-results-page__filter-option rebuy-smart-search-results-page__filter-price"
+                                            >
+                                                <div class="rebuy-smart-search-results-page__filter-price-block">
+                                                    <label
+                                                        for="rebuy-option-price-from"
+                                                        v-html="shopCurrencySymbol()"
+                                                        class="rebuy-smart-search-results-page__filter-price-label"
+                                                    >
+                                                    </label>
+
+                                                    <input
+                                                        id="rebuy-option-price-from"
+                                                        type="number"
+                                                        class="rebuy-input rebuy-smart-search-results-page__filter-price-input"
+                                                        placeholder="From"
+                                                        v-bind:value="filter.values.min"
+                                                        v-bind:min="filter.values.min"
+                                                        v-bind:max="filter.values.max"
+                                                        v-on:change="handleUpdateSearchQuery('price', 'min', {
+                                                        min: filter.values.min,
+                                                        max: filter.values.max,
+                                                        price: $event.target.value
+                                                    })"
+                                                    />
+                                                </div>
+
+                                                <div class="rebuy-smart-search-results-page__filter-price-dash">-</div>
+
+                                                <div class="rebuy-smart-search-results-page__filter-price-block">
+                                                    <label
+                                                        for="rebuy-option-price-to"
+                                                        v-html="shopCurrencySymbol()"
+                                                        class="rebuy-smart-search-results-page__filter-price-label"
+                                                    >
+                                                    </label>
+
+                                                    <input
+                                                        id="rebuy-option-price-to"
+                                                        type="number"
+                                                        class="rebuy-input rebuy-smart-search-results-page__filter-price-input"
+                                                        placeholder="To"
+                                                        v-bind:value="filter.values.max"
+                                                        v-bind:min="filter.values.min"
+                                                        v-bind:max="filter.values.max"
+                                                        v-on:change="handleUpdateSearchQuery('price', 'max', {
+                                                        min: filter.values.min,
+                                                        max: filter.values.max,
+                                                        price: $event.target.value
+                                                    })"
+                                                    />
+                                                </div>
+                                            </div>
+
+                                            <ul
+                                                v-if="filter.type === 'product-option'"
+                                                class="rebuy-smart-search-results-page__filter-option rebuy-smart-search-results-page__filter-product-option"
+                                            >
+                                                <li
+                                                    v-for="(optionGroupValue, key) in filter.values"
+                                                    class="rebuy-smart-search-results-page__filter-option-list"
+                                                >
+                                                    <input
+                                                        :id="'rebuy-option-product-type-' + key"
+                                                        type="checkbox"
+                                                        class="rebuy-checkbox"
+                                                        :checked="hasSelectedFilter('product-options', getProductOptionFilterString(filter, key))"
+                                                        v-on:change="handleUpdateSearchQuery('product-options', getProductOptionFilterString(filter, key), key)"
+                                                    />
+
+                                                    <label
+                                                        :for="'rebuy-option-product-type-' + key"
+                                                        class="rebuy-smart-search-results-page__filter-option-checkbox-label"
+                                                    >
+                                                        {{key}}
+
+                                                        <span v-if="shouldShowProductFilterCount()" class="rebuy-smart-search-results-page__filter-label">
+                                                            ({{optionGroupValue.numProducts}})
+                                                        </span>
+                                                    </label>
+                                                </li>
+                                            </ul>
+
+                                            <ul
+                                                v-if="filter.type === 'product-metafield' || filter.type === 'variant-metafield'"
+                                                class="rebuy-smart-search-results-page__filter-option rebuy-smart-search-results-page__filter-product-type"
+                                            >
+                                                <li
+                                                    v-for="metafieldValue in filter.values"
+                                                    class="rebuy-smart-search-results-page__filter-option-list rebuy-smart-search-results-page-sidebar__filter-list"
+                                                >
+                                                    <input
+                                                        :id="'rebuy-metafield-' + filter.type + '-' + filter.key + '-' + metafieldValue.value"
+                                                        type="checkbox"
+                                                        class="rebuy-checkbox"
+                                                        :checked="hasSelectedFilter(filter.type, getMetafieldFilterString(filter, metafieldValue))"
+                                                        v-on:change="handleUpdateSearchQuery(filter.type, getMetafieldFilterString(filter, metafieldValue), metafieldValue.readableValue ?? metafieldValue.value)"
+                                                    />
+
+                                                    <label
+                                                        :for="'rebuy-metafield-' + filter.type + '-' + filter.key + '-' + metafieldValue.value"
+                                                        class="rebuy-smart-search-results-page__filter-option-checkbox-label"
+                                                    >
+                                                        <span v-html="metafieldValue.readableValue ? metafieldValue.readableValue : metafieldValue.value"></span>
+
+                                                        <span v-if="shouldShowProductFilterCount()" class="rebuy-smart-search-results-page__filter-label">
+                                                            ({{metafieldValue.numProducts}})
+                                                        </span>
+                                                    </label>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div
+                    class="rebuy-smart-search-results-page__background"
+                    v-on:click="hideFilterFlyout()"
+                    v-bind:class="[resultsPage.filterVisible ? 'is-visible' : '']"
+                >
+                    <span></span>
+                </div>
+            </div>
+            <!--- End Filter Flyout Section -->
+
+            <div v-if="shouldShowPoweredByRebuy()" class="powered-by-rebuy">
+                <a v-bind:href="'https://rebuyengine.com/?shop=' + shop()" target="_blank" rel="noopener">
+                    Powered by Rebuy
+                </a>
+            </div>
+        </div>
+    </div>
+</script>
+{% endraw %}

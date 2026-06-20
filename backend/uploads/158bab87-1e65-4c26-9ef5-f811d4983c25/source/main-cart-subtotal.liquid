@@ -1,0 +1,694 @@
+<style>
+  .discount-alert {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #fee2e2;
+    border: 1px solid #fca5a5;
+    border-radius: 4px;
+    padding: 12px;
+    margin-top: 8px;
+    color: #991b1b;
+  }
+
+  #giftMessage {
+    margin-left: 2px;
+  }
+
+  .discount-alert[hidden] {
+    display: none !important;
+  }
+
+  .discount-alert__text {
+    flex: 1;
+  }
+
+  .discount-alert__close {
+    background: transparent;
+    border: none;
+    color: #991b1b;
+    cursor: pointer;
+    padding: 0;
+    margin-left: 12px;
+    line-height: 1;
+  }
+
+  .discount-alert__close:hover {
+    opacity: 0.7;
+  }
+
+  .discounts__discount {
+    display: none;
+  }
+
+  .cart__blocks {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 30px 0;
+  }
+
+  .cart-summary-heading {
+    margin-top: 40px !important;
+    margin-bottom: 0;
+  }
+
+  .summary-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    color: #2f484c;
+    font-family: 'Poppins';
+  }
+
+  .summary-row small {
+    display: block;
+    color: #2f484c;
+    margin-top: 4px;
+  }
+
+  .summary-row.discount {
+    color: green;
+    margin-bottom: 20px;
+  }
+
+  .discount-left {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .discount-left svg {
+    width: 14px;
+    height: 14px;
+  }
+
+  .cart__blocks hr {
+    border: 0;
+    border-top: 1px solid #e5e7eb;
+    margin: 16px 0;
+  }
+
+  .afterpay-block {
+    margin: 12px 0 4px;
+  }
+
+  .discount-form {
+    display: flex;
+    gap: 8px;
+    margin-top: 16px;
+  }
+
+  .discount-form input,
+  .discount-form button {
+    height: 55px;
+  }
+
+  .discount-form input {
+    width: 70%;
+    padding: 0 12px;
+    border: 1px solid #d1d5db;
+    border-radius: 4px;
+    background: transparent;
+  }
+
+  .discount-form button {
+    color: #2f484c;
+    padding: 0 16px;
+    background: transparent;
+    border: 1px solid #d1d5db;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 25%;
+    position: relative;
+  }
+
+  .discount-loader {
+    display: none;
+    width: 18px;
+    height: 18px;
+    border: 2px solid #d1d5db;
+    border-top-color: #2f484c;
+    border-radius: 50%;
+    animation: discount-spin 0.7s linear infinite;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .discount-form button.is-loading .discount-loader {
+    display: block;
+  }
+
+  .discount-form button.is-loading .discount-btn-text {
+    visibility: hidden;
+  }
+
+  @keyframes discount-spin {
+    to { transform: translate(-50%, -50%) rotate(360deg); }
+  }
+
+  .applied-discount {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #2f484c;
+    padding: 5px 18px;
+    border-radius: 25px;
+    margin-top: 10px;
+    gap: 10px;
+    max-width: fit-content;
+    font-family: 'Poppins';
+  }
+
+  .cart-gift-checkbox {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 13px 0;
+    font-family: 'Poppins';
+  }
+
+  .cart-gift-checkbox input {
+    height: 21px;
+    width: 21px;
+  }
+
+  .cart__checkout-button {
+    width: 100%;
+  }
+
+  .applied-discount__icon {
+    display: flex;
+    align-items: center;
+  }
+
+  .applied-discount__icon svg {
+    width: 14px;
+    height: 14px;
+  }
+
+  #remove-discount {
+    background: transparent;
+    border: none;
+    padding: 0;
+    margin-left: 6px;
+    line-height: 1;
+    cursor: pointer;
+    color: #2f484c;
+  }
+
+  .ctm-cart-cta-content {
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+  }
+
+  .ctm-cart-cta-content .ctm-cart-line p {
+    margin: auto;
+    max-width: fit-content !important;
+  }
+
+  .cart-gift-checkbox .custom-checkbox {
+    width: 18px;
+    height: 18px;
+    border: 2px solid #878b8c;
+    border-radius: 6px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    transition: all 0.2s ease;
+  }
+
+  .cart-gift-checkbox .custom-checkbox::after {
+    content: '';
+    width: 6px;
+    height: 10px;
+    border: solid #878b8c;
+    border-width: 0 2px 2px 0;
+    transform: translate(-50%, -50%) rotate(45deg);
+    position: absolute;
+    top: 37%;
+    left: 50%;
+    opacity: 0;
+  }
+
+  .cart-gift-checkbox input:checked + .custom-checkbox::after {
+    opacity: 1;
+  }
+
+  .cart-gift-checkbox input {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  #remove-discount:hover {
+    opacity: 0.7;
+  }
+
+  input#discount-code-input {
+    outline: none;
+  }
+
+  @media (max-width: 575px) {
+    .discount-form {
+      margin-top: 0;
+    }
+    .cart-item__price {
+      justify-content: center;
+      flex-direction: column;
+      display: flex;
+    }
+    .cart-summary-heading {
+      margin: 0 !important;
+    }
+    .cart-gift-checkbox {
+      margin: 10px 0;
+    }
+    .ctm-cart-line p {
+      margin: 0;
+    }
+    .ctm-cart-cta-content {
+      margin-bottom: 20px;
+    }
+    .cart__blocks {
+      padding: 0;
+    }
+  }
+</style>
+
+<div
+  class="cart__footer-container {% if cart == empty %} is-empty{% endif %}"
+  id="main-cart-footer"
+>
+  <div class="cart__footer">
+    {%- if section.settings.show_cart_note -%}
+      <cart-note class="cart__note field">
+        <label for="Cart-note">{{ 'sections.cart.note' | t }}</label>
+        <textarea
+          class="text-area text-area--resize-vertical field__input"
+          name="note"
+          id="Cart-note"
+          placeholder="{{ 'sections.cart.note' | t }}"
+        >{{ cart.note }}</textarea>
+      </cart-note>
+    {%- endif -%}
+
+    <div class="cart__blocks">
+      <!-- Order Summary -->
+      <h4 class="cart-summary-heading">Order Summary</h4>
+
+      {% for block in section.blocks %}
+        {% case block.type %}
+          {% when 'subtotal' %}
+            <div
+              class="cart__blocks-content js-contents"
+              {{ block.shopify_attributes }}
+            >
+              <!-- Subtotal -->
+              <div class="summary-row">
+                <span>Subtotal</span>
+                <span id="cart-subtotal-value">
+                  {{ cart.original_total_price | money }}
+                </span>
+              </div>
+
+              <!-- Discounts -->
+              <div
+                class="summary-row discount"
+                id="cart-discounts-wrapper"
+                {% if cart.cart_level_discount_applications.size == 0 %}
+                  style="display:none"
+                {% endif %}
+              >
+                <div class="discount-left">
+                  {% render 'icon-discount' %}
+                  <span id="discount-title">
+                    {% for discount in cart.cart_level_discount_applications %}
+                      {{ discount.title }}
+                    {% endfor %}
+                  </span>
+                </div>
+
+                <span id="discount-amount">
+                  {% for discount in cart.cart_level_discount_applications %}
+                    -{{ discount.total_allocated_amount | money }}
+                  {% endfor %}
+                </span>
+              </div>
+
+              <div id="automatic-discounts-wrapper" style="display: none;" class="summary-row discount">
+                <div class="discount-left">
+                  {% render 'icon-discount' %}
+                  <span id="automatic-discount-title"></span>
+                </div>
+                <span id="automatic-discount-amount"></span>
+              </div>
+
+              <div class="summary-row">
+                <span>Tax</span>
+                <span>Calculated at checkout</span>
+              </div>
+
+              <hr>
+
+              <!-- Estimated Total -->
+              <div class="summary-row summary-total">
+                <span>Estimated Total</span>
+                <span>{{ cart.total_price | money }}</span>
+              </div>
+            </div>
+
+          {% when '@app' %}
+            <div class="afterpay-block" {{ block.shopify_attributes }}>
+              {% render block %}
+            </div>
+
+          {% when 'buttons' %}
+            <form id="cart-discount-form" class="discount-form">
+              <input
+                id="discount-code-input"
+                placeholder="Discount code"
+                required
+              >
+              <button type="submit">
+                <span class="discount-btn-text">Apply</span>
+                <span class="discount-loader"></span>
+              </button>
+            </form>
+
+            <div id="discount-code-error" class="discount-alert" hidden>
+              <span class="discount-alert__text"></span>
+              <button
+                type="button"
+                class="discount-alert__close"
+                aria-label="Close error"
+              >
+                ✕
+              </button>
+            </div>
+
+            <div
+              id="applied-discount-wrapper"
+              class="applied-discount"
+              style="display:none;"
+            >
+              <span class="applied-discount__icon">
+                {% render 'icon-discount' %}
+              </span>
+              <span id="applied-discount-code"></span>
+              <button
+                id="remove-discount"
+                type="button"
+                aria-label="Remove discount"
+              >
+                ✕
+              </button>
+            </div>
+
+            <label class="cart-gift-checkbox">
+              <input type="checkbox" id="giftCheckbox">
+              <span class="custom-checkbox"></span>
+              <span>This order is a gift</span>
+            </label>
+
+            <div id="giftMessageContainer" style="display:none; margin-top:10px;">
+              <label for="giftMessage"><span>Gift Message:</span></label>
+              <textarea id="giftMessage" rows="3" style="width:100%;"></textarea>
+            </div>
+
+            <div class="cart__ctas" {{ block.shopify_attributes }}>
+              <button
+                type="submit"
+                name="checkout"
+                class="cart__checkout-button button--ctm_wb_global_button"
+                form="cart"
+                {% if cart == empty %}
+                  disabled
+                {% endif %}
+              >
+                Checkout →
+              </button>
+              {%- if additional_checkout_buttons -%}
+                <div class="cart__footer-dynamic-checkout">
+                  <div class="cart__dynamic-checkout-buttons additional-checkout-buttons">
+                    {{ content_for_additional_checkout_buttons }}
+                  </div>
+                </div>
+              {%- endif -%}
+            </div>
+
+            <div class="ctm-cart-cta-content">
+              <div class="ctm-cart-line">
+                <p style="max-width:fit-content;margin:auto;">More Express Options in Checkout.</p>
+              </div>
+              <div class="ctm-cart-ctas">
+                <a href="/checkout">
+                  <img
+                    src="https://images.contentstack.io/v3/assets/bltac573b73f5a955a6/blt5e94287e0f643f9b/68e97798c2504ef5d01ff98d/paypal.svg?width=3000&crop=center"
+                    alt="PayPal"
+                    height=""
+                    width=""
+                  >
+                </a>
+                <a href="/checkout">
+                  <img
+                    src="https://images.contentstack.io/v3/assets/bltac573b73f5a955a6/blte6e74c2822ce6c30/68e974d3f0b3bdd207593ffd/google_pay.svg?width=3000&crop=center"
+                    alt="Google Pay"
+                    height=""
+                    width=""
+                  >
+                </a>
+                <a href="/checkout">
+                  <img
+                    src="https://cdn.shopify.com/s/files/1/0575/2009/5363/files/ap.png?v=1767963933"
+                    alt=""
+                    height=""
+                    width=""
+                  >
+                </a>
+              </div>
+            </div>
+
+          {% when 'accordion' %}
+            {% render 'main-cart-accordian', block: block %}
+        {% endcase %}
+      {% endfor %}
+    </div>
+  </div>
+  <div class="cart-errors" id="cart-errors"></div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const accordions = document.querySelectorAll('.cart-help-accordion');
+    if (accordions.length > 1) {
+      accordions[1].classList.add('is-open');
+    }
+  });
+
+  document.addEventListener('click', function (e) {
+    const header = e.target.closest('.cart-help-accordion__header');
+    if (!header) return;
+    header.parentElement.classList.toggle('is-open');
+  });
+</script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const afterpay = document.querySelector('.afterpay-block');
+    const totalRow = document.querySelector('.summary-total');
+    if (afterpay && totalRow) totalRow.after(afterpay);
+
+    const giftCheckbox = document.getElementById('giftCheckbox');
+    const giftBox = document.getElementById('giftMessageContainer');
+    const giftInput = document.getElementById('giftMessage');
+    const errorEl = document.getElementById('discount-code-error');
+    const errorText = errorEl?.querySelector('.discount-alert__text');
+    const errorClose = errorEl?.querySelector('.discount-alert__close');
+    const form = document.getElementById('cart-discount-form');
+    const input = document.getElementById('discount-code-input');
+    const appliedBox = document.getElementById('applied-discount-wrapper');
+    const appliedText = document.getElementById('applied-discount-code');
+    const removeBtn = document.getElementById('remove-discount');
+    const discountRow = document.getElementById('cart-discounts-wrapper');
+    const subtotalEl = document.getElementById('cart-subtotal-value');
+    const autoWrapper = document.getElementById('automatic-discounts-wrapper');
+    const autoTitle = document.getElementById('automatic-discount-title');
+    const autoAmountEl = document.getElementById('automatic-discount-amount');
+
+    const money = (cents) =>
+      new Intl.NumberFormat('en-US', { style: 'currency', currency: Shopify.currency.active }).format(cents / 100);
+
+    let giftDebounce;
+    giftInput?.addEventListener('input', (e) => {
+      clearTimeout(giftDebounce);
+      giftDebounce = setTimeout(() => updateCartNote(e.target.value), 300);
+    });
+
+    giftCheckbox?.addEventListener('change', () => {
+      giftBox.style.display = giftCheckbox.checked ? 'block' : 'none';
+      if (!giftCheckbox.checked) updateCartNote('');
+    });
+
+    const updateCartNote = (note) =>
+      fetch(`${Shopify.routes.root}cart/update.js`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ note }),
+      });
+
+    const fetchCart = async () => {
+      const res = await fetch(`${Shopify.routes.root}cart.js`);
+      if (!res.ok) throw new Error('Cart fetch failed');
+      return res.json();
+    };
+
+    const applyDiscount = async (code) => {
+      const res = await fetch(`${Shopify.routes.root}cart/update.js`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ discount: code }),
+      });
+      if (res.ok) return res.json();
+      return fetchCart();
+    };
+
+    const updateCartDisplay = (cart) => {
+      if (subtotalEl) subtotalEl.textContent = money(cart.original_total_price);
+      const totalEl = document.querySelector('.summary-total span:last-child');
+      if (totalEl) totalEl.textContent = money(cart.total_price);
+
+      const discountCode = cart.discount_codes?.[0];
+      let codeDiscountAmount = 0;
+      if (discountCode) {
+        const orderLevel = cart.cart_level_discount_applications.find(
+          (d) => d.title?.toLowerCase() === discountCode.code.toLowerCase()
+        );
+        if (orderLevel) codeDiscountAmount = orderLevel.total_allocated_amount;
+        else
+          cart.items.forEach((item) =>
+            item.discounts?.forEach((d) => {
+              if (d.title.toLowerCase() === discountCode.code.toLowerCase()) codeDiscountAmount += d.amount;
+            })
+          );
+      }
+
+      if (discountRow && appliedBox && appliedText) {
+        if (codeDiscountAmount > 0) {
+          discountRow.style.display = 'flex';
+          discountRow.querySelector('#discount-title').textContent = discountCode.code;
+          discountRow.querySelector('#discount-amount').textContent = '-' + money(codeDiscountAmount);
+          appliedText.textContent = discountCode.code;
+          appliedBox.style.display = 'flex';
+        } else {
+          discountRow.style.display = 'none';
+          appliedBox.style.display = 'none';
+        }
+      }
+
+      let autoDiscountAmount = 0;
+      const autoDiscountTitles = new Set();
+      cart.items.forEach((item) => {
+        item.discounts?.forEach((d) => {
+          if (!discountCode || d.title.toLowerCase() !== discountCode.code.toLowerCase()) {
+            autoDiscountTitles.add(d.title);
+            autoDiscountAmount += d.amount;
+          }
+        });
+      });
+
+      if (autoWrapper && autoTitle && autoAmountEl && autoDiscountTitles.size > 0 && autoDiscountAmount > 0) {
+        autoWrapper.style.display = 'flex';
+        autoTitle.textContent = Array.from(autoDiscountTitles).join(', ');
+        autoAmountEl.textContent = '-' + money(autoDiscountAmount);
+      } else if (autoWrapper) {
+        autoWrapper.style.display = 'none';
+      }
+
+      cart.items.forEach((item, index) => {
+        const lineItem = document.querySelector(`[data-index="${index + 1}"]`);
+        if (!lineItem) return;
+        const priceEl = lineItem.querySelector('.cart-item__price, .cart-item__totals .price');
+        if (priceEl) priceEl.textContent = money(item.final_line_price);
+
+        let discountBadge = lineItem.querySelector('.cart-item__discount-badge');
+        if (item.discounts?.length > 0) {
+          if (!discountBadge) {
+            discountBadge = document.createElement('span');
+            discountBadge.className = 'cart-item__discount-badge';
+            const titleEl = lineItem.querySelector('.cart-item__name, .cart-item__details span, span');
+            if (titleEl) titleEl.insertAdjacentElement('afterend', discountBadge);
+          }
+          discountBadge.textContent = `${item.discounts[0].title} Applied`;
+          discountBadge.style.display = 'inline-block';
+        } else if (discountBadge) discountBadge.style.display = 'none';
+      });
+    };
+
+
+    const refreshCart = async () => {
+      try {
+        const cart = await fetchCart();
+        updateCartDisplay(cart);
+      } catch (err) {
+        console.error('Failed to refresh cart:', err);
+      }
+    };
+
+    const submitBtn = form?.querySelector('button[type="submit"]');
+
+    form?.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const code = input.value.trim();
+      if (!code) return;
+
+      errorEl.hidden = true;
+      errorText.textContent = '';
+      input.value = '';
+
+      submitBtn?.classList.add('is-loading');
+      if (submitBtn) submitBtn.disabled = true;
+
+      try {
+        const cart = await applyDiscount(code);
+        const codeApplied =
+          cart.cart_level_discount_applications.some((d) => d.title?.toLowerCase() === code.toLowerCase()) ||
+          cart.items.some((i) => i.discounts?.some((d) => d.title?.toLowerCase() === code.toLowerCase()));
+
+        if (!codeApplied) {
+          errorText.textContent = `${code} is invalid or cannot be combined with existing discounts.`;
+          errorEl.hidden = false;
+        }
+
+        updateCartDisplay(cart);
+      } catch (err) {
+        console.error(err);
+        errorText.textContent = 'An error occurred. Please try again.';
+        errorEl.hidden = false;
+      } finally {
+        submitBtn?.classList.remove('is-loading');
+        if (submitBtn) submitBtn.disabled = false;
+      }
+    });
+
+    removeBtn?.addEventListener('click', async () => {
+      try {
+        const cart = await applyDiscount('');
+        updateCartDisplay(cart);
+      } catch (err) {
+        console.error(err);
+      }
+    });
+
+    errorClose?.addEventListener('click', () => {
+      errorEl.hidden = true;
+      errorText.textContent = '';
+    });
+
+    refreshCart();
+  });
+</script>

@@ -1,0 +1,419 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "video_jzYYbf": {
+      "type": "video",
+      "settings": {
+        "extra_class": "",
+        "full_width": true,
+        "height": "large",
+        "video_fit": "contain",
+        "subheading": "",
+        "heading": "",
+        "cover_image": "shopify://shop_images/Screenshot_2024-03-11_at_2.46.01_PM.png",
+        "opacity_overlay": 0.5,
+        "video": "shopify://files/videos/Meet Our FounderApproved.mp4",
+        "video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
+        "video_autoplay": true,
+        "video_loop": false,
+        "video_muted": false,
+        "video_controls": true,
+        "description": "",
+        "button_text": "",
+        "button_link": "",
+        "margin_top": 0,
+        "margin_bottom": 0
+      }
+    },
+    "image_with_text_UPPA7E": {
+      "type": "image-with-text",
+      "settings": {
+        "row-reverse": "row-reverse",
+        "image": "shopify://shop_images/IMG_1815-8190.jpg",
+        "image_size": "adapt",
+        "show_frame": true,
+        "color_scheme": "background-1",
+        "frame-text": "",
+        "frame-text-right": "",
+        "color_scheme_2": "background-1",
+        "heading": "<h1><strong>Hi, I’m Jennifer Sey.</strong></h1>",
+        "subheading": "<p>I have to admit, I never thought I’d become the founder/CEO of a clothing company, much less one that encourages people to be brave.</p>",
+        "desc": "",
+        "subheading_left_top": "",
+        "subheading_left_bottom": "",
+        "subheading_right_top": "",
+        "subheading_right_bottom": "",
+        "button_text": "",
+        "button_link": "",
+        "button_style": "tertiary",
+        "underline_color": "#000000",
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "lookbook_detail_class": "",
+        "top_padding_desktop": 0,
+        "bottom_padding_desktop": 0,
+        "top_padding_mobile": 0,
+        "bottom_padding_mobile": 0,
+        "top_margin_desktop": 0,
+        "bottom_margin_desktop": 0,
+        "top_margin_mobile": 0,
+        "bottom_margin_mobile": 0
+      }
+    },
+    "image_with_text_M8xYeR": {
+      "type": "image-with-text",
+      "settings": {
+        "row-reverse": "row",
+        "image": "shopify://shop_images/FullSizeRender_2-8111_1b54a7bf-9841-40c4-b265-0043530a7337.jpg",
+        "image_size": "adapt",
+        "show_frame": true,
+        "color_scheme": "background-1",
+        "frame-text": "",
+        "frame-text-right": "",
+        "color_scheme_2": "background-1",
+        "heading": "",
+        "subheading": "<p><strong>After all, as a kid, I just wanted to fit in. <br><br></strong>In fact, in many ways I was the ultimate conformist. I was obedient to a fault. Even though the sport I loved, elite gymnastics, routinely abused girls like me — both emotionally and physically. Yet I stayed silent because that’s just what you were supposed to do — especially if you were vying for a spot on the National Team. Trouble makers didn’t get very far.  </p>",
+        "desc": "",
+        "subheading_left_top": "",
+        "subheading_left_bottom": "",
+        "subheading_right_top": "",
+        "subheading_right_bottom": "",
+        "button_text": "",
+        "button_link": "",
+        "button_style": "tertiary",
+        "underline_color": "#000000",
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "lookbook_detail_class": "",
+        "top_padding_desktop": 0,
+        "bottom_padding_desktop": 0,
+        "top_padding_mobile": 0,
+        "bottom_padding_mobile": 0,
+        "top_margin_desktop": 0,
+        "bottom_margin_desktop": 0,
+        "top_margin_mobile": 0,
+        "bottom_margin_mobile": 0
+      }
+    },
+    "image_with_text_dHd4dQ": {
+      "type": "image-with-text",
+      "settings": {
+        "row-reverse": "row-reverse",
+        "image": "shopify://shop_images/jen-8360.jpg",
+        "image_size": "adapt",
+        "show_frame": true,
+        "color_scheme": "background-1",
+        "frame-text": "",
+        "frame-text-right": "",
+        "color_scheme_2": "background-1",
+        "heading": "",
+        "subheading": "<p><strong>But 22 years after becoming a National Champion, I decided to break my silence.<br><br></strong>And when I blew the whistle on the rampant abuse in national gymnastics in my book <a href=\"https://www.amazon.com/Chalked-Up-Life-Elite-Gymnastics/dp/0061351474\">“Chalked Up,\"</a> I was vilified and ostracized by the very community I was speaking up for. </p>",
+        "desc": "",
+        "subheading_left_top": "",
+        "subheading_left_bottom": "",
+        "subheading_right_top": "",
+        "subheading_right_bottom": "",
+        "button_text": "",
+        "button_link": "",
+        "button_style": "tertiary",
+        "underline_color": "#000000",
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "lookbook_detail_class": "",
+        "top_padding_desktop": 0,
+        "bottom_padding_desktop": 0,
+        "top_padding_mobile": 0,
+        "bottom_padding_mobile": 0,
+        "top_margin_desktop": 0,
+        "bottom_margin_desktop": 0,
+        "top_margin_mobile": 0,
+        "bottom_margin_mobile": 0
+      }
+    },
+    "image_with_text_6iwUVJ": {
+      "type": "image-with-text",
+      "settings": {
+        "row-reverse": "row",
+        "image": "shopify://shop_images/Athlete-A-Featured-8626.jpg",
+        "image_size": "adapt",
+        "show_frame": true,
+        "color_scheme": "background-1",
+        "frame-text": "",
+        "frame-text-right": "",
+        "color_scheme_2": "background-1",
+        "heading": "",
+        "subheading": "<p><strong>But by the time I produced “Athlete A” in 2020, many others began to speak out.<br><br></strong>And this taught me a valuable lesson: being brave and telling the truth helps other people find their voice too. I decided I would never stay silent again.</p>",
+        "desc": "",
+        "subheading_left_top": "",
+        "subheading_left_bottom": "",
+        "subheading_right_top": "",
+        "subheading_right_bottom": "",
+        "button_text": "",
+        "button_link": "",
+        "button_style": "tertiary",
+        "underline_color": "#000000",
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "lookbook_detail_class": "",
+        "top_padding_desktop": 0,
+        "bottom_padding_desktop": 0,
+        "top_padding_mobile": 0,
+        "bottom_padding_mobile": 0,
+        "top_margin_desktop": 0,
+        "bottom_margin_desktop": 0,
+        "top_margin_mobile": 0,
+        "bottom_margin_mobile": 0
+      }
+    },
+    "image_with_text_nDNekw": {
+      "type": "image-with-text",
+      "settings": {
+        "row-reverse": "row-reverse",
+        "image": "shopify://shop_images/Activist-3b_a36f2dfd-0f95-4adb-a36e-d93dab007be0.jpg",
+        "image_size": "large",
+        "show_frame": false,
+        "color_scheme": "background-1",
+        "frame-text": "",
+        "frame-text-right": "",
+        "color_scheme_2": "background-1",
+        "heading": "",
+        "subheading": "<p><strong>So, I continued speaking up.</strong></p><p>This time, I couldn’t remain silent when the lockdowns were cruelly imposed on children during covid. And for the crime of saying I believe public school kids deserve to be able to go to school during the pandemic, like the kids in private schools, I was dragged, demonized and smeared.</p>",
+        "desc": "",
+        "subheading_left_top": "",
+        "subheading_left_bottom": "",
+        "subheading_right_top": "",
+        "subheading_right_bottom": "",
+        "button_text": "",
+        "button_link": "",
+        "button_style": "tertiary",
+        "underline_color": "#000000",
+        "margin_top": 0,
+        "margin_bottom": 100,
+        "lookbook_detail_class": "",
+        "top_padding_desktop": 0,
+        "bottom_padding_desktop": 0,
+        "top_padding_mobile": 0,
+        "bottom_padding_mobile": 0,
+        "top_margin_desktop": 0,
+        "bottom_margin_desktop": 0,
+        "top_margin_mobile": 0,
+        "bottom_margin_mobile": 0
+      }
+    },
+    "image_with_text_MKFkei": {
+      "type": "image-with-text",
+      "settings": {
+        "row-reverse": "row",
+        "image": "shopify://shop_images/FullSizeRender_6-9200.jpg",
+        "image_size": "adapt",
+        "show_frame": true,
+        "color_scheme": "background-1",
+        "frame-text": "",
+        "frame-text-right": "",
+        "color_scheme_2": "background-1",
+        "heading": "",
+        "subheading": "<p><strong>But sports taught me an important lesson:<br><br></strong>You gotta get back up when you get knocked down.</p>",
+        "desc": "",
+        "subheading_left_top": "",
+        "subheading_left_bottom": "",
+        "subheading_right_top": "",
+        "subheading_right_bottom": "",
+        "button_text": "",
+        "button_link": "",
+        "button_style": "tertiary",
+        "underline_color": "#000000",
+        "margin_top": 30,
+        "margin_bottom": 100,
+        "lookbook_detail_class": "",
+        "top_padding_desktop": 0,
+        "bottom_padding_desktop": 0,
+        "top_padding_mobile": 0,
+        "bottom_padding_mobile": 0,
+        "top_margin_desktop": 0,
+        "bottom_margin_desktop": 0,
+        "top_margin_mobile": 0,
+        "bottom_margin_mobile": 0
+      }
+    },
+    "image_with_text_D7GjPi": {
+      "type": "image-with-text",
+      "settings": {
+        "row-reverse": "row-reverse",
+        "image": "shopify://shop_images/XX-XY-hangtag-240123-back-free_0da88ec8-c523-41d9-96cb-88fdd70e821b.jpg",
+        "image_size": "large",
+        "show_frame": false,
+        "color_scheme": "background-1",
+        "frame-text": "",
+        "frame-text-right": "",
+        "color_scheme_2": "background-1",
+        "heading": "",
+        "subheading": "<p><strong>So I decided to make my own opportunity. What could be more American than that?<br><br></strong>And wouldn’t you know it? I teamed up with a rag tag group of cancelled, ousted and self-described misfits. And we created an athletic brand that would stand for the truth and America’s highest ideals: equality of opportunity, freedom of speech, open debate and dissent and striving for excellence.</p><p></p><p></p><p></p>",
+        "desc": "",
+        "subheading_left_top": "",
+        "subheading_left_bottom": "",
+        "subheading_right_top": "",
+        "subheading_right_bottom": "",
+        "button_text": "",
+        "button_link": "",
+        "button_style": "tertiary",
+        "underline_color": "#000000",
+        "margin_top": 30,
+        "margin_bottom": 100,
+        "lookbook_detail_class": "",
+        "top_padding_desktop": 0,
+        "bottom_padding_desktop": 0,
+        "top_padding_mobile": 0,
+        "bottom_padding_mobile": 0,
+        "top_margin_desktop": 0,
+        "bottom_margin_desktop": 0,
+        "top_margin_mobile": 0,
+        "bottom_margin_mobile": 0
+      }
+    },
+    "image_with_text_jYPAFw": {
+      "type": "image-with-text",
+      "settings": {
+        "row-reverse": "row",
+        "image": "shopify://shop_images/PaulaBeigeFleece_129-Edit-sm.jpg",
+        "image_size": "large",
+        "show_frame": true,
+        "color_scheme": "background-1",
+        "frame-text": "",
+        "frame-text-right": "",
+        "color_scheme_2": "background-1",
+        "heading": "",
+        "subheading": "<p><strong>We’re not out to make so-so products for the “parallel economy.\"<br><br></strong>We are here to make clothes that are of the finest quality — the very best fits and fabrics and styles — that you’ll not only be proud to wear but love wearing.</p>",
+        "desc": "",
+        "subheading_left_top": "",
+        "subheading_left_bottom": "",
+        "subheading_right_top": "",
+        "subheading_right_bottom": "",
+        "button_text": "",
+        "button_link": "",
+        "button_style": "tertiary",
+        "underline_color": "#000000",
+        "margin_top": 30,
+        "margin_bottom": 100,
+        "lookbook_detail_class": "",
+        "top_padding_desktop": 0,
+        "bottom_padding_desktop": 0,
+        "top_padding_mobile": 0,
+        "bottom_padding_mobile": 0,
+        "top_margin_desktop": 0,
+        "bottom_margin_desktop": 0,
+        "top_margin_mobile": 0,
+        "bottom_margin_mobile": 0
+      }
+    },
+    "image_with_text_9YBJJE": {
+      "type": "image-with-text",
+      "settings": {
+        "row-reverse": "row-reverse",
+        "image": "shopify://shop_images/XPTA03-501_MULTI.jpg",
+        "image_size": "small",
+        "show_frame": false,
+        "color_scheme": "background-1",
+        "frame-text": "",
+        "frame-text-right": "",
+        "color_scheme_2": "background-1",
+        "heading": "",
+        "subheading": "<p><strong>And we’re here to protect women’s sports and spaces.<br><br></strong>For women to be recognized as champions and to simply be afforded the chance to compete on an even playing field — and avail themselves of all the vast educational and developmental opportunities that competing in sports provides — girls' and women’s sports need to remain for girls and women only. We’ll be here defending them until that happens.<br><br><em><strong>I hope you’ll stand with us. Because as I’ve discovered, it’s a little less scary when we do it together. </strong></em><em><br><br></em>-Jennifer Sey</p>",
+        "desc": "",
+        "subheading_left_top": "",
+        "subheading_left_bottom": "",
+        "subheading_right_top": "",
+        "subheading_right_bottom": "",
+        "button_text": "",
+        "button_link": "",
+        "button_style": "tertiary",
+        "underline_color": "#000000",
+        "margin_top": 30,
+        "margin_bottom": 80,
+        "lookbook_detail_class": "",
+        "top_padding_desktop": 0,
+        "bottom_padding_desktop": 0,
+        "top_padding_mobile": 0,
+        "bottom_padding_mobile": 0,
+        "top_margin_desktop": 0,
+        "bottom_margin_desktop": 0,
+        "top_margin_mobile": 0,
+        "bottom_margin_mobile": 0
+      }
+    },
+    "pages": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "extra_class": ""
+      }
+    },
+    "categories_list_N7UErc": {
+      "type": "categories-list",
+      "blocks": {
+        "collection_item_K9JUYD": {
+          "type": "collection_item",
+          "settings": {
+            "collection": "womens"
+          }
+        },
+        "collection_item_xpwgYA": {
+          "type": "collection_item",
+          "settings": {
+            "collection": "mens"
+          }
+        },
+        "collection_item_7ENryX": {
+          "type": "collection_item",
+          "settings": {
+            "collection": "accessories"
+          }
+        }
+      },
+      "block_order": [
+        "collection_item_K9JUYD",
+        "collection_item_xpwgYA",
+        "collection_item_7ENryX"
+      ],
+      "settings": {
+        "title": "",
+        "per_row": 4,
+        "image_ratio": "portrait",
+        "overlay_enable": true,
+        "overlay_opacity": 15,
+        "margin_top": 0,
+        "margin_bottom": 90,
+        "image_resolution_enable": ""
+      }
+    },
+    "custom_liquid_8P6wQX": {
+      "type": "custom-liquid",
+      "name": "t:sections.custom-liquid.presets.name",
+      "settings": {
+        "custom_liquid": ""
+      }
+    }
+  },
+  "order": [
+    "video_jzYYbf",
+    "image_with_text_UPPA7E",
+    "image_with_text_M8xYeR",
+    "image_with_text_dHd4dQ",
+    "image_with_text_6iwUVJ",
+    "image_with_text_nDNekw",
+    "image_with_text_MKFkei",
+    "image_with_text_D7GjPi",
+    "image_with_text_jYPAFw",
+    "image_with_text_9YBJJE",
+    "pages",
+    "categories_list_N7UErc",
+    "custom_liquid_8P6wQX"
+  ]
+}

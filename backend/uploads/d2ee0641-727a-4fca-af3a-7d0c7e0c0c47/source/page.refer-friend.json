@@ -1,0 +1,156 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "settings": {
+        "extra_class": "",
+        "page_title_black": "",
+        "breadcrumb_image": "shopify://shop_images/header_content_17.png",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "image_with_text_Led8i4": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_KahR34": {
+          "type": "heading",
+          "settings": {
+            "heading": "Spread The Love",
+            "heading_size": "h3"
+          }
+        },
+        "text_VcFHTF": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Thousands of families love 5 Little Monkeys for their little ones and we would love for you to help spread the word!</p><p>With our Refer a Friend program, we reward your referrals on their first purchase and you also receive a reward.</p>",
+            "text_style": "body"
+          }
+        }
+      },
+      "block_order": [
+        "heading_KahR34",
+        "text_VcFHTF"
+      ],
+      "settings": {
+        "extra_class": "ctm_spread_block",
+        "image": "shopify://shop_images/image_13.png",
+        "txt_under_img": "",
+        "height": "adapt",
+        "desktop_image_width": "medium",
+        "layout": "image_first",
+        "image_radius": 24,
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "left",
+        "content_layout": "no-overlap",
+        "section_color_scheme": "",
+        "color_scheme": "",
+        "image_behavior": "none",
+        "mobile_content_alignment": "left",
+        "padding_top": 80,
+        "padding_bottom": 80
+      }
+    },
+    "multicolumn_am6MCz": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_dWQ3cB": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/form_1.png",
+            "title": "",
+            "text": "<h5><strong>Fill out the contact form below.</strong></h5>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_m7CmMc": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/mail.png",
+            "title": "",
+            "text": "<h5><strong>We will email you with a unique link and discount code to share with your friends which provides $25 off kids mattresses + bedding bundles. Discount will be applied at checkout.</strong></h5>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_LUg9j9": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/gift_card.png",
+            "title": "",
+            "text": "<h5><strong>Once your code is redeemed, you will receive a $25 Amazon electronic gift card within two weeks.</strong></h5>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_XXcEVw": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/more_friends.png",
+            "title": "",
+            "text": "<h5><strong>The more friends you refer to us, the more rewards you'll earn!</strong></h5>",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "column_dWQ3cB",
+        "column_m7CmMc",
+        "column_LUg9j9",
+        "column_XXcEVw"
+      ],
+      "settings": {
+        "extra_class": "ctm_howorks_block",
+        "bg_image": "shopify://shop_images/our_story_BG-2.png",
+        "caption": "",
+        "title": "How It All Works",
+        "description": "",
+        "heading_size": "h3",
+        "image_width": "full",
+        "image_ratio": "adapt",
+        "columns_desktop": 4,
+        "column_alignment": "center",
+        "background_style": "none",
+        "button_label": "",
+        "button_link": "",
+        "button_label_2": "",
+        "button_link_2": "",
+        "color_scheme": "",
+        "columns_mobile": "1",
+        "swipe_on_mobile": true,
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "custom_liquid_gAj9fF": {
+      "type": "custom-liquid",
+      "settings": {
+        "extra_class": "form_container",
+        "heading": "",
+        "sub_heading": "",
+        "background_color": "",
+        "custom_liquid": "<iframe\n      id=\"JotFormIFrame-240881310226044\"\n      title=\"Reffer a Freind\"\n      onload=\"window.parent.scrollTo(0,0)\"\n      allowtransparency=\"true\"\n      allow=\"geolocation; microphone; camera; fullscreen\"\n      src=\"https://form.jotform.com/240881310226044\"\n      frameborder=\"0\"\n      style=\"min-width:100%;max-width:100%;height:539px;border:none;\"\n      scrolling=\"no\"\n    >\n    </iframe>\n    <script src='https://form.jotform.com/s/umd/latest/for-form-embed-handler.js'></script>\n    <script>window.jotformEmbedHandler(\"iframe[id='JotFormIFrame-240881310226044'\", \"https://form.jotform.com/\")</script>",
+        "color_scheme": "",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    }
+  },
+  "order": [
+    "main",
+    "image_with_text_Led8i4",
+    "multicolumn_am6MCz",
+    "custom_liquid_gAj9fF"
+  ]
+}

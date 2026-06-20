@@ -1,0 +1,69 @@
+{{ 'section-faq.css' | asset_url | stylesheet_tag }}
+
+{% render 'read-more' %}
+
+<div class="faq-section">
+  <h2>{{ section.settings.headline }}</h2>
+
+  {% for block in section.blocks %}
+    <div class="faq-item">
+      <input type="checkbox" id="faq{{ forloop.index }}" class="faq-checkbox">
+      <label for="faq{{ forloop.index }}" class="faq-question">{{ block.settings.question }}</label>
+      <div class="faq-answer">
+        <p>
+          {{ block.settings.answer }}
+        </p>
+      </div>
+    </div>
+    <div>
+      {{ block.settings.article.author }}
+      <img src="{{ block.settings.article.image | img_url: 'medium' }}">
+      {{ block.settings.article.created_at }}
+      {{ block.settings.article.title }}
+    </div>
+  {% endfor %}
+
+  <!-- Add more FAQ items as needed -->
+</div>
+
+{% schema %}
+{
+  "name": "FAQ",
+  "settings": [
+    {
+    "type" : "text",
+    "label" : "Headline",
+    "id" : "Headline"
+    }
+  ],
+  "blocks": [
+    {
+      "name" : "question",
+      "type": "question",
+      "settings": [
+        {
+          "type": "text",
+          "label" : "question",
+          "id" : "question"
+        },
+        {
+          "type": "text",
+          "label" : "answer",
+          "id" : "answer"
+        },
+        {
+  "type": "article",
+  "id": "article",
+  "label": "Article"
+}
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name" : "FAQ"
+    }
+  ]
+}
+{% endschema %}
+\

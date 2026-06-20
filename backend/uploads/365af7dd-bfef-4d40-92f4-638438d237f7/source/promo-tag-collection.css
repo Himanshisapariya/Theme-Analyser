@@ -1,0 +1,488 @@
+/* Promo Drawer Styles */
+.promo-drawer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    pointer-events: none;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+/* Gender Filter Styles for Promo Drawer */
+.promo-drawer__gender-filter {
+    background: #F7F7FB;
+    padding: 0 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.promo-drawer__gender-filter .tabbing-content {
+    max-width: 100%;
+    margin: 0;
+}
+
+.promo-drawer__gender-filter .tabbing-list-group {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    padding: 0;
+    gap: 0;
+    justify-content: center;
+}
+
+.promo-drawer__gender-filter .item-tabbing {
+    border: 1px solid #bfc6c6;
+    border-right: 0;
+    background: #fff;
+    text-align: center;
+}
+
+.promo-drawer__gender-filter .item-tabbing:last-child {
+    border-right: 1px solid #bfc6c6;
+}
+
+.promo-drawer__gender-filter .item-tabbing a {
+    display: block;
+    padding: 2px 20px;
+    text-decoration: none;
+    font-size: 12px;
+    font-family: 'Poppins';
+    font-weight: 500;
+    background: #E8E8E9;
+    color: #5f6f73;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: none;
+    border-bottom: none;
+    outline: none;
+}
+
+.promo-drawer__gender-filter .item-tabbing.active-tab {
+    background: #2f4b4c;
+}
+
+.promo-drawer__gender-filter .item-tabbing.active-tab a {
+    color: #ffffff;
+    background: #2f4b4c;
+}
+
+@media (hover: hover) {
+    .promo-drawer__gender-filter .item-tabbing:not(.active-tab):hover {
+        background: #f3f5f5;
+    }
+}
+
+@media (max-width: 768px) {
+    .promo-drawer__gender-filter {
+        padding: 0 16px;
+    }
+
+    .promo-drawer__gender-filter .item-tabbing a {
+        font-size: 12px;
+        padding: 8px 14px;
+    }
+}
+
+.promo-drawer__products .collection-product-card {
+    transition: opacity 0.3s ease;
+}
+
+.promo-drawer__products .collection-product-card.hidden {
+    display: none;
+}
+
+.ctm-gender-filter-buttons .item-tabbing a {
+    cursor: pointer;
+}
+
+/* No Products Message */
+.promo-drawer__no-products {
+    text-align: center;
+    padding: 40px 20px;
+    color: #666;
+    font-size: 16px;
+    font-family: 'Poppins', sans-serif;
+    grid-column: 1 / -1;
+    width: 100%;
+}
+
+.promo-drawer--open {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: all;
+}
+
+.promo-drawer__overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+}
+
+.promo-drawer__content {
+    position: absolute;
+    top: 0;
+    right: 41%;
+    height: 100%;
+    background-color: #F7F7FB;
+    box-shadow: -2px 0 8px rgba(0, 0, 0, 0.15);
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.promo-drawer--open .promo-drawer__content {
+    transform: translateX(0);
+}
+
+.promo-collection-drawer__header,
+.promo-drawer__header {
+    text-align: center;
+    padding-top: 20px;
+    position: relative;
+}
+
+.promo-collection-drawer__header h6,
+.promo-drawer__header h6 {
+    margin: auto !important;
+    max-width: 65%;
+    color: #333;
+    line-height: 1.2;
+}
+
+.promo-collection-drawer__close,
+.promo-drawer__close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #333;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: Arial, sans-serif;
+}
+
+.promo-collection-drawer__close:hover,
+.promo-drawer__close:hover {
+    opacity: 0.7;
+}
+
+.promo-drawer__body {
+    padding-inline: 20px;
+    flex: 1;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: #ddd transparent;
+}
+
+/* Custom scrollbar styling for promo drawer */
+.promo-drawer__body::-webkit-scrollbar {
+    width: 4px;
+}
+
+.promo-drawer__body::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.promo-drawer__body::-webkit-scrollbar-thumb {
+    background: #ddd;
+    border-radius: 2px;
+}
+
+.promo-drawer__body::-webkit-scrollbar-thumb:hover {
+    background: #ccc;
+}
+
+/* Promo Tag Container Styling */
+.rebuy-cart__flyout-item-info .promo-tag-container {
+    position: absolute !important;
+    bottom: 65px;
+    display: inline-flex;
+    align-items: center;
+    border: 1px solid #2f484c;
+    border-radius: 8px;
+    padding: 2px 12px;
+    gap: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.rebuy-cart__flyout-item-info .promo-tag-container:hover {
+    border-color: #2f484c;
+}
+
+.rebuy-cart__flyout-item-info .promo-text {
+    font-size: 12px;
+    font-weight: 500;
+    font-family: 'Poppins', sans-serif;
+    white-space: nowrap;
+}
+
+.rebuy-cart__flyout-item-info .promo-info-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+}
+
+.rebuy-cart__flyout-item-info .promo-info-icon svg {
+    width: 16px;
+    height: 16px;
+}
+
+.rebuy-cart__flyout-item-info .promo-info-icon circle {
+    fill: none;
+    stroke-width: 1.5;
+}
+
+.rebuy-cart__flyout-item-info .promo-info-icon path {
+    stroke-width: 1.5;
+    stroke-linecap: round;
+}
+
+.promo-drawer__body p {
+    margin: 0;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #333;
+}
+
+/* Product Cards in Promo Drawer */
+.promo-drawer__products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    padding: 10px 0;
+    grid-auto-flow: dense;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.promo-drawer__products {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.promo-drawer__products .collection-product-card {
+    background: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.promo-drawer__products .collection-product-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+}
+
+.promo-drawer__products .product-card__image {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+    background: #f5f5f5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.promo-drawer__products .product-card__image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.promo-drawer__products .no-image {
+    color: #999;
+    font-size: 14px;
+}
+
+.promo-drawer__products .product-card__info {
+    padding: 15px;
+}
+
+.promo-drawer__products .product-card__title {
+    margin: 0 0 10px 0;
+    font-size: 16px;
+    line-height: 1.4;
+    color: #333;
+}
+
+.promo-drawer__products .product-card__price {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.promo-drawer__products .product-card__regular-price {
+    font-size: 18px;
+    color: #2f484c;
+}
+
+.promo-drawer__products .product-card__compare-price {
+    font-size: 14px;
+    color: #999;
+    text-decoration: line-through;
+}
+
+.promo-drawer__products .product-card__sale-price {
+    font-size: 18px;
+    color: #2f484c;
+}
+
+.loading-spinner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+    font-size: 16px;
+    color: #666;
+    width: auto !important;
+    height: auto !important;
+    border: none !important;
+    border-radius: 0 !important;
+    animation: none !important;
+    margin: 0 !important;
+}
+
+.loading-spinner::before,
+.loading-spinner::after {
+    display: none !important;
+}
+
+.promo-drawer-product-card {
+    margin-bottom: 20px;
+    width: 200px;
+}
+
+/* Hide promo drawer on mobile and small laptop screens */
+@media (max-width: 1024px) {
+    .promo-collection-drawer,
+    .promo-drawer {
+        display: none !important;
+    }
+
+    /* Enable click functionality for promo tags on mobile */
+    .rebuy-cart__flyout-item-info .promo-tag-container {
+        cursor: pointer !important;
+        pointer-events: auto !important;
+    }
+
+    .rebuy-cart__flyout-item-info .promo-tag-container .promo-text,
+    .rebuy-cart__flyout-item-info .promo-tag-container .promo-info-icon {
+        cursor: pointer !important;
+        pointer-events: auto !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .promo-drawer__content {
+        right: 0;
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .promo-drawer__header {
+        padding: 16px;
+    }
+
+    .promo-drawer__body {
+        padding: 16px;
+    }
+
+    .promo-drawer__products {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        gap: 15px;
+    }
+
+    .product-card__image {
+        height: 150px;
+    }
+
+    .product-card__info {
+        padding: 10px;
+    }
+
+    .product-card__title {
+        font-size: 12px;
+    }
+
+    .product-card__price {
+        font-size: 12px;
+    }
+
+    .rebuy-cart__flyout-item-info .promo-tag-container {
+        bottom: 55px;
+    }
+}
+
+.promo-drawer__body .swatch-swiper .swiper-slide {
+  cursor: grab !important;
+}
+.promo-drawer__body .swatch-swiper .swiper-slide:active {
+  cursor: grabbing !important;
+}
+
+.promo-drawer__no-products {
+    display: none;
+}
+.promo-drawer__no-products.visible {
+    display: block;
+}
+
+.rebuy-cart__flyout-item-info .promo-tag-container .promo-text,
+.rebuy-cart__flyout-item-info .promo-tag-container .promo-info-icon {
+    cursor: pointer;
+}
+
+.rebuy-cart__flyout-item-info .promo-popup {
+  position: absolute;
+  top: 100%;
+  left: -10%;
+  transform: translateX(-50%) translateY(-10px);
+  z-index: 9999;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  margin-top: 8px;
+  min-width: 280px;
+  max-width: calc(100vw - 40px);
+}
+
+.rebuy-cart__flyout-item-info .promo-popup.popup--visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+}
+
+.promo-drawer__body .swatch-swiper {
+    max-width: 200px;
+    width: 200px;
+    overflow: hidden;
+}
+.promo-drawer__body .swatch-swiper .swiper-wrapper {
+    display: flex;
+    flex-wrap: nowrap;
+    width: max-content;
+}
+
+.promo-drawer .color-swatch {
+    pointer-events: auto;
+}

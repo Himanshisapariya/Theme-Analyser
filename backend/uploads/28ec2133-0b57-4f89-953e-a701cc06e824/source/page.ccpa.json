@@ -1,0 +1,149 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "ctm_custom_text_mN3xPy": {
+      "type": "ctm-custom-text",
+      "blocks": {
+        "custom_richtext_JmjJgr": {
+          "type": "custom_richtext",
+          "settings": {
+            "custom_richtext": "<p>The CCPA provides consumers (California residents) with specific rights regarding their personal information. Your CCPA rights as a California resident are as follows:<br/></p>"
+          }
+        },
+        "custom_richtext_KXzhhB": {
+          "type": "custom_richtext",
+          "settings": {
+            "custom_richtext": "<h4>ACCESS TO SPECIFIC INFORMATION AND DATA PORTABILITY RIGHTS<br/></h4><p>You have the right to request that POOOF!® disclose certain information to you about our collection and use of your personal information over the past 12 months. Once we receive and confirm your verifiable consumer request (see Exercising Access, Data Portability, and Deletion Rights), we will disclose to you:<br/><br/>The categories of personal information we collected about you.<br/>The categories of sources for the personal information we collected about you.<br/>Our business or commercial purpose for collecting or selling that personal information.<br/>The categories or third parties with whom we share that information.<br/>The specific pieces of personal information we collection about you (also called a data portability request).<br/>If we sold or disclosed your personal information for a business purpose, two separate lists disclosing:<br/>sales, identifying the personal information categories that each category of recipient purchased; and<br/>disclosures for a business purpose, identifying the personal information categories that each category of recipient obtained.<br/></p>"
+          }
+        },
+        "custom_richtext_PfCret": {
+          "type": "custom_richtext",
+          "settings": {
+            "custom_richtext": "<h3>NON-DISCRIMINATION<br/></h3><p>We will not discriminate against you for exercising any of your CCPA rights. Unless permitted by the CCPA, we will not:<br/><br/>Deny you goods or services.<br/>Charge you different prices or rates for goods or services, including through granting discounts or other benefits, or imposing penalties.<br/>Provide you a different level or quality of goods or services.<br/>Suggest that you may receive a different price or rate of goods or services or a different level or quality of goods or services.</p>"
+          }
+        },
+        "custom_richtext_4Ga8aW": {
+          "type": "custom_richtext",
+          "settings": {
+            "custom_richtext": "<h3>EXERCISING ACCESS, DATA PORTABILITY, AND DELETION RIGHTS</h3><p>To exercise the access, data portability, and deletion rights described above, please submit a verifiable consumer request to us by filling out this form. You may access and update your account information by logging into the My Account page. Please note that it may take up to 45 days for your request to become effective. <br/><br/>Only you or a person registered with the California Secretary of State that you authorize to act on your behalf, may make a verifiable consumer request related to your personal information. You may also make a verifiable consumer request on behalf of your minor child.<br/><br/>You may only make a verifiable consumer request for access or data portability twice within a 12-month period.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "custom_richtext_JmjJgr",
+        "custom_richtext_KXzhhB",
+        "custom_richtext_PfCret",
+        "custom_richtext_4Ga8aW"
+      ],
+      "disabled": true,
+      "settings": {
+        "extra_class": ""
+      }
+    },
+    "rich_text_NWqUpW": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_preCKH": {
+          "type": "heading",
+          "settings": {
+            "extra_class_heading": "ctm-shipping-title",
+            "heading": "<h1 class=\"h3\">HOW TO EXERCISE YOUR CCPA RIGHTS\n</h1>",
+            "heading_size": "h1"
+          }
+        },
+        "text_t9NTPH": {
+          "type": "text",
+          "settings": {
+            "text": "<p>The CCPA provides consumers (California residents) with specific rights regarding their personal information. Your CCPA rights as a California resident are as follows:</p>",
+            "extra_class_caption": "ctm-spacing"
+          }
+        },
+        "heading_fqRNjK": {
+          "type": "heading",
+          "settings": {
+            "extra_class_heading": "",
+            "heading": "<h2>ACCESS TO SPECIFIC INFORMATION AND DATA PORTABILITY RIGHTS</h2>",
+            "heading_size": "h1"
+          }
+        },
+        "text_LeT7Cm": {
+          "type": "text",
+          "settings": {
+            "text": "<p>You have the right to request that POOOF!® disclose certain information to you about our collection and use of your personal information over the past 12 months. Once we receive and confirm your verifiable consumer request (see Exercising Access, Data Portability, and Deletion Rights), we will disclose to you:</p><p><br/>The categories of personal information we collected about you.</p><p><br/>The categories of sources for the personal information we collected about you.</p><p><br/>Our business or commercial purpose for collecting or selling that personal information.</p><p><br/>The categories or third parties with whom we share that information.</p><p><br/>The specific pieces of personal information we collection about you (also called a data portability request).</p><p><br/>If we sold or disclosed your personal information for a business purpose, two separate lists disclosing:</p><p><br/>sales, identifying the personal information categories that each category of recipient purchased; and</p><p><br/>disclosures for a business purpose, identifying the personal information categories that each category of recipient obtained.<br/></p>",
+            "extra_class_caption": ""
+          }
+        },
+        "heading_wanFm8": {
+          "type": "heading",
+          "settings": {
+            "extra_class_heading": "",
+            "heading": "<h2>NON-DISCRIMINATION</h2>",
+            "heading_size": "h1"
+          }
+        },
+        "text_dDMFee": {
+          "type": "text",
+          "settings": {
+            "text": "<p>We will not discriminate against you for exercising any of your CCPA rights. Unless permitted by the CCPA, we will not:</p><p><br/>Deny you goods or services.</p><p><br/>Charge you different prices or rates for goods or services, including through granting discounts or other benefits, or imposing penalties.</p><p><br/>Provide you a different level or quality of goods or services.</p><p><br/>Suggest that you may receive a different price or rate of goods or services or a different level or quality of goods or services.</p>",
+            "extra_class_caption": ""
+          }
+        },
+        "heading_TpqXLH": {
+          "type": "heading",
+          "settings": {
+            "extra_class_heading": "",
+            "heading": "<h2>EXERCISING ACCESS, DATA PORTABILITY, AND DELETION RIGHTS</h2>",
+            "heading_size": "h1"
+          }
+        },
+        "text_JMEtGh": {
+          "type": "text",
+          "settings": {
+            "text": "<p>To exercise the access, data portability, and deletion rights described above, please submit a verifiable consumer request to us by filling out this <a href=\"https://ccpa.pooof.com/ccpa-request/\" target=\"_blank\" title=\"https://ccpa.pooof.com/ccpa-request/\">form</a>. You may access and update your account information by logging into the My Account page. Please note that it may take up to 45 days for your request to become effective.</p><p>Only you or a person registered with the California Secretary of State that you authorize to act on your behalf, may make a verifiable consumer request related to your personal information. You may also make a verifiable consumer request on behalf of your minor child.</p><p>You may only make a verifiable consumer request for access or data portability twice within a 12-month period.</p>",
+            "extra_class_caption": "ctm-access-data"
+          }
+        }
+      },
+      "block_order": [
+        "heading_preCKH",
+        "text_t9NTPH",
+        "heading_fqRNjK",
+        "text_LeT7Cm",
+        "heading_wanFm8",
+        "text_dDMFee",
+        "heading_TpqXLH",
+        "text_JMEtGh"
+      ],
+      "settings": {
+        "extra_class": "ctm-shiping-returns ccpa",
+        "desktop_content_position": "left",
+        "content_alignment": "left",
+        "color_scheme": "",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    }
+  },
+  "order": [
+    "main",
+    "ctm_custom_text_mN3xPy",
+    "rich_text_NWqUpW"
+  ]
+}

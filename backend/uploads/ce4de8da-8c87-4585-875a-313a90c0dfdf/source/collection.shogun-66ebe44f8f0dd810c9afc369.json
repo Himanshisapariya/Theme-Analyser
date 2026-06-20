@@ -1,0 +1,119 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "layout": "theme",
+  "sections": {
+    "main_collection_banner_9022cca3-ef13-4646-b73d-37ac82c97834": {
+      "type": "main-collection-banner",
+      "custom_css": [
+        ".collection-hero__text-wrapper { flex-direction: column-reverse; margin-bottom: 20px; }",
+        "h2 { text-size: 21px; }\n"
+      ],
+      "settings": {
+        "header_color_scheme": "light",
+        "add_word": "",
+        "show_word": false,
+        "show_collection_description": false,
+        "show_collection_image": true,
+        "overlay_enable": false,
+        "overlay_opacity": 15
+      }
+    },
+    "main_collection_product_grid_a7143741-7673-475c-8cea-6e375f578e94": {
+      "type": "main-collection-product-grid",
+      "custom_css": [
+        ".card__title { font-weight: bold; }",
+        ".collection-product-list { row-gap: 4rem; }",
+        ".badge-discount { display: hidden; }\n"
+      ],
+      "settings": {
+        "products_per_page": 22,
+        "columns_mobile": "2",
+        "image_ratio": "portrait",
+        "image_fit": "cover",
+        "show_secondary_image": false,
+        "show_vendor": false,
+        "show_desc": false,
+        "show_sku": false,
+        "quickview_show": false,
+        "enable_filtering": false,
+        "enable_sorting": true
+      }
+    },
+    "categories_list_de30aa0a-2d38-4293-8fe5-a194f6ac96d3": {
+      "type": "categories-list",
+      "blocks": {
+        "template--16717164118147__7e90dfea-5021-4e37-b882-d059ca0c8fa7-collection_item-1": {
+          "type": "collection_item",
+          "disabled": true,
+          "settings": {
+            "collection": "womens"
+          }
+        },
+        "template--16717164118147__7e90dfea-5021-4e37-b882-d059ca0c8fa7-collection_item-2": {
+          "type": "collection_item",
+          "settings": {
+            "collection": "mens"
+          }
+        },
+        "template--16717164118147__7e90dfea-5021-4e37-b882-d059ca0c8fa7-collection_item-3": {
+          "type": "collection_item",
+          "settings": {
+            "collection": "accessories"
+          }
+        }
+      },
+      "block_order": [
+        "template--16717164118147__7e90dfea-5021-4e37-b882-d059ca0c8fa7-collection_item-1",
+        "template--16717164118147__7e90dfea-5021-4e37-b882-d059ca0c8fa7-collection_item-2",
+        "template--16717164118147__7e90dfea-5021-4e37-b882-d059ca0c8fa7-collection_item-3"
+      ],
+      "disabled": true,
+      "custom_css": [],
+      "settings": {
+        "title": "",
+        "per_row": 2,
+        "image_ratio": "landscape",
+        "overlay_enable": true,
+        "overlay_opacity": 15,
+        "margin_top": 30,
+        "margin_bottom": 120
+      }
+    },
+    "product_carousel_73200011-048a-486f-948d-04a05f4b63e0": {
+      "type": "product-carousel",
+      "custom_css": [
+        ".card__title { font-weight: bold; }\n"
+      ],
+      "settings": {
+        "heading": "<p>New Arrivals</p>",
+        "products_count": 4,
+        "link": "",
+        "button_link": "",
+        "image_ratio": "portrait",
+        "image_fit": "cover",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_desc": false,
+        "show_sku": false,
+        "quickview_show": false,
+        "show_link_carousel": false,
+        "margin_top": 40,
+        "margin_bottom": 100
+      }
+    }
+  },
+  "order": [
+    "main_collection_banner_9022cca3-ef13-4646-b73d-37ac82c97834",
+    "main_collection_product_grid_a7143741-7673-475c-8cea-6e375f578e94",
+    "categories_list_de30aa0a-2d38-4293-8fe5-a194f6ac96d3",
+    "product_carousel_73200011-048a-486f-948d-04a05f4b63e0"
+  ]
+}

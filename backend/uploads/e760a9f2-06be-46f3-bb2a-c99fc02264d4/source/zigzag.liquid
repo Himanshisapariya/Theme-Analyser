@@ -1,0 +1,343 @@
+<div class="zig-zag-section">
+  <div class="heading-main">
+    {% if section.settings.heading != blank %}
+      <h1>{{ section.settings.heading }}</h1>
+    {% endif %}
+  </div>
+{% for block in section.blocks %}
+ <div class="zig-zag-content">
+    <div class="container">
+	  <div class="zigzag-inner">
+      {% capture image_layout %}
+            <div class="zigzag-left zigzag_img{{ forloop.index }}">
+                <div class="img-zig-zag">
+                    {%- if block.settings.image != blank -%}
+                        <img src="{{ block.settings.image | img_url:'master' }}" alt="img-zigzag" width="auto" height="auto">
+                    {%- endif -%}
+                </div>
+            </div>
+      {% endcapture %}
+
+      {% if block.settings.layout == 'left' %}
+          {{ image_layout }}
+      {% endif %}
+
+      <div class="zigzag-right zigzag_{{ forloop.index }}">
+        <div class="zigzag-right_content" style="text-align: {{ block.settings.alignment }};">
+          <div class="zigzag-title">
+            {% if block.settings.heading != blank %}
+              <h2 class="abt-title">{{ block.settings.heading }}</h2>
+            {% endif %}
+          </div>
+          <div class="zigzag-content text-global">
+            <div class="h6">
+            {% if block.settings.content != blank %}
+             {{ block.settings.content }}
+            {% endif %}
+            </div>
+          </div>
+          <div class="zigzag-button">
+            {% if block.settings.button-text != blank %}
+             <a href="{{ block.settings.link }}" type="button" class="button ctm_img_txtbtn button--secondary">{{ block.settings.button-text }}</a>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+
+      {% if block.settings.layout == 'right' %}
+          {{ image_layout }}
+      {% endif %}
+      </div>
+    </div>
+ </div>
+{% endfor %}
+</div>
+
+
+<style>
+  .zig-zag-section .container {
+    padding: 0;
+    padding-bottom: 60px;
+  }
+  .zig-zag-section .container:has(.zigzag_1) {
+    padding-top: 60px;
+  }
+
+  .zig-zag-section {
+    margin: 80px 0px;
+  }
+  .zig-zag-section h2{
+    margin: 0px;
+  }
+  .ctm_img_txtbtn.button--secondary {
+  background-color: #28b473;
+  border-radius: 0;
+  color: white;
+}
+  .zig-zag-section p{
+    font-size: 26px;
+    line-height: 32px;
+  }
+  .zig-zag-section .zigzag-content .h6 p {
+      margin: 0;
+    padding: 1.2rem 0;
+    line-height: 140%;
+    letter-spacing: 0;
+  }
+
+  .zig-zag-section .zigzag-inner {
+    display: flex;
+    flex-wrap: wrap;
+    text-align: center;
+    align-items: stretch;
+  }
+
+  .zig-zag-section .zigzag-right {
+    width: 50%;
+    height:auto;
+  }
+
+  .zig-zag-section .zigzag-left {
+    width: 50%;
+    height:auto;
+  }
+
+  .zig-zag-section .zigzag-right_content {
+    padding: 6.4rem;
+  }
+
+  .zig-zag-section .zigzag-button {
+    margin-top: 30px;
+  }
+    .zig-zag-section .img-zig-zag {
+    height:100%;
+    }
+
+  .zig-zag-section .img-zig-zag img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+  }
+.zig-zag-section .zigzag-inner .zigzag-button {
+    margin-top: 30px;
+  }
+
+  @media screen and (max-width: 1200px) {
+    .zig-zag-section .zigzag-right_content {
+    padding: 2.4rem;
+  }
+  }
+  @media screen and (max-width: 1024px) {
+
+    .zig-zag-section {
+      margin: 0;
+    }
+
+    .zig-zag-section h2 {
+      font-size: 38px;
+    }
+
+    .zig-zag-section p {
+      font-size: 16px;
+    }
+
+    .zig-zag-section .zigzag-content p {
+      margin: 0;
+    }
+
+    .zig-zag-section h2.abt-title {
+      margin-top: 0;
+      margin-bottom: 10px;
+    }
+
+    .zigzag-right_content {
+      padding: 0 20px;
+    }
+
+    .zig-zag-section .zigzag-button {
+      margin-top: 20px;
+    }
+
+    .zig-zag-section .zigzag-inner {
+    padding-block: 0px;
+  }
+  .zig-zag-section .zigzag-inner .zigzag-content,.zig-zag-section .zigzag-inner .zigzag-button {
+    margin-top: 20px;
+  }
+  }
+
+  @media screen and (max-width: 900px) {
+    .zig-zag-section p {
+      font-size: 18px;
+    }
+
+    .zig-zag-section .zigzag-right {
+      width: 100%;
+      order: 2;
+    }
+
+    .zig-zag-section .zigzag-left { 
+      width: 100%;
+      order: 1;
+    }
+
+    .zig-zag-section .zigzag-right_content {
+      max-width: 100%;
+    }
+
+    .zig-zag-section h2.abt-title {
+      margin-bottom: 15px;
+    }
+
+    .zig-zag-section .zigzag-button {
+      margin-top: 25px;
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    .zig-zag-section h2 {
+      font-size: 34px;
+    }
+
+    .zig-zag-section p {
+      font-size: 18px;
+    }
+.ctm_img_txtbtn.button--secondary{
+    width: 100%;
+    text-align: center;
+    min-height: 40px;
+    width: 100%;
+    max-width: 100%;
+    padding: 5px 15px;
+  }
+    .zig-zag-section .container {
+    padding: 0;
+    padding-bottom: 30px;
+  }
+  .zig-zag-section .container:has(.zigzag_1) {
+    padding-top: 30px;
+  }
+  }
+  @media screen and (max-width: 575px) {
+    .container {
+      padding: 0 20px;
+    }
+
+    .zig-zag-section h2 {
+      font-size: 32px;
+    }
+
+    .zig-zag-section p {
+      font-size: 18px;
+      line-height: 18px;
+    }
+
+    .zig-zag-section .zigzag-button a {
+      padding: 12px;
+      font-size: 16px;
+    }
+ 
+    .zig-zag-section .zigzag-button {
+      margin-top: 20px;
+    }
+
+  }
+
+  @media screen and (max-width: 425px) {
+    .zig-zag-section .zigzag-inner {
+      gap: 20px;
+    }
+
+    .locale-selectors__selector {
+      width: 100% !important;
+    }
+  }
+</style>
+
+{% schema %}
+  {
+    "name": "Zig zag",
+	"class":"zig-zag-wrapper",
+    "settings": [
+		  {
+            "type": "text",
+            "id": "heading",
+            "label": "Heading"
+		  }
+	],
+	"blocks": [
+      {
+        "type": "zig-zag",
+        "name": "zig-zag",
+        "settings": [
+		  {
+            "type": "select",
+            "id": "layout",
+            "label":"Image alignment",
+            "default": "left",
+            "options": [
+              {
+                "value": "left",
+                "label":"Left"
+              },
+              {
+                "value": "right",
+                "label": "Right"
+              }
+            ]
+          },
+          {
+            "type": "select",
+            "id": "alignment",
+            "label":"Text alignment",
+            "default": "center",
+            "options": [
+              {
+                "value": "left",
+                "label":"Left"
+              },
+              {
+                "value": "center",
+                "label": "Center"
+              },
+              {
+                "value": "right",
+                "label": "Right"
+              }
+            ]
+          },
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+		  },
+		  {
+			"type": "html",
+            "id": "heading",
+            "label": "Heading"
+		  },
+		  {
+			"type": "html",
+            "id": "content",
+            "label": "Content"
+		  },
+		  {
+			"type": "text",
+            "id": "button-text",
+            "label": "Button Text"
+		  },
+		  {
+			"type": "url",
+            "id": "link",
+            "label": "Button URL"
+		  }
+        ]
+      }
+	],
+      "presets": [
+        {
+          "name": "Zig Zag Section"
+        }
+      ]
+  }
+{% endschema %}

@@ -1,0 +1,109 @@
+<div class="customer-showcase-main {{ section.settings.extra_class }}">
+  <div class="fullscreen-container">
+    <div class="customer-showcase-section">
+      <div class="text-container">
+        {% if section.settings.title != blank %}
+          <div class="customer-showcase-title">
+            <h3>{{ section.settings.title }}</h3>
+          </div>
+        {% endif %}
+        {% if section.settings.desc != blank %}
+          <div class="spring-slider-class">
+            <div class="customer-showcase-description tab_inner">
+              <p>{{ section.settings.desc }}</p>
+            </div>
+          </div>
+        {% endif %}
+      </div>
+      <div class="customer-images-main swiper swiper-container">
+        <div class="customer-image-wrapper swiper-wrapper">
+          {% for block in section.blocks %}
+            {% if block.settings.customer_image != blank %}
+              <div class="customer-image swiper-slide">
+                <img
+                  src="{{ block.settings.customer_image | image_url: width: 800 }}"
+                  alt="Customer Image"
+                  height="auto"
+                  width="100"
+                >
+              </div>
+            {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  let swiperInstance = null;
+
+  function initSwiperIfNeeded() {
+    const screenWidth = window.innerWidth;
+
+    if (screenWidth <= 1200 && !swiperInstance) {
+      swiperInstance = new Swiper('.customer-images-main', {
+        slidesPerView: 1.5,
+        spaceBetween: 16,
+        loop: false,
+        centeredSlides: false,
+        breakpoints: {
+          576: {
+            slidesPerView: 2.5,
+            spaceBetween: 10,
+          },
+          990: {
+            slidesPerView: 3.2,
+          },
+        },
+      });
+    } else if (swiperInstance && screenWidth > 1200) {
+      swiperInstance.destroy(true, true);
+      swiperInstance = null;
+    }
+  }
+
+  window.addEventListener('load', initSwiperIfNeeded);
+  window.addEventListener('resize', initSwiperIfNeeded);
+</script>
+
+{% schema %}
+{
+  "name": "Customer Showcase",
+  "settings": [
+    {
+      "type": "text",
+      "id": "extra_class",
+      "label": "Extra Class"
+    },
+    {
+      "type": "html",
+      "label": "Title",
+      "id": "title"
+    },
+    {
+      "type": "html",
+      "label": "Description",
+      "id": "desc"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "customer_image",
+      "name": "Customer image",
+      "settings": [
+        {
+          "type": "image_picker",
+          "label": "Customer Image",
+          "id": "customer_image"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Customer Showcase"
+    }
+  ]
+}
+{% endschema %}

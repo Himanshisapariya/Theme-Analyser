@@ -1,0 +1,27 @@
+
+<div><h1>Hello coding</h1></div>
+
+
+{% assign my_array = "apple,banana,orange" | split: "," %}
+
+{% for item in my_array %}
+ <li> {{ item }}</li>
+{% endfor %}
+{{ collection.products | size }}
+
+
+{% for product in products %}
+  {{ product.title }}
+{% endfor %}
+
+
+{% if hello %}
+  hello is defined
+{% endif %}
+
+{% schema %}
+  {
+    "name": "Section name",
+    "settings": []
+  }
+{% endschema %}

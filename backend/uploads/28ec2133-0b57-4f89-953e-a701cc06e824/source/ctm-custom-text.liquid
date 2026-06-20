@@ -1,0 +1,72 @@
+
+<div class="{{ section.settings.extra_class }} ctm-shiping-returns container-xl ctm-cut-txt container-large">
+    {% for block in section.blocks %}
+      {% case block.type %}
+        {% when 'custom_richtext' %}
+          <div class="custom-richtext-block" {{ block.shopify_attributes }}>
+            {% if block.settings.custom_richtext != blank %}
+              {{ block.settings.custom_richtext }}
+            {% endif %}
+          </div>
+  
+        {% when 'custom_html' %}
+          <div class="custom-html-block" {{ block.shopify_attributes }}>
+            {% if block.settings.custom_html != blank %}
+              {{ block.settings.custom_html }}
+            {% endif %}
+          </div>
+      {% endcase %}
+    {% endfor %}
+</div>
+  
+  {% schema %}
+  {
+    "name": "Custom Text",
+    "class": "ctm-custom-txt-main",
+    "settings": [
+      {
+        "type": "text",
+        "label": "Extra Class",
+        "id": "extra_class"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "custom_richtext",
+        "name": "Custom RichText",
+        "settings": [
+          {
+            "type": "richtext",
+            "label": "Custom RichText",
+            "id": "custom_richtext"
+          }
+        ]
+      },
+      {
+        "type": "custom_html",
+        "name": "Custom HTML",
+        "settings": [
+          {
+            "type": "html",
+            "label": "Custom HTML",
+            "id": "custom_html"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Custom Text",
+        "blocks": [
+          {
+            "type": "custom_richtext"
+          },
+          {
+            "type": "custom_html"
+          }
+        ]
+      }
+    ]
+  }
+  {% endschema %}
+  

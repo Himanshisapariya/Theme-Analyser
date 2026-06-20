@@ -1,0 +1,39 @@
+{
+  "sections": {
+    "breadcrum_banner_UF4xYy": {
+      "type": "breadcrum-banner",
+      "settings": {
+        "page_title_black": "Blog",
+        "breadcrumb_image": "shopify:\/\/shop_images\/header_image_1_97b72272-3925-4704-a77f-e8664546c4dc.png"
+      }
+    },
+    "featured_post_bTgxBy": {
+      "type": "featured-post",
+      "settings": {
+        "select_blog": "wrangling-monkeys-and-counting-sheep",
+        "subheading": "",
+        "bg_position": "center-center",
+        "show_author": false,
+        "show_date": true,
+        "show_button": true
+      }
+    },
+    "main": {
+      "type": "main-blog",
+      "settings": {
+        "extra_class": "",
+        "page_title_black": "Blogs",
+        "bg_image": "shopify:\/\/shop_images\/background_image.jpg",
+        "breadcrumb_image": "shopify:\/\/shop_images\/header_image_1_97b72272-3925-4704-a77f-e8664546c4dc.png",
+        "layout": "grid",
+        "show_image": true,
+        "image_height": "adapt",
+        "show_date": true,
+        "show_author": false,
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    }
+  },
+  "order": ["breadcrum_banner_UF4xYy", "featured_post_bTgxBy", "main"]
+}

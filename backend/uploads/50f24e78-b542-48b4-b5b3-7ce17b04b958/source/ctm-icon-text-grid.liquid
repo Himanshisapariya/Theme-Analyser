@@ -1,0 +1,324 @@
+<section class="icon-text-grid section-{{ section.id }}">
+  <div class="page-width">
+
+    {% if section.settings.top_label != blank %}
+      <p class="icon-text-grid__label">
+        {{ section.settings.top_label }}
+      </p>
+    {% endif %}
+
+    {% if section.settings.main_heading != blank %}
+      <h2 class="icon-text-grid__title">
+        {{ section.settings.main_heading }}
+      </h2>
+    {% endif %}
+
+    {% if section.settings.intro_text != blank %}
+      <p class="icon-text-grid__intro">
+        {{ section.settings.intro_text }}
+      </p>
+    {% endif %}
+
+    <div class="icon-text-grid__inner">
+      {% for block in section.blocks %}
+        <div class="icon-text-grid__item" {{ block.shopify_attributes }}>
+
+          
+          {% if block.settings.icon_type == 'svg' and block.settings.svg_code != blank %}
+            <div class="icon-text-grid__icon">
+              {{ block.settings.svg_code }}
+            </div>
+          {% elsif block.settings.icon_type == 'image' and block.settings.icon_image != blank %}
+            <div class="icon-text-grid__icon">
+              <img
+                src="{{ block.settings.icon_image | image_url: width: 120 }}"
+                alt="{{ block.settings.heading | escape }}"
+                loading="lazy"
+              >
+            </div>
+          {% endif %}
+
+          
+          <div class="icon-text-grid__content">
+            <h3 class="icon-text-grid__heading">
+              {{ block.settings.heading }}
+            </h3>
+            <p class="icon-text-grid__description">
+              {{ block.settings.description }}
+            </p>
+          </div>
+
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+
+<style>
+    .section-{{ section.id }} {
+  padding: {{ section.settings.section_padding }}px 0;
+  background: {{ section.settings.background_color }};
+  text-align: center;
+}
+
+.section-{{ section.id }} .icon-text-grid__label {
+  font-size: {{ section.settings.label_font_size }}px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+}
+
+.section-{{ section.id }} .icon-text-grid__title {
+  font-size: {{ section.settings.title_font_size }}px;
+  font-weight: 700;
+  margin-top: 12px;
+  margin-bottom: 12px;
+}
+
+.section-{{ section.id }} .icon-text-grid__intro {
+  font-family: 'Poppins';
+  font-size: {{ section.settings.intro_font_size }}px;
+  max-width: 700px;
+  margin: 0 auto 50px;
+  color: #555;
+}
+
+.section-{{ section.id }} .icon-text-grid__inner {
+  display: grid;
+  grid-template-columns: repeat({{ section.settings.columns_desktop }}, 1fr);
+  gap: {{ section.settings.grid_gap }}px;
+  text-align: left;
+}
+
+@media (max-width: 768px) {
+  .section-{{ section.id }} .icon-text-grid__inner {
+    grid-template-columns: repeat({{ section.settings.columns_mobile }}, 1fr);
+  }
+}
+
+@media (max-width: 575px) {
+    .section-{{ section.id }} .icon-text-grid__label {
+        font-size: 18px;
+    }
+
+    .section-{{ section.id }} .icon-text-grid__title {
+        font-size: 24px;
+    }
+
+    .section-{{ section.id }} .icon-text-grid__intro {
+        font-size: 15px;
+}
+.section-{{ section.id }} .icon-text-grid__inner {
+  gap: 20px;
+}
+.section-{{ section.id }} .icon-text-grid__icon svg,
+.section-{{ section.id }} .icon-text-grid__icon img {
+  width: 35px !important;
+}
+.section-{{ section.id }} .icon-text-grid__heading {
+  margin: 0 0 6px !important;
+  font-size:20px !important;
+}
+.section-{{ section.id }} .icon-text-grid__description {
+  font-size:16px !important;
+}
+}
+
+.section-{{ section.id }} .icon-text-grid__item {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+.section-{{ section.id }} .icon-text-grid__icon {
+  flex-shrink: 0;
+}
+
+.section-{{ section.id }} .icon-text-grid__icon svg,
+.section-{{ section.id }} .icon-text-grid__icon img {
+  width: {{ section.settings.icon_size }}px;
+}
+
+.section-{{ section.id }} .icon-text-grid__heading {
+  margin: 6px 0;
+  font-size: {{ section.settings.heading_font_size }}px;
+  font-weight: 700;
+}
+
+.section-{{ section.id }} .icon-text-grid__description {
+  font-size: {{ section.settings.description_font_size }}px;
+  line-height: 1.6;
+  color: #2f484c;
+  margin: 10px 0;
+  font-family: 'Poppins';
+  font-weight: 500;
+}
+
+</style>
+
+{% schema %}
+{
+  "name": "Mission Icon Grid",
+  "settings": [
+    {
+      "type": "text",
+      "id": "top_label",
+      "label": "Top label",
+      "default": "OUR MISSION:"
+    },
+    {
+      "type": "html",
+      "id": "main_heading",
+      "label": "Main heading",
+      "default": "Introduce The World To Better Blankets"
+    },
+    {
+      "type": "html",
+      "id": "intro_text",
+      "label": "Intro text",
+      "default": "Our vision is more people outdoors, comfortable, and prepared for whatever unfolds."
+    },
+    {
+      "type": "range",
+      "id": "label_font_size",
+      "label": "Label font size",
+      "min": 10,
+      "max": 50,
+      "default": 13
+    },
+    {
+      "type": "range",
+      "id": "title_font_size",
+      "label": "Title font size",
+      "min": 24,
+      "max": 100,
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "intro_font_size",
+      "label": "Intro text font size",
+      "min": 12,
+      "max": 50,
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "columns_desktop",
+      "label": "Columns (Desktop)",
+      "min": 1,
+      "max": 3,
+      "default": 2
+    },
+    {
+      "type": "range",
+      "id": "columns_mobile",
+      "label": "Columns (Mobile)",
+      "min": 1,
+      "max": 3,
+      "default": 1
+    },
+    {
+      "type": "range",
+      "id": "grid_gap",
+      "label": "Grid gap",
+      "min": 20,
+      "max": 80,
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "icon_size",
+      "label": "Number size",
+      "min": 30,
+      "max": 100,
+      "default": 50
+    },
+    {
+      "type": "range",
+      "id": "heading_font_size",
+      "label": "Item heading font size",
+      "min": 14,
+      "max": 30,
+      "default": 18
+    },
+    {
+      "type": "range",
+      "id": "description_font_size",
+      "label": "Item description font size",
+      "min": 12,
+      "max": 20,
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "section_padding",
+      "label": "Section padding",
+      "min": 40,
+      "max": 140,
+      "step": 10,
+      "default": 80
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background color",
+      "default": "#eef7f1"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "item",
+      "name": "Mission item",
+      "settings": [
+        {
+          "type": "select",
+          "id": "icon_type",
+          "label": "Icon type",
+          "options": [
+            { "value": "svg", "label": "SVG" },
+            { "value": "image", "label": "Image" }
+          ],
+          "default": "svg"
+        },
+        {
+          "type": "textarea",
+          "id": "svg_code",
+          "label": "SVG code"
+        },
+        {
+          "type": "image_picker",
+          "id": "icon_image",
+          "label": "Icon image"
+        },
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Description"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Mission Icon Grid",
+      "blocks": [
+        { "type": "item" },
+        { "type": "item" },
+        { "type": "item" },
+        { "type": "item" },
+        { "type": "item" },
+        { "type": "item" }
+      ]
+    }
+  ]
+}
+{% endschema %}
+

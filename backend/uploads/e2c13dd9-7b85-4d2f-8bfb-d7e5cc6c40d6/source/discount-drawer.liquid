@@ -1,0 +1,760 @@
+{% style %}
+  .ctm_discountbar-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+  }
+
+  .ctm_discountbar-overlay.active {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .ctm_discountbar-sidebar {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    height: 100%;
+    width: {{ section.settings.sidebar_width }}px;
+    max-width: 100%;
+    background: #fff;
+    z-index: 1000;
+    overflow-y: auto;
+    transition: right 0.3s ease;
+    box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .ctm_discountbar-sidebar.active {
+    right: 0;
+  }
+
+  .ctm_discountbar-header {
+    padding: 20px;
+    border-bottom: 1px solid #e5e5e5;
+    position: sticky;
+    top: 0;
+    background: #fff;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .ctm_discountbar-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    padding: 0;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .ctm_discountbar-heading {
+    font-size: {{ section.settings.heading_font_size }}px;
+    margin: 0 40px 10px 0;
+    font-weight: 700;
+  }
+
+  .ctm_discountbar-subheading {
+    font-size: {{ section.settings.subheading_font_size }}px;
+    margin: 0;
+    color: #666;
+  }
+
+
+  .ctm_discountbar-subheading p {
+    margin: 0;
+  }
+
+  .ctm_discountbar-content {
+    padding: 20px;
+  }
+
+  .ctm_discountbar-card {
+    position: relative;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  }
+
+  .ctm_discountbar-card-image {
+    position: relative;
+    width: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+  }
+
+  .ctm_discountbar-card-content {
+    padding: 20px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .ctm_discountbar-card-content.top {
+    justify-content: flex-start;
+  }
+
+  .ctm_discountbar-card-content.center {
+    justify-content: center;
+  }
+
+  .ctm_discountbar-card-content.bottom {
+    justify-content: flex-end;
+  }
+
+  .ctm_discountbar-card-content.space-between {
+    justify-content: space-between;
+  }
+
+  .ctm_discountbar-card-content.align-left {
+    align-items: flex-start;
+  }
+
+  .ctm_discountbar-card-content.align-center {
+    align-items: center;
+  }
+
+  .ctm_discountbar-card-content.align-right {
+    align-items: flex-end;
+  }
+
+  .ctm_discountbar-card-content.align-center .ctm_discountbar-card-heading,
+  .ctm_discountbar-card-content.align-center .ctm_discountbar-card-subheading,
+  .ctm_discountbar-card-content.align-center .ctm_discountbar-card-liquid {
+    text-align: center;
+  }
+
+  .ctm_discountbar-card-content.align-right .ctm_discountbar-card-heading,
+  .ctm_discountbar-card-content.align-right .ctm_discountbar-card-subheading,
+  .ctm_discountbar-card-content.align-right .ctm_discountbar-card-liquid {
+    text-align: right;
+  }
+
+  .ctm_discountbar-card-text {
+    flex-shrink: 0;
+  }
+
+  .ctm_discountbar-card-content.top .ctm_discountbar-card-buttons,
+  .ctm_discountbar-card-content.center .ctm_discountbar-card-buttons,
+  .ctm_discountbar-card-content.bottom .ctm_discountbar-card-buttons {
+    margin-top: 15px;
+  }
+
+  .ctm_discountbar-card-content.space-between .ctm_discountbar-card-buttons {
+    margin-top: auto;
+    padding-top: 15px;
+  }
+
+  .ctm_discountbar-card-heading {
+    color: #fff;
+    margin: 0 0 10px 0;
+    font-weight: bold;
+  }
+
+  .ctm_discountbar-card-subheading {
+    color: #fff;
+    margin: 0 0 15px 0;
+    font-family: 'Poppins';
+  }
+
+  .ctm_discountbar-card-subheading p {
+    margin: 0 0 10px 0;
+  }
+
+  .ctm_discountbar-card-subheading p:last-child {
+    margin-bottom: 0;
+  }
+
+  .ctm_discountbar-card-liquid {
+    color: #fff;
+    margin-bottom: 15px;
+  }
+
+  .ctm_discountbar-card-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 4px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+  }
+
+  .ctm_discountbar-card-btn:hover {
+    opacity: 0.9;
+  }
+
+  .ctm_discountbar-card-btn.as-link {
+    background: transparent !important;
+    padding: 0;
+    text-decoration: underline;
+    text-decoration-color: white;
+  }
+
+  .ctm_discountbar-card-footer {
+    padding: 10px 15px;
+    background: #f9f9f9;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .ctm_discountbar-card-footer-text {
+    font-size: 14px;
+    color: #333;
+  }
+
+  .ctm_discountbar-card-footer-link {
+    font-size: 14px;
+    text-decoration: underline;
+    cursor: pointer;
+  }
+
+  .ctm_discountbar-card-footer-link:hover {
+    text-decoration: none;
+  }
+
+  .ctm_discountbar-card-description {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 20px;
+    transition: transform 0.3s ease;
+    overflow-y: auto;
+    z-index: 5;
+    transform: translateY(-100%);
+  }
+
+  .ctm_discountbar-card-description.active {
+    transform: translateY(0);
+  }
+
+  .ctm_discountbar-card-description-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: #fff;
+    color: #000;
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 18px;
+    z-index: 10;
+  }
+
+  body.ctm_discountbar-sidebar-open .section-announcement,
+  body.ctm_discountbar-sidebar-open .shopify-section-header {
+    z-index: unset !important;
+  }
+
+  @media(max-width: 575px){
+    .ctm_discountbar-heading {
+    font-size: 26px;
+  }
+  }
+{% endstyle %}
+
+<div class="ctm_discountbar-overlay {{ section.settings.section_class }}" id="ctm-discount-overlay"></div>
+
+<div class="ctm_discountbar-sidebar {{ section.settings.section_class }}" id="ctm-discount-sidebar-panel">
+  <div class="ctm_discountbar-header">
+    <button class="ctm_discountbar-close" id="ctm-discount-close">&times;</button>
+    {% if section.settings.heading != blank %}
+      <div class="ctm_discountbar-heading">{{ section.settings.heading }}</div>
+    {% endif %}
+    {% if section.settings.subheading != blank %}
+      <div class="ctm_discountbar-subheading">{{ section.settings.subheading }}</div>
+    {% endif %}
+  </div>
+
+  <div class="ctm_discountbar-content">
+    {% for block in section.blocks %}
+      <div class="ctm_discountbar-card {{ block.settings.card_class }}" {{ block.shopify_attributes }}>
+        <div class="ctm_discountbar-card-image" 
+             style="background-image: url('{{ block.settings.card_image | img_url: 'master' }}'); height: {{ block.settings.card_height }}px; background-size: {{ block.settings.image_fit }};">
+          <div class="ctm_discountbar-card-content {{ block.settings.content_position }} align-{{ block.settings.content_alignment }}">
+            <div class="ctm_discountbar-card-text">
+              {% if block.settings.card_heading != blank %}
+                <div class="ctm_discountbar-card-heading" style="font-size: {{ block.settings.card_heading_size }}px;">
+                  {{ block.settings.card_heading }}
+                </div>
+              {% endif %}
+              {% if block.settings.card_subheading != blank %}
+                <div class="ctm_discountbar-card-subheading" style="font-size: {{ block.settings.card_subheading_size }}px;">
+                  {{ block.settings.card_subheading }}
+                </div>
+              {% endif %}
+              {% if block.settings.custom_liquid != blank %}
+                <div class="ctm_discountbar-card-liquid">
+                  {{ block.settings.custom_liquid }}
+                </div>
+              {% endif %}
+            </div>
+            
+            <div class="ctm_discountbar-card-buttons">
+              {% if block.settings.button_text != blank %}
+                <a href="{{ block.settings.button_url }}" 
+                   class="ctm_discountbar-card-btn {% if block.settings.button_style == 'link' %}as-link{% endif %}" 
+                   style="{% if block.settings.button_style == 'button' %}background: {{ block.settings.button_bg_color }};{% endif %} color: {{ block.settings.button_text_color }};">
+                  {{ block.settings.button_text }}
+                </a>
+              {% endif %}
+              {% if block.settings.button2_text != blank %}
+                <a href="{{ block.settings.button2_url }}" 
+                   class="ctm_discountbar-card-btn {% if block.settings.button2_style == 'link' %}as-link{% endif %}" 
+                   style="{% if block.settings.button2_style == 'button' %}background: {{ block.settings.button2_bg_color }};{% endif %} color: {{ block.settings.button2_text_color }};">
+                  {{ block.settings.button2_text }}
+                </a>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+
+        {% if block.settings.footer_text != blank or block.settings.footer_link_text != blank %}
+          <div class="ctm_discountbar-card-footer">
+            <span class="ctm_discountbar-card-footer-text">{{ block.settings.footer_text }}</span>
+            {% if block.settings.footer_link_text != blank %}
+              <a class="ctm_discountbar-card-footer-link" 
+                {% if block.settings.card_description == blank %}
+                href="{{ block.settings.description_link }}"
+              {% else %}
+                data-card-toggle="{{ block.id }}"
+              {% endif %}
+
+                 style="color: {{ block.settings.footer_link_color }};">
+                {{ block.settings.footer_link_text }}
+              </a>
+            {% endif %}
+          </div>
+        {% endif %}
+
+        {% if block.settings.card_description != blank %}
+          <div class="ctm_discountbar-card-description" 
+               id="description-{{ block.id }}"
+               style="background: {{ block.settings.description_bg_color }}; color: {{ block.settings.description_text_color }};">
+            <button class="ctm_discountbar-card-description-close" data-card-close="{{ block.id }}">&times;</button>
+            {{ block.settings.card_description }}
+          </div>
+        {% endif %}
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const trigger = document.getElementById('ctm-discount-sidebar');
+    const sidebar = document.getElementById('ctm-discount-sidebar-panel');
+    const overlay = document.getElementById('ctm-discount-overlay');
+    const closeBtn = document.getElementById('ctm-discount-close');
+
+    function openSidebar() {
+      sidebar.classList.add('active');
+      overlay.classList.add('active');
+      document.body.classList.add('ctm_discountbar-sidebar-open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeSidebar() {
+      sidebar.classList.remove('active');
+      overlay.classList.remove('active');
+      document.body.classList.remove('ctm_discountbar-sidebar-open');
+      document.body.style.overflow = '';
+    }
+
+    if (trigger) {
+      trigger.addEventListener('click', openSidebar);
+    }
+
+    if (closeBtn) {
+      closeBtn.addEventListener('click', closeSidebar);
+    }
+
+    if (overlay) {
+      overlay.addEventListener('click', closeSidebar);
+    }
+
+    // Card description toggles
+    document.querySelectorAll('[data-card-toggle]').forEach(function(link) {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        const cardId = this.getAttribute('data-card-toggle');
+        const description = document.getElementById('description-' + cardId);
+        if (description) {
+          description.classList.add('active');
+        }
+      });
+    });
+
+    document.querySelectorAll('[data-card-close]').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        const cardId = this.getAttribute('data-card-close');
+        const description = document.getElementById('description-' + cardId);
+        if (description) {
+          description.classList.remove('active');
+        }
+      });
+    });
+  });
+</script>
+
+{% schema %}
+{
+  "name": "CTM Discount Sidebar",
+  "settings": [
+    {
+      "type": "html",
+      "id": "heading",
+      "label": "Sidebar Heading",
+      "default": "<span>Special Offers</span>"
+    },
+    {
+      "type": "richtext",
+      "id": "subheading",
+      "label": "Sidebar Subheading",
+      "default": "<p>Check out our exclusive discount offers!</p>"
+    },
+    {
+      "type": "range",
+      "id": "heading_font_size",
+      "label": "Heading Font Size",
+      "min": 16,
+      "max": 48,
+      "step": 2,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "subheading_font_size",
+      "label": "Subheading Font Size",
+      "min": 12,
+      "max": 32,
+      "step": 2,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "sidebar_width",
+      "label": "Sidebar Width",
+      "min": 300,
+      "max": 800,
+      "step": 50,
+      "unit": "px",
+      "default": 450
+    },
+    {
+      "type": "text",
+      "id": "section_class",
+      "label": "Additional CSS Class",
+      "info": "Add extra CSS classes for custom styling"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "discount_card",
+      "name": "Discount Card",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "card_image",
+          "label": "Card Background Image"
+        },
+        {
+          "type": "range",
+          "id": "card_height",
+          "label": "Card Height",
+          "min": 200,
+          "max": 600,
+          "step": 20,
+          "unit": "px",
+          "default": 300
+        },
+        {
+          "type": "html",
+          "id": "card_heading",
+          "label": "Card Heading (HTML)",
+          "default": "<span>Special Discount</span>"
+        },
+        {
+          "type": "range",
+          "id": "card_heading_size",
+          "label": "Heading Font Size",
+          "min": 16,
+          "max": 48,
+          "step": 2,
+          "unit": "px",
+          "default": 24
+        },
+        {
+          "type": "richtext",
+          "id": "card_subheading",
+          "label": "Card Subheading (Rich Text)",
+          "default": "<p>Get up to 50% off</p>"
+        },
+        {
+          "type": "range",
+          "id": "card_subheading_size",
+          "label": "Subheading Font Size",
+          "min": 12,
+          "max": 32,
+          "step": 2,
+          "unit": "px",
+          "default": 16
+        },
+        {
+          "type": "liquid",
+          "id": "custom_liquid",
+          "label": "Custom Liquid"
+        },
+        {
+          "type": "select",
+          "id": "content_position",
+          "label": "Content Vertical Position",
+          "options": [
+            {
+              "value": "top",
+              "label": "Top (All content at top)"
+            },
+            {
+              "value": "center",
+              "label": "Center (All content centered)"
+            },
+            {
+              "value": "bottom",
+              "label": "Bottom (All content at bottom)"
+            },
+            {
+              "value": "space-between",
+              "label": "Space Between (Text top, buttons bottom)"
+            }
+          ],
+          "default": "center"
+        },
+        {
+          "type": "select",
+          "id": "content_alignment",
+          "label": "Content Horizontal Alignment",
+          "options": [
+            {
+              "value": "left",
+              "label": "Left"
+            },
+            {
+              "value": "center",
+              "label": "Center"
+            },
+            {
+              "value": "right",
+              "label": "Right"
+            }
+          ],
+          "default": "left"
+        },
+        {
+          "type": "select",
+          "id": "image_fit",
+          "label": "Image Fit",
+          "options": [
+            {
+              "value": "cover",
+              "label": "Cover (Fill entire card)"
+            },
+            {
+              "value": "contain",
+              "label": "Contain (Show full image)"
+            },
+            {
+              "value": "fill",
+              "label": "Fill (Stretch to fill)"
+            }
+          ],
+          "default": "cover",
+          "info": "How the background image should fit within the card"
+        },
+        {
+          "type": "header",
+          "content": "Button 1 Settings"
+        },
+        {
+          "type": "text",
+          "id": "button_text",
+          "label": "Button Text",
+          "default": "Shop Now"
+        },
+        {
+          "type": "url",
+          "id": "button_url",
+          "label": "Button URL"
+        },
+        {
+          "type": "select",
+          "id": "button_style",
+          "label": "Button Style",
+          "options": [
+            {
+              "value": "button",
+              "label": "Button"
+            },
+            {
+              "value": "link",
+              "label": "Link"
+            }
+          ],
+          "default": "button"
+        },
+        {
+          "type": "color",
+          "id": "button_bg_color",
+          "label": "Button Background Color",
+          "default": "#000000"
+        },
+        {
+          "type": "color",
+          "id": "button_text_color",
+          "label": "Button Text Color",
+          "default": "#ffffff"
+        },
+        {
+          "type": "header",
+          "content": "Button 2 Settings"
+        },
+        {
+          "type": "text",
+          "id": "button2_text",
+          "label": "Second Button Text"
+        },
+        {
+          "type": "url",
+          "id": "button2_url",
+          "label": "Second Button URL"
+        },
+        {
+          "type": "select",
+          "id": "button2_style",
+          "label": "Button 2 Style",
+          "options": [
+            {
+              "value": "button",
+              "label": "Button"
+            },
+            {
+              "value": "link",
+              "label": "Link"
+            }
+          ],
+          "default": "button"
+        },
+        {
+          "type": "color",
+          "id": "button2_bg_color",
+          "label": "Button 2 Background Color",
+          "default": "#000000"
+        },
+        {
+          "type": "color",
+          "id": "button2_text_color",
+          "label": "Button 2 Text Color",
+          "default": "#ffffff"
+        },
+        {
+          "type": "header",
+          "content": "Footer Settings"
+        },
+        {
+          "type": "text",
+          "id": "footer_text",
+          "label": "Footer Text (Left Side)",
+          "default": "Terms & Conditions"
+        },
+        {
+          "type": "text",
+          "id": "footer_link_text",
+          "label": "Footer Link Text (Right Side)",
+          "default": "View Details"
+        },
+        {
+          "type": "color",
+          "id": "footer_link_color",
+          "label": "Footer Link Color",
+          "default": "#0066cc"
+        },
+        {
+          "type": "header",
+          "content": "Card Description Settings"
+        },
+        {
+          "type": "richtext",
+          "id": "card_description",
+          "label": "Card Description (Shows on click)"
+        },
+        {
+          "type": "url",
+          "id": "description_link",
+          "label": "Description Link",
+          "info": "this will only work if the card Description field is empty."
+        },
+        {
+          "type": "color",
+          "id": "description_bg_color",
+          "label": "Description Background Color",
+          "default": "#000000"
+        },
+        {
+          "type": "color",
+          "id": "description_text_color",
+          "label": "Description Text Color",
+          "default": "#ffffff"
+        },
+        {
+          "type": "text",
+          "id": "card_class",
+          "label": "Additional CSS Class",
+          "info": "Add extra CSS classes for custom styling of this card"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "CTM Discount Sidebar",
+      "blocks": [
+        {
+          "type": "discount_card"
+        },
+        {
+          "type": "discount_card"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

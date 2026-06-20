@@ -1,0 +1,1276 @@
+{% comment %}Build a JS map of color-name handle → CDN swatch image URL from theme settings{% endcomment %}
+<script>
+  window.rebuyColorSwatchMap = {
+    {% if settings.custom_colors != blank %}
+      {% assign custom_colors_arr = settings.custom_colors | newline_to_br | split: '<br />' %}
+      {% for line in custom_colors_arr %}
+        {% assign line_strip = line | strip %}
+        {% if line_strip != blank %}
+          {% assign color_name_part = line_strip | split: ':' | first %}
+          {% assign color_key = color_name_part | handle | strip %}
+          {% assign color_url = line_strip | remove_first: color_name_part | remove_first: ':' | strip %}
+          "{{ color_key }}": "{{ color_url }}",
+        {% endif %}
+      {% endfor %}
+    {% endif %}
+  };
+
+  // Convert a color display name to its Shopify handle equivalent, then look up the swatch image URL.
+  window.getRebuyColorSwatchUrl = function(colorName) {
+    if (!colorName) return '';
+    var handle = colorName
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, '-')
+      .replace(/^-+|-+$/g, '');
+    return window.rebuyColorSwatchMap[handle] || '';
+  };
+</script>
+
+{% raw %}
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+
+<style>
+
+  .rebuy-quick-view__no-results p {
+    color: rgb(var(--color-foreground));
+    font-size: unset;
+    font-weight: normal;
+    font-style: normal;
+}
+
+.rebuy-quick-view-flyout__flyout {
+  margin-top: 0;    
+}
+
+.rebuy-quick-view__search-term-section,
+.rebuy-quick-view__no-results{
+    padding: 1rem;
+    margin-bottom: 0;
+}
+
+  /* ===== Rebuy FAQ Section — scoped styles ===== */
+
+  .rebuy-faq-section *,
+  .rebuy-faq-section *::before,
+  .rebuy-faq-section *::after {
+    box-sizing: border-box;
+  }
+
+  .rebuy-faq-section {
+    padding: 1rem;
+    margin: 0 auto;
+  }
+
+  .rebuy-quick-view__list-item {
+    padding: 5px 15px;
+    border: 1px solid #2f484c;
+    border-radius: 30px;
+    margin: 5px 0;
+}
+
+  /* Header */
+  .rebuy-faq-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 28px;
+  }
+
+  .rebuy-faq-header h2 {
+    letter-spacing: -0.3px;
+    color: rgba(var(--color-foreground));
+  }
+
+  /* Show All button */
+  .rebuy-faq-show-all-btn {
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: rgba(var(--color-foreground));
+    border: none;
+    border-bottom: 1.5px solid rgba(var(--color-foreground));
+    padding: 0 0 2px;
+    cursor: pointer;
+    background: none;
+  }
+
+  /* Swiper — scoped, no global .faq-swiper */
+  .rebuy-faq-section .rebuy-faq-swiper {
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .rebuy-faq-section .swiper-slide {
+    height: auto;
+  }
+
+  /* Card */
+  .rebuy-faq-card {
+    border: 1px solid #d8d8d8;
+    padding: 28px 24px 32px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+    min-height: 190px;
+    text-align: left;
+  }
+
+  .rebuy-faq-card h5 {
+    line-height: 1.4;
+    color: rgba(var(--color-foreground));
+  }
+
+  .rebuy-faq-card p {
+    line-height: 1.65;
+    color: rgba(var(--color-foreground), 0.75);
+    flex: 1;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  /* Read more */
+  .rebuy-faq-read-more {
+    color: rgba(var(--color-foreground));
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 0;
+    align-self: flex-start;
+    margin-top: 4px;
+    transition: opacity 0.2s ease;
+  }
+
+  .rebuy-faq-read-more:hover {
+    opacity: 0.6;
+  }
+
+.rebuy-faq-section .swiper-scrollbar {
+    display: block !important;
+    position: relative;
+    left: 50%;
+    bottom: 0;
+    margin: 30px 0;
+    transform: translateX(-50%);
+    background: #E8E8E9;
+    border-radius: 3px;
+    height: 3px;
+    width: 250px;
+}
+
+.rebuy-faq-section .swiper-scrollbar-drag {
+    cursor: pointer;
+    background: #2f484c;
+    border-radius: 3px;
+}
+
+@media (max-width: 749px) {
+    .rebuy-faq-section .swiper-scrollbar {
+        left: 40%;
+    }
+    .rebuy-faq-section .swiper-scrollbar {
+        margin: 30px auto;
+    }
+}
+
+/* Rebuy Color Swatches */
+
+.rebuy-swatch-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    align-items: center;
+}
+
+.rebuy-color-swatch {
+    position: relative;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    border: 2px solid #e5e5e5;
+    cursor: pointer;
+    padding: 0;
+    background: transparent;
+    transition: all 0.2s ease;
+    overflow: hidden;
+}
+
+.rebuy-color-swatch:hover {
+    border-color: #e5e5e5;
+}
+
+.rebuy-color-swatch.is-selected {
+    border-color: #2f484c;
+    box-shadow: 0 0 0 2px rgba(47, 72, 76, 0.2);
+}
+
+.rebuy-color-swatch.is-unavailable {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+.rebuy-color-swatch.is-unavailable:hover {
+    transform: none;
+    border-color: #e5e5e5;
+}
+
+.rebuy-swatch-inner {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: var(--swatch-bg, #f0f0f0);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* Fallback for when no background image is available */
+.rebuy-swatch-inner:not([style*="url"]) {
+    background: var(--swatch-bg, #f0f0f0);
+}
+
+/* Color Swatches Styles for Rebuy Quick View */
+.rebuy-color-swatches {
+  max-width: 200px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: thin;
+  scrollbar-color: #ddd transparent;
+}
+
+.rebuy-color-swatches::-webkit-scrollbar {
+  height: 4px;
+}
+
+.rebuy-color-swatches::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.rebuy-swatch-swiper {
+  width: 100%;
+  overflow: hidden;
+}
+
+.rebuy-product-form__controls-group {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 2px;
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+
+.rebuy-color-swatch-input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.rebuy-color-swatch {
+  display: inline-block;
+  padding: 0;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: 0.3s all ease-in-out;
+  position: relative;
+  background-color: #fff;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  box-shadow: inset 0 0 0 1px rgba(0,0,0,0.1);
+}
+
+.rebuy-color-swatch:after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  background-image: var(--swatch-color);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.rebuy-color-swatch-input:checked + .rebuy-color-swatch {
+  border-color: #28b473 !important;
+}
+
+.rebuy-color-swatch-input:disabled + .rebuy-color-swatch {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.rebuy-color-swatch-input:disabled + .rebuy-color-swatch:hover {
+  border-color: #DDDDDD !important;
+}
+
+@media (max-width: 425px) {
+  .rebuy-color-swatch:after {
+    width: 20px;
+    height: 20px;
+  }
+  
+  .rebuy-color-swatch {
+    width: 26px;
+    height: 26px;
+  }
+}
+
+@media (max-width: 575px) {
+  .rebuy-color-swatch:after {
+    width: 24px;
+    height: 24px;
+  }
+  
+  .rebuy-color-swatch {
+    width: 30px;
+    height: 30px;
+  }
+  .rebuy-color-swatches {
+    max-width: 150px;
+  }
+}
+
+/* Hide add to cart buttons */
+.rebuy-quick-view__product-cta {
+  display: none !important;
+}
+
+/* Disable all zoom on product images in search flyout */
+.rebuy-smart-search__absolute-image--zoomed {
+  transform: none !important;
+  transition: none !important;
+}
+
+.rebuy-smart-search__absolute-image-container:hover .rebuy-smart-search__absolute-image--zoomed,
+.rebuy-smart-search__absolute-image-container:focus .rebuy-smart-search__absolute-image--zoomed {
+  transform: none !important;
+  transition: none !important;
+}
+
+
+/* Search button styling */
+.rebuy-quick-view__search-input {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.rebuy-quick-view__search-input input {
+    flex: 1;
+    padding-right: 40px;
+}
+
+.rebuy-quick-view__search-button {
+    position: absolute;
+    right: 5px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.rebuy-quick-view__search-button:hover {
+    opacity: 0.7;
+}
+
+.rebuy-quick-view__search-button rebuy-icon {
+    width: 20px;
+    height: 20px;
+}
+
+.rebuy-quick-view__results {
+    gap: 10px;
+}
+</style>
+
+<script id="rebuy-quick-view-flyout-search-template" type="text/template">
+    <div
+        id="rebuy-quick-view-flyout-search"
+        class="rebuy-quick-view-sidebar"
+        :class="{ 'is-visible': isQuickViewOpen }"
+        role="dialog"
+        aria-modal="true"
+        :aria-hidden="!isQuickViewOpen ? 'true' : 'false'"
+    >
+        <div class="rebuy-quick-view-flyout__flyout" :class="[{ 'is-visible': isQuickViewOpen }, flyoutModeSide]">
+            <div class="rebuy-quick-view__container rebuy-quick-view-flyout__flyout-container">
+                <div class="rebuy-quick-view__search-header rebuy-quick-view-flyout__search-header">
+                    <button
+                        type="button"
+                        class="rebuy-quick-view__close-button"
+                        @click.stop="closeQuickView"
+                        aria-label="Close Cart"
+                    >
+                        <rebuy-icon name="x"></rebuy-icon>
+                    </button>
+
+                    <form
+                        class="rebuy-quick-view__search-input rebuy-quick-view-flyout__search-input rebuy-input"
+                        @submit.stop.prevent="goToSearchPage"
+                        >
+                        <label v-if="searchByCollectionsEnabled" for="search" class="sr-only">Search by Collections</label>
+                        <select
+                            v-if="searchByCollectionsEnabled"
+                            name="search"
+                            id="search"
+                            v-model="searchByCollection"
+                        >
+                            <option :value="SEARCH_BY_COLLECTION_DEFAULT">All</option>
+                            <option v-for="{ name, id } in searchByCollectionsCollections" :value="id">{{name}}</option>
+                        </select>
+
+                        <label for="searchInput" class="sr-only">Enter a Search Term</label>
+                        <input
+                            id="searchInput"
+                            :class="(searchByCollectionsEnabled)"
+                            type="text"
+                            :placeholder="placeholderText()"
+                            :value="searchTerm"
+                            @input="($event) => searchTerm = $event.target.value"
+                            ref="searchInput"
+                            @keydown.escape.stop.prevent="closeQuickView"
+                        />
+                        <button type="submit" class="rebuy-quick-view__search-button" aria-label="Search">
+                            <rebuy-icon name="search"></rebuy-icon>
+                        </button>
+                    </form>
+                </div>
+
+                <div class="rebuy-quick-view__body gts rebuy-quick-view-flyout__body">
+                    <!-- Before User Types and No Results Suggestions -->
+                    <div v-if="!showResults" class="rebuy-quick-view__suggestions-vertical">
+
+                        <div
+                            v-if="showNoResultsSuggestions"
+                            class="rebuy-quick-view__no-results"
+                        >
+                            <p class="m-0" v-html="noResultsPageTitle"></p>
+                        </div>
+
+                        <div
+                            v-if="suggestedCollectionsEnabled && suggestedCollections.length > 0"
+                            class="rebuy-quick-view__collection-section"
+                        >
+                            <h6 class="rebuy-quick-view__subject-title">{{suggestedCollectionsTitle}}</h6>
+
+                            <div class="rebuy-quick-view__collection-list">
+                                <a
+                                    v-for="collection in displayedSuggestedCollections"
+                                    class="rebuy-quick-view__collection"
+                                    :href="collectionHref(collection)"
+                                >
+                                    {{collection.name}}
+                                </a>
+
+                                <button
+                                    v-if="shouldShowSeeMoreCollections"
+                                    class="see-more"
+                                    @click.stop.prevent="seeMore"
+                                >
+                                    See more &mldr;
+                                </button>
+                            </div>
+                        </div>
+
+                        <div
+                            v-if="suggestedSearchTermsEnabled && suggestedTerms.length > 0"
+                            class="rebuy-quick-view__search-term-section gts"
+                        >
+                            <h6 class="rebuy-quick-view__subject-title">{{suggestedSearchTermsTitle}}</h6>
+
+                            <ul class="rebuy-quick-view__list-items">
+                                <li
+                                    class="rebuy-quick-view__list-item"
+                                    v-for="term in suggestedTerms"
+                                    @click.stop="search(term)"
+                                >
+                                    {{term}}
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div
+                            v-if="suggestedProductsEnabled && suggestedProducts.length > 0"
+                            class="rebuy-quick-view__product-section"
+                        >
+                            <h6 class="rebuy-quick-view__subject-title">{{suggestedProductsTitle}}</h6>
+
+                            <div
+                                class="rebuy-quick-view__product-list rebuy-quick-view-flyout__product-list"
+                                :class="productListColumnClass"
+                            >
+                                <div
+                                    v-for="(product, index) in suggestedProducts"
+                                    :class="[productDisplayType, 'rebuy-quick-view-product-id-' + product.productId]"
+                                    :id="'rebuy-quick-view-product-id-' + product.productId"
+                                >
+                                    <a
+                                        :href="learnMoreURL(product)"
+                                        @click="learnMore(product, index)"
+                                        class="rebuy-quick-view__image-link rebuy-smart-search__absolute-image-container"
+                                        :class="shouldPositionAbsolute('container')"
+                                        :style="productImageRatio()"
+                                        rel="nofollow"
+                                    >
+                                        <img
+                                            v-bind:src="productImage(product, product.selected_variant)"
+                                            v-bind:srcset="generateImgSrcset(product)"
+                                            v-bind:alt="'Image of ' + product.name"
+                                            class="rebuy-quick-view_image rebuy-smart-search__absolute-image--zoomed rebuy-smart-search__absolute-image"
+                                            :class="shouldPositionAbsolute('image')"
+                                        />
+                                    </a>
+
+                                    <div class="rebuy-quick-view__product-detail">
+                                        <div class="rebuy-product-info">
+                                            <!-- Product Title -->
+                                            <a
+                                                class="rebuy-product-title"
+                                                :class="productInfoClass"
+                                                :href="learnMoreURL(product)"
+                                                @click="learnMore(product, index)"
+                                                rel="nofollow"
+                                            >
+                                                {{product.name}}
+                                            </a>
+
+                                            <!-- Product Review -->
+                                            <div
+                                                class="rebuy-product-review"
+                                                :class="productInfoClass"
+                                                v-if="shouldDisplayQuickViewProductRating(product)"
+                                                aria-label="product star rating"
+                                            >
+                                                <span class="rebuy-star-rating" :style="{ width: starRatingSize.width + 'px', height: starRatingSize.height + 'px' }">
+                                                    <span
+                                                        v-if="product.reviews.star_rating"
+                                                        class="rebuy-star-rating-value sr-only"
+                                                        v-html="product.ratings.average + ' stars out of 5 stars'"
+                                                    >
+                                                    </span>
+
+                                                    <!-- Default star rating (no custom colors) -->
+                                                    <template v-if="!shouldDisplayStyledProductReviews">
+                                                        <span class="rebuy-star-rating-background"></span>
+                                                        <span class="rebuy-star-rating-foreground" v-bind:style="{ width: getProductReviewRatingPercentage(product) }"></span>
+                                                    </template>
+
+                                                    <!-- Styled star rating with custom colors -->
+                                                    <template v-if="shouldDisplayStyledProductReviews">
+                                                        <span class="rebuy-star-rating" :style="{ width: starRatingSize.width + 'px', height: starRatingSize.height + 'px' }">
+                                                            <span class="rebuy-star-rating-container">
+                                                                <!-- Background stars (unfilled) -->
+                                                                <svg :width="starRatingSize.width" :height="starRatingSize.height" viewBox="0 0 80 14" xmlns="http://www.w3.org/2000/svg" class="rebuy-star-svg-background">
+                                                                    <g class="rebuy-star-background-fill" fill-rule="evenodd">
+                                                                        <path d="M71.996 11.368l-3.94 2.42c-.474.292-.756.096-.628-.443l1.074-4.53-3.507-3.022c-.422-.363-.324-.693.24-.74l4.602-.37 1.778-4.3c.21-.51.55-.512.762 0l1.78 4.3 4.602.37c.552.046.666.37.237.74l-3.507 3.02 1.075 4.532c.127.536-.147.74-.628.444l-3.94-2.422zM55.996 11.368l-3.94 2.42c-.474.292-.756.096-.628-.443l1.074-4.53-3.507-3.022c-.422-.363-.324-.693.24-.74l4.602-.37 1.778-4.3c.21-.51.55-.512.762 0l1.78 4.3 4.602.37c.552.046.666.37.237.74l-3.507 3.02 1.075 4.532c.127.536-.147.74-.628.444l-3.94-2.422zM40.123 11.368l-3.94 2.42c-.475.292-.756.096-.63-.443l1.076-4.53-3.508-3.022c-.422-.363-.324-.693.24-.74l4.602-.37 1.778-4.3c.21-.51.55-.512.762 0l1.778 4.3 4.603.37c.554.046.667.37.24.74l-3.508 3.02 1.075 4.532c.127.536-.147.74-.628.444l-3.94-2.422zM24.076 11.368l-3.94 2.42c-.475.292-.757.096-.63-.443l1.076-4.53-3.507-3.022c-.422-.363-.324-.693.238-.74l4.603-.37 1.78-4.3c.21-.51.55-.512.76 0l1.78 4.3 4.602.37c.554.046.667.37.24.74l-3.508 3.02 1.074 4.532c.127.536-.146.74-.628.444l-3.94-2.422zM8.123 11.368l-3.94 2.42c-.475.292-.756.096-.63-.443l1.076-4.53L1.12 5.792c-.422-.363-.324-.693.24-.74l4.602-.37 1.778-4.3c.21-.51.55-.512.762 0l1.778 4.3 4.603.37c.554.046.667.37.24.74l-3.508 3.02 1.075 4.532c.127.536-.147.74-.628.444l-3.94-2.422z"/>
+                                                                    </g>
+                                                                </svg>
+                                                                <!-- Foreground stars (filled) - clipped by wrapper -->
+                                                                <span
+                                                                    class="rebuy-star-svg-foreground-wrapper"
+                                                                    v-bind:style="{
+                                                                        width: starRatingWidth(product) + 'px'
+                                                                    }"
+                                                                >
+                                                                    <svg :width="starRatingSize.width" :height="starRatingSize.height" viewBox="0 0 80 14" xmlns="http://www.w3.org/2000/svg" class="rebuy-star-svg-foreground">
+                                                                        <g class="rebuy-star-foreground-fill" fill-rule="evenodd">
+                                                                            <path d="M71.996 11.368l-3.94 2.42c-.474.292-.756.096-.628-.443l1.074-4.53-3.507-3.022c-.422-.363-.324-.693.24-.74l4.602-.37 1.778-4.3c.21-.51.55-.512.762 0l1.78 4.3 4.602.37c.552.046.666.37.237.74l-3.507 3.02 1.075 4.532c.127.536-.147.74-.628.444l-3.94-2.422zM55.996 11.368l-3.94 2.42c-.474.292-.756.096-.628-.443l1.074-4.53-3.507-3.022c-.422-.363-.324-.693.24-.74l4.602-.37 1.778-4.3c.21-.51.55-.512.762 0l1.78 4.3 4.602.37c.552.046.666.37.237.74l-3.507 3.02 1.075 4.532c.127.536-.147.74-.628.444l-3.94-2.422zM40.123 11.368l-3.94 2.42c-.475.292-.756.096-.63-.443l1.076-4.53-3.508-3.022c-.422-.363-.324-.693.24-.74l4.602-.37 1.778-4.3c.21-.51.55-.512.762 0l1.778 4.3 4.603.37c.554.046.667.37.24.74l-3.508 3.02 1.075 4.532c.127.536-.147.74-.628.444l-3.94-2.422zM24.076 11.368l-3.94 2.42c-.475.292-.757.096-.63-.443l1.076-4.53-3.507-3.022c-.422-.363-.324-.693.238-.74l4.603-.37 1.78-4.3c.21-.51.55-.512.76 0l1.78 4.3 4.602.37c.554.046.667.37.24.74l-3.508 3.02 1.074 4.532c.127.536-.146.74-.628.444l-3.94-2.422zM8.123 11.368l-3.94 2.42c-.475.292-.756.096-.63-.443l1.076-4.53L1.12 5.792c-.422-.363-.324-.693.24-.74l4.602-.37 1.778-4.3c.21-.51.55-.512.762 0l1.778 4.3 4.603.37c.554.046.667.37.24.74l-3.508 3.02 1.075 4.532c.127.536-.147.74-.628.444l-3.94-2.422z"/>
+                                                                        </g>
+                                                                    </svg>
+                                                                </span>
+                                                            </span>
+                                                        </span>
+                                                    </template>
+                                                </span>
+
+                                                <span class="rebuy-review-count" v-html="getProductReviewCountHtml(product)"></span>
+                                            </div>
+
+                                            <div v-if="productOnSale(product)" class="price" :class="productInfoClass">
+                                                <span class="rebuy-money sale">
+                                                    <span class="sr-only">Sale price</span>
+                                                    <span v-html="formatMoney(product.selected_variant.price)"></span>
+                                                </span>
+
+                                                <span class="rebuy-money compare-at">
+                                                    <span class="sr-only">Original price</span>
+                                                    <span
+                                                        v-html="formatMoney(product.selected_variant.compareAtPrice)"
+                                                    ></span>
+                                                </span>
+                                            </div>
+
+                                            <div v-else class="price" :class="productInfoClass">
+                                                <span class="rebuy-money">
+                                                    <span class="sr-only">Price</span>
+                                                    <span v-html="formatMoney(product.selected_variant.price)"></span>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="rebuy-product-options" v-if="shouldShowVariantSelector(product)">
+                                                        <div class="rebuy-color-swatches" v-if="product.variants && product.variants.length > 0">
+                                                            <div class="rebuy-swatch-swiper swiper">
+                                                                <fieldset class="rebuy-product-form__controls-group swiper-wrapper">
+                                                                    <legend class="visually-hidden">Color Swatches</legend>
+                                                                    <div 
+                                                                        v-for="(variant, index) in (product.variants.filter((v, i, arr) => v && v.name && arr.findIndex(x => x && x.name && x.name.split(' / ')[0] === v.name.split(' / ')[0]) === i))"
+                                                                        :key="variant.id"
+                                                                        class="swiper-slide"
+                                                                    >
+                                                                        <input
+                                                                            type="radio"
+                                                                            :id="'rebuy-' + product.id + '-color-' + index"
+                                                                            :name="'rebuy-color-' + product.id"
+                                                                            :value="variant.id"
+                                                                            v-model="product.selected_variant_id"
+                                                                            v-on:change="selectVariant(product)"
+                                                                            class="rebuy-color-swatch-input"
+                                                                            :disabled="!variantAvailable(variant)"
+                                                                        >
+                                                                        <label
+                                                                            :for="'rebuy-' + product.id + '-color-' + index"
+                                                                            class="rebuy-color-swatch"
+                                                                            :title="(variant.name && variant.name.split(' / ')[0]) ? variant.name.split(' / ')[0] : 'Variant'"
+                                                                            :aria-label="(variant.name && variant.name.split(' / ')[0]) ? variant.name.split(' / ')[0] : 'Variant'"
+                                                                            :style="'--swatch-color: url(' + (window.getRebuyColorSwatchUrl(variant.name ? variant.name.split(' / ')[0] : '') || (variant.images && variant.images[0] ? variant.images[0].url + '&width=100&height=100&crop=center' : '')) + ');'"
+                                                                            @click="changeProductImageOnClick($event, variant)"
+                                                                        >
+                                                                            <span class="visually-hidden">{{ (variant.name && variant.name.split(' / ')[0]) ? variant.name.split(' / ')[0] : 'Variant' }}</span>
+                                                                        </label>
+                                                                    </div>
+                                                                </fieldset>
+                                                            </div>
+                                                        </div>
+                                            <select
+                                                v-else
+                                                title="Select product variant"
+                                                id="rebuy-smart-search-results-variant-select"
+                                                class="rebuy-select"
+                                                v-bind:aria-label="'variant of ' + product.name"
+                                                v-model="product.selected_variant_id"
+                                                v-on:change="selectVariant(product)"
+                                            >
+                                                <option
+                                                    v-for="variant in product.variants"
+                                                    v-bind:value="variant.id"
+                                                    v-html="variant.name"
+                                                ></option>
+                                            </select>
+                                        </div>
+
+                                        <div class="rebuy-product-actions" v-if="shouldShowAddToCart(product)">
+                                            <button
+                                                class="rebuy-button rebuy-quick-view__product-cta"
+                                                v-bind:class="{ working: (product.status != 'ready' && product.status != 'selecting') }"
+                                                v-bind:disabled="!(variantAvailable(product.selected_variant)) || (product.status != 'ready' && product.status != 'selecting')"
+                                                v-bind:aria-label="buttonAriaLabel(product)"
+                                                v-on:click="addToCart(product)"
+                                                type="button"
+                                            >
+                                                <span v-html="buttonLabel(product)"></span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div v-else class="rebuy-quick-view__results">
+                        <div
+                            class="rebuy-quick-view__keywords-section"
+                            v-if="autoCompleteTermsEnabled && keywordSuggestionsWithSearchTerm.length > 0"
+                        >
+                            <p class="rebuy-quick-view__keyword-title" v-html="autoCompleteTermsTitle"></p>
+
+                            <div class="rebuy-quick-view__keyword-list">
+                                <p
+                                    v-for="keyword in keywordSuggestionsWithSearchTerm"
+                                    class="rebuy-quick-view__keyword"
+                                    @click.stop="search(keyword)"
+                                >
+                                    {{keyword}}
+                                </p>
+                            </div>
+                        </div>
+
+                        <div
+                            class="rebuy-quick-view__collection-section"
+                            v-if="this.matchingCollectionsEnabled && collections.length > 0"
+                        >
+                            <p class="rebuy-quick-view__title">{{this.matchingCollectionsTitle}}</p>
+
+                            <div v-if="quickViewSearchLoading" class="rebuy-quick-view__collection-list">
+                                <div class="rebuy-quick-view-skeleton rebuy-quick-view-skeleton__collection" />
+
+                                <div class="rebuy-quick-view-skeleton rebuy-quick-view-skeleton__collection" />
+                            </div>
+
+                            <div v-if="!quickViewSearchLoading" class="rebuy-quick-view__collection-list">
+                                <a
+                                    v-for="collection in displayedMatchingCollections"
+                                    class="rebuy-quick-view__collection"
+                                    :class="productListColumnClass"
+                                    :href="collectionHref(collection)"
+                                >
+                                    {{collection.name}}
+                                </a>
+
+                                <button
+                                    v-if="limitDisplayedCollections && collections.length > AMOUNT_FOR_LIMITED_COLLECTIONS"
+                                    class="see-more"
+                                    @click.stop.prevent="seeMore"
+                                >
+                                    See more &mldr;
+                                </button>
+                            </div>
+                        </div>
+
+                        <div
+                            class="rebuy-quick-view__product-section"
+                            v-if="this.matchingProductsEnabled && products.length > 0"
+                        >
+                            <p class="rebuy-quick-view__title">{{this.matchingProductsTitle}}</p>
+
+                            <div
+                                class="rebuy-quick-view__product-list rebuy-quick-view__product-grid-column-2"
+                                v-if="quickViewSearchLoading"
+                            >
+                                <div class="rebuy-quick-view__product">
+                                    <div class="rebuy-quick-view-skeleton rebuy-quick-view-skeleton__product-image" />
+                                    <div class="rebuy-quick-view-skeleton__product-details">
+                                        <div
+                                            class="rebuy-quick-view-skeleton rebuy-quick-view-skeleton__product-name"
+                                        />
+                                        <div
+                                            class="rebuy-quick-view-skeleton rebuy-quick-view-skeleton__product-price"
+                                        />
+                                    </div>
+                                </div>
+
+                                <div class="rebuy-quick-view__product">
+                                    <div class="rebuy-quick-view-skeleton rebuy-quick-view-skeleton__product-image" />
+                                    <div class="rebuy-quick-view-skeleton__product-details">
+                                        <div
+                                            class="rebuy-quick-view-skeleton rebuy-quick-view-skeleton__product-name"
+                                        />
+                                        <div
+                                            class="rebuy-quick-view-skeleton rebuy-quick-view-skeleton__product-price"
+                                        />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div
+                                v-if="!quickViewSearchLoading"
+                                class="rebuy-quick-view__product-list rebuy-quick-view-flyout__product-list"
+                                :class="productListColumnClass"
+                            >
+                                <div
+                                    v-for="(product, index) in products"
+                                    :class="[productDisplayType, 'rebuy-quick-view-product-id-' + product.id]"
+                                    :id="'rebuy-quick-view-product-id-' + product.id"
+                                >
+                                    <a
+                                        :href="learnMoreURL(product)"
+                                        @click="learnMore(product, index)"
+                                        class="rebuy-quick-view__image-link rebuy-smart-search__absolute-image-container"
+                                        :class="shouldPositionAbsolute('container')"
+                                        :style="productImageRatio()"
+                                        rel="nofollow"
+                                    >
+                                        <img
+                                            v-bind:src="productImage(product, product.selected_variant)"
+                                            v-bind:srcset="generateImgSrcset(product)"
+                                            v-bind:alt="'Image of ' + product.name"
+                                            class="rebuy-quick-view_image rebuy-smart-search__absolute-image--zoomed rebuy-smart-search__absolute-image"
+                                            :class="shouldPositionAbsolute('image')"
+                                        />
+                                    </a>
+
+                                    <div class="rebuy-quick-view__product-detail">
+                                        <div class="rebuy-product-info">
+                                            <!-- Product Title -->
+                                            <a
+                                                class="rebuy-product-title"
+                                                :class="productInfoClass"
+                                                :href="learnMoreURL(product)"
+                                                @click="learnMore(product, index)"
+                                                rel="nofollow"
+                                            >
+                                                {{product.name}}
+                                            </a>
+
+                                            <!-- Product Review -->
+                                            <div
+                                                class="rebuy-product-review"
+                                                :class="productInfoClass"
+                                                v-if="shouldDisplayQuickViewProductRating(product)"
+                                                aria-label="product star rating"
+                                            >
+                                                <span class="rebuy-star-rating" :style="{ width: starRatingSize.width + 'px', height: starRatingSize.height + 'px' }">
+                                                    <span
+                                                        v-if="product.reviews.star_rating"
+                                                        class="rebuy-star-rating-value sr-only"
+                                                        v-html="product.ratings.average + ' stars out of 5 stars'"
+                                                    >
+                                                    </span>
+
+                                                    <!-- Default star rating (no custom colors) -->
+                                                    <template v-if="!shouldDisplayStyledProductReviews">
+                                                        <span class="rebuy-star-rating-background"></span>
+                                                        <span class="rebuy-star-rating-foreground" v-bind:style="{ width: getProductReviewRatingPercentage(product) }"></span>
+                                                    </template>
+
+                                                    <!-- Styled star rating with custom colors -->
+                                                    <template v-if="shouldDisplayStyledProductReviews">
+                                                        <span class="rebuy-star-rating" :style="{ width: starRatingSize.width + 'px', height: starRatingSize.height + 'px' }">
+                                                            <span class="rebuy-star-rating-container">
+                                                                <!-- Background stars (unfilled) -->
+                                                                <svg :width="starRatingSize.width" :height="starRatingSize.height" viewBox="0 0 80 14" xmlns="http://www.w3.org/2000/svg" class="rebuy-star-svg-background">
+                                                                    <g class="rebuy-star-background-fill" fill-rule="evenodd">
+                                                                        <path d="M71.996 11.368l-3.94 2.42c-.474.292-.756.096-.628-.443l1.074-4.53-3.507-3.022c-.422-.363-.324-.693.24-.74l4.602-.37 1.778-4.3c.21-.51.55-.512.762 0l1.78 4.3 4.602.37c.552.046.666.37.237.74l-3.507 3.02 1.075 4.532c.127.536-.147.74-.628.444l-3.94-2.422zM55.996 11.368l-3.94 2.42c-.474.292-.756.096-.628-.443l1.074-4.53-3.507-3.022c-.422-.363-.324-.693.24-.74l4.602-.37 1.778-4.3c.21-.51.55-.512.762 0l1.78 4.3 4.602.37c.552.046.666.37.237.74l-3.507 3.02 1.075 4.532c.127.536-.147.74-.628.444l-3.94-2.422zM40.123 11.368l-3.94 2.42c-.475.292-.756.096-.63-.443l1.076-4.53-3.508-3.022c-.422-.363-.324-.693.24-.74l4.602-.37 1.778-4.3c.21-.51.55-.512.762 0l1.778 4.3 4.603.37c.554.046.667.37.24.74l-3.508 3.02 1.075 4.532c.127.536-.147.74-.628.444l-3.94-2.422zM24.076 11.368l-3.94 2.42c-.475.292-.757.096-.63-.443l1.076-4.53-3.507-3.022c-.422-.363-.324-.693.238-.74l4.603-.37 1.78-4.3c.21-.51.55-.512.76 0l1.78 4.3 4.602.37c.554.046.667.37.24.74l-3.508 3.02 1.074 4.532c.127.536-.146.74-.628.444l-3.94-2.422zM8.123 11.368l-3.94 2.42c-.475.292-.756.096-.63-.443l1.076-4.53L1.12 5.792c-.422-.363-.324-.693.24-.74l4.602-.37 1.778-4.3c.21-.51.55-.512.762 0l1.778 4.3 4.603.37c.554.046.667.37.24.74l-3.508 3.02 1.075 4.532c.127.536-.147.74-.628.444l-3.94-2.422z"/>
+                                                                    </g>
+                                                                </svg>
+                                                                <!-- Foreground stars (filled) - clipped by wrapper -->
+                                                                <span
+                                                                    class="rebuy-star-svg-foreground-wrapper"
+                                                                    v-bind:style="{
+                                                                        width: starRatingWidth(product) + 'px'
+                                                                    }"
+                                                                >
+                                                                    <svg :width="starRatingSize.width" :height="starRatingSize.height" viewBox="0 0 80 14" xmlns="http://www.w3.org/2000/svg" class="rebuy-star-svg-foreground">
+                                                                        <g class="rebuy-star-foreground-fill" fill-rule="evenodd">
+                                                                            <path d="M71.996 11.368l-3.94 2.42c-.474.292-.756.096-.628-.443l1.074-4.53-3.507-3.022c-.422-.363-.324-.693.24-.74l4.602-.37 1.778-4.3c.21-.51.55-.512.762 0l1.78 4.3 4.602.37c.552.046.666.37.237.74l-3.507 3.02 1.075 4.532c.127.536-.147.74-.628.444l-3.94-2.422zM55.996 11.368l-3.94 2.42c-.474.292-.756.096-.628-.443l1.074-4.53-3.507-3.022c-.422-.363-.324-.693.24-.74l4.602-.37 1.778-4.3c.21-.51.55-.512.762 0l1.78 4.3 4.602.37c.552.046.666.37.237.74l-3.507 3.02 1.075 4.532c.127.536-.147.74-.628.444l-3.94-2.422zM40.123 11.368l-3.94 2.42c-.475.292-.756.096-.63-.443l1.076-4.53-3.508-3.022c-.422-.363-.324-.693.24-.74l4.602-.37 1.778-4.3c.21-.51.55-.512.762 0l1.778 4.3 4.603.37c.554.046.667.37.24.74l-3.508 3.02 1.075 4.532c.127.536-.147.74-.628.444l-3.94-2.422zM24.076 11.368l-3.94 2.42c-.475.292-.757.096-.63-.443l1.076-4.53-3.507-3.022c-.422-.363-.324-.693.238-.74l4.603-.37 1.78-4.3c.21-.51.55-.512.76 0l1.78 4.3 4.602.37c.554.046.667.37.24.74l-3.508 3.02 1.074 4.532c.127.536-.146.74-.628.444l-3.94-2.422zM8.123 11.368l-3.94 2.42c-.475.292-.756.096-.63-.443l1.076-4.53L1.12 5.792c-.422-.363-.324-.693.24-.74l4.602-.37 1.778-4.3c.21-.51.55-.512.762 0l1.778 4.3 4.603.37c.554.046.667.37.24.74l-3.508 3.02 1.075 4.532c.127.536-.147.74-.628.444l-3.94-2.422z"/>
+                                                                        </g>
+                                                                    </svg>
+                                                                </span>
+                                                            </span>
+                                                        </span>
+                                                    </template>
+                                                </span>
+
+                                                <span class="rebuy-review-count" v-html="getProductReviewCountHtml(product)"></span>
+                                            </div>
+
+                                            <div v-if="productOnSale(product)" class="price" :class="productInfoClass">
+                                                <span class="rebuy-money sale">
+                                                    <span class="sr-only">Sale price</span>
+                                                    <span v-html="formatMoney(product.selected_variant.price)"></span>
+                                                </span>
+
+                                                <span class="rebuy-money compare-at">
+                                                    <span class="sr-only">Original price</span>
+                                                    <span
+                                                        v-html="formatMoney(product.selected_variant.compareAtPrice)"
+                                                    ></span>
+                                                </span>
+                                            </div>
+
+                                            <div v-else class="price" :class="productInfoClass">
+                                                <span class="rebuy-money">
+                                                    <span class="sr-only">Price</span>
+                                                    <span v-html="formatMoney(product.selected_variant.price)"></span>
+                                                </span>
+                                            </div>
+                                        </div>
+
+                                        <!-- Product Options -->
+                                        <div class="rebuy-product-options" v-if="shouldShowVariantSelector(product)">
+                                                        <div class="rebuy-color-swatches" v-if="product.variants && product.variants.length > 0">
+                                                            <div class="rebuy-swatch-swiper swiper">
+                                                                <fieldset class="rebuy-product-form__controls-group swiper-wrapper">
+                                                                    <legend class="visually-hidden">Color Swatches</legend>
+                                                                    <div 
+                                                                        v-for="(variant, index) in (product.variants.filter((v, i, arr) => v && v.name && arr.findIndex(x => x && x.name && x.name.split(' / ')[0] === v.name.split(' / ')[0]) === i))"
+                                                                        :key="variant.id"
+                                                                        class="swiper-slide"
+                                                                    >
+                                                                        <input
+                                                                            type="radio"
+                                                                            :id="'rebuy-' + product.id + '-color-' + index"
+                                                                            :name="'rebuy-color-' + product.id"
+                                                                            :value="variant.id"
+                                                                            v-model="product.selected_variant_id"
+                                                                            v-on:change="selectVariant(product)"
+                                                                            class="rebuy-color-swatch-input"
+                                                                            :disabled="!variantAvailable(variant)"
+                                                                        >
+                                                                        <label
+                                                                            :for="'rebuy-' + product.id + '-color-' + index"
+                                                                            class="rebuy-color-swatch"
+                                                                            :title="(variant.name && variant.name.split(' / ')[0]) ? variant.name.split(' / ')[0] : 'Variant'"
+                                                                            :aria-label="(variant.name && variant.name.split(' / ')[0]) ? variant.name.split(' / ')[0] : 'Variant'"
+                                                                            :style="'--swatch-color: url(' + (window.getRebuyColorSwatchUrl(variant.name ? variant.name.split(' / ')[0] : '') || (variant.images && variant.images[0] ? variant.images[0].url + '&width=100&height=100&crop=center' : '')) + ');'"
+                                                                            @click="changeProductImageOnClick($event, variant)"
+                                                                        >
+                                                                            <span class="visually-hidden">{{ (variant.name && variant.name.split(' / ')[0]) ? variant.name.split(' / ')[0] : 'Variant' }}</span>
+                                                                        </label>
+                                                                    </div>
+                                                                </fieldset>
+                                                            </div>
+                                                        </div>
+                                            <select
+                                                v-else
+                                                title="Select product variant"
+                                                id="rebuy-smart-search-results-variant-select"
+                                                class="rebuy-select"
+                                                v-bind:aria-label="'variant of ' + product.name"
+                                                v-model="product.selected_variant_id"
+                                                v-on:change="selectVariant(product)"
+                                            >
+                                                <option
+                                                    v-for="variant in product.variants"
+                                                    v-bind:value="variant.id"
+                                                    v-html="variant.name"
+                                                ></option>
+                                            </select>
+                                        </div>
+
+                                        <!-- Add-to-cart -->
+                                        <div class="rebuy-product-actions" v-if="shouldShowAddToCart(product)">
+                                            <button
+                                                class="rebuy-button rebuy-quick-view__product-cta"
+                                                v-bind:class="{ working: (product.status != 'ready' && product.status != 'selecting') }"
+                                                v-bind:disabled="!(variantAvailable(product.selected_variant)) || (product.status != 'ready' && product.status != 'selecting')"
+                                                v-bind:aria-label="buttonAriaLabel(product)"
+                                                v-on:click="addToCart(product)"
+                                                type="button"
+                                            >
+                                                <span v-html="buttonLabel(product)"></span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div
+                            v-if="!quickViewSearchLoading && products.length === 0 && collections.length === 0"
+                            class="rebuy-quick-view__no-results"
+                        >
+                            <p>No Results For [<span>{{searchTerm}}</span>]</p>
+                        </div>
+                    </div>
+
+                    <section class="rebuy-faq-section gts">
+  <div class="rebuy-faq-header">
+    <h6>FAQs</h6>
+    <a href="https://www.xx-xyathletics.com/pages/faq" class="rebuy-faq-show-all-btn">Show All</a>
+  </div>
+
+  <div class="swiper rebuy-faq-swiper">
+    <div class="swiper-wrapper">
+
+      <div class="swiper-slide">
+        <div class="rebuy-faq-card">
+          <h5>How do I contact customer support?</h5>
+          <p>Need assistance? Reach out to our customer support team via email.</p>
+          <a href="https://www.xx-xyathletics.com/pages/faq" class="rebuy-faq-read-more">Read More</a>
+        </div>
+      </div>
+
+      <div class="swiper-slide">
+        <div class="rebuy-faq-card">
+          <h5>Can I update or cancel my order after it's been placed?</h5>
+          <p>We have a small but dedicated team. We’ll do our best to update your order, but it may not be possible if it’s already processing. We appreciate your support.</p>
+          <a href="https://www.xx-xyathletics.com/pages/faq" class="rebuy-faq-read-more">Read More</a>
+        </div>
+      </div>
+
+      <div class="swiper-slide">
+        <div class="rebuy-faq-card">
+          <h5>Can I apply a discount code after my order has been placed?</h5>
+          <p>Once your order is placed, we’re unable to apply discount codes. Be sure to enter your code before checkout.</p>
+          <a href="https://www.xx-xyathletics.com/pages/faq" class="rebuy-faq-read-more">Read More</a>
+        </div>
+      </div>
+
+      <div class="swiper-slide">
+        <div class="rebuy-faq-card">
+          <h5>How do I make a return or exchange?</h5>
+          <p>Returns and exchanges are accepted within 45 days for U.S. orders. Items must be unused, unwashed, and in original condition. International returns are not supported currently.</p>
+          <a href="https://www.xx-xyathletics.com/pages/faq" class="rebuy-faq-read-more">Read More</a>
+        </div>
+      </div>
+
+      <div class="swiper-slide">
+        <div class="rebuy-faq-card">
+          <h5>How can I make a donation?</h5>
+          <p>Thank you for supporting our mission! Visit our site to make a donation and join the movement.</p>
+          <a href="https://www.xx-xyathletics.com/pages/faq" class="rebuy-faq-read-more">Read More</a>
+        </div>
+      </div>
+
+      <div class="swiper-slide">
+        <div class="rebuy-faq-card">
+          <h5>Can I return or exchange a final sale item?</h5>
+          <p>All final sale items are non-returnable and non-exchangeable. Please review your order carefully before purchasing.</p>
+          <a href="https://www.xx-xyathletics.com/pages/faq" class="rebuy-faq-read-more">Read More</a>
+        </div>
+      </div>
+
+    </div>
+    <div class="swiper-scrollbar"></div>
+  </div>
+</section>
+
+                </div>
+            </div>
+
+            <div v-if="shouldShowPoweredByRebuy()" class="powered-by-rebuy">
+                <a v-bind:href="'https://rebuyengine.com/?shop=' + shop()" target="_blank" rel="noopener">
+                    Powered by Rebuy
+                </a>
+            </div>
+        </div>
+
+        <div class="rebuy-quick-view-flyout__background" v-on:click="closeQuickView">
+            <span></span>
+        </div>
+
+        <div class="rebuy-quick-view-flyout__live-region sr-only" aria-live="polite"></div>
+
+    </div>
+</script>
+
+<script>
+
+  document.addEventListener('DOMContentLoaded', function () {
+  const initRebuyFaqSwiper = () => {
+    try {
+      const el = document.querySelector('.rebuy-faq-swiper');
+
+      if (el && !el.classList.contains('swiper-initialized') && typeof Swiper !== 'undefined') {
+        new Swiper('.rebuy-faq-swiper', {
+          slidesPerView: 1.2,
+          spaceBetween: 16,
+          grabCursor: true,
+          scrollbar: {
+            el: '.rebuy-faq-swiper .swiper-scrollbar',
+            hide: false,
+            draggable: true,
+          },
+          breakpoints: {
+            640: { slidesPerView: 1.5, spaceBetween: 16 },
+            900: { slidesPerView: 2, spaceBetween: 16 },
+            1100: { slidesPerView: 2.3, spaceBetween: 16 },
+          },
+          on: {
+            init: function() {
+              console.log('Rebuy FAQ Swiper initialized successfully');
+            }
+          }
+        });
+      }
+    } catch (error) {
+      console.error('Error initializing Rebuy FAQ Swiper:', error);
+    }
+  };
+
+  const initRebuyColorSwatchSwipers = () => {
+    try {
+      const swatchContainers = document.querySelectorAll('.rebuy-swatch-swiper');
+      
+      swatchContainers.forEach(container => {
+        if (container && !container.classList.contains('swiper-initialized') && typeof Swiper !== 'undefined') {
+          new Swiper(container, {
+            slidesPerView: 'auto',
+            spaceBetween: 2,
+            nested: true,
+            observeParents: true,
+            on: {
+              init: function() {
+                console.log('Rebuy Color Swatch Swiper initialized successfully');
+              }
+            }
+          });
+        }
+      });
+    } catch (error) {
+      console.error('Error initializing Rebuy Color Swatch Swipers:', error);
+    }
+  };
+
+  // Initial initialization
+  setTimeout(() => {
+    initRebuyFaqSwiper();
+    initRebuyColorSwatchSwipers();
+  }, 500);
+
+  // Watch for DOM changes
+  const observer = new MutationObserver((mutations) => {
+    let shouldReinit = false;
+    
+    mutations.forEach((mutation) => {
+      if (mutation.addedNodes.length > 0) {
+        mutation.addedNodes.forEach((node) => {
+          if (node.nodeType === 1) { // Element node
+            if (node.classList && node.classList.contains('rebuy-faq-swiper')) {
+              shouldReinit = true;
+            }
+            if (node.querySelector && node.querySelector('.rebuy-faq-swiper, .rebuy-swatch-swiper')) {
+              shouldReinit = true;
+            }
+          }
+        });
+      }
+    });
+    
+    if (shouldReinit) {
+      setTimeout(() => {
+        initRebuyFaqSwiper();
+        initRebuyColorSwatchSwipers();
+      }, 100);
+    }
+  });
+
+  observer.observe(document.body, { 
+    childList: true, 
+    subtree: true,
+    attributes: false,
+    characterData: false
+  });
+
+  // Also initialize when Rebuy quick view opens
+  document.addEventListener('click', function(e) {
+    if (e.target.closest('[data-rebuy-quick-view]') || e.target.closest('.rebuy-quick-view-trigger')) {
+      setTimeout(() => {
+        initRebuyFaqSwiper();
+        initRebuyColorSwatchSwipers();
+      }, 1000);
+    }
+  });
+});
+
+// Product image click function for color swatches
+window.changeProductImageOnClick = function(event, variant) {
+  if (!event || !variant) return;
+
+  // Walk up from clicked label to find the closest product card
+  const productCard = event.target.closest('[id^="rebuy-quick-view-product-id-"]');
+  if (!productCard) return;
+
+  const productImage = productCard.querySelector('img.rebuy-quick-view_image');
+  if (!productImage) return;
+
+  // Save current src only once per click session
+  if (!productImage.dataset.originalSrc) {
+    productImage.dataset.originalSrc = productImage.src;
+    productImage.dataset.originalSrcset = productImage.srcset;
+  }
+
+  if (variant.images && variant.images[0]) {
+    // Use the same image URL format as Vue.js - just the raw URL without extra parameters
+    const newUrl = variant.images[0].url;
+    productImage.src = newUrl;
+    productImage.srcset = newUrl;
+    console.log('Image changed to:', newUrl);
+  }
+};
+
+// Product image hover functions for color swatches
+window.changeProductImageOnHover = function(event, variant) {
+  if (!event || !variant) return;
+
+  // Walk up from hovered label to find the closest product card
+  const productCard = event.target.closest('[id^="rebuy-quick-view-product-id-"]');
+  if (!productCard) return;
+
+  const productImage = productCard.querySelector('img.rebuy-quick-view_image');
+  if (!productImage) return;
+
+  // Save current src only once per hover session
+  if (!productImage.dataset.originalSrc) {
+    productImage.dataset.originalSrc = productImage.src;
+    productImage.dataset.originalSrcset = productImage.srcset;
+  }
+
+  if (variant.images && variant.images[0]) {
+    const newUrl = variant.images[0].url.split('?')[0] + '?width=600&height=600&crop=center';
+    productImage.src = newUrl;
+    productImage.setAttribute('src', newUrl);
+    productImage.srcset = newUrl;
+  }
+};
+
+window.restoreProductImageOnLeave = function(event) {
+  if (!event) return;
+
+  const productCard = event.target.closest('[id^="rebuy-quick-view-product-id-"]');
+  if (!productCard) return;
+
+  const productImage = productCard.querySelector('img.rebuy-quick-view_image');
+  if (!productImage || !productImage.dataset.originalSrc) return;
+
+  productImage.src = productImage.dataset.originalSrc;
+  productImage.setAttribute('src', productImage.dataset.originalSrc);
+  productImage.srcset = productImage.dataset.originalSrcset || productImage.dataset.originalSrc;
+
+  delete productImage.dataset.originalSrc;
+  delete productImage.dataset.originalSrcset;
+};
+
+// Helper functions for color variants
+window.getColorVariants = function(product) {
+  if (!product || !product.variants) return [];
+  
+  const colorVariants = [];
+  const seenColors = new Set();
+  
+  product.variants.forEach(variant => {
+    if (variant.options && variant.options.length > 0) {
+      const colorValue = variant.options[0];
+      const colorKey = colorValue.toLowerCase();
+      
+      if (!seenColors.has(colorKey)) {
+        seenColors.add(colorKey);
+        colorVariants.push(variant);
+      }
+    }
+  });
+  
+  return colorVariants;
+};
+
+window.getColorValue = function(variant) {
+  if (!variant || !variant.options || variant.options.length === 0) return '';
+  return variant.options[0];
+};
+
+window.getColorSwatchUrl = function(variant) {
+  // Try to get featured image first
+  if (variant.featured_image && variant.featured_image.url) {
+    return variant.featured_image.url;
+  }
+  
+  // Fallback to product image
+  if (variant.product && variant.product.featured_image) {
+    return variant.product.featured_image;
+  }
+  
+  // Return default swatch pattern or empty string
+  return '';
+};
+</script>
+
+{% endraw %}
+

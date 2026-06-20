@@ -1,0 +1,61 @@
+<style>
+  .ctm_app_bg {
+       background-image: url('{{ section.settings.background_image | image_url: width: 2000 }}');
+       background-repeat: no-repeat;
+       background-size: cover;
+       background-color: {{ section.settings.background_color }}
+     }
+</style>
+<div class="pdp_app_block">
+  <div class="xl_container">
+    <div
+      class="ctm_app_bg rounded-24 overflow-hidden {% if section.settings.include_margins %}page-widths{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %} {{ section.settings.extra_class }}"
+      style="background-image: url('{{ section.settings.background_image | image_url: width: 2000 }}');"
+    >
+      {%- for block in section.blocks -%}
+        {% render block %}
+      {%- endfor -%}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "t:sections.apps.name",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "extra_class",
+      "label": "Extra Class"
+    },
+    {
+      "type": "image_picker",
+      "label": "Background Image",
+      "id": "background_image"
+    },
+    {
+      "type": "color",
+      "label": "Background Color",
+      "id": "background_color"
+    },
+    {
+      "type": "checkbox",
+      "id": "include_margins",
+      "default": true,
+      "label": "t:sections.apps.settings.include_margins.label"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "@app"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.apps.presets.name"
+    }
+  ]
+}
+{% endschema %}

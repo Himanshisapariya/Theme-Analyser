@@ -1,0 +1,161 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "settings": {
+        "extra_class": "",
+        "page_title_black": "Risk-Free <br>\n100-Night Rest Test",
+        "breadcrumb_image": "shopify://shop_images/header_content_19.png",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "image_with_text_JQXzMm": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_iXAEDd": {
+          "type": "heading",
+          "settings": {
+            "heading": "Our Guarantee",
+            "heading_size": "h3"
+          }
+        },
+        "text_At9VMQ": {
+          "type": "text",
+          "settings": {
+            "text": "<p>When we say you can try our <a href=\"https://5littlemonkeysbed.com/collections/mattresses-bedding/products/hybrid-mattress-bundle\">kids' mattress</a> 100% risk-free, we mean it! If for ANY reason you or your little one is not completely satisfied with any of our products within 100-days of delivery, you may return it for a full refund. Please email us and we will help arrange to have the products donated to a local charity in your area or we will arrange to have the products picked up at your home.</p>",
+            "text_style": "body"
+          }
+        },
+        "button_BVfFna": {
+          "type": "button",
+          "settings": {
+            "button_label": "Shop Now",
+            "button_link": "shopify://collections/all",
+            "button_style_secondary": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_iXAEDd",
+        "text_At9VMQ",
+        "button_BVfFna"
+      ],
+      "settings": {
+        "extra_class": "ctm_guarantee_block",
+        "image": "shopify://shop_images/image_10.png",
+        "txt_under_img": "",
+        "height": "adapt",
+        "desktop_image_width": "medium",
+        "layout": "image_first",
+        "image_radius": 24,
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "left",
+        "content_layout": "no-overlap",
+        "section_color_scheme": "",
+        "color_scheme": "",
+        "image_behavior": "none",
+        "mobile_content_alignment": "left",
+        "padding_top": 80,
+        "padding_bottom": 80
+      }
+    },
+    "rich_text_WVkn8d": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_xewBiM": {
+          "type": "heading",
+          "settings": {
+            "heading": "Headline Goes Here",
+            "heading_size": "h3"
+          }
+        },
+        "text_qFghEL": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Lorem ipsum dolor sit amet consectetur. Sed phasellus mauris elementum sagittis nulla pulvinar at eget. Dictum ultricies orci aliquam aliquet risus pretium. Posuere ac feugiat rhoncus vitae. Et tincidunt ut dignissim massa in velit risus. Nulla semper lorem eu non enim justo vitae eleifend lectus. Felis id aliquet urna etiam at at quis purus. Viverra varius scelerisque erat eros vel tincidunt. Eu tincidunt erat scelerisque et amet. Donec lectus vel viverra faucibus leo. Morbi vel est nibh volutpat turpis. Vel sodales at magna est lorem. Eu scelerisque amet in ac pulvinar pellentesque facilisi lacinia enim. Mollis platea nulla eget malesuada eu pharetra morbi leo quis.</p>"
+          }
+        },
+        "text_rgRWFA": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Libero diam lectus nibh iaculis quisque orci adipiscing pharetra. Id faucibus libero sit tincidunt dictumst gravida interdum odio. Tortor sed nunc iaculis sed accumsan ullamcorper. Volutpat quis id nulla quis nibh enim duis. Lacus sollicitudin nisi semper condimentum diam. In fringilla duis sit volutpat consequat etiam sagittis diam est. Vitae posuere ac molestie molestie nunc dignissim pretium turpis. Lacus mattis nulla et risus mattis sed scelerisque. Tellus eu integer ante enim volutpat. Ut mattis enim sem malesuada viverra lobortis faucibus. Vestibulum tellus ipsum aliquam et adipiscing sit elementum sit lectus. In suspendisse nibh mi iaculis arcu vestibulum lobortis. Habitant felis gravida praesent bibendum. Erat ut adipiscing consectetur ornare.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_xewBiM",
+        "text_qFghEL",
+        "text_rgRWFA"
+      ],
+      "disabled": true,
+      "settings": {
+        "extra_class": "ctm_freerisk_content",
+        "desktop_content_position": "center",
+        "bg_image": "shopify://shop_images/our_story_BG.png",
+        "content_alignment": "center",
+        "color_scheme": "",
+        "full_width": true,
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "image_with_text_4D8WQH": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_exyCdV": {
+          "type": "heading",
+          "settings": {
+            "heading": "Headline Goes Here",
+            "heading_size": "h3"
+          }
+        },
+        "text_yRCMix": {
+          "type": "text",
+          "settings": {
+            "text": "Lorem ipsum dolor sit amet consectetur. Senectus malesuada feugiat ut interdum. Velit pellentesque quam porttitor quis nunc. Nulla adipiscing cursus ipsum felis tellus luctus venenatis ipsum felis. Porta volutpat mauris sed dignissim pellentesque. Justo velit habitant mauris euismod in sit ipsum sed eu. Semper sit amet tincidunt mi semper. Tellus lectus nunc consectetur massa dui semper tortor fermentum. Vel purus semper vestibulum mattis vel lobortis gravida aliquam.",
+            "text_style": "body"
+          }
+        }
+      },
+      "block_order": [
+        "heading_exyCdV",
+        "text_yRCMix"
+      ],
+      "disabled": true,
+      "settings": {
+        "extra_class": "ctm_freerisk_zizgzag",
+        "image": "shopify://shop_images/image_11.png",
+        "txt_under_img": "",
+        "height": "adapt",
+        "desktop_image_width": "medium",
+        "layout": "text_first",
+        "image_radius": 24,
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "left",
+        "content_layout": "no-overlap",
+        "section_color_scheme": "",
+        "color_scheme": "",
+        "image_behavior": "none",
+        "mobile_content_alignment": "left",
+        "padding_top": 80,
+        "padding_bottom": 80
+      }
+    }
+  },
+  "order": [
+    "main",
+    "image_with_text_JQXzMm",
+    "rich_text_WVkn8d",
+    "image_with_text_4D8WQH"
+  ]
+}

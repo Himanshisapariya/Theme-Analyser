@@ -1,0 +1,288 @@
+{{ 'component-cart.css' | asset_url | stylesheet_tag: preload: true }}
+{{ 'component-totals.css' | asset_url | stylesheet_tag: preload: true }}
+{{ 'component-price.css' | asset_url | stylesheet_tag }}
+{{ 'component-discounts.css' | asset_url | stylesheet_tag: preload: true }}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+<div
+  class="gradient ctm_cart_footer color-{{ section.settings.color_scheme }}{% if cart == empty %} is-empty{% endif %}"
+  id="main-cart-footer"
+  data-id="{{ section.id }}"
+>
+  <div class="page-widths xl_container">
+    <div class="cart__footer isolate section-{{ section.id }}-padding">
+      {%- if settings.show_cart_note -%}
+        <cart-note class="cart__note field">
+          <label for="Cart-note">{{ 'sections.cart.note' | t }}</label>
+          <textarea
+            aria-label="note"
+            class="text-area field__input"
+            name="note"
+            form="cart"
+            id="Cart-note"
+            placeholder="{{ 'sections.cart.note' | t }}"
+          >{{ cart.note }}</textarea>
+        </cart-note>
+      {%- endif -%}
+      <div class="discount-code-container max-w-[700px] !w-full">
+        <h3 class="h3 mb-20">Apply Discount Code</h3>
+        <div class="cart-discount input-wrapper">
+          <div class="flex items-center gap-14 smscreen:flex-col">
+            <div class="field">
+              <input
+                type="text"
+                id="discount_code"
+                name="discount"
+                class="form-control py-16 px-32 w-full"
+                value=""
+                placeholder="Coupon code"
+                form="cart"
+              >
+            </div>
+            <div class="apply-btn-wrapper whitespace-nowrap">
+              <button type="button" class="apply-discount-code aloe_leaf_btn">Apply Coupon</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="cart__blocks">
+        {% for block in section.blocks %}
+          {%- case block.type -%}
+            {%- when '@app' -%}
+              {% render block %}
+            {%- when 'subtotal' -%}
+              <div class="js-contents" {{ block.shopify_attributes }}>
+                <div>
+                  {%- if cart.cart_level_discount_applications.size > 0 -%}
+                    <ul class="discounts list-unstyled" role="list" aria-label="{{ 'customer.order.discount' | t }}">
+                      {%- for discount in cart.cart_level_discount_applications -%}
+                        <li class="discounts__discount discounts__discount--position">
+                          {%- render 'icon-discount' -%}
+                          {{ discount.title }}
+                          (-{{ discount.total_allocated_amount | money }})
+                        </li>
+                      {%- endfor -%}
+                    </ul>
+                  {%- endif -%}
+                </div>
+
+                {% assign compare_at_total = 0 %}
+                {% assign current_total = cart.total_price %}
+
+                {% for item in cart.items %}
+                  {% if item.product.compare_at_price %}
+                    {% assign line_compare_at = item.product.compare_at_price | times: item.quantity %}
+                    {% assign compare_at_total = compare_at_total | plus: line_compare_at %}
+                  {% else %}
+                    {% assign line_current = item.final_price | times: item.quantity %}
+                    {% assign compare_at_total = compare_at_total | plus: line_current %}
+                  {% endif %}
+                {% endfor %}
+
+                {% assign savings = compare_at_total | minus: current_total %}
+
+                <div class="flex flex-col items-start mb-4">
+                  <div class="flex items-center gap-2 ml-auto w-[200px]">
+                    <!-- Current Total -->
+                    <p class="!text-19 !leading-19 !text-bloodstone !font-body font-extrabold mr-auto">
+                      {{ current_total | money }}
+                    </p>
+
+                    {% if savings > 0 %}
+                      <!-- Original Total -->
+                      <p class="!text-16 !leading-16 text-gray-500 line-through">
+                        {{ compare_at_total | money }}
+                      </p>
+                    {% endif %}
+                  </div>
+
+                  {% if savings > 0 %}
+                    <!-- Savings -->
+                    <div class="flex items-center gap-2 ml-auto w-[200px]">
+                      <p class="!text-19 !leading-19 !text-bloodstone !font-body font-extrabold mr-auto">You Saved:</p>
+                      <p class="!text-16 !leading-16 !text-bloodstone font-bold ml-auto">{{ savings | money }}</p>
+                    </div>
+                  {% endif %}
+                </div>
+
+                <!-- SUBTOTAL label & value -->
+                <div class="totals !mt-0 !items-center !mb-28" role="status">
+                  <h3 class="totals__total !text-16 !leading-16 !mt-0 font-bold uppercase !font-body">
+                    {{ 'sections.cart.estimated_total' | t }}
+                  </h3>
+                  <p class="totals__total-value !text-19 !leading-19 !mt-0 !text-bloodstone !font-body font-extrabold">
+                    {{ current_total | money }}
+                  </p>
+                </div>
+
+                <small class="tax-note caption-large rte !hidden">
+                  {%- if cart.taxes_included and shop.shipping_policy.body != blank -%}
+                    {{ 'sections.cart.taxes_included_and_shipping_policy_html' | t: link: shop.shipping_policy.url }}
+                  {%- elsif cart.taxes_included -%}
+                    {{ 'sections.cart.taxes_included_but_shipping_at_checkout' | t }}
+                  {%- elsif shop.shipping_policy.body != blank -%}
+                    {{ 'sections.cart.taxes_and_shipping_policy_at_checkout_html' | t: link: shop.shipping_policy.url }}
+                  {%- else -%}
+                    {{ 'sections.cart.taxes_and_shipping_at_checkout' | t }}
+                  {%- endif -%}
+                </small>
+              </div>
+            {%- else -%}
+              <div class="cart__ctas !mt-40" {{ block.shopify_attributes }}>
+                <noscript>
+                  <button type="submit" class="cart__update-button button button--secondary" form="cart">
+                    {{ 'sections.cart.update' | t }}
+                  </button>
+                </noscript>
+
+                <button
+                  class="aloe_leaf_btn"
+                  type="submit"
+                  id="checkout"
+                  class="cart__checkout-button button"
+                  name="checkout"
+                  {% if cart == empty %}
+                    disabled
+                  {% endif %}
+                  form="cart"
+                >
+                  {{ 'sections.cart.checkout' | t }}
+                </button>
+              </div>
+
+              {%- if additional_checkout_buttons -%}
+                <div class="cart__dynamic-checkout-buttons additional-checkout-buttons">
+                  {{ content_for_additional_checkout_buttons }}
+                </div>
+              {%- endif -%}
+          {%- endcase -%}
+        {% endfor %}
+
+        <div id="cart-errors"></div>
+        <a
+          href="{{ routes.all_products_collection_url }}"
+          class="underlined-link text_scots_pine flex items-center gap-10 justify-center mdscreen4:justify-end !mt-40"
+        >
+          {{- 'general.continue_shopping' | t -}}
+          <span class="mt-4">
+            <svg width="20" height="17" viewBox="0 0 20 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M1 8.49976H19M19 8.49976L11.5 0.999756M19 8.49976L11.5 15.9998" stroke="#62673C" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    function isIE() {
+      const ua = window.navigator.userAgent;
+      const msie = ua.indexOf('MSIE ');
+      const trident = ua.indexOf('Trident/');
+
+      return msie > 0 || trident > 0;
+    }
+
+    if (!isIE()) return;
+    const cartSubmitInput = document.createElement('input');
+    cartSubmitInput.setAttribute('name', 'checkout');
+    cartSubmitInput.setAttribute('type', 'hidden');
+    document.querySelector('#cart').appendChild(cartSubmitInput);
+    document.querySelector('#checkout').addEventListener('click', function (event) {
+      document.querySelector('#cart').submit();
+    });
+  });
+</script>
+<!-- discount code JS (Required) -->
+<script>
+  window.shopUrl = '{{ request.origin }}';
+  const discountSubmitBtn = document.querySelector('.apply-discount-code'),
+    discountCodeInput = document.querySelector('[name="discount"]');
+
+  discountSubmitBtn.addEventListener('click', (event) => {
+    event.preventDefault();
+    const discountCode = discountCodeInput.value;
+
+    event.target.classList.add('loading');
+
+    const xhr = new XMLHttpRequest();
+    xhr.open('POST', shopUrl + '/cart.js');
+    xhr.setRequestHeader('Content-Type', 'application/json');
+    xhr.onreadystatechange = function () {
+      if (xhr.readyState === 4 && xhr.status === 200) {
+        discountSubmitBtn.classList.remove('loading');
+      }
+    };
+    xhr.send(JSON.stringify({ 'attributes[discount]': discountCode }));
+    xhr.addEventListener('error', function (e) {
+      console.log(`${e.type}}`);
+      discountSubmitBtn.classList.remove('loading');
+    });
+  });
+</script>
+
+{% schema %}
+{
+  "name": "t:sections.main-cart-footer.name",
+  "class": "cart__footer-wrapper",
+  "settings": [
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.label",
+      "default": "scheme-1"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 40
+    }
+  ],
+  "blocks": [
+    {
+      "type": "subtotal",
+      "name": "t:sections.main-cart-footer.blocks.subtotal.name",
+      "limit": 1
+    },
+    {
+      "type": "buttons",
+      "name": "t:sections.main-cart-footer.blocks.buttons.name",
+      "limit": 1
+    },
+    {
+      "type": "@app"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,409 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "shogun-helper": {
+      "type": "shogun-helper",
+      "disabled": true,
+      "settings": {}
+    },
+    "pages": {
+      "type": "main-page",
+      "disabled": true,
+      "custom_css": [
+        ".container {padding-top: 50px; padding-bottom: 50px;}",
+        "h1 {text-align: center;}"
+      ],
+      "settings": {
+        "extra_class": ""
+      }
+    },
+    "shogun-optimizer": {
+      "type": "shogun-optimizer",
+      "disabled": true,
+      "settings": {}
+    },
+    "back_to_school_banner_aFEijx": {
+      "type": "back-to-school-banner",
+      "name": "Back To School Banner",
+      "settings": {
+        "extra_class": "hero-back-to-school-banner",
+        "desktop_image": "shopify://shop_images/DESKTOP_BANNER_DIMS_1_04814ed2-b051-40c6-8158-bea599e7bedc.jpg",
+        "mobile_image": "shopify://shop_images/MOBILE_BANNER_DIMS_3b5c06f0-07f9-452e-b578-7b8da29d1b8d.jpg",
+        "heading": "MAKE A STATEMENT THIS SEMESTER",
+        "subheading": "",
+        "button_text": "",
+        "button_url": "",
+        "button_style": "primary"
+      }
+    },
+    "image_card_3WQMVa": {
+      "type": "image-card",
+      "blocks": {
+        "collection_item_6HDrEf": {
+          "type": "collection_item",
+          "settings": {
+            "collection": "performance-xx",
+            "link": "shopify://collections/performance-xx",
+            "custom_image": "shopify://shop_images/4_d9cd9e19-0aa2-4c3c-8cc5-b5286cef483f.jpg",
+            "title": "",
+            "enable_title": false,
+            "subtext": "",
+            "description": "",
+            "button_label": "PERFORMANCE STAPLES"
+          }
+        },
+        "collection_item_Tw4WwF": {
+          "type": "collection_item",
+          "settings": {
+            "collection": "teal",
+            "link": "shopify://collections/teal",
+            "custom_image": "shopify://shop_images/Untitled_design_6b04d583-ab9c-4f7e-85a6-ad4bea6667b3.jpg",
+            "title": "",
+            "enable_title": false,
+            "subtext": "",
+            "description": "",
+            "button_label": "STATEMENT MAKERS"
+          }
+        },
+        "collection_item_fygN8y": {
+          "type": "collection_item",
+          "settings": {
+            "collection": "hoodies-sweatshirts",
+            "link": "shopify://collections/hoodies-sweatshirts",
+            "custom_image": "shopify://shop_images/Untitled_design_e22a90f8-ceb1-40bd-b069-dcebd4d8d236.jpg",
+            "title": "",
+            "enable_title": false,
+            "subtext": "",
+            "description": "",
+            "button_label": "LOUNGE & STUDY MODE FLEECE"
+          }
+        },
+        "collection_item_RxDam9": {
+          "type": "collection_item",
+          "settings": {
+            "collection": "best-sellers-xx",
+            "link": "shopify://collections/best-sellers-xx",
+            "custom_image": "shopify://shop_images/Untitled_design_715bf053-c485-4ffb-89c2-93746809e3fc.jpg",
+            "title": "",
+            "enable_title": false,
+            "subtext": "",
+            "description": "",
+            "button_label": "TOP PICKS FOR WOMEN"
+          }
+        }
+      },
+      "block_order": [
+        "collection_item_6HDrEf",
+        "collection_item_Tw4WwF",
+        "collection_item_fygN8y",
+        "collection_item_RxDam9"
+      ],
+      "name": "Collection Grid",
+      "settings": {
+        "section_extra_class": "back-to-school-women-collection-grid",
+        "enable_full_width": false,
+        "heading": "TRENDING FOR WOMEN",
+        "text_alignment": "left",
+        "text-placement": "below_product",
+        "background_color": "#f7f7f7",
+        "button_label": "SHOP ALL WOMEN’S",
+        "button_link": "https://www.xx-xyathletics.com/collections/womens",
+        "button_style": "primary",
+        "underline_color": "#000000",
+        "desktop_slide": 4,
+        "mobile_slide": 1.5,
+        "top_padding_desktop": 0,
+        "bottom_padding_desktop": 0,
+        "top_padding_mobile": 0,
+        "bottom_padding_mobile": 0,
+        "top_margin_desktop": 30,
+        "bottom_margin_desktop": 30,
+        "top_margin_mobile": 0,
+        "bottom_margin_mobile": 0
+      }
+    },
+    "banner_with_text_kdchHz": {
+      "type": "banner-with-text",
+      "name": "t:sections.banner-with-text.name",
+      "settings": {
+        "extra_class": "back-to-school-xy-style-section back-to-school-fall-main ctm-banner-btn",
+        "spring_banner_class": "ctm-spring-banner",
+        "color_scheme": "light",
+        "image": "shopify://shop_images/PERFORMANCE_FABRICS_070479ab-2169-4db4-bdee-28ca6dfe372a.jpg",
+        "image_mobile": "shopify://shop_images/MOBILE_BANNER_DIMS_a675a5fc-1f79-4582-8538-17d7793fabdc.jpg",
+        "image_size": "adapt",
+        "title": "THIS IS FALL.<br>XX-XY STYLE.",
+        "content_text": "",
+        "caption_class": "",
+        "text_alignment": "right",
+        "content_width": "max",
+        "overlay_enable": false,
+        "overlay_opacity": 10,
+        "button_link": "shopify://collections/womens-back-to-school",
+        "button_label": "SHOP WOMEN'S BACK TO SCHOOL",
+        "button_style": "secondary",
+        "mobile_cta_button_link": "",
+        "mobile_cta_button_label": "",
+        "margin_top": 30,
+        "margin_bottom": 30,
+        "top_margin_mobile": 0,
+        "bottom_margin_mobile": 0,
+        "top_padding_desktop": 0,
+        "bottom_padding_desktop": 0,
+        "top_padding_mobile": 0,
+        "bottom_padding_mobile": 0
+      }
+    },
+    "ctm_tabbing_collection_aRjpXD": {
+      "type": "ctm_tabbing_collection",
+      "blocks": {
+        "collection_bLnVJN": {
+          "type": "collection",
+          "settings": {
+            "collection_ctm": "womens-accessories",
+            "enable_img": false
+          }
+        }
+      },
+      "block_order": [
+        "collection_bLnVJN"
+      ],
+      "name": "Collection Tabs",
+      "settings": {
+        "section_extra_class": "back-to-school-complete-look-women",
+        "heading_ctm": "COMPLETE THE LOOK",
+        "ctm_subtitle": "<a href=\"https://www.xx-xyathletics.com/collections/womens-accessories\">SHOP WOMEN'S ACCESSORIES</a>",
+        "btn_text": "",
+        "btn_link": "",
+        "bottom_btn_text": "",
+        "bottom_btn_link": "",
+        "tab_1": "",
+        "tab_2": "",
+        "desktop_slide": 6,
+        "spring_slider_class": ""
+      }
+    },
+    "pdp_multicolumn_rV7kAd": {
+      "type": "pdp-multicolumn",
+      "blocks": {
+        "column_ngzD46": {
+          "type": "column",
+          "settings": {
+            "column_image": "shopify://shop_images/Untitled_design_08fbfc7c-26c1-4e01-9abc-e67c87a58b2b.jpg",
+            "display_2_images": false,
+            "diff_mobile_img": false,
+            "column_title": "FEARLESS IN FLEECE",
+            "column_desc": "",
+            "button_1": "",
+            "url_1": "",
+            "url_2": "",
+            "button_2": "",
+            "button_extra_class": "",
+            "column_url": "shopify://collections/fearless-fleece"
+          }
+        },
+        "column_WGDNta": {
+          "type": "column",
+          "settings": {
+            "column_image": "shopify://shop_images/Untitled_design_be483b94-2af5-4cc7-8254-7a13b239c6da.jpg",
+            "display_2_images": false,
+            "diff_mobile_img": false,
+            "column_title": "CAMPUS COLORS HATS",
+            "column_desc": "",
+            "button_1": "",
+            "url_1": "",
+            "url_2": "",
+            "button_2": "",
+            "button_extra_class": "",
+            "column_url": "shopify://products/campus-color-cap"
+          }
+        }
+      },
+      "block_order": [
+        "column_ngzD46",
+        "column_WGDNta"
+      ],
+      "name": "PDP Multicolumn",
+      "settings": {
+        "heading": "",
+        "pdp_multicolumn_extra_class": "pdp-multicolumn-main fullscreen-container common-fullscreen-container back-to-school-feature-copy back-to-school-multicolumn"
+      }
+    },
+    "image_card_aPGLbc": {
+      "type": "image-card",
+      "blocks": {
+        "collection_item_99ACrC": {
+          "type": "collection_item",
+          "settings": {
+            "collection": "performance-xy",
+            "link": "shopify://collections/performance-xy",
+            "custom_image": "shopify://shop_images/PDP_DIMS_1_copy_bc20d28a-c0f8-4c3c-b631-64e74768516c.jpg",
+            "title": "",
+            "enable_title": false,
+            "subtext": "",
+            "description": "",
+            "button_label": "PERFORMANCE STAPLES"
+          }
+        },
+        "collection_item_mgD9iw": {
+          "type": "collection_item",
+          "settings": {
+            "collection": "mens-back-to-school",
+            "link": "shopify://collections/mens-back-to-school",
+            "custom_image": "shopify://shop_images/Untitled_design_ffd3faab-a658-472d-af77-84fda362091a.jpg",
+            "title": "",
+            "enable_title": false,
+            "subtext": "",
+            "description": "",
+            "button_label": "FROM CLASS TO THE TRACK"
+          }
+        },
+        "collection_item_3jzJUa": {
+          "type": "collection_item",
+          "settings": {
+            "collection": "hoodies-sweatshirts-xy",
+            "link": "shopify://collections/hoodies-sweatshirts-xy",
+            "custom_image": "shopify://shop_images/Untitled_design_58c920b3-0cb4-40dc-b40a-ee8a8eb367ef.jpg",
+            "title": "",
+            "enable_title": false,
+            "subtext": "",
+            "description": "",
+            "button_label": "RECOVERY MODE FLEECE"
+          }
+        },
+        "collection_item_nagJYr": {
+          "type": "collection_item",
+          "settings": {
+            "collection": "best-sellers-xy",
+            "link": "shopify://collections/best-sellers-xy",
+            "custom_image": "shopify://shop_images/Untitled_design_143b784b-5b04-4b03-85d5-baeb36e15b36.jpg",
+            "title": "",
+            "enable_title": false,
+            "subtext": "",
+            "description": "",
+            "button_label": "TOP PICKS FOR MEN"
+          }
+        }
+      },
+      "block_order": [
+        "collection_item_99ACrC",
+        "collection_item_mgD9iw",
+        "collection_item_3jzJUa",
+        "collection_item_nagJYr"
+      ],
+      "name": "Collection Grid",
+      "settings": {
+        "section_extra_class": "back-to-school-men-collection-grid",
+        "enable_full_width": false,
+        "heading": "TRENDING FOR MEN",
+        "text_alignment": "left",
+        "text-placement": "below_product",
+        "background_color": "#f7f7f7",
+        "button_label": "SHOP ALL MEN'S",
+        "button_link": "https://www.xx-xyathletics.com/collections/mens",
+        "button_style": "primary",
+        "underline_color": "#000000",
+        "desktop_slide": 4,
+        "mobile_slide": 1.5,
+        "top_padding_desktop": 0,
+        "bottom_padding_desktop": 0,
+        "top_padding_mobile": 0,
+        "bottom_padding_mobile": 0,
+        "top_margin_desktop": 30,
+        "bottom_margin_desktop": 30,
+        "top_margin_mobile": 0,
+        "bottom_margin_mobile": 0
+      }
+    },
+    "banner_with_text_D6WzRF": {
+      "type": "banner-with-text",
+      "name": "t:sections.banner-with-text.name",
+      "settings": {
+        "extra_class": "back-to-school-gear-up-banner ctm-banner-btn",
+        "spring_banner_class": "ctm-spring-banner",
+        "color_scheme": "light",
+        "image": "shopify://shop_images/DESKTOP_BANNER_DIMS_1_26b80d05-35c8-4dfe-8d7f-153c1be6c779.jpg",
+        "image_mobile": "shopify://shop_images/14.jpg",
+        "image_size": "adapt",
+        "title": "GEAR UP AND GO",
+        "content_text": "<p>Where Grit Meets Everyday Grind</p>",
+        "caption_class": "",
+        "text_alignment": "center",
+        "content_width": "max",
+        "overlay_enable": false,
+        "overlay_opacity": 10,
+        "button_link": "shopify://collections/mens-back-to-school",
+        "button_label": "SHOP MEN'S BACK TO SCHOOL",
+        "button_style": "secondary",
+        "mobile_cta_button_link": "",
+        "mobile_cta_button_label": "",
+        "margin_top": 30,
+        "margin_bottom": 30,
+        "top_margin_mobile": 0,
+        "bottom_margin_mobile": 0,
+        "top_padding_desktop": 0,
+        "bottom_padding_desktop": 0,
+        "top_padding_mobile": 0,
+        "bottom_padding_mobile": 0
+      }
+    },
+    "ctm_tabbing_collection_da7DBF": {
+      "type": "ctm_tabbing_collection",
+      "blocks": {
+        "collection_FJKpdn": {
+          "type": "collection",
+          "settings": {
+            "collection_ctm": "accessories-xy",
+            "enable_img": false
+          }
+        }
+      },
+      "block_order": [
+        "collection_FJKpdn"
+      ],
+      "name": "Collection Tabs",
+      "settings": {
+        "section_extra_class": "back-to-school-trending-collection-men",
+        "heading_ctm": "COMPLETE THE LOOK",
+        "ctm_subtitle": "<a href=\"https://www.xx-xyathletics.com/collections/accessories-xy\">SHOP MEN'S ACCESSORIES</a>",
+        "btn_text": "",
+        "btn_link": "",
+        "bottom_btn_text": "",
+        "bottom_btn_link": "",
+        "tab_1": "",
+        "tab_2": "",
+        "desktop_slide": 6,
+        "spring_slider_class": ""
+      }
+    },
+    "custom_liquid_YTtdpX": {
+      "type": "custom-liquid",
+      "name": "t:sections.custom-liquid.presets.name",
+      "settings": {
+        "custom_liquid": ""
+      }
+    }
+  },
+  "order": [
+    "shogun-helper",
+    "pages",
+    "shogun-optimizer",
+    "back_to_school_banner_aFEijx",
+    "image_card_3WQMVa",
+    "banner_with_text_kdchHz",
+    "ctm_tabbing_collection_aRjpXD",
+    "pdp_multicolumn_rV7kAd",
+    "image_card_aPGLbc",
+    "banner_with_text_D6WzRF",
+    "ctm_tabbing_collection_da7DBF",
+    "custom_liquid_YTtdpX"
+  ]
+}

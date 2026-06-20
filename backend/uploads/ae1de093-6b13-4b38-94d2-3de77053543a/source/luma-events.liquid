@@ -1,0 +1,592 @@
+<div class="events-grid {{ section.settings.extra_class }}">
+  {% if section.settings.event_heading != blank %}
+    <div class="events-heading">
+      <h3 class="event-heading">{{ section.settings.event_heading }}</h3>
+    </div>
+  {% endif %}
+  {% if section.settings.show_filters == true %}
+    <div class="events-controls">
+      <div class="events-filters">
+        <div class="custom-dropdown">
+          <button class="dropdown-btn">
+            <span class="dropdown-label">All Events</span>
+            <span class="dropdown-arrow">▼</span>
+          </button>
+          <ul class="dropdown-menu">
+            <li data-value="all">All Events</li>
+            <li data-value="running">Running</li>
+            <li data-value="fitness">Fitness Classes</li>
+            <li data-value="panels">Community Panels</li>
+            <li data-value="volunteer">Volunteer Events</li>
+            <li data-value="popups">Pop-Ups</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="events-search">
+        <input type="text" id="eventSearch" placeholder="Search Events" class="event-search-input">
+        <label for="eventSearch" class="search-label">Search</label>
+      </div>
+    </div>
+  {% endif %}
+
+  {% if section.blocks.size >= 1 %}
+    <div class="events-grid__wrapper">
+      {% for block in section.blocks %}
+        <div
+          class="event-card"
+          data-title="{{ block.settings.event_title | downcase }}"
+          data-location="{{ block.settings.event_location | downcase }}"
+          data-date="{{ block.settings.event_date | downcase }}"
+          data-category="{{ block.settings.event_category }}"
+        >
+          {% if block.settings.event_image != blank %}
+            <div class="event-card__image-wrapper">
+              <img
+                src="{{ block.settings.event_image | image_url: width: 600 }}"
+                alt="{{ block.settings.event_title }}"
+                class="event-card__image"
+                height="auto"
+                width="auto"
+              >
+              {% if block.settings.event_date != blank %}
+                <span class="event-card__date">
+                  {{ block.settings.event_date }}
+                </span>
+              {% endif %}
+            </div>
+          {% endif %}
+
+          <div class="event-card__details">
+            {% if block.settings.event_title != blank %}
+              <h3 class="event-card__title">{{ block.settings.event_title }}</h3>
+            {% endif %}
+
+            {% if block.settings.event_location != blank %}
+              <p class="event-card__location">{{ block.settings.event_location }}</p>
+            {% endif %}
+
+            {% if block.settings.event_time != blank %}
+              <p class="event-card__time">{{ block.settings.event_time }}</p>
+            {% endif %}
+
+            {% if block.settings.button_label != blank %}
+              {% if block.settings.disable_button %}
+                <a
+                  href="{{ block.settings.event_link }}"
+                  class="{{ section.settings.button_style }} event-button disabled"
+                >
+                  {{ block.settings.button_label -}}
+                </a>
+              {% else %}
+                <a href="{{ block.settings.event_link }}" class="{{ section.settings.button_style }} event-button">
+                  {{ block.settings.button_label -}}
+                </a>
+              {% endif %}
+            {% endif %}
+          </div>
+        </div>
+      {% endfor %}
+
+      <div id="noEventsMessage" style="display:none;">
+        <h4>No events.</h4>
+      </div>
+    </div>
+  {% else %}
+    <div class="nocurrentevents">
+      <h4>No events on the calendar (yet).</h4>
+      <p>Rest days are part of training. Stay tuned — our next event will be worth the wait.</p>
+    </div>
+  {% endif %}
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const allSections = document.querySelectorAll('.events-grid');
+
+    // Only use first section controls as global
+    const firstSection = allSections[0];
+    if (!firstSection) return;
+
+    const searchInput = firstSection.querySelector('.event-search-input');
+    const dropdown = firstSection.querySelector('.custom-dropdown');
+    const btn = dropdown.querySelector('.dropdown-btn');
+    const menu = dropdown.querySelector('.dropdown-menu');
+    const options = menu.querySelectorAll('li');
+    const label = btn.querySelector('.dropdown-label');
+    const arrow = btn.querySelector('.dropdown-arrow');
+
+    // All cards and messages from all sections
+    const allCards = document.querySelectorAll('.event-card');
+    const allNoEventsMessages = document.querySelectorAll('#noEventsMessage');
+
+    let selectedCategory = 'all';
+    let dropdownOpen = false;
+
+    // Toggle dropdown
+    btn.addEventListener('click', function (e) {
+      e.stopPropagation();
+      dropdownOpen = !dropdownOpen;
+      menu.style.display = dropdownOpen ? 'block' : 'none';
+      arrow.textContent = dropdownOpen ? '▲' : '▼';
+    });
+
+    // Select option
+    options.forEach((option) => {
+      option.addEventListener('click', function (e) {
+        e.stopPropagation();
+        selectedCategory = option.dataset.value;
+        label.textContent = option.textContent;
+        dropdownOpen = false;
+        menu.style.display = 'none';
+        arrow.textContent = '▼';
+        filterEvents();
+      });
+    });
+
+    // Close dropdown when clicking outside
+    document.addEventListener('click', function (e) {
+      if (!dropdown.contains(e.target)) {
+        dropdownOpen = false;
+        menu.style.display = 'none';
+        arrow.textContent = '▼';
+      }
+    });
+
+    // Filtering logic
+    function filterEvents() {
+      const searchText = searchInput.value.toLowerCase();
+      let anyVisible = false;
+
+      allCards.forEach((card) => {
+        const title = card.dataset.title || '';
+        const location = card.dataset.location || '';
+        const date = card.dataset.date || '';
+        const category = card.dataset.category || '';
+
+        const matchesSearch = title.includes(searchText) || location.includes(searchText) || date.includes(searchText);
+
+        const matchesCategory = selectedCategory === 'all' || category === selectedCategory;
+
+        const isVisible = matchesSearch && matchesCategory;
+
+        card.style.display = isVisible ? 'block' : 'none';
+        if (isVisible) anyVisible = true;
+      });
+
+      allNoEventsMessages.forEach((msg) => {
+        msg.style.display = anyVisible ? 'none' : 'block';
+      });
+    }
+
+    searchInput.addEventListener('input', filterEvents);
+    filterEvents();
+  });
+</script>
+
+<style>
+  .custom-dropdown .dropdown-menu {
+    display: none;
+  }
+
+  #noEventsMessage,
+  .nocurrentevents {
+    grid-column: 1 / -1;
+    text-align: center;
+    margin: 2rem auto;
+  }
+
+  .nocurrentevents h4 {
+    margin-bottom: 0 !important;
+  }
+
+  .nocurrentevents p {
+    margin-top: 5px !important;
+  }
+  .community-past-events {
+    padding-top: 0 !important;
+  }
+
+  .dropdown-label,
+  .dropdown-arrow {
+    color: #2f484c;
+  }
+
+  @media (max-width: 768px) {
+    .events-heading {
+      justify-content: center;
+      align-items: center;
+      display: flex;
+    }
+  }
+
+  .events-grid {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 3rem 2.5rem;
+    border-top: 1px solid #f7f7f7;
+  }
+
+  @media (min-width: 1950px) {
+    .events-grid {
+      max-width: 1500px;
+    }
+    .event-card__image {
+      height: 325px !important;
+    }
+    .events-grid__wrapper {
+      gap: 3rem !important;
+    }
+  }
+
+  .events-grid__wrapper {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 2rem;
+  }
+
+  @media (min-width: 768px) and (max-width: 1024px) {
+    .events-grid__wrapper {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .events-grid {
+      padding: 3rem 5rem;
+    }
+  }
+
+  @media (min-width: 1025px) {
+    .events-grid__wrapper {
+      grid-template-columns: repeat(3, 1fr);
+      border-top: 0.1rem solid rgb(var(--color-border-input));
+      padding-top: 20px;
+    }
+  }
+
+  .event-card {
+    position: relative;
+  }
+
+  .event-card__image-wrapper {
+    position: relative;
+  }
+
+  .event-card__image {
+    width: 100%;
+    height: 230px;
+    object-fit: cover;
+    border-radius: 6px;
+    object-position: top;
+  }
+
+  @media (min-width: 768px) {
+    .event-card__image {
+      height: 250px;
+    }
+  }
+
+  .event-card__date {
+    opacity: 0.6;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: #fff;
+    color: #000;
+    font-weight: 600;
+    font-size: 14px;
+    padding: 4px 10px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+  }
+
+  .event-card__details {
+    margin-top: 1rem;
+  }
+
+  .event-card__title {
+    font-size: 1.17em;
+    margin-bottom: 0 !important;
+  }
+
+  @media (min-width: 768px) and (max-width: 1439px) {
+    .event-card__title {
+      font-size: 2.2rem;
+    }
+  }
+
+  @media (min-width: 1440px) {
+    .event-card__title {
+      font-size: 24px;
+    }
+  }
+
+  .event-card__location,
+  .event-card__time {
+    margin: 0;
+  }
+
+  .event-card__location {
+    margin-bottom: 10px;
+  }
+
+  @media (max-width: 575px) {
+    .event-card__location {
+      font-size: 13px;
+    }
+    .event-card__location {
+      margin-bottom: 8px;
+    }
+    .nocurrentevents {
+      margin: 4rem 0 !important;
+    }
+    .community-past-events h3 {
+      margin-top: 0 !important;
+    }
+  }
+
+  @media (min-width: 576px) {
+    .event-card__location {
+      font-size: 18px;
+    }
+  }
+
+  .event-card__button {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 8px 24px;
+    background: #000;
+    color: #fff;
+    font-size: 14px;
+    text-decoration: none;
+    border-radius: 360px;
+    transition: background 0.3s ease;
+  }
+
+  .event-card__button:hover {
+    background: #333;
+  }
+
+  .event-button {
+    min-height: 100% !important;
+    margin-top: 10px;
+    font-size: 15px;
+  }
+
+  .events-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    gap: 1rem;
+  }
+
+  .events-filters {
+    flex: 1;
+  }
+
+  .filter-dropdown {
+    border-radius: 5px;
+    padding: 10px;
+    background-color: white;
+    color: #2f484c;
+  }
+
+  .events-search {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .search-label {
+    color: #2f484c !important;
+  }
+
+  .event-search-input {
+    border-color: light-dark(rgb(118, 118, 118), rgb(133, 133, 133)) !important;
+    width: 200px;
+    padding: 10px;
+    border-radius: 5px;
+  }
+
+  @media (max-width: 575px) {
+    .event-search-input {
+      width: 100%;
+    }
+    .search-label {
+      display: none;
+    }
+  }
+
+  .event-search-input:focus,
+  .filter-dropdown:focus {
+    outline: none;
+    border-color: light-dark(rgb(118, 118, 118), rgb(133, 133, 133)) !important;
+  }
+
+  .custom-dropdown {
+    position: relative;
+    display: inline-block;
+    width: 200px;
+  }
+
+  .dropdown-btn {
+    padding: 10px;
+    border: 1px solid #2a2a2a;
+    border-radius: 4px;
+    background: #fff;
+    text-align: left;
+    cursor: pointer;
+  }
+
+  .dropdown-menu {
+    position: absolute;
+    padding: 0;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    border: 1px solid #2a2a2a;
+    border-radius: 4px;
+    background: #fff;
+    z-index: 9999;
+  }
+
+  .dropdown-menu li {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+  }
+
+  .dropdown-menu li:hover {
+    background: #2f484c;
+    color: #fff;
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Events Grid",
+  "settings": [
+    {
+      "type": "text",
+      "id": "event_heading",
+      "label": "Heading"
+    },
+    {
+      "type": "text",
+      "id": "extra_class",
+      "label": "Extra Class"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_filters",
+      "label": "Show Filters & Search",
+      "default": true
+    },
+    {
+      "type": "select",
+      "id": "button_style",
+      "options": [
+        {
+          "value": "button--ctm_global_button",
+          "label": "Global Button"
+        },
+        {
+          "value": "button--ctm_wb_global_button",
+          "label": "Global Button (White Background)"
+        },
+        {
+          "value": "ctm-custom-button",
+          "label": "Custom Button"
+        },
+        {
+          "value": "ctm-custom-outline-button",
+          "label": "Outline Button"
+        },
+        {
+          "value": "button button--primary",
+          "label": "t:sections.all.button.button_style.options__1.label"
+        },
+        {
+          "value": "button button--secondary",
+          "label": "t:sections.all.button.button_style.options__2.label"
+        },
+        {
+          "value": "button button--tertiary",
+          "label": "t:sections.all.button.button_style.options__3.label"
+        }
+      ],
+      "default": "button button--primary",
+      "label": "t:sections.all.button.button_style.label"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "event",
+      "name": "Event",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "event_image",
+          "label": "Event Image"
+        },
+        {
+          "type": "text",
+          "id": "event_date",
+          "label": "Event Date (e.g. Oct 4)"
+        },
+        {
+          "type": "text",
+          "id": "event_title",
+          "label": "Event Title"
+        },
+        {
+          "type": "text",
+          "id": "event_location",
+          "label": "Event Location"
+        },
+        {
+          "type": "text",
+          "id": "event_time",
+          "label": "Event Time"
+        },
+        {
+          "type": "url",
+          "id": "event_link",
+          "label": "RSVP Link"
+        },
+        {
+          "type": "text",
+          "id": "button_label",
+          "label": "Button Label",
+          "default": "RSVP HERE"
+        },
+        {
+          "type": "checkbox",
+          "id": "disable_button",
+          "label": "Disable Event Button",
+          "default": false
+        },
+        {
+          "type": "select",
+          "id": "event_category",
+          "label": "Event Category",
+          "options": [
+            { "value": "running", "label": "Running" },
+            { "value": "fitness", "label": "Fitness Classes" },
+            { "value": "panels", "label": "Community Panels" },
+            { "value": "volunteer", "label": "Volunteer Events" },
+            { "value": "popups", "label": "Pop-Ups" }
+          ],
+          "default": "running"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Events Grid"
+    }
+  ]
+}
+{% endschema %}

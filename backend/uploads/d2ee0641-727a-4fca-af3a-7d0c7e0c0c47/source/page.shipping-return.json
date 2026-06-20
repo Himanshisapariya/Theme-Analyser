@@ -1,0 +1,31 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "settings": {
+        "extra_class": "",
+        "page_title_black": "",
+        "breadcrumb_image": "shopify:\/\/shop_images\/header_content_20.png",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "shipping_return_Xe77Uc": {
+      "type": "shipping-return",
+      "settings": {
+        "extra_class": "ctm_shippingreturn_block",
+        "main_img": "shopify:\/\/shop_images\/image_9.png",
+        "headline": "Questions About Your Return?",
+        "desc": "Returning your 5 Little Monkeys Sleep System or Backup Bundle is simple, easy, and always free within the 48 contiguous United States. To start the process, reach out to our returns department.",
+        "call_img": "shopify:\/\/shop_images\/Vector_390f9bd5-518a-4275-9c3e-e7fead4b2786.png",
+        "call_heading": "Call Us -",
+        "mobile_number": "844-325-5555",
+        "call_desc": "",
+        "mail_img": "shopify:\/\/shop_images\/Vector.png",
+        "mail_heading": "Email Us –",
+        "email": "info@5littlemonkeysbed.com"
+      }
+    }
+  },
+  "order": ["main", "shipping_return_Xe77Uc"]
+}

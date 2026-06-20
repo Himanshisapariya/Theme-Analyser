@@ -1,0 +1,97 @@
+
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    var product = {
+      id: '{{ product.id }}',
+      title: '{{ product.title }}',
+      price: '{{ product.price | money }}',
+      url: '{{ product.url }}',
+      image: '{{ product.featured_image | img_url: '300x' }}'
+    };
+
+    var recentlyViewed = JSON.parse(localStorage.getItem('recentlyViewed')) || [];
+    recentlyViewed = recentlyViewed.filter(function (item) {
+      return item.id !== product.id;
+    });
+
+    recentlyViewed.unshift(product);
+    if (recentlyViewed.length > {{ section.settings.products_limit }}) {
+      recentlyViewed.pop();
+    }
+    const recentlyViewTitle = document.querySelectorAll(".recently-viewed-title");
+    if (recentlyViewed.length < 1){
+      recentlyViewTitle.style.display = "none"
+    }
+    localStorage.setItem('recentlyViewed', JSON.stringify(recentlyViewed));
+
+    var container = document.querySelector('.recently-viewed-swiper .swiper-wrapper');
+    if (container) {
+      container.innerHTML = recentlyViewed.map(function (item) {
+        return `
+          <div class="swiper-slide recently-viewed-item collection-product-card product-recommendations__product quickview--hover">
+            <div class="card-wrapper gts">
+              <div class="card card--product">
+                <div class="card__inner full-unstyled-link">
+                  <div class="recently-viewed-image media media--transparent media--portrait media--hover-effect">
+                    <a href="${item.url}">
+                      <img src="${item.image}" alt="${item.title}" />
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <div class="card-information">
+                <div class="recently-viewed-info card-information__wrapper">
+                  <div class="title_with-reviews">
+                    <div class="recently-viewed-title card__title">
+                        <a style="text-transform: none; color: rgba(47, 72, 76, 1) !important;" class="full-unstyled-link js-color-swatches-link card_product_title">${item.title}</a>
+                    </div>
+                  </div>
+                  <div class="card-title_info recently-viewed-price">
+                    <div class="price mini-price">
+                      <div class="price__regular">
+                        <span class="price-item price-item--regular">${item.price}</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div> 
+        `;
+      }).join('');
+
+      const deskSlidesPerView = {{ section.settings.desk_slides_per_view |  default: 4 }};
+
+      new Swiper(".recently-viewed-swiper", {
+        loop: false,
+        spaceBetween: 10,
+        scrollbar: {
+          el: '.swiper-scrollbar',
+          draggable: true,
+        },
+        navigation: {
+          nextEl: '.swiper-button-next__recent',
+          prevEl: '.swiper-button-prev__recent',
+        },
+        breakpoints: {
+          0: {
+            slidesPerView: 1.3,
+          },
+          375: {
+            slidesPerView: 2.3,
+          },
+          576: {
+            slidesPerView: 2.3,
+          },
+          990: {
+            slidesPerView: 3.3,
+          },
+          1280: {
+            slidesPerView: deskSlidesPerView,
+          },
+        },
+      });
+    }
+  });
+</script>

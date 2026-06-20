@@ -1,0 +1,380 @@
+<style>
+  .ctm_faq_bg_img {
+    background-image: url('{{ page.metafields.faq-bg.acf }}');
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  .faq_question.active .icon-shape.active svg path:last-child {
+    display: none;
+  }
+  .faq_question.active .icon-shape.active svg path {
+    stroke: #62673c;
+  }
+  .filter-dropdown ul {
+    list-style-type: none;
+  }
+</style>
+
+{% liquid
+  assign head-1 = page.metafields['head-1'].acf
+  assign q1 = page.metafields['product-faq-q'].acf
+  assign a1 = page.metafields['product-faq-a'].acf
+
+  assign head-2 = page.metafields['head-2'].acf
+  assign q2 = page.metafields['shipping-q'].acf
+  assign a2 = page.metafields['shipping-a'].acf
+
+  assign head-3 = page.metafields['head-3'].acf
+  assign q3 = page.metafields['health-q'].acf
+  assign a3 = page.metafields['health-a'].acf
+%}
+
+{% assign main_entries = '' %}
+
+<div class="faq_main_section ctm_pdp_faq_block pb-55">
+  <div class="xl_container">
+    <div class="ctm_faq_filtegrp flex flex-wrap items-center gap-20 justify-between mb-55 mdscreen5:flex-col">
+      {% if section.settings.search_bar_display != true %}
+        <div class="faq_search w-full mdscreen4:max-w-[303px]">
+          <div class="field px-[33px] py-[18px] flex items-center gap-[11px]">
+            <svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <g clip-path="url(#clip0_8216_10313)">
+                  <path d="M13 13.75L19 19.75M8 15.75C4.13401 15.75 1 12.616 1 8.75C1 4.88401 4.13401 1.75 8 1.75C11.866 1.75 15 4.88401 15 8.75C15 12.616 11.866 15.75 8 15.75Z" stroke="#62673C" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+              </g>
+              <defs>
+                  <clipPath id="clip0_8216_10313">
+                      <rect width="20" height="20" fill="white" transform="translate(0 0.75)"/>
+                  </clipPath>
+              </defs>
+            </svg>
+            <input
+              class="focus-visible:outline-none"
+              type="text"
+              id="faqSearchInput"
+              placeholder="Search..."
+              aria-label="search"
+            >
+          </div>
+        </div>
+      {% endif %}
+      <div class="filter-dropdown">
+        <label>Filter By </label>
+        <ul id="faq-filter">
+          <li data-category="all">All</li>
+          <li data-category="ctm_faq_head_1">{{ head-1 }}</li>
+          <li data-category="ctm_faq_head_2">{{ head-2 }}</li>
+          <li data-category="ctm_faq_head_3">{{ head-3 }}</li>
+        </ul>
+      </div>
+    </div>
+
+    <div
+      id="{{ section.settings.extra_class }}"
+      class="faq_main_container max-w-full mdscreen2:m-auto px-0 flex flex-col gap-55"
+    >
+      <div class="ctm_faq_head_1 ctm_faq_bg_img py-30 desktop:py-55 rounded-24 overflow-hidden">
+        <div class="max-w-[1000px] midlarge_desktop:max-w-[1512px] mx-auto px-15">
+          <div class="faqblock_title text-center pb-40 border-b-1 border-solid border-warm_neutral">
+            <h3 id="ctm_head_faq_1">{{ head-1 }}</h3>
+          </div>
+          {%- for j in (0..page.metafields['product-faq-q'].acf.size) -%}
+            {% if page.metafields['product-faq-q'].acf[j] != blank %}
+              {% capture entry %}
+                {
+                  "@type": "Question",
+                  "name": "{{ q1[j] }}",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "{{ a1[j] | strip_html  }}"
+                  }
+                },
+              {% endcapture %}
+              {% assign main_entries = main_entries | append: entry %}
+              <div class="faq_container">
+                <div class="faq_question border-b-1 border-solid border-warm_neutral py-20 last:border-b-0 flex items-center justify-between {% if forloop.first and section.settings.first_accordion_open %}open{% endif %}">
+                  <div class="faq_question-text pr-10">
+                    <h4>{{ q1[j] }}</h4>
+                  </div>
+                  <div class="icon">
+                    <div class="icon-shape">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <path class="vertical-line" d="M20.4853 12.0009H3.51472" stroke="#62673C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M12 3.51562V20.4862" stroke="#62673C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+                <div class="answercont max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
+                  <div class="answer py-20 border-b-1 border-solid border-warm_neutral px-28 bg-cream_washed">
+                    {{ a1[j] }}
+                  </div>
+                </div>
+              </div>
+            {% endif %}
+          {%- endfor -%}
+        </div>
+      </div>
+
+      <div class="ctm_faq_head_2 ctm_faq_bg_img py-30 desktop:py-55 rounded-24 overflow-hidden">
+        <div class="max-w-[1000px] midlarge_desktop:max-w-[1512px] mx-auto px-15">
+          <div class="faqblock_title text-center pb-40 border-b-1 border-solid border-warm_neutral">
+            <h3 id="ctm_head_faq_2">{{ head-2 }}</h3>
+          </div>
+          {%- for j in (0..page.metafields['shipping-q'].acf.size) -%}
+            {% if page.metafields['shipping-q'].acf[j] != blank %}
+              {% capture entry %}
+                {
+                  "@type": "Question",
+                  "name": "{{ q2[j] }}",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "{{ a2[j] | strip_html  }}"
+                  }
+                },
+              {% endcapture %}
+              {% assign main_entries = main_entries | append: entry %}
+              <div class="faq_container">
+                <div class="faq_question border-b-1 border-solid border-warm_neutral py-20 last:border-b-0 flex items-center justify-between {% if forloop.first and section.settings.first_accordion_open %}open{% endif %}">
+                  <div class="faq_question-text pr-10">
+                    <h4>{{ q2[j] }}</h4>
+                  </div>
+                  <div class="icon">
+                    <div class="icon-shape">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <path class="vertical-line" d="M20.4853 12.0009H3.51472" stroke="#62673C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M12 3.51562V20.4862" stroke="#62673C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+                <div class="answercont max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
+                  <div class="answer py-20 border-b-1 border-solid border-warm_neutral px-28 bg-cream_washed">
+                    {{ a2[j] }}
+                  </div>
+                </div>
+              </div>
+            {% endif %}
+          {%- endfor -%}
+        </div>
+      </div>
+
+      <div class="ctm_faq_head_3 ctm_faq_bg_img py-30 desktop:py-55 rounded-24 overflow-hidden">
+        <div class="max-w-[1000px] midlarge_desktop:max-w-[1512px] mx-auto px-15">
+          <div class="faqblock_title text-center pb-40 border-b-1 border-solid border-warm_neutral">
+            <h3 id="ctm_head_faq_3">{{ head-3 }}</h3>
+          </div>
+          {%- for j in (0..page.metafields['health-q'].acf.size) -%}
+            {% if page.metafields['health-q'].acf[j] != blank %}
+              {% capture entry %}
+                {
+                  "@type": "Question",
+                  "name": "{{ q3[j] }}",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "{{ a3[j] | strip_html }}"
+                  }
+                },
+              {% endcapture %}
+              {% assign main_entries = main_entries | append: entry %}
+              <div class="faq_container">
+                <div class="faq_question border-b-1 border-solid border-warm_neutral py-20 last:border-b-0 flex items-center justify-between {% if forloop.first and section.settings.first_accordion_open %}open{% endif %}">
+                  <div class="faq_question-text pr-10">
+                    <h4>{{ q3[j] }}</h4>
+                  </div>
+                  <div class="icon">
+                    <div class="icon-shape">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <path class="vertical-line" d="M20.4853 12.0009H3.51472" stroke="#62673C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M12 3.51562V20.4862" stroke="#62673C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+                <div class="answercont max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
+                  <div class="answer py-20 border-b-1 border-solid border-warm_neutral px-28 bg-cream_washed">
+                    {{ a3[j] }}
+                  </div>
+                </div>
+              </div>
+            {% endif %}
+          {%- endfor -%}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% if request.page_type == 'page' and page.handle == 'faq' %}
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {{ main_entries |  remove_last: "," }}
+      ]
+    }
+  </script>
+{% endif %}
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    // Get the ul element with id "faq-filter"
+    var filterList = document.getElementById('faq-filter');
+
+    // Get all li elements inside the ul with id "faq-filter"
+    var filterItems = filterList.querySelectorAll('li');
+
+    // Attach click event listener to each li element
+    filterItems.forEach(function (item) {
+      item.addEventListener('click', function () {
+        // Remove active class from all li elements
+        filterItems.forEach(function (item) {
+          item.classList.remove('active');
+        });
+
+        // Add active class to the clicked li element
+        this.classList.add('active');
+
+        // Remove active class from the ul element
+        filterList.classList.remove('active');
+      });
+    });
+  });
+
+  // Function to handle accordion behavior within each FAQ section
+  function handleAccordion(container) {
+    const faqContainers = container.querySelectorAll('.faq_container');
+
+    faqContainers.forEach(function (faqContainer, index) {
+      const faqQuestion = faqContainer.querySelector('.faq_question');
+      const answerCont = faqContainer.querySelector('.answercont');
+
+      // Check if it's the first FAQ item in each main FAQ div
+      const isFirstFAQ = index === 0;
+
+      // Open the first FAQ item by default in each main FAQ div
+      if (isFirstFAQ) {
+        faqContainer.classList.add('open');
+        answerCont.style.maxHeight = answerCont.scrollHeight + 'px';
+      }
+
+      faqQuestion.addEventListener('click', function () {
+        if (!faqContainer.classList.contains('open')) {
+          // Close all open FAQ items across all FAQ sections
+          document.querySelectorAll('.faq_container.open').forEach(function (openContainer) {
+            openContainer.classList.remove('open');
+            openContainer.querySelector('.answercont').style.maxHeight = null;
+          });
+
+          // Open the clicked FAQ item
+          faqContainer.classList.add('open');
+          answerCont.style.maxHeight = answerCont.scrollHeight + 'px';
+        } else {
+          // Close the clicked FAQ item
+          faqContainer.classList.remove('open');
+          answerCont.style.maxHeight = null;
+        }
+      });
+    });
+  }
+
+  // Function to handle search input
+  function searchFAQ() {
+    const input = document.getElementById('faqSearchInput');
+    const filter = input.value.toUpperCase();
+
+    document.querySelectorAll('.faq_main_container > div').forEach(function (container) {
+      let hasVisibleContent = false;
+      const faqContainers = container.querySelectorAll('.faq_container');
+
+      faqContainers.forEach(function (faqContainer) {
+        const faqQuestion = faqContainer.querySelector('h4').textContent.toUpperCase();
+        const faqAnswer = faqContainer.querySelector('.answer').textContent.toUpperCase();
+        const display = faqQuestion.includes(filter) || faqAnswer.includes(filter) ? '' : 'none';
+        faqContainer.style.display = display;
+        if (display !== 'none') hasVisibleContent = true;
+      });
+
+      container.style.display = hasVisibleContent ? '' : 'none';
+    });
+  }
+
+  // Event listener for search input
+  document.getElementById('faqSearchInput').addEventListener('keyup', searchFAQ);
+
+  // Drop down
+  document.addEventListener('DOMContentLoaded', function () {
+    const categoryList = document.getElementById('faq-filter');
+    const label = document.querySelector('.filter-dropdown label');
+    const filterDropdown = document.querySelector('.filter-dropdown');
+
+    function toggleCtmBtnClass() {
+      filterDropdown.classList.toggle('ctm_btn');
+    }
+
+    categoryList.addEventListener('click', function (event) {
+      const selectedListItem = event.target.closest('li');
+      if (!selectedListItem) return;
+
+      categoryList.querySelectorAll('li').forEach(function (item) {
+        item.classList.remove('active');
+      });
+      selectedListItem.classList.add('active');
+
+      const selectedCategory = selectedListItem.getAttribute('data-category');
+      label.textContent = selectedListItem.textContent;
+
+      document.querySelectorAll('.faq_main_container > div').forEach(function (category) {
+        category.style.display =
+          selectedCategory === 'all' || category.classList.contains(selectedCategory) ? 'block' : 'none';
+      });
+
+      toggleCtmBtnClass();
+    });
+
+    label.addEventListener('click', function () {
+      categoryList.classList.toggle('active');
+      toggleCtmBtnClass();
+    });
+
+    label.textContent = 'Filter By';
+    document.querySelector('#faq-filter li[data-category="all"]').classList.add('active');
+
+    // Call handleAccordion for each FAQ section
+    document.querySelectorAll('.faq_main_container').forEach(function (container) {
+      handleAccordion(container);
+    });
+  });
+</script>
+
+{% schema %}
+{
+  "name": "FAQ 2",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "label": "Extra Class",
+      "id": "extra_class"
+    },
+    {
+      "type": "checkbox",
+      "label": "First Accordion Open",
+      "id": "first_accordion_open",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "search_bar_display",
+      "label": "Want to hide search bar?",
+      "default": false
+    }
+  ],
+  "blocks": [],
+  "presets": [
+    {
+      "name": "FAQ 2"
+    }
+  ]
+}
+{% endschema %}

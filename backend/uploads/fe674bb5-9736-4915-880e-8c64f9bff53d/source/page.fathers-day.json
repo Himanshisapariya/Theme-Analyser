@@ -1,0 +1,408 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "pages": {
+      "type": "main-page",
+      "disabled": true,
+      "custom_css": [
+        ".container {padding-top: 50px; padding-bottom: 50px;}",
+        "h1 {text-align: center;}"
+      ],
+      "settings": {}
+    },
+    "slideshow_ParRXn": {
+      "type": "slideshow",
+      "blocks": {
+        "slide_ayC3qN": {
+          "type": "slide",
+          "settings": {
+            "extra_class": "women-day girl_dad_slide stand_fro_women_slide anniversary_ctm champion_ctm father-slide-ctm",
+            "color_scheme": "dark",
+            "image": "shopify://shop_images/websiteassetheaderimage4.jpg",
+            "image2": "shopify://shop_images/xxxy_0169_GenerativeFill1015.jpg",
+            "heading": "FOR THE MEN WHO RAISED\nUS RIGHT",
+            "additional_information": "Celebrate Father’s Day with gear that backs strength, integrity, and standing for something.",
+            "text_content_alignment": "center-left",
+            "text_alignment": "left",
+            "max_width": 600,
+            "button_label1": "SHOP FATHER’S DAY PICKS",
+            "button_link1": "shopify://collections/fathers-day-picks",
+            "button_label2": "",
+            "button_link2": "",
+            "button_style": "secondary"
+          }
+        }
+      },
+      "block_order": [
+        "slide_ayC3qN"
+      ],
+      "disabled": true,
+      "settings": {
+        "extra_class": "",
+        "block_size": "full-screen",
+        "overlay_enable": false,
+        "overlay_opacity": 20,
+        "slideshow_speed": 1.1,
+        "slideshow_delay": 3,
+        "autoplay": true,
+        "hover_autoplay_stop": true,
+        "navigation": true,
+        "pagination": true,
+        "margin_top": 0,
+        "margin_bottom": 0
+      }
+    },
+    "image_card_hcTWhg": {
+      "type": "image-card",
+      "blocks": {
+        "collection_item_CthHXx": {
+          "type": "collection_item",
+          "settings": {
+            "collection": "the-lounge-legends",
+            "custom_image": "shopify://shop_images/Dad_0075.jpg",
+            "title": "THE LOUNGE LEGENDS",
+            "subtext": "Off-duty, but still dialed in.",
+            "button_label": "Shop Now"
+          }
+        },
+        "collection_item_Yf9iM3": {
+          "type": "collection_item",
+          "settings": {
+            "collection": "the-advocates",
+            "custom_image": "shopify://shop_images/M_Logo_Tee_XY_5.jpg",
+            "title": "THE ADVOCATES",
+            "subtext": "For the dads who stand for something.",
+            "button_label": "Shop Now"
+          }
+        },
+        "collection_item_iFQVfw": {
+          "type": "collection_item",
+          "settings": {
+            "collection": "the-workout-warriors",
+            "custom_image": "shopify://shop_images/HP_2749square_d4e49e81-ff3a-4311-8a82-8821c5a18a4d.jpg",
+            "title": "THE WORKOUT WARRIORS",
+            "subtext": "Hard reps. Long runs. No shortcuts",
+            "button_label": "Shop Now"
+          }
+        },
+        "collection_item_H46ehh": {
+          "type": "collection_item",
+          "settings": {
+            "collection": "the-patriots",
+            "custom_image": "shopify://shop_images/Flagpatchcap_3_204dc9ae-d245-4ecb-a828-d3a6028717ec.jpg",
+            "title": "The Patriots",
+            "subtext": "Because silence was never his thing.",
+            "button_label": "Shop Now"
+          }
+        }
+      },
+      "block_order": [
+        "collection_item_CthHXx",
+        "collection_item_Yf9iM3",
+        "collection_item_iFQVfw",
+        "collection_item_H46ehh"
+      ],
+      "settings": {
+        "section_extra_class": "vision-collection-grid"
+      }
+    },
+    "video_7EBBEQ": {
+      "type": "video",
+      "settings": {
+        "full_width": true,
+        "height": "large",
+        "video_fit": "contain",
+        "subheading": "",
+        "heading": "",
+        "opacity_overlay": 0,
+        "video": "shopify://files/videos/YOU'RE NOT TOXIC X & YT APRIL 10 25 5 09PM.mov",
+        "video_url": "",
+        "video_autoplay": true,
+        "video_loop": false,
+        "video_muted": false,
+        "video_controls": true,
+        "description": "",
+        "margin_top": 0,
+        "margin_bottom": 30
+      }
+    },
+    "rich_text_e7Vr7f": {
+      "type": "rich-text",
+      "blocks": {
+        "button_KCTBHd": {
+          "type": "button",
+          "settings": {
+            "button_label": "READ MORE: YOU'RE NOT TOXIC",
+            "button_link": "shopify://blogs/newsroom/youre-not-toxic",
+            "button_style": "secondary"
+          }
+        }
+      },
+      "block_order": [
+        "button_KCTBHd"
+      ],
+      "settings": {
+        "color_scheme": "background-2",
+        "full_width": true,
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "margin_top": 0,
+        "margin_bottom": 60,
+        "spring_shop_text": "spring-shop-class"
+      }
+    },
+    "ctm_tabbing_collection_qfYd8p": {
+      "type": "ctm_tabbing_collection",
+      "blocks": {
+        "collection_q7fAYU": {
+          "type": "collection",
+          "settings": {
+            "collection_ctm": "fathers-day-picks"
+          }
+        }
+      },
+      "block_order": [
+        "collection_q7fAYU"
+      ],
+      "settings": {
+        "heading_ctm": "FATHER’S DAY GIFTS HE’LL ACTUALLY WEAR",
+        "ctm_subtitle": "",
+        "tab_1": "",
+        "tab_2": "",
+        "desktop_slide": 4,
+        "spring_slider_class": "spring-slider-class"
+      }
+    },
+    "rich_text_fjY8gn": {
+      "type": "rich-text",
+      "blocks": {
+        "button_gAd8xY": {
+          "type": "button",
+          "settings": {
+            "button_label": "SHOP FATHER’S DAY PICKS",
+            "button_link": "shopify://collections/fathers-day-picks",
+            "button_style": "secondary"
+          }
+        }
+      },
+      "block_order": [
+        "button_gAd8xY"
+      ],
+      "settings": {
+        "color_scheme": "background-2",
+        "full_width": true,
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "margin_top": 0,
+        "margin_bottom": 60,
+        "spring_shop_text": "spring-shop-class"
+      }
+    },
+    "banner_with_text_cGUpQJ": {
+      "type": "banner-with-text",
+      "disabled": true,
+      "settings": {
+        "extra_class": "gear-work-banner",
+        "color_scheme": "light",
+        "image": "shopify://shop_images/Performance_Banner_c885d724-ce2d-4516-848e-ec6148ecad3c.jpg",
+        "image_size": "adapt",
+        "caption_class": "",
+        "title": "GEAR THAT WORKS AS\nHARD AS HE DOES",
+        "content_text": "",
+        "text_alignment": "center",
+        "content_width": "a-half",
+        "overlay_enable": false,
+        "overlay_opacity": 10,
+        "button_link": "shopify://collections/performance",
+        "button_label": "SHOP PERFORMANCE",
+        "button_style": "secondary",
+        "margin_top": 40,
+        "margin_bottom": 0,
+        "spring_banner_class": ""
+      }
+    },
+    "slideshow_YVwUrH": {
+      "type": "slideshow",
+      "blocks": {
+        "slide_r9X7Ak": {
+          "type": "slide",
+          "settings": {
+            "extra_class": "women-day anniversary-also anniversary_ctm champion_ctm stand_fro_women_slide father-slide-ctm",
+            "color_scheme": "dark",
+            "image": "shopify://shop_images/Performance_Banner_c885d724-ce2d-4516-848e-ec6148ecad3c.jpg",
+            "image2": "shopify://shop_images/Performance_Banner_1.jpg",
+            "heading": "GEAR THAT WORKS AS\nHARD AS HE DOES",
+            "additional_information": "",
+            "text_content_alignment": "center",
+            "text_alignment": "center",
+            "max_width": 750,
+            "button_label1": "SHOP PERFORMANCE",
+            "button_link1": "shopify://collections/performance-xy",
+            "button_label2": "",
+            "button_link2": "",
+            "button_style": "secondary"
+          }
+        }
+      },
+      "block_order": [
+        "slide_r9X7Ak"
+      ],
+      "settings": {
+        "extra_class": "",
+        "block_size": "full-screen",
+        "overlay_enable": false,
+        "overlay_opacity": 20,
+        "slideshow_speed": 1.1,
+        "slideshow_delay": 3,
+        "autoplay": true,
+        "hover_autoplay_stop": true,
+        "navigation": true,
+        "pagination": true,
+        "margin_top": 0,
+        "margin_bottom": 0
+      }
+    },
+    "ctm_tabbing_collection_XyngUx": {
+      "type": "ctm_tabbing_collection",
+      "blocks": {
+        "collection_A9hCyg": {
+          "type": "collection",
+          "settings": {
+            "collection_ctm": "graphic-tees-xy"
+          }
+        }
+      },
+      "block_order": [
+        "collection_A9hCyg"
+      ],
+      "settings": {
+        "heading_ctm": "MIX & MATCH",
+        "ctm_subtitle": "Combine 3 Graphic Tees or Hats, Get 20% Off",
+        "tab_1": "",
+        "tab_2": "",
+        "desktop_slide": 4,
+        "spring_slider_class": "spring-slider-class"
+      }
+    },
+    "rich_text_rX7V3i": {
+      "type": "rich-text",
+      "blocks": {
+        "button_GDK79P": {
+          "type": "button",
+          "settings": {
+            "button_label": "SHOP ALL MIX & MATCH",
+            "button_link": "shopify://collections/mix-match-for-20-off",
+            "button_style": "secondary"
+          }
+        }
+      },
+      "block_order": [
+        "button_GDK79P"
+      ],
+      "settings": {
+        "color_scheme": "background-2",
+        "full_width": true,
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "margin_top": 0,
+        "margin_bottom": 30,
+        "spring_shop_text": "spring-shop-class"
+      }
+    },
+    "pdp_multicolumn_9J4wNh": {
+      "type": "pdp-multicolumn",
+      "blocks": {
+        "column_6JMg49": {
+          "type": "column",
+          "settings": {
+            "column_image": "shopify://shop_images/website_847d1452-1dca-4a4f-8e89-2d2db9503ad5.jpg",
+            "display_2_images": true,
+            "diff_mobile_img": true,
+            "mobile_image": "shopify://shop_images/website_06e3df7f-6fac-4f50-a0dc-8875db483d01.jpg",
+            "column_title": "FREE CREW SOCKS FOR THE REAL ONES",
+            "column_desc": "Spend $100+ and get a free pair of our best-selling Candid Crew Half Calf Socks— automatically added to your cart. Perfect for dads, or anyone who deserves gear that goes the distance. Limited time only.",
+            "button_1": "SHOP FATHER'S DAY PICKS",
+            "url_1": "shopify://collections/fathers-day-picks",
+            "url_2": "",
+            "button_2": "",
+            "button_extra_class": ""
+          }
+        }
+      },
+      "block_order": [
+        "column_6JMg49"
+      ],
+      "name": "PDP Multicolumn",
+      "settings": {
+        "heading": "",
+        "pdp_multicolumn_extra_class": "pdp-multicolumn-main ctm_button_flex"
+      }
+    },
+    "pdp_multicolumn_B79NRy": {
+      "type": "pdp-multicolumn",
+      "blocks": {
+        "column_pFGfR9": {
+          "type": "column",
+          "settings": {
+            "column_image": "shopify://shop_images/Gift_card_1.jpg",
+            "display_2_images": false,
+            "diff_mobile_img": false,
+            "column_title": "FOR THE DAD THAT HAS IT ALL",
+            "column_desc": "Let him choose his gear. You just give the gift.",
+            "button_1": "SHOP DIGITAL GIFT CARDS",
+            "url_1": "shopify://products/xx-xy-athletics-gift-card",
+            "url_2": "",
+            "button_2": "",
+            "button_extra_class": ""
+          }
+        },
+        "column_rkyqij": {
+          "type": "column",
+          "settings": {
+            "column_image": "shopify://shop_images/Tough_guy_shirt.jpg",
+            "display_2_images": false,
+            "diff_mobile_img": false,
+            "column_title": "FOR THE PATRIOTIC DAD",
+            "column_desc": "Because standing for something never goes out of\nstyle.",
+            "button_1": "SHOP PATRIOTIC",
+            "url_1": "shopify://collections/the-patriots",
+            "url_2": "",
+            "button_2": "",
+            "button_extra_class": ""
+          }
+        }
+      },
+      "block_order": [
+        "column_pFGfR9",
+        "column_rkyqij"
+      ],
+      "settings": {
+        "heading": "",
+        "pdp_multicolumn_extra_class": "father-day-card pdp-multicolumn-main fullscreen-container common-fullscreen-container father-slide-ctm"
+      }
+    }
+  },
+  "order": [
+    "pages",
+    "slideshow_ParRXn",
+    "image_card_hcTWhg",
+    "video_7EBBEQ",
+    "rich_text_e7Vr7f",
+    "ctm_tabbing_collection_qfYd8p",
+    "rich_text_fjY8gn",
+    "banner_with_text_cGUpQJ",
+    "slideshow_YVwUrH",
+    "ctm_tabbing_collection_XyngUx",
+    "rich_text_rX7V3i",
+    "pdp_multicolumn_9J4wNh",
+    "pdp_multicolumn_B79NRy"
+  ]
+}

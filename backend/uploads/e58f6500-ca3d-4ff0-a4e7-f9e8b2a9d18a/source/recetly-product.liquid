@@ -1,0 +1,88 @@
+
+<div class="recently-viewed-wrapper">
+  <div class="fullscreen-container">
+    <div class="recently-viewed-section">
+
+      <!-- Header -->
+<!-- Header -->
+<div class="product-recommendations__header--container recently-viewed-header">
+  <h2 class="recently-viewed-title product-recommendations__heading h2 title--section you-might-title">
+    {{ section.settings.title }}
+  </h2>
+
+  <!-- Controls -->
+  <div class="product-carousel__controls">
+    <div class="swiper_btn_container">
+      <div class="swiper-button-prev swiper-button-prev__recent">
+        {% render 'icon-caret-left' %}
+      </div>
+      <div class="swiper-button-next swiper-button-next__recent">
+        {% render 'icon-caret-right' %}
+      </div>
+    </div>
+  </div>
+</div>
+
+      <!-- Swiper -->
+<div class="swiper recently-viewed-swiper recent_change-position-next {% unless section.settings.show_scrollbar %}hide-scrollbar{% endunless %}">
+        <div class="swiper-wrapper recently-viewed-list">
+          <!-- JS injected items -->
+        </div>
+        {% if section.settings.show_scrollbar %}
+        <div class="swiper-scrollbar"></div>
+        {% endif %}
+      </div>
+
+    </div>
+  </div>
+</div>
+
+{% render 'recently-viewed-products' %}
+
+<style>
+  .recently-viewed-swiper.hide-scrollbar .swiper-scrollbar {
+    display: none !important;
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Recently Viewed Product",
+  "settings": [
+    {
+      "type": "text",
+      "label": "Title",
+      "id": "title"
+    },
+    {
+      "type": "range",
+      "label": "Number of products to show",
+      "id": "products_limit",
+      "min": 1,
+      "max": 10,
+      "step": 1,
+      "default": 5
+    },
+    {
+      "type": "range",
+      "label": "Desktop Slides per view",
+      "id": "desk_slides_per_view",
+      "min": 3,
+      "max": 6,
+      "step": 0.5,
+      "default": 4
+    },
+    {
+      "type": "checkbox",
+      "id": "show_scrollbar",
+      "label": "Show scrollbar",
+      "default": true
+    }
+  ],
+  "presets": [
+    {
+      "name": "Recently Viewed Product"
+    }
+  ]
+}
+{% endschema %}

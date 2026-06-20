@@ -1,0 +1,597 @@
+{%- style -%}
+      .gift-guide {
+        padding-top: {{ section.settings.top_padding_desktop }}px;
+        padding-bottom: {{ section.settings.bottom_padding_desktop }}px;
+      }
+
+      @media screen and (max-width: 990px) {
+        .gift-guide {
+            padding-top: {{ section.settings.top_padding_mobile }}px;
+            padding-bottom: {{ section.settings.bottom_padding_mobile }}px;
+        }
+      }
+    .gift-guide {
+        margin-top: {{ section.settings.top_margin_desktop}}px;
+        margin-bottom: {{ section.settings.bottom_margin_desktop }}px;
+      }
+
+      @media screen and (max-width: 990px) {
+        .gift-guide {
+            margin-top: {{ section.settings.top_margin_mobile }}px;
+            margin-bottom: {{ section.settings.bottom_margin_mobile }}px;
+        }
+      }
+    {% if template == 'index' %}
+      @media (min-width: 1950px) {
+      .gift-guide .swiper-slide {
+        height: 400px !important;
+    }
+  }
+    {% endif %}
+{%- endstyle -%}
+
+{% if template == 'index' or section.settings.same_collections_homepage == true %}
+  <section
+    class="gift-guide ctm-tabbing-flex {{ section.settings.extra_class }}"
+    style="
+      {% if section.settings.background_image != blank %}
+        background-image: url({{ section.settings.background_image | img_url: 'master' }});
+        background-size: cover;
+        background-position: center;
+      {% endif %}
+      {% if section.settings.background_color != blank %}
+        background-color: {{ section.settings.background_color }};
+      {% endif %}
+    "
+  >
+    <div class="gift-guide__container flex-row">
+      <div class="gift-guide__intro">
+        {% if section.settings.heading != blank %}
+          <h3>{{ section.settings.heading }}</h3>
+        {% endif %}
+        {% if section.settings.subheading != blank %}
+          <p>{{ section.settings.subheading }}</p>
+        {% endif %}
+        {% if section.settings.button_label != blank %}
+          <p>{{ section.settings.button_label }}</p>
+        {% endif %}
+
+        <div class="gift-guide__buttons">
+          {% for block in section.blocks %}
+            {% if block.type == 'button' and block.settings.label != blank %}
+              <a href="{{ block.settings.link }}" class="gift-guide__btn">
+                {{ block.settings.label }}
+              </a>
+            {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+
+      <div class="gift-guide__products-wrapper">
+        <div class="gift-guide__slider swiper">
+          <div class="swiper-wrapper">
+            {% for block in section.blocks %}
+              {% assign block_collection = collections[block.settings.collection] %}
+              {% if block_collection != blank %}
+                <div class="swiper-slide gift-guide__slide">
+                  <a href="{{ block_collection.url }}">
+                    <div class="gift-guide__image-wrapper">
+                      {% if block.settings.custom_image != blank %}
+                        <img
+                          src="{{ block.settings.custom_image | img_url: '600x' }}"
+                          alt="{{ block_collection.title }}"
+                          height="auto"
+                          width="auto"
+                        >
+                      {% elsif block_collection.image %}
+                        <img
+                          src="{{ block_collection.image | img_url: '600x' }}"
+                          alt="{{ block_collection.title }}"
+                          height="auto"
+                          width="auto"
+                        >
+                      {% elsif block_collection.products.first.featured_image %}
+                        <img
+                          src="{{ block_collection.products.first.featured_image | img_url: '600x' }}"
+                          alt="{{ block_collection.title }}"
+                          height="auto"
+                          width="auto"
+                        >
+                      {% endif %}
+
+                      {% if section.settings.show_title %}
+                        <div class="gift-guide__title">{{ block_collection.title }}</div>
+                      {% endif %}
+                    </div>
+                  </a>
+                  <a href="{{ block_collection.url }}" class="gift-guide__shopnow"> {{  block_collection.title }}</a>
+                </div>
+              {% endif %}
+            {% endfor %}
+          </div>
+
+          <div class="swiper-scrollbar gift-guide-scrollbar"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endif %}
+
+{% if template contains 'collection' and section.settings.same_collections_homepage == false %}
+  {% if collection.metafields.custom.gift_guide_collection != blank %}
+    <section
+      class="gift-guide ctm-tabbing-flex {{ section.settings.extra_class }}"
+      style="
+        {% if section.settings.background_image != blank %}
+          background-image: url({{ section.settings.background_image | img_url: 'master' }});
+          background-size: cover;
+          background-position: center;
+        {% endif %}
+        {% if section.settings.background_color != blank %}
+          background-color: {{ section.settings.background_color }};
+        {% endif %}
+      "
+    >
+      <div class="gift-guide__container flex-row">
+        <div class="gift-guide__intro">
+          {% if section.settings.heading != blank %}
+            <h3>{{ section.settings.heading }}</h3>
+          {% endif %}
+          {% if section.settings.subheading != blank %}
+            <p>{{ section.settings.subheading }}</p>
+          {% endif %}
+          {% if section.settings.button_label != blank %}
+            <p>{{ section.settings.button_label }}</p>
+          {% endif %}
+
+          <div class="gift-guide__buttons">
+            {% for block in section.blocks %}
+              {% if block.type == 'button' and block.settings.label != blank %}
+                <a href="{{ block.settings.link }}" class="gift-guide__btn">
+                  {{ block.settings.label }}
+                </a>
+              {% endif %}
+            {% endfor %}
+          </div>
+        </div>
+
+        <div class="gift-guide__products-wrapper">
+          <div class="gift-guide__slider swiper">
+            <div class="swiper-wrapper">
+              {% if collection.metafields.custom.gift_guide_collection != blank %}
+                {% for block_collection in collection.metafields.custom.gift_guide_collection.value %}
+                  {% if block_collection != blank %}
+                    <div class="swiper-slide gift-guide__slide">
+                      <a href="{{ block_collection.url }}">
+                        <div class="gift-guide__image-wrapper">
+                          {% if block_collection.products.first.featured_image %}
+                            <img
+                              src="{{ block_collection.products.first.featured_image | img_url: '600x' }}"
+                              alt="{{ block_collection.title }}"
+                              height="auto"
+                              width="auto"
+                            >
+                          {% elsif block_collection.image %}
+                            <img
+                              src="{{ block_collection.image | img_url: '600x' }}"
+                              alt="{{ block_collection.title }}"
+                              height="auto"
+                              width="auto"
+                            >
+                          {% endif %}
+
+                          {% if section.settings.show_title %}
+                            <div class="gift-guide__title">{{ block_collection.title }}</div>
+                          {% endif %}
+                        </div>
+                      </a>
+                      <a href="{{ block_collection.url }}" class="gift-guide__shopnow"> {{ block_collection.title }}</a>
+                    </div>
+                  {% endif %}
+                {% endfor %}
+              {% endif %}
+            </div>
+
+            <div class="swiper-scrollbar gift-guide-scrollbar"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  {% endif %}
+{% endif %}
+
+<style>
+  @media (max-width: 989px) {
+    .gift-guide .gift-guide__intro p {
+      font-size: 18px !important;
+    }
+  }
+
+  .gift-guide .gift-guide__container {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .gift-guide .gift-guide__intro {
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    color: white;
+  }
+
+  .gift-guide.custom-heading p {
+    max-width: 100%;
+  }
+
+  .gift-guide__buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    padding-right: 0;
+  }
+
+  @media (max-width: 767px) {
+    .gift-guide__buttons {
+      padding-right: 10px;
+    }
+  }
+
+  .gift-guide.custom-heading h3 {
+    color: white;
+  }
+
+  .gift-guide .gift-guide__products-wrapper {
+    overflow: hidden;
+    width: 100%;
+  }
+
+  .gift-guide .swiper-slide {
+    flex: 0 0 auto;
+    width: 255px;
+    height: 319px;
+    text-align: start;
+    display: block;
+  }
+
+  @media (max-width: 575px) {
+    .gift-guide .swiper-slide {
+      width: 206px;
+      height: 256px;
+    }
+    .gift-guide__buttons a {
+      font-size: 14px !important;
+    }
+      .gift-guide__buttons{
+      flex-wrap: nowrap !important;
+    }
+  }
+
+  .gift-guide__slide a {
+    width: 100%;
+    height: 100%;
+    display: inline-block;
+  }
+
+  .gift-guide__image-wrapper {
+    height: 100%;
+  }
+
+  .gift-guide .gift-guide__image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+  }
+
+  .gift-guide__slider .swiper-wrapper {
+    padding-bottom: 80px;
+  }
+
+  .gift-guide .gift-guide__title {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 18px;
+    color: white;
+    text-align: center;
+    width: 80%;
+  }
+
+  .gift-guide .gift-guide__shopnow {
+    display: inline-block;
+    margin-top: 12px;
+    font-size: 16px;
+    font-weight: 500;
+    text-decoration: underline;
+    color: white;
+    transition: color 0.3s ease;
+  }
+  .gift-guide .gift-guide__shopnow:hover {
+    color: #555;
+  }
+
+  .gift-guide .gift-guide-scrollbar {
+    height: 6px;
+    background: #ffffff;
+    margin-top: 12px;
+    display: block !important;
+    width: 70%;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 0px;
+    cursor: grab;
+  }
+  .gift-guide .gift-guide-scrollbar .swiper-scrollbar-drag {
+    background: #333333;
+    border-radius: 3px;
+  }
+
+  .gift-guide .gift-guide-prev,
+  .gift-guide .gift-guide-next {
+    color: #000;
+    display: block !important;
+  }
+
+  .gift-guide__buttons a {
+    display: block;
+    color: white;
+    text-decoration-color: white;
+    font-size: 15px;
+  }
+  @media (min-width: 1440px) {
+    .gift-guide .gift-guide__container {
+      gap: 100px;
+    }
+  }
+  .gift-guide .gift-guide__title {
+    font-family: 'Poppins';
+  }
+  @media (min-width: 990px) {
+    .gift-guide .gift-guide__container {
+      flex-direction: row;
+      align-items: flex-start;
+    }
+    .gift-guide.custom-heading p {
+      max-width: 100%;
+    }
+    .gift-guide .gift-guide__title {
+      font-size: 22px;
+      font-weight: 500;
+    }
+    .gift-guide__buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+    .gift-guide .gift-guide__intro {
+      max-width: 300px;
+      width: 100%;
+    }
+  }
+  .gift-guide__intro p:last-of-type {
+  margin-top: 15px;
+}
+
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    new Swiper('.gift-guide .gift-guide__slider', {
+      slidesPerView: 'auto',
+      spaceBetween: 16,
+      freeMode: true,
+      scrollbar: {
+        el: '.gift-guide .gift-guide-scrollbar',
+        draggable: true,
+      },
+      navigation: {
+        nextEl: '.gift-guide .gift-guide-next',
+        prevEl: '.gift-guide .gift-guide-prev',
+      },
+      {% if template == 'index' %}
+       breakpoints: {
+        575: {
+          slidesPerView: 3.2,
+          spaceBetween: 20,
+        },
+        768: {
+          slidesPerView: 2.3,
+          spaceBetween: 20,
+        },
+        1025: {
+          slidesPerView: {{ section.settings.small_desktop }},
+          spaceBetween: 24,
+        },
+        1440: {
+          slidesPerView: {{ section.settings.medium_desktop }},
+          spaceBetween: 28,
+        },
+         1740: {
+          slidesPerView:{{ section.settings.large_desktop }},
+          spaceBetween: 28,
+        },
+        2200:{
+          slidesPerView: {{ section.settings.very_large_desktop }},
+          spaceBetween: 28,
+        }
+      },
+    {% endif %}
+    });
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Gift Guide",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Gift Guide 2024" },
+    { "type": "text", "id": "subheading", "label": "Subheading", "default": "Find the perfect gifts under ___" },
+    { "type": "text", "id": "button_label", "label": "Buttons Label" },
+    { "type": "checkbox", "id": "show_title", "label": "Show product title on image", "default": true },
+    { "type": "text", "id": "extra_class", "label": "Extra CSS Class" },
+    { "type": "image_picker", "id": "background_image", "label": "Background Image" },
+    { "type": "color", "id": "background_color", "label": "Background Color" },
+    { "type": "checkbox", "id":"same_collections_homepage", "label": "Show Same Collections As Hompeage", "default":true , "info": "If this checkbox is checked then it will show same collections and images as homepage" },
+
+    {
+      "type": "header",
+      "content": "Section Spacing"
+    },
+    {
+      "type": "range",
+      "label": "Top Padding Desktop",
+      "id": "top_padding_desktop",
+      "default": 0,
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "label": "Bottom Padding Desktop",
+      "id": "bottom_padding_desktop",
+      "default": 0,
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "label": "Top Padding Mobile",
+      "id": "top_padding_mobile",
+      "default": 0,
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "label": "Bottom Padding Mobile",
+      "id": "bottom_padding_mobile",
+      "default": 0,
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "label": "Top Margin Desktop",
+      "id": "top_margin_desktop",
+      "default": 0,
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "label": "Bottom Margin Desktop",
+      "id": "bottom_margin_desktop",
+      "default": 0,
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "label": "Top Margin Mobile",
+      "id": "top_margin_mobile",
+      "default": 0,
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "label": "Bottom Margin Mobile",
+      "id": "bottom_margin_mobile",
+      "default": 0,
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px"
+    },
+    {
+      "type": "header",
+      "content": "Desktop Slides Per View",
+      "info": "This will work only for Homepage"
+    },
+    {
+      "type": "range",
+      "label": "Small Desktop",
+      "id": "small_desktop",
+      "default": 3.7,
+      "min": 2,
+      "max": 7,
+      "step": 0.1
+    },
+    {
+      "type": "range",
+      "label": "Medium Desktop",
+      "id": "medium_desktop",
+      "default": 5,
+      "min": 3,
+      "max": 7,
+      "step": 0.1
+    },
+    {
+      "type": "range",
+      "label": "Large Desktop",
+      "id": "large_desktop",
+      "default": 5.5,
+      "min": 3,
+      "max": 7,
+      "step": 0.1
+    },
+    {
+      "type": "range",
+      "label": "Very Large Desktop",
+      "id": "very_large_desktop",
+      "default": 5.5,
+      "min": 3,
+      "max": 7,
+      "step": 0.1
+    }
+  ],
+  "blocks": [
+    {
+      "type": "button",
+      "name": "Button",
+      "settings": [
+        { "type": "text", "id": "label", "label": "Button Label" },
+        { "type": "url", "id": "link", "label": "Button Link" }
+      ]
+    },
+    {
+      "type": "collection_block",
+      "name": "Collection",
+      "settings": [
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "Select collection"
+        },
+        {
+          "type": "image_picker",
+          "id": "custom_image",
+          "label": "Custom image"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Gift Guide"
+    }
+  ]
+}
+{% endschema %}

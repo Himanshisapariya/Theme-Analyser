@@ -1,0 +1,113 @@
+{
+  "createdAt": "2026-05-16T06:11:05.204Z",
+  "cssFiles": [],
+  "textFiles": [
+    "test.liquid"
+  ],
+  "summary": {
+    "totalRules": 6,
+    "usedRules": 3,
+    "unusedRules": 3,
+    "estimatedSavingsBytes": 158
+  },
+  "entries": [
+    {
+      "id": "test.liquid::style-block:0:0:0",
+      "filePath": "test.liquid",
+      "fileName": "test.liquid",
+      "selector": ".product-card",
+      "ruleIndex": 0,
+      "selectorIndex": 0,
+      "status": "used",
+      "matchedBy": "static",
+      "estimatedBytes": 90,
+      "fileByteSize": 396,
+      "sourceType": "style-block",
+      "sourceKey": "test.liquid::style-block:0",
+      "embeddedIndex": 0,
+      "sourceLabel": "/Users/himanshi/Himanshi - TS/Himanshi - github/CSS Analyser - copy/backend/uploads/18867788-ac7d-48ca-a865-2d9615b12484/source/test.liquid::style-block:1"
+    },
+    {
+      "id": "test.liquid::style-block:0:1:0",
+      "filePath": "test.liquid",
+      "fileName": "test.liquid",
+      "selector": ".product-title",
+      "ruleIndex": 1,
+      "selectorIndex": 0,
+      "status": "used",
+      "matchedBy": "static",
+      "estimatedBytes": 64,
+      "fileByteSize": 396,
+      "sourceType": "style-block",
+      "sourceKey": "test.liquid::style-block:0",
+      "embeddedIndex": 0,
+      "sourceLabel": "/Users/himanshi/Himanshi - TS/Himanshi - github/CSS Analyser - copy/backend/uploads/18867788-ac7d-48ca-a865-2d9615b12484/source/test.liquid::style-block:1"
+    },
+    {
+      "id": "test.liquid::style-block:0:2:0",
+      "filePath": "test.liquid",
+      "fileName": "test.liquid",
+      "selector": ".product-price",
+      "ruleIndex": 2,
+      "selectorIndex": 0,
+      "status": "used",
+      "matchedBy": "static",
+      "estimatedBytes": 60,
+      "fileByteSize": 396,
+      "sourceType": "style-block",
+      "sourceKey": "test.liquid::style-block:0",
+      "embeddedIndex": 0,
+      "sourceLabel": "/Users/himanshi/Himanshi - TS/Himanshi - github/CSS Analyser - copy/backend/uploads/18867788-ac7d-48ca-a865-2d9615b12484/source/test.liquid::style-block:1"
+    },
+    {
+      "id": "test.liquid::style-block:0:3:0",
+      "filePath": "test.liquid",
+      "fileName": "test.liquid",
+      "selector": ".unused-banner",
+      "ruleIndex": 3,
+      "selectorIndex": 0,
+      "status": "unused",
+      "matchedBy": "none",
+      "estimatedBytes": 63,
+      "fileByteSize": 396,
+      "sourceType": "style-block",
+      "sourceKey": "test.liquid::style-block:0",
+      "embeddedIndex": 0,
+      "sourceLabel": "/Users/himanshi/Himanshi - TS/Himanshi - github/CSS Analyser - copy/backend/uploads/18867788-ac7d-48ca-a865-2d9615b12484/source/test.liquid::style-block:1"
+    },
+    {
+      "id": "test.liquid::style-block:0:4:0",
+      "filePath": "test.liquid",
+      "fileName": "test.liquid",
+      "selector": ".old-button",
+      "ruleIndex": 4,
+      "selectorIndex": 0,
+      "status": "unused",
+      "matchedBy": "none",
+      "estimatedBytes": 56,
+      "fileByteSize": 396,
+      "sourceType": "style-block",
+      "sourceKey": "test.liquid::style-block:0",
+      "embeddedIndex": 0,
+      "sourceLabel": "/Users/himanshi/Himanshi - TS/Himanshi - github/CSS Analyser - copy/backend/uploads/18867788-ac7d-48ca-a865-2d9615b12484/source/test.liquid::style-block:1"
+    },
+    {
+      "id": "test.liquid::style-block:0:5:0",
+      "filePath": "test.liquid",
+      "fileName": "test.liquid",
+      "selector": ".hidden-mobile",
+      "ruleIndex": 5,
+      "selectorIndex": 0,
+      "status": "unused",
+      "matchedBy": "none",
+      "estimatedBytes": 39,
+      "fileByteSize": 396,
+      "sourceType": "style-block",
+      "sourceKey": "test.liquid::style-block:0",
+      "embeddedIndex": 0,
+      "sourceLabel": "/Users/himanshi/Himanshi - TS/Himanshi - github/CSS Analyser - copy/backend/uploads/18867788-ac7d-48ca-a865-2d9615b12484/source/test.liquid::style-block:1"
+    }
+  ],
+  "warnings": [],
+  "jobId": "18867788-ac7d-48ca-a865-2d9615b12484"
+}

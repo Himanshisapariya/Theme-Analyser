@@ -1,0 +1,18 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "settings": {
+        "extra_class": "",
+        "page_title_black": "",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "mockup_pDpK9F": {
+      "type": "mockup",
+      "settings": {}
+    }
+  },
+  "order": ["main", "mockup_pDpK9F"]
+}

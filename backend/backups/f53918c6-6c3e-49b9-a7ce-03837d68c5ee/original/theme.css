@@ -1,0 +1,21 @@
+
+.used-class {
+  color: green;
+}
+
+.product-card {
+  padding: 20px;
+  border: 1px solid #ccc;
+}
+
+.unused {
+  color: black;
+}
+
+.old-banner{
+  padding: 10px;
+}
+
+.testing {
+  color: red;
+}

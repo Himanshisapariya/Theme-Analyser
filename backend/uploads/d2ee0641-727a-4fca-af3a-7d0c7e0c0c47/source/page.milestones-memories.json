@@ -1,0 +1,37 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "settings": {
+        "extra_class": "",
+        "page_title_black": "Milestones &amp;<br>\nMemories",
+        "breadcrumb_image": "shopify://shop_images/header_image_1_124dc823-e1d1-4707-a102-7b2181f028ae.png",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "multi_video_bQ7nhU": {
+      "type": "multi-video",
+      "settings": {
+        "extra_class": "",
+        "heading": "Our Happy Customers",
+        "sub_heading": "<p>At 5 Little Monkeys we believe milestones should be celebrated! The transition from crib to big kid bed is a BIG deal and only happens once. Therefore, we have created an experience that’s memorable, exciting and joyous for the whole family. </p>\n\n<p>The moment the box arrives, your child knows it’s for them! We’ve thought of every detail to make the move to their first big kid bed a special memory to be remembered forever. From our box that turns into a fort for playing to the stuffed plushy monkey waiting for night time cuddles, our goal has always been to create an experience for your child that makes them comforted and excited to sleep on their 5 Little Monkeys mattress for years to come.</p>\n\n<p>Whether your child is ready for their new bed or is unsure about the change, we have you covered! 5 Little Monkeys is the only kids mattress that provides an interactive experience involving you and your child to ensure a positive transition designed to make memories and celebrate milestones! </p>\n\n<p>It’s not just a mattress, it’s a milestone!</p>",
+        "background_image": "shopify://shop_images/background_image.jpg"
+      }
+    },
+    "custom_liquid_iDmUrt": {
+      "type": "custom-liquid",
+      "settings": {
+        "extra_class": "",
+        "heading": "",
+        "sub_heading": "",
+        "background_color": "",
+        "custom_liquid": "<iframe\n      id=\"JotFormIFrame-240980627282158\"\n      title=\"Milestones & Memories\"\n      onload=\"window.parent.scrollTo(0,0)\"\n      allowtransparency=\"true\"\n      allow=\"geolocation; microphone; camera; fullscreen\"\n      src=\"https://form.jotform.com/240980627282158\"\n      frameborder=\"0\"\n      style=\"min-width:100%;max-width:100%;height:539px;border:none;\"\n      scrolling=\"no\"\n    >\n    </iframe>\n    <script src='https://form.jotform.com/s/umd/latest/for-form-embed-handler.js'></script>\n    <script>window.jotformEmbedHandler(\"iframe[id='JotFormIFrame-240980627282158'\", \"https://form.jotform.com/\")</script>",
+        "color_scheme": "",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    }
+  },
+  "order": ["main", "multi_video_bQ7nhU", "custom_liquid_iDmUrt"]
+}

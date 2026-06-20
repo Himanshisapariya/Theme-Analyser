@@ -1,0 +1,90 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet');
+
+.faq-answer-inner {
+    padding: 25px;
+    padding-bottom: 0;
+    margin-bottom: 25px;
+  }
+  .faq-accordion {
+    max-width: 1300px;
+    margin: 0 auto;
+  }
+  .faq-item {
+    border: 1px solid #aaaaaa;
+    margin-bottom: 5px;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+  }
+  .faq-accordion-header {
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+
+  }
+  .faq-accordion-main .faq-accordion-title {
+    margin-bottom: 25px;
+    text-align: center;
+  }
+  .faq-accordion-desc {
+    line-height: 24px;
+    margin-bottom: 40px;
+  }
+  .faq-question {
+    width: 100%;
+    border: none;
+    text-align: left;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background 0.3s ease;
+    padding: 13px;
+    background: rgba(255, 255, 255, 0.07);
+    color: #333;
+    border-bottom: 0;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    cursor: pointer;
+    gap: 12px;
+  }
+  .faq-answer-inner a {
+    color: rgb(40, 180, 115);
+  }
+  .faq-question p {
+    margin: 0;
+    color: #2f484c;
+    text-align: left;
+    margin: 0 !important;
+    padding: 0 !important;
+    cursor: pointer;
+    text-decoration: none;
+    flex: 1;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+  }
+
+  span.faq-icon {
+    color: #2f484c;
+    font-size: 1.8em;
+    font-weight: 300;
+  }
+  .faq-question:focus {
+    outline: none;
+  }
+  .faq-icon {
+    font-size: 20px;
+    transition: transform 0.3s ease, content 0.3s ease;
+    display: inline-block;
+    color: #2f484c;
+  }
+  
+@media only screen and (max-width:767px){
+    .faq-accordion-main .faq-accordion-title {
+        margin-bottom: 16px;
+    }
+    .faq-accordion-desc {
+        margin-bottom: 24px;
+        text-align: center;
+    }
+}

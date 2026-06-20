@@ -1,0 +1,488 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "shogun-helper": {
+      "type": "shogun-helper",
+      "settings": {}
+    },
+    "custom_athletes_slider_bNjxxr": {
+      "type": "custom-athletes-slider",
+      "blocks": {
+        "hover_card_WgEcML": {
+          "type": "hover-card",
+          "name": "Custom Hover card",
+          "settings": {
+            "image": "shopify://shop_images/Jaycee_Bassett_cfc79305-ca4d-4552-a5bb-8348ce181f62.jpg",
+            "image_brightness": 1,
+            "title": "Jaycee Bassett",
+            "text": "<p><strong>Sport:</strong> Taekwondo</p><p><strong>Bio:</strong> Ranked #2 in the World, Taekwondo (-46kg) | Team Costa Rica</p>",
+            "content_position": "flex-end",
+            "content_alignment": "flex-start",
+            "text_alignment": "left",
+            "content_padding": 30,
+            "overlay_color": "#000000",
+            "overlay_opacity": 0.7,
+            "title_color": "#ffffff",
+            "title_size": 28,
+            "title_weight": "600",
+            "title_spacing": 12,
+            "text_color": "#ffffff",
+            "text_size": 16,
+            "transition_duration": 0.4,
+            "hover_delay": 0,
+            "overlay_delay": 0.1,
+            "content_delay": 0.2,
+            "border_radius": 0
+          },
+          "blocks": {}
+        },
+        "hover_card_jTUYq3": {
+          "type": "hover-card",
+          "name": "Custom Hover card",
+          "settings": {
+            "image": "shopify://shop_images/MyKayla_Skinner.jpg",
+            "image_brightness": 0.7,
+            "title": "MyKayla Skinner Harmer",
+            "text": "<p><strong>Sport:</strong> Gymnastics</p><p><strong>Bio:</strong> 2021 Olympian, Gymnastics | Silver Medalist</p>",
+            "content_position": "flex-end",
+            "content_alignment": "flex-start",
+            "text_alignment": "left",
+            "content_padding": 30,
+            "overlay_color": "#000000",
+            "overlay_opacity": 0.7,
+            "title_color": "#ffffff",
+            "title_size": 28,
+            "title_weight": "600",
+            "title_spacing": 12,
+            "text_color": "#ffffff",
+            "text_size": 16,
+            "transition_duration": 0.4,
+            "hover_delay": 0,
+            "overlay_delay": 0.1,
+            "content_delay": 0.2,
+            "border_radius": 0
+          },
+          "blocks": {}
+        },
+        "hover_card_3wTWLi": {
+          "type": "hover-card",
+          "name": "Custom Hover card",
+          "settings": {
+            "image": "shopify://shop_images/Shannon_Grady.jpg",
+            "image_brightness": 0.7,
+            "title": "Shannon Grady",
+            "text": "<p><strong>Sport:</strong> Running</p><p><strong>Bio:</strong> 6x Team USA, Triathlon | Former Professional Runner, NCAA All-American</p>",
+            "content_position": "flex-end",
+            "content_alignment": "flex-start",
+            "text_alignment": "left",
+            "content_padding": 30,
+            "overlay_color": "#000000",
+            "overlay_opacity": 0.7,
+            "title_color": "#ffffff",
+            "title_size": 28,
+            "title_weight": "600",
+            "title_spacing": 12,
+            "text_color": "#ffffff",
+            "text_size": 16,
+            "transition_duration": 0.4,
+            "hover_delay": 0,
+            "overlay_delay": 0.1,
+            "content_delay": 0.2,
+            "border_radius": 0
+          },
+          "blocks": {}
+        },
+        "hover_card_ULJecF": {
+          "type": "hover-card",
+          "name": "Custom Hover card",
+          "settings": {
+            "image": "shopify://shop_images/Nancy_Hogshead_J.D.jpg",
+            "image_brightness": 0.7,
+            "title": "Nancy Hogshead-Makar",
+            "text": "<p><strong>Sport:</strong> Swimming</p><p><strong>Bio:</strong> 1984 Olympian, Swimming | 3x Gold Medalist</p>",
+            "content_position": "flex-end",
+            "content_alignment": "flex-start",
+            "text_alignment": "left",
+            "content_padding": 30,
+            "overlay_color": "#000000",
+            "overlay_opacity": 0.7,
+            "title_color": "#ffffff",
+            "title_size": 28,
+            "title_weight": "600",
+            "title_spacing": 12,
+            "text_color": "#ffffff",
+            "text_size": 16,
+            "transition_duration": 0.4,
+            "hover_delay": 0,
+            "overlay_delay": 0.1,
+            "content_delay": 0.2,
+            "border_radius": 0
+          },
+          "blocks": {}
+        },
+        "hover_card_jr74rX": {
+          "type": "hover-card",
+          "name": "Custom Hover card",
+          "settings": {
+            "image": "shopify://shop_images/Reka_Gyorgy_0be9b9a2-1565-4e2d-bb3c-b764f265af7f.jpg",
+            "image_brightness": 0.7,
+            "title": "Réka György",
+            "text": "<p><strong>Sport:</strong> Swimming</p><p><strong>Bio:</strong> 2016 Olympian, Swimming (Hungary) | NCAA All-American</p>",
+            "content_position": "flex-end",
+            "content_alignment": "flex-start",
+            "text_alignment": "left",
+            "content_padding": 30,
+            "overlay_color": "#000000",
+            "overlay_opacity": 0.7,
+            "title_color": "#ffffff",
+            "title_size": 28,
+            "title_weight": "600",
+            "title_spacing": 12,
+            "text_color": "#ffffff",
+            "text_size": 16,
+            "transition_duration": 0.4,
+            "hover_delay": 0,
+            "overlay_delay": 0.1,
+            "content_delay": 0.2,
+            "border_radius": 0
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "hover_card_WgEcML",
+        "hover_card_jTUYq3",
+        "hover_card_3wTWLi",
+        "hover_card_ULJecF",
+        "hover_card_jr74rX"
+      ],
+      "disabled": true,
+      "name": "Athletes Slider",
+      "settings": {
+        "section_extra_class": "collection-gold-medal-images",
+        "heading": "Meet Our Athletes",
+        "heading_alignment": "left",
+        "heading_spacing": 20,
+        "enable_fixed_hw": true,
+        "fixed_width": 250,
+        "very_small_desktop": 2.9,
+        "small_desktop": 3.9,
+        "medium_desktop": 3.8,
+        "large_desktop": 3.5,
+        "desktop_gap": 24,
+        "mobile_gap": 8,
+        "top_margin_desktop": 0,
+        "bottom_margin_desktop": 10,
+        "top_margin_mobile": 0,
+        "bottom_margin_mobile": 50,
+        "view_all_text": "EXPLORE ATHLETES",
+        "view_all_url": "",
+        "show_arrows": true
+      }
+    },
+    "custom_athletes_slider_VVA3Jq": {
+      "type": "custom-athletes-slider",
+      "blocks": {
+        "hover_card_i6hm6N": {
+          "type": "hover-card",
+          "name": "Custom Hover card",
+          "settings": {
+            "image": "shopify://shop_images/Jaycee_Bassett_cfc79305-ca4d-4552-a5bb-8348ce181f62.jpg",
+            "image_brightness": 1,
+            "title": "Jaycee Bassett",
+            "text": "<p><strong>Sport:</strong> Taekwondo</p><p><strong>Bio:</strong> Ranked #2 in the World, Taekwondo (-46kg) | Team Costa Rica</p>",
+            "content_position": "flex-end",
+            "content_alignment": "flex-start",
+            "text_alignment": "left",
+            "content_padding": 30,
+            "overlay_color": "#000000",
+            "overlay_opacity": 0.7,
+            "title_color": "#ffffff",
+            "title_size": 28,
+            "title_weight": "600",
+            "title_spacing": 12,
+            "text_color": "#ffffff",
+            "text_size": 16,
+            "transition_duration": 0.4,
+            "hover_delay": 0,
+            "overlay_delay": 0.1,
+            "content_delay": 0.2,
+            "border_radius": 0
+          },
+          "blocks": {}
+        },
+        "hover_card_UxKkCF": {
+          "type": "hover-card",
+          "name": "Custom Hover card",
+          "settings": {
+            "image": "shopify://shop_images/MyKayla_Skinner.jpg",
+            "image_brightness": 0.7,
+            "title": "MyKayla Skinner",
+            "text": "<p><strong>Sport:</strong> Gymnastics</p><p><strong>Bio:</strong> 2021 Olympian, Gymnastics | Silver Medalist</p>",
+            "content_position": "flex-end",
+            "content_alignment": "flex-start",
+            "text_alignment": "left",
+            "content_padding": 30,
+            "overlay_color": "#000000",
+            "overlay_opacity": 0.7,
+            "title_color": "#ffffff",
+            "title_size": 28,
+            "title_weight": "600",
+            "title_spacing": 12,
+            "text_color": "#ffffff",
+            "text_size": 16,
+            "transition_duration": 0.4,
+            "hover_delay": 0,
+            "overlay_delay": 0.1,
+            "content_delay": 0.2,
+            "border_radius": 0
+          },
+          "blocks": {}
+        },
+        "hover_card_qTrgmE": {
+          "type": "hover-card",
+          "name": "Custom Hover card",
+          "settings": {
+            "image": "shopify://shop_images/Shannon_Grady.jpg",
+            "image_brightness": 0.7,
+            "title": "Shannon Grady",
+            "text": "<p><strong>Sport:</strong> Running</p><p><strong>Bio:</strong> 6x Team USA, Triathlon | Former Professional Runner, NCAA All-American</p>",
+            "content_position": "flex-end",
+            "content_alignment": "flex-start",
+            "text_alignment": "left",
+            "content_padding": 30,
+            "overlay_color": "#000000",
+            "overlay_opacity": 0.7,
+            "title_color": "#ffffff",
+            "title_size": 28,
+            "title_weight": "600",
+            "title_spacing": 12,
+            "text_color": "#ffffff",
+            "text_size": 16,
+            "transition_duration": 0.4,
+            "hover_delay": 0,
+            "overlay_delay": 0.1,
+            "content_delay": 0.2,
+            "border_radius": 0
+          },
+          "blocks": {}
+        },
+        "hover_card_ELWKB9": {
+          "type": "hover-card",
+          "name": "Custom Hover card",
+          "settings": {
+            "image": "shopify://shop_images/Nancy_Hogshead_J.D.jpg",
+            "image_brightness": 0.7,
+            "title": "Nancy Hogshead-Makar",
+            "text": "<p><strong>Sport:</strong> Swimming</p><p><strong>Bio:</strong> 1984 Olympian, Swimming | 3x Gold Medalist</p>",
+            "content_position": "flex-end",
+            "content_alignment": "flex-start",
+            "text_alignment": "left",
+            "content_padding": 30,
+            "overlay_color": "#000000",
+            "overlay_opacity": 0.7,
+            "title_color": "#ffffff",
+            "title_size": 28,
+            "title_weight": "600",
+            "title_spacing": 12,
+            "text_color": "#ffffff",
+            "text_size": 16,
+            "transition_duration": 0.4,
+            "hover_delay": 0,
+            "overlay_delay": 0.1,
+            "content_delay": 0.2,
+            "border_radius": 0
+          },
+          "blocks": {}
+        },
+        "hover_card_TQeAB9": {
+          "type": "hover-card",
+          "name": "Custom Hover card",
+          "settings": {
+            "image": "shopify://shop_images/Reka_Gyorgy_0be9b9a2-1565-4e2d-bb3c-b764f265af7f.jpg",
+            "image_brightness": 0.7,
+            "title": "Réka György",
+            "text": "<p><strong>Sport:</strong> Swimming</p><p><strong>Bio:</strong> 2016 Olympian, Swimming (Hungary) | NCAA All-American</p>",
+            "content_position": "flex-end",
+            "content_alignment": "flex-start",
+            "text_alignment": "left",
+            "content_padding": 30,
+            "overlay_color": "#000000",
+            "overlay_opacity": 0.7,
+            "title_color": "#ffffff",
+            "title_size": 28,
+            "title_weight": "600",
+            "title_spacing": 12,
+            "text_color": "#ffffff",
+            "text_size": 16,
+            "transition_duration": 0.4,
+            "hover_delay": 0,
+            "overlay_delay": 0.1,
+            "content_delay": 0.2,
+            "border_radius": 0
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "hover_card_i6hm6N",
+        "hover_card_UxKkCF",
+        "hover_card_qTrgmE",
+        "hover_card_ELWKB9",
+        "hover_card_TQeAB9"
+      ],
+      "name": "Athletes Slider",
+      "settings": {
+        "section_extra_class": "collection-gold-medal-images",
+        "heading": "Meet Our Athletes",
+        "heading_alignment": "center",
+        "heading_spacing": 20,
+        "enable_fixed_hw": true,
+        "fixed_width": 250,
+        "very_small_desktop": 2.9,
+        "small_desktop": 3.9,
+        "medium_desktop": 3.8,
+        "large_desktop": 3.5,
+        "desktop_gap": 24,
+        "mobile_gap": 8,
+        "top_margin_desktop": 0,
+        "bottom_margin_desktop": 10,
+        "top_margin_mobile": 0,
+        "bottom_margin_mobile": 50,
+        "view_all_text": "EXPLORE ATHLETES",
+        "view_all_url": "",
+        "show_arrows": true
+      }
+    },
+    "banner": {
+      "type": "main-collection-banner",
+      "disabled": true,
+      "custom_css": [
+        ".collection-hero__text-wrapper {flex-direction: column-reverse; margin-bottom: 20px;}",
+        "h2 {text-size: 21px;}"
+      ],
+      "settings": {
+        "header_color_scheme": "light",
+        "add_word": "",
+        "show_word": false,
+        "show_collection_description": false,
+        "show_collection_image": false,
+        "overlay_enable": false,
+        "overlay_opacity": 15
+      }
+    },
+    "shogun-above": {
+      "type": "shogun-above",
+      "disabled": true,
+      "settings": {}
+    },
+    "browse_first_8HQCbQ": {
+      "type": "browse-first",
+      "name": "Best sellers to browse first",
+      "settings": {
+        "extra_class": ""
+      }
+    },
+    "product-grid": {
+      "type": "main-collection-product-grid",
+      "custom_css": [
+        ".card__title {font-weight: bold;}",
+        ".collection-product-list {row-gap: 4rem;}",
+        ".badge-discount {display: hidden;}"
+      ],
+      "settings": {
+        "show_gender_filter": false,
+        "collection_product_title_invisible": "",
+        "product_lists": "{{ collection.products }}",
+        "products_per_page": 21,
+        "columns_mobile": "2",
+        "image_ratio": "portrait",
+        "image_fit": "contain",
+        "show_secondary_image": false,
+        "show_vendor": false,
+        "show_desc": false,
+        "show_sku": false,
+        "quickview_show": true,
+        "enable_filtering": true,
+        "enable_sorting": true,
+        "image_filter_ratio": "4/5",
+        "image_filter_fit": "cover",
+        "image_filter_columns": 5,
+        "infocard_heading_font_desktop": 10,
+        "infocard_heading_font_mobile": 10,
+        "infocard_subheading_font_desktop": 10,
+        "infocard_subheading_font_mobile": 10,
+        "product_title_font_desktop": 10,
+        "product_title_font_mobile": 10,
+        "infocard_subheading_margin_top": 2,
+        "infocard_subheading_margin_bottom": 2,
+        "infocard_subheading_color": "",
+        "tab_font_size_desktop": 16,
+        "tab_font_size_mobile": 13,
+        "gender_font_size_desktop": 18,
+        "gender_font_size_mobile": 20,
+        "heading_font_size_desktop": 44,
+        "heading_font_size_mobile": 30,
+        "heading_font_weight": 600,
+        "description_font_size_desktop": 16,
+        "description_font_size_mobile": 16,
+        "description_line_height": 1
+      }
+    },
+    "shogun-below": {
+      "type": "shogun-below",
+      "settings": {}
+    },
+    "faq_accorddion_YkbLzR": {
+      "type": "faq-accorddion",
+      "blocks": {
+        "faq_6xWbfm": {
+          "type": "faq",
+          "repeater": "{{ collection.metafields.custom.collection_page_summary.value.collection_faqs.value }}",
+          "settings": {
+            "question": "<p><strong>{{ block.repeater.question.value }}</strong></p>",
+            "answer": "",
+            "faq_answer": "{{ block.repeater.answer | metafield_tag }}"
+          }
+        }
+      },
+      "block_order": [
+        "faq_6xWbfm"
+      ],
+      "name": "FAQ Accordion",
+      "settings": {
+        "title": "Frequently Asked Quesions",
+        "desc": "",
+        "extra_class": "",
+        "desktop_margin_top": 50,
+        "desktop_margin_bottom": 50,
+        "mobile_margin_top": 30,
+        "mobile_margin_bottom": 30
+      }
+    },
+    "shogun-optimizer": {
+      "type": "shogun-optimizer",
+      "settings": {}
+    }
+  },
+  "order": [
+    "shogun-helper",
+    "custom_athletes_slider_bNjxxr",
+    "custom_athletes_slider_VVA3Jq",
+    "banner",
+    "shogun-above",
+    "browse_first_8HQCbQ",
+    "product-grid",
+    "shogun-below",
+    "faq_accorddion_YkbLzR",
+    "shogun-optimizer"
+  ]
+}

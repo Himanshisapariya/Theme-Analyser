@@ -1,0 +1,66 @@
+{% comment %}
+  Cart Banner With Text – Block Snippet (Background Image Version)
+{% endcomment %}
+
+<style>
+  .cart-banner-{{ block.id }} {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    color: white; /* Default text color on top of image */
+    text-align: center;
+    padding: 60px 20px; /* Adjust spacing */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  /* Optional overlay */
+  .cart-banner-{{ block.id }}::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.4); /* dark overlay for text readability */
+    z-index: 1;
+  }
+
+  .cart-banner-{{ block.id }}__content {
+    position: relative;
+    z-index: 2; /* on top of image & overlay */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .cart-banner-{{ block.id }} {
+      padding: 40px 15px;
+    }
+  }
+</style>
+
+<div
+  class="cart-banner cart-banner-{{ block.id }} {{ block.settings.extra_class }}"
+  style="
+    {% if block.settings.image != blank %}background-image: url('{{ block.settings.image | image_url: width: 2000 }}');{% endif %}
+    {% if block.settings.image_mobile != blank %}
+      @media (max-width: 768px) { background-image: url('{{ block.settings.image_mobile | image_url: width: 1000 }}'); }
+    {% endif %}
+  "
+>
+  <div class="cart-banner-{{ block.id }}__content">
+    {% if block.settings.heading != blank %}
+      <h2>{{ block.settings.heading }}</h2>
+    {% endif %}
+
+    {% if block.settings.subheading != blank %}
+      <p>{{ block.settings.subheading }}</p>
+    {% endif %}
+
+    {% if block.settings.custom_liquid != blank %}
+      {{ block.settings.custom_liquid }}
+    {% endif %}
+  </div>
+</div>

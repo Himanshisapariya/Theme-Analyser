@@ -1,0 +1,175 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "extra_class": ""
+      }
+    },
+    "custom_liquid_jGwchd": {
+      "type": "custom-liquid",
+      "name": "t:sections.custom-liquid.presets.name",
+      "settings": {
+        "custom_liquid": "<h1 class=\"hidden\">Bundle & Save</h1>"
+      }
+    },
+    "banner_with_text_qebL7D": {
+      "type": "banner-with-text",
+      "name": "t:sections.banner-with-text.name",
+      "settings": {
+        "extra_class": "banner-bundle-builder",
+        "spring_banner_class": "",
+        "color_scheme": "light",
+        "image": "shopify://shop_images/2_eeb5acfe-4627-4f3c-8d0c-29423feb15ef.jpg",
+        "image_mobile": "shopify://shop_images/bundle-builderbanner-mobile.jpg",
+        "image_size": "large",
+        "desktop_banner_height": 0,
+        "tablet_banner_height": 80,
+        "mobile_banner_height": 70,
+        "title": "BUNDLE &amp; SAVE",
+        "content_text": "<p>Bundle your grit and save — <br/>Fleece that flexes, tees that talk truth, and <br/>accessories that pull it all together.</p>",
+        "caption_class": "",
+        "text_alignment": "right",
+        "content_width": "one-quarter",
+        "overlay_enable": false,
+        "overlay_opacity": 40,
+        "button_link": "",
+        "button_label": "",
+        "second_button_link": "",
+        "second_button_label": "",
+        "button_style": "primary",
+        "mobile_button_style": "button--ctm_global_button",
+        "mobile_cta_button_link": "",
+        "mobile_cta_button_label": "",
+        "mobile_second_cta_button_link": "",
+        "mobile_second_cta_button_label": "",
+        "heading_font_family": "Poppins, sans-serif",
+        "subheading_font_family": "Poppins, sans-serif",
+        "caption_font_family": "Poppins, sans-serif",
+        "heading_font_size_desktop": 48,
+        "heading_font_size_tablet": 40,
+        "heading_font_size_mobile": 32,
+        "subheading_font_size_desktop": 18,
+        "subheading_font_size_mobile": 16,
+        "caption_font_size_desktop": 14,
+        "caption_font_size_mobile": 12,
+        "heading_font_weight": 600,
+        "heading_line_height": 1.2,
+        "heading_letter_spacing": 0,
+        "subheading_font_weight": 400,
+        "subheading_line_height": 1.5,
+        "subheading_margin": 0,
+        "caption_font_weight": 500,
+        "caption_line_height": 1.3,
+        "show_heading_mobile": true,
+        "show_subheading_mobile": true,
+        "desktop_content_position": "center-right",
+        "mobile_content_position": "center",
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "top_margin_mobile": 0,
+        "bottom_margin_mobile": 0,
+        "top_padding_desktop": 0,
+        "bottom_padding_desktop": 0,
+        "top_padding_mobile": 0,
+        "bottom_padding_mobile": 0
+      }
+    },
+    "builder_tabs_aeJCrd": {
+      "type": "builder-tabs",
+      "blocks": {
+        "collection_tab_eBGd4c": {
+          "type": "collection_tab",
+          "settings": {
+            "collection": "honest-tees",
+            "tab_title": "Women’s & Men’s Honest Tee Bundle",
+            "collection_title": "Honest Tees: Buy One, Get One 50% Off",
+            "collection_desc": "Honesty never goes out of style — grab two.",
+            "show_variants_as_products": false,
+            "enable_filtering": true,
+            "enable_sorting": true,
+            "image_filter_ratio": "square",
+            "image_filter_fit": "cover",
+            "image_filter_columns": 3
+          }
+        },
+        "collection_tab_KxCrNL": {
+          "type": "collection_tab",
+          "settings": {
+            "collection": "fearless-fleece",
+            "tab_title": "Women’s & Men’s Fleece Bundle",
+            "collection_title": "Buy 2 Fleece Get 25% Off",
+            "collection_desc": "Bundle up, literally — save 25% and double your comfort for the season ahead.",
+            "show_variants_as_products": false,
+            "enable_filtering": true,
+            "enable_sorting": true,
+            "image_filter_ratio": "square",
+            "image_filter_fit": "cover",
+            "image_filter_columns": 3
+          }
+        },
+        "collection_tab_bARDRa": {
+          "type": "collection_tab",
+          "settings": {
+            "collection": "mix-match-for-20-off",
+            "tab_title": "Hat & Graphic Tee Bundle",
+            "collection_title": "3 Hats or Graphic Tees for 20% off",
+            "collection_desc": "Three’s a team — outfit your rotation and keep your message loud and proud.",
+            "show_variants_as_products": false,
+            "enable_filtering": true,
+            "enable_sorting": true,
+            "image_filter_ratio": "square",
+            "image_filter_fit": "cover",
+            "image_filter_columns": 3
+          }
+        },
+        "collection_tab_7DFrzx": {
+          "type": "collection_tab",
+          "settings": {
+            "collection": "truth-fits-tank",
+            "tab_title": "Women’s Truth Fits Tank Bundle",
+            "collection_title": "Truth Fits Tank: Buy One, Get One 50% Off",
+            "collection_desc": "Truth always fits — grab two.",
+            "show_variants_as_products": true,
+            "enable_filtering": true,
+            "enable_sorting": true,
+            "image_filter_ratio": "square",
+            "image_filter_fit": "cover",
+            "image_filter_columns": 3
+          }
+        }
+      },
+      "block_order": [
+        "collection_tab_eBGd4c",
+        "collection_tab_KxCrNL",
+        "collection_tab_bARDRa",
+        "collection_tab_7DFrzx"
+      ],
+      "name": "Bundle Tabs",
+      "settings": {
+        "heading": "",
+        "description": "",
+        "bundle_heading_fontsize": 36,
+        "bundle_subheading_fontsize": 22,
+        "bundle_heading_mobile_fontsize": 26,
+        "bundle_subheading_mobile_fontsize": 18
+      }
+    }
+  },
+  "order": [
+    "main",
+    "custom_liquid_jGwchd",
+    "banner_with_text_qebL7D",
+    "builder_tabs_aeJCrd"
+  ]
+}

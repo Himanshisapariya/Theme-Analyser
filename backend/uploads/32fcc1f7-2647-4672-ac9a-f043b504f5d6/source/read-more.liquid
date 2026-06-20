@@ -1,0 +1,64 @@
+<style>
+  p,button,.button{
+    text-align:center;
+  }
+  .custom-button{
+    align-items : center;
+    display : flex;
+    justify-content : center;
+  }
+  .description .full-description {
+    display: none;
+  }
+  .description .read-more-btn {
+    background-color: black; /* Blue background */
+    color: white; /* White text */
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+    margin-top: 10px;
+  }
+  .description .read-more-btn:hover {
+    background-color: white;
+    color:black/* Darker blue on hover */
+  }
+</style>
+
+<div class="description">
+  <div class="short-description">
+    <!-- Add a short version of your product description here -->
+    <p>This is a brief description of the product...</p>
+  </div>
+  <div class="full-description" style="display: none;">
+    <!-- Add the full product description here -->
+    <p>
+      This is the full detailed description of the product. It includes all the features, specifications, and other
+      details that the customer might want to know...
+    </p>
+  </div>
+  <div class="custom-button">
+    <button class="read-more-btn button">Read More</button>
+  </div>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    var readMoreBtn = document.querySelector(".read-more-btn");
+    var fullDescription = document.querySelector(".full-description");
+    var shortDescription = document.querySelector(".short-description");
+
+    readMoreBtn.addEventListener("click", function() {
+      if (fullDescription.style.display === "none") {
+        fullDescription.style.display = "block";
+        shortDescription.style.display = "none";
+        readMoreBtn.textContent = "Read Less";
+      } else {
+        fullDescription.style.display = "none";
+        shortDescription.style.display = "block";
+        readMoreBtn.textContent = "Read More";
+      }
+    });
+  });
+</script>

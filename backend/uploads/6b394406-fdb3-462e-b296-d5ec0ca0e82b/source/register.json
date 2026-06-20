@@ -1,0 +1,73 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-register",
+      "blocks": {
+        "slide_86n9zR": {
+          "type": "slide",
+          "settings": {
+            "slide_image": "shopify://shop_images/desktop2_9bef3b5d-30bb-4547-ac1a-3a70e56689e8.jpg",
+            "slide_image_tablet": "shopify://shop_images/tab2.jpg",
+            "slide_image_mobile": "shopify://shop_images/account2-mobile.jpg",
+            "heading": "Empowering Women Starts Here.",
+            "subheading": "Keep up with your order and stay ready for every workout. Fairness in sports begins with you.",
+            "button_text": "Order Tracking",
+            "button_link": "https://www.xx-xyathletics.com/pages/order-tracking"
+          }
+        },
+        "slide_n7kPcR": {
+          "type": "slide",
+          "settings": {
+            "slide_image": "shopify://shop_images/desktop1.jpg",
+            "slide_image_tablet": "shopify://shop_images/tab1.jpg",
+            "slide_image_mobile": "shopify://shop_images/mobile1.jpg",
+            "heading": "Empowering Women Starts Here.",
+            "subheading": "Keep up with your order and stay ready for every workout. Fairness in sports begins with you.",
+            "button_text": "Order Tracking",
+            "button_link": "https://www.xx-xyathletics.com/pages/order-tracking"
+          }
+        },
+        "slide_jKKiYU": {
+          "type": "slide",
+          "settings": {
+            "slide_image": "shopify://shop_images/desktop3.jpg",
+            "slide_image_tablet": "shopify://shop_images/tab3.jpg",
+            "slide_image_mobile": "shopify://shop_images/mobile3.jpg",
+            "heading": "Empowering Women Starts Here.",
+            "subheading": "Keep up with your order and stay ready for every workout. Fairness in sports begins with you.",
+            "button_text": "Order Tracking",
+            "button_link": "https://www.xx-xyathletics.com/pages/order-tracking"
+          }
+        }
+      },
+      "block_order": [
+        "slide_86n9zR",
+        "slide_n7kPcR",
+        "slide_jKKiYU"
+      ],
+      "settings": {
+        "header_color_scheme": "dark",
+        "color_scheme_customer": "background-1",
+        "subtitle": "",
+        "autoplay": false,
+        "logo": "shopify://shop_images/Logo-Horiz-Reduced-Green_1.png",
+        "logo_link": "",
+        "logo_headline": "Let's Do This.",
+        "show_policy_line": true,
+        "policy_text": ""
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

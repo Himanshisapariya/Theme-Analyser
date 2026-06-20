@@ -1,0 +1,954 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "spring_slideshow_77QWTc": {
+      "type": "spring-slideshow",
+      "blocks": {
+        "slide_gKq87L": {
+          "type": "slide",
+          "settings": {
+            "desktop_image": "shopify://shop_images/ChatGPT_Image_Jun_8_2026_04_57_34_PM.png",
+            "mobile_image": "shopify://shop_images/Mobile_b3053f29-2d2d-432a-80a2-b9d3592143c6.jpg",
+            "enable_image_darkening": false,
+            "darkening_opacity": 25,
+            "heading": "Father’s Day Gift Guide",
+            "subheading": "For the men who lead by example and wear their values.",
+            "hide_heading_mobile": false,
+            "hide_subheading_mobile": true,
+            "heading_font_size": 48,
+            "heading_font_size_tablet": 40,
+            "heading_font_size_mobile": 30,
+            "heading_line_height": 1.4,
+            "heading_letter_spacing": 3,
+            "heading_color": "#ffffff",
+            "heading_font_family": "'Poppins', sans-serif",
+            "subheading_font_size": 18,
+            "subheading_font_size_tablet": 18,
+            "subheading_font_size_mobile": 16,
+            "subheading_line_height": 2,
+            "subheading_color": "#ffffff",
+            "subheading_font_family": "'Poppins', sans-serif",
+            "subheading_font_weight": 400,
+            "enable_text_shadow": false,
+            "text_shadow_color": "#000000",
+            "text_shadow_opacity": 70,
+            "text_shadow_blur": 8,
+            "text_shadow_y": 2,
+            "content_max_width": 1150,
+            "content_alignment": "bottom-right",
+            "mobile_content_alignment": "bottom",
+            "text_alignment": "right",
+            "mobile_text_alignment": "center",
+            "button_text": "EXPLORE FATHER’S DAY",
+            "button_link": "shopify://pages/fathers-day",
+            "button_2_text": "",
+            "button_2_link": "",
+            "stack_buttons_mobile": false,
+            "button_style": "ctm-underline-button",
+            "mobile_button_style": "button--ctm_global_button",
+            "button_font_size": 13,
+            "mobile_button_font_size": 16,
+            "button_gap": 16
+          }
+        }
+      },
+      "block_order": [
+        "slide_gKq87L"
+      ],
+      "name": "CTM Hero Slideshow",
+      "settings": {
+        "desktop_height": 950,
+        "tablet_laptop_height": 100,
+        "mobile_height": 650,
+        "extra_class": "",
+        "slideshow_speed": 600,
+        "slideshow_delay": 5000,
+        "enable_autoplay": false,
+        "show_arrows": true
+      }
+    },
+    "collection_tabbing_36A64n": {
+      "type": "collection-tabbing",
+      "blocks": {
+        "collection_7bcD6b": {
+          "type": "collection",
+          "settings": {
+            "collection_ctm": "red-white-blue"
+          }
+        },
+        "collection_FMLJKH": {
+          "type": "collection",
+          "settings": {
+            "collection_ctm": "the-patriots"
+          }
+        }
+      },
+      "block_order": [
+        "collection_7bcD6b",
+        "collection_FMLJKH"
+      ],
+      "name": "Collection Tabbing with Text",
+      "settings": {
+        "extra_class": "gts",
+        "heading_ctm": "For the red, white & bold.",
+        "ctm_subtitle": "",
+        "content_alignment": "with_product",
+        "tab_1": "WOMEN'S",
+        "tab_2": "MEN'S",
+        "desktop_slide": 5.5,
+        "button_label1": "",
+        "button_link1": "",
+        "button_label2": "",
+        "button_link2": "",
+        "spring_slider_class": "gts",
+        "button_style": "button button--primary",
+        "top_padding_desktop": 0,
+        "bottom_padding_desktop": 0,
+        "top_padding_mobile": 0,
+        "bottom_padding_mobile": 0,
+        "top_margin_desktop": 35,
+        "bottom_margin_desktop": 80,
+        "top_margin_mobile": 40,
+        "bottom_margin_mobile": 50,
+        "show_arrows": false,
+        "show_variants_as_products": false
+      }
+    },
+    "multicolumn_blocks_8XDa6G": {
+      "type": "multicolumn-blocks",
+      "blocks": {
+        "column_c9JdXG": {
+          "type": "column",
+          "settings": {
+            "desktop_image": "shopify://shop_images/MULTICOLUMN_SECTION_Mobile_copy.jpg",
+            "mobile_image": "shopify://shop_images/MULTICOLUMN_SECTION_Mobile_copy.jpg",
+            "card_url": "shopify://collections/tops-xx",
+            "heading": "Performance Tops",
+            "gender_link_1_text": "WOMEN'S",
+            "gender_link_1_url": "shopify://collections/tops-xx",
+            "gender_link_2_text": "MEN'S",
+            "gender_link_2_url": "shopify://collections/tops-xy",
+            "subheading": "",
+            "button_1_text": "",
+            "button_1_url": "",
+            "button_2_text": "",
+            "button_2_url": ""
+          }
+        },
+        "column_GQWdXn": {
+          "type": "column",
+          "settings": {
+            "desktop_image": "shopify://shop_images/MULTICOLUMN_SECTION_Mobile_copy_2.jpg",
+            "mobile_image": "shopify://shop_images/MULTICOLUMN_SECTION_Mobile_copy_2.jpg",
+            "card_url": "shopify://collections/skirts-dresses-xx",
+            "heading": "Performance Bottoms",
+            "gender_link_1_text": "WOMEN'S",
+            "gender_link_1_url": "shopify://collections/leggings",
+            "gender_link_2_text": "MEN'S",
+            "gender_link_2_url": "shopify://collections/pants-shorts-xy",
+            "subheading": "",
+            "button_1_text": "",
+            "button_1_url": "",
+            "button_2_text": "",
+            "button_2_url": ""
+          }
+        },
+        "column_NamU9C": {
+          "type": "column",
+          "settings": {
+            "desktop_image": "shopify://shop_images/MULTICOLUMN_SECTION_Mobile_c696069a-84d3-40dd-935a-848353cb6ae9.jpg",
+            "mobile_image": "shopify://shop_images/MULTICOLUMN_SECTION_Mobile_c696069a-84d3-40dd-935a-848353cb6ae9.jpg",
+            "card_url": "shopify://collections/accessories",
+            "heading": "New Arrivals",
+            "gender_link_1_text": "WOMEN'S",
+            "gender_link_1_url": "shopify://collections/new-arrivals-xx",
+            "gender_link_2_text": "MEN'S",
+            "gender_link_2_url": "shopify://collections/new-arrivals-xy",
+            "subheading": "",
+            "button_1_text": "",
+            "button_1_url": "",
+            "button_2_text": "",
+            "button_2_url": ""
+          }
+        },
+        "column_rhp7NL": {
+          "type": "column",
+          "disabled": true,
+          "settings": {
+            "desktop_image": "shopify://shop_images/22_53bbf978-6dd9-47e4-b9ea-1cb0ed7d238f.jpg",
+            "mobile_image": "shopify://shop_images/22_53bbf978-6dd9-47e4-b9ea-1cb0ed7d238f.jpg",
+            "card_url": "shopify://collections/red-white-blue",
+            "heading": "All Patriotic",
+            "gender_link_1_text": "SHOP NOW",
+            "gender_link_1_url": "shopify://collections/red-white-blue",
+            "gender_link_2_text": "",
+            "gender_link_2_url": "",
+            "subheading": "",
+            "button_1_text": "",
+            "button_1_url": "",
+            "button_2_text": "",
+            "button_2_url": ""
+          }
+        },
+        "column_eECMQK": {
+          "type": "column",
+          "disabled": true,
+          "settings": {
+            "desktop_image": "shopify://shop_images/23_1850d1f9-2425-4168-b5ea-f9bfd6af7352.jpg",
+            "mobile_image": "shopify://shop_images/23_1850d1f9-2425-4168-b5ea-f9bfd6af7352.jpg",
+            "card_url": "shopify://collections/usa-250",
+            "heading": "USA 250",
+            "gender_link_1_text": "SHOP NOW",
+            "gender_link_1_url": "shopify://collections/usa-250",
+            "gender_link_2_text": "",
+            "gender_link_2_url": "",
+            "subheading": "",
+            "button_1_text": "",
+            "button_1_url": "",
+            "button_2_text": "",
+            "button_2_url": ""
+          }
+        }
+      },
+      "block_order": [
+        "column_c9JdXG",
+        "column_GQWdXn",
+        "column_NamU9C",
+        "column_rhp7NL",
+        "column_eECMQK"
+      ],
+      "name": "Multi Column Blocks",
+      "settings": {
+        "section_margin_top_desktop": 80,
+        "section_margin_bottom_desktop": 80,
+        "section_margin_top_mobile": 50,
+        "section_margin_bottom_mobile": 50,
+        "small_laptop_height": 600,
+        "tablet_height": 600,
+        "large_desktop_height": 750,
+        "mobile_height": 500,
+        "slides_desktop": 3,
+        "slides_tablet": 2.5,
+        "slides_mobile": 1.2,
+        "slides_gap": 16,
+        "slides_gap_mobile": 0,
+        "show_arrows": false,
+        "show_scrollbar": false,
+        "arrow_size": 44,
+        "arrow_bg": "#00000066",
+        "arrow_color": "#2f484c",
+        "hover_underline_color": "#3db671",
+        "desktop_content_position_vertical": "bottom",
+        "desktop_content_position_horizontal": "left",
+        "mobile_content_position_vertical": "bottom",
+        "mobile_content_position_horizontal": "left",
+        "text_align": "left",
+        "overlay_opacity": 0.6,
+        "heading_font": "Poppins",
+        "heading_color": "#ffffff",
+        "heading_font_size_desktop": 24,
+        "heading_font_size_mobile": 22,
+        "subheading_font": "Poppins",
+        "subheading_color": "#ffffff",
+        "subheading_font_size_desktop": 18,
+        "subheading_font_size_mobile": 16,
+        "subheading_margin_desktop": 8,
+        "subheading_margin_mobile": 6,
+        "section_heading": "",
+        "section_heading_align": "center",
+        "extra_class": "",
+        "button_style": "button--ctm_global_button"
+      }
+    },
+    "parallax_bg_with_text_jP7DA6": {
+      "type": "parallax-bg-with-text",
+      "name": "Parallax Bg With Text",
+      "settings": {
+        "extra_class": "",
+        "color_scheme": "light",
+        "image_mobile": "shopify://shop_images/PARALLAX_BANNER_Mobile_26d35519-c670-4376-87b7-c09f999d34e3.jpg",
+        "background_image": "shopify://shop_images/PARALLAX_BANNER_Desktop_622429db-afcd-4b64-8dec-68352baa19ce.jpg",
+        "banner_height": 850,
+        "tablet_banner_height": 97,
+        "caption_class": "",
+        "title": "A cooler take on performance.",
+        "content_text": "",
+        "text_alignment": "center",
+        "mobile_text_alignment": "center",
+        "content_width": "one-third",
+        "overlay_enable": true,
+        "overlay_opacity": 20,
+        "button_link": "shopify://collections/underseas",
+        "button_label": "SHOP UNDERSEAS",
+        "second_button_link": "",
+        "second_button_label": "",
+        "button_style": "ctm-underline-button",
+        "margin_top": 0,
+        "spring_banner_class": "",
+        "heading_font_family": "Poppins, sans-serif",
+        "subheading_font_family": "Poppins, sans-serif",
+        "caption_font_family": "Poppins, sans-serif",
+        "heading_font_size_desktop": 36,
+        "heading_font_size_tablet": 40,
+        "heading_font_size_mobile": 30,
+        "subheading_font_size_desktop": 18,
+        "subheading_font_size_tablet": 17,
+        "subheading_font_size_mobile": 16,
+        "subheading_margin": 0,
+        "subheading_margin_tablet": 0,
+        "caption_font_size_desktop": 14,
+        "caption_font_size_tablet": 13,
+        "caption_font_size_mobile": 13,
+        "heading_font_weight": 400,
+        "heading_line_height": 1.7,
+        "heading_letter_spacing": 0,
+        "subheading_font_weight": 500,
+        "subheading_line_height": 1.5,
+        "caption_font_weight": 500,
+        "caption_line_height": 1.4,
+        "show_heading_mobile": true,
+        "show_subheading_mobile": true,
+        "mobile_banner_height": 80,
+        "desktop_content_position": "center",
+        "mobile_content_position": "center",
+        "enable_text_shadow": true,
+        "shadow_color": "#3d3d3d",
+        "shadow_x": -9,
+        "shadow_y": -2,
+        "shadow_blur": 28,
+        "top_padding_desktop": 0,
+        "bottom_padding_desktop": 0,
+        "top_padding_mobile": 0,
+        "bottom_padding_mobile": 0,
+        "top_margin_desktop": 0,
+        "bottom_margin_desktop": 55,
+        "top_margin_mobile": 0,
+        "bottom_margin_mobile": 50
+      }
+    },
+    "collection_tabbing_KxytKX": {
+      "type": "collection-tabbing",
+      "blocks": {
+        "collection_C8fcw8": {
+          "type": "collection",
+          "settings": {
+            "collection_ctm": "womens-tennis"
+          }
+        },
+        "collection_rgPqjz": {
+          "type": "collection",
+          "settings": {
+            "collection_ctm": "mens-tennis"
+          }
+        }
+      },
+      "block_order": [
+        "collection_C8fcw8",
+        "collection_rgPqjz"
+      ],
+      "custom_css": [],
+      "name": "Collection Tabbing with Text",
+      "settings": {
+        "extra_class": "gts",
+        "heading_ctm": "Spring Training",
+        "ctm_subtitle": "",
+        "content_alignment": "with_product",
+        "tab_1": "WOMEN'S",
+        "tab_2": "MEN'S",
+        "desktop_slide": 5.5,
+        "button_label1": "",
+        "button_link1": "",
+        "button_label2": "",
+        "button_link2": "",
+        "spring_slider_class": "gts",
+        "button_style": "button button--primary",
+        "top_padding_desktop": 0,
+        "bottom_padding_desktop": 0,
+        "top_padding_mobile": 0,
+        "bottom_padding_mobile": 0,
+        "top_margin_desktop": 0,
+        "bottom_margin_desktop": 80,
+        "top_margin_mobile": 0,
+        "bottom_margin_mobile": 80,
+        "show_arrows": false,
+        "show_variants_as_products": false
+      }
+    },
+    "sports_slider_JJGCii": {
+      "type": "sports-slider",
+      "blocks": {
+        "link_item_6WV7i3": {
+          "type": "link_item",
+          "settings": {
+            "link_text": "Running",
+            "link": "shopify://collections/running",
+            "image": "shopify://shop_images/WHAT_MOVES_YOU_dc0e6c74-250c-4b3a-adde-876a59ba8c7d.jpg"
+          }
+        },
+        "link_item_NxdhLC": {
+          "type": "link_item",
+          "settings": {
+            "link_text": "Tennis",
+            "link": "shopify://collections/tennis",
+            "image": "shopify://shop_images/WHAT_MOVES_YOU_2e4913ac-113a-4085-aa2d-81232a2d76eb.jpg"
+          }
+        },
+        "link_item_m8wmQn": {
+          "type": "link_item",
+          "settings": {
+            "link_text": "Training",
+            "link": "shopify://collections/training",
+            "image": "shopify://shop_images/WHAT_MOVES_YOU_898120c5-2756-4715-854b-48e403a5a4c6.jpg"
+          }
+        },
+        "link_item_X96Gqh": {
+          "type": "link_item",
+          "settings": {
+            "link_text": "Golf",
+            "link": "shopify://collections/golf",
+            "image": "shopify://shop_images/WHAT_MOVES_YOU_e3d06d9b-dc5c-4bc5-b1b4-c95c4e58af4f.jpg"
+          }
+        },
+        "link_item_HP6Gj7": {
+          "type": "link_item",
+          "settings": {
+            "link_text": "Soccer",
+            "link": "shopify://collections/soccer",
+            "image": "shopify://shop_images/7_fcaf7f52-d9ac-44b4-9fae-fe52f19d9ff8.jpg"
+          }
+        },
+        "link_item_F4Mtfj": {
+          "type": "link_item",
+          "settings": {
+            "link_text": "Lounge & Recovery",
+            "link": "shopify://collections/lounge-and-recovery",
+            "image": "shopify://shop_images/WHAT_MOVES_YOU.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "link_item_6WV7i3",
+        "link_item_NxdhLC",
+        "link_item_m8wmQn",
+        "link_item_X96Gqh",
+        "link_item_HP6Gj7",
+        "link_item_F4Mtfj"
+      ],
+      "name": "Hover Image Links",
+      "settings": {
+        "content_alignment": "center",
+        "heading": "WHAT MOVES YOU",
+        "heading_font_size": 32,
+        "mobile_heading_font_size": 24,
+        "heading_alignment": "left",
+        "heading_color": "#2f484c",
+        "button_text": "Shop Our Featured Athlete's Favorites >",
+        "button_link": "shopify://collections/kaillie-humphries-favorites",
+        "link_font_size": 58,
+        "mobile_link_font_size": 25,
+        "tablet_link_font_size": 45,
+        "link_color": "#2f484c",
+        "underline_color": "#3db671",
+        "arrow_color": "#3db671",
+        "image_width": 1000,
+        "image_border_radius": 30,
+        "image_fit": "cover",
+        "image_position": "center center",
+        "animation_style": "slide",
+        "animation_speed": 1600,
+        "slide_direction": "right",
+        "auto_change": false,
+        "auto_change_speed": 4000,
+        "background_color": "#f7f7f7",
+        "padding_top": 0,
+        "padding_bottom": 80
+      }
+    },
+    "parallax_bg_with_text_bXhnGd": {
+      "type": "parallax-bg-with-text",
+      "name": "Parallax Bg With Text",
+      "settings": {
+        "extra_class": "",
+        "color_scheme": "light",
+        "image_mobile": "shopify://shop_images/PARALLAX_BANNER_Mobile.png",
+        "background_image": "shopify://shop_images/PARALLAX_BANNER_Desktop_copy.jpg",
+        "banner_height": 850,
+        "tablet_banner_height": 97,
+        "caption_class": "",
+        "title": "",
+        "content_text": "<h5>\nOUR MISSION\n</h5><p>\n</p><p>At XX-XY Athletics our mission is to empower <br>\nfemale athletes and take a stand for fair<br>\ncompetition.</p>\n<p>We design premium athletic product for training <br>\nand competition, for men and women.</p>\n<p>XX-XY Athletics is for everyone who believes in the <br>\ntransformative power of sport and the need for <br>\nsafety and fairness. Because sports aren’t just a <br>\ngame.</p>",
+        "text_alignment": "left",
+        "mobile_text_alignment": "center",
+        "content_width": "one-third",
+        "overlay_enable": true,
+        "overlay_opacity": 20,
+        "button_link": "shopify://pages/our-mission",
+        "button_label": "LEARN MORE",
+        "second_button_link": "shopify://pages/our-mission",
+        "second_button_label": "",
+        "button_style": "button--ctm_global_button",
+        "margin_top": 0,
+        "spring_banner_class": "",
+        "heading_font_family": "Poppins, sans-serif",
+        "subheading_font_family": "Poppins, sans-serif",
+        "caption_font_family": "Poppins, sans-serif",
+        "heading_font_size_desktop": 36,
+        "heading_font_size_tablet": 32,
+        "heading_font_size_mobile": 24,
+        "subheading_font_size_desktop": 18,
+        "subheading_font_size_tablet": 17,
+        "subheading_font_size_mobile": 16,
+        "subheading_margin": 40,
+        "subheading_margin_tablet": 40,
+        "caption_font_size_desktop": 14,
+        "caption_font_size_tablet": 13,
+        "caption_font_size_mobile": 13,
+        "heading_font_weight": 400,
+        "heading_line_height": 3,
+        "heading_letter_spacing": 0,
+        "subheading_font_weight": 500,
+        "subheading_line_height": 1.6,
+        "caption_font_weight": 500,
+        "caption_line_height": 1.4,
+        "show_heading_mobile": true,
+        "show_subheading_mobile": true,
+        "mobile_banner_height": 80,
+        "desktop_content_position": "center-right",
+        "mobile_content_position": "center",
+        "enable_text_shadow": true,
+        "shadow_color": "#3d3d3d",
+        "shadow_x": -9,
+        "shadow_y": -2,
+        "shadow_blur": 28,
+        "top_padding_desktop": 0,
+        "bottom_padding_desktop": 0,
+        "top_padding_mobile": 0,
+        "bottom_padding_mobile": 0,
+        "top_margin_desktop": 0,
+        "bottom_margin_desktop": 80,
+        "top_margin_mobile": 0,
+        "bottom_margin_mobile": 50
+      }
+    },
+    "custom_athletes_slider_98Qyt8": {
+      "type": "custom-athletes-slider",
+      "blocks": {
+        "hover_card_FqFm4j": {
+          "type": "hover-card",
+          "name": "Custom Hover card",
+          "settings": {
+            "image": "shopify://shop_images/PDP_DIMS_2.jpg",
+            "image_brightness": 1,
+            "title": "Riley Gaines",
+            "text": "<p><strong>Sport:</strong> Swimming</p><p><strong>Bio:</strong> 12x All-American, 5x SEC Champion, 2x Olympic Trials Qualifier, NCAA Woman of the Year Nominee. A leading voice in the women’s sports movement.</p>",
+            "content_position": "flex-end",
+            "content_alignment": "flex-start",
+            "text_alignment": "left",
+            "content_padding": 30,
+            "overlay_color": "#000000",
+            "overlay_opacity": 0.7,
+            "title_color": "#ffffff",
+            "title_size": 28,
+            "title_weight": "600",
+            "title_spacing": 12,
+            "text_color": "#ffffff",
+            "text_size": 16,
+            "transition_duration": 0.4,
+            "hover_delay": 0,
+            "overlay_delay": 0.1,
+            "content_delay": 0.2,
+            "border_radius": 0
+          },
+          "blocks": {}
+        },
+        "hover_card_EJ4NCH": {
+          "type": "hover-card",
+          "name": "Custom Hover card",
+          "settings": {
+            "image": "shopify://shop_images/PDP_DIMS_5.jpg",
+            "image_brightness": 0.7,
+            "title": "Dakota Myer",
+            "text": "<p><strong>Sport:</strong> United States Marine</p><p><strong>Bio:</strong> Medal of Honor Recipient and Ultimate Girl Dad</p>",
+            "content_position": "flex-end",
+            "content_alignment": "flex-start",
+            "text_alignment": "left",
+            "content_padding": 30,
+            "overlay_color": "#000000",
+            "overlay_opacity": 0.7,
+            "title_color": "#ffffff",
+            "title_size": 28,
+            "title_weight": "600",
+            "title_spacing": 12,
+            "text_color": "#ffffff",
+            "text_size": 16,
+            "transition_duration": 0.4,
+            "hover_delay": 0,
+            "overlay_delay": 0.1,
+            "content_delay": 0.2,
+            "border_radius": 0
+          },
+          "blocks": {}
+        },
+        "hover_card_AbQfzB": {
+          "type": "hover-card",
+          "name": "Custom Hover card",
+          "settings": {
+            "image": "shopify://shop_images/9_986f9e02-d1e5-47cc-9612-cbfea7e6ba40.jpg",
+            "image_brightness": 0.7,
+            "title": "Alanna Smith",
+            "text": "<p><strong>Sport:</strong> NCAA Division I Track & Field</p><p><strong>Bio:</strong> Top Connecticut sprinter erased by a male competitor who spoke up when few dared to.</p>",
+            "content_position": "flex-end",
+            "content_alignment": "flex-start",
+            "text_alignment": "left",
+            "content_padding": 30,
+            "overlay_color": "#000000",
+            "overlay_opacity": 0.7,
+            "title_color": "#ffffff",
+            "title_size": 28,
+            "title_weight": "600",
+            "title_spacing": 12,
+            "text_color": "#ffffff",
+            "text_size": 16,
+            "transition_duration": 0.4,
+            "hover_delay": 0,
+            "overlay_delay": 0.1,
+            "content_delay": 0.2,
+            "border_radius": 0
+          },
+          "blocks": {}
+        },
+        "hover_card_LT4JQk": {
+          "type": "hover-card",
+          "name": "Custom Hover card",
+          "settings": {
+            "image": "shopify://shop_images/8_4c5bb12f-767a-4d19-9135-91d86d0f2b52.jpg",
+            "image_brightness": 0.7,
+            "title": "Brooke Slusser",
+            "text": "<p><strong>Sport:</strong> Volleyball</p><p><strong>Bio:</strong> SJSU co-captain and setter taking legal action against the NCAA and Mountain West Conference for Title IX violations, bringing national attention to fairness in volleyball.</p>",
+            "content_position": "flex-end",
+            "content_alignment": "flex-start",
+            "text_alignment": "left",
+            "content_padding": 30,
+            "overlay_color": "#000000",
+            "overlay_opacity": 0.7,
+            "title_color": "#ffffff",
+            "title_size": 28,
+            "title_weight": "600",
+            "title_spacing": 12,
+            "text_color": "#ffffff",
+            "text_size": 16,
+            "transition_duration": 0.4,
+            "hover_delay": 0,
+            "overlay_delay": 0.1,
+            "content_delay": 0.2,
+            "border_radius": 0
+          },
+          "blocks": {}
+        },
+        "hover_card_i3mkjG": {
+          "type": "hover-card",
+          "name": "Custom Hover card",
+          "settings": {
+            "image": "shopify://shop_images/7_c032e544-8fba-47f9-9754-da8fa2ca2c58.jpg",
+            "image_brightness": 0.7,
+            "title": "Lauren Miller",
+            "text": "<p><strong>Sport:</strong> Golf</p><p><strong>Bio:</strong> U.S. Women’s Open and LPGA competitor. After losing a title to a male golfer, Miller pushed for fair eligibility rules in women’s golf—helping drive policy changes.</p>",
+            "content_position": "flex-end",
+            "content_alignment": "flex-start",
+            "text_alignment": "left",
+            "content_padding": 30,
+            "overlay_color": "#000000",
+            "overlay_opacity": 0.7,
+            "title_color": "#ffffff",
+            "title_size": 28,
+            "title_weight": "600",
+            "title_spacing": 12,
+            "text_color": "#ffffff",
+            "text_size": 16,
+            "transition_duration": 0.4,
+            "hover_delay": 0,
+            "overlay_delay": 0.1,
+            "content_delay": 0.2,
+            "border_radius": 0
+          },
+          "blocks": {}
+        },
+        "hover_card_HdHNzA": {
+          "type": "hover-card",
+          "name": "Custom Hover card",
+          "settings": {
+            "image": "shopify://shop_images/Alexa_Anderson.jpg",
+            "image_brightness": 0.7,
+            "title": "Alexa Anderson",
+            "text": "<p><strong>Sport:</strong> Pole Vault</p><p><strong>Bio:</strong> South Alabama track<br/>athlete who gained national attention after refusing to share the podium with a male competitor in high school, boldly holding up an XX-XY Athletics shirt in<br/>protest.</p>",
+            "content_position": "flex-end",
+            "content_alignment": "flex-start",
+            "text_alignment": "left",
+            "content_padding": 30,
+            "overlay_color": "#000000",
+            "overlay_opacity": 0.7,
+            "title_color": "#ffffff",
+            "title_size": 28,
+            "title_weight": "600",
+            "title_spacing": 12,
+            "text_color": "#ffffff",
+            "text_size": 16,
+            "transition_duration": 0.4,
+            "hover_delay": 0,
+            "overlay_delay": 0.1,
+            "content_delay": 0.2,
+            "border_radius": 0
+          },
+          "blocks": {}
+        },
+        "hover_card_cnmbEH": {
+          "type": "hover-card",
+          "name": "Custom Hover card",
+          "settings": {
+            "image": "shopify://shop_images/Sia_Liilii_37692675-1063-4346-b169-e4f6039f520f.jpg",
+            "image_brightness": 0.7,
+            "title": "Sia Liilii",
+            "text": "<p><strong>Sport:</strong> Volleyball</p><p><strong>Bio:</strong> University of Nevada team captain who led her team in standing against competing against a male athlete, even forfeiting a match in protest. Sia now plays professionally in Germany for Vfl Oythe.</p>",
+            "content_position": "flex-end",
+            "content_alignment": "flex-start",
+            "text_alignment": "left",
+            "content_padding": 30,
+            "overlay_color": "#000000",
+            "overlay_opacity": 0.7,
+            "title_color": "#ffffff",
+            "title_size": 28,
+            "title_weight": "600",
+            "title_spacing": 12,
+            "text_color": "#ffffff",
+            "text_size": 16,
+            "transition_duration": 0.4,
+            "hover_delay": 0,
+            "overlay_delay": 0.1,
+            "content_delay": 0.2,
+            "border_radius": 0
+          },
+          "blocks": {}
+        },
+        "hover_card_gqYM4q": {
+          "type": "hover-card",
+          "name": "Custom Hover card",
+          "settings": {
+            "image": "shopify://shop_images/Natalie_Daniels.jpg",
+            "image_brightness": 0.7,
+            "title": "Natalie Daniels",
+            "text": "<p><strong>Sport:</strong> Marathon Runner</p><p><strong>Bio:</strong> 18x marathoner and 5x winner, including a 2:50 Boston Marathon finish just six months postpartum. Founder of Team Women and advocate for fairness in athletics.</p>",
+            "content_position": "flex-end",
+            "content_alignment": "flex-start",
+            "text_alignment": "left",
+            "content_padding": 30,
+            "overlay_color": "#000000",
+            "overlay_opacity": 0.7,
+            "title_color": "#ffffff",
+            "title_size": 28,
+            "title_weight": "600",
+            "title_spacing": 12,
+            "text_color": "#ffffff",
+            "text_size": 16,
+            "transition_duration": 0.4,
+            "hover_delay": 0,
+            "overlay_delay": 0.1,
+            "content_delay": 0.2,
+            "border_radius": 0
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "hover_card_FqFm4j",
+        "hover_card_EJ4NCH",
+        "hover_card_AbQfzB",
+        "hover_card_LT4JQk",
+        "hover_card_i3mkjG",
+        "hover_card_HdHNzA",
+        "hover_card_cnmbEH",
+        "hover_card_gqYM4q"
+      ],
+      "name": "Athletes Slider",
+      "settings": {
+        "section_extra_class": "ctm-how-it-fits",
+        "heading": "OUR ATHLETES",
+        "heading_alignment": "left",
+        "heading_spacing": 20,
+        "enable_fixed_hw": false,
+        "fixed_width": 350,
+        "very_small_desktop": 2.9,
+        "small_desktop": 3.4,
+        "medium_desktop": 4,
+        "large_desktop": 4,
+        "desktop_gap": 24,
+        "mobile_gap": 8,
+        "top_margin_desktop": 0,
+        "bottom_margin_desktop": 80,
+        "top_margin_mobile": 0,
+        "bottom_margin_mobile": 50,
+        "view_all_text": "EXPLORE ATHLETES →",
+        "view_all_url": "shopify://pages/our-athletes",
+        "show_arrows": false
+      }
+    },
+    "banner_with_text_qjct9n": {
+      "type": "banner-with-text",
+      "name": "t:sections.banner-with-text.name",
+      "settings": {
+        "extra_class": "ctm-user-banner",
+        "heading_class": "",
+        "spring_banner_class": "",
+        "color_scheme": "light",
+        "image": "shopify://shop_images/Untitled_design_dc8b0edb-1bef-4ceb-9358-97e958e6d925.jpg",
+        "image_mobile": "shopify://shop_images/Untitled_design_copy_566731dc-c282-4c0a-94be-763a0d799c7e.jpg",
+        "image_size": "adapt",
+        "desktop_banner_height": 0,
+        "tablet_banner_height": 80,
+        "mobile_banner_height": 30,
+        "title": "The Newsroom",
+        "content_text": "<p>This is where big voices and bold moves make headlines.</p>",
+        "caption_class": "",
+        "text_alignment": "left",
+        "content_width": "max",
+        "overlay_enable": true,
+        "overlay_opacity": 20,
+        "button_link": "shopify://blogs/newsroom",
+        "button_label": "READ THE NEWSROOM →",
+        "second_button_link": "",
+        "second_button_label": "",
+        "button_style": "ctm-underline-button",
+        "mobile_button_style": "ctm-underline-button",
+        "mobile_cta_button_link": "",
+        "mobile_cta_button_label": "",
+        "mobile_second_cta_button_link": "",
+        "mobile_second_cta_button_label": "",
+        "heading_font_family": "Poppins, sans-serif",
+        "subheading_font_family": "Poppins, sans-serif",
+        "caption_font_family": "Poppins, sans-serif",
+        "heading_font_size_desktop": 54,
+        "heading_font_size_tablet": 34,
+        "heading_font_size_mobile": 38,
+        "subheading_font_size_desktop": 18,
+        "subheading_font_size_mobile": 15,
+        "caption_font_size_desktop": 14,
+        "caption_font_size_mobile": 12,
+        "heading_font_weight": 400,
+        "heading_line_height": 1.2,
+        "heading_letter_spacing": 0,
+        "subheading_font_weight": 400,
+        "subheading_line_height": 1.5,
+        "subheading_margin": 45,
+        "caption_font_weight": 500,
+        "caption_line_height": 1.3,
+        "show_heading_mobile": true,
+        "show_subheading_mobile": true,
+        "desktop_content_position": "center-left",
+        "mobile_content_position": "center",
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "top_margin_mobile": 0,
+        "bottom_margin_mobile": 0,
+        "top_padding_desktop": 0,
+        "bottom_padding_desktop": 0,
+        "top_padding_mobile": 0,
+        "bottom_padding_mobile": 0
+      }
+    },
+    "multicolumn_RqhBnB": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_VPj8ca": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/shipping-icon.png",
+            "heading": "FREE SHIPPING",
+            "text": "",
+            "button_label": "",
+            "button_link": ""
+          }
+        },
+        "column_9pQ3ed": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/returns-icon.png",
+            "heading": "FREE & EASY RETURNS",
+            "text": "",
+            "button_label": "",
+            "button_link": ""
+          }
+        },
+        "column_ahXz7H": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/tested-icon.png",
+            "heading": "DEVELOPED & TESTED BY DEDICATED ATHLETES",
+            "text": "",
+            "button_label": "",
+            "button_link": ""
+          }
+        },
+        "column_M7WbyD": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/guarantee5.png",
+            "heading": "QUALITY GUARENTEED",
+            "text": "",
+            "button_label": "",
+            "button_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "column_VPj8ca",
+        "column_9pQ3ed",
+        "column_ahXz7H",
+        "column_M7WbyD"
+      ],
+      "settings": {
+        "color_scheme": "background-4",
+        "heading_extra_class": "",
+        "text_extra_class": "",
+        "multicolumn_to_show": 4,
+        "mobile_columns_per_row": 2,
+        "horizontal_alignment": "center",
+        "heading_size": "small",
+        "img_size": "icon",
+        "img_ratio": "adapt",
+        "object_fit": "contain",
+        "swipe_on_mobile": true,
+        "show_mobile_arrows": true,
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "extra_class": "footer-new-columns"
+      }
+    },
+    "shogun-home": {
+      "type": "shogun-home",
+      "disabled": true,
+      "settings": {}
+    }
+  },
+  "order": [
+    "spring_slideshow_77QWTc",
+    "collection_tabbing_36A64n",
+    "multicolumn_blocks_8XDa6G",
+    "parallax_bg_with_text_jP7DA6",
+    "collection_tabbing_KxytKX",
+    "sports_slider_JJGCii",
+    "parallax_bg_with_text_bXhnGd",
+    "custom_athletes_slider_98Qyt8",
+    "banner_with_text_qjct9n",
+    "multicolumn_RqhBnB",
+    "shogun-home"
+  ]
+}

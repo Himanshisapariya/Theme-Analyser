@@ -1,0 +1,326 @@
+{% schema %}
+    {
+      "name": "Color Blocks Section",
+      "settings": [
+        {
+          "type": "text",
+          "label": "Heading",
+          "id": "heading"
+        },
+        {
+          "type": "text_alignment",
+          "label": "Text Alignment",
+          "id": "text_alignment",
+          "default": "left"
+        },
+        {
+          "type": "color",
+          "id": "background_color",
+          "label": "Background Color",
+          "default": "#f7f7f7"
+        },
+        {
+          "type": "text",
+          "id": "button_label1",
+          "label": "t:sections.all.button.button_text.label"
+        },
+        {
+          "type": "url",
+          "id": "button_link1",
+          "label": "t:sections.all.button.button_link.label"
+        },
+        {
+          "type": "text",
+          "id": "extra_class",
+          "label": "Extra Class"
+        },
+        {
+      "type": "header",
+      "content": "Section Spacing"
+    },
+    {
+      "type": "range",
+      "label": "Top Padding Desktop",
+      "id": "top_padding_desktop",
+      "default": 0,
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "label": "Bottom Padding Desktop",
+      "id": "bottom_padding_desktop",
+      "default": 0,
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "label": "Top Padding Mobile",
+      "id": "top_padding_mobile",
+      "default": 0,
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "label": "Bottom Padding Mobile",
+      "id": "bottom_padding_mobile",
+      "default": 0,
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "label": "Top Margin Desktop",
+      "id": "top_margin_desktop",
+      "default": 0,
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "label": "Bottom Margin Desktop",
+      "id": "bottom_margin_desktop",
+      "default": 0,
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "label": "Top Margin Mobile",
+      "id": "top_margin_mobile",
+      "default": 0,
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "label": "Bottom Margin Mobile",
+      "id": "bottom_margin_mobile",
+      "default": 0,
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px"
+    }
+      ],
+      "blocks": [
+        {
+          "type": "color_block",
+          "name": "Color Block",
+          "settings": [
+            {
+              "type": "image_picker",
+              "id": "block_image",
+              "label": "Image"
+            },
+            {
+              "type": "text",
+              "id": "block_title",
+              "label": "Title",
+              "default": "Color Name"
+            },
+            {
+              "type": "textarea",
+              "id": "block_description",
+              "label": "Description",
+              "default": "Short description of the color."
+            },
+            {
+              "type": "url",
+              "id": "block_link",
+              "label": "Shop Link"
+            },
+            {
+              "type": "text",
+              "id": "block_button",
+              "label": "Button Text"
+            },
+            {
+              "type": "color",
+              "id": "block_bg_color",
+              "label": "Background Color"
+            },
+            {
+              "type": "color",
+              "id": "block_text_color",
+              "label": "Text Color"
+            }
+          ]
+        }
+      ],
+      "presets": [
+        {
+          "name": "Color Blocks",
+          "category": "Custom",
+          "blocks": [
+            { "type": "color_block" },
+            { "type": "color_block" },
+            { "type": "color_block" }
+          ]
+        }
+      ]
+    }
+    {% endschema %}
+    
+    <section class="fullscreen-container color-story-main section-id-{{ section.id }} {{ section.settings.extra_class }}" aria-label="color blocks carousel"
+    style="{% if section.settings.background_color != blank %}background-color: {{ section.settings.background_color }};{% endif %}">
+      {% if section.settings.heading != blank %}
+       <h3 class="color-story alignmnet-{{ section.settings.text_alignment }}">{{ section.settings.heading }}</h3>
+      {% endif %}
+      {% if section.settings.button_link1 != blank %}
+      <div class="swiper colorswiper color-blocks-section color-swiper-above color-swiper-section">
+        <div class="swiper-wrapper color-blocks-container" role="region" aria-label="carousel">
+          {% for block in section.blocks %}
+            <div class="swiper-slide color-block">
+              <div class="color-slide-item">
+                <div class="color-slide-item-img">
+                  {% if block.settings.block_image %}
+                    <img src="{{ block.settings.block_image | img_url: '500x' }}" alt="{{ block.settings.block_title }}" height="auto" width="auto" loading="lazy">
+                  {% endif %}
+                  <div class="color-block-content" style="background-color: {{ block.settings.block_bg_color }}; color: {{ block.settings.block_text_color }};">
+                    {% if block.settings.block_title %}
+                      <div class="color-slide-item-title">
+                        <h3>{{ block.settings.block_title }}</h3>
+                      </div>
+                    {% endif %}
+                    {% if block.settings.block_description %}
+                      <div class="color-slide-item-text">
+                        <p>{{ block.settings.block_description }}</p>
+                      </div>
+                    {% endif %}
+                    {% if block.settings.block_link %}
+                      <div class="color-slide-item-link">
+                        <a href="{{ block.settings.block_link }}" class="shop-link" style="text-decoration-color: {{ block.settings.block_text_color }};">{{ block.settings.block_button }}</a>
+                      </div>
+                    {% endif %}
+                  </div>
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+        <div class="colorSwiper-arrows">
+          <div class="swiper-button-next">
+            <svg xmlns="http://www.w3.org/2000/svg" width="10" height="18" viewBox="0 0 10 18" fill="none" class="icon icon-caret-right">
+              <path d="M1 1L9 9L1 17" stroke="currentcolor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
+          </div>
+          <div class="swiper-button-prev">
+            <svg xmlns="http://www.w3.org/2000/svg" width="10" height="18" viewBox="0 0 10 18" fill="none" class="icon icon-caret-left">
+              <path d="M9 17L0.999999 9L9 1" stroke="currentcolor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
+          </div>
+        </div>
+      </div>
+      <div class="ctm-button-wrapper">
+        {% if section.settings.button_link1 != blank %}
+          <a class="button button--primary" href="{{ section.settings.button_link1 }}" class="button">
+            {{- section.settings.button_label1 -}}
+          </a>
+        {% endif %}
+      </div>
+      {% endif %}
+    </section>
+
+    <script>
+      var swiper = new Swiper(".colorswiper", {
+          slidesPerView: 1.1, // Default for small screens
+          spaceBetween: 5, // Default spacing
+          navigation: {
+              nextEl: ".swiper-button-next",
+              prevEl: ".swiper-button-prev",
+          },
+          breakpoints: {
+              640: {
+                  slidesPerView: 1.3,
+                  spaceBetween: 5,
+              },
+              720: {
+                  slidesPerView: 3.2,
+                  spaceBetween: 5,
+              },
+              950: {
+                  slidesPerView: 2.5,
+                  spaceBetween: 5,
+              },
+              1024: {
+                slidesPerView: 3.4,
+                spaceBetween: 5,
+              },
+              1280: {
+                  slidesPerView: 4,
+                  spaceBetween: 5,
+              },
+              1750: {
+                  slidesPerView: 5,
+                  spaceBetween: 5,
+              },
+              2000: {
+                slidesPerView: 6,
+                spaceBetween: 5,
+              },
+              2600: {
+                slidesPerView: 7,
+                spaceBetween: 5,
+              }
+          }
+      });
+  </script>
+  
+{%- style -%}
+
+  .swiper-slide.color-block {
+    display: block !important;
+  }
+  .color-block-content * {
+    color: inherit !important;
+  }
+  .color-story.alignmnet-center {
+    text-align: center;
+  }
+  .color-story.alignmnet-left {
+    text-align: left;
+  }
+  .color-story.alignmnet-right {
+    text-align: right;
+  }
+
+  .color-story-main.section-id-{{ section.id }} {
+  	padding-top: {{ section.settings.top_padding_desktop }}px !important;
+  	padding-bottom: {{ section.settings.bottom_padding_desktop }}px !important;
+  }
+
+  @media screen and (max-width: 990px) {
+  	.color-story-main.section-id-{{ section.id }} {
+  		padding-top: {{ section.settings.top_padding_mobile }}px !important;
+  		padding-bottom: {{ section.settings.bottom_padding_mobile }}px !important;
+  	}
+  }
+.color-story-main.section-id-{{ section.id }} {
+  	margin-top: {{ section.settings.top_margin_desktop}}px;
+  	margin-bottom: {{ section.settings.bottom_margin_desktop }}px;
+  }
+
+  @media screen and (max-width: 990px) {
+  	.color-story-main.section-id-{{ section.id }} {
+  		margin-top: {{ section.settings.top_margin_mobile }}px;
+  		margin-bottom: {{ section.settings.bottom_margin_mobile }}px;
+  	}
+  }
+{%- endstyle -%}

@@ -1,0 +1,44 @@
+.rich-text {
+  margin: auto;
+  text-align: center;
+  width: calc(100% - 3rem);
+}
+
+.rich-text.rich-text--full-width,
+.rich-text.rich-text--full-width .rich-text__blocks  {
+  max-width: initial;
+  width: 100%;
+}
+
+
+@media (min-width: 768px) {
+  .rich-text__blocks {
+    margin: auto;
+    width: calc(100% - 10rem);
+  }
+}
+.rich-text__blocks .title--section em {
+  line-height: 0;
+}
+
+.rich-text__blocks * {
+  overflow-wrap: break-word;
+}
+.rich-text .rich-text__blocks .rich-text__text p {
+  font-size: 24px;
+  line-height: 1.5;
+}
+
+/* Blocks */
+.rich-text__blocks > * {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.rich-text__blocks > * + * {
+  margin-top: 1.6rem;
+}
+
+.rich-text__text p {
+  margin: 0;
+}

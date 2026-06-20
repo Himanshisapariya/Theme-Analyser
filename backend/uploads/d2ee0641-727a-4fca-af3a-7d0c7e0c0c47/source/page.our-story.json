@@ -1,0 +1,534 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "settings": {
+        "extra_class": "",
+        "page_title_black": "",
+        "breadcrumb_image": "shopify://shop_images/header_sliders_3.png",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "image_with_text_h44Meb": {
+      "type": "image-with-text",
+      "blocks": {
+        "caption_UJ3hny": {
+          "type": "caption",
+          "settings": {
+            "caption": "5 Little Monkeys",
+            "text_style": "subtitle",
+            "text_size": "medium"
+          }
+        },
+        "heading_T8DB3b": {
+          "type": "heading",
+          "settings": {
+            "heading": "Inspired by Our Children & a Simple Love for Sleep",
+            "heading_size": "h3"
+          }
+        },
+        "text_FXjDqz": {
+          "type": "text",
+          "settings": {
+            "text": "<p> When our daughters were ready to leave their cribs and move into their first big girl beds, we discovered there was not a mattress on the marketplace specifically designed for the needs of children. This was a shock to us because our family has been in the bedding business for over 70 years, and we were amazed we had never noticed this glaring need in the market. </p><p>Simply put, the bedding industry has never made children's mattresses a priority. The choices for children's mattresses have been quality mattresses designed with adults in mind, or poor quality mattresses that are passed off as \"good enough for kids.\" We knew how important sleep was for proper mental and physical development, so we wanted something better for our daughters. With our expertise in the bedding industry and a few years of parenting under our belt, we set out to create the ideal sleep system bed for kids. We spent months testing materials, creating layouts, and tweaking designs until we found all the best components needed in a kids mattress that helped our daughters get to sleep faster, sleep more soundly through the night, and waking up feeling rested, refreshed, and healthy. The result is the revolutionary 5 Little Monkeys Sleep System bed - and we are beyond excited to share it with you and your family.</p>",
+            "text_style": "body"
+          }
+        },
+        "button_xbDinH": {
+          "type": "button",
+          "settings": {
+            "button_label": "",
+            "button_link": "",
+            "button_style_secondary": false
+          }
+        }
+      },
+      "block_order": [
+        "caption_UJ3hny",
+        "heading_T8DB3b",
+        "text_FXjDqz",
+        "button_xbDinH"
+      ],
+      "settings": {
+        "extra_class": "ctm_story_zigzag",
+        "image": "shopify://shop_images/ourstory.jpg",
+        "txt_under_img": "",
+        "height": "adapt",
+        "desktop_image_width": "medium",
+        "layout": "image_first",
+        "image_radius": 24,
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "left",
+        "content_layout": "no-overlap",
+        "section_color_scheme": "",
+        "color_scheme": "",
+        "image_behavior": "none",
+        "mobile_content_alignment": "left",
+        "padding_top": 80,
+        "padding_bottom": 80
+      }
+    },
+    "image_with_text_AfNAj7": {
+      "type": "image-with-text",
+      "blocks": {
+        "caption_FBAFLf": {
+          "type": "caption",
+          "settings": {
+            "caption": " The Only Kids Mattress",
+            "text_style": "subtitle",
+            "text_size": "medium"
+          }
+        },
+        "heading_cdcHDx": {
+          "type": "heading",
+          "settings": {
+            "heading": "Designed for Children",
+            "heading_size": "h3"
+          }
+        },
+        "text_NfiRgK": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Study after study proves the importance of good rest for child development. But before we created 5 Little Monkeys, we couldn't find a sleep system with children's needs in mind. No one seemed to consider the important differences between grown-up bodies and growing bodies or how kids sleep would be affected by those differences.</p>\n<p>That's why we set out to create a brand new kind of toddler mattress that can be used from age 3 through age 18. We started from the ground up, working to address a range of concerns in the design process like:</p>\n<ul>\n<li>Body weight and proportions</li>\n<li>Changing body structure</li>\n<li>Body temperature regulation</li>\n<li>Tendency to have nighttime \"accidents\"</li>\n<li>Allergies</li>\n</ul>\n<p>The mattresses we came across were designed for grown-up bodies and grown up needs. So, we set out to find a new way for little monkeys everywhere!</p>\n<p>We created 5 Little Monkeys specifically for growing kids. We researched, studied and designed the optimum features and benefits to support better sleep in children. Then, we created an entire sleep system bed incorporating the very best of our findings. That means, not only is the 5 Little Monkeys Mattress the best choice for your growing monkeys, it's the last one you'll ever have to buy them! Our sleep system bed is the perfect toddler mattress that your child can transition to from the crib and continue to sleep in throughout their teenage years.</p>",
+            "text_style": "body"
+          }
+        }
+      },
+      "block_order": [
+        "caption_FBAFLf",
+        "heading_cdcHDx",
+        "text_NfiRgK"
+      ],
+      "settings": {
+        "extra_class": "ctm_mattress_designblock",
+        "bg_image": "shopify://shop_images/background_image.jpg",
+        "image": "shopify://shop_images/image_cb0707e5-5d3b-4e79-8580-51c9585d3a4c.jpg",
+        "txt_under_img": "",
+        "height": "adapt",
+        "desktop_image_width": "medium",
+        "layout": "text_first",
+        "image_radius": 24,
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "left",
+        "content_layout": "no-overlap",
+        "section_color_scheme": "",
+        "color_scheme": "",
+        "image_behavior": "none",
+        "mobile_content_alignment": "left",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "image_with_text_XhynRD": {
+      "type": "image-with-text",
+      "blocks": {
+        "caption_ejnEQb": {
+          "type": "caption",
+          "settings": {
+            "caption": " A Long History of Quality Bed Makers",
+            "text_style": "subtitle",
+            "text_size": "medium"
+          }
+        },
+        "heading_8aNfT4": {
+          "type": "heading",
+          "settings": {
+            "heading": "Behind Your 5 Little Monkeys' Kids Mattress",
+            "heading_size": "h3"
+          }
+        },
+        "text_jLcixe": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Once upon a time, in 1945, there was a bed maker named Irving Harrow who founded a small company called Hollywood Bed. He would hand make his beds until they were just right. Each afternoon, he would load up what he made that morning in his station wagon and deliver them to his customers.</p>\n\n<p>When Irving's son Larry rose to the helm in the 1970s, Hollywood Bed grew its capabilities and product line. He invested in state-of-the-art equipment and demanded only the finest bedding products in the industry.</p>\n\n<p>In 1997, Larry's son, Jason Harrow, started working at the company and took over the operation in 2010. He further grew the company to supply some of most significant retailers and hotel brands in the world, while keeping quality as the #1 priority. Inspired by their two girls, Jason and his wife Courtney decided to create the ideal sleep system bed for kids...and 5 Little Monkeys was born! Today, we provide toddler mattresses for children throughout the country!</p>",
+            "text_style": "body"
+          }
+        }
+      },
+      "block_order": [
+        "caption_ejnEQb",
+        "heading_8aNfT4",
+        "text_jLcixe"
+      ],
+      "settings": {
+        "extra_class": "cmt_behind_zigzag_block",
+        "image": "shopify://shop_images/image_f2943846-38f0-4f15-970b-d0092310dad6.png",
+        "txt_under_img": "",
+        "height": "adapt",
+        "desktop_image_width": "medium",
+        "layout": "image_first",
+        "image_radius": 24,
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "left",
+        "content_layout": "no-overlap",
+        "section_color_scheme": "",
+        "color_scheme": "",
+        "image_behavior": "none",
+        "mobile_content_alignment": "left",
+        "padding_top": 80,
+        "padding_bottom": 80
+      }
+    },
+    "image_with_text_4YKxXC": {
+      "type": "image-with-text",
+      "blocks": {
+        "caption_EkBVhQ": {
+          "type": "caption",
+          "settings": {
+            "caption": " Get the Best Mattress for",
+            "text_style": "subtitle",
+            "text_size": "medium"
+          }
+        },
+        "heading_ncRFpd": {
+          "type": "heading",
+          "settings": {
+            "heading": "Kids & Toddlers Today",
+            "heading_size": "h3"
+          }
+        },
+        "text_mdtfAa": {
+          "type": "text",
+          "settings": {
+            "text": "<p>The 5 Little Monkeys Mattress bed is the result of years of study and work spent perfecting a mattress designed specifically for kids. If you're ready to find out the difference that better sleep can make in your child's life, we're excited to show you. Try our toddler mattress risk-free today: if you aren't completely in love with it after 100 nights, we'll give you a full refund, no questions asked. Give your child the gift of better sleep - order <b>our children's sleep system bed </b>today!</p>",
+            "text_style": "body"
+          }
+        }
+      },
+      "block_order": [
+        "caption_EkBVhQ",
+        "heading_ncRFpd",
+        "text_mdtfAa"
+      ],
+      "settings": {
+        "extra_class": "ctm_toddler_block",
+        "bg_image": "shopify://shop_images/background_image.jpg",
+        "image": "shopify://shop_images/imageQWE.png",
+        "txt_under_img": "",
+        "height": "adapt",
+        "desktop_image_width": "medium",
+        "layout": "text_first",
+        "image_radius": 24,
+        "desktop_content_position": "top",
+        "desktop_content_alignment": "left",
+        "content_layout": "no-overlap",
+        "section_color_scheme": "",
+        "color_scheme": "",
+        "image_behavior": "none",
+        "mobile_content_alignment": "left",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "timeline_slider_kGqWri": {
+      "type": "timeline-slider",
+      "blocks": {
+        "timeline_Bpgfz8": {
+          "type": "timeline",
+          "settings": {
+            "upper_year": "",
+            "upper_year_label": "",
+            "upper_image": "shopify://shop_images/2edb3193555e8b11023a617ed07bd8d4.png",
+            "lower_year": "1925",
+            "lower_year_label": "Los Angeles Bed opens in Los Angeles, CA"
+          }
+        },
+        "timeline_AHJery": {
+          "type": "timeline",
+          "settings": {
+            "upper_year": "1945",
+            "upper_year_label": "Irving Harrow establishes Hollywood Bed",
+            "lower_year": "",
+            "lower_year_label": "",
+            "lower_image": "shopify://shop_images/ee3b36ae5b284477eeaa32ef93a96f1a.png"
+          }
+        },
+        "timeline_A4CL7p": {
+          "type": "timeline",
+          "settings": {
+            "upper_year": "",
+            "upper_year_label": "",
+            "upper_image": "shopify://shop_images/fda94f18cdab7a861fd557960d6f639b.png",
+            "lower_year": "1965",
+            "lower_year_label": "Irving acquires Los Angeles Bed and is integrated into Hollywood Bed"
+          }
+        },
+        "timeline_BATjN8": {
+          "type": "timeline",
+          "settings": {
+            "upper_year": "1973",
+            "upper_year_label": "Irving's son Larry Harrow begins running the show",
+            "lower_year": "",
+            "lower_year_label": "",
+            "lower_image": "shopify://shop_images/b9a40dc53a5712edf5a6c5591d171da1.png"
+          }
+        },
+        "timeline_NqW6DH": {
+          "type": "timeline",
+          "settings": {
+            "upper_year": "",
+            "upper_year_label": "",
+            "upper_image": "shopify://shop_images/4a15ff009aab9ea31fbc6ed8b55156fd.png",
+            "lower_year": "1997",
+            "lower_year_label": "Larry's son Jason Harrow starts working at Hollywood Bed"
+          }
+        },
+        "timeline_7Qbt4a": {
+          "type": "timeline",
+          "settings": {
+            "upper_year": "2010",
+            "upper_year_label": "Jason takes over the gavel and<br>\nstarts running Hollywood Bed",
+            "lower_year": "",
+            "lower_year_label": "",
+            "lower_image": "shopify://shop_images/1_0e76f1f2-8bf2-454d-a457-5f2818de18d1.png"
+          }
+        },
+        "timeline_LMEdFV": {
+          "type": "timeline",
+          "settings": {
+            "upper_year": "",
+            "upper_year_label": "",
+            "upper_image": "shopify://shop_images/2_c1efa8c3-e627-4438-887f-63b6ba6e3438.png",
+            "lower_year": "2011",
+            "lower_year_label": "Future Co-CEO,<br>\nReagan Harrow is born"
+          }
+        },
+        "timeline_8rFfUV": {
+          "type": "timeline",
+          "settings": {
+            "upper_year": "2013",
+            "upper_year_label": "Future Co-CEO,<br>\nVivienne Harrow is born",
+            "lower_year": "",
+            "lower_year_label": "",
+            "lower_image": "shopify://shop_images/3_50e5f1d6-19c0-4236-9371-99a3b954a23a.png"
+          }
+        },
+        "timeline_PLiCx9": {
+          "type": "timeline",
+          "settings": {
+            "upper_year": "",
+            "upper_year_label": "",
+            "upper_image": "shopify://shop_images/4_cb70edbd-e4a8-406f-ab82-1e4a42478b6b.png",
+            "lower_year": "2016",
+            "lower_year_label": "The 5 Little Monkeys<br>\nSleep System is born"
+          }
+        }
+      },
+      "block_order": [
+        "timeline_Bpgfz8",
+        "timeline_AHJery",
+        "timeline_A4CL7p",
+        "timeline_BATjN8",
+        "timeline_NqW6DH",
+        "timeline_7Qbt4a",
+        "timeline_LMEdFV",
+        "timeline_8rFfUV",
+        "timeline_PLiCx9"
+      ],
+      "settings": {
+        "extra_class": "",
+        "upper_sub_head": "Almost a Century",
+        "heading": "In The Making"
+      }
+    },
+    "video_with_text_YnJicQ": {
+      "type": "video-with-text",
+      "settings": {
+        "extra_Class": "ctm_storyvideo_block",
+        "upper_sub_head": "Made for",
+        "main_head": "Our Children, And Yours",
+        "lower_sub_head": "",
+        "description": "Good sleep is one of the most important things that kids need for healthy growth and development. Unfortunately, most toddler mattresses on the market aren't designed to suit the unique needs of growing little bodies. The 5 Little Monkeys children's mattress is different: we designed the mattress from the ground up, creating a new kind of kid's mattress made with a science-backed design and organic materials for safe, sound sleep. So how did 5 Little Monkeys come into being? It all started from a desire to give our own children the very best kid's mattress.",
+        "button_text": "Try Risk-Free Today!",
+        "button_url": "shopify://collections/all",
+        "enable_embed_video": false,
+        "play_btn_image": "shopify://shop_images/play-svgrepo-com.png",
+        "video_poster": "shopify://shop_images/imag213e.png",
+        "video": "https://cdn.shopify.com/videos/c/o/v/952380c166bb4f2ea9823fdce87ba544.mp4",
+        "video_url": "",
+        "align_right": false
+      }
+    },
+    "image_with_text_zwtkWR": {
+      "type": "image-with-text",
+      "blocks": {
+        "caption_bLDmNx": {
+          "type": "caption",
+          "settings": {
+            "caption": "Inspired By A ",
+            "text_style": "subtitle",
+            "text_size": "medium"
+          }
+        },
+        "heading_xMJH8X": {
+          "type": "heading",
+          "settings": {
+            "heading": "Need And Our Passion For Sleep",
+            "heading_size": "h3"
+          }
+        },
+        "text_AtJWLw": {
+          "type": "text",
+          "settings": {
+            "text": "<p>When our daughters were ready to leave their cribs and move into their first big girl beds, we discovered no mattress on the marketplace specifically designed for the needs of children. This was a shock to us because our family has been in the bedding business for almost 100 years, and we were amazed we had never noticed this glaring need in the market.</p>\n<p>Simply put, the bedding industry has never prioritized children's mattresses. The choices for children's mattresses have been quality mattresses designed with adults in mind or poor quality mattresses that are passed as \"good enough for kids.\" We knew how important sleep was for proper mental and physical development, so we wanted something better for our daughters. With our expertise in the bedding industry and a few years of parenting under our belt, we set out to create the ideal sleep system for kids. We spent months testing materials, creating layouts, and tweaking designs until we found all the best components needed in a kids' mattress that helped our daughters get to sleep faster, sleep more soundly through the night, and wake up feeling rested, refreshed, and healthy. The result is the revolutionary 5 Little Monkeys mattress – and we are beyond excited to share it with you and your family.</p>",
+            "text_style": "body"
+          }
+        },
+        "button_iwPeJH": {
+          "type": "button",
+          "settings": {
+            "button_label": "Learn More",
+            "button_link": "shopify://pages/contact",
+            "button_style_secondary": false
+          }
+        }
+      },
+      "block_order": [
+        "caption_bLDmNx",
+        "heading_xMJH8X",
+        "text_AtJWLw",
+        "button_iwPeJH"
+      ],
+      "settings": {
+        "extra_class": "ctm_passionneed_block",
+        "bg_image": "shopify://shop_images/background_image.jpg",
+        "image": "shopify://shop_images/image213213.png",
+        "txt_under_img": "",
+        "height": "adapt",
+        "desktop_image_width": "medium",
+        "layout": "text_first",
+        "image_radius": 24,
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "left",
+        "content_layout": "no-overlap",
+        "section_color_scheme": "",
+        "color_scheme": "",
+        "image_behavior": "none",
+        "mobile_content_alignment": "left",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "image_with_text_M3akBg": {
+      "type": "image-with-text",
+      "blocks": {
+        "caption_hBerUd": {
+          "type": "caption",
+          "settings": {
+            "caption": "A Long History Of",
+            "text_style": "subtitle",
+            "text_size": "medium"
+          }
+        },
+        "heading_rqwBeU": {
+          "type": "heading",
+          "settings": {
+            "heading": "Quality Bed Makers",
+            "heading_size": "h3"
+          }
+        },
+        "text_pqRrcR": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Once upon a time, in 1945, there was a bed maker named Irving Harrow who founded a small company called Hollywood Bed. He would hand make his beds until they were just right. Each afternoon, he would load up what he made that morning in his station wagon and deliver them to his customers.</p>\n<p>When Irving’s son Larry rose to the helm in the 1970s, Hollywood Bed grew its capabilities and product line. He invested in state-of-the-art equipment and demanded only the finest bedding products in the industry.</p>\n<p>In 1997, Larry’s son, Jason Harrow, started working at the company and took over the operation in 2010. He further grew the company to supply some of the most significant retailers and hotel brands in the world, while keeping quality as the #1 priority. Inspired by their two girls, Jason and his wife Courtney decided to create the ideal sleep system bed for kids…and 5 Little Monkeys was born! Today, we provide toddler mattresses for children throughout the country!</p>",
+            "text_style": "body"
+          }
+        },
+        "button_6K89rj": {
+          "type": "button",
+          "settings": {
+            "button_label": "Our Certifications",
+            "button_link": "shopify://pages/certifications",
+            "button_style_secondary": false
+          }
+        }
+      },
+      "block_order": [
+        "caption_hBerUd",
+        "heading_rqwBeU",
+        "text_pqRrcR",
+        "button_6K89rj"
+      ],
+      "settings": {
+        "extra_class": "ctm_qualitybed_block",
+        "image": "shopify://shop_images/ima213123123ge.png",
+        "txt_under_img": "",
+        "height": "adapt",
+        "desktop_image_width": "medium",
+        "layout": "image_first",
+        "image_radius": 24,
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "left",
+        "content_layout": "no-overlap",
+        "section_color_scheme": "",
+        "color_scheme": "",
+        "image_behavior": "none",
+        "mobile_content_alignment": "left",
+        "padding_top": 80,
+        "padding_bottom": 80
+      }
+    },
+    "iocn_text_grid_Lc6pLg": {
+      "type": "iocn-text-grid",
+      "blocks": {
+        "icon_text_grid_By8U3m": {
+          "type": "icon_text_grid",
+          "settings": {
+            "icon_image": "shopify://shop_images/challenge.png",
+            "icon_text": "The Challenge",
+            "icon_description": "<p>Study after study proves the importance of good rest for child development. But before we created 5 Little Monkeys, we couldn’t find a sleep system with children’s needs in mind. No one seemed to consider the important differences between grown-up bodies and growing bodies – or how kids sleep would be affected by those differences.</p>"
+          }
+        },
+        "icon_text_grid_KgK3YE": {
+          "type": "icon_text_grid",
+          "settings": {
+            "icon_image": "shopify://shop_images/thoughtful_design.png",
+            "icon_text": "Thoughtful Design",
+            "icon_description": "<p>We set out to create a brand new kind of toddler mattress that can be used from age 3 through age 18. We started from the ground up, working to address a range of concerns in the design process like:</p>\n<ul>\n<li>Body weight and proportions</li>\n<li>Changing body structure</li>\n<li>Body temperature regulation</li>\n<li>Tendency to have nighttime \"accidents\"</li>\n<li>Allergies</li>\n</ul>"
+          }
+        },
+        "icon_text_grid_GqKfxq": {
+          "type": "icon_text_grid",
+          "settings": {
+            "icon_image": "shopify://shop_images/solution_crib_to_college.png",
+            "icon_text": "A Solution From Crib To College",
+            "icon_description": "<p>We created 5 Little Monkeys specifically for growing kids. We researched, studied and designed the optimum features and benefits to support better sleep in children. Then, we created an entire sleep system bed incorporating the very best of our findings. That means, not only is the 5 Little Monkeys Mattress the best choice for your growing monkeys, it’s the last one you’ll ever have to buy them! Our sleep system bed is the perfect toddler mattress that your child can transition to from the crib and continue to sleep in throughout their teenage years.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "icon_text_grid_By8U3m",
+        "icon_text_grid_KgK3YE",
+        "icon_text_grid_GqKfxq"
+      ],
+      "settings": {
+        "extra_class": "",
+        "background_image": "shopify://shop_images/our_story_BG.png",
+        "upper_sub_head": "A Sleep System",
+        "main_head": "Truly For Kids"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "image_with_text_h44Meb",
+    "image_with_text_AfNAj7",
+    "image_with_text_XhynRD",
+    "image_with_text_4YKxXC",
+    "timeline_slider_kGqWri",
+    "video_with_text_YnJicQ",
+    "image_with_text_zwtkWR",
+    "image_with_text_M3akBg",
+    "iocn_text_grid_Lc6pLg"
+  ]
+}

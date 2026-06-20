@@ -1,0 +1,10 @@
+.hero-section__title p {
+  margin: 0;
+}
+.hero-section__list.slick-initialized {
+  display: block;
+}
+.hero-section__placeholder path {
+  transform: scale(1.5);
+  transform-origin: 50%;
+}

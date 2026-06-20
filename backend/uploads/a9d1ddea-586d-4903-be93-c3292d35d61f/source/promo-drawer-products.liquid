@@ -1,0 +1,53 @@
+{{ comment }}
+  Renders product cards for promo drawer
+  Accepts: products array from AJAX request
+{% endcomment %}
+
+<div class="promo-drawer__products-grid">
+  {% assign products_json = request.params.products %}
+  {% assign products_array = products_json | split: '[' | last | split: ']' | first | split: ',' %}
+  
+  {% for product_json in products_array %}
+    {% assign clean_json = product_json | strip | replace: '}', '' | replace: '{', '' %}
+    {% assign product_parts = clean_json | split: ',' %}
+    
+    {% assign product_title = '' %}
+    {% assign product_image = '' %}
+    {% assign product_price = '' %}
+    {% assign product_compare_price = '' %}
+    
+    {% for part in product_parts %}
+      {% if part contains 'title:' %}
+        {% assign product_title = part | split: 'title:' | last | strip %}
+      {% endif %}
+      {% if part contains 'featured_image:' %}
+        {% assign product_image = part | split: 'featured_image:' | last | strip %}
+      {% endif %}
+      {% if part contains 'price:' %}
+        {% assign product_price = part | split: 'price:' | last | strip %}
+      {% endif %}
+      {% if part contains 'compare_at_price:' %}
+        {% assign product_compare_price = part | split: 'compare_at_price:' | last | strip %}
+      {% endif %}
+    {% endfor %}
+    
+    <div class="collection-product-card">
+      <div class="product-card__image">
+        {% if product_image != '' %}
+          <img src="{{ product_image }}" alt="{{ product_title }}" />
+        {% endif %}
+      </div>
+      <div class="product-card__info">
+        <h4 class="product-card__title">{{ product_title }}</h4>
+        <div class="product-card__price">
+          {% if product_compare_price != '' and product_compare_price > product_price %}
+            <span class="product-card__compare-price">${{ product_compare_price }}</span>
+            <span class="product-card__sale-price">${{ product_price }}</span>
+          {% else %}
+            <span class="product-card__regular-price">${{ product_price }}</span>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  {% endfor %}
+</div>

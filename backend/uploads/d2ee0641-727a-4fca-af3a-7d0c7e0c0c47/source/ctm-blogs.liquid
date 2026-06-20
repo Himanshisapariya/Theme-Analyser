@@ -1,0 +1,33 @@
+<div class="custom-blog-section">
+  {% if section.settings.blog %}
+    {% assign blog = blogs[section.settings.blog] %}
+    <h2>{{ blog.title }}</h2>
+    <ul>
+      {% for article in blog.articles %}
+        <li>
+          <a href="{{ article.url }}">{{ article.title }}</a>
+        </li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+</div>
+
+{% schema %}
+{
+  "name": "Custom Blog Section",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "blog",
+      "id": "blog",
+      "label": "Select Blog"
+    }
+  ],
+  "blocks": [],
+  "presets": [
+    {
+      "name": "Custom Blog Section"
+    }
+  ]
+}
+{% endschema %}

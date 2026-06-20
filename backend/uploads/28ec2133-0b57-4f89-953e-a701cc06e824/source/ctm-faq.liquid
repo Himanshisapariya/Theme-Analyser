@@ -1,0 +1,104 @@
+<div class="ctm_multifaq_title_main px-16 lg:px-0 mt-50 md:mb-[270px] mb-[216px] {{ section.settings.extra_class }} ">
+    <div class="ctm_multifaq_title_inner">
+        <div class="faq_main_container mdscreen:max-w-[875px] max-w-full mx-auto">
+          {%- if section.settings.main_title != blank -%}
+              <div id="faq_subheading{{ forloop.index0 }}" class="faq_subheading ctm_{{ section.settings.main_title | handle }} text-center">
+                  <div class="ctm-title">{{ section.settings.main_title }}</div>
+              </div>
+          {%- endif -%}
+          {%- for block in section.blocks -%}
+            {% if block.settings.faq_question != blank %}
+              <div class="faq_container border-primary-black border-t-1 border-solid md:pt-24 md:pb-30 pt-24 pb-24 faq_container{{ forloop.index0 }}">
+                
+                <div class="faq_question flex items-center justify-between cursor-pointer {% if forloop.first %}open{% endif %}">
+                  <div class="faq_question-text pr-10">
+                    <h5 class="normal-case font-medium mdscreen1:text-18 leading-24">{{ block.settings.faq_question }}</h5>
+                  </div>
+                  <div class="icon relative">
+                    <span class="accordion-icon relative w-full h-full pl-[35px]"></span>
+                  </div>
+                </div>
+          
+                <div class="answercont max-w-[760px] overflow-hidden transition-all duration-300 ease-in-out" 
+                     style="{% if forloop.first %}max-height: 9999px;{% else %}max-height: 0;{% endif %}">
+                  <div class="answer">
+                    <p class="text-14 leading-24 text-dark-gray">{{ block.settings.faq_answer }}</p>
+                  </div>
+                </div>
+          
+              </div>
+            {% endif %}
+          {%- endfor -%}
+        </div> 
+        {% if section.settings.button_text != blank %}
+          <div class="ctm-faq-btn flex justify-center">
+            <a
+              class="ctm-button primary-button mdscreen2:min-w-[361px] min-w-full md:mt-48 mt-42"
+              href="{{ section.settings.button_url }}"
+              role="button"
+              aria-label="{{ section.settings.button_text }}"
+            >
+              {{ section.settings.button_text }}
+            </a>
+          </div>
+        {% endif %}
+    </div>
+</div>
+
+{% schema %}
+{
+  "name": "custom FAQ",
+  "tag": "section",
+  "class": "ctm_faqblock_main",
+  "settings": [
+    {
+      "type": "html",
+      "label": "Title",
+      "id": "main_title"
+    },
+    {
+      "type": "text",
+      "label": "Extra Class",
+      "id": "extra_class"
+    },
+    {
+      "type": "text",
+      "label": "Button Text",
+      "id": "button_text"
+    },
+    {
+      "type": "url",
+      "label": "Button URL",
+      "id": "button_url"
+    },
+    {
+      "type": "checkbox",
+      "label": "First Accordion Open",
+      "id": "first_accordion_open"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "faq_block",
+      "name": "Faq block",
+      "settings": [
+        {
+          "type": "html",
+          "label": "Faq Question",
+          "id": "faq_question"
+        },
+        {
+          "type": "html",
+          "label": "Faq Answer",
+          "id": "faq_answer"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "custom FAQ"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,319 @@
+{% comment %}
+        Renders a product card
+        Accepts:
+        - product_card_product: {Object} Product Liquid object (optional)
+        - media_size: {String} Size of the product image card. Values are "square" and "portrait". Default is "square" (optional)
+        - show_secondary_image: {Boolean} Show the secondary image on hover. Default: false (optional)
+        - show_vendor: {Boolean} Show the product vendor. Default: true
+        - show_desc: {Boolean} Show the product vendor. Default: false
+        - show_sku: {Boolean} Show sku. Default: false
+        - section_id: {String} The ID of the section that contains this card.
+        - preselected_variant_id: {Number} Variant ID to preselect (optional)
+        Usage:
+    {% render 'product-card', show_vendor: section.settings.show_vendor %}
+{% endcomment %}
+
+<style>
+    .js-color-swatches .swiper-slide {
+  width: auto;
+  flex-shrink: 0;
+}
+
+.js-color-swatches {
+  overflow: visible;
+}
+
+.js-color-swatches .swiper-wrapper {
+  width: max-content;
+}
+</style>
+
+<link
+    rel="preload"
+    href="{{ 'section-main-product.css' | asset_url }}"
+    as="style"
+    onload="this.onload=null;this.rel='stylesheet'"
+>
+<link
+    rel="stylesheet"
+    href="{{ 'component-deferred-media.css' | asset_url }}"
+    media="all"
+>
+<link
+    rel="preload"
+    href="{{ 'quick-add.css' | asset_url }}"
+    as="style"
+    onload="this.onload=null;this.rel='stylesheet'"
+>
+{%- assign first_3d_model = product_card_product.media
+    | where: 'media_type', 'model'
+    | first
+-%}
+
+{%- comment -%} Handle preselected variant if passed {%- endcomment -%}
+{%- if preselected_variant_id -%}
+  {%- for variant in product_card_product.variants -%}
+    {%- if variant.id == preselected_variant_id -%}
+      {%- assign product_card_product_variant = variant -%}
+      {%- break -%}
+    {%- endif -%}
+  {%- endfor -%}
+{%- else -%}
+  {%- assign product_card_product_variant = product_card_product.selected_or_first_available_variant -%}
+{%- endif -%}
+
+{%- if first_3d_model -%}
+    {{ 'component-product-model.css' | asset_url | stylesheet_tag }}
+    <link
+        id="ModelViewerStyle"
+        rel="stylesheet"
+        href="https://cdn.shopify.com/shopifycloud/model-viewer-ui/assets/v1.0/model-viewer-ui.css"
+        media="print"
+        onload="this.media='all'"
+    >
+    <link
+        id="ModelViewerOverride"
+        rel="stylesheet"
+        href="{{ 'component-model-viewer-ui.css' | asset_url }}"
+        media="print"
+        onload="this.media='all'"
+    >
+{%- endif -%}
+{%- if first_3d_model -%}
+    <script type="application/json" id="ProductJSON-{{ product.id }}">
+        {{ product_card_product.media | where: 'media_type', 'model' | json }}
+    </script>
+    <script src="{{ 'quick-add.js' | asset_url }}" defer="defer"></script>
+    <script src="{{ 'product-model.js' | asset_url }}" defer></script>
+{%- endif -%}
+<script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'quick-add.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'copy.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'product-single.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'update-slider.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'about.js' | asset_url }}" defer="defer"></script>
+<div
+    class="card-wrapper js-color-swatches-wrapper gts"
+    data-product="{{ product_card_product.handle }}"
+    data-product-id="{{ product_card_product.id }}"
+    {%- if preselected_variant_id -%}
+        data-preselected-variant="{{ preselected_variant_id }}"
+    {%- endif -%}
+    role="group"
+    aria-label="product card"
+>
+    <span class="visually-hidden">{{ product_card_product.title | escape }}</span>
+
+    <div
+        class="card card--product"
+    >
+        <div class="card__inner full-unstyled-link">
+            {%- liquid
+                assign featured_media_aspect_ratio = product_card_product.featured_media.aspect_ratio
+
+                if product_card_product.featured_media.aspect_ratio == null
+                    assign featured_media_aspect_ratio = 1
+                endif
+            -%}
+
+            <div
+                class="media media--transparent media--{{ media_size }} media--hover-effect"
+                {%- if media_size == 'landscape' -%}
+                    style="padding-bottom: 70%;"
+                {%- endif -%}
+                {%- if media_size == 'portrait' -%}
+                    style="padding-bottom: 130%;"
+                {%- endif -%}
+                {%- if media_size == 'square' -%}
+                    style="padding-bottom: 100%;"
+                {%- endif -%}
+            >
+                {%- assign featured_image = product_card_product.featured_media -%}
+                {%- if product_card_product_variant.featured_image -%}
+                    {%- assign featured_image = product_card_product_variant.featured_image -%}
+                {%- endif -%}
+                {%- if featured_image -%}
+                    {% assign fit = '' %}
+                    {% if media_fit == 'contain' %}
+                        {% assign fit = 'object-fit: contain;' %}
+                    {% endif %}
+                    {% if media_fit == 'cover' %}
+                        {% assign fit = 'object-fit: cover;' %}
+                    {% endif %}
+                    {% assign width_ratio = 1 %}
+                    {% if product_card_product.featured_media.width
+                            < product_card_product.featured_media.height
+                        or media_size == 'landscape'
+                    %}
+                        {% assign width_ratio = 1 %}
+                    {% elsif product_card_product.featured_media.width
+                            > product_card_product.featured_media.height
+                    %}
+                        {% assign width_ratio = product_card_product.featured_media.width
+                            | plus: 0.0
+                            | divided_by: product_card_product.featured_media.height
+                            | round: 2
+                        %}
+                        {% if media_size == 'portrait' %}
+                            {% assign width_ratio = width_ratio | times: 1.3 %}
+                        {% endif %}
+                    {% endif %}
+
+                    {{
+                        featured_image
+                        | image_url: width: featured_image.width
+                        | image_tag:
+                            loading: 'lazy',
+                            sizes: sizes,
+                            widths: '360, 533, 720, 940, 1066, 1200, 1400, 1600, 1800, 2000, 2200, 2400, 2600',
+                            class: 'motion-reduce media--first product-card-image',
+                            style: fit,
+                            width: featured_image.width,
+                            height: featured_image.height
+                    }}
+                    {%- if product_card_product.media[1] != null
+                        and show_secondary_image
+                    -%}
+                        {%- capture sizes -%}
+                (min-width: 1100px) 535px, (min-width: 750px) calc((100vw - 130px) / 2), calc((100vw - 50px) / 2)
+            {%- endcapture -%}
+                        {{
+                            product_card_product.media[1]
+                            | image_url: width: product_card_product.media[1].width
+                            | image_tag:
+                                loading: 'lazy',
+                                sizes: sizes,
+                                widths: '360, 533, 720, 940, 1066, 1200, 1400, 1600, 1800, 2000, 2200, 2400, 2600',
+                                class: 'motion-reduce media--first',
+                                style: fit,
+                                width: product_card_product.media[1].width,
+                                height: product_card_product.media[1].height
+                        }}
+                    {%- endif -%}
+                {%- else -%}
+                    {{ 'collection-1' | placeholder_svg_tag: 'placeholder-svg' }}
+                {%- endif -%}
+            </div>
+        </div>
+        <a
+            href="{{ product_card_product.url | default: '#' }}"
+            class="link link--overlay card-wrapper__link--overlay card-product__link js-color-swatches-link"
+            aria-label="{{ product_card_product.title }} Product"
+        ></a>
+    </div>
+
+    <div class="card-information">
+        <div class="product-parameters no-js-hidden">
+            {%- unless product_card_product.has_only_default_variant -%}
+                {%- for option in product_card_product.options_with_values -%}
+                    {% liquid
+                        assign color_trigger = settings.trigger_swatch | handle | strip
+                        assign name_option = option.name | handle | strip
+                    %}
+
+            {% if settings.show_color_swatch and color_trigger == name_option %}
+            <div class="swatch-swiper js-color-swatches swiper"
+                data-option-name="{{ option.name | downcase }}"
+                data-product-id="{{ product_card_product.id }}">
+                <fieldset class="product-form__controls-group swiper-wrapper">
+                <legend class="visually-hidden">Swatches</legend>
+                {% render 'product-variant-options', product: product_card_product, option: option, no_form_id: true %}
+                </fieldset>
+            </div>
+            {% endif %}
+
+                {%- endfor -%}
+            {% endunless %}
+        </div>
+
+        <div class="card-information__wrapper">
+            {%- if show_sku and product_card_product.selected_or_first_available_variant.sku.size > 0 -%}
+                <p
+                    class="card__sku no-js-hidden"
+                    id="Sku-{{ section.id }}"
+                    role="status"
+                    {{ block.shopify_attributes }}
+                >
+                    <span class="visually-hidden">{{ 'products.product.sku' | t }}:</span> {{- product_card_product.selected_or_first_available_variant.name -}}
+                </p>
+            {%- endif -%}
+            {%- if show_vendor -%}
+                <span class="visually-hidden">{{ 'accessibility.vendor' | t }}</span>
+                <div class="caption-with-letter-spacing">
+                    {{ product_card_product.vendor }}
+                </div>
+            {%- endif -%}
+            <div class="title_with-reviews">
+                <div class="card__title">
+                    <a
+                        style="text-transform: {{ settings.product_title_text_transform }}"
+                        class="full-unstyled-link js-color-swatches-link card_product_title"
+                        aria-label="{{ product_card_product.title }} Product"
+                    >
+                        {% if product_card_product != blank %}
+                            {{ product_card_product.title }} 
+                        {% else %}
+                            {{ 'products.product.product_heading' | t }}
+                        {% endif %}
+                        
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+rySelectorAll('.color-swatch-input');
+    const productImage = card.querySelector('.product-card-image');
+    
+    colorSwatches.forEach(function(swatch) {
+      swatch.addEventListener('change', function() {
+        if (this.checked && productImage) {
+          const variantId = this.dataset.variantId;
+          
+          if (this.dataset.variantImage) {
+            productImage.src = this.dataset.variantImage;
+            productImage.srcset = this.dataset.variantImage;
+          } else {
+            const productId = cardWrapper.dataset.productId;
+            const variantImage = this.closest('.card-wrapper').querySelector(`img[data-variant-id="${variantId}"]`);
+            if (variantImage && variantImage.src) {
+              productImage.src = variantImage.src;
+              productImage.srcset = variantImage.src;
+            }
+          }
+          
+          updateVariantBadges(card, variantId);
+        }
+      });
+    });
+  });
+  
+  function updateVariantBadges(card, variantId) {
+    card.querySelectorAll('[data-variant-id]').forEach(badge => {
+      badge.style.display = 'none';
+    });
+    
+    card.querySelectorAll(`[data-variant-id="${variantId}"]`).forEach(badge => {
+      badge.style.display = '';
+    });
+  }
+  
+  setTimeout(function() {
+    const cardsWithPreselection = document.querySelectorAll('.card-wrapper[data-preselected-variant]');
+    
+    cardsWithPreselection.forEach(function(cardWrapper) {
+      const preselectedVariantId = cardWrapper.dataset.preselectedVariant;
+      const swatchInput = cardWrapper.querySelector(`.color-swatch-input[data-variant-id="${preselectedVariantId}"]`);
+      
+      if (swatchInput && !swatchInput.checked) {
+        swatchInput.checked = true;
+        swatchInput.dispatchEvent(new Event('change', { bubbles: true }));
+      }
+      
+      const card = cardWrapper.closest('.product-recommendations__product, .collection-product-card') || cardWrapper;
+      updateVariantBadges(card, preselectedVariantId);
+    });
+  }, 100);
+});
+</script> {% endcomment %}

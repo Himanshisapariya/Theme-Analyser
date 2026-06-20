@@ -1,0 +1,58 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "pages": {
+      "type": "main-page",
+      "disabled": true,
+      "custom_css": [
+        "input#omnisend-form-67934e69f1ff8a42f25e4de4-field-container-67934d7b5131ba1ba8011a0a-phoneNumberField-input {border-radius: 0 !important;}"
+      ],
+      "settings": {}
+    },
+    "banner_with_text_tdgiFU": {
+      "type": "banner-with-text",
+      "settings": {
+        "extra_class": "",
+        "color_scheme": "light",
+        "image": "shopify://shop_images/fleece_header.webp",
+        "image_mobile": "shopify://shop_images/fleece_header.webp",
+        "image_size": "medium",
+        "caption_class": "",
+        "title": "Press Inquiries",
+        "content_text": "",
+        "text_alignment": "left",
+        "content_width": "max",
+        "overlay_enable": false,
+        "overlay_opacity": 10,
+        "button_link": "",
+        "button_label": "",
+        "button_style": "primary",
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "spring_banner_class": ""
+      }
+    },
+    "custom_liquid_zA67pN": {
+      "type": "custom-liquid",
+      "custom_css": [
+        ".omnisend-reset-679cae7d671d350487edb98f.omnisend-form-679cae7d671d350487edb98f-content {padding: 25px 0;}"
+      ],
+      "settings": {
+        "custom_liquid": "<div id=\"omnisend-embedded-v2-679cae7d671d350487edb98f\"></div>"
+      }
+    }
+  },
+  "order": [
+    "pages",
+    "banner_with_text_tdgiFU",
+    "custom_liquid_zA67pN"
+  ]
+}

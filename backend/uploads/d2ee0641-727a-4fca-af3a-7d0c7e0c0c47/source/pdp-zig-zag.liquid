@@ -1,0 +1,215 @@
+{% liquid
+  assign kids-sub-txt = product.metafields['upper-sub-head'].acf
+  assign kids-head = product.metafields.head.acf
+  assign kids-image = product.metafields.image.acf
+  assign kids-image-alignment = product.metafields['image-right-left'].acf
+  assign kids-tick-txt = product.metafields['tick-text-zig-zag'].acf
+
+  assign pillow-sub-txt = product.metafields['pillow-upper-sub-head'].acf
+  assign pillow-head = product.metafields['pillow-head'].acf
+  assign pillow-image = product.metafields['pillow-image'].acf
+  assign pillow-image-alignment = product.metafields['pillow-image-left-right'].acf
+  assign pillow-tick-txt = product.metafields['pillow-tick-text'].acf
+
+  assign mattress-sub-txt = product.metafields['mattress-sub-upper-text'].acf
+  assign mattress-head = product.metafields['mattress-head'].acf
+  assign mattress-image = product.metafields['mattress-image'].acf
+  assign mattress-alignment = product.metafields['mattress-image-right-left'].acf
+  assign mattress-tick-txt = product.metafields['mattress-tick-text'].acf
+%}
+
+<style>
+  @media screen and (min-width:990px) {
+    .ctm_pdpzigzag_Left {
+      order: -1;
+    }
+  }
+  @media screen and (max-width:989px) {
+    {% comment %} .ctm_pdpzigzag_Right {
+      order: -1;
+    } {% endcomment %}
+    {% comment %} .ctm_pdpzigzag_Left {
+      order: -1;
+    } {% endcomment %}
+  }
+</style>
+{% if kids-sub-txt != blank %}
+  <div class="ctm_kids_imgtxt_alingment {{ section.settings.extra_class }}pdpzigzag_{{ kids-image-alignment }}">
+    <div class="xl_container">
+      <div class="pdp_zigzg_inner flex mdscreen1:flex-col gap-40 mdscreen2:gap-55 desktop:!gap-100 items-center">
+        <div class="ctm_pdp_zig_zag_text_main w-full mdscreen2:w-1/2 desktop:w-[37%] midlarge_desktop:w-1/2 desktop:pl-[45px]">
+          {% if kids-sub-txt != blank %}
+            <div class="ctm_pdp_zz_txt pb-14 mdscreen1:text-center">
+              <div class="ctm_pdp_caption pb-10">
+                <h5>{{ kids-sub-txt }}</h5>
+              </div>
+              <div class="ctm_pdp_title">
+                <h3>{{ kids-head }}</h3>
+              </div>
+            </div>
+          {% endif %}
+          <div class="ctm_tick_txt_pdp">
+            <div class="ctm_text_tick_main flex items-center flex-col gap-16">
+              {% for j in (0..kids-tick-txt.size) %}
+                {% if kids-tick-txt[j] != blank %}
+                  <div class="flex flex-col w-full">
+                    <div class="ctm_tick_img_pdp flex gap-10 items-center">
+                      <img
+                        src="https://cdn.shopify.com/s/files/1/0792/4904/7864/files/check.png"
+                        alt="img_logo"
+                        loading="lazy"
+                        width="36"
+                        height="36"
+                      >
+                      <div class="ctm_tick_text_pdp">
+                        <h6 class="font-normal text-dark_grey">{{ kids-tick-txt[j] }}</h6>
+                      </div>
+                    </div>
+                  </div>
+                {% endif %}
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+        {% if kids-image != blank %}
+          <div class="ctm_pdp_zig_zag_img w-full mdscreen2:w-[calc(67%_-_55px)] desktop:w-[calc(67%_-_100px)] midlarge_desktop:w-[calc(50%_-_100px)] rounded-24 overflow-hidden ctm_pdpzigzag_{{ kids-image-alignment }}">
+            <img
+              class="w-full h-full object-cover"
+              src="{{ kids-image }}"
+              alt="pdp_zig_img"
+              loading="lazy"
+              width="780"
+              height="446"
+            >
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+{% endif %}
+{% if pillow-sub-txt != blank %}
+  <div class="ctm_pillow_img_txt_alignment {{ section.settings.extra_class }}pdpzigzag_{{ pillow-image-alignment }}">
+    <div class="xl_container container_xl">
+      <div class="pdp_zigzg_inner flex mdscreen1:flex-col gap-40 mdscreen2:gap-55 desktop:!gap-100 items-center">
+        <div class="ctm_pdp_zig_zag_text_main w-full mdscreen2:w-1/2 desktop:w-[37%] midlarge_desktop:w-1/2 desktop:pr-[45px]">
+          {% if kids-sub-txt != blank %}
+            <div class="ctm_pdp_zz_txt pb-14 mdscreen1:text-center">
+              <div class="ctm_pdp_caption pb-10">
+                <h5>{{ pillow-sub-txt }}</h5>
+              </div>
+              <div class="ctm_pdp_title">
+                <h3>{{ pillow-head }}</h3>
+              </div>
+            </div>
+          {% endif %}
+          <div class="ctm_tick_txt_pdp">
+            <div class="ctm_text_tick_main flex items-center flex-col gap-16">
+              {% for j in (0..pillow-tick-txt.size) %}
+                {% if pillow-tick-txt[j] != blank %}
+                  <div class="flex flex-col w-full">
+                    <div class="ctm_tick_img_pdp flex gap-10 items-center">
+                      <img
+                        src="https://cdn.shopify.com/s/files/1/0792/4904/7864/files/check.png"
+                        alt="img_logo"
+                        loading="lazy"
+                        width="36"
+                        height="36"
+                      >
+                      <div class="ctm_tick_text_pdp">
+                        <h6 class="font-normal text-dark_grey">{{ pillow-tick-txt[j] }}</h6>
+                      </div>
+                    </div>
+                  </div>
+                {% endif %}
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+        {% if pillow-image != blank %}
+          <div class="ctm_pdp_zig_zag_img w-full mdscreen2:w-[calc(67%_-_55px)] desktop:w-[calc(67%_-_100px)] midlarge_desktop:w-[calc(50%_-_100px)] rounded-24 overflow-hidden ctm_pdpzigzag_{{ pillow-image-alignment }}">
+            <img
+              class="w-full h-full object-cover"
+              src="{{ pillow-image }}"
+              alt="pdp_zig_img"
+              loading="lazy"
+              width="780"
+              height="446"
+            >
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+{% endif %}
+{% if mattress-sub-txt != blank %}
+  <div class="ctm_mattress_img_txt_alignment {{ section.settings.extra_class }} pdpzigzag_{{ mattress-alignment }}">
+    <div class="xl_container">
+      <div class="pdp_zigzg_inner flex mdscreen1:flex-col gap-40 mdscreen2:gap-55 desktop:!gap-100 items-center">
+        <div class="ctm_pdp_zig_zag_text_main w-full mdscreen2:w-1/2 desktop:w-[37%] midlarge_desktop:w-1/2 desktop:pl-[45px]">
+          <div class="ctm_pdp_zz_txt pb-14 mdscreen1:text-center">
+            <div class="ctm_pdp_caption pb-10">
+              <h5>{{ mattress-sub-txt }}</h5>
+            </div>
+            <div class="ctm_pdp_title">
+              <h3>{{ mattress-head }}</h3>
+            </div>
+          </div>
+          <div class="ctm_tick_txt_pdp">
+            <div class="ctm_text_tick_main flex items-center flex-col gap-16">
+              {% for j in (0..mattress-tick-txt.size) %}
+                {% if mattress-tick-txt[j] != blank %}
+                  <div class="flex flex-col w-full">
+                    <div class="ctm_tick_img_pdp flex gap-10 items-center">
+                      <img
+                        src="https://cdn.shopify.com/s/files/1/0792/4904/7864/files/check.png"
+                        alt="img_logo"
+                        loading="lazy"
+                        width="36"
+                        height="36"
+                      >
+                      <div class="ctm_tick_text_pdp">
+                        <h6 class="font-normal text-dark_grey">{{ mattress-tick-txt[j] }}</h6>
+                      </div>
+                    </div>
+                  </div>
+                {% endif %}
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+        {% if mattress-image != blank %}
+          <div class="ctm_pdp_zig_zag_img w-full mdscreen2:w-[calc(67%_-_55px)] desktop:w-[calc(67%_-_100px)] midlarge_desktop:w-[calc(50%_-_100px)] rounded-24 overflow-hidden ctm_pdpzigzag_{{ kids-image-alignment }}">
+            <img
+              class="w-full h-full object-cover"
+              src="{{ mattress-image }}"
+              alt="pdp_zig_img"
+              loading="lazy"
+              width="780"
+              height="446"
+            >
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+{% endif %}
+
+{% schema %}
+{
+  "name": "PDP Zig Zag",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "label": "Extra Class",
+      "id": "extra_class"
+    }
+  ],
+  "blocks": [],
+  "presets": [
+    {
+      "name": "PDP Zig Zag"
+    }
+  ]
+}
+{% endschema %}

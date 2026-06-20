@@ -1,0 +1,252 @@
+{{ 'section-split-image-content.css' | asset_url | stylesheet_tag }}
+
+{%- assign mt = section.settings.margin_top | default: 0 -%}
+{%- assign mb = section.settings.margin_bottom | default: 0 -%}
+
+<section
+  class="sic-section {{ section.settings.extra_class }}"
+  id="SplitImageContent-{{ section.id }}"
+  style="margin-top:{{ mt }}px;margin-bottom:{{ mb }}px;{%- unless section.settings.bg_color.alpha == 0 -%}--sic-bg:{{ section.settings.bg_color }};{%- endunless -%}"
+>
+  <div class="sic__content">
+    {%- if section.settings.heading != blank -%}
+      {{ section.settings.heading }}
+    {%- endif -%}
+    {%- if section.settings.description != blank -%}
+      <div class="sic__desc h5" style="--sic-desc-mt:{{ section.settings.desc_margin_top }}px;--sic-desc-mb:{{ section.settings.desc_margin_bottom }}px;">{{ section.settings.description }}</div>
+    {%- endif -%}
+    {%- if section.settings.button_1_label != blank or section.settings.button_2_label != blank -%}
+      <div class="sic__buttons{% if section.settings.show_buttons_mobile %} sic__buttons--show-mobile{% endif %}">
+        {%- if section.settings.button_1_label != blank -%}
+          <a href="{{ section.settings.button_1_link | default: '#' }}" class="button--ctm_white_button">{{ section.settings.button_1_label }}</a>
+        {%- endif -%}
+        {%- if section.settings.button_2_label != blank -%}
+          <a href="{{ section.settings.button_2_link | default: '#' }}" class="button--ctm_white_button">{{ section.settings.button_2_label }}</a>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+  </div>
+
+  {%- assign sic_sides = 'left,right' | split: ',' -%}
+  <div class="sic__images">
+    {%- for side in sic_sides -%}
+      {%- assign img_key     = 'image_' | append: side -%}
+      {%- assign img_mob_key = 'image_' | append: side | append: '_mobile' -%}
+      {%- assign lbl_key     = 'image_' | append: side | append: '_label' -%}
+      {%- assign lnk_key     = 'image_' | append: side | append: '_link' -%}
+      {%- assign txt_key     = 'image_' | append: side | append: '_link_text' -%}
+      {%- assign img     = section.settings[img_key] -%}
+      {%- assign img_mob = section.settings[img_mob_key] -%}
+      {%- assign lbl = section.settings[lbl_key] -%}
+      {%- assign lnk = section.settings[lnk_key] -%}
+      {%- assign txt = section.settings[txt_key] -%}
+      <div class="sic__image sic__image--{{ side }}">
+        {%- if img != blank or img_mob != blank -%}
+          {%- if img != blank -%}
+            {%- assign display_img = img -%}
+          {%- else -%}
+            {%- assign display_img = img_mob -%}
+          {%- endif -%}
+          <picture>
+            {%- if img_mob != blank -%}
+              <source
+                media="(max-width: 1023px)"
+                srcset="{{ img_mob | image_url: width: 400 }} 400w, {{ img_mob | image_url: width: 700 }} 700w, {{ img_mob | image_url: width: 900 }} 900w"
+                sizes="85vw">
+            {%- endif -%}
+            {{
+              display_img
+              | image_url: width: 1200
+              | image_tag:
+                loading: 'lazy',
+                width: display_img.width,
+                height: display_img.height,
+                alt: display_img.alt | default: lbl | escape
+            }}
+          </picture>
+        {%- else -%}
+          {{ 'image' | placeholder_svg_tag: 'sic__placeholder-img' }}
+        {%- endif -%}
+        {%- if lbl != blank or txt != blank -%}
+          <div class="sic__overlay">
+            {%- if lbl != blank -%}<span class="sic__label h4">{{ lbl }}</span>{%- endif -%}
+            {%- if txt != blank and lnk != blank -%}
+              <a href="{{ lnk }}" class="sic__image-cta">{{ txt }}</a>
+            {%- endif -%}
+          </div>
+        {%- endif -%}
+      </div>
+    {%- endfor -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Split Image Content",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "richtext",
+      "id": "heading",
+      "label": "Heading"
+    },
+    {
+      "type": "html",
+      "id": "description",
+      "label": "Description"
+    },
+    {
+      "type": "range",
+      "id": "desc_margin_top",
+      "label": "Description Margin Top (desktop)",
+      "min": 0,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "desc_margin_bottom",
+      "label": "Description Margin Bottom (desktop)",
+      "min": 0,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "header",
+      "content": "Buttons"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_buttons_mobile",
+      "label": "Show buttons on mobile",
+      "default": false
+    },
+    {
+      "type": "text",
+      "id": "button_1_label",
+      "label": "Button 1 Label"
+    },
+    {
+      "type": "url",
+      "id": "button_1_link",
+      "label": "Button 1 Link"
+    },
+    {
+      "type": "text",
+      "id": "button_2_label",
+      "label": "Button 2 Label"
+    },
+    {
+      "type": "url",
+      "id": "button_2_link",
+      "label": "Button 2 Link"
+    },
+    {
+      "type": "header",
+      "content": "Left Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_left",
+      "label": "Image (Desktop)"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_left_mobile",
+      "label": "Image (Mobile)",
+      "info": "Optional. Shown on screens below 1024px. Falls back to desktop image if not set."
+    },
+    {
+      "type": "text",
+      "id": "image_left_label",
+      "label": "Label (bottom-left)"
+    },
+    {
+      "type": "text",
+      "id": "image_left_link_text",
+      "label": "Link Text (bottom-right)"
+    },
+    {
+      "type": "url",
+      "id": "image_left_link",
+      "label": "Link URL"
+    },
+    {
+      "type": "header",
+      "content": "Right Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_right",
+      "label": "Image (Desktop)"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_right_mobile",
+      "label": "Image (Mobile)",
+      "info": "Optional. Shown on screens below 1024px. Falls back to desktop image if not set."
+    },
+    {
+      "type": "text",
+      "id": "image_right_label",
+      "label": "Label (bottom-left)"
+    },
+    {
+      "type": "text",
+      "id": "image_right_link_text",
+      "label": "Link Text (bottom-right)"
+    },
+    {
+      "type": "url",
+      "id": "image_right_link",
+      "label": "Link URL"
+    },
+    {
+      "type": "header",
+      "content": "Section Settings"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color"
+    },
+    {
+      "type": "range",
+      "id": "margin_top",
+      "label": "Margin Top",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "margin_bottom",
+      "label": "Margin Bottom",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "text",
+      "id": "extra_class",
+      "label": "Extra CSS Class"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Split Image Content"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,322 @@
+{% schema %}
+    {
+      "name": "Our Athlete Section",
+      "settings": [
+        {
+          "type": "text",
+          "label": "Heading",
+          "id": "heading"
+        }
+      ],
+      "blocks": [
+        {
+          "type": "color_block",
+          "name": "Color Block",
+          "settings": [
+            {
+              "type": "image_picker",
+              "id": "block_image",
+              "label": "Image"
+            },
+            {
+              "type": "text",
+              "id": "block_title",
+              "label": "Title",
+              "default": "Color Name"
+            },
+            {
+              "type": "textarea",
+              "id": "block_description",
+              "label": "Description",
+              "default": "Short description of the color."
+            },
+            {
+              "type": "text",
+              "id": "block_button",
+              "label": "Button Text"
+            },
+            {
+              "type": "html",
+              "id": "popup_content",
+              "label": "Popup Content"
+            },
+            {
+              "type": "color",
+              "id": "block_bg_color",
+              "label": "Background Color"
+            },
+            {
+              "type": "color",
+              "id": "block_text_color",
+              "label": "Text Color"
+            }
+          ]
+        }
+      ],
+      "presets": [
+        {
+          "name": "Our Athlete Section",
+          "category": "Custom",
+          "blocks": [
+            { "type": "color_block" },
+            { "type": "color_block" },
+            { "type": "color_block" }
+          ]
+        }
+      ]
+    }
+    {% endschema %}
+    
+    <div class="fullscreen-container">
+        {% if section.settings.heading != blank %}
+          <h3>{{ section.settings.heading }}</h3>
+        {% endif %}
+        
+        <div class="swiper ctm-colorswiper colorswiper color-blocks-section color-swiper-above">
+          <div class="swiper-wrapper color-blocks-container">
+            {% for block in section.blocks %}
+              <div class="swiper-slide color-block">
+                <div class="color-slide-item">
+                  <div class="color-slide-item-img">
+                    {% if block.settings.block_image %}
+                      <img src="{{ block.settings.block_image | img_url: '500x' }}" alt="{{ block.settings.block_title }}">
+                    {% endif %}
+                    <div class="color-block-content" style="background-color: {{ block.settings.block_bg_color }}; color: {{ block.settings.block_text_color }};">
+                      {% if block.settings.block_title %}
+                        <div class="color-slide-item-title">
+                          <h3>{{ block.settings.block_title }}</h3>
+                        </div>
+                      {% endif %}
+                      {% if block.settings.block_description %}
+                        <div class="color-slide-item-text">
+                          <p>{{ block.settings.block_description }}</p>
+                        </div>
+                      {% endif %}
+                      {% if block.settings.block_button %}
+                        <div class="color-slide-item-link">
+                          <a href="javascript:;" class="popup-trigger" data-popup-id="popup-{{ block.id }}" style="text-decoration-color: {{ block.settings.block_text_color }};">
+                            {{ block.settings.block_button }}
+                          </a>
+                        </div>
+                      {% endif %}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            {% endfor %}
+          </div>
+          <div class="ctm-colorSwiper-arrows">
+          <div class="swiper-button-next">
+            <svg xmlns="http://www.w3.org/2000/svg" width="10" height="18" viewBox="0 0 10 18" fill="none" class="icon icon-caret-right">
+              <path d="M1 1L9 9L1 17" stroke="currentcolor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
+          </div>
+          <div class="swiper-button-prev">
+            <svg xmlns="http://www.w3.org/2000/svg" width="10" height="18" viewBox="0 0 10 18" fill="none" class="icon icon-caret-left">
+              <path d="M9 17L0.999999 9L9 1" stroke="currentcolor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
+          </div>
+          </div>
+        </div>
+        </div>
+      
+        {% for block in section.blocks %}
+          <div id="popup-{{ block.id }}" class="custom-model-main">
+            <div class="custom-model-inner">
+              <div class="close-btn" data-popup-id="popup-{{ block.id }}">×</div>
+              <div class="custom-model-wrap">
+                <div class="pop-up-content-wrap">
+                  {{ block.settings.popup_content }}
+                </div>
+              </div>
+            </div>
+            <div class="bg-overlay" data-popup-id="popup-{{ block.id }}"></div>
+          </div>
+        {% endfor %}
+      
+              
+
+    <script>
+      var swiper = new Swiper(".colorswiper", {
+          slidesPerView: 1.1, // Default for small screens
+          spaceBetween: 10, // Default spacing
+          navigation: {
+              nextEl: ".swiper-button-next",
+              prevEl: ".swiper-button-prev",
+          },
+          breakpoints: {
+              640: {
+                  slidesPerView: 1.3,
+                  spaceBetween: 10,
+              },
+              720: {
+                  slidesPerView: 3.2,
+                  spaceBetween: 10,
+              },
+              950: {
+                  slidesPerView: 2.5,
+                  spaceBetween: 10,
+              },
+              1024: {
+                slidesPerView: 3.4,
+                spaceBetween: 20,
+              },
+              1280: {
+                  slidesPerView: 6,
+                  spaceBetween: 20,
+              },
+              1750: {
+                  slidesPerView: 5,
+                  spaceBetween: 20,
+              },
+              2000: {
+                slidesPerView: 6,
+                spaceBetween: 20,
+              },
+              2600: {
+                slidesPerView: 7,
+                spaceBetween: 20,
+              }
+          }
+      });
+  </script>
+  <script>
+document.addEventListener("DOMContentLoaded", function () {
+    const popupTriggers = document.querySelectorAll(".popup-trigger");
+    const popups = document.querySelectorAll(".custom-model-main");
+
+    popupTriggers.forEach(button => {
+        button.addEventListener("click", function () {
+            let popupId = this.getAttribute("data-popup-id");
+            let popup = document.getElementById(popupId);
+            if (popup) popup.classList.add("model-open");
+        });
+    });
+
+    popups.forEach(popup => {
+        popup.addEventListener("click", function (event) {
+            if (event.target.classList.contains("bg-overlay") || event.target.classList.contains("close-btn")) {
+                this.classList.remove("model-open");
+            }
+        });
+    });
+});
+
+  </script>
+  
+<style>
+  .swiper-slide.color-block {
+    display: block !important;
+  }
+  .color-block-content * {
+    color: inherit !important;
+  }
+
+  .custom-model-main {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.custom-model-main.model-open {
+  display: flex;
+}
+
+.custom-model-inner {
+  background: white;
+  padding: 20px;
+  width: 60%;
+  max-width: 500px;
+  position: relative;
+  text-align: center;
+}
+
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 34px;
+  cursor: pointer;
+}
+.pop-up-content-wrap h5 {
+  margin: 0;
+  padding-bottom: 10px;
+}
+.pop-up-content-wrap h6 {
+  margin: 0;
+}
+.ctm-colorswiper.color-swiper-above .color-block-content {
+  min-width: 200px;
+  background-color: rgb(255 255 255 / 80%) !important;
+}
+.ctm-colorswiper {
+  position: relative;
+}
+.ctm-colorswiper .ctm-colorSwiper-arrows .swiper-button-next {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: white;
+}
+.ctm-colorswiper .ctm-colorSwiper-arrows .swiper-button-prev {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: white;
+}
+
+.ctm-colorswiper.color-swiper-above  {
+  padding: 0;
+}
+
+.ctm-colorswiper.color-swiper-above:first-child  {
+  padding-top: 0px !important;
+}
+.custom-model-wrap {
+    margin-top: 20px;
+}
+@media (max-width: 991px) {  
+  .ctm-colorswiper.color-swiper-above .color-block-content {
+    min-width: 150px;
+  }
+}
+
+@media(min-width: 768px) and (max-width:1650px){
+  .ctm-colorswiper.color-swiper-above .color-block-content {
+    min-width: 130px;
+    padding: 12px;
+  }
+  .color-slide-item-title h3 {
+    font-size: 15px !important;
+  }
+  .color-slide-item-text p,
+  .color-slide-item-link a{
+    font-size: 14px !important;
+  }
+  .color-swiper-above .color-slide-item-title {
+    margin-bottom: 3px;
+  }
+  .color-swiper-above .color-slide-item-text{
+    margin-bottom: 5px;
+  }
+}
+
+@media (max-width: 575px) {
+  .custom-model-inner  {
+    width: 90%;
+  }
+  .ctm-colorswiper.color-swiper-above .color-block-content {
+    min-width: 200px;
+  }
+}
+</style>
+    

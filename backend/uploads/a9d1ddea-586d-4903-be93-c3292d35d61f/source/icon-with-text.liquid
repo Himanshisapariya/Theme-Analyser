@@ -1,0 +1,431 @@
+{{ 'icon-with-text.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.50 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.50 | round: 0 }}px;
+  }
+  .icon-with-text-wrapper .grid-boxes .grid__item .grid-image.circle,.icon-with-text-wrapper .grid-boxes .grid__item .grid-image.square {
+    background: {{ section.settings.icon_background_color }};
+  }
+  .icon-with-text-wrapper .grid-boxes .grid__item .grid-image .svg-image svg path {
+    fill: {{ section.settings.icon_color }};
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+{%- liquid
+  assign show_mobile_slider = false
+  if section.settings.show_mobile_slider
+    assign show_mobile_slider = true
+  endif
+-%}
+<a href="#after-icon-carousel-{{ section.id }}" class="visually-hidden focusable">Skip carousel</a>
+<div class="icon-with-text-wrapper {{ section.settings.extra_class }} color-{{ section.settings.color_scheme }}">
+  <div class="page-width-ctm">
+    <div class="icon-with-text-main">
+      <div class="icon-with-text-inner swiper icon-with-text-slider section-{{ section.id }}-padding" role="region" aria-label="Icon with text carousel">
+        {%- comment -%}fix - #553: screen-reader instructions as first child{%- endcomment -%}
+        <span class="visually-hidden">Carousel. Use the Previous and Next buttons to navigate between slides.</span>
+        {%- comment -%}fix - #555: Nav buttons before slides for logical focus order{%- endcomment -%}
+        <div class="anouncement-aerrows">
+          <button type="button" class="swiper-icon-button-prev peev-tabbing-btn" aria-label="Previous slide">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="10"
+              height="18"
+              viewBox="0 0 10 18"
+              fill="none"
+              class="icon icon-caret-left"
+              aria-hidden="true"
+            >
+              <path d="M9 17L0.999999 9L9 1" stroke="currentcolor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
+          </button>
+          <button type="button" class="swiper-icon-button-next next-tabbing-btn" aria-label="Next slide">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="10"
+              height="18"
+              viewBox="0 0 10 18"
+              fill="none"
+              class="icon icon-caret-right"
+              aria-hidden="true"
+            >
+              <path d="M1 1L9 9L1 17" stroke="currentcolor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
+          </button>
+        </div>
+        <div
+          class="swiper-wrapper grid-boxes grid--{{ section.settings.desktop_columns }}-col-desktop grid--{{ section.settings.columns_mobile }}-col-tablet-down"
+        >
+          {% for block in section.blocks %}
+            <div
+              class="swiper-slide grid-box grid__item"
+              role="group"
+              aria-label="Slide {{ forloop.index }} of {{ section.blocks.size }}"
+            >
+              <div class="grid {{ section.settings.column_alignment }} {{ section.settings.icon_alignment }}">
+                <div class="grid-box-inner">
+                  {% if block.settings.grid_title != blank %}
+                    <div class="grid-title" id="grid-title-{{ block.id }}">
+                      <h3 class="h5">{{ block.settings.grid_title }}</h3>
+                    </div>
+                  {% endif %}
+                  {% if block.settings.grid_description != blank %}
+                    <div class="grid-text" id="grid-desc-{{ block.id }}">
+                      <p>{{ block.settings.grid_description }}</p>
+                    </div>
+                  {% endif %}
+                </div>
+                <div class="grid-image {{ section.settings.image_width }} {{ section.settings.icon_bg }}">
+                  {% if block.settings.grid_image != blank %}
+                    <img
+                      src="{{ block.settings.grid_image | image_url: master }}"
+                      alt="{{ block.settings.grid_title }}"
+                      width="60"
+                      height="60"
+                    >
+                  {% else %}
+                    {% if block.settings.svg_icon != blank %}
+                      <div class="svg-image">
+                        {{ block.settings.svg_icon }}
+                      </div>
+                    {% else %}
+
+                    {% endif %}
+                  {% endif %}
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+        {% if section.settings.show_pagination %}
+          <div class="swiper-pagination"></div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+<span id="after-icon-carousel-{{ section.id }}" tabindex="-1"></span>
+<style>
+  .swiper-icon-button-prev,
+  .swiper-icon-button-next {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+  }
+
+  .swiper-button-prev,
+  .swiper-button-next {
+    color: #000; /* or your desired color */
+    background: none;
+    border: none;
+    font-size: 24px;
+    width: auto;
+    height: auto;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+  }
+
+  .icon-with-text-wrapper .swiper-button-prev {
+    left: -20px; /* Adjust based on your layout */
+  }
+
+  .icon-with-text-wrapper .swiper-button-next {
+    right: -20px; /* Adjust based on your layout */
+  }
+
+  /* Optional: remove default Swiper arrow icons and use custom text/arrows */
+  .icon-with-text-wrapper .swiper-button-prev::after,
+  .icon-with-text-wrapper .swiper-button-next::after {
+    content: '';
+  }
+
+  .icon-with-text-wrapper .swiper-button-prev::before,
+  .icon-with-text-wrapper .swiper-button-next::before {
+    font-family: Arial, sans-serif;
+    font-size: 28px;
+    display: inline-block;
+  }
+
+  .icon-with-text-wrapper .swiper-button-prev::before {
+    content: '';
+  }
+
+  .icon-with-text-wrapper .swiper-button-next::before {
+    content: '';
+  }
+</style>
+
+<script>
+  // fix - #554: set aria-hidden + tabindex=-1 on inactive slides
+  function updateIconSlideA11y(swiper) {
+    swiper.slides.forEach(function(slide) {
+      var visible = slide.classList.contains('swiper-slide-visible');
+      slide.setAttribute('aria-hidden', visible ? 'false' : 'true');
+      slide.querySelectorAll('a,button,input,select,textarea,[tabindex]').forEach(function(el) {
+        if (visible) { el.removeAttribute('tabindex'); }
+        else { el.setAttribute('tabindex', '-1'); }
+      });
+    });
+  }
+
+  new Swiper('.icon-with-text-inner', {
+    loop: false,
+    watchSlidesProgress: true,
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true,
+    },
+    navigation: {
+      nextEl: '.swiper-icon-button-next',
+      prevEl: '.swiper-icon-button-prev',
+    },
+    a11y: {
+      enabled: true
+    },
+    breakpoints: {
+      1200: { slidesPerView: 1, spaceBetween: 10 },
+      1379: { slidesPerView: 4, spaceBetween: 30 }
+    },
+    on: {
+      init: function() { updateIconSlideA11y(this); },
+      slideChange: function() { updateIconSlideA11y(this); },
+      resize: function() { updateIconSlideA11y(this); },
+    },
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Icon with text",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "label": "Extra class",
+      "id": "extra_class"
+    },
+    {
+      "type": "inline_richtext",
+      "label": "heading",
+      "id": "heading",
+      "default": "Icon With Text"
+    },
+    {
+      "type": "inline_richtext",
+      "label": "inline text",
+      "id": "sec_content",
+      "default": "Icon With Text"
+    },
+    {
+      "type": "select",
+      "id": "heading_size",
+      "options": [
+        {
+          "value": "h2",
+          "label": "h2"
+        },
+        {
+          "value": "h1",
+          "label": "h1"
+        },
+        {
+          "value": "h0",
+          "label": "h0"
+        }
+      ],
+      "default": "h1",
+      "label": "h1"
+    },
+    {
+      "type": "select",
+      "id": "heading_alignment",
+      "options": [
+        {
+          "value": "left",
+          "label": "left"
+        },
+        {
+          "value": "center",
+          "label": "center"
+        },
+        {
+          "value": "right",
+          "label": "right"
+        }
+      ],
+      "default": "left",
+      "label": "left"
+    },
+    {
+      "type": "range",
+      "id": "desktop_columns",
+      "min": 1,
+      "max": 4,
+      "step": 1,
+      "default": 3,
+      "label": "desktop columns"
+    },
+    {
+      "type": "select",
+      "id": "column_alignment",
+      "options": [
+        {
+          "value": "left",
+          "label": "left"
+        },
+        {
+          "value": "center",
+          "label": "center"
+        }
+      ],
+      "default": "left",
+      "label": "left"
+    },
+    {
+      "type": "select",
+      "id": "icon_alignment",
+      "options": [
+        {
+          "value": "icon_left",
+          "label": "left"
+        },
+        {
+          "value": "icon_top",
+          "label": "top"
+        }
+      ],
+      "default": "icon_left",
+      "label": "left"
+    },
+    {
+      "type": "select",
+      "id": "columns_mobile",
+      "options": [
+        {
+          "value": "1",
+          "label": "1"
+        },
+        {
+          "value": "2",
+          "label": "2"
+        }
+      ],
+      "default": "1",
+      "label": "1"
+    },
+    {
+      "type": "select",
+      "id": "icon_bg",
+      "options": [
+        {
+          "value": "none",
+          "label": "none"
+        },
+        {
+          "value": "square",
+          "label": "square"
+        },
+        {
+          "value": "circle",
+          "label": "circle"
+        }
+      ],
+      "default": "none",
+      "label": "Icon Background Type"
+    },
+    {
+      "type": "color",
+      "label": "icon background color",
+      "id": "icon_background_color",
+      "default": "#ACACAC"
+    },
+    {
+      "type": "color",
+      "label": "icon color",
+      "id": "icon_color",
+      "default": "#B47B84"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "padding top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "padding bottom",
+      "default": 36
+    },
+    {
+      "type": "checkbox",
+      "id": "show_mobile_slider",
+      "default": false,
+      "label": "show_mobile_slider"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_pagination",
+      "default": false,
+      "label": "show_pagination"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "column",
+      "name": "column",
+      "settings": [
+        {
+          "type": "text",
+          "label": "Grid Title",
+          "id": "grid_title",
+          "default": "Free shipping"
+        },
+        {
+          "type": "inline_richtext",
+          "label": "Grid Description",
+          "id": "grid_description",
+          "default": "Standard shipping"
+        },
+        {
+          "type": "image_picker",
+          "label": "Grid Image",
+          "id": "grid_image",
+          "info": "60px x 60px recommended"
+        },
+        {
+          "type": "html",
+          "label": "SVG Icon",
+          "id": "svg_icon",
+          "info": "Add SVG Code here for SVG Icon 60px x 60px recommended"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "icon_with_text"
+    }
+  ]
+}
+{% endschema %}

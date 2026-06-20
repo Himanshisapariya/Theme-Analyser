@@ -1,0 +1,194 @@
+<style>
+{%- comment -%}
+  Set CSS variables based on section settings
+{%- endcomment -%}
+:root {
+  --announcement-bar-height: {{ section.settings.announcement_bar_height }}px;
+  --announcement-bar-color: {{ section.settings.announcement_bar_color }};
+}
+
+/* Announcement-bar */
+
+.announcement-bar {
+  background: var(--announcement-bar-color);
+}
+
+#shopify-section-announcement-bar {
+  z-index: 4;
+}
+
+.section-announcement {
+  transition: transform var(--duration-default);
+  z-index: 20;
+}
+
+.announcement-bar {
+  min-height: var(--announcement-bar-height);
+  display: flex;
+  justify-content: center;
+  overflow-y: auto;
+  font-size: 1.2rem;
+  color: rgb(var(--color-foreground));
+}
+.announcement-bar .announcement-bar__text a {
+  color: var(--color-foreground);
+  position: relative;
+  box-sizing: border-box;
+  transition: all var(--duration-default);
+  max-height: 100%;
+  font-size: 1.2rem;
+  line-height: 20px;
+  text-decoration: none;
+  -webkit-appearance: none;
+  appearance: none;
+  cursor: pointer;
+  z-index: 1;
+  width: fit-content;
+  padding: 0.2rem 0;
+}
+.announcement-bar .announcement-bar__text a::after {
+  content: "";
+  position: absolute;
+  background-color: rgba(var(--color-foreground));
+  z-index: -11;
+  height: 0.1rem;
+  width: 100%;
+  left: 0;
+  bottom: 0;
+}
+.announcement-bar .announcement-bar__text a:not(.button[aria-disabled=true]):hover::after {
+  animation: mymove var(--duration-long);
+}
+
+.announcement-bar__message {
+    display :none;
+}
+.announcement-bar__message {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    top: 50%;
+    transform: translateY(-50%);
+    opacity: 0;
+    transition: opacity 0.5s ease; /* Smooth transition for fade-in/out */
+}
+.announcement-bar__message.first{ 
+    display : block;
+}
+#controls {
+    margin-top : 30px;
+}
+#playli {
+    display : inline-block;
+    padding : 5px;
+    border : 1px solid #ccc;
+    background-color : #eee;
+    cursor : pointer;
+}
+#play {
+    display : none;
+}
+.section-announcement #controls{ 
+	position: absolute;
+    top: 52%;
+    margin: 0;
+    right: 17px;
+    transform: translate(0px, -40%);
+    list-style: none;
+}
+.section-announcement{
+	position: relative;
+}
+@media screen and (max-width: 659px) {
+	.announcement-bar {
+  		min-height: 46px !important;
+  	}
+  }
+
+
+@media(min-width: 768px) and (max-width:1650px){
+    .announcement-bar {
+      min-height: 35px;
+    }
+}
+</style>
+
+<div class="announcement-bar {% if section.settings.color_scheme == 'dark' %} theme-dark color-background-5{% endif %}" role="region" aria-label="{{ 'sections.header.announcement' | t }}" {{ block.shopify_attributes }}>
+		{% for block in section.blocks %}
+				<div class="announcement-bar__message {% if forloop.first %}first{% endif %}">
+					<div class="announcement-bar__text">
+						{% if localization.country == 'United States' %}
+							<span id="usa_msg" style="display:block;font-weight: 700;">{{ block.settings.text_us }}</span>
+						  {% elsif localization.country == 'Canada' %}
+							<span id="usa_msg canada" style="display:block;font-weight: 700;">{{ block.settings.text_ca }}</span>
+						  {% else %}
+							<span id="usa_msg international" style="display:block;font-weight: 700;">{{ block.settings.text_global }}</span>
+						  {% endif %}
+						  <span id="usa_msg" style="display:block;font-weight: 700;">{{ block.settings.text_two }}</span>
+					</div>
+				</div>
+		{% endfor %}
+</div>
+
+{% schema %}
+{
+	"name": "t:sections.announcement-bar.name",
+	"class": "section-announcement",
+	"limit": 1,
+	"settings": [
+		{
+			"type": "color",
+			"id": "announcement_bar_color",
+			"label": "Announcement Bar Background Color",
+			"default": "#28b473"
+		},
+		{
+			"type": "range",
+			"id": "announcement_bar_height",
+			"label": "Announcement Bar Height",
+			"min": 30,
+			"max": 100,
+			"step": 1,
+			"unit": "px",
+			"default": 46
+		}
+	],
+	"blocks": [
+		{
+			"type": "slide",
+			"name": "t:sections.logo-slideshow.blocks.name",
+			"settings": [
+				{
+					"type": "richtext",
+					"id": "text_us",
+                    "label": "USA Text"
+
+				},
+				{
+					"type": "richtext",
+					"id": "text_ca",
+					"label": "Canada Text"
+				},
+				{
+					"type": "richtext",
+					"id": "text_global",
+					"label": "International Text"
+				},
+				{
+					"type": "richtext",
+					"id": "text_two",
+					"label": "Text"
+				}
+			]
+		}
+	],
+	"presets": [
+		{
+			"name": "t:sections.announcement-bar.presets.name"
+		}
+	],
+	"enabled_on": {
+    "groups": ["header"]
+  }
+}
+{% endschema %}

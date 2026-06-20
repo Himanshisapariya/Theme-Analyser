@@ -1,0 +1,274 @@
+{{ 'spring-page-layout.css' | asset_url | stylesheet_tag }}
+
+<div class="tabs-container section_extra_class product-recommendations fullscreen-container section-{{ section.id }}-padding {{ section.settings.spring_slider_class }} {{ section.settings.section_extra_class }}">
+  <div class="tabs product-recommendations__item product-recommendations__item">
+    {% if section.settings.heading_ctm != blank or section.settings.btn_link != blank or section.settings.ctm_subtitle != blank  %}
+      <div class="tab_inner">
+        <div class="main-title-btn">
+          <div class="main-title">
+            <h3>{{ section.settings.heading_ctm }}</h3>
+          </div>
+          {%- if section.settings.btn_link != blank -%}
+          <div class="main-btn">
+            <a href="{{ section.settings.btn_link }}" class="btn button--rebuy btn-primary">{{ section.settings.btn_text }}</a>
+          </div>
+          {% endif %}
+        </div>
+        <p>{{ section.settings.ctm_subtitle }}</p>
+      </div>
+    {% endif %}
+    <div class="{% if section.settings.tab_1 != blank %}tab-links{% endif %}">
+      <span class="tab-link active" role="button" tabindex="0" data-tab="tab-1-{{ section.id }}">{{ section.settings.tab_1 }}</span>
+      <span class="tab-link" role="button" tabindex="0" data-tab="tab-2-{{ section.id }}">{{ section.settings.tab_2 }}</span>
+    </div>
+    <div class="tab-content-wrapper">
+
+    {% for block in section.blocks %}
+    <div class="tab-image {% if forloop.first %}active{% endif %}" data-tab="tab-{{ forloop.index }}-{{ section.id }}">
+      {% if block.settings.enable_img and block.settings.collection_image %}
+      <img src="{{ block.settings.collection_image | image_url  }}" alt="{{ section.settings.heading_ctm }}" loading="lazy" height="auto" width="400"/>
+      {% endif %}
+    </div>
+    <div class="swiper mySwiper tab-content product-recommendations__list {% if forloop.first %}active{% endif %}" id="tab-{{ forloop.index }}-{{ section.id }}" aria-label="product carousel">
+      <p class="visually-hidden">This is a carousel. You can navigate through the slides using the arrow keys or by swiping on touch devices.</p>
+      <ul class="swiper-wrapper flex-content" role="presentation">
+        {% for product in collections[block.settings.collection_ctm].products limit: 8 %}
+        <li class="swiper-slide collection-product-card product-recommendations__product quickview{%- if settings.quickview_hover -%}--hover{% endif %}">
+          {% render 'product-card',
+          product_card_product: product,
+          quickview_show: section.settings.quickview_show,
+          section_id: section.id
+          %} 
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+    {% endfor %}
+    </div>
+  </div>
+  {% if section.settings.bottom_btn_link != blank %}
+  <div class="bottom-button">
+    <a class="button" href="{{ section.settings.bottom_btn_link }}">{{ section.settings.bottom_btn_text }}</a>
+  </div>
+  {% endif %}
+  <div class="tabbing-aerrows">
+    <div class="swiper-button-prev peev-tabbing-btn swiper-prev-{{ section.id }}">
+      <svg xmlns="http://www.w3.org/2000/svg" width="10" height="18" viewBox="0 0 10 18" fill="none" class="icon icon-caret-left">
+        <path d="M9 17L0.999999 9L9 1" stroke="currentcolor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+      </svg>
+    </div>
+    <div class="swiper-button-next next-tabbing-btn swiper-next-{{ section.id }}">
+      <svg xmlns="http://www.w3.org/2000/svg" width="10" height="18" viewBox="0 0 10 18" fill="none" class="icon icon-caret-right">
+        <path d="M1 1L9 9L1 17" stroke="currentcolor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+      </svg>
+    </div>
+  </div>
+</div>
+
+
+<script>
+  (function() {
+    const sectionId = '{{ section.id }}';
+    const desktopSlides = {{ section.settings.desktop_slide | default: 4 }};
+    const swiper = new Swiper(`.mySwiper.tab-content#tab-1-${sectionId}, .mySwiper.tab-content#tab-2-${sectionId}`, {
+      slidesPerView: 4,
+      spaceBetween: 30,
+			a11y: false,
+      navigation: {
+        nextEl: `.swiper-next-${sectionId}`,
+        prevEl: `.swiper-prev-${sectionId}`,
+      },
+      breakpoints: {
+        320: {
+          slidesPerView: 1.2,
+          spaceBetween: 10,
+        },
+        500: {
+          slidesPerView: 2.2,
+          spaceBetween: 20,
+        },
+        768: {
+          slidesPerView: 3.3,
+          spaceBetween: 30,
+        },
+        1024: {
+          slidesPerView: 4,
+          spaceBetween: 30,
+        },
+        1200: {
+          slidesPerView: desktopSlides,
+          spaceBetween: 30,
+        },
+      },
+    });
+
+    const tabLinks = document.querySelectorAll(`.tabs-container.section-${sectionId}-padding .tab-link`);
+    const tabImages = document.querySelectorAll(`.tabs-container.section-${sectionId}-padding .tab-image`);
+    const tabContents = document.querySelectorAll(`.tabs-container.section-${sectionId}-padding .tab-content`);
+
+    tabLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        tabLinks.forEach(link => link.classList.remove('active'));
+        link.classList.add('active');
+
+        tabContents.forEach(content => content.classList.remove('active'));
+
+        const targetTab = document.getElementById(link.dataset.tab);
+        if (targetTab) targetTab.classList.add('active');
+
+        tabImages.forEach(image => image.classList.remove('active'));
+        const targetImage = document.querySelector(`.tab-image[data-tab="${link.dataset.tab}"]`);
+        if (targetImage) targetImage.classList.add('active');
+      });
+    });
+  })();
+</script>
+
+<style>
+.tab-image.active {
+  display: block !important;
+}
+.tab-image {
+  display: none !important;
+}
+
+.bottom-button {
+  margin: 20px 0;
+  display: flex;
+  justify-content: center;
+}
+
+.bottom-button .button {
+    background-color: #28b473 !important;
+    color: white !important;
+    border: 1px solid #28b473 !important;
+    border-radius:0;
+    min-width: 220px !important;
+    min-height: 40px;
+      text-align:center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.bottom-button .button:hover {
+    background-color: #2f484c !important;
+    color: white !important;
+    border: 1px solid #2f484c !important;
+    border-radius:0;
+}
+
+@media (min-width: 1199px) {
+.bottom-button .button {
+  font-size: 18px !important;
+  min-width: 350px !important;
+  min-height: 60px !important;
+}
+.bottom-button {
+  margin: 30px 0;
+}
+}
+
+
+
+
+</style>
+
+  
+  {% schema %}
+    {
+      "name": "Collection Tabs",
+      "settings": [
+        {
+          "type": "text",
+          "label": "Section Extra Class",
+          "id": "section_extra_class"
+        },
+        {
+          "id": "heading_ctm",
+          "type": "text",
+          "label": "Heading"
+        },
+        {
+          "id": "ctm_subtitle",
+          "type": "html",
+          "label": "Sub Heading"
+        },
+        {
+          "id": "btn_text",
+          "type": "text",
+          "label": "Button Text"
+        },
+        {
+          "id": "btn_link",
+          "type": "url",
+          "label": "Button Link"
+        },
+        {
+          "id": "bottom_btn_text",
+          "type": "text",
+          "label": "Bottom Button Text"
+        },
+        {
+          "id": "bottom_btn_link",
+          "type": "url",
+          "label": "Bottom Button Link"
+        },
+        {
+          "id": "tab_1",
+          "type": "text",
+          "label": "Tab Name"
+        },
+        {
+          "id": "tab_2",
+          "type": "text",
+          "label": "Second Tab Name"
+        },
+        {
+          "type": "range",
+          "label": "Desktop Slide per view",
+          "id": "desktop_slide",
+          "default": 4,
+          "min": 3,
+          "max": 6,
+          "step": 0.5
+        },
+        {
+          "type": "text",
+          "id": "spring_slider_class",
+          "label": "Spring Slider Class"
+        }
+      ],
+      "blocks": [
+          {
+            "type": "collection",
+            "name": "Collection",
+            "limit": 2,
+            "settings": [
+              {
+                "type": "collection",
+                "id": "collection_ctm",
+                "label": "Select collection"
+              },
+              {
+                "type": "checkbox",
+                "id": "enable_img",
+                "label": "Display Collection Image",
+                "default": false
+              },
+              {
+                "type": "image_picker",
+                "id": "collection_image",
+                "label": "Collection Image",
+                "visible_if": "{{ block.settings.enable_img }}"
+              }
+            ]
+          }
+        ],
+      "presets": [
+        {
+          "name": "Collection Tabs"
+        }
+      ]
+    }
+  {% endschema %}

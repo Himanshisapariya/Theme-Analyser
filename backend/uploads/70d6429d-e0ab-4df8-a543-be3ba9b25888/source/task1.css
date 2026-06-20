@@ -1,0 +1,139 @@
+<style>
+
+.body{
+width : 1512px;
+height:607px;
+}
+
+.headline{
+font-family: PF Marlet Display;
+font-size: 3.2rem;
+font-weight: 700;
+line-height: 35.2px;
+text-align: center;
+text-color: rgba(65, 52, 50, 1);
+}
+
+.custom-content-section {
+text-align: center;
+/* width: Fill (1,402px)px;
+height: Hug (497px)px; */
+height: 497px; /* Setting the fixed height */
+width: auto; 
+padding: 65px 75px 65px 75px;
+margin:100px;
+padding:30px;
+gap: 40px;
+opacity: 0px;
+/* background-color: rgba(191, 177, 158, 0.95); */
+background-image: url("https://s3-alpha-sig.figma.com/img/1815/b767/352880f4c30a7d93cdcd8683b3d5d98a?Expires=1719792000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=G6NGqzA40K5hgYpDY8BWs4VCmoWfRUjo0ojZ0o7EltKFteVTgZb0~3IQSxpZsgXhS39-imIxqPq1UfSc-sOB9yYOYJRvSDFX5XsRagjmAgPW7Kkaff2Fcnayv8BG0ZcpvnNo0m7JbyKPxqRKmuZyxfFUoxHz3q5YkZdD1HKPDSC8lwDUHlCQ-8kemder2qUmQwqk3IF9mvh8S3l9Z5EUQvrKGLdyPIXtLj-l4nYKDNeSTBextMxlC8O1O2ceIsw2cI~nW7-OO8j7BAX4cH4V262iR7TZofWbeJJtDYuZorGhi~DPUzqQZQRgZUnmoFniY4HdCOVX8gtQyE0bsUnNOQ__");
+}
+
+.custom-content-section h2 {
+font-size: 2em;
+margin-bottom: 20px;
+}
+
+.custom-content-blocks {
+display: flex;
+flex-wrap: wrap;
+justify-content: space-between;
+width: Fill (172px)px;
+height: Hug (116px)px;
+gap: 28px;
+opacity: 0px;
+}
+
+.custom-content-image img{
+  height : 64px;
+  width : 64px;
+}
+
+  .custom-content-block {
+    flex: 1 1 calc(10% - 10px); /* Adjust the width and spacing as needed */
+    box-sizing: border-box;
+    margin: 10px;
+    /* text-align: left; /* Align text to left within each block */
+    text-align : center;
+    justify-content :center;
+  } */
+
+ 
+
+.custom-content {
+styleName: H5.1/Copy 2 Extra Bold;
+font-family: Plus Jakarta Sans;
+font-size: 16px;
+font-weight: 800;
+line-height: 24px;
+letter-spacing: 0.02em;
+text-align: center;
+text-color :rgba(65, 52, 50, 1);
+  }
+
+.custom-content2{
+styleName: H5.1/Copy 2 Extra Bold;
+font-family: Plus Jakarta Sans;
+font-size: 16px;
+font-weight: 800;
+line-height: 24px;
+letter-spacing: 0.02em;
+text-align: center;
+text-color :rgba(65, 52, 50, 1);
+}
+    
+    .finally{
+styleName: H5.1/Copy 2 Regular;
+font-family: Plus Jakarta Sans;
+font-size: 16px;
+font-weight: 400;
+line-height: 24px;
+letter-spacing: 0.02em;
+text-align: center;
+text-color: rgba(65, 52, 50, 1);
+    }
+
+.headline{
+width: Fixed (1,000px)px;
+height: Hug (69px)px;
+gap: 14px;
+opacity: 0px;
+text-color: rgba(65, 52, 50, 1);
+}
+
+.buttons{
+width: Hug (420px)px;
+height: Hug (54px)px;
+gap: 20px;
+margin-bottom : 50px;
+/* opacity: 0px; */
+}
+.buynow{
+width : 200px;
+height : 54px;
+    /* styleName : H5.1/Copy 2 Extra Bold;
+  font-weight: 800; */
+padding: 14px 32px 15px 32px;
+margin-right: 20px;
+gap: 10px;
+border-radius: 5px 5px 5px 5px;
+/* opacity: 0px; */
+color: rgba(255, 255, 255, 1);
+background-color: #62673E;
+}
+
+.learnmore{
+width : 200px;
+height : 54px;
+/* font-family : Plus Jakarta Sans */
+      /* styleName : H5.1/Copy 2 Extra Bold;
+  font-weight: 800; */
+padding: 14px 32px 15px 32px;
+gap: 10px;
+border-radius: 5px 5px 5px 5px;
+opacity: 0px;
+color: #62673E;
+border: 1px solid rgba(98, 103, 62, 1)
+}
+    
+</style>

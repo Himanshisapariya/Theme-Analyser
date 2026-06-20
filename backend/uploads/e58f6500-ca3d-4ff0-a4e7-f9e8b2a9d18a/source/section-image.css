@@ -1,0 +1,11 @@
+.image-section .spaced-section {
+  padding-top: 9.3rem;
+}
+.image-section__title p {
+  margin: 0;
+}
+
+.image-section__button {
+  margin-top: 5.6rem;
+  padding: 2rem -5rem;
+}

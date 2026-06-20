@@ -1,0 +1,308 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "shogun-helper": {
+      "type": "shogun-helper",
+      "settings": {}
+    },
+    "pages": {
+      "type": "main-page",
+      "disabled": true,
+      "custom_css": [
+        ".container {padding-top: 50px; padding-bottom: 50px;}",
+        "h1 {text-align: center;}"
+      ],
+      "settings": {
+        "extra_class": ""
+      }
+    },
+    "shogun-optimizer": {
+      "type": "shogun-optimizer",
+      "settings": {}
+    },
+    "rich_text_q7hHJ9": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_Gc7Kbt": {
+          "type": "heading",
+          "settings": {
+            "heading": "<h2>Athletes & Affiliates</h2>",
+            "heading_size": "medium",
+            "heading_padding_top": 0,
+            "padding_bottom": 0
+          }
+        },
+        "text_eFy8NT": {
+          "type": "text",
+          "settings": {
+            "text": "<h6>Partner with a brand that stands for something. Apply to join the movement.</h6>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_Gc7Kbt",
+        "text_eFy8NT"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "color_scheme": "background-1",
+        "full_width": false,
+        "content_alignment_desktop": "left",
+        "content_alignment_mobile": "left",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "margin_top": 20,
+        "margin_bottom": 40,
+        "spring_shop_text": "gts athlete-container"
+      }
+    },
+    "spring_slideshow_7JkNAw": {
+      "type": "spring-slideshow",
+      "blocks": {
+        "slide_cEAVan": {
+          "type": "slide",
+          "settings": {
+            "desktop_image": "shopify://shop_images/Affiliate_Page_desktop.webp",
+            "mobile_image": "shopify://shop_images/Affiliate_Page_mobile.webp",
+            "enable_image_darkening": false,
+            "darkening_opacity": 0,
+            "heading": "",
+            "subheading": "",
+            "hide_heading_mobile": false,
+            "hide_subheading_mobile": false,
+            "heading_font_size": 48,
+            "heading_font_size_tablet": 40,
+            "heading_font_size_mobile": 32,
+            "heading_line_height": 1.2,
+            "heading_letter_spacing": 0,
+            "heading_color": "#ffffff",
+            "heading_font_family": "inherit",
+            "subheading_font_size": 20,
+            "subheading_font_size_tablet": 18,
+            "subheading_font_size_mobile": 18,
+            "subheading_line_height": 1.5,
+            "subheading_color": "#ffffff",
+            "subheading_font_family": "inherit",
+            "subheading_font_weight": 400,
+            "enable_text_shadow": false,
+            "text_shadow_color": "#000000",
+            "text_shadow_opacity": 35,
+            "text_shadow_blur": 8,
+            "text_shadow_y": 2,
+            "content_max_width": 800,
+            "content_alignment": "center-center",
+            "mobile_content_alignment": "center",
+            "text_alignment": "center",
+            "mobile_text_alignment": "center",
+            "button_text": "",
+            "button_link": "",
+            "button_2_text": "",
+            "button_2_link": "",
+            "stack_buttons_mobile": false,
+            "button_style": "button--ctm_global_button",
+            "mobile_button_style": "button--ctm_global_button",
+            "button_font_size": 16,
+            "mobile_button_font_size": 14,
+            "button_gap": 16
+          }
+        }
+      },
+      "block_order": [
+        "slide_cEAVan"
+      ],
+      "name": "Spring Hero Slideshow",
+      "settings": {
+        "desktop_height": 950,
+        "tablet_laptop_height": 95,
+        "mobile_height": 500,
+        "extra_class": "athlete-container",
+        "slideshow_speed": 300,
+        "slideshow_delay": 1000,
+        "enable_autoplay": false,
+        "show_arrows": false
+      }
+    },
+    "rich_text_cRERh8": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_DGdydb": {
+          "type": "heading",
+          "settings": {
+            "heading": "<h2>Join the Community</h2>",
+            "heading_size": "medium",
+            "heading_padding_top": 0,
+            "padding_bottom": 0
+          }
+        },
+        "text_anz73z": {
+          "type": "text",
+          "settings": {
+            "text": "<h6>Earn commission for promoting a brand built for female athletes and truth tellers. Get invitations to participate in marketing campaigns and join a<br/>positive, pro-woman community.</h6>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_DGdydb",
+        "text_anz73z"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "color_scheme": "background-1",
+        "full_width": true,
+        "content_alignment_desktop": "center",
+        "content_alignment_mobile": "left",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "margin_top": 40,
+        "margin_bottom": 40,
+        "spring_shop_text": "gts athlete-container"
+      }
+    },
+    "multicolumn_T8tqgB": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_naAefk": {
+          "type": "column",
+          "settings": {
+            "heading": "Step 1.",
+            "text": "Apply to join our Affiliate Creator\nProgram or NIL Athlete Program.",
+            "button_label": "",
+            "button_link": ""
+          }
+        },
+        "column_WDjkrQ": {
+          "type": "column",
+          "settings": {
+            "heading": "Step 2.",
+            "text": "Access our latest products and\ncampaigns. Create, share, and move\nthe mission forward.",
+            "button_label": "",
+            "button_link": ""
+          }
+        },
+        "column_d9fnaM": {
+          "type": "column",
+          "settings": {
+            "heading": "Step 3.",
+            "text": "Find your tribe and earn commission as\nyou go.",
+            "button_label": "",
+            "button_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "column_naAefk",
+        "column_WDjkrQ",
+        "column_d9fnaM"
+      ],
+      "name": "t:sections.multicolumn.name",
+      "settings": {
+        "color_scheme": "background-1",
+        "heading_extra_class": "h3",
+        "text_extra_class": "h6",
+        "multicolumn_to_show": 3,
+        "mobile_columns_per_row": 1,
+        "horizontal_alignment": "center",
+        "heading_size": "",
+        "img_size": "icon",
+        "img_ratio": "adapt",
+        "object_fit": "cover",
+        "swipe_on_mobile": false,
+        "show_mobile_arrows": false,
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "margin_top": 40,
+        "margin_bottom": 40,
+        "extra_class": "gts athlete-container"
+      }
+    },
+    "athlete_image_with_text_NBdPFT": {
+      "type": "athlete-image-with-text",
+      "name": "Athlete Image With Text",
+      "settings": {
+        "extra_class": "gts athlete-container",
+        "image": "shopify://shop_images/WHAT_MOVES_YOU_e3d06d9b-dc5c-4bc5-b1b4-c95c4e58af4f.jpg",
+        "image_position": "left",
+        "image_width": 50,
+        "image_aspect_ratio": "0.90 / 1",
+        "mobile_image_aspect_ratio": "0.90 / 1",
+        "heading": "Affiliate Program",
+        "text": "<h6>Forever athletes and media influencers are welcome here.</h6><h6><br/>Your content speaks to women and men in sport, fitness, and active<br/>lifestyles—and you’re not afraid to stand for truth + fairness.</h6><h6><br/>You have 10K+ followers on at least one social platform.</h6>",
+        "button_label": "APPLY NOW",
+        "button_link": "https://xx-xy-athletics-3.recruit.sproutsocial.com/",
+        "desktop_margin_top": 0,
+        "desktop_margin_bottom": 0,
+        "mobile_margin_top": 0,
+        "mobile_margin_bottom": 0
+      }
+    },
+    "athlete_image_with_text_NEjGqh": {
+      "type": "athlete-image-with-text",
+      "name": "Athlete Image With Text",
+      "settings": {
+        "extra_class": "gts athlete-container",
+        "image": "shopify://shop_images/WHAT_MOVES_YOU_c9df02b1-cffa-46a8-a636-a337a6ab32b8.jpg",
+        "image_position": "right",
+        "image_width": 50,
+        "image_aspect_ratio": "0.90 / 1",
+        "mobile_image_aspect_ratio": "0.90 / 1",
+        "heading": "NIL Program",
+        "text": "<h6>College athletes are the core ethos of our brand.</h6><h6><br/>You are a student-athlete with a voice who believes in fair<br/>competition.</h6>",
+        "button_label": "APPLY NOW",
+        "button_link": "https://xx-xy-athletics-nil-program.recruit.sproutsocial.com/",
+        "desktop_margin_top": 0,
+        "desktop_margin_bottom": 0,
+        "mobile_margin_top": 0,
+        "mobile_margin_bottom": 0
+      }
+    },
+    "rich_text_kPATU3": {
+      "type": "rich-text",
+      "blocks": {
+        "custom_liquid_YekEFm": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "<h6>Have a question? Feel free to reach out to us at <br>\n<a href=\"mailto:partners@xx-xyathletics.com\">partners@xx-xyathletics.com</a></h6>"
+          }
+        }
+      },
+      "block_order": [
+        "custom_liquid_YekEFm"
+      ],
+      "custom_css": [
+        "@media (max-width: 767px) {br {display: none; }}"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "color_scheme": "background-1",
+        "full_width": false,
+        "content_alignment_desktop": "left",
+        "content_alignment_mobile": "left",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "margin_top": 20,
+        "margin_bottom": 50,
+        "spring_shop_text": "gts athlete-container ctm-athlete-have-question"
+      }
+    }
+  },
+  "order": [
+    "shogun-helper",
+    "pages",
+    "shogun-optimizer",
+    "rich_text_q7hHJ9",
+    "spring_slideshow_7JkNAw",
+    "rich_text_cRERh8",
+    "multicolumn_T8tqgB",
+    "athlete_image_with_text_NBdPFT",
+    "athlete_image_with_text_NEjGqh",
+    "rich_text_kPATU3"
+  ]
+}

@@ -1,0 +1,148 @@
+<div class="image_heading_container {{ section.settings.extra_class }}">
+  <div class="xl_container">
+    <div class="ctm_contact_info_inner flex items-center mdscreen1:flex-col gap-40 mdscreen2:gap-55 desktop:!gap-100">
+      <div class="heading_image w-full mdscreen2:w-1/2 desktop:w-[53%] overflow-hidden rounded-24">
+        <img
+          class="w-full h-full object-cover"
+          src="{{ section.settings.main_img | image_url: width: 2000 }}"
+          alt="img_logo"
+          loading="lazy"
+          width="732"
+          height="520"
+        >
+      </div>
+      <div class="ctm_giveus_block mdscreen2:w-[calc(50%_-_55px)] desktop:w-[calc(47%_-_100px)]">
+        <div class="ctm_giveus_title pb-[34px]">
+          <div class="main_headline mb-14">
+            <h3>{{ section.settings.headline }}</h3>
+          </div>
+          <div class="ctm_giveus_content">{{ section.settings.desc }}</div>
+        </div>
+        <div class="ctm_giveus_info">
+          <div class="ctm_giveus_contact p-20 border-t-1 border-b-1 border-solid border-warm_neutral flex flex-col gap-[22px]">
+            <div class="ctm_giveuscall_img flex items-center gap-2">
+              <img
+                src="{{ section.settings.call_img | image_url: width: 100 }}"
+                alt="{{ section.settings.call_img.alt }}"
+                loading="lazy"
+                width="18"
+                height="18"
+              >
+              <div class="ctm_giveuscall_text font-bold">
+                <p>
+                  {% if section.settings.call_heading != blank %}
+                    {{ section.settings.call_heading }}
+                  {% endif %}
+                  <a
+                    class="font-extrabold text-aloe_leaf hover:text-warm_neutral"
+                    href="tel:{{ section.settings.mobile_number }}"
+                  >
+                    {{- section.settings.mobile_number -}}
+                  </a>
+                </p>
+              </div>
+            </div>
+            {% if section.settings.call_desc != blank %}
+              <div class="ctm_giveus_descript">
+                {{ section.settings.call_desc }}
+              </div>
+            {% endif %}
+          </div>
+          <div class="ctm_giveusmail_img p-20 border-b-1 border-solid border-warm_neutral">
+            <div class="ctm_giveus_email flex items-center gap-2">
+              <img
+                src="{{ section.settings.mail_img | image_url: width: 100 }}"
+                alt="{{ section.settings.mail_img.alt }}"
+                loading="lazy"
+                width="18"
+                height="14"
+              >
+              <div class="ctm_giveusemail_text">
+                <p>
+                  {% if section.settings.mail_heading != blank %}
+                    {{ section.settings.mail_heading }}
+                  {% endif %}
+                  <a
+                    class="font-extrabold text-aloe_leaf hover:text-warm_neutral"
+                    href="mailto:{{ section.settings.email }}"
+                  >
+                    {{- section.settings.email -}}
+                  </a>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Shipping & Returns",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "label": "Extra Class",
+      "id": "extra_class"
+    },
+    {
+      "type": "image_picker",
+      "label": "Select Image",
+      "id": "main_img"
+    },
+    {
+      "type": "text",
+      "label": "Headline",
+      "id": "headline"
+    },
+    {
+      "type": "html",
+      "label": "Description ",
+      "id": "desc"
+    },
+    {
+      "type": "image_picker",
+      "label": "Call Img",
+      "id": "call_img"
+    },
+    {
+      "type": "text",
+      "label": "Call Heading",
+      "id": "call_heading"
+    },
+    {
+      "type": "text",
+      "label": "Add Number",
+      "id": "mobile_number"
+    },
+    {
+      "type": "html",
+      "label": "Call Description ",
+      "id": "call_desc"
+    },
+    {
+      "type": "image_picker",
+      "label": "Mail Img",
+      "id": "mail_img"
+    },
+    {
+      "type": "text",
+      "label": "Email Heading",
+      "id": "mail_heading"
+    },
+    {
+      "type": "text",
+      "label": "Add Mail",
+      "id": "email"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Shipping & Returns"
+    }
+  ]
+}
+{% endschema %}

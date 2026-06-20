@@ -1,0 +1,559 @@
+{% comment %}
+	Renders cart drawer
+
+	Usage:
+	{% render 'cart-drawer' %}
+{% endcomment %}
+
+<style>
+	.drawer {
+		visibility: hidden;
+	}
+</style>
+
+<cart-drawer class="drawer{% if cart == empty %} is-empty{% endif %}">
+	<div id="CartDrawer" class="cart-drawer">
+		
+		<div id="CartDrawer-Overlay" class="cart-drawer__overlay"></div>
+		<div
+			class="drawer__inner color-{{ settings.cart_color_scheme }}"
+			role="dialog"
+			aria-modal="true"
+			aria-label="{{ 'general.cart.item_added' | t }}"
+			tabindex="-1"
+		>
+			<div class="drawer__header">
+				<h4 class="drawer__heading cart-drawer-container">
+					{{
+						'general.cart.item_added'
+						| t
+						| append: ' '
+					}}
+				</h4>
+				<button
+					type="button"
+					class="drawer__close modal__close-button link modal-close-button"
+					onclick="this.closest('cart-drawer').close()"
+					aria-label="{{ 'accessibility.close' | t }}"
+				>
+					{% render 'icon-close' %}
+				</button>
+			</div>
+			<div id='fsb_placeholder'></div>
+			{%- if cart == empty -%}
+				<div class="drawer__inner-empty">
+					{% render 'icon-account-order-none' %}
+					<h6 class="cart__empty-text">{{ 'general.cart.empty_cart' | t }}</h6>
+					<a
+						href="{{ routes.all_products_collection_url }}"
+						class="button button--primary"
+					>
+						<span>
+							{{ 'customer.account.account_button_shop' | t }}
+						</span>
+					</a>
+				</div>
+			{%- endif -%}
+			<cart-drawer-items
+				{% if cart == empty %}
+					class=" is-empty"
+				{% endif %}
+			>
+				<form
+					action="{{ routes.cart_url }}"
+					id="CartDrawer-Form"
+					class="cart__contents cart-drawer__form cart-drawer-container"
+					method="post"
+				>
+					<div id="CartDrawer-CartItems" class="drawer__contents js-contents">
+						{%- if cart != empty -%}
+							<div class="drawer__cart-items-wrapper">
+								{%- for item in cart.items -%}
+									<div
+										id="CartDrawer-Item-{{ item.index | plus: 1 }}"
+										class="cart-item"
+									>
+										<div class="cart-item__inner-top">
+											{% if item.image %}
+												<div class="cart-item__media">
+													<img
+														class="cart-item__image"
+														src="{{ item.image | image_url: width: 140 }}"
+														alt="{{ item.image.alt | escape }}"
+														width="80"
+														height="100"
+														loading="lazy"
+													>
+												</div>
+											{% endif %}
+											<div class="cart-item__details">
+												<div class="cart-item__name--price--container">
+													<a
+														href="{{ item.url }}"
+														class="cart-item__name link-hover-arrow" data-item-id="{{ item.product.id }}"
+													>
+														<span>{{ item.product.title | escape }}</span>
+													</a>
+													{%- if item.original_price != item.final_price -%}
+														<div class="cart-item__discounted-prices">
+															<span class="visually-hidden">
+																{{ 'products.product.price.regular_price' | t }}
+															</span>
+															<s class="cart-item__old-price">
+																{{- item.original_price | money -}}
+															</s>
+															<span class="visually-hidden">
+																{{ 'products.product.price.sale_price' | t }}
+															</span>
+															<span class="cart-item__final-price">
+																{{ item.final_price | money }}
+															</span>
+														</div>
+													{%- else -%}
+														<div class="cart-item__final-price">
+															{{ item.original_price | money }}
+														</div>
+													{%- endif -%}
+												</div>
+
+												{%- if item.product.has_only_default_variant == false
+													or item.properties.size != 0
+													or item.selling_plan_allocation != null
+												-%}
+													<dl>
+														{%- if item.product.has_only_default_variant
+																== false
+														-%}
+															{%- for option in item.options_with_values -%}
+																<div class="product-option">
+																	<dd>{{ option.value }}</dd>
+																</div>
+															{%- endfor -%}
+														{%- endif -%}
+
+														{%- for property in item.properties -%}
+															{%- assign property_first_char = property.first
+																| slice: 0
+															-%}
+															{%- if property.last != blank
+																and property_first_char != '_'
+															-%}
+																<div class="product-option">
+																	<dt>{{ property.first }}:</dt>
+																	<dd>
+																		{%- if property.last contains '/uploads/'
+																		-%}
+																			<a
+																				href="{{ property.last }}"
+																				class="link"
+																				target="_blank"
+																				aria-describedby="a11y-new-window-message"
+																			>
+																				{{ property.last | split: '/' | last }}
+																			</a>
+																		{%- else -%}
+																			{{ property.last }}
+																		{%- endif -%}
+																	</dd>
+																</div>
+															{%- endif -%}
+														{%- endfor -%}
+													</dl>
+
+													{% if item.selling_plan_allocation != blank %}
+														<p class="product-option">
+															{{ item.selling_plan_allocation.selling_plan.name }}
+														</p>
+													{% endif %}
+												{%- endif -%}
+
+												<ul
+													class="discounts list-unstyled"
+													role="list"
+													aria-label="{{ 'customer.order.discount' | t }}"
+												>
+													{%- for discount in item.discounts -%}
+														<li class="discounts__discount">
+															{%- render 'icon-discount' -%}
+															{{ discount.title }}
+														</li>
+													{%- endfor -%}
+												</ul>
+
+												<div class="cart-item__quantity-wrapper">
+													<quantity-input class="quantity">
+														<button
+															class="quantity__button no-js-hidden"
+															name="minus"
+															type="button"
+														>
+															<span class="visually-hidden">
+																{{-
+																	'products.product.quantity.decrease'
+																	| t: product: item.product.title
+																	| escape
+																-}}
+															</span>
+															{% render 'icon-minus' %}
+														</button>
+														<input
+															class="quantity__input"
+															type="number"
+															name="updates[]"
+															value="{{ item.quantity }}"
+															min="0"
+															aria-label="{{ 'products.product.quantity.label' | t: product: item.product.title | escape }}"
+															id="Quantity-{{ item.index | plus: 1 }}"
+															data-index="{{ item.index | plus: 1 }}"
+														>
+														<button
+															class="quantity__button no-js-hidden"
+															name="plus"
+															type="button"
+														>
+															<span class="visually-hidden">
+																{{-
+																	'products.product.quantity.increase'
+																	| t: product: item.product.title
+																	| escape
+																-}}
+															</span>
+															{% render 'icon-plus' %}
+														</button>
+													</quantity-input>
+													<cart-remove-button
+														id="CartDrawer-Remove-{{ item.index | plus: 1 }}"
+														data-index="{{ item.index | plus: 1 }}"
+													>
+														<button
+															type="button"
+															class="link {{ item.title |  handle }}"
+															aria-label="{{ 'sections.cart.remove_title' | t: title: item.title }}"
+														>
+															{% render 'icon-remove' %}
+														</button>
+													</cart-remove-button>
+												</div>
+
+												<div
+													id="CartDrawer-LineItemError-{{ item.index | plus: 1 }}"
+													class="cart-item__error"
+													role="alert"
+												>
+													<small class="cart-item__error-text"></small>
+													<svg
+														aria-hidden="true"
+														focusable="false"
+														role="presentation"
+														class="icon icon-error"
+														viewBox="0 0 13 13"
+													>
+														<circle cx="6.5" cy="6.50049" r="5.5" stroke="white" stroke-width="2"/>
+														<circle cx="6.5" cy="6.5" r="5.5" fill="#EB001B" stroke="#EB001B" stroke-width="0.7"/>
+														<path d="M5.87413 3.52832L5.97439 7.57216H7.02713L7.12739 3.52832H5.87413ZM6.50076 9.66091C6.88091 9.66091 7.18169 9.37267 7.18169 9.00504C7.18169 8.63742 6.88091 8.34917 6.50076 8.34917C6.12061 8.34917 5.81982 8.63742 5.81982 9.00504C5.81982 9.37267 6.12061 9.66091 6.50076 9.66091Z" fill="white"/>
+														<path d="M5.87413 3.17832H5.51535L5.52424 3.537L5.6245 7.58083L5.63296 7.92216H5.97439H7.02713H7.36856L7.37702 7.58083L7.47728 3.537L7.48617 3.17832H7.12739H5.87413ZM6.50076 10.0109C7.06121 10.0109 7.5317 9.57872 7.5317 9.00504C7.5317 8.43137 7.06121 7.99918 6.50076 7.99918C5.94031 7.99918 5.46982 8.43137 5.46982 9.00504C5.46982 9.57872 5.94031 10.0109 6.50076 10.0109Z" fill="white" stroke="#EB001B" stroke-width="0.7">
+													</svg>
+												</div>
+											</div>
+										</div>
+									</div>
+								{% endfor %}
+							</div>
+						{%- endif -%}
+						<p
+							id="CartDrawer-LiveRegionText"
+							class="visually-hidden"
+							role="status"
+						></p>
+						<p
+							id="CartDrawer-LineItemStatus"
+							class="visually-hidden"
+							aria-hidden="true"
+							role="status"
+						>
+							{{ 'accessibility.loading' | t }}
+						</p>
+					</div>
+					<div id="CartDrawer-CartErrors" role="alert"></div>
+				</form>
+			</cart-drawer-items>
+
+{% comment %} yml section start {% endcomment %}
+{% if cart.item_count != 0 %}
+  {% if settings.upsell_show %}
+  <div class="ctm_cart">
+  <div class="cart_related_product">
+      <div class="cart_related_iner_main">
+          <div class="ctm_yml_head">
+              <h4>Do you want to grab some stickers for your cart? Free with orders $100+</h4>
+				<button class="upsell_close modal__close-button link modal-close-button"
+						type="button"
+						aria-label="{{ 'accessibility.close' | t }}"
+					>
+  					{% render 'icon-close' %}
+  				</button>
+          </div>
+          <div class="swiper cart_pdp_slider">
+              <div class="swiper-wrapper collection-list card_relatedslide_block contains-card contains-card--collection" id="Slider-{{ section.id }}" role="list">
+                  {% for prod in settings.prod_lists %}
+                    {% for item in cart.items %}
+                      {% assign item_id = item.product.id %}
+                      {% endfor %}
+                    {% if item_id != prod.id %}
+                      <div class="swiper-slide" data-upsell-id="{{ prod.id }}">
+                          <div class="related-main related-products collection-list__item remove-{{ productnumber }}">
+                              <div class="main-img-related">
+                                  <div class="related-inner-block">
+                                      <div class="related-img">
+                                          {% if prod.featured_image %}
+                                              <a href="{{ prod.url }}">
+                                                  <img alt="{{ prod.title }}" src="{{ prod.featured_image | image_url: width: 2000 }}" loading="lazy" height="100" width="100">
+                                              </a>
+                                          {% elsif prod.featured_media.media_type == 'video' %}
+                                              <a href="{{ prod.url }}">
+                                                  <div class="related_video">
+                                                      {{ prod.featured_media | video_tag: controls: false, autoplay: true, loop: true, muted: true, playsinline: true, webkit-playsinline:true }}
+                                                  </div>
+                                              </a>
+                                          {% else %}
+                                              <img src="https://cdn.shopify.com/s/files/1/0633/2524/1527/files/500x500.gif" loading="lazy" height="100" width="100">
+                                          {% endif %}
+                                      </div>
+                                    <div class="pdp_details">
+                                      <div class="related_content">
+                                          <div class="related_contentgrp group">
+                                              
+                                            
+                                              <div class="related_price">
+                                                  <h6 class="related_price">{{ prod.price | money }}
+                                                      <s class="font-normal">{{ prod.compare_at_price | money }}</s>
+                                                  </h6>
+                                              </div>
+                                          </div>
+                                          <div class="related_remove hidden">
+                                              <cart-remove-button class="" id="CartDrawer-Remove-{{ prod.index | plus: 1 }}" data-index="{{ prod.index | plus: 1 }}">
+                                                  <button type="button" class="button button--tertiary cart-remove-button" aria-label="{{ 'sections.cart.remove_title' | t: title: prod.title }}" data-variant-id="{{ prod.variants.first.id }}">
+                                                      {% render 'icon-close' %}
+                                                  </button>
+                                              </cart-remove-button>
+                                          </div>
+                                      </div>
+                                     <div class="qty_related_btn">
+                                      <product-form data-section-id="slide-cart" class="w-full">
+                                          {% assign product_form_id = 'quick-add-' | append: 'slide-cart' | append: prod.id %}
+                                          {% form 'product', prod, id: product_form_id, class: 'form cart_relaterd_form', novalidate: 'novalidate', data-type: 'add-to-cart-form' %}
+                                              <input type="hidden" name="id" value="{{ prod.variants.first.id }}">
+                                              <div class="cart_btngrp">
+                                                  {% if prod.available %}
+                                                      <button type="submit">
+                                                        <svg viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" role="presentation" class="icon icon-plus">
+                                                           <path d="M4.28571 4.28571V0H5.71429V4.28571H10V5.71429H5.71429V10H4.28571V5.71429H0V4.28571H4.28571Z" fill="currentColor"></path>
+                                                        </svg>  
+                                                      </button>
+                                                  {% else %}
+                                                      <button disabled>Sold Out</button>
+                                                  {% endif %}
+                                              </div>
+                                          {% endform %}
+                                      </product-form>
+                                  </div>
+                                  </div>
+                                 </div>
+                              </div>
+                          </div>
+                      </div>
+                    {% endif %}
+                  {% endfor %}
+              </div>
+          </div>
+      </div>
+  </div>
+  </div>
+  {% endif %}
+  {% if settings.giftproduct.available == true %}
+    {% if settings.giftbox_show %}
+      <div class="main_gift_box" data-gift-id="{{ settings.giftproduct.id }}">
+        <div class="main_giftbox_title">
+          
+          <button class="upsell_close modal__close-button link modal-close-button" type="button" aria-label="{{ 'accessibility.close' | t }}">
+    		{% render 'icon-close' %}
+    	  </button>
+        </div>
+        <div class="giftwrap_block">
+        <h4>Would you like to add gift wrapping for $25? $10 for orders $150+</h4>
+      <div class="giftwrap_main">
+        <div class="giftwrap_featured-image">
+		 <a href="{{ settings.giftproduct.url }}">
+           <img alt="{{ settings.giftproduct.title }}" src="{{ settings.giftproduct.featured_image | image_url: width: 2000 }}" loading="lazy" height="100" width="100">
+		  </a>
+        </div>
+        <div class="content_giftwrap">
+            <div class="related-img_title">
+                 <p style="margin: 0 0 2px 0;">{{ settings.giftproduct.title }}</p>
+                  <span style="color: #909697;">12 x 15 x 4.5"</span>
+            </div>
+            <div class="price_atc-flex">
+              <div class="related_price">
+                  <h6 class="related_price">{{ settings.giftproduct.price | money }}
+                    <s class="font-normal">{{ settings.giftproduct.compare_at_price | money }}</s>
+                  </h6>
+                </div>
+              <div class="qty_related_btn">
+              <product-form data-section-id="slide-cart-gift" class="w-full">
+                 {% assign product_gift = 'quick-add-' | append: 'slide-cart' | append: settings.giftproduct.id %}
+                    {% form 'product', settings.giftproduct, id: product_gift, class: 'form cart_relaterd_form', novalidate: 'novalidate', data-type: 'add-to-cart-form' %}
+                      <input type="hidden" name="id" value="{{ settings.giftproduct.variants.first.id }}">
+                         <div class="cart_btngrp">
+                           <button type="submit" class="gift_wrap_atc">
+                              <svg viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" role="presentation" class="icon icon-plus">
+                                <path d="M4.28571 4.28571V0H5.71429V4.28571H10V5.71429H5.71429V10H4.28571V5.71429H0V4.28571H4.28571Z" fill="currentColor"></path>
+                              </svg>  
+                           </button>
+                         </div>
+                     {% endform %}
+                </product-form>
+            </div>
+            </div>
+        </div>
+      </div>
+        </div>
+    </div>
+  {% endif %}
+  {% endif %}
+{% endif %}
+{% comment %} yml section end {% endcomment %}
+<div data-round-up-via-pledgeling="8494143963267" data-ajax="true"></div>                                                        
+                                                          
+			<div class="drawer__footer">
+				<div class="drawer__footer--shadow"></div>
+				<div class="drawer__footer-container cart-drawer-container">
+					<div
+						class="cart-drawer__footer"
+						{{ block.shopify_attributes }}
+					>
+						<div class="tax-note rte">
+							{%- if cart.taxes_included
+								and shop.shipping_policy.body != blank
+							-%}
+								{{
+									'sections.cart.taxes_included_and_shipping_policy_html'
+									| t: link: shop.shipping_policy.url
+								}}
+							{%- elsif cart.taxes_included -%}
+								{{
+									'sections.cart.taxes_included_but_shipping_at_checkout'
+									| t
+								}}
+							{%- elsif shop.shipping_policy.body != blank -%}
+								{{
+									'sections.cart.taxes_and_shipping_policy_at_checkout_html'
+									| t: link: shop.shipping_policy.url
+								}}
+							{%- else -%}
+								{{ 'sections.cart.taxes_and_shipping_at_checkout' | t }}
+							{%- endif -%}
+						</div>
+
+						{%- if cart.cart_level_discount_applications.size > 0 -%}
+							<ul
+								class="discounts list-unstyled"
+								role="list"
+								aria-label="{{ 'customer.order.discount' | t }}"
+							>
+								{%- for discount in cart.cart_level_discount_applications -%}
+									<li class="discounts__discount">
+										{%- render 'icon-discount' -%}
+										{{ discount.title }}
+										(-{{ discount.total_allocated_amount | money }})
+									</li>
+								{%- endfor -%}
+							</ul>
+						{%- endif -%}
+
+						<div class="totals" role="status">
+							<h4 class="totals__subtotal">
+								{{ 'sections.cart.subtotal' | t }}:
+							</h4>
+							<p class="totals__subtotal-value">
+								{{ cart.total_price | money_with_currency }}
+							</p>
+						</div>
+					</div>
+
+					<div class="cart-drawer__bottom">
+						<div class="cart__ctas" {{ block.shopify_attributes }}>
+							<noscript>
+								<button
+									type="submit"
+									class="cart__update-button button button--tertiary"
+									form="CartDrawer-Form"
+								>
+									{{ 'sections.cart.update' | t }}
+								</button>
+							</noscript>
+
+							<button
+								type="submit"
+								id="CartDrawer-Checkout"
+								class="cart__checkout-button button button--primary button--full-width"
+								name="checkout"
+								form="CartDrawer-Form"
+								{% if cart == empty %}
+									disabled
+								{% endif %}
+							>
+								<span>
+									<div>{{ 'sections.cart.checkout' | t }}</div>
+								</span>
+							</button>
+                          <loop-onstore/>
+							<a
+								href="{{ routes.cart_url }}"
+								class="button--with-underline view-cart" onclick="this.closest('cart-drawer').close()"
+							>
+								{{ 'general.cart.view' | t: count: cart.item_count }}
+							</a>
+						</div>
+						
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</cart-drawer>
+
+<script>
+	document.addEventListener('DOMContentLoaded', function () {
+		function isIE() {
+			const ua = window.navigator.userAgent;
+			const msie = ua.indexOf('MSIE ');
+			const trident = ua.indexOf('Trident/');
+
+			return msie > 0 || trident > 0;
+		}
+
+		if (!isIE()) return;
+		const cartSubmitInput = document.createElement('input');
+		cartSubmitInput.setAttribute('name', 'checkout');
+		cartSubmitInput.setAttribute('type', 'hidden');
+		document.querySelector('#cart').appendChild(cartSubmitInput);
+		document
+			.querySelector('#checkout')
+			.addEventListener('click', function (event) {
+				document.querySelector('#cart').submit();
+			});
+	});
+</script>
+
+<script>
+  addEventListener('PledgeDonationChanged', (e) => {
+    $.ajax({
+      url: '/?section_id=CartDrawer',
+      type: 'GET',
+      dataType: 'html',
+      success: (cart_html) => {
+        $('CartDrawer').html($(cart_html).find('CartDrawer').html());
+      }
+    });
+  });
+ </script>                                                       

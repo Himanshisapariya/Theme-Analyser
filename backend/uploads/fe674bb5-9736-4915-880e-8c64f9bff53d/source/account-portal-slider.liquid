@@ -1,0 +1,220 @@
+<div class="back-button">
+  <a href="{{ routes.root_url }}" id="backArrow" aria-label="Back to previous page">
+    <span class="back-icon-wrap">
+      <svg class="back-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
+        viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/>
+      </svg>
+    </span>
+    <span class="back-text">Back</span>
+  </a>
+</div>
+
+
+<div class="ctm-image-slider swiper">
+  <div class="swiper-wrapper">
+    {% for block in section.blocks %}
+      <div class="swiper-slide">
+      <picture>
+          {% if block.settings.slide_image_mobile %}
+            <source srcset="{{ block.settings.slide_image_mobile | image_url }}" media="(max-width: 767px)">
+          {% endif %}
+        
+          {% if block.settings.slide_image_tablet %}
+            <source srcset="{{ block.settings.slide_image_tablet | image_url }}" media="(min-width: 768px) and (max-width: 989px)">
+          {% endif %}
+        
+          {% if block.settings.slide_image %}
+            <source srcset="{{ block.settings.slide_image | image_url }}" media="(min-width: 990px)">
+            <img src="{{ block.settings.slide_image | image_url }}" alt="Slide" class="slider-img">
+          {% endif %}
+        </picture>
+
+        }}</h3>
+          {% endif %}
+          {% if block.settings.subheading %}
+            <h6>{{ block.settings.subheading }}</h6>
+          {% endif %}
+          {% if block.settings.button_text != blank %}
+            <a href="{{ block.settings.button_link }}"><span>{{ block.settings.button_text }}</span></a>
+          {% endif %}
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+
+</div>
+
+
+<style>
+
+.ctm-image-slider h6{
+  font-weight: 500;
+}
+
+.ctm-image-slider .swiper-slide {
+  position: relative;
+  overflow: hidden; 
+}
+
+.ctm-image-slider .swiper-slide::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 40%; 
+  background: linear-gradient(to top, rgba(0,0,0,0.6), transparent);
+  pointer-events: none;
+  z-index: 5;
+}
+
+.ctm-image-slider {
+  position: relative;
+  height: 100vh;
+  float: left;
+}
+
+@media (max-width:990px) {
+    .login_section .ctm-image-slider {
+        max-width: 100%;
+    }
+
+    .template-login .login__form,
+    .template-register .login__form {
+        max-width: 100%;
+    }
+
+    .login_section .ctm-image-slider {
+       height:100%
+    }
+}
+
+@media (min-width:769px) {
+    .ctm-image-slider {
+        max-width: 50%;
+    }
+}
+
+.slider-img {
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+}
+
+.ctm-swiper-content {
+    max-width: 70%;
+  position: absolute;
+  bottom: 5%;
+ padding: 10px;
+  color: white;
+  z-index: 10;
+}
+
+@media (max-width:768px){
+   .ctm-swiper-content {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin: auto;
+        text-align: center;
+        max-width: 100%;
+    }
+}
+
+@media (min-width:768) {
+.ctm-swiper-content {
+    max-width: 70%;
+         left: 5%;
+}
+}
+
+.ctm-swiper-content h3, .ctm-swiper-content h6 {
+  margin-bottom: 20px;
+  margin-top: 20px;
+  color: white;
+}
+
+.ctm-swiper-content a {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 15px;
+  color: white;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.ctm-swiper-content a span {
+  text-decoration: underline;
+}
+
+.ctm-swiper-content a::after {
+  content: "➝";
+  font-size: 1.2rem;
+}
+.slide-icon {
+  height: auto;
+  width: 50px !important;
+  margin-bottom: 15px;
+}
+
+@media (min-width:991px){
+.ctm-image-slider picture{
+  height: 100%;
+  width: 100%;
+}
+  }
+@media (min-width:768px) and (max-width:990px){
+  .ctm-image-slider .swiper-wrapper picture{
+    height: 100%;
+    width: 100%;
+  }
+}
+
+@media (max-width:767px){
+  .ctm-image-slider .swiper-wrapper picture{
+    height: 100%;
+    width: 100%;
+  }
+}
+
+</style>
+
+<script>
+  var swiper = new Swiper(".ctm-image-slider", {
+    loop: true,
+    effect: "fade",
+    {% if section.settings.autoplay %}
+    autoplay: {
+      delay: 4000,
+      disableOnInteraction: false,
+    },
+    {% endif %}
+    pagination: {
+      el: ".swiper-pagination",
+      clickable: true,
+    },
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
+    },
+  });
+</script>
+
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const backLink = document.getElementById("backArrow");
+    backLink.addEventListener("click", (e) => {
+      e.preventDefault();
+      const ref = document.referrer;
+      if (ref && ref.includes(window.location.origin) && !ref.includes('/account')) {
+        window.history.back();
+      } else {
+        window.location.href = "{{ routes.root_url }}";
+      }
+    });
+  });
+</script>

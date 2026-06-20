@@ -1,0 +1,770 @@
+<style>
+  
+  #spring-hero-{{ section.id }} {
+    height: {{ section.settings.desktop_height }}px;
+  }
+
+  @media (min-width: 769px) and (max-width: 1600px) {
+    #spring-hero-{{ section.id }} {
+      height: {{ section.settings.tablet_laptop_height }}vh;
+    }
+  }
+
+  {% for block in section.blocks %}
+    #spring-hero-{{ section.id }} .slide-{{ block.id }} .spring-hero__heading {
+      font-size: {{ block.settings.heading_font_size }}px;
+      color: {{ block.settings.heading_color }};
+    }
+
+    #spring-hero-{{ section.id }} .slide-{{ block.id }} .spring-hero__subheading {
+      font-size: {{ block.settings.subheading_font_size }}px;
+      color: {{ block.settings.subheading_color }};
+      font-weight: {{ block.settings.subheading_font_weight }};
+    }
+
+    #spring-hero-{{ section.id }} .slide-{{ block.id }} .spring-hero__button {
+      font-size: var(--button-font-size);
+    }
+
+    #spring-hero-{{ section.id }} .slide-{{ block.id }} .spring-hero__content {
+      max-width: {{ block.settings.content_max_width }}px;
+    }
+
+  @media (max-width: 768px) {    
+    #spring-hero-{{ section.id }} .slide-{{ block.id }} .spring-hero__heading {
+      font-size: {{ block.settings.mobile_heading_font_size }}px;
+    }
+
+    #spring-hero-{{ section.id }} .slide-{{ block.id }} .spring-hero__subheading {
+      font-size: {{ block.settings.mobile_subheading_font_size }}px;
+    }
+
+    #spring-hero-{{ section.id }} .spring-hero__button {
+      font-size: var(--mobile-button-font-size);
+    }
+    .spring-hero__content-wrapper {
+      align-items: var(--mobile-align) !important;
+      justify-content: center;
+    }
+    .spring-hero__buttons {
+      justify-content: center !important;
+    }
+
+      .spring-hero__content {
+      text-align: var(--mobile-text-align) !important;
+    }
+  }
+
+  @media (min-width: 769px) and (max-width: 1600px) {
+    #spring-hero-{{ section.id }} .slide-{{ block.id }} .spring-hero__heading {
+      font-size: {{ block.settings.heading_font_size_tablet }}px;
+    }
+
+    #spring-hero-{{ section.id }} .slide-{{ block.id }} .spring-hero__subheading {
+      font-size: {{ block.settings.subheading_font_size_tablet }}px;
+    }
+
+    #spring-hero-{{ section.id }} .spring-hero__button {
+      font-size: var(--tablet-button-font-size);
+    }
+  }
+
+  @media (min-width: 769px) and (max-width: 1600px) {
+    #spring-hero-{{ section.id }} .slide-{{ block.id }} .spring-hero__heading {
+      font-size: {{ block.settings.heading_font_size_tablet }}px;
+    }
+
+    #spring-hero-{{ section.id }} .slide-{{ block.id }} .spring-hero__subheading {
+      font-size: {{ block.settings.subheading_font_size_tablet }}px;
+    }
+
+    #spring-hero-{{ section.id }} .spring-hero__button {
+      font-size: {{ block.settings.button_font_size | minus: 2 }}px;
+      padding: 12px 24px;
+    }
+  }
+  
+  {% endfor %}
+
+  @media (max-width: 500px) {
+    #spring-hero-{{ section.id }} {
+      height: 500px;
+    }
+  }
+
+  .spring-hero {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .spring-hero__wrapper,
+  .spring-hero__slide {
+    width: 100%;
+    height: 100%;
+  }
+
+  .spring-hero__slide {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transition: opacity 0.6s ease;
+  }
+
+  .spring-hero__slide.active {
+    opacity: 1;
+    position: relative;
+  }
+
+  .spring-hero__slide::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, var(--image-overlay-opacity, 0.25));
+    z-index: 1;
+  }
+
+  .spring-hero__image {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .spring-hero__image--mobile {
+    display: none;
+  }
+
+  .spring-hero__content-wrapper {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    padding: 60px 60px;
+  }
+
+  
+  .spring-hero__content-wrapper--top-left { align-items: flex-start; justify-content: flex-start; }
+  .spring-hero__content-wrapper--top-center { align-items: flex-start; justify-content: center; }
+  .spring-hero__content-wrapper--top-right { align-items: flex-start; justify-content: flex-end; }
+  .spring-hero__content-wrapper--center-left { align-items: center; justify-content: flex-start; }
+  .spring-hero__content-wrapper--center-center { align-items: center; justify-content: center; }
+  .spring-hero__content-wrapper--center-right { align-items: center; justify-content: flex-end; }
+  .spring-hero__content-wrapper--bottom-left { align-items: flex-end; justify-content: flex-start; }
+  .spring-hero__content-wrapper--bottom-center { align-items: flex-end; justify-content: center; }
+  .spring-hero__content-wrapper--bottom-right { align-items: flex-end; justify-content: flex-end; }
+
+  .spring-hero__content {
+    max-width: var(--content-width);
+    text-align: var(--text-align);
+  }
+
+  .spring-hero__heading,
+  .spring-hero__subheading {
+    text-shadow: var(--text-shadow, none);
+    font-weight:500;
+  }
+
+  .spring-hero__heading {
+    margin-bottom: 16px;
+    font-size: var(--heading-size);
+    color: var(--heading-color);
+    line-height: var(--heading-line-height);
+    letter-spacing: var(--heading-letter-spacing);
+    font-family: var(--heading-font-family);
+  }
+
+  .spring-hero__subheading {
+    margin-bottom: 24px;
+    font-size: var(--subheading-size);
+    color: var(--subheading-color);
+    line-height: var(--subheading-line-height);
+    font-family: var(--subheading-font-family);
+    font-weight: var(--subheading-font-weight);
+  }
+
+  
+  .spring-hero__heading .word,
+  .spring-hero__subheading .word {
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(40px);
+  }
+
+  .spring-hero__slide.active .word {
+    animation: slide-in 1.1s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
+  }
+
+  @keyframes slide-in {
+    from {
+      transform: translateY(50px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  
+  .spring-hero__buttons {
+    display: flex;
+    gap: var(--button-gap);
+    justify-content: var(--button-alignment);
+  }
+
+  .spring-hero__button {
+    display: inline-block;
+    padding: var(--button-padding);
+    font-size: var(--button-font-size);
+    font-weight: var(--button-weight);
+    background: var(--button-bg);
+    color: var(--button-text);
+    border-radius: var(--button-radius);
+    text-decoration: var(--button-underline);
+    text-underline-offset: 4px;
+    transition: background 0.3s ease, color 0.3s ease, text-decoration 0.3s ease;
+  }
+
+  .spring-hero__button:hover {
+    background: var(--button-hover);
+    color: var(--button-hover-text);
+    text-decoration: none;
+  }
+
+  
+  .spring-hero__arrows {
+    position: absolute;
+    min-width: auto;
+    height: 2.5rem;
+    border-radius: 6.25rem;
+    padding: 22px 8px !important;
+    background: {{ section.settings.arrows_background_color }};
+    bottom: 1.5rem;
+    right: 30px;
+    z-index: 3;
+    display: flex;
+    align-items: center;
+    gap: 0;
+  }
+
+  .spring-hero__arrow {
+    background-color: transparent;
+    border: none;
+    width: 37px;
+    height: 37px;
+    margin: 0;
+    padding: 0;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .spring-hero__arrow:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+
+  .spring-hero__arrow svg {
+    width: 30px;
+    height: 30px;
+    fill: #ffffff;
+  }
+
+  .spring-hero__dots {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+    z-index: 3;
+  }
+
+  .spring-hero__dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.5);
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  .spring-hero__dot.active {
+    background-color: rgba(255, 255, 255, 1);
+  }
+
+  
+  @media (min-width: 769px) and (max-width: 1600px) {
+    .spring-hero__heading {
+      font-size: var(--heading-size-tablet);
+    }
+
+    .spring-hero__subheading {
+      font-size: var(--subheading-size-tablet);
+    }
+  }
+
+  
+  @media (max-width: 768px) {
+    .spring-hero {
+      height: {{ section.settings.mobile_height }}px !important;
+    }
+    .spring-hero__content-wrapper {
+      padding: 60px 20px;
+    }
+    .spring-hero [data-hide-mobile="true"] {
+      display: none !important;
+    }
+
+    .spring-hero__image--desktop { display: none; }
+    .spring-hero__image--mobile { display: block; }
+
+    .spring-hero__heading {
+      font-size: var(--heading-size-mobile);
+    }
+
+    .spring-hero__subheading {
+      font-size: var(--subheading-size-mobile);
+    }
+
+    .spring-hero__buttons.stacked {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .spring-hero__arrows {
+      padding: 17px 0 !important;
+      bottom: 20px;
+      right: 20px;
+    }
+
+    .spring-hero__arrow {
+      width: 30px;
+      height: 30px;
+    }
+
+    .spring-hero__arrow svg {
+      width: 25px;
+      height: 25px;
+    }
+  }
+</style>
+
+<div
+  id="spring-hero-{{ section.id }}"
+  class="spring-hero {{ section.settings.extra_class }}"
+  data-slideshow-speed="{{ section.settings.slideshow_speed }}"
+  data-slideshow-delay="{{ section.settings.slideshow_delay }}"
+  data-autoplay="{{ section.settings.enable_autoplay }}"
+>
+  <div class="spring-hero__wrapper">
+    {% for block in section.blocks %}
+      <div
+        class="spring-hero__slide {% if forloop.first %}active{% endif %}"
+        style="
+          --content-width: {{ block.settings.content_max_width }}px;
+          --text-align: {{ block.settings.text_alignment }};
+          --image-overlay-opacity: {% if block.settings.enable_image_darkening %}{{ block.settings.darkening_opacity | divided_by: 100.0 }}{% else %}0{% endif %};
+          --heading-size: {{ block.settings.heading_font_size }}px;
+          --heading-size-tablet: {{ block.settings.heading_font_size_tablet }}px;
+          --heading-size-mobile: {{ block.settings.heading_font_size_mobile }}px;
+          --subheading-size: {{ block.settings.subheading_font_size }}px;
+          --subheading-size-tablet: {{ block.settings.subheading_font_size_tablet }}px;
+          --subheading-size-mobile: {{ block.settings.subheading_font_size_mobile }}px;
+          --heading-font-family: {{ block.settings.heading_font_family }};
+          --subheading-font-family: {{ block.settings.subheading_font_family }};
+          --heading-color: {{ block.settings.heading_color }};
+          --subheading-color: {{ block.settings.subheading_color }};
+          --subheading-font-weight: {{ block.settings.subheading_font_weight }};
+          --heading-line-height: {{ block.settings.heading_line_height }};
+          --heading-letter-spacing: {{ block.settings.heading_letter_spacing }}px;
+          --subheading-line-height: {{ block.settings.subheading_line_height }};
+          --button-font-size: {{ block.settings.button_font_size }}px;
+          --tablet-button-font-size: {{ block.settings.button_font_size | minus: 2 }}px;
+          --mobile-button-font-size: {{ block.settings.mobile_button_font_size }}px;
+          --button-gap: {{ block.settings.button_gap }}px;
+          --mobile-align:
+              {% case block.settings.mobile_content_alignment %}
+                {% when 'top' %}flex-start
+                {% when 'center' %}center
+                {% when 'bottom' %}flex-end
+              {% endcase %};
+          --mobile-text-align: {{ block.settings.mobile_text_alignment }};
+          --text-shadow:
+            {% if block.settings.enable_text_shadow %}
+              0 {{ block.settings.text_shadow_y }}px {{ block.settings.text_shadow_blur }}px
+              color-mix(
+                in srgb,
+                {{ block.settings.text_shadow_color }}
+                {{ block.settings.text_shadow_opacity | divided_by: 100.0 | times: 100 }}%,
+                transparent
+              )
+            {% else %}
+              none
+            {% endif %};
+          --text-shadow-blur: {{ block.settings.text_shadow_blur }}px;
+          --text-shadow-y: {{ block.settings.text_shadow_y }}px;
+          --text-shadow-opacity: {{ block.settings.text_shadow_opacity | divided_by: 100.0 }};
+          --text-shadow-color: {{ block.settings.text_shadow_color }};
+          --button-alignment:
+            {% case block.settings.text_alignment %}
+              {% when 'left' %}flex-start
+              {% when 'center' %}center
+              {% when 'right' %}flex-end
+            {% endcase %};
+        "
+      >
+        {% if block.settings.desktop_image %}
+          <img
+            class="spring-hero__image spring-hero__image--desktop"
+            src="{{ block.settings.desktop_image | img_url: '2000x' }}"
+            alt=""
+            loading="{% if forloop.first %}eager{% else %}lazy{% endif %}"
+            height="auto"
+            width="auto"
+          >
+        {% endif %}
+
+        {% if block.settings.mobile_image %}
+          <img
+            class="spring-hero__image spring-hero__image--mobile"
+            src="{{ block.settings.mobile_image | img_url: '1000x' }}"
+            alt="{{ block.settings.heading | escape }}"
+            loading="{% if forloop.first %}eager{% else %}lazy{% endif %}"
+            height="auto"
+            width="auto"
+          >
+        {% endif %}
+
+        <div class="spring-hero__content-wrapper spring-hero__content-wrapper--{{ block.settings.content_alignment }}">
+          <div class="spring-hero__content">
+            {% if block.settings.heading != blank %}
+              <h2
+                class="spring-hero__heading js-split-text"
+                {% if block.settings.hide_heading_mobile %}
+                  data-hide-mobile="true"
+                {% endif %}
+              >
+                {{ block.settings.heading }}
+              </h2>
+            {% endif %}
+
+            {% if block.settings.subheading != blank %}
+              <p
+                class="spring-hero__subheading js-split-text"
+                {% if block.settings.hide_subheading_mobile %}
+                  data-hide-mobile="true"
+                {% endif %}
+              >
+                {{ block.settings.subheading }}
+              </p>
+            {% endif %}
+
+            {% if block.settings.button_text != blank or block.settings.button_2_text != blank %}
+              <div class="spring-hero__buttons {% if block.settings.stack_buttons_mobile %}stacked{% endif %}">
+                {% if block.settings.button_text != blank %}
+                  <a href="{{ block.settings.button_link }}" class="btn {{ block.settings.button_style }}">
+                    {{ block.settings.button_text }}
+                  </a>
+                {% endif %}
+                {% if block.settings.button_2_text != blank %}
+                  <a href="{{ block.settings.button_2_link }}" class="btn {{ block.settings.button_style }}">
+                    {{ block.settings.button_2_text }}
+                  </a>
+                {% endif %}
+              </div>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+
+  {% if section.settings.show_arrows and section.blocks.size > 1 %}
+    <div class="spring-hero__arrows">
+      <button class="spring-hero__arrow spring-hero__arrow--prev" aria-label="Previous slide">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+          <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/>
+        </svg>
+      </button>
+      <button class="spring-hero__arrow spring-hero__arrow--next" aria-label="Next slide">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+          <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
+        </svg>
+      </button>
+    </div>
+  {% endif %}
+
+  {% if section.blocks.size > 1 %}
+    <div class="spring-hero__dots">
+      {% for block in section.blocks %}
+        <button class="spring-hero__dot{% if forloop.first %} active{% endif %}" data-dot-index="{{ forloop.index0 }}" aria-label="Go to slide {{ forloop.index }}"></button>
+      {% endfor %}
+    </div>
+  {% endif %}
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.js-split-text').forEach((el, idx) => {
+      const words = el.textContent.trim().split(/\s+/);
+      el.innerHTML = '';
+      words.forEach((word, i) => {
+        const span = document.createElement('span');
+        span.className = 'word';
+        span.style.animationDelay = `${idx * 0.4 + i * 0.06}s`;
+        span.textContent = word;
+        el.appendChild(span);
+        el.appendChild(document.createTextNode(' '));
+      });
+    });
+
+    class SpringHeroSlideshow {
+      constructor(element) {
+        this.slideshow = element;
+        this.slides = this.slideshow.querySelectorAll('.spring-hero__slide');
+        this.dots = this.slideshow.querySelectorAll('.spring-hero__dot');
+        this.prevButton = this.slideshow.querySelector('.spring-hero__arrow--prev');
+        this.nextButton = this.slideshow.querySelector('.spring-hero__arrow--next');
+        
+        this.currentSlide = 0;
+        this.slideCount = this.slides.length;
+        this.autoplayEnabled = this.slideshow.dataset.autoplay === 'true';
+        this.slideshowSpeed = parseInt(this.slideshow.dataset.slideshowSpeed) || 500;
+        this.slideshowDelay = parseInt(this.slideshow.dataset.slideshowDelay) || 5000;
+        this.autoplayTimer = null;
+
+        this.init();
+      }
+
+      init() {
+        if (this.slideCount <= 1) return;
+
+        if (this.prevButton) {
+          this.prevButton.addEventListener('click', () => this.prevSlide());
+        }
+        
+        if (this.nextButton) {
+          this.nextButton.addEventListener('click', () => this.nextSlide());
+        }
+
+        this.dots.forEach((dot, index) => {
+          dot.addEventListener('click', () => this.goToSlide(index));
+        });
+
+        this.slideshow.addEventListener('mouseenter', () => this.pauseAutoplay());
+        this.slideshow.addEventListener('mouseleave', () => this.resumeAutoplay());
+
+        if (this.autoplayEnabled) {
+          this.startAutoplay();
+        }
+
+        this.addTouchSupport();
+      }
+
+      goToSlide(index) {
+        if (index === this.currentSlide) return;
+
+        this.slides[this.currentSlide].classList.remove('active');
+        if (this.dots[this.currentSlide]) {
+          this.dots[this.currentSlide].classList.remove('active');
+        }
+
+        this.resetSlideAnimations(this.slides[this.currentSlide]);
+        this.currentSlide = index;
+
+        this.slides[this.currentSlide].classList.add('active');
+        if (this.dots[this.currentSlide]) {
+          this.dots[this.currentSlide].classList.add('active');
+        }
+
+        setTimeout(() => {
+          this.triggerSlideAnimations(this.slides[this.currentSlide]);
+        }, 50);
+
+        if (this.autoplayEnabled) {
+          this.resetAutoplay();
+        }
+      }
+
+      resetSlideAnimations(slide) {
+        const words = slide.querySelectorAll('.word');
+        words.forEach(word => {
+          word.style.animation = 'none';
+          word.style.opacity = '0';
+          word.style.transform = 'translateY(40px)';
+        });
+      }
+
+      triggerSlideAnimations(slide) {
+        const words = slide.querySelectorAll('.word');
+        void slide.offsetWidth;
+        words.forEach(word => {
+          word.style.animation = '';
+        });
+      }
+
+      nextSlide() {
+        const nextIndex = (this.currentSlide + 1) % this.slideCount;
+        this.goToSlide(nextIndex);
+      }
+
+      prevSlide() {
+        const prevIndex = (this.currentSlide - 1 + this.slideCount) % this.slideCount;
+        this.goToSlide(prevIndex);
+      }
+
+      startAutoplay() {
+        this.autoplayTimer = setInterval(() => {
+          this.nextSlide();
+        }, this.slideshowDelay);
+      }
+
+      pauseAutoplay() {
+        if (this.autoplayTimer) {
+          clearInterval(this.autoplayTimer);
+          this.autoplayTimer = null;
+        }
+      }
+
+      resumeAutoplay() {
+        if (this.autoplayEnabled && !this.autoplayTimer) {
+          this.startAutoplay();
+        }
+      }
+
+      resetAutoplay() {
+        this.pauseAutoplay();
+        this.resumeAutoplay();
+      }
+
+      addTouchSupport() {
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        this.slideshow.addEventListener('touchstart', (e) => {
+          touchStartX = e.changedTouches[0].screenX;
+        });
+
+        this.slideshow.addEventListener('touchend', (e) => {
+          touchEndX = e.changedTouches[0].screenX;
+          if (touchEndX < touchStartX - 50) {
+            this.nextSlide();
+          }
+          if (touchEndX > touchStartX + 50) {
+            this.prevSlide();
+          }
+        });
+      }
+    }
+
+    const slideshows = document.querySelectorAll('.spring-hero');
+    slideshows.forEach(slideshow => new SpringHeroSlideshow(slideshow));
+  });
+</script>
+{% schema %}
+{
+  "name": "Spring Hero Slideshow",
+  "settings": [
+    {"type":"range","id":"desktop_height","label":"Desktop height","min":400,"max":1500,"step":50,"unit":"px","default":700},
+    {"type": "range", "id": "tablet_laptop_height","label": "Tablet-Small Laptop height (vh)","min": 30,"max": 100,"step": 1,"unit": "vh","default": 80},
+    {"type":"range","id":"mobile_height","label":"Mobile height","min":300,"max":900,"step":50,"unit":"px","default":500},
+    {"type":"text","id":"extra_class","label":"Extra CSS class"},
+    {"type":"range","id":"slideshow_speed","min":300,"max":1000,"step":100,"unit":"ms","label":"Slideshow speed","default":500,"info":"Transition speed between slides"},
+    {"type":"range","id":"slideshow_delay","min":1000,"max":9000,"step":1000,"unit":"ms","label":"Slideshow delay","default":5000,"info":"Time between automatic slide changes"},
+    {"type":"checkbox","id":"enable_autoplay","label":"Enable autoplay","default":true,"info":"Automatically cycle through slides"},
+    {"type":"checkbox","id":"show_arrows","label":"Show navigation arrows","default":true}
+  ],
+  "blocks":[
+    {
+      "type":"slide","name":"Slide",
+      "settings":[
+        {"type":"image_picker","id":"desktop_image","label":"Desktop image"},
+        {"type":"image_picker","id":"mobile_image","label":"Mobile image"},
+        {"type":"header","content":"Image Darkening"},
+        {"type":"checkbox","id":"enable_image_darkening","label":"Enable image darkening","default":true,"info":"Darken this slide's image to improve text visibility"},
+        {"type":"range","id":"darkening_opacity","label":"Darkening opacity","min":0,"max":50,"step":5,"unit":"%","default":25,"info":"How much to darken this slide's image (0% = no darkening, 50% = maximum darkening)"},
+        {"type":"text","id":"heading","label":"Heading"},
+        {"type":"textarea","id":"subheading","label":"Subheading"},
+        {"type":"checkbox","id":"hide_heading_mobile","label":"Hide heading on mobile"},
+        {"type":"checkbox","id":"hide_subheading_mobile","label":"Hide subheading on mobile"},
+        {"type":"range","id":"heading_font_size","label":"Heading size (desktop)","min":24,"max":200,"step":2,"unit":"px","default":48},
+        {"type":"range","id":"heading_font_size_tablet","label":"Heading size (Tablet-Small Laptop)","min":20,"max":160,"step":2,"unit":"px","default":40},
+        {"type":"range","id":"heading_font_size_mobile","label":"Heading size (mobile)","min":18,"max":120,"step":2,"unit":"px","default":32},
+        {"type":"range","id":"heading_line_height","label":"Heading line height","min":1,"max":2,"step":0.1,"default":1.2},
+        {"type":"range","id":"heading_letter_spacing","label":"Heading letter spacing","min":-2,"max":10,"step":0.5,"unit":"px","default":0},
+        {"type":"color","id":"heading_color","label":"Heading color","default":"#ffffff"},
+        {"type":"select","id":"heading_font_family","label":"Heading font family","options":[{"value":"inherit","label":"Theme default"},{"value":"'Anton', sans-serif","label":"Anton"},{"value":"'Poppins', sans-serif","label":"Poppins"}],"default":"inherit"},
+        {"type":"range","id":"subheading_font_size","label":"Subheading size (desktop)","min":14,"max":80,"step":2,"unit":"px","default":20},
+        {"type":"range","id":"subheading_font_size_tablet","label":"Subheading size (Tablet-Small Laptop)","min":12,"max":60,"step":2,"unit":"px","default":18},
+        {"type":"range","id":"subheading_font_size_mobile","label":"Subheading size (mobile)","min":12,"max":60,"step":2,"unit":"px","default":18},
+        {"type":"range","id":"subheading_line_height","label":"Subheading line height","min":1,"max":2,"step":0.1,"default":1.5},
+        {"type":"color","id":"subheading_color","label":"Subheading color","default":"#ffffff"},
+        {"type":"select","id":"subheading_font_family","label":"Subheading font family","options":[{"value":"inherit","label":"Theme default"},{"value":"'Anton', sans-serif","label":"Anton"},{"value":"'Poppins', sans-serif","label":"Poppins"}],"default":"inherit"},
+        {"type":"range","id":"subheading_font_weight","label":"Subheading font weight","min":100,"max":900,"step":100,"default":400},
+        {"type":"checkbox","id":"enable_text_shadow","label":"Enable text shadow","default":false},
+        {"type":"color","id":"text_shadow_color","label":"Text shadow color","default":"#000000"},
+        {"type":"range","id":"text_shadow_opacity","label":"Text shadow opacity","min":0,"max":100,"step":5,"unit":"%","default":35},
+        {"type":"range","id":"text_shadow_blur","label":"Text shadow blur","min":0,"max":20,"step":1,"default":8},
+        {"type":"range","id":"text_shadow_y","label":"Text shadow vertical offset","min":0,"max":10,"step":1,"unit":"px","default":2},
+        {"type":"range","id":"content_max_width","label":"Content max width","min":400,"max":1200,"step":50,"unit":"px","default":800},
+        {"type":"select","id":"content_alignment","label":"Content position","options":[{"value":"top-left","label":"Top left"},{"value":"top-center","label":"Top center"},{"value":"top-right","label":"Top right"},{"value":"center-left","label":"Center left"},{"value":"center-center","label":"Center center"},{"value":"center-right","label":"Center right"},{"value":"bottom-left","label":"Bottom left"},{"value":"bottom-center","label":"Bottom center"},{"value":"bottom-right","label":"Bottom right"}],"default":"center-center"},
+        {
+  "type": "select",
+  "id": "mobile_content_alignment",
+  "label": "Mobile content position",
+  "options": [
+    { "value": "top", "label": "Top" },
+    { "value": "center", "label": "Center" },
+    { "value": "bottom", "label": "Bottom" }
+  ],
+  "default": "center"
+},
+        {"type":"select","id":"text_alignment","label":"Text alignment","options":[{"value":"left","label":"Left"},{"value":"center","label":"Center"},{"value":"right","label":"Right"}],"default":"center"},
+        {"type":"select","id":"mobile_text_alignment","label":"Mobile text alignment","options":[{"value":"left","label":"Left"},{"value":"center","label":"Center"},{"value":"right","label":"Right"}],"default":"center"},
+        {"type":"text","id":"button_text","label":"Button 1 text"},
+        {"type":"url","id":"button_link","label":"Button 1 link"},
+        {"type":"text","id":"button_2_text","label":"Button 2 text"},
+        {"type":"url","id":"button_2_link","label":"Button 2 link"},
+        {"type":"checkbox","id":"stack_buttons_mobile","label":"Stack buttons on mobile"},
+        {
+          "type": "select",
+          "id": "button_style",
+          "label": "Button Style",
+          "default": "button--ctm_global_button",
+          "options": [
+            { "value": "button--ctm_global_button", "label": "Global Button" },
+            { "value": "button--ctm_wb_global_button", "label": "White Background Button" },
+            { "value": "ctm-custom-button", "label": "Custom Button" },
+            { "value": "ctm-custom-outline-button", "label": "Outline Button" },
+            { "value": "ctm-underline-button", "label": "Underline Button" }
+          ]
+        },
+        {
+          "type": "select",
+          "id": "mobile_button_style",
+          "label": "Mobile Button Style",
+          "default": "button--ctm_global_button",
+          "options": [
+            { "value": "button--ctm_global_button", "label": "Global Button" },
+            { "value": "button--ctm_wb_global_button", "label": "White Background Button" },
+            { "value": "ctm-custom-button", "label": "Custom Button" },
+            { "value": "ctm-custom-outline-button", "label": "Outline Button" },
+            { "value": "ctm-underline-button", "label": "Underline Button" }
+          ]
+        },
+        {"type":"range","id":"button_font_size","label":"Button font size","min":12,"max":24,"step":1,"unit":"px","default":16},
+        {"type":"range","id":"mobile_button_font_size","label":"Mobile Button font size","min":10,"max":20,"step":1,"unit":"px","default":14},
+        {"type":"range","id":"button_gap","label":"Button spacing","min":8,"max":40,"step":4,"unit":"px","default":16}
+      ]
+    }
+  ],
+  "presets":[{"name":"Spring Hero Slideshow"}]
+}
+{% endschema %}

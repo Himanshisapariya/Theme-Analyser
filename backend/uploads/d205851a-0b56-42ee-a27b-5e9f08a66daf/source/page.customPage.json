@@ -1,0 +1,44 @@
+{
+  "sections": {
+    "main": {
+      "type": "customSection",
+      "blocks": {
+        "blog_YgmKeM": {
+          "type": "Blog",
+          "settings": {
+            "blog_name": "Test",
+            "image": "shopify:\/\/shop_images\/8kultratv-2_bc07a6ca-deb4-45f0-822b-bebd7da1be51.png",
+            "content": "Test 1"
+          }
+        },
+        "blog_CprfFn": {
+          "type": "Blog",
+          "settings": {
+            "blog_name": "Test 2",
+            "image": "shopify:\/\/shop_images\/8kultratv-1.png",
+            "content": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like)."
+          }
+        },
+        "blog_xTCQgF": {
+          "type": "Blog",
+          "settings": {
+            "blog_name": "Test 3",
+            "image": "shopify:\/\/shop_images\/4ktv2.png",
+            "content": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like)."
+          }
+        }
+      },
+      "block_order": [
+        "blog_YgmKeM",
+        "blog_CprfFn",
+        "blog_xTCQgF"
+      ],
+      "settings": {
+        "Headline": ""
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

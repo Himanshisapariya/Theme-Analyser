@@ -1,0 +1,116 @@
+{{ 'component-card.css' | asset_url | stylesheet_tag: preload: true }}
+<script src="{{ 'product-form.js' | asset_url }}" defer></script>
+
+<div class="ctm_feature_coll_main pt-55 pb-55 desktop:pb-80 {{ section.settings.extra_class }}">
+  <div class="xl_container lgscreen:!px-0">
+    <div class="ctm_feature_coll_inner">
+      <div class="ctm_title_block flex items-center justify-center lg:justify-between lgscreen:px-30 lgscreen:text-center">
+        {%- if section.settings.title != blank -%}
+          <div class="ctm_title">
+            <h3>{{ section.settings.title }}</h3>
+          </div>
+        {%- endif -%}
+        {%- if section.settings.cta_url != blank or section.settings.cta_title != blank -%}
+          <div class="ctm_small_title lgscreen:hidden">
+            <a class="aloeleaf_fill_none_btn" href="{{ section.settings.cta_url }}">{{ section.settings.cta_title }}</a>
+          </div>
+        {%- endif -%}
+      </div>
+
+      <div class="ctm_feature_coll_slider swiper !pt-40 mdscreen2:!pt-14 lgscreen:!pb-40">
+        <div class="swiper-wrapper">
+          {% for block in section.blocks %}
+            {%- assign product = block.settings.product -%}
+            {%- assign custom_title = block.settings.custom_title | newline_to_br -%}
+            <div class="swiper-slide !h-auto">
+              <div class="ctm_feature_product flex flex-col {{ block.settings.extra_slide_class }}">
+                {% render 'card-product',
+                  card_product: product,
+                  custom_title: custom_title,
+                  show_secondary_image: section.settings.show_secondary_image,
+                  section_id: section.id
+                %}
+              </div>
+            </div>
+          {%- endfor -%}
+        </div>
+      </div>
+      {%- if section.settings.cta_title != blank or section.settings.cta_url -%}
+        <div class="ctm_small_title lg:hidden lgscreen:w-fit lgscreen:mx-auto">
+          <a class="aloeleaf_fill_none_btn" href="{{ section.settings.cta_url }}">{{ section.settings.cta_title }}</a>
+        </div>
+      {%- endif -%}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Custom Product List",
+  "tag": "section",
+  "class": "ctm_featrure_collection",
+  "settings": [
+    {
+      "type": "text",
+      "label": "Extra Class",
+      "id": "extra_class"
+    },
+    {
+      "type": "text",
+      "label": "Title",
+      "id": "title",
+      "default": "Explore Our Best Sellers"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_secondary_image",
+      "default": false,
+      "label": "t:sections.main-collection-product-grid.settings.show_secondary_image.label"
+    },
+    {
+      "type": "header",
+      "content": "CTA"
+    },
+    {
+      "type": "text",
+      "label": "CTA Title",
+      "id": "cta_title",
+      "default": "Shop All"
+    },
+    {
+      "type": "url",
+      "label": "CTA URL",
+      "id": "cta_url"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "product_slide",
+      "name": "Product Slide",
+      "limit": 3,
+      "settings": [
+        {
+          "type": "product",
+          "label": "Product",
+          "id": "product"
+        },
+        {
+          "type": "textarea",
+          "label": "Custom Title",
+          "id": "custom_title"
+        },
+        {
+          "type": "text",
+          "label": "Extra Slide Class",
+          "id": "extra_slide_class"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom Product List"
+    }
+  ]
+}
+{% endschema %}

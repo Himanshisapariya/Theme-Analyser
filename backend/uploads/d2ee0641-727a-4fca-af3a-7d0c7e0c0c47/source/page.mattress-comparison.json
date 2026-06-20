@@ -1,0 +1,151 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "settings": {
+        "extra_class": "",
+        "page_title_black": "",
+        "breadcrumb_image": "shopify:\/\/shop_images\/HEADER_INNER_PAGE_1.png",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "mattress_compare_WC97HW": {
+      "type": "mattress-compare",
+      "settings": {
+        "extra_class": "",
+        "headline": "The Right Choice Made Easy",
+        "desc": "We know mattress shopping can be hard... We are here to make it simple!",
+        "add_img": "shopify:\/\/shop_images\/graphic_851088d5-0b3a-4d69-b898-6bb833262d08.png"
+      }
+    },
+    "tabbing_content_QYH9UR": {
+      "type": "tabbing-content",
+      "blocks": {
+        "tittle_and_url_BteFWy": {
+          "type": "tittle_and_url",
+          "settings": {
+            "tab_tittle": "Benefits",
+            "content": "<h6>World-Class Mattress for 'Kids, 100% Risk-Free <\/h6>\n<p>At 5 Little Monkeys, we believe kids deserve better sleep. That's why we've engineered the children’s mattress from the ground up, designing a <strong>mattress<\/strong> that gives kids what their bodies need for truly restful, healthy sleep. Best of all, we let you try our kids bedding for 100 nights, 100% risk-free. <\/p>\n\n<h6>Take the 100-Night Rest Test with Our Mattress for Kids<\/h6>\n<p>We're so confident in our childrens mattress, we want you to try it risk free. If you and your little one don't fall in love with the mattress after 100 nights sleeping on it, just let us know. Well pick it up and give you a full refund, no questions asked.<\/p>\n\n<h6>The Best Warranty for a Children Mattress<\/h6>\n<p>Our commitment to your satisfaction goes beyond our money-back guarantee, though. Most mattresses come with a standard 5-year warranty, while some premium beds offer a 10-year warranty. We'll do you one better.<br><em>Only the 5 Little Monkeys kids mattress offers an Industry-leading 15-year warranty. That's right: order a 5 Little Monkeys Mattress and we'll support the product for the next 15 years. It is, truly, the last mattress you'll need to buy for your child!<\/em> <\/p>\n\n<h6>Order the Best Mattress for a Child Today! <\/h6>\n<p>Ready to see how the 5 Little Monkeys bed can help you? <strong>Order the mattress online today.<\/strong> If you're not 100% satisfied within 100 nights, we'll give you a full refund. Be careful, though - once your child tries our mattress, you might want one too! <\/p>"
+          }
+        },
+        "tittle_and_url_TUTwRX": {
+          "type": "tittle_and_url",
+          "settings": {
+            "tab_tittle": "Best For",
+            "content": "<p>The Advanced Hybrid Mattress provides the ultimate sleep experience. It is designed for advanced spinal alignment and is the best option for motion separation. This means that whether your child is co-sleeping with you or sharing a bed with a sibling, their sleep will remain undisturbed and peaceful. It is designed with 660 individually wrapped coils and is a great option for older kids.<\/p>\n<p>The Original 8\" Memory Foam Mattress has cutting-edge technology to keep little sleepers comfortable and cozy all through the night. Crafted with our premium memory foam and other high-quality layers, this mattress was formulated specifically for children to provide maximum pressure relief during growth spurts and active days. The Memory Foam Mattress is also the best option for bunk beds \/ daybeds and the budget conscious.\n<\/p>"
+          }
+        },
+        "tittle_and_url_7DNCCg": {
+          "type": "tittle_and_url",
+          "settings": {
+            "tab_tittle": "Bonuses",
+            "content": "<h6>Warranty<\/h6>\n<p>15-Year Limited Warranty. See our Warranty Page for more details.<\/p>\n<h6>100 Night Risk-Free Trial<\/h6>\n<p>We're so confident in our childrens mattress, we want you to try it risk free. If you and your little one don't fall in love with the mattress after 100 nights sleeping on it, just let us know. We'll pick it up and give you a full refund, no questions asked.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "tittle_and_url_BteFWy",
+        "tittle_and_url_TUTwRX",
+        "tittle_and_url_7DNCCg"
+      ],
+      "settings": {
+        "extra_class": ""
+      }
+    },
+    "featured_collection_kHPr6y": {
+      "type": "featured-collection",
+      "settings": {
+        "extra_class": "",
+        "title": "Shop Now",
+        "background_image": "shopify:\/\/shop_images\/our_story_BG-2.png",
+        "button_text": "",
+        "button_url": "",
+        "heading_size": "h1",
+        "description": "",
+        "show_description": false,
+        "description_style": "body",
+        "collection": "mattress-comparison",
+        "products_to_show": 2,
+        "columns_desktop": 2,
+        "full_width": false,
+        "show_view_all": true,
+        "view_all_style": "solid",
+        "enable_desktop_slider": false,
+        "color_scheme": "",
+        "image_ratio": "square",
+        "image_shape": "default",
+        "show_secondary_image": false,
+        "show_vendor": false,
+        "show_rating": false,
+        "enable_quick_add": false,
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 80,
+        "padding_bottom": 0
+      }
+    },
+    "video_with_text_AFmxPL": {
+      "type": "video-with-text",
+      "blocks": {
+        "tick_text_BH7CiN": {
+          "type": "tick_text",
+          "settings": {
+            "text_with_tic": "Are better able to manage emotions"
+          }
+        },
+        "tick_text_UEktHJ": {
+          "type": "tick_text",
+          "settings": {
+            "text_with_tic": "Are less likely to struggle with anxiety or depression"
+          }
+        },
+        "tick_text_8YEWqA": {
+          "type": "tick_text",
+          "settings": {
+            "text_with_tic": "Are more likely to maintain a healthy weight"
+          }
+        },
+        "tick_text_Hp6JWr": {
+          "type": "tick_text",
+          "settings": {
+            "text_with_tic": "Perform better in school"
+          }
+        },
+        "tick_text_VYHaXN": {
+          "type": "tick_text",
+          "settings": {
+            "text_with_tic": "Enjoy better social development"
+          }
+        }
+      },
+      "block_order": [
+        "tick_text_BH7CiN",
+        "tick_text_UEktHJ",
+        "tick_text_8YEWqA",
+        "tick_text_Hp6JWr",
+        "tick_text_VYHaXN"
+      ],
+      "settings": {
+        "extra_Class": "ctm_mattress_zigzagvideo",
+        "upper_sub_head": "Why Kids",
+        "main_head": "Need to Sleep Well",
+        "lower_sub_head": "Studies Show Well-Rested Kids...",
+        "description": "",
+        "button_text": "Shop Now",
+        "button_url": "shopify:\/\/collections\/all",
+        "play_btn_image": "shopify:\/\/shop_images\/play-svgrepo-com.png",
+        "video_poster": "shopify:\/\/shop_images\/video_1.png",
+        "video": "https:\/\/cdn.shopify.com\/videos\/c\/o\/v\/fcb3b6fba85246a8a16026a119dd9dc7.mov",
+        "align_right": true
+      }
+    }
+  },
+  "order": [
+    "main",
+    "mattress_compare_WC97HW",
+    "tabbing_content_QYH9UR",
+    "featured_collection_kHPr6y",
+    "video_with_text_AFmxPL"
+  ]
+}

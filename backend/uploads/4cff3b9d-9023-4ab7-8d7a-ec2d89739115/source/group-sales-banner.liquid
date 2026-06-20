@@ -1,0 +1,261 @@
+<section class="group-sales-banner">
+  <div class="group-sales-banner__image">
+    <picture>
+      {% if section.settings.mobile_image != blank %}
+        <source media="(max-width: 990px)" srcset="{{ section.settings.mobile_image | image_url }}">
+      {% endif %}
+      {% if section.settings.desktop_image != blank %}
+        <img src="{{ section.settings.desktop_image | image_url }}" alt="Group Sales Banner">
+      {% endif %}
+    </picture>
+  </div>
+
+  <div class="group-sales-banner__content">
+    <div class="sales-banner-title">
+      {% if section.settings.heading != blank %}
+        <h2 class="group-sales-banner__heading">{{ section.settings.heading }}</h2>
+      {% endif %}
+    </div>
+    <div class="sales_inner-content">
+      {% if section.settings.subheading != blank %}
+        <h3 class="group-sales-banner__subheading">{{ section.settings.subheading }}</h3>
+      {% endif %}
+      {% if section.settings.text != blank %}
+        <p class="group-sales-banner__text">{{ section.settings.text }}</p>
+      {% endif %}
+      {% if section.settings.button_label != blank and section.settings.button_link != blank %}
+        <a
+          href="{{ section.settings.button_link }}"
+          class="group-sales-banner__button button button--primary slideshow__button"
+        >
+          {{ section.settings.button_label }}
+        </a>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+<style>
+    .group-sales-banner__content {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      justify-content: space-between;
+      padding: 80px;
+      width: 100%;
+  }
+
+  .group-sales-banner {
+  position: relative;
+  z-index: 2; /* Ensure content is above overlay */
+}
+
+  
+  .group-sales-banner::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgb(0 0 0 / 23%); 
+  z-index: 0;
+  pointer-events: none;
+}
+
+    .group-sales-banner {
+      position: relative;
+      text-align: {{ section.settings.text_alignment }};
+      color: #fff;
+    }
+    .group-sales-banner__image img {
+      width: 100%;
+      display: block;
+    }
+
+    .group-sales-banner__heading {
+      font-size: 78px;
+      font-weight: 700;
+      margin: 0;
+      text-align: left;
+      color:white;
+      max-width: 770px;
+    }
+    .group-sales-banner__subheading {
+      font-size: 48px;
+      font-weight: 700;
+      margin: 0;
+    }
+    .group-sales-banner__text {
+      font-size: 32px;
+      margin: 50px 0;
+    }
+    .group-sales-banner__button.button.button--primary {
+      background: #fff;
+      color: #2f484c;
+      border-radius:0;
+      border:0;
+      min-width: 250px;
+      font-size:13px;
+    }
+/* Mobile Styles */
+
+@media(min-width: 991px) {
+      .group-sales-banner__button.button.button--primary {
+        font-size: 20px;
+    }
+}
+@media(max-width: 1441px) {
+    .group-sales-banner__heading {
+        font-size: 60px;
+        max-width: 580px;
+    }
+
+    .group-sales-banner__text {
+        font-size: 28px;
+        margin: 30px 0;
+    }
+}
+
+@media(max-width: 1024px) {
+    .group-sales-banner__heading {
+        font-size: 50px;
+    }
+
+    .group-sales-banner__text {
+        font-size: 26px;
+        margin: 30px 0;
+    }
+
+    .group-sales-banner__content {
+        padding: 50px;
+    }
+}
+
+@media(max-width: 990px) {
+
+  .group-sales-banner__content {
+    position:relative;
+    transform: unset;
+    left:0;
+    top:0;
+  }
+    .group-sales-banner__content {
+        padding: 20px;
+    }
+
+    .group-sales-banner__text {
+      text-align: left;
+    }
+
+    .group-sales-banner__content{
+      background-color: #2f484c;
+    }
+
+    .group-sales-banner__button.button.button--primary {
+    max-width: 180px;
+    width: 100%;
+    display: flex;
+    min-height: 40px;
+    min-width: 201px;
+}
+
+.ctm-sales-group .button.button--primary {
+  min-width: 201px;
+}
+
+}
+
+@media(max-width: 768px) {
+
+    .group-sales-banner__heading,
+    .group-sales-banner__subheading {
+        font-size: 28px;
+        max-width: 250px;
+    }
+
+    .group-sales-banner__text {
+        font-size: 24px;
+    }
+}
+
+@media(max-width: 575px) {
+    .group-sales-banner__heading {
+        font-size: 30px;
+        max-width: 300px;
+    }
+
+    .group-sales-banner__text {
+        font-size: 16px;
+        line-height: 20px;
+        margin: 20px 0;
+    }
+}
+</style>
+
+{% schema %}
+{
+  "name": "Group Sales Banner",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "desktop_image",
+      "label": "Desktop Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "mobile_image",
+      "label": "Mobile Image"
+    },
+    {
+      "type": "html",
+      "id": "heading",
+      "label": "Heading",
+      "default": "XX-XY ATHLETICS"
+    },
+    {
+      "type": "html",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "GROUP SALES"
+    },
+    {
+      "type": "html",
+      "id": "text",
+      "label": "Subtext",
+      "default": "Custom gear. Collective strength. One mission."
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button Label",
+      "default": "APPLY NOW"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    },
+    {
+      "type": "select",
+      "id": "text_alignment",
+      "label": "Text Alignment",
+      "default": "center",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Group Sales Banner"
+    }
+  ]
+}
+{% endschema %}

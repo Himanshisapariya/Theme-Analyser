@@ -1,0 +1,349 @@
+<style>
+.gallery-grid {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 3rem 2.5rem 2rem;
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 2rem;
+}
+@media (min-width: 768px) and (max-width: 1024px) {
+  .gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+    padding: 3rem 5rem 2rem;
+  }
+}
+@media (min-width: 1025px) {
+  .gallery-grid {
+    grid-template-columns: repeat(3, 1fr);
+    padding: 20px 2.5rem 2rem;
+  }
+}
+.folder-card {
+  position: relative;
+  cursor: pointer;
+  height: 250px;
+}
+.folder-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 6px;
+  transition: transform 0.3s ease;
+}
+.folder-card:hover img {
+  transform: scale(1.03);
+}
+.folder-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.35);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 6px;
+  color: #fff;
+  font-size: 22px;
+  font-weight: 700;
+  padding: 10px;
+  transition: background 0.25s ease;
+}
+.folder-card:hover .folder-overlay {
+  background: rgba(0,0,0,0.55);
+}
+.gallery-modal {
+  position: fixed !important;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100dvh !important;
+  display: none;
+  background: rgba(0,0,0,0.85);
+  z-index: 999999;
+  justify-content: center;
+  align-items: center;
+}
+.gallery-modal.active {
+  display: flex;
+}
+.modal-content {
+  width: 90%;
+  max-width: 1000px;
+  max-height: 80dvh;
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.modal-images {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 15px;
+  width: 100%;
+}
+.modal-images img {
+  width: 100%;
+  height: 350px;
+  object-fit: cover;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.close-modal , .close-zoom{
+  color: #2f484c;
+  cursor: pointer;
+  font-size: 22px;
+  font-weight: 500;
+  align-self: flex-end;
+  margin-bottom: 15px;
+}
+.custom-dropdown {
+  position: relative;
+  display: inline-block;
+  width: 220px;
+}
+.dropdown-btn {
+  padding: 10px;
+  border: 1px solid #2a2a2a;
+  border-radius: 4px;
+  background: #fff;
+  text-align: left;
+  cursor: pointer;
+  width: 100%;
+}
+.dropdown-label,
+.dropdown-arrow {
+  color: #2f484c;
+}
+.dropdown-arrow {
+  float: right;
+}
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  padding: 0;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  border: 1px solid #2a2a2a;
+  border-radius: 4px;
+  background: #fff;
+  z-index: 9999;
+}
+.dropdown-menu li {
+  list-style: none;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  text-align: center;
+}
+.dropdown-menu li:hover {
+  background: #2f484c;
+  color: #fff;
+}
+.ctm-gallery-modal, .ctm-gallery-modal {
+  overflow: hidden !important;
+}
+.ctm-gallery-modal .shopify-section-header, .ctm-gallery-modal .footer {
+  z-index: unset !important;
+}
+.ctm-gallery-dropdown {
+  max-width: 1200px;
+  padding: 20px 2.5rem 2rem;
+  margin: auto;
+  border-top: 0.1rem solid rgb(var(--color-border-input));
+  display: flex;
+  justify-content: end;
+}
+
+#zoomModal .modal-content {
+  padding: 10px;
+  background: #fff;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+}
+
+#zoomModal img {
+  max-height: 85vh;
+  object-fit: contain;
+}
+
+</style>
+
+{% assign folders = section.settings.folders %}
+{% assign all_categories = "" %}
+{% for folder in folders %}
+  {% assign all_categories = all_categories | append: folder.category | append: "," %}
+{% endfor %}
+{% assign categories = all_categories | split: "," | uniq %}
+
+<div class="ctm-gallery-dropdown">
+  <div class="custom-dropdown" id="galleryDropdown">
+    <button class="dropdown-btn">
+      <span class="dropdown-label">All Categories</span>
+      <span class="dropdown-arrow">▼</span>
+    </button>
+    <ul class="dropdown-menu">
+      <li data-value="all">All Categories</li>
+      {% for cat in categories %}
+        {% if cat != blank %}
+          <li data-value="{{ cat | strip }}">{{ cat }}</li>
+        {% endif %}
+      {% endfor %}
+    </ul>
+  </div>
+</div>
+
+<div class="gallery-grid">
+  {% for folder in folders %}
+    <div class="folder-card" 
+         data-folder="{{ folder.system.id }}" 
+         data-category="{{ folder.category | strip }}">
+      <img src="{{ folder.thumbnail.value | image_url: width: 600 }}" alt="{{ folder.folder_name }}">
+      <div class="folder-overlay">{{ folder.folder_name }}</div>
+    </div>
+  {% endfor %}
+</div>
+
+<div id="galleryModal" class="gallery-modal">
+  <div class="modal-content">
+    <span class="close-modal">✕</span>
+    <div class="modal-images"></div>
+  </div>
+</div>
+
+<div id="zoomModal" class="gallery-modal">
+  <div class="modal-content" style="width:max-content; max-height:90%">
+    <span class="close-zoom">✕</span>
+    <img id="zoomImage" style="width:100%; height:auto; border-radius:6px;" />
+  </div>
+</div>
+
+
+<script>
+window.galleryData = {
+  {% for folder in section.settings.folders %}
+  "{{ folder.system.id }}": {
+    "title": "{{ folder.folder_name | escape }}",
+    "images": [
+      {% for img in folder.images.value %}
+      "{{ img | image_url: width: 2000 }}"{% unless forloop.last %},{% endunless %}
+      {% endfor %}
+    ]
+  }{% unless forloop.last %},{% endunless %}
+  {% endfor %}
+};
+
+document.querySelectorAll('.folder-card').forEach(card => {
+  card.addEventListener('click', () => {
+    let id = card.dataset.folder;
+    if (!window.galleryData[id]) return;
+    let modal = document.getElementById('galleryModal');
+    let container = modal.querySelector('.modal-images');
+    container.innerHTML = "";
+    window.galleryData[id].images.forEach(img => {
+      container.innerHTML += `<img src="${img}" />`;
+    });
+    modal.classList.add('active');
+    document.body.classList.add('ctm-gallery-modal');
+  });
+});
+
+function closeModal() {
+  let modal = document.getElementById('galleryModal');
+  modal.classList.remove('active');
+  document.body.classList.remove('ctm-gallery-modal');
+}
+
+document.querySelector('.close-modal').addEventListener('click', closeModal);
+document.getElementById('galleryModal').addEventListener('click', (e) => {
+  if (e.target === e.currentTarget) {
+    closeModal();
+  }
+});
+
+document.addEventListener("DOMContentLoaded", function () {
+  const dropdown = document.querySelector("#galleryDropdown");
+  const btn = dropdown.querySelector(".dropdown-btn");
+  const menu = dropdown.querySelector(".dropdown-menu");
+  const options = dropdown.querySelectorAll("li");
+  const label = dropdown.querySelector(".dropdown-label");
+  const arrow = dropdown.querySelector(".dropdown-arrow");
+  const cards = document.querySelectorAll(".folder-card");
+
+  let open = false, selectedCategory = "all";
+
+  btn.addEventListener("click", function (e) {
+    e.stopPropagation();
+    open = !open;
+    menu.style.display = open ? "block" : "none";
+    arrow.textContent = open ? "▲" : "▼";
+  });
+
+  options.forEach(option => {
+    option.addEventListener("click", () => {
+      selectedCategory = option.dataset.value;
+      label.textContent = option.textContent;
+      open = false;
+      menu.style.display = "none";
+      arrow.textContent = "▼";
+      cards.forEach(card => {
+        const cat = card.dataset.category;
+        card.style.display =
+          selectedCategory === "all" || cat === selectedCategory ? "block" : "none";
+      });
+    });
+  });
+
+  document.addEventListener("click", function (e) {
+    if (!dropdown.contains(e.target)) {
+      open = false;
+      menu.style.display = "none";
+      arrow.textContent = "▼";
+    }
+  });
+});
+
+document.addEventListener("click", function (e) {
+  if (e.target.closest(".modal-images img")) {
+    const imgSrc = e.target.getAttribute("src");
+    document.getElementById("zoomImage").setAttribute("src", imgSrc);
+    document.getElementById("zoomModal").classList.add("active");
+  }
+});
+
+document.querySelector(".close-zoom").addEventListener("click", () => {
+  document.getElementById("zoomModal").classList.remove("active");
+});
+
+document.getElementById("zoomModal").addEventListener("click", (e) => {
+  if (e.target === e.currentTarget) {
+    document.getElementById("zoomModal").classList.remove("active");
+  }
+});
+
+
+</script>
+
+{% schema %}
+{
+  "name": "Folder Image Gallery",
+  "settings": [
+    {
+      "type": "metaobject_list",
+      "id": "folders",
+      "label": "Select Folders",
+      "metaobject_type": "event_gallery_folder"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Folder Image Gallery"
+    }
+  ]
+}
+{% endschema %}

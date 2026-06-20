@@ -1,0 +1,665 @@
+{{ 'section-main-product.css' | asset_url | stylesheet_tag }}
+{{ 'component-badge.css' | asset_url | stylesheet_tag }}
+{{ 'component-price.css' | asset_url | stylesheet_tag }}
+{{ 'component-rte.css' | asset_url | stylesheet_tag }}
+{{ 'component-card.css' | asset_url | stylesheet_tag }}
+{{ 'quick-add.css' | asset_url | stylesheet_tag }}
+{{ 'section-product-bundle.css' | asset_url | stylesheet_tag }}
+
+<link rel="stylesheet" href="{{ 'component-deferred-media.css' | asset_url }}" media="all">
+
+<script src="{{ 'quick-add.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'product-bundle.js' | asset_url }}" defer="defer"></script>
+
+{%- assign margin_top = section.settings.margin_top | default: 0 -%}
+{%- assign margin_bottom = section.settings.margin_bottom | default: 0 -%}
+
+{%- assign bundle_count = 0 -%}
+{%- for block in section.blocks -%}
+  {%- if block.type == 'bundle_product' and block.settings.product != blank -%}
+    {%- assign bundle_count = bundle_count | plus: 1 -%}
+  {%- endif -%}
+{%- endfor -%}
+
+<script>
+window.PBData = window.PBData || {};
+window.PBData['{{ section.id }}'] = { products: {} };
+{%- for block in section.blocks -%}
+  {%- if block.type == 'bundle_product' and block.settings.product != blank -%}
+    {%- assign bp = all_products[block.settings.product] -%}
+    {%- if bp -%}
+      window.PBData['{{ section.id }}'].products['{{ bp.id }}'] = {
+        variants: {{ bp.variants | json }},
+        options: [{%- for opt in bp.options_with_values -%}{"index":{{ forloop.index0 }},"name":{{ opt.name | downcase | json }}}{% unless forloop.last %},{% endunless %}{%- endfor -%}],
+        selectedOptions: { {%- for opt in bp.options_with_values -%}"{{ forloop.index0 }}":{{ opt.selected_value | json }}{% unless forloop.last %},{% endunless %}{%- endfor -%} }
+      };
+    {%- endif -%}
+  {%- endif -%}
+{%- endfor -%}
+</script>
+
+<div class="fullscreen-container main-breadcrumb">
+  <nav class="breadcrumb" role="navigation" aria-label="breadcrumbs">
+    <a href="{{ routes.root_url }}" title="{{ 'general.breadcrumbs.home' | t }}" class="link-hover-line">
+      {{- 'general.breadcrumbs.home' | t -}}
+    </a>
+    <div class="breadcrumb__delimiter">/</div>
+    {% if section.settings.bundle_category != blank %}
+      <span>{{ section.settings.bundle_category }}</span>
+    {% else %}
+      <span>{{ section.settings.bundle_title | default: 'Bundle & Save' }}</span>
+    {% endif %}
+  </nav>
+</div>
+
+<section
+  class="pb-section {{ section.settings.extra_class }}"
+  id="ProductBundle-{{ section.id }}"
+  data-section="{{ section.id }}"
+  style="margin-top:{{ margin_top }}px;margin-bottom:{{ margin_bottom }}px;"
+>
+  <div class="pb-mobile-header" id="pbMobileHeader-{{ section.id }}">
+    {% if section.settings.bundle_category != blank %}
+      <p class="pb-info__category">{{ section.settings.bundle_category }}</p>
+    {% endif %}
+    <h2 class="pb-info__title product__title h4 m-0">{{ section.settings.bundle_title | default: 'Bundle & Save' }}</h2>
+    <p class="pb-info__price" id="pbMobilePrice-{{ section.id }}">
+      <span class="pb-info__price-amount h5" data-total-price></span>
+    </p>
+    {% if bundle_count > 0 %}
+      <p class="pb-info__count h5">{{ bundle_count }} Item{% if bundle_count != 1 %}s{% endif %} in Bundle</p>
+    {% endif %}
+  </div>
+
+  <div class="pb-layout">
+    <div class="pb-gallery">
+      {% if bundle_count > 0 %}
+        <div class="pb-gallery__inner">
+          <div class="pb-thumbs" id="pbThumbs-{{ section.id }}">
+            {%- assign slide_i = 0 -%}
+            {%- for block in section.blocks -%}
+              {%- if block.type == 'bundle_product' and block.settings.product != blank -%}
+                {%- assign bp = all_products[block.settings.product] -%}
+                {%- if bp and bp.featured_media -%}
+                  {%- assign slide_i = slide_i | plus: 1 -%}
+                  <button
+                    class="pb-thumb{% if slide_i == 1 %} is-active{% endif %}"
+                    data-slide="{{ slide_i }}"
+                    data-product-id="{{ bp.id }}"
+                    aria-label="{{ bp.featured_media.alt | default: bp.title | escape }}"
+                  >
+                    {{
+                      bp.featured_media.preview_image
+                      | image_url: width: 160
+                      | image_tag:
+                        loading: 'lazy',
+                        width: 80,
+                        height: 80,
+                        widths: '80,160',
+                        alt: bp.featured_media.alt | default: bp.title | escape
+                    }}
+                  </button>
+                {%- endif -%}
+              {%- endif -%}
+            {%- endfor -%}
+          </div>
+
+          <div class="pb-main-img" id="pbMain-{{ section.id }}">
+            {%- assign slide_i = 0 -%}
+            {%- for block in section.blocks -%}
+              {%- if block.type == 'bundle_product' and block.settings.product != blank -%}
+                {%- assign bp = all_products[block.settings.product] -%}
+                {%- if bp and bp.featured_media -%}
+                  {%- assign slide_i = slide_i | plus: 1 -%}
+                  <div
+                    class="pb-main-img__slide{% if slide_i == 1 %} is-active{% endif %}"
+                    data-slide="{{ slide_i }}"
+                    data-product-id="{{ bp.id }}"
+                  >
+                    {% render 'product-thumbnail',
+                      product_card_product: bp,
+                      media: bp.featured_media,
+                      position: slide_i,
+                      modal_id: section.id,
+                      lazy_load: slide_i > 1
+                    %}
+                  </div>
+                {%- endif -%}
+              {%- endif -%}
+            {%- endfor -%}
+          </div>
+
+          <div class="pb-pagination" id="pbPagination-{{ section.id }}">
+            {%- assign slide_i = 0 -%}
+            {%- for block in section.blocks -%}
+              {%- if block.type == 'bundle_product' and block.settings.product != blank -%}
+                {%- assign bp = all_products[block.settings.product] -%}
+                {%- if bp and bp.featured_media -%}
+                  {%- assign slide_i = slide_i | plus: 1 -%}
+                  <button
+                    class="pb-pagination__dot{% if slide_i == 1 %} is-active{% endif %}"
+                    data-slide="{{ slide_i }}"
+                    aria-label="Go to slide {{ slide_i }}"
+                  ></button>
+                {%- endif -%}
+              {%- endif -%}
+            {%- endfor -%}
+          </div>
+        </div>
+      {% else %}
+        <div class="pb-gallery__placeholder">
+          <p>Add products to see gallery</p>
+        </div>
+      {% endif %}
+    </div>
+
+    <div class="pb-info">
+
+      {% if section.settings.bundle_category != blank %}
+        <p class="pb-info__category">{{ section.settings.bundle_category }}</p>
+      {% endif %}
+
+      <h2 class="pb-info__title product__title h4 m-0">{{ section.settings.bundle_title | default: 'Bundle & Save' }}</h2>
+
+      <p class="pb-info__price" id="pbTotalPrice-{{ section.id }}">
+        <span class="pb-info__price-amount h5" data-total-price></span>
+      </p>
+
+      {% if bundle_count > 0 %}
+        <p class="pb-info__count h5">{{ bundle_count }} Item{% if bundle_count != 1 %}s{% endif %} in Bundle</p>
+      {% endif %}
+
+      {% if section.settings.bundle_description != blank %}
+        <p class="pb-info__desc">{{ section.settings.bundle_description }}</p>
+      {% endif %}
+
+      <div class="pb-products" id="BundleProducts-{{ section.id }}">
+        {% for block in section.blocks %}
+          {% if block.type == 'bundle_product' and block.settings.product != blank %}
+            {%- assign bp = all_products[block.settings.product] -%}
+            {% if bp %}
+              <div class="pb-product" {{ block.shopify_attributes }} data-product-id="{{ bp.id }}">
+                <div class="pb-product__layout">
+                  <div class="pb-product__image">
+                    {%- if bp.featured_image -%}
+                      {{
+                        bp.featured_image
+                        | image_url: width: 400
+                        | image_tag:
+                          loading: 'lazy',
+                          width: 300,
+                          height: 300,
+                          widths: '200,300,400',
+                          alt: bp.title | escape
+                      }}
+                    {%- endif -%}
+
+                    {% if section.settings.quickview_show %}
+                      {%- assign product_form_id = 'quick-add-' | append: section.id | append: bp.id -%}
+                      <div class="quick-add no-js-hidden">
+                        <modal-opener data-modal="#QuickAdd-bundle-{{ section.id }}-{{ bp.id }}">
+                          <button
+                            id="{{ product_form_id }}-submit"
+                            type="button"
+                            class="pb-quickview-btn card__link button--secondary js-color-swatches-link"
+                            aria-haspopup="dialog"
+                            aria-label="Quick view {{ bp.title | escape }}"
+                            data-product-url="{{ bp.url }}"
+                          >
+                            <span class="visually-hidden">{{- 'general.card.quick__view' | t -}}</span>
+                            <div class="loading-overlay__spinner hidden">
+                              <svg aria-hidden="true" focusable="false" role="presentation" class="spinner" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
+                                <circle class="path" fill="none" stroke-width="6" cx="33" cy="33" r="30"></circle>
+                              </svg>
+                            </div>
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true" focusable="false">
+                              <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                            </svg>
+                          </button>
+                        </modal-opener>
+                        <quick-add-modal id="QuickAdd-bundle-{{ section.id }}-{{ bp.id }}" class="quick-add-modal">
+                          <div
+                            role="dialog"
+                            aria-label="{{ 'products.product.choose_product_options' | t: product_name: bp.title | escape }}"
+                            aria-modal="true"
+                            class="quick-add-modal__content global-settings-popup"
+                            tabindex="-1"
+                          >
+                            <button
+                              id="ModalClose-bundle-{{ section.id }}-{{ bp.id }}"
+                              type="button"
+                              class="quick-add-modal__toggle modal-close-button"
+                              aria-label="{{ 'accessibility.close' | t }}"
+                            >
+                              {% render 'icon-close' %}
+                            </button>
+                            <div class="quick-add-modal__content-wrapper">
+                              <div id="QuickAddInfo-{{ bp.id }}" class="quick-add-modal__content-info"></div>
+                            </div>
+                          </div>
+                        </quick-add-modal>
+                      </div>
+                    {% endif %}
+                  </div>
+
+                  <div class="pb-product__info">
+                    <div class="pb-product__meta">
+                      {% if section.settings.show_vendor and bp.vendor != blank %}
+                        <p class="pb-product__vendor">{{ bp.vendor }}</p>
+                      {% endif %}
+                      <h5 class="pb-product__name">
+                        <a href="{{ bp.url }}" class="pb-product__name-link h5">{{ bp.title }}</a>
+                      </h5>
+                      <div class="pb-product__price" data-product-price="{{ bp.id }}">
+                        {%- render 'price', product: bp, price_class: 'mini-price' -%}
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="pb-product__controls">
+                    {% unless bp.has_only_default_variant %}
+                      {%- for option in bp.options_with_values -%}
+                        {%- assign opt_name_lower = option.name | downcase -%}
+                        {%- if opt_name_lower == 'color' or opt_name_lower == 'colour' -%}
+                          <div class="pb-option pb-option--color">
+                            <p class="pb-option__label">
+                              Color: <span class="pb-option__value" data-color-label="{{ bp.id }}">{{ option.selected_value }}</span>
+                            </p>
+                            <div class="swatch-swiper js-color-swatches pb-swatches-wrap" data-option-name="{{ option.name | downcase }}">
+                              <fieldset class="product-form__controls-group">
+                                <legend class="visually-hidden">{{ option.name }}</legend>
+                                {%- render 'product-variant-options', product: bp, option: option, no_form_id: true -%}
+                              </fieldset>
+                            </div>
+                          </div>
+                        {%- elsif opt_name_lower == 'size' -%}
+                          <div class="pb-option pb-option--size">
+                            <p class="pb-option__label">{{ option.name }}:</p>
+                            <div class="pb-sizes" role="radiogroup" aria-label="Size">
+                              {%- for val in option.values -%}
+                                {%- assign val_available = false -%}
+                                {%- assign opt_pos = forloop.parentloop.index0 -%}
+                                {%- for variant in bp.variants -%}
+                                  {%- if variant.available -%}
+                                    {%- if opt_pos == 0 and variant.option1 == val -%}
+                                      {%- assign val_available = true -%}
+                                    {%- elsif opt_pos == 1 and variant.option2 == val -%}
+                                      {%- assign val_available = true -%}
+                                    {%- elsif opt_pos == 2 and variant.option3 == val -%}
+                                      {%- assign val_available = true -%}
+                                    {%- endif -%}
+                                  {%- endif -%}
+                                {%- endfor -%}
+                                <button
+                                  class="pb-size-pill{% if val == option.selected_value %} is-active{% endif %}{% unless val_available %} is-soldout{% endunless %}"
+                                  data-option-index="{{ forloop.parentloop.index0 }}"
+                                  data-option-value="{{ val | escape }}"
+                                  data-product="{{ bp.id }}"
+                                  {% unless val_available %}disabled{% endunless %}
+                                >{{ val }}</button>
+                              {%- endfor -%}
+                            </div>
+                          </div>
+                        {%- else -%}
+                          <div class="pb-option">
+                            <p class="pb-option__label">{{ option.name }}</p>
+                            <div class="pb-select-wrap">
+                              <select
+                                class="pb-select"
+                                data-option-index="{{ forloop.index0 }}"
+                                data-product="{{ bp.id }}"
+                                aria-label="{{ option.name }}"
+                              >
+                                {%- for val in option.values -%}
+                                  <option value="{{ val | escape }}"{% if val == option.selected_value %} selected{% endif %}>{{ val }}</option>
+                                {%- endfor -%}
+                              </select>
+                              <span class="pb-select-caret" aria-hidden="true">
+                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+                              </span>
+                            </div>
+                          </div>
+                        {%- endif -%}
+                      {%- endfor -%}
+
+                      {% if section.settings.show_qty %}
+                        <div class="pb-option pb-option--qty">
+                          <p class="pb-option__label">Qty:</p>
+                          <div class="pb-select-wrap">
+                            <select class="pb-select pb-qty-select" data-product="{{ bp.id }}" aria-label="Quantity">
+                              {%- for i in (1..10) -%}
+                                <option value="{{ i }}">{{ i }}</option>
+                              {%- endfor -%}
+                            </select>
+                            <span class="pb-select-caret" aria-hidden="true">
+                              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+                            </span>
+                          </div>
+                        </div>
+                      {% endif %}
+
+                      <input type="hidden" class="pb-resolved-variant" data-product="{{ bp.id }}" value="{{ bp.selected_or_first_available_variant.id }}">
+                    {% else %}
+                      <input type="hidden" class="pb-resolved-variant" data-product="{{ bp.id }}" value="{{ bp.selected_or_first_available_variant.id }}">
+                    {% endunless %}
+                  </div>
+                </div>
+              </div>
+            {% endif %}
+          {% endif %}
+        {% endfor %}
+      </div>
+
+      <div class="pb-cta">
+        <button
+          type="button"
+          class="pb-atc-btn button--ctm_wb_global_button"
+          id="pbAtc-{{ section.id }}"
+          {% if bundle_count == 0 %}disabled{% endif %}
+        >
+          <span class="pb-atc-btn__label">{{ section.settings.button_label | default: 'Add Bundle to Cart' }}</span>
+          <span class="pb-atc-btn__spinner hidden" aria-hidden="true">
+            <svg viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg" width="18" height="18"><circle class="path" fill="none" stroke="currentColor" stroke-width="6" cx="33" cy="33" r="30"/></svg>
+          </span>
+        </button>
+      </div>
+
+      {% if section.settings.show_accordions %}
+        <div class="pb-accordions">
+          {%- assign acc_rendered = 0 -%}
+
+          {% if section.settings.accordion_desc_show and section.settings.accordion_desc_content != blank %}
+            {%- assign acc_open = false -%}{%- if section.settings.accordion_first_open and acc_rendered == 0 -%}{%- assign acc_open = true -%}{%- endif -%}
+            <div class="about pb-about">
+              <div class="about__accordion-item" role="button" tabindex="0" aria-controls="pb-accordion-desc-{{ section.id }}">
+                <h2 class="about__accordion-title {% if acc_open %}active{% endif %} h5">
+                  <span class="h5">{{ section.settings.accordion_desc_label | default: 'DESCRIPTION' }}</span>
+                  <div class="about__more-link-wrapper"><div class="about__more-link">{% render 'icon-button-arrow' %}</div></div>
+                </h2>
+                <div class="about__accordion-description h5" id="pb-accordion-desc-{{ section.id }}" style="{% if acc_open %}display:block{% else %}display:none{% endif %}">
+                  {{ section.settings.accordion_desc_content }}
+                </div>
+              </div>
+            </div>
+            {%- assign acc_rendered = acc_rendered | plus: 1 -%}
+          {% endif %}
+
+          {% if section.settings.accordion_pd_show and section.settings.accordion_pd_content != blank %}
+            {%- assign acc_open = false -%}{%- if section.settings.accordion_first_open and acc_rendered == 0 -%}{%- assign acc_open = true -%}{%- endif -%}
+            <div class="about pb-about">
+              <div class="about__accordion-item" role="button" tabindex="0" aria-controls="pb-accordion-pd-{{ section.id }}">
+                <h2 class="about__accordion-title {% if acc_open %}active{% endif %} h5">
+                  <span class="h5">{{ section.settings.accordion_pd_label | default: 'PRODUCT DETAILS' }}</span>
+                  <div class="about__more-link-wrapper"><div class="about__more-link">{% render 'icon-button-arrow' %}</div></div>
+                </h2>
+                <div class="about__accordion-description h5" id="pb-accordion-pd-{{ section.id }}" style="{% if acc_open %}display:block{% else %}display:none{% endif %}">
+                  {{ section.settings.accordion_pd_content }}
+                </div>
+              </div>
+            </div>
+            {%- assign acc_rendered = acc_rendered | plus: 1 -%}
+          {% endif %}
+
+          {%- assign sc_has_content = false -%}
+          {%- if section.settings.accordion_sc_handle != blank -%}
+            {%- assign sc_entry = shop.metaobjects.size_chart[section.settings.accordion_sc_handle] -%}
+            {%- if sc_entry and sc_entry.size_chart_page.value -%}{%- assign sc_has_content = true -%}{%- endif -%}
+          {%- endif -%}
+          {%- if section.settings.accordion_sc_content != blank -%}{%- assign sc_has_content = true -%}{%- endif -%}
+          {% if section.settings.accordion_sc_show and sc_has_content %}
+            {%- assign acc_open = false -%}{%- if section.settings.accordion_first_open and acc_rendered == 0 -%}{%- assign acc_open = true -%}{%- endif -%}
+            <div class="about pb-about">
+              <div class="about__accordion-item" role="button" tabindex="0" aria-controls="pb-accordion-sc-{{ section.id }}">
+                <h2 class="about__accordion-title {% if acc_open %}active{% endif %} h5">
+                  <span class="h5">{{ section.settings.accordion_sc_label | default: 'SIZE CHART' }}</span>
+                  <div class="about__more-link-wrapper"><div class="about__more-link">{% render 'icon-button-arrow' %}</div></div>
+                </h2>
+                <div class="about__accordion-description h5" id="pb-accordion-sc-{{ section.id }}" style="{% if acc_open %}display:block{% else %}display:none{% endif %}">
+                  {%- if section.settings.accordion_sc_handle != blank -%}
+                    {%- assign sc_entry = shop.metaobjects.size_chart[section.settings.accordion_sc_handle] -%}
+                    {%- assign size_chart_page = sc_entry.size_chart_page.value -%}
+                    {%- if size_chart_page -%}
+                      <div class="size-chart-content"><div class="page-content">{{ size_chart_page.content }}</div></div>
+                    {%- endif -%}
+                  {%- endif -%}
+                  {{ section.settings.accordion_sc_content }}
+                </div>
+              </div>
+            </div>
+            {%- assign acc_rendered = acc_rendered | plus: 1 -%}
+          {% endif %}
+
+          {% if section.settings.accordion_care_show and section.settings.accordion_care_content != blank %}
+            {%- assign acc_open = false -%}{%- if section.settings.accordion_first_open and acc_rendered == 0 -%}{%- assign acc_open = true -%}{%- endif -%}
+            <div class="about pb-about">
+              <div class="about__accordion-item" role="button" tabindex="0" aria-controls="pb-accordion-care-{{ section.id }}">
+                <h2 class="about__accordion-title {% if acc_open %}active{% endif %} h5">
+                  <span class="h5">{{ section.settings.accordion_care_label | default: 'CARE INFORMATION' }}</span>
+                  <div class="about__more-link-wrapper"><div class="about__more-link">{% render 'icon-button-arrow' %}</div></div>
+                </h2>
+                <div class="about__accordion-description h5" id="pb-accordion-care-{{ section.id }}" style="{% if acc_open %}display:block{% else %}display:none{% endif %}">
+                  {{ section.settings.accordion_care_content }}
+                </div>
+              </div>
+            </div>
+          {% endif %}
+
+        </div>
+      {% endif %}
+
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Product Bundle",
+  "settings": [
+    {
+      "type": "text",
+      "id": "bundle_title",
+      "label": "Bundle Title",
+      "default": "The Studio Session Bundle"
+    },
+    {
+      "type": "text",
+      "id": "bundle_category",
+      "label": "Category / Breadcrumb",
+      "info": "e.g. Activewear | Workout Sets"
+    },
+    {
+      "type": "textarea",
+      "id": "bundle_description",
+      "label": "Bundle Description"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button Label",
+      "default": "Add Bundle to Cart"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_vendor",
+      "label": "Show vendor",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "show_qty",
+      "label": "Show quantity selector",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "payment_note",
+      "label": "Checkout note",
+      "default": "Free shipping on orders over $100"
+    },
+    {
+      "type": "header",
+      "content": "Accordion Sections"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_accordions",
+      "label": "Show accordion sections",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "accordion_first_open",
+      "label": "Open first accordion by default",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Description Accordion"
+    },
+    {
+      "type": "checkbox",
+      "id": "accordion_desc_show",
+      "label": "Show Description",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "accordion_desc_label",
+      "label": "Label",
+      "default": "DESCRIPTION"
+    },
+    {
+      "type": "richtext",
+      "id": "accordion_desc_content",
+      "label": "Content"
+    },
+    {
+      "type": "header",
+      "content": "Product Details Accordion"
+    },
+    {
+      "type": "checkbox",
+      "id": "accordion_pd_show",
+      "label": "Show Product Details",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "accordion_pd_label",
+      "label": "Label",
+      "default": "PRODUCT DETAILS"
+    },
+    {
+      "type": "richtext",
+      "id": "accordion_pd_content",
+      "label": "Content"
+    },
+    {
+      "type": "header",
+      "content": "Size Chart Accordion"
+    },
+    {
+      "type": "checkbox",
+      "id": "accordion_sc_show",
+      "label": "Show Size Chart",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "accordion_sc_label",
+      "label": "Label",
+      "default": "SIZE CHART"
+    },
+    {
+      "type": "text",
+      "id": "accordion_sc_handle",
+      "label": "Size Chart Metaobject Handle",
+      "info": "Enter the handle of the size_chart metaobject entry, e.g. YPT. Leave blank to use the content field below."
+    },
+    {
+      "type": "richtext",
+      "id": "accordion_sc_content",
+      "label": "Content (fallback / additional)"
+    },
+    {
+      "type": "header",
+      "content": "Care Information Accordion"
+    },
+    {
+      "type": "checkbox",
+      "id": "accordion_care_show",
+      "label": "Show Care Information",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "accordion_care_label",
+      "label": "Label",
+      "default": "CARE INFORMATION"
+    },
+    {
+      "type": "richtext",
+      "id": "accordion_care_content",
+      "label": "Content"
+    },
+    {
+      "type": "header",
+      "content": "Section Spacing"
+    },
+    {
+      "type": "range",
+      "id": "margin_top",
+      "label": "Margin Top",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "margin_bottom",
+      "label": "Margin Bottom",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "text",
+      "id": "extra_class",
+      "label": "Extra CSS Class"
+    },
+    {
+      "type": "checkbox",
+      "id": "quickview_show",
+      "label": "Show quickview on bundle products",
+      "default": true
+    }
+  ],
+  "blocks": [
+    {
+      "type": "bundle_product",
+      "name": "Bundle Product",
+      "settings": [
+        {
+          "type": "product",
+          "id": "product",
+          "label": "Product"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product Bundle",
+      "blocks": [
+        { "type": "bundle_product" },
+        { "type": "bundle_product" },
+        { "type": "bundle_product" }
+      ]
+    }
+  ]
+}
+{% endschema %}

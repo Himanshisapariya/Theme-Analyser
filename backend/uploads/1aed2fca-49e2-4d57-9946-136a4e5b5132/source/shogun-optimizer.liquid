@@ -1,0 +1,17 @@
+
+
+{% if article %}
+  {% assign content = article %}
+{% elsif page %}
+  {% assign content = page %}
+{% elsif product %}
+  {% assign content = product %}
+{% elsif collection %}
+  {% assign content = collection %}
+{% endif %}
+{{content.metafields.shogun.optimizer}}
+{% schema %}
+  {
+    "name": "Shogun Optimizer"
+  }
+{% endschema %}

@@ -1,0 +1,366 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "pages": {
+      "type": "main-page",
+      "disabled": true,
+      "custom_css": [
+        ".container {padding-top: 50px; padding-bottom: 50px;}",
+        "h1 {text-align: center;}"
+      ],
+      "settings": {
+        "extra_class": ""
+      }
+    },
+    "hero_split_banner_pN94dB": {
+      "type": "hero-split-banner",
+      "custom_css": [
+        "h2,p {color: white;}"
+      ],
+      "name": "Hero Split Banner",
+      "settings": {
+        "extra_class": "gts",
+        "desktop_image": "shopify://shop_images/Hero_Banner_desktop.jpg",
+        "mobile_image": "shopify://shop_images/Hero_Banner_mobile_2.jpg",
+        "image_fit": "fill",
+        "height_large_desktop": 800,
+        "height_small_desktop": 800,
+        "height_tablet": 500,
+        "height_mobile": 700,
+        "heading": "<h2 class=\"m-0\">FATHER’S DAY,<br>\nUPGRADED.</h2>",
+        "subheading": "<p class=\"h4\">We built a Father’s Day gift guide for the guy <br>\nwho does it all. Early mornings. Long work<br>\ndays. Weekend workouts. Dad duty. No<br>\nexcuses.</p>\n\n<p class=\"h4\">Gear that performs—and represents what he <br>\nbelieves in</p>",
+        "content_max_width": 2600,
+        "desktop_layout": "split"
+      }
+    },
+    "collection_tabbing_zLWewU": {
+      "type": "collection-tabbing",
+      "blocks": {
+        "collection_DipH6D": {
+          "type": "collection",
+          "settings": {
+            "collection_ctm": "accessories-xy"
+          }
+        }
+      },
+      "block_order": [
+        "collection_DipH6D"
+      ],
+      "name": "Collection Tabbing with Text",
+      "settings": {
+        "extra_class": "gts",
+        "heading_ctm": "STEP 1. ACCESSORIES",
+        "ctm_subtitle": "Accessories that start the uniform.",
+        "content_alignment": "above_product",
+        "tab_1": "",
+        "tab_2": "",
+        "desktop_slide": 5,
+        "button_label1": "",
+        "button_link1": "",
+        "button_label2": "",
+        "button_link2": "",
+        "spring_slider_class": "",
+        "button_style": "button button--primary",
+        "top_padding_desktop": 25,
+        "bottom_padding_desktop": 0,
+        "top_padding_mobile": 20,
+        "bottom_padding_mobile": 20,
+        "top_margin_desktop": 0,
+        "bottom_margin_desktop": 0,
+        "top_margin_mobile": 20,
+        "bottom_margin_mobile": 10,
+        "show_arrows": false,
+        "show_variants_as_products": false
+      }
+    },
+    "multicolumn_blocks_zTwQ8Y": {
+      "type": "multicolumn-blocks",
+      "blocks": {
+        "column_tkTyFJ": {
+          "type": "column",
+          "settings": {
+            "desktop_image": "shopify://shop_images/1_243bfaf4-e68d-439f-9b21-3001d7e09bd3.jpg",
+            "mobile_image": "shopify://shop_images/4_cd49d06d-4301-4bbf-9711-81cc9300700b.jpg",
+            "card_url": "shopify://products/loud-and-proud-patriot-tee",
+            "heading": "The Best-Selling Loud & Proud Tee",
+            "gender_link_1_text": "SHOP THE TEE",
+            "gender_link_1_url": "shopify://products/loud-and-proud-patriot-tee",
+            "gender_link_2_text": "",
+            "gender_link_2_url": "",
+            "subheading": "",
+            "button_1_text": "",
+            "button_1_url": "",
+            "button_2_text": "",
+            "button_2_url": ""
+          }
+        },
+        "column_Ce6tAd": {
+          "type": "column",
+          "settings": {
+            "desktop_image": "shopify://shop_images/2_12b1d4f8-70c5-455c-bf69-c4763d45c013.jpg",
+            "mobile_image": "shopify://shop_images/3_04757dcf-ab30-4235-b67d-a1f600c06b54.jpg",
+            "card_url": "shopify://products/7-courageous-core-short-with-liner-xy",
+            "heading": "Do More in Core Shorts",
+            "gender_link_1_text": "SHOP CORE SHORTS",
+            "gender_link_1_url": "shopify://products/7-courageous-core-short-with-liner-xy",
+            "gender_link_2_text": "",
+            "gender_link_2_url": "",
+            "subheading": "",
+            "button_1_text": "",
+            "button_1_url": "",
+            "button_2_text": "",
+            "button_2_url": ""
+          }
+        }
+      },
+      "block_order": [
+        "column_tkTyFJ",
+        "column_Ce6tAd"
+      ],
+      "custom_css": [
+        ".ctm-father-day-multicolumn h2 {font-size: 16px;}",
+        "@media (min-width: 769px) {.ctm-father-day-multicolumn h2 {font-size: 20px; }}"
+      ],
+      "name": "Multi Column Blocks",
+      "settings": {
+        "section_margin_top_desktop": 40,
+        "section_margin_bottom_desktop": 30,
+        "section_margin_top_mobile": 0,
+        "section_margin_bottom_mobile": 20,
+        "small_laptop_height": 700,
+        "tablet_height": 700,
+        "large_desktop_height": 800,
+        "mobile_height": 600,
+        "slides_desktop": 2,
+        "slides_tablet": 2,
+        "slides_mobile": 1.1,
+        "slides_gap": 10,
+        "slides_gap_mobile": 10,
+        "show_arrows": false,
+        "show_scrollbar": false,
+        "arrow_size": 44,
+        "arrow_bg": "#00000066",
+        "arrow_color": "#ffffff",
+        "hover_underline_color": "#3db671",
+        "desktop_content_position_vertical": "bottom",
+        "desktop_content_position_horizontal": "left",
+        "mobile_content_position_vertical": "bottom",
+        "mobile_content_position_horizontal": "left",
+        "text_align": "left",
+        "overlay_opacity": 0.6,
+        "heading_font": "Poppins",
+        "heading_color": "#ffffff",
+        "heading_font_size_desktop": 36,
+        "heading_font_size_mobile": 24,
+        "subheading_font": "Poppins",
+        "subheading_color": "#ffffff",
+        "subheading_font_size_desktop": 16,
+        "subheading_font_size_mobile": 14,
+        "subheading_margin_desktop": 8,
+        "subheading_margin_mobile": 6,
+        "section_heading": "",
+        "section_heading_align": "center",
+        "extra_class": "gts ctm-father-day-multicolumn",
+        "button_style": "button--ctm_global_button"
+      }
+    },
+    "collection_tabbing_ba3mma": {
+      "type": "collection-tabbing",
+      "blocks": {
+        "collection_cQhBzG": {
+          "type": "collection",
+          "settings": {
+            "collection_ctm": "tops-xy"
+          }
+        },
+        "collection_gfJyk6": {
+          "type": "collection",
+          "settings": {
+            "collection_ctm": ""
+          }
+        }
+      },
+      "block_order": [
+        "collection_cQhBzG",
+        "collection_gfJyk6"
+      ],
+      "name": "Collection Tabbing with Text",
+      "settings": {
+        "extra_class": "gts",
+        "heading_ctm": "STEP 2. THE CORE LAYER",
+        "ctm_subtitle": "The foundation of the fit—and his values.",
+        "content_alignment": "above_product",
+        "tab_1": "",
+        "tab_2": "",
+        "desktop_slide": 5,
+        "button_label1": "",
+        "button_link1": "",
+        "button_label2": "",
+        "button_link2": "",
+        "spring_slider_class": "",
+        "button_style": "button button--primary",
+        "top_padding_desktop": 0,
+        "bottom_padding_desktop": 0,
+        "top_padding_mobile": 20,
+        "bottom_padding_mobile": 20,
+        "top_margin_desktop": 0,
+        "bottom_margin_desktop": 0,
+        "top_margin_mobile": 0,
+        "bottom_margin_mobile": 0,
+        "show_arrows": false,
+        "show_variants_as_products": false
+      }
+    },
+    "banner_with_text_wf8HHN": {
+      "type": "banner-with-text",
+      "custom_css": [
+        ".ctm-fathers-day-camobanner .heading {margin-top: 10px; margin-bottom: 20px; font-weight: 400;}"
+      ],
+      "name": "t:sections.banner-with-text.name",
+      "settings": {
+        "extra_class": "gts ctm-fathers-day-camobanner",
+        "heading_class": "h3",
+        "spring_banner_class": "",
+        "color_scheme": "light",
+        "image": "shopify://shop_images/Camo_that_never_hides_desktop.jpg",
+        "image_mobile": "shopify://shop_images/10_0a4fb7c5-cbd5-4ff4-ae79-73dea6495cb7.jpg",
+        "image_size": "adapt",
+        "desktop_banner_height": 0,
+        "tablet_banner_height": 80,
+        "mobile_banner_height": 70,
+        "title": "Camo that never hides",
+        "content_text": "",
+        "caption_class": "LIMITED EDITION",
+        "text_alignment": "center",
+        "content_width": "ninety",
+        "overlay_enable": false,
+        "overlay_opacity": 20,
+        "button_link": "",
+        "button_label": "SHOP ALL CAMO",
+        "second_button_link": "",
+        "second_button_label": "",
+        "button_style": "button--ctm_global_button",
+        "mobile_button_style": "button--ctm_global_button",
+        "mobile_cta_button_link": "",
+        "mobile_cta_button_label": "",
+        "mobile_second_cta_button_link": "",
+        "mobile_second_cta_button_label": "",
+        "heading_font_family": "Poppins, sans-serif",
+        "subheading_font_family": "Poppins, sans-serif",
+        "caption_font_family": "Poppins, sans-serif",
+        "heading_font_size_desktop": 34,
+        "heading_font_size_tablet": 22,
+        "heading_font_size_mobile": 26,
+        "subheading_font_size_desktop": 18,
+        "subheading_font_size_mobile": 16,
+        "caption_font_size_desktop": 14,
+        "caption_font_size_mobile": 12,
+        "heading_font_weight": 400,
+        "heading_line_height": 1.2,
+        "heading_letter_spacing": 0,
+        "subheading_font_weight": 400,
+        "subheading_line_height": 1.5,
+        "subheading_margin": 20,
+        "caption_font_weight": 500,
+        "caption_line_height": 1.3,
+        "show_heading_mobile": true,
+        "show_subheading_mobile": true,
+        "desktop_content_position": "bottom-center",
+        "mobile_content_position": "bottom",
+        "margin_top": 30,
+        "margin_bottom": 30,
+        "top_margin_mobile": 0,
+        "bottom_margin_mobile": 20,
+        "top_padding_desktop": 0,
+        "bottom_padding_desktop": 20,
+        "top_padding_mobile": 0,
+        "bottom_padding_mobile": 20
+      }
+    },
+    "collection_tabbing_6WfmDq": {
+      "type": "collection-tabbing",
+      "blocks": {
+        "collection_NPqrPn": {
+          "type": "collection",
+          "settings": {
+            "collection_ctm": "pants-shorts-xy"
+          }
+        }
+      },
+      "block_order": [
+        "collection_NPqrPn"
+      ],
+      "name": "Collection Tabbing with Text",
+      "settings": {
+        "extra_class": "gts",
+        "heading_ctm": "STEP 3. FINISH THE LOOK",
+        "ctm_subtitle": "The final performance layer he’ll live in.",
+        "content_alignment": "above_product",
+        "tab_1": "",
+        "tab_2": "",
+        "desktop_slide": 5,
+        "button_label1": "",
+        "button_link1": "",
+        "button_label2": "",
+        "button_link2": "",
+        "spring_slider_class": "",
+        "button_style": "button button--primary",
+        "top_padding_desktop": 0,
+        "bottom_padding_desktop": 0,
+        "top_padding_mobile": 20,
+        "bottom_padding_mobile": 20,
+        "top_margin_desktop": 0,
+        "bottom_margin_desktop": 40,
+        "top_margin_mobile": 0,
+        "bottom_margin_mobile": 0,
+        "show_arrows": false,
+        "show_variants_as_products": true
+      }
+    },
+    "video_NMeCiY": {
+      "type": "video",
+      "custom_css": [],
+      "settings": {
+        "extra_class": "ctm-fathers-day-video",
+        "full_width": true,
+        "height": "large",
+        "video_fit": "cover",
+        "subheading": "",
+        "heading": "",
+        "cover_image": "shopify://shop_images/HERO_BANNER__Desktop_ac4469d7-e31d-43dc-8de8-a23ff6c06c93.jpg",
+        "mobile_cover_image": "shopify://shop_images/HERO_BANNER_Mobile_3e9d9dfa-c457-49e4-8fd9-9e9ffe38d29d.jpg",
+        "opacity_overlay": 0,
+        "video": "shopify://files/videos/YOU'RE NOT TOXIC X & YT APRIL 10 25 5 09PM.mov",
+        "mobile_video": "shopify://files/videos/NOT TOXIC FATHERS DAY 9x16 no CAPTIONS APRIL 29.mov",
+        "video_url": "",
+        "video_autoplay": false,
+        "video_loop": false,
+        "video_muted": false,
+        "video_controls": true,
+        "description": "",
+        "button_text": "",
+        "button_link": "",
+        "margin_top": 0,
+        "margin_bottom": 30
+      }
+    }
+  },
+  "order": [
+    "pages",
+    "hero_split_banner_pN94dB",
+    "collection_tabbing_zLWewU",
+    "multicolumn_blocks_zTwQ8Y",
+    "collection_tabbing_ba3mma",
+    "banner_with_text_wf8HHN",
+    "collection_tabbing_6WfmDq",
+    "video_NMeCiY"
+  ]
+}

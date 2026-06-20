@@ -1,0 +1,422 @@
+{% comment %}
+		Renders a product card
+		Accepts:
+		- product_card_product: {Object} Product Liquid object (optional)
+		- media_size: {String} Size of the product image card. Values are "square" and "portrait". Default is "square" (optional)
+		- show_secondary_image: {Boolean} Show the secondary image on hover. Default: false (optional)
+		- show_vendor: {Boolean} Show the product vendor. Default: true
+		- show_desc: {Boolean} Show the product vendor. Default: false
+		- show_sku: {Boolean} Show sku. Default: false
+		- section_id: {String} The ID of the section that contains this card.
+		Usage:
+	{% render 'product-card', show_vendor: section.settings.show_vendor %}
+{% endcomment %}
+
+<link
+	rel="preload"
+	href="{{ 'section-main-product.css' | asset_url }}"
+	as="style"
+	onload="this.onload=null;this.rel='stylesheet'"
+>
+<link
+	rel="stylesheet"
+	href="{{ 'component-deferred-media.css' | asset_url }}"
+	media="all"
+>
+<link
+	rel="preload"
+	href="{{ 'quick-add.css' | asset_url }}"
+	as="style"
+	onload="this.onload=null;this.rel='stylesheet'"
+>
+{%- assign first_3d_model = product_card_product.media
+	| where: 'media_type', 'model'
+	| first
+-%}
+{%- if first_3d_model -%}
+	{{ 'component-product-model.css' | asset_url | stylesheet_tag }}
+	<link
+		id="ModelViewerStyle"
+		rel="stylesheet"
+		href="https://cdn.shopify.com/shopifycloud/model-viewer-ui/assets/v1.0/model-viewer-ui.css"
+		media="print"
+		onload="this.media='all'"
+	>
+	<link
+		id="ModelViewerOverride"
+		rel="stylesheet"
+		href="{{ 'component-model-viewer-ui.css' | asset_url }}"
+		media="print"
+		onload="this.media='all'"
+	>
+{%- endif -%}
+{%- if first_3d_model -%}
+	<script type="application/json" id="ProductJSON-{{ product.id }}">
+		{{ product_card_product.media | where: 'media_type', 'model' | json }}
+	</script>
+	<script src="{{ 'quick-add.js' | asset_url }}" defer="defer"></script>
+	<script src="{{ 'product-model.js' | asset_url }}" defer></script>
+{%- endif -%}
+<script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'quick-add.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'copy.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'product-single.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'update-slider.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'about.js' | asset_url }}" defer="defer"></script>
+<div
+	class="card-wrapper js-color-swatches-wrapper"
+	data-product="{{ product_card_product.handle }}"
+	role="group"
+	aria-label="product card"
+>
+	<span class="visually-hidden">{{ product_card_product.title | escape }}</span>
+
+	<div
+		class="card card--product"
+	>
+		<div class="card__inner full-unstyled-link">
+			{%- liquid
+				assign featured_media_aspect_ratio = product_card_product.featured_media.aspect_ratio
+
+				if product_card_product.featured_media.aspect_ratio == null
+					assign featured_media_aspect_ratio = 1
+				endif
+			-%}
+
+			<div
+				class="media media--transparent media--{{ media_size }} media--hover-effect"
+				{%- if media_size == 'landscape' -%}
+					style="padding-bottom: 70%;"
+				{%- endif -%}
+				{%- if media_size == 'portrait' -%}
+					style="padding-bottom: 130%;"
+				{%- endif -%}
+				{%- if media_size == 'square' -%}
+					style="padding-bottom: 100%;"
+				{%- endif -%}
+			>
+				{%- if product_card_product.featured_media -%}
+					{% assign fit = '' %}
+					{% if media_fit == 'contain' %}
+						{% assign fit = 'object-fit: contain;' %}
+					{% endif %}
+					{% if media_fit == 'cover' %}
+						{% assign fit = 'object-fit: cover;' %}
+					{% endif %}
+					{% assign width_ratio = 1 %}
+					{% if product_card_product.featured_media.width
+							< product_card_product.featured_media.height
+						or media_size == 'landscape'
+					%}
+						{% assign width_ratio = 1 %}
+					{% elsif product_card_product.featured_media.width
+							> product_card_product.featured_media.height
+					%}
+						{% assign width_ratio = product_card_product.featured_media.width
+							| plus: 0.0
+							| divided_by: product_card_product.featured_media.height
+							| round: 2
+						%}
+						{% if media_size == 'portrait' %}
+							{% assign width_ratio = width_ratio | times: 1.3 %}
+						{% endif %}
+					{% endif %}
+
+					{{
+						product_card_product.featured_media
+						| image_url: width: product_card_product.media.width
+						| image_tag:
+							loading: 'lazy',
+							sizes: sizes,
+							widths: '360, 533, 720, 940, 1066, 1200, 1400, 1600, 1800, 2000, 2200, 2400, 2600',
+							class: 'motion-reduce media--first',
+							style: fit,
+							width: product_card_product.featured_media.width,
+							height: product_card_product.featured_media.height
+					}}
+					{%- if product_card_product.media[1] != null
+						and show_secondary_image
+					-%}
+						{%- capture sizes -%}
+				(min-width: 1100px) 535px, (min-width: 750px) calc((100vw - 130px) / 2), calc((100vw - 50px) / 2)
+			{%- endcapture -%}
+						{{
+							product_card_product.media[1]
+							| image_url: width: product_card_product.media[1].width
+							| image_tag:
+								loading: 'lazy',
+								sizes: sizes,
+								widths: '360, 533, 720, 940, 1066, 1200, 1400, 1600, 1800, 2000, 2200, 2400, 2600',
+								class: 'motion-reduce media--first',
+								style: fit,
+								width: product_card_product.media[1].width,
+								height: product_card_product.media[1].height
+						}}
+					{%- endif -%}
+				{%- else -%}
+					{{ 'collection-1' | placeholder_svg_tag: 'placeholder-svg' }}
+				{%- endif -%}
+			</div>
+			{%- if quickview_show -%}
+				<div class="quick-add no-js-hidden">
+					{%- assign product_form_id = 'quick-add-'
+						| append: section_id
+						| append: product_card_product.id
+					-%}
+					<modal-opener data-modal="#QuickAdd-{{ product_card_product.id }}">
+						<button
+							id="{{ product_form_id }}-submit"
+							type="submit"
+							name="add"
+							class="card__link button--{{ settings.quickview_button_style }} js-color-swatches-link"
+							aria-haspopup="dialog"
+							data-product-url="{{ product_card_product.url }}"
+						>
+							<span>{{- 'general.card.quick__view' | t -}}</span>
+							<div class="loading-overlay__spinner hidden">
+								<svg
+									aria-hidden="true"
+									focusable="false"
+									role="presentation"
+									class="spinner"
+									viewBox="0 0 66 66"
+									xmlns="http://www.w3.org/2000/svg"
+								>
+									<circle class="path" fill="none" stroke-width="6" cx="33" cy="33" r="30"></circle>
+								</svg>
+							</div>
+						</button>
+					</modal-opener>
+					<quick-add-modal
+						id="QuickAdd-{{ product_card_product.id }}"
+						class="quick-add-modal"
+					>
+						<div
+							role="dialog"
+							aria-label="{{ 'products.product.choose_product_options' | t: product_name: product_card_product.title | escape }}"
+							aria-modal="true"
+							class="quick-add-modal__content global-settings-popup"
+							tabindex="-1"
+						>
+							<button
+								id="ModalClose-{{ product_card_product.id }}"
+								type="button"
+								class="quick-add-modal__toggle modal-close-button"
+								aria-label="{{ 'accessibility.close' | t }}"
+							>
+								{% render 'icon-close' %}
+							</button>
+							<div class="quick-add-modal__content-wrapper">
+								<div
+									id="QuickAddInfo-{{ product_card_product.id }}"
+									class="quick-add-modal__content-info"
+								></div>
+							</div>
+							{% comment %}
+								<div class="quick-add-modal__announcement-bar">
+									{{ settings.quickview }}
+								</div>
+							{% endcomment %}
+						</div>
+					</quick-add-modal>
+				</div>
+			{%- endif -%}
+			<div class="card__badge {% if settings.badge_italic %}card__badge_italic{% endif %} {% if product_card_product.compare_at_price > product_card_product.price and product_card_product.available %}on_sale{% endif %}">
+				{%- for variant in product_card_product.variants -%}
+					{%- assign is_any_option_available = false -%}
+				  
+					{%- for option in variant.options %}
+					  {%- if option.available == true -%}
+						{%- assign is_any_option_available = true -%}
+						{%- break -%}
+					  {%- endif -%}
+					{%- endfor -%}
+					
+					{%- if variant.available == false and variant.compare_at_price > variant.price -%}
+						<span class="badge badge-text badge--bottom-left color-{{ settings.badge_icon_color }}" aria-hidden="true">
+						  {{ 'products.product.sold_out' | t }}
+						</span>
+					  {%- elsif variant.compare_at_price > variant.price and variant.available -%}
+					  {%- elsif variant.available == false and is_any_option_available == false -%}
+						<span class="badge not-available-sold-out badge-text badge--bottom-left color-{{ settings.badge_icon_color }}" aria-hidden="true" data-variant-id="{{ variant.id }}" data-variant-title="{{ variant.title }}">
+							{{ 'products.product.sold_out' | t }}
+						</span>
+					{%- endif -%}
+				{%- endfor -%}
+
+				{% for variant in product_card_product.variants %}
+					{% assign newarrivals_tag = variant.metafields.custom.new_arrivals_tag %}
+					{% assign newsize_tag = variant.metafields.custom.new_size_tag %}
+					{% assign preorder_tag = variant.metafields.custom.pre_order %}
+					{% if newarrivals_tag == 'new_arrivals' %}
+						<span data-variant-id="{{ variant.id }}" class="variant-tag badge badge-text badge--bottom-left color-{{ settings.badge_icon_color }}" aria-hidden="true">
+							NEW ARRIVAL
+						</span>
+					{% endif %}
+					{% if newsize_tag == 'new_sizes' %}
+						<span data-variant-id="{{ variant.id }}" class="variant-newsize_tag badge badge-text badge--bottom-left color-{{ settings.badge_icon_color }}" aria-hidden="true">
+							NEW SIZES
+						</span>
+					{% endif %}
+					{% if preorder_tag == 'pre_order' %}
+						<span data-variant-id="{{ variant.id }}" class="variant-preorder_tag badge badge-text badge--bottom-left color-{{ settings.badge_icon_color }}" aria-hidden="true">
+							PRE - ORDER
+						</span>
+					{% endif %}
+				{% endfor %}
+			</div>
+
+			{% for variant in product_card_product.variants %}
+			{% assign bestseller_promo = variant.metafields.custom.best_seller %}
+			{% assign newarrival_promo = variant.metafields.custom.new_arrival %}
+			{% assign preformance_promo = variant.metafields.custom.performance %}
+			{% assign lowstock_promo = variant.metafields.custom.low_stock %}
+				
+				<div class="ctm-promo-badges">
+					{% if bestseller_promo != blank and bestseller_promo == 'best_promo' %}
+						<div data-variant-id="{{ variant.id }}" class="promotag_ctm best_promo color-{{ settings.badge_icon_color }}">
+							BEST SELLER
+						</div>
+					{% endif %}
+					{% if newarrival_promo != blank and newarrival_promo == 'new_promo' %}
+						<div data-variant-id="{{ variant.id }}" class="promotag_ctm new_promo color-{{ settings.badge_icon_color }}">
+							NEW ARRIVAL
+						</div>
+					{% endif %}
+					{% if preformance_promo != blank and preformance_promo == 'pref_promo' %}
+						<div data-variant-id="{{ variant.id }}" class="promotag_ctm pref_promo color-{{ settings.badge_icon_color }}">
+							PERFORMANCE
+						</div>
+					{% endif %}	
+					{% if lowstock_promo != blank %}
+						<div 
+							data-variant-id="{{ variant.id }}"
+							class="lowstock-badge color-{{ settings.badge_icon_color }}"
+							>
+							{{ lowstock_promo }}
+						</div>
+					{% endif %}
+				</div>
+			{% endfor %}
+		</div>
+		<a
+			href="{{ product_card_product.url | default: '#' }}"
+			class="link link--overlay card-wrapper__link--overlay card-product__link js-color-swatches-link"
+			aria-label="{{ product_card_product.title }} Product"
+		></a>
+	</div>
+
+	<div class="card-information">
+		<div class="product-parameters no-js-hidden">
+			{%- unless product_card_product.has_only_default_variant -%}
+				{%- for option in product_card_product.options_with_values -%}
+					{% liquid
+						assign color_trigger = settings.trigger_swatch | handle | strip
+						assign name_option = option.name | handle | strip
+					%}
+
+			{% if settings.show_color_swatch and color_trigger == name_option %}
+			<div class="swatch-swiper js-color-swatches swiper"
+				data-option-name="{{ option.name | downcase }}">
+				<fieldset class="product-form__controls-group swiper-wrapper">
+				<legend class="visually-hidden">Swatches</legend>
+				{% render 'product-variant-options', product: product_card_product, option: option, no_form_id: true %}
+				</fieldset>
+			</div>
+			{% endif %}
+
+				{%- endfor -%}
+			{% endunless %}
+		</div>
+
+		<div class="card-information__wrapper">
+			{%- if show_sku and product_card_product.selected_or_first_available_variant.sku.size > 0 -%}
+				<p
+					class="card__sku no-js-hidden"
+					id="Sku-{{ section.id }}"
+					role="status"
+					{{ block.shopify_attributes }}
+				>
+					<span class="visually-hidden">{{ 'products.product.sku' | t }}:</span> {{- product_card_product.selected_or_first_available_variant.name -}}
+				</p>
+			{%- endif -%}
+			{%- if show_vendor -%}
+				<span class="visually-hidden">{{ 'accessibility.vendor' | t }}</span>
+				<div class="caption-with-letter-spacing">
+					{{ product_card_product.vendor }}
+				</div>
+			{%- endif -%}
+			<div class="title_with-reviews">
+				<div class="card__title">
+					<h2
+						style="text-transform: {{ settings.product_title_text_transform }}"
+						class="full-unstyled-link js-color-swatches-link card_product_title"
+						aria-label="{{ product_card_product.title }} Product"
+					>
+						{% if product_card_product != blank %}
+							{{ product_card_product.title }} 
+						{% else %}
+							{{ 'products.product.product_heading' | t }}
+						{% endif %}
+						
+					</h2>
+					{% comment %} {%- unless product_card_product.has_only_default_variant -%}
+					<p class="option_name_CTM test">{{ product_card_product.selected_or_first_available_variant.option1  }}</p>
+					{% endunless %} {% endcomment %}
+				</div>
+			</div>
+			<div class="card-title_info">
+				{% render 'price',
+					product: product_card_product,
+					price_class: 'mini-price'
+				%}
+              {% render 'price',
+					product: product_card_product,
+					price_class: 'wide-price'
+				%}
+			</div>
+ 
+			{%- if show_desc and product_card_product.description != blank -%}
+				<div class="card__description">
+					{{ product_card_product.description | strip_html | truncate: 220 }}
+				</div>
+			{%- endif -%}
+		</div>
+{% comment %} 			
+	{% if product_card_product.metafields.custom.pdp_promo_message != blank %}
+		<h6 class="product__promo_msg">
+			{{ product_card_product.metafields.custom.pdp_promo_message }}
+		</h6>
+	{%  endif %} {% endcomment %}
+	</div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  if (typeof Swiper === 'undefined') return;
+
+  // Target both collection-product-card and product-recommendations
+  const productCards = document.querySelectorAll('.product-recommendations .product-recommendations__product, .collection-product-card');
+  
+  productCards.forEach(function (card) {
+    const swatchWraps = card.querySelectorAll('.js-color-swatches[data-option-name="color"]');
+
+    swatchWraps.forEach(function (wrap) {
+      const container = wrap.classList.contains('swiper')
+        ? wrap
+        : wrap.querySelector('.swiper, .swiper-container');
+
+      // Prevent duplicate initialization
+      if (!container || container.swiper) return;
+
+      new Swiper(container, {
+        slidesPerView: 'auto',
+        spaceBetween: 0,
+        nested: true,
+        observeParents: true,
+      });
+    });
+  });
+});
+
+</script>

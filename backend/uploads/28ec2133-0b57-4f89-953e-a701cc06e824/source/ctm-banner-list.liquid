@@ -1,0 +1,88 @@
+<div id="dr-bill-read-more" class="ctm-banner-list {{ section.settings.extra_class }}">
+    <div class="banner-wrapper">
+      {% if section.settings.banner_desktop or section.settings.banner_mobile %}
+        <div class="banner-image flex max-mdscreen2:flex-col justify-center relative max-mdscreen2:gap-y-24 overflow-hidden">
+          <img src="{{ section.settings.banner_desktop | image_url }}" alt="Banner Image" width="1161" height="695" class="mdscreen2:!block hidden w-full">
+          <img src="{{ section.settings.banner_mobile | image_url }}" alt="Banner Image" width="auto" height="auto" class="mdscreen2:hidden block max-mdscreen6:h-[392px] object-cover object-[4%] scale-[1.04] mobile-image">
+          {% if section.settings.banner_heading != blank %}
+            <div class="banner-heading mdscreen2:absolute top-2/4 mdscreen2:-translate-y-2/4 right-[88px]">
+              <h3 class="mdscreen2:text-white leading-45 max-mdscreen2:text-24 max-mdscreen2:leading-[36px]">{{ section.settings.banner_heading }}</h3>
+            </div>
+          {% endif %}
+        </div>
+      {% endif %}
+  
+      <div class="banner-content">
+        {% if section.settings.banner_description %}
+          <div class="banner-description max-w-[900px] mx-auto body-18-500 text-primary-black leading-150p">
+            {{ section.settings.banner_description }}
+          </div>
+        {% endif %}
+  
+        {% if section.blocks.size > 0 %}
+          <ul class="banner-list max-w-[749px] mx-auto flex flex-col gap-y-20"> 
+            {% for block in section.blocks %}
+              {% if block.type == 'star_list' %}
+                <li class="flex items-start gap-x-8"  {{ block.shopify_attributes }} >
+                  <div class="">{% render 'stars-section' %}</div>
+                  <p class="leading-150p">{{ block.settings.list_text }}</p>
+                </li>
+              {% endif %}
+            {% endfor %}
+          </ul> 
+        {% endif %}
+      </div>
+    </div>
+  </div>
+  
+{% schema %}
+{
+  "name": "Banner with list",
+  "class": "ctm-banner-list",
+  "settings": [
+    {
+        "type": "text",
+        "label": "Extra Class",
+        "id": "extra_class"
+    },
+    {
+      "type": "image_picker",
+      "label": "Banner Desktop Image",
+      "id": "banner_desktop"
+    },
+    {
+      "type": "image_picker",
+      "label": "Banner Mobile Image",
+      "id": "banner_mobile"
+    },
+    {
+      "type": "html",
+      "label": "Banner Heading",
+      "id": "banner_heading"
+    },
+    {
+      "type": "html",
+      "label": "Banner Description",
+      "id": "banner_description"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "star_list",
+      "name": "Star List",
+      "settings": [
+        {
+          "type": "html",
+          "label": "List Text",
+          "id": "list_text"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Banner with list"
+    }
+  ]
+}
+{% endschema %}

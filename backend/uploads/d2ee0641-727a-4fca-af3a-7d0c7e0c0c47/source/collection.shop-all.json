@@ -1,0 +1,72 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "banner": {
+      "type": "main-collection-banner",
+      "settings": {
+        "extra_class": "",
+        "show_collection_description": false,
+        "show_collection_image": false,
+        "color_scheme": "scheme-1"
+      }
+    },
+    "rich_text_ckP3aV": {
+      "type": "rich-text",
+      "blocks": {
+        "text_k9ae99": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Shop everything your child needs for a better night's sleep. From our kid's memory foam mattresses to waterproof protectors, organic sheets and a pillow designed for kids. Every product is built with safe, high-quality materials and real functionality in mind. Simple, honest sleep solutions for growing kids.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "text_k9ae99"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "extra_class": "",
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    },
+    "product-grid": {
+      "type": "ctm-collection-product-grid",
+      "settings": {
+        "products_per_page": 16,
+        "columns_desktop": 2,
+        "color_scheme": "scheme-1",
+        "image_ratio": "square",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": false,
+        "enable_quick_add": false,
+        "tag_heading_size": "h1",
+        "enable_filtering": false,
+        "filter_type": "horizontal",
+        "enable_sorting": false,
+        "columns_mobile": "2",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    }
+  },
+  "order": [
+    "banner",
+    "rich_text_ckP3aV",
+    "product-grid"
+  ]
+}

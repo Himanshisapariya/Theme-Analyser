@@ -1,0 +1,156 @@
+{% liquid
+  assign upper-sub-head = product.metafields['why-kids-upper-sub-head'].acf
+  assign head = product.metafields['why-kids-head'].acf
+  assign lower-sub-head = product.metafields['why-kids-lower-sub-head'].acf
+  assign button-text = product.metafields['why-kids-btn-txt'].acf
+  assign button-url = product.metafields['why-kids-btn-url'].acf
+  assign video-play-btn-image = product.metafields['why-kids-video-play-btn-img'].acf
+  assign video-placeholder = product.metafields['why-kids-video-placeholder'].acf
+  assign video-url = product.metafields['why-kids-video-url'].acf
+  assign tick-text = product.metafields['why-kids-tick-txt'].acf
+%}
+
+<div class="ctm_zigzag_video_section {{ section.settings.extra_Class }} pt-55 desktop:pt-80">
+  <div class="xl_container">
+    <div class="ctm_video_innerblock flex mdscreen1:flex-col gap-40 mdscreen2:gap-55 desktop:!gap-100">
+      <div class="ctm_video_main w-full mdscreen2:w-1/2 small_desktop:w-[56%] {% if section.settings.align_right %} order-2 mdscreen2:order-1 {% endif %}">
+        {% if video-placeholder != blank %}
+          <div class="bg-video relative rounded-24 overflow-hidden h-full">
+            <img
+              id="placeholder-image"
+              src="{{ video-play-btn-image }}"
+              class="video-placeholder transition-all duration-300 ease-in-out"
+              alt="play_btn"
+              loading="lazy"
+              width="34"
+              height="36"
+              onclick="toggleVideo()"
+            >
+            <div class="video_overlay relative pt-[57.25%] midlarge_desktop:pt-[43.25%] h-full">
+              <video
+                id="bg-video"
+                class="video-element absolute top-0 left-0 w-full h-full object-cover"
+                {% if video-placeholder != blank %}
+                  poster="{{ video-placeholder }}"
+                {% endif %}
+                webkit-playsinline
+                playsinline
+                loop
+                muted
+                preload
+                onclick="toggleVideo()"
+              >
+                <source src="{{ video-url }}">
+              </video>
+            </div>
+          </div>
+        {% endif %}
+      </div>
+      <div class="ctm_video_contentright w-full mdscreen2:w-[calc(50%_-_55px)] desktop:w-[calc(44%_-_100px)] mdscreen1:-order-1">
+        <div class="ctm_video_txt mdscreen1:text-center">
+          {% if upper-sub-head != blank %}
+            <div class="video_caption_title mb-10">
+              <h5>{{ upper-sub-head }}</h5>
+            </div>
+          {% endif %}
+          {% if head != blank %}
+            <div class="video_section_title mb-16">
+              <h3>{{ head }}</h3>
+            </div>
+          {% endif %}
+          {% if lower-sub-head != blank %}
+            <div class="video_sub_title">
+              <p>{{ lower-sub-head }}</p>
+            </div>
+          {% endif %}
+          {% if section.settings.description != blank %}
+            <div class="video_descript">
+              <p>{{ section.settings.description }}</p>
+            </div>
+          {% endif %}
+        </div>
+        <div class="cmt_video_list flex flex-col gap-16 py-30">
+          {% for j in (0..tick-text.size) %}
+            {% if tick-text[j] != blank %}
+              <div class="ctm_text_tick_main flex items-center gap-10">
+                <div class="ctm_tick_img_video flex-shrink-0">
+                  <img
+                    src="https://cdn.shopify.com/s/files/1/0792/4904/7864/files/check.png"
+                    alt="check"
+                    loading="lazy"
+                    width="36"
+                    height="36"
+                  >
+                </div>
+                <div class="ctm_tick_text_video">
+                  <h6 class="font-extrabold text-dark_grey">{{ tick-text[j] }}</h6>
+                </div>
+              </div>
+            {% endif %}
+          {% endfor %}
+        </div>
+        <div class="video_btn">
+          <a class="aloe_leaf_btn" href="{{ button-url }}">{{ button-text }}</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  function toggleVideo() {
+    var video = document.getElementById('bg-video');
+    var placeholder = document.getElementById('placeholder-image');
+    var videoOverlay = document.querySelector('.video_overlay');
+
+    if (video.paused) {
+      video.play();
+      placeholder.style.opacity = '0';
+      videoOverlay.classList.add('video_playing');
+    } else {
+      video.pause();
+      placeholder.style.opacity = '1';
+      videoOverlay.classList.remove('video_playing');
+    }
+  }
+
+  function toggleVideo() {
+    var video = document.getElementById('bg-video');
+    var placeholder = document.getElementById('placeholder-image');
+    var videoOverlay = document.querySelector('.video_overlay');
+
+    if (video.paused) {
+      video.play();
+      placeholder.style.opacity = '0';
+      videoOverlay.classList.add('video_playing');
+    } else {
+      video.pause();
+      placeholder.style.opacity = '1';
+      videoOverlay.classList.remove('video_playing');
+    }
+
+    video.onended = function () {
+      placeholder.style.opacity = '1'; // Show placeholder when video ends
+      videoOverlay.classList.remove('video_playing');
+    };
+  }
+</script>
+
+{% schema %}
+{
+  "name": "PDP Video with Text",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "label": "Extra Class ",
+      "id": "extra_Class"
+    }
+  ],
+  "blocks": [],
+  "presets": [
+    {
+      "name": "PDP Video with Text"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,247 @@
+<div class="ctm_zigzag_video_section {{ section.settings.extra_Class }} pt-55 desktop:pt-80 ">
+  <div class="xl_container">
+    <div class="ctm_video_innerblock flex {% if page.handle != 'reviews' %}mdscreen1:flex-col gap-40 mdscreen2:gap-55 desktop:!gap-100 {% endif %}">
+      <div class="ctm_video_main w-full mdscreen2:w-1/2 {% if page.handle != 'reviews' %}small_desktop:w-[56%]{% endif %} {% if section.settings.align_right %} order-2 mdscreen2:order-1 {% endif %}">
+        {% if section.settings.video_title_mobile != blank %}
+          <h3 class="video_title_mobile text-xl mb-10 mt-8 mdscreen4:hidden">
+            {{ section.settings.video_title_mobile }}
+          </h3>
+        {% endif %}
+        {% if section.settings.enable_embed_video == false %}
+          {% assign video = section.settings.video %}
+          {% if video != blank %}
+            <div class="bg-video relative rounded-24 overflow-hidden h-full">
+              <img
+                id="placeholder-image"
+                src="{{ section.settings.play_btn_image | image_url: width: 150 }}"
+                class="video-placeholder transition-all duration-300 ease-in-out"
+                alt="play_btn"
+                loading="lazy"
+                width="34"
+                height="36"
+                onclick="toggleVideo()"
+              >
+              <div class="video_overlay relative pt-[57.25%] midlarge_desktop:pt-[43.25%] h-full">
+                <video
+                  id="bg-video"
+                  class="video-element absolute top-0 left-0 w-full h-full {% if page.handle != 'reviews' %} object-cover {% endif %}"
+                  {% if section.settings.video_poster != blank %}
+                    poster="{{ section.settings.video_poster | image_url: width: 2000  }}"
+                  {% endif %}
+                  webkit-playsinline
+                  playsinline
+                  {% if page.handle != 'reviews' %}
+                    loop
+                  {% endif %}
+                  preload
+                  onclick="toggleVideo()"
+                >
+                  <source src="{{ video }}">
+                </video>
+              </div>
+            </div>
+          {% endif %}
+        {% else %}
+          {% assign video_id = section.settings.video_url.id %}
+          {%- if section.settings.video_url.type == 'youtube' -%}
+            <iframe
+              src="https://www.youtube.com/embed/{{ video_id }}?enablejsapi=1"
+              class="js-youtube w-full h-full"
+              allow="autoplay; encrypted-media"
+              allowfullscreen
+              title="{{ section.settings.description | escape }}"
+            ></iframe>
+          {%- else -%}
+            <iframe
+              src="https://player.vimeo.com/video/{{ video_id }}?autoplay=1"
+              class="js-vimeo w-full h-full"
+              allow="autoplay; encrypted-media"
+              allowfullscreen
+              title="{{ section.settings.description | escape }}"
+            ></iframe>
+          {%- endif -%}
+        {% endif %}
+      </div>
+      <div class="ctm_video_contentright w-full mdscreen2:w-[calc(50%_-_55px)] {% if page.handle != 'reviews' %}desktop:w-[calc(44%_-_100px)]{% endif %} mdscreen1:-order-1">
+        <div class="ctm_video_txt {% if page.handle != 'reviews' %}mdscreen1:text-center{% endif %}">
+          {% if section.settings.upper_sub_head != blank %}
+            <div class="video_caption_title mb-10">
+              <h5>{{ section.settings.upper_sub_head }}</h5>
+            </div>
+          {% endif %}
+          {% if section.settings.main_head != blank %}
+            <div class="video_section_title mb-16">
+              <h3>{{ section.settings.main_head }}</h3>
+            </div>
+          {% endif %}
+          {% if section.settings.lower_sub_head != blank %}
+            <div class="video_sub_title">
+              <p>{{ section.settings.lower_sub_head }}</p>
+            </div>
+          {% endif %}
+          {% if section.settings.description != blank %}
+            <div class="video_descript">
+              <p>{{ section.settings.description }}</p>
+            </div>
+          {% endif %}
+        </div>
+        <div class="cmt_video_list flex flex-col gap-16 py-30 ssss">
+          {% for block in section.blocks %}
+            {% if block.settings.text_with_tic != blank %}
+              <div class="ctm_text_tick_main flex items-center gap-10">
+                <div class="ctm_tick_img_video flex-shrink-0">
+                  <img
+                    src="https://cdn.shopify.com/s/files/1/0792/4904/7864/files/check.png"
+                    alt="icon-png"
+                    loading="lazy"
+                    width="36"
+                    height="36"
+                  >
+                </div>
+                <div class="ctm_tick_text_video">
+                  <h6 class="font-extrabold text-dark_grey">{{ block.settings.text_with_tic }}</h6>
+                </div>
+              </div>
+            {% endif %}
+          {% endfor %}
+        </div>
+        {% if section.settings.button_url != blank and section.settings.button_text != blank %}
+          <div class="video_btn">
+            <a class="aloe_leaf_btn" href="{{ section.settings.button_url }}">{{ section.settings.button_text }}</a>
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  function toggleVideo() {
+    var video = document.getElementById('bg-video');
+    var placeholder = document.getElementById('placeholder-image');
+    var videoOverlay = document.querySelector('.video_overlay');
+
+    if (video.paused) {
+      video.play();
+      video.controls = true;
+      placeholder.style.opacity = '0';
+      videoOverlay.classList.add('video_playing');
+    } else {
+      video.pause();
+      video.controls = false;
+      placeholder.style.opacity = '1';
+      videoOverlay.classList.remove('video_playing');
+    }
+
+    video.onended = function () {
+      placeholder.style.opacity = '1'; // Show placeholder when video ends
+      videoOverlay.classList.remove('video_playing');
+    };
+  }
+</script>
+
+{% schema %}
+{
+  "name": "Video with Text",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "label": "Extra Class ",
+      "id": "extra_Class"
+    },
+    {
+      "type": "text",
+      "label": "caption",
+      "id": "upper_sub_head"
+    },
+    {
+      "type": "text",
+      "label": "Title",
+      "id": "main_head"
+    },
+    {
+      "type": "text",
+      "label": "Lower Sub Head",
+      "id": "lower_sub_head"
+    },
+    {
+      "type": "textarea",
+      "label": "Description",
+      "id": "description"
+    },
+    {
+      "type": "text",
+      "label": "Button Text",
+      "id": "button_text"
+    },
+    {
+      "type": "url",
+      "label": "Button URL",
+      "id": "button_url"
+    },
+    {
+      "type": "header",
+      "content": "Video Settings"
+    },
+    {
+      "type": "text",
+      "label": "Video Title for mobile",
+      "id": "video_title_mobile"
+    },
+    {
+      "type": "checkbox",
+      "label": "Enable YouTube/Vimeo Video",
+      "id": "enable_embed_video",
+      "default": false
+    },
+    {
+      "type": "image_picker",
+      "label": "Play Btn Image",
+      "id": "play_btn_image",
+      "visible_if": "{{ section.settings.enable_embed_video ==  false }}"
+    },
+    {
+      "type": "image_picker",
+      "id": "video_poster",
+      "label": "Video Poster",
+      "visible_if": "{{ section.settings.enable_embed_video ==  false }}"
+    },
+    {
+      "type": "url",
+      "label": "Video",
+      "id": "video",
+      "visible_if": "{{ section.settings.enable_embed_video ==  false }}"
+    },
+    {
+      "type": "video_url",
+      "label": "Video",
+      "accept": ["youtube", "vimeo"],
+      "id": "video_url",
+      "visible_if": "{{ section.settings.enable_embed_video ==  true }}"
+    },
+    {
+      "type": "checkbox",
+      "label": "Align Right",
+      "id": "align_right"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "tick_text",
+      "name": "Tick Text",
+      "settings": [
+        {
+          "type": "text",
+          "label": "Text with Tic",
+          "id": "text_with_tic"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Video with Text"
+    }
+  ]
+}
+{% endschema %}

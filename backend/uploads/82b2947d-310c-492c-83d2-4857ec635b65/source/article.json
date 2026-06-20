@@ -1,0 +1,127 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "shogun-helper": {
+      "type": "shogun-helper",
+      "settings": {}
+    },
+    "main": {
+      "type": "main-article",
+      "blocks": {
+        "title": {
+          "type": "article-header",
+          "settings": {
+            "blog_show_tags": false,
+            "blog_show_excerpt": false,
+            "blog_show_date": true,
+            "blog_show_author": true,
+            "image_height": "adapt",
+            "show_share_facebook": true,
+            "show_share_twitter": true,
+            "show_share_pinterest": true,
+            "show_share_copy": true
+          }
+        },
+        "content": {
+          "type": "content",
+          "settings": {}
+        },
+        "article_footer": {
+          "type": "article-footer",
+          "settings": {
+            "blog_show_date": false,
+            "blog_show_author": true,
+            "show_share_facebook": true,
+            "show_share_twitter": true,
+            "show_share_pinterest": true,
+            "show_share_copy": true
+          }
+        }
+      },
+      "block_order": [
+        "title",
+        "content",
+        "article_footer"
+      ],
+      "settings": {
+        "header_variant": "column",
+        "overlay_opacity": 10
+      }
+    },
+    "collection_tabbing_Rcc3J8": {
+      "type": "collection-tabbing",
+      "blocks": {
+        "collection_CAQTEA": {
+          "type": "collection",
+          "settings": {
+            "collection_ctm": "new-arrivals"
+          }
+        }
+      },
+      "block_order": [
+        "collection_CAQTEA"
+      ],
+      "name": "Collection Tabbing with Text",
+      "settings": {
+        "extra_class": "ctm-tabbing-flex ctm-blog-products",
+        "heading_ctm": "",
+        "ctm_subtitle": "EXPLORE NEW ARRIVALS",
+        "content_alignment": "with_product",
+        "tab_1": "",
+        "tab_2": "",
+        "desktop_slide": 4.5,
+        "button_label1": "SHOP NEW ARRIVAL",
+        "button_link1": "shopify://collections/new-arrivals",
+        "button_label2": "",
+        "button_link2": "",
+        "spring_slider_class": "",
+        "button_style": "button--ctm_wb_global_button",
+        "top_padding_desktop": 0,
+        "bottom_padding_desktop": 0,
+        "top_padding_mobile": 0,
+        "bottom_padding_mobile": 0,
+        "top_margin_desktop": 0,
+        "bottom_margin_desktop": 0,
+        "top_margin_mobile": 0,
+        "bottom_margin_mobile": 0
+      }
+    },
+    "featured_blog": {
+      "type": "featured-blog",
+      "settings": {
+        "blog_title": "Latest from the Newsroom",
+        "blog": "newsroom",
+        "post_limit": 4,
+        "show_image": true,
+        "show_tags": true,
+        "show_date": false,
+        "show_author": false,
+        "show_excerpt": false,
+        "show_btn": true,
+        "show_view_all": true,
+        "margin_top": 110,
+        "margin_bottom": 110,
+        "button_style": "button--ctm_wb_global_button"
+      }
+    },
+    "shogun-optimizer": {
+      "type": "shogun-optimizer",
+      "settings": {}
+    }
+  },
+  "order": [
+    "shogun-helper",
+    "main",
+    "collection_tabbing_Rcc3J8",
+    "featured_blog",
+    "shogun-optimizer"
+  ]
+}

@@ -1,0 +1,10 @@
+.image-section__list.slick-initialized {
+  display: block;
+}
+.image-carousel-section__placeholder path {
+  transform: scale(1.5);
+  transform-origin: 50%;
+}
+
+@media screen and (max-width: 576px) {
+}

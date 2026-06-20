@@ -1,0 +1,141 @@
+<div class="{{ section.settings.extra_class }} ctm_timeline_main pt-55 desktop:pt-80">
+  <div class="ctm_timeline_head text-center pb-40 lg:pb-55 small_desktop:pb-80 desktop:pb-100">
+    <h5 class="mb-10">{{ section.settings.upper_sub_head }}</h5>
+    <h3>{{ section.settings.heading }}</h3>
+  </div>
+  <div class="xl_container !pr-0 globle_scrollbar pb-55 desktop:pb-100 relative">
+    <div class="making_timline_slider  swiper timeline_slider !pr-55 ">
+      <div class="ctm_timeline_slider_list swiper-wrapper">
+        {% for block in section.blocks %}
+          <div class="ctm_timeline_slider swiper-slide !h-auto w-[33%] flex flex-col">
+            <div class="timeline_inner flex flex-col gap-[185px] small_desktop1:gap-[120px] lgscreen:gap-100 smscreen2:gap-80 smscreen:gap-[60px] h-full">
+              <div class="ctm_timeline_upper_block h-auto">
+                {% if block.settings.upper_image != blank %}
+                  <img
+                    class="w-full h-full object-cover"
+                    src="{{ block.settings.upper_image | image_url: width: 2500 }}"
+                    alt="{{ block.settings.upper_image.alt }}"
+                    loading="lazy"
+                    width="247"
+                    height="169"
+                  >
+                {% endif %}
+                {% if block.settings.lower_image %}
+                  <img
+                    class="w-full h-full object-cover"
+                    src="{{ block.settings.lower_image | image_url: width: 2500 }}"
+                    alt="{{ block.settings.lower_image.alt }}"
+                    loading="lazy"
+                    width="247"
+                    height="169"
+                  >
+                {% endif %}
+              </div>
+              {% comment %} <div class="timeline_dots"></div> {% endcomment %}
+              <div class="ctm_timeline_lower_block h-full flex flex-col items-center gap-[8px] text-center">
+                {% if block.settings.upper_year != blank %}
+                  <div class="ctm_our_year_upper">
+                    {% if block.settings.upper_year %}
+                      <p>{{ block.settings.upper_year }}</p>
+                    {% endif %}
+                  </div>
+                {% endif %}
+                {% if block.settings.upper_year_label != blank %}
+                  <div class="ctm_our_content">
+                    {% if block.settings.upper_year_label %}
+                      <p>{{ block.settings.upper_year_label }}</p>
+                    {% endif %}
+                  </div>
+                {% endif %}
+                {% if block.settings.lower_year != blank %}
+                  <div class="ctm_our_year_upper">
+                    {% if block.settings.lower_year %}
+                      <p>{{ block.settings.lower_year }}</p>
+                    {% endif %}
+                  </div>
+                {% endif %}
+                {% if block.settings.lower_year_label != blank %}
+                  <div class="ctm_our_content">
+                    {% if block.settings.lower_year_label %}
+                      <p>{{ block.settings.lower_year_label }}</p>
+                    {% endif %}
+                  </div>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+    <div class="ctm_scrollbar_block ctm_home_ingedientscro absolute left-0 right-0 bottom-0 z-1">
+      <div class="swiper-scrollbar ctm_scrollbar"></div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Timeline Slider",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "label": "Extra Class",
+      "id": "extra_class"
+    },
+    {
+      "type": "text",
+      "label": "Upper Sub Head",
+      "id": "upper_sub_head"
+    },
+    {
+      "type": "text",
+      "label": "Heading",
+      "id": "heading"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "timeline",
+      "name": "Timeline",
+      "settings": [
+        {
+          "type": "text",
+          "label": "Upper Year",
+          "id": "upper_year"
+        },
+        {
+          "type": "html",
+          "label": "Upper Year Label",
+          "id": "upper_year_label"
+        },
+        {
+          "type": "image_picker",
+          "label": "Upper Image",
+          "id": "upper_image"
+        },
+        {
+          "type": "text",
+          "label": "Lower Year",
+          "id": "lower_year"
+        },
+        {
+          "type": "html",
+          "label": "Lower Year Label",
+          "id": "lower_year_label"
+        },
+        {
+          "type": "image_picker",
+          "label": "Lower Image",
+          "id": "lower_image"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Timeline Slider"
+    }
+  ]
+}
+{% endschema %}

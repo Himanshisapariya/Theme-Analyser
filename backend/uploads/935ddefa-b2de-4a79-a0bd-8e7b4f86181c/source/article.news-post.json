@@ -1,0 +1,122 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-article",
+      "blocks": {
+        "title": {
+          "type": "article-header",
+          "settings": {
+            "blog_show_tags": false,
+            "blog_show_excerpt": false,
+            "blog_show_date": false,
+            "blog_show_author": true,
+            "image_height": "medium",
+            "show_share_facebook": true,
+            "show_share_twitter": true,
+            "show_share_pinterest": true,
+            "show_share_copy": true
+          }
+        },
+        "content": {
+          "type": "content",
+          "settings": {}
+        },
+        "article_footer": {
+          "type": "article-footer",
+          "settings": {
+            "blog_show_date": true,
+            "blog_show_author": true,
+            "show_share_facebook": true,
+            "show_share_twitter": true,
+            "show_share_pinterest": true,
+            "show_share_copy": true
+          }
+        }
+      },
+      "block_order": [
+        "title",
+        "content",
+        "article_footer"
+      ],
+      "custom_css": [
+        ".article-template__content {margin-top: 40px;}"
+      ],
+      "settings": {
+        "header_variant": "overlay",
+        "overlay_opacity": 30
+      }
+    },
+    "featured_blog": {
+      "type": "featured-blog",
+      "disabled": true,
+      "settings": {
+        "blog_title": "Latest News",
+        "blog": "news",
+        "post_limit": 3,
+        "show_image": true,
+        "show_tags": true,
+        "show_date": true,
+        "show_author": true,
+        "show_excerpt": false,
+        "show_btn": true,
+        "show_view_all": true,
+        "margin_top": 110,
+        "margin_bottom": 110,
+        "button_style": "button button--primary"
+      }
+    },
+    "collection_tabbing_hz6BWB": {
+      "type": "collection-tabbing",
+      "blocks": {
+        "collection_R6tcEb": {
+          "type": "collection",
+          "settings": {
+            "collection_ctm": "new-arrivals"
+          }
+        }
+      },
+      "block_order": [
+        "collection_R6tcEb"
+      ],
+      "name": "Collection Tabbing with Text",
+      "settings": {
+        "extra_class": "ctm-tabbing-flex ctm-blog-products gts",
+        "heading_ctm": "",
+        "ctm_subtitle": "EXPLORE NEW ARRIVALS",
+        "content_alignment": "with_product",
+        "tab_1": "",
+        "tab_2": "",
+        "desktop_slide": 4,
+        "button_label1": "SHOP NEW ARRIVAL",
+        "button_link1": "shopify://collections/new-arrivals",
+        "button_label2": "",
+        "button_link2": "",
+        "spring_slider_class": "",
+        "button_style": "button--ctm_global_button",
+        "top_padding_desktop": 0,
+        "bottom_padding_desktop": 0,
+        "top_padding_mobile": 0,
+        "bottom_padding_mobile": 0,
+        "top_margin_desktop": 0,
+        "bottom_margin_desktop": 0,
+        "top_margin_mobile": 0,
+        "bottom_margin_mobile": 0,
+        "show_arrows": true
+      }
+    }
+  },
+  "order": [
+    "main",
+    "featured_blog",
+    "collection_tabbing_hz6BWB"
+  ]
+}

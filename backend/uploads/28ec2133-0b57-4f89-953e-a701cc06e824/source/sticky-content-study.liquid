@@ -1,0 +1,212 @@
+<div id="{{ section.settings.main_id }}" class="{{ section.settings.extra_class }} ctm-sticy-study-txt-image-main">
+  <div class="container_fluid">
+    <div class="flex items-start max-mdscreen2:flex-col gap-50">
+      <div class="ctm-sticky-txt-main w-1/2 max-mdscreen2:w-full max-smscreen:pl-16">
+        {% if section.settings.blue_heading != blank %}
+          <h3 class="text-primary-blue max-mdscreen2:text-24 max-xsscreen2:text-[22px] max-mdscreen2:leading-30 pt-30">
+            {{ section.settings.blue_heading }}
+            <div class="ctm-study-tooltip tooltip-wrapper">
+              {% render 'info-bubble' %}
+              <span class="tooltip-text">{{ section.settings.bubble_txt }}</span>
+            </div>
+          </h3>
+        {% endif %}
+        <div class="max-w-[570px] max-mdscreen2:max-w-full pl-16">
+          {% if section.settings.text != blank %}
+            <p class="pt-30 text-18 font-medium leading-100p text-primary-black pb-20">{{ section.settings.text }}</p>
+          {% endif %}
+
+          {% if section.settings.bullet_text != blank %}
+            {{ section.settings.bullet_text }}
+          {% endif %}
+
+          {% if section.settings.ctm_bullet_text != blank %}
+            {{ section.settings.ctm_bullet_text }}
+          {% endif %}
+        </div>
+      </div>
+      <div class="ctm-graph-txt-main w-1/2 max-mdscreen2:w-full">
+        {% for block in section.blocks %}
+          <div class="ctm-graph-head-main w-full mx-auto">
+            <div class="max-w-[600px] max-mdscreen2:max-w-full mx-auto max-smscreen:pl-16">
+              {% if block.settings.black_head != blank %}
+                <h3 class="pt-30 max-mdscreen:text-24 max-mdscreen:leading-30 ctm-sticky-heading">{{ block.settings.black_head }}</h3>
+              {% endif %}
+
+              {% if block.settings.description != blank %}
+                <p class="pb-[37px] pt-10 leading-24">{{ block.settings.description }}</p>
+              {% endif %}
+
+              {% if block.settings.graph_image != blank %}
+                <img
+                  class="pb-[64px] w-full"
+                  src="{{ block.settings.graph_image | image_url }}"
+                  width="527"
+                  height="482"
+                  alt="graph-img"
+                >
+              {% endif %}
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .ctm-sticy-study-txt-image-main {
+    position: relative;
+  }
+  
+  .ctm-sticky-txt-main {
+    position: sticky;
+    top: 20px;
+    align-self: flex-start;
+    height: fit-content;
+    padding-bottom: 20px;
+  }
+  
+  /* Disable sticky on mobile */
+  @media (max-width: 989px) {
+    .ctm-sticky-txt-main {
+      position: relative;
+      top: auto;
+    }
+  }
+  .tooltip-wrapper {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    cursor: pointer;
+  }
+  
+  .tooltip-text {
+    visibility: hidden;
+    opacity: 0;
+    background-color: #000;
+    color: #fff;
+    font-size: 12px;
+    line-height: 1.4;
+    text-align: left;
+    padding: 10px 12px;
+    border-radius: 5px;
+    position: absolute;
+    z-index: 1000;
+    bottom: auto;
+    top: 125%; /* Show below the element */
+    left: 50%;
+    transform: translateX(-50%);
+    width: max-content;
+    max-width: 150px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    white-space: normal;
+    word-wrap: break-word;
+    font-weight: 400;
+    text-transform: lowercase;
+  }
+  
+  /* Show tooltip on hover */
+  .tooltip-wrapper:hover .tooltip-text,
+  .tooltip-wrapper:focus .tooltip-text {
+    visibility: visible;
+    opacity: 1;
+  }
+  
+  /* Arrow (Optional) */
+  .tooltip-text::after {
+    content: '';
+    position: absolute;
+    top: -6px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 6px;
+    border-style: solid;
+    border-color: transparent transparent #000 transparent;
+  }
+  
+  /* Make tooltip responsive on small devices */
+  @media (max-width: 768px) {
+    .tooltip-text {
+      left: -30px;
+      max-width: 150px;
+      font-size: 13px;
+      padding: 8px 10px;
+      font-weight: 300;
+    }
+  }
+</style>
+
+
+{% schema %}
+{
+  "name": "Text with Image Scroll",
+  "class": "ctm-txt-sticky-scroll-main",
+  "settings": [
+    {
+      "type": "text",
+      "label": "Section ID",
+      "id": "main_id"
+    },
+    {
+      "type": "text",
+      "label": "Extra Class",
+      "id": "extra_class"
+    },
+    {
+      "type": "text",
+      "label": "Blue Heading",
+      "id": "blue_heading"
+    },
+    {
+      "type": "html",
+      "label": "Text",
+      "id": "text"
+    },
+    {
+      "type": "richtext",
+      "label": "Bullet Text",
+      "id": "bullet_text"
+    },
+    {
+      "type": "html",
+      "label": "CTM Bullet Text",
+      "id": "ctm_bullet_text"
+    },
+    {
+      "type": "html",
+      "label": "Info Bubble Text",
+      "id": "bubble_txt"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "text_with_graph_image",
+      "name": "Text with Graph Image",
+      "settings": [
+        {
+          "type": "text",
+          "label": "Black Head",
+          "id": "black_head"
+        },
+        {
+          "type": "html",
+          "label": "Description",
+          "id": "description"
+        },
+        {
+          "type": "image_picker",
+          "label": "Graph Image",
+          "id": "graph_image"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Text with Image Scroll"
+    }
+  ]
+}
+{% endschema %}

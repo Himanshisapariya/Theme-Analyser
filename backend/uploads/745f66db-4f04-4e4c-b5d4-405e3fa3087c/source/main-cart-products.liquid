@@ -1,0 +1,144 @@
+<cart-items class="{% if cart == empty %} is-empty{% endif %} blocks section-{{ section.id }}-padding">
+  <div class="page-header ">
+    <div class="page-header__inner ">
+      <h2 class="main-page-title page-title title--page">
+        {{ 'sections.cart.title_first' | t }}
+        <em>{{ 'sections.cart.title_last' | t }}</em>
+      </h2>
+      <a
+        href="{{ routes.all_products_collection_url }}"
+        class="button--with-underline"
+      >
+        {{ 'general.continue_shopping' | t }}
+      </a>
+    </div>
+  </div>
+
+  <div class="cart__warnings">
+    {% render 'icon-account-order-none' %}
+    <p class="cart__empty-text">{{ 'general.cart.empty_cart' | t }}</p>
+    {% if settings.empty_cart_button_url != blank %}
+      <a
+        href="{{ settings.empty_cart_button_url }}"
+        class="button--ctm_wb_global_button"
+      >
+        <span>
+          {{ settings.empty_cart_button_text | default: 'Shop Now' }}
+        </span>
+      </a>
+    {% endif %}
+  </div>
+
+  <form
+    action="{{ routes.cart_url }}"
+    class="cart__contents critical-hidden"
+    method="post"
+    id="cart"
+  >
+    <div id="main-cart-items" data-id="{{ section.id }}">
+      <div class="js-contents">
+        {%- if cart != empty -%}
+          <div class="cart-items gwp-container">
+            <h3>
+              MY BAG <span>[{{ cart.item_count }}]</span>
+            </h3>
+
+            {%- for item in cart.items -%}
+              <div class="cart-item" id="CartItem-{{ item.index | plus: 1 }}">
+                <!-- LEFT: IMAGE -->
+                <div class="cart-item__image">
+                  {% if item.image %}
+                    <img
+                      src="{{ item.image | img_url: '150x' }}"
+                      alt="{{ item.image.alt | escape }}"
+                      loading="lazy"
+                    >
+                  {% endif %}
+                </div>
+
+                <!-- RIGHT: CONTENT -->
+                <div class="cart-item__content">
+                  <!-- TOP ROW -->
+                  <div class="cart-item__top">
+                    <div class="cart-item__info">
+                      <a href="{{ item.product.url }}" class="cart-item__name">
+                        {{ item.product.title }}
+                      </a>
+
+                      {% unless item.product.has_only_default_variant %}
+                        <div class="cart-item__variant">
+                          {{ item.variant.title }}
+                        </div>
+                      {% endunless %}
+                    </div>
+
+                    <div class="cart-item__price">
+                      {% if item.original_line_price != item.final_line_price %}
+                        <span class="price">{{ item.final_line_price | money }}</span>
+                        <s class="old-price">{{ item.original_line_price | money }}</s>
+                      {% else %}
+                        <span class="price">{{ item.original_line_price | money }}</span>
+                      {% endif %}
+                    </div>
+                  </div>
+
+                  <!-- BOTTOM ROW -->
+                  <div class="cart-item__bottom">
+                    <div class="cart-item__quantity">
+                    {% unless item.product.tags contains 'remove-buy-buttons' %}
+                      <quantity-input class="quantity">
+                        <button class="quantity__button" type="button" name="minus">
+                          {% render 'icon-minus' %}
+                        </button>
+
+                        <input
+                          type="number"
+                          class="quantity__input"
+                          name="updates[]"
+                          value="{{ item.quantity }}"
+                          min="0"
+                          data-index="{{ item.index | plus: 1 }}"
+                        >
+
+                        <button class="quantity__button" type="button" name="plus">
+                          {% render 'icon-plus' %}
+                        </button>
+                      </quantity-input>
+                    {%  endunless %}
+                    </div>
+                    <div class="cart-item__remove">
+                      <cart-remove-button data-index="{{ item.index | plus: 1 }}">
+                        <div class="remove-button-wrapper">
+                          <a href="{{ item.url_to_remove }}" class="remove-text">REMOVE</a>
+                          <div class="remove-loader hidden">
+                            <div class="spinner"></div>
+                          </div>
+                        </div>
+                      </cart-remove-button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            {%- endfor -%}
+          </div>
+        {%- endif -%}
+      </div>
+    </div>
+
+    <p
+      class="visually-hidden"
+      id="cart-live-region-text"
+      aria-live="polite"
+      role="status"
+    ></p>
+    <p
+      class="visually-hidden"
+      id="shopping-cart-line-item-status"
+      aria-live="polite"
+      aria-hidden="true"
+      role="status"
+    >
+      {{ 'accessibility.loading' | t }}
+    </p>
+  </form>
+</cart-items>

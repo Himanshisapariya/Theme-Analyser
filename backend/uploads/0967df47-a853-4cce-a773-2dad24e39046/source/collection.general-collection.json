@@ -1,0 +1,157 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "shogun-helper": {
+      "type": "shogun-helper",
+      "settings": {}
+    },
+    "banner": {
+      "type": "main-collection-banner",
+      "disabled": true,
+      "custom_css": [
+        ".collection-hero__text-wrapper {flex-direction: column-reverse; margin-bottom: 20px;}",
+        "h2 {text-size: 21px;}"
+      ],
+      "settings": {
+        "header_color_scheme": "light",
+        "add_word": "",
+        "show_word": false,
+        "show_collection_description": false,
+        "show_collection_image": false,
+        "overlay_enable": false,
+        "overlay_opacity": 15
+      }
+    },
+    "shogun-above": {
+      "type": "shogun-above",
+      "disabled": true,
+      "settings": {}
+    },
+    "browse_first_8HQCbQ": {
+      "type": "browse-first",
+      "name": "Best sellers to browse first",
+      "settings": {
+        "extra_class": ""
+      }
+    },
+    "back_to_school_banner_BmxcUq": {
+      "type": "back-to-school-banner",
+      "name": "Back To School Banner",
+      "settings": {
+        "extra_class": "ctm-outlet-banner",
+        "desktop_image": "shopify://shop_images/Untitled_design_3d88e32e-2c40-4083-b662-0ddba5c97c69.jpg",
+        "mobile_image": "shopify://shop_images/MOBILE_BANNER_DIMS_1.jpg",
+        "heading": "THE <br>\nOUTLET",
+        "subheading": "Limited, loved, gone. <br>\nUp to 70% off. All sales final.",
+        "subheadline": "",
+        "button_text": "",
+        "button_url": "",
+        "second_button_text": "",
+        "second_button_url": "",
+        "additional_info": "",
+        "button_style": "primary"
+      }
+    },
+    "product-grid": {
+      "type": "main-collection-product-grid",
+      "custom_css": [
+        ".card__title {font-weight: bold;}",
+        ".collection-product-list {row-gap: 4rem;}",
+        ".badge-discount {display: hidden;}"
+      ],
+      "settings": {
+        "show_gender_filter": true,
+        "collection_product_title_invisible": "",
+        "product_lists": "{{ collection.products }}",
+        "products_per_page": 21,
+        "columns_mobile": "2",
+        "image_ratio": "portrait",
+        "image_fit": "contain",
+        "show_secondary_image": false,
+        "show_vendor": false,
+        "show_desc": false,
+        "show_sku": false,
+        "quickview_show": true,
+        "enable_filtering": true,
+        "enable_sorting": true,
+        "image_filter_ratio": "4/5",
+        "image_filter_fit": "cover",
+        "image_filter_columns": 5,
+        "infocard_heading_font_desktop": 18,
+        "infocard_heading_font_mobile": 16,
+        "infocard_subheading_font_desktop": 14,
+        "infocard_subheading_font_mobile": 12,
+        "product_title_font_desktop": 14,
+        "product_title_font_mobile": 12,
+        "infocard_subheading_margin_top": 2,
+        "infocard_subheading_margin_bottom": 2,
+        "infocard_subheading_color": "",
+        "tab_font_size_desktop": 16,
+        "tab_font_size_mobile": 12,
+        "gender_font_size_desktop": 16,
+        "gender_font_size_mobile": 12,
+        "heading_font_size_desktop": 44,
+        "heading_font_size_mobile": 30,
+        "heading_font_weight": 500,
+        "description_font_size_desktop": 16,
+        "description_font_size_mobile": 13,
+        "description_line_height": 1.6
+      }
+    },
+    "shogun-below": {
+      "type": "shogun-below",
+      "settings": {}
+    },
+    "collection_seo_summary_cjEabd": {
+      "type": "collection-seo-summary",
+      "name": "Collection SEO Summary",
+      "settings": {}
+    },
+    "faq_accorddion_zq8DRe": {
+      "type": "faq-accorddion",
+      "blocks": {
+        "faq_MAPVXK": {
+          "type": "faq",
+          "repeater": "{{ collection.metafields.custom.collection_page_summary.value.collection_faqs.value }}",
+          "settings": {
+            "question": "<p><strong>{{ block.repeater.question.value }}</strong></p>",
+            "answer": "",
+            "faq_answer": "{{ block.repeater.answer | metafield_tag }}"
+          }
+        }
+      },
+      "block_order": [
+        "faq_MAPVXK"
+      ],
+      "name": "FAQ Accordion",
+      "settings": {
+        "title": "Frequently Asked Quesions",
+        "desc": ""
+      }
+    },
+    "shogun-optimizer": {
+      "type": "shogun-optimizer",
+      "settings": {}
+    }
+  },
+  "order": [
+    "shogun-helper",
+    "banner",
+    "shogun-above",
+    "browse_first_8HQCbQ",
+    "back_to_school_banner_BmxcUq",
+    "product-grid",
+    "shogun-below",
+    "collection_seo_summary_cjEabd",
+    "faq_accorddion_zq8DRe",
+    "shogun-optimizer"
+  ]
+}

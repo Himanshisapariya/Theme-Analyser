@@ -1,0 +1,344 @@
+{%- liquid
+  assign section_id = 'hero-split-banner-' | append: section.id
+-%}
+
+<section
+  id="{{ section_id }}"
+  class="hero-split-banner {{ section.settings.extra_class }}"
+  aria-label="{{ section.settings.heading | strip_html | escape }}"
+>
+  <div class="hero-split-banner__media">
+    {%- if section.settings.desktop_image != blank -%}
+      <img
+        class="hero-split-banner__img hero-split-banner__img--desktop"
+        src="{{ section.settings.desktop_image | image_url: width: 3840 }}"
+        alt="{{ section.settings.desktop_image.alt | escape }}"
+        width="{{ section.settings.desktop_image.width }}"
+        height="{{ section.settings.desktop_image.height }}"
+        loading="eager"
+        fetchpriority="high"
+      >
+    {%- endif -%}
+    {%- if section.settings.mobile_image != blank -%}
+      <img
+        class="hero-split-banner__img hero-split-banner__img--mobile"
+        src="{{ section.settings.mobile_image | image_url: width: 1200 }}"
+        alt="{{ section.settings.mobile_image.alt | escape }}"
+        width="{{ section.settings.mobile_image.width }}"
+        height="{{ section.settings.mobile_image.height }}"
+        loading="eager"
+        fetchpriority="high"
+      >
+    {%- elsif section.settings.desktop_image != blank -%}
+      <img
+        class="hero-split-banner__img hero-split-banner__img--mobile"
+        src="{{ section.settings.desktop_image | image_url: width: 1200 }}"
+        alt="{{ section.settings.desktop_image.alt | escape }}"
+        width="{{ section.settings.desktop_image.width }}"
+        height="{{ section.settings.desktop_image.height }}"
+        loading="eager"
+        fetchpriority="high"
+      >
+    {%- endif -%}
+  </div>
+
+  <div class="hero-split-banner__content hero-split-banner__content--{{ section.settings.desktop_layout }}">
+    {%- if section.settings.heading != blank -%}
+      <div class="hero-split-banner__heading">
+        {{ section.settings.heading }}
+      </div>
+    {%- endif -%}
+
+    {%- if section.settings.subheading != blank -%}
+      <div class="hero-split-banner__subheading">
+        {{ section.settings.subheading }}
+      </div>
+    {%- endif -%}
+  </div>
+</section>
+
+{%- style -%}
+  #{{ section_id }} {
+    --content-max-width: {{ section.settings.content_max_width }}px;
+    --img-fit: {{ section.settings.image_fit }};
+    height: {{ section.settings.height_large_desktop }}px;
+  }
+
+  @media screen and (max-width: 1679px) {
+    #{{ section_id }} {
+      height: {{ section.settings.height_small_desktop }}px;
+    }
+  }
+
+  @media screen and (max-width: 990px) {
+    #{{ section_id }} {
+      height: {{ section.settings.height_tablet }}px;
+    }
+  }
+
+  @media screen and (max-width: 767px) {
+    #{{ section_id }} {
+      height: {{ section.settings.height_mobile }}px;
+    }
+  }
+  
+  .hero-split-banner__subheading br{
+    display: none;
+  }
+{%- endstyle -%}
+
+{% stylesheet %}
+  .hero-split-banner {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+  }
+
+  /* ── Image fills banner exactly matching aspect ratio — no crop ── */
+  .hero-split-banner__media {
+    position: absolute;
+    inset: 0;
+  }
+
+  .hero-split-banner__img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: var(--img-fit, cover);
+    object-position: center;
+  }
+
+  .hero-split-banner__img--mobile {
+    display: none;
+  }
+
+  @media screen and (max-width: 767px) {
+    .hero-split-banner__img--desktop {
+      display: none;
+    }
+    .hero-split-banner__img--mobile {
+      display: block;
+    }
+  }
+
+  /* ── Content overlay — base ── */
+  .hero-split-banner__content {
+    position: absolute;
+    inset: 0;
+    padding: 4rem 5rem;
+    max-width: var(--content-max-width, 100%);
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  /* ── Split layout: heading center-left, subheading bottom-right ── */
+  .hero-split-banner__content--split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+  }
+
+  .hero-split-banner__content--split .hero-split-banner__heading {
+    align-self: center;
+  }
+
+  .hero-split-banner__content--split .hero-split-banner__subheading {
+    align-self: end;
+    justify-self: end;
+    text-align: left;
+  }
+
+  /* ── Left layout: both stacked left, heading center, subheading bottom ── */
+  .hero-split-banner__content--left {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  /* ── Right layout: both stacked right ── */
+  .hero-split-banner__content--right {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-left: auto;
+  }
+
+  .hero-split-banner__content--right .hero-split-banner__subheading {
+    margin-top: auto;
+  }
+
+  .hero-split-banner__subheading {
+    max-width: 60%;
+  }
+
+  /* ── Mobile: always column, heading center, subheading bottom ── */
+  @media screen and (max-width: 768px) {
+    .hero-split-banner__content,
+    .hero-split-banner__content--split,
+    .hero-split-banner__content--left,
+    .hero-split-banner__content--right {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      align-items: flex-start;
+      padding: 3rem 2rem;
+      max-width: 100%;
+      margin-left: 0;
+    }
+
+    .hero-split-banner__content--split .hero-split-banner__heading,
+    .hero-split-banner__content--left .hero-split-banner__heading,
+    .hero-split-banner__content--right .hero-split-banner__heading {
+      align-self: auto;
+      justify-self: auto;
+    }
+
+    .hero-split-banner__content--split .hero-split-banner__subheading,
+    .hero-split-banner__content--left .hero-split-banner__subheading,
+    .hero-split-banner__content--right .hero-split-banner__subheading {
+      max-width: 90%;
+      align-self: auto;
+      justify-self: auto;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Hero Split Banner",
+  "class": "hero-split-banner-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "extra_class",
+      "label": "Extra Class"
+    },
+    {
+      "type": "header",
+      "content": "Images"
+    },
+    {
+      "type": "image_picker",
+      "id": "desktop_image",
+      "label": "Desktop Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "mobile_image",
+      "label": "Mobile Image (optional, falls back to desktop)"
+    },
+    {
+      "type": "select",
+      "id": "image_fit",
+      "label": "Image Fit",
+      "options": [
+        { "value": "cover", "label": "Cover (crop to fill)" },
+        { "value": "contain", "label": "Contain (no crop, letterbox)" },
+        { "value": "fill", "label": "Fill (stretch to fit)" }
+      ],
+      "default": "cover"
+    },
+    {
+      "type": "header",
+      "content": "Banner Height"
+    },
+    {
+      "type": "range",
+      "id": "height_large_desktop",
+      "label": "Large Desktop (≥1680px)",
+      "min": 200,
+      "max": 1200,
+      "step": 10,
+      "default": 700,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "height_small_desktop",
+      "label": "Small Desktop (<1680px)",
+      "min": 200,
+      "max": 1000,
+      "step": 10,
+      "default": 600,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "height_tablet",
+      "label": "Tablet (≤990px)",
+      "min": 200,
+      "max": 900,
+      "step": 10,
+      "default": 500,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "height_mobile",
+      "label": "Mobile (≤767px)",
+      "min": 150,
+      "max": 800,
+      "step": 10,
+      "default": 400,
+      "unit": "px"
+    },
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "html",
+      "id": "heading",
+      "label": "Heading (HTML)"
+    },
+    {
+      "type": "html",
+      "id": "subheading",
+      "label": "Subheading"
+    },
+    {
+      "type": "range",
+      "id": "content_max_width",
+      "label": "Content Max Width",
+      "min": 600,
+      "max": 2600,
+      "step": 20,
+      "default": 1600,
+      "unit": "px"
+    },
+    {
+      "type": "header",
+      "content": "Desktop Layout"
+    },
+    {
+      "type": "select",
+      "id": "desktop_layout",
+      "label": "Desktop Content Layout",
+      "options": [
+        {
+          "value": "split",
+          "label": "Split — Heading, content"
+        },
+        {
+          "value": "left",
+          "label": "Left — Both stacked left"
+        },
+        {
+          "value": "right",
+          "label": "Right — Both stacked right"
+        }
+      ],
+      "default": "split"
+    }
+  ],
+  "blocks": [],
+  "presets": [
+    {
+      "name": "Hero Split Banner"
+    }
+  ]
+}
+{% endschema %}

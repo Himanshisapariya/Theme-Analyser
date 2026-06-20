@@ -1,0 +1,157 @@
+{% assign selected_variant_color = product.selected_or_first_available_variant.title | split: " / " | first %}
+{% assign selected_variant_size = product.selected_or_first_available_variant.title | split: " / " | last %}
+{%- if block.settings.picker_type == 'button' or picker_type  == 'button' -%}
+	<variant-radios
+		id="variant-radios-{{ section.id }}"
+		class="
+			no-js-hidden 	{% unless product.has_only_default_variant %}
+			borders ctm-variant-selector{% endunless %}
+		"
+		data-section="{{ section.id }}"
+		data-url="{{ product.url }}"
+		{% if update_url == false %}
+			data-update-url="false"
+		{% endif %}
+		{{ block.shopify_attributes }}
+	>
+		{%- unless product.has_only_default_variant -%}
+			{%- for option in product.options_with_values -%}
+				  {%- if forloop.index == 2 -%}
+					<div class="fieldset-with-button-bg">
+						<div class="ctm_sizechart_btn">
+							<a href="#ctm_size_chart" class="ctm_sizechart_btn_txt">Size Chart</a>
+							{% if product.type == 'LEGGINGS' %}
+							<a href="https://www.xx-xyathletics.com/pages/fit-guide" class="ctm_sizeguide_btn_txt">Fit Guide</a>
+							{% endif %}
+						</div>
+						<div class="ctm_shop_this_color">
+							<a
+								href=""
+								class="ctm-shop-this-color-link-test"
+								data-color-map="{{ settings.shop_this_color_map | escape }}"
+							>Shop this color</a>
+						</div>
+  				{%- endif -%}
+				<fieldset
+					class="js product-form__input product-form__input--radios"
+					id="SingleOptionSelector-{{ forloop.index0 }}"
+				>
+					{% comment %} <legend class="product-form__group-name option-title-{{forloop.index}} {{product.selected_or_first_available_variant.title}}">{{ option.name }}: <span class="product-form-color-value">{%- for value in option.values -%} {%- if value == selected_variant_color or value == selected_variant_size -%}  {{- value -}} {%- endif -%} {%- endfor -%}</span></legend> {% endcomment %}
+					<div class="form__label product-form__controls-group {% if forloop.index == 2 %} ctm_size_option{% endif %}">
+						 {% if template.name == 'template-product' %}
+						{% render 'product-variant-options',
+							product: product,
+							option: option,
+							block: block,
+							picker_type: 'button'
+						%}
+					{% else %}
+						{% render 'product-variant-options-pdp',
+							product: product,
+							option: option,
+							block: block,
+							picker_type: 'button'
+						%}
+					{% endif %}
+					</div>
+				</fieldset>
+				{% if product.metafields.custom.pdp_fit_text != blank %}
+					<div class="ctm_fit_txt ctm-fit-{{ forloop.index }}">
+						<p>{{ product.metafields.custom.pdp_fit_text | metafield_tag }}</p>
+					</div>
+				{% endif %}
+				{%- if forloop.index == 2 -%}</div>{% endif %}
+			{%- endfor -%}
+		{% endunless %}
+
+		<script type="application/json">
+			{{ product.variants | json }}
+		</script>
+	</variant-radios>
+{%- else -%}
+	<variant-selects
+		id="variant-selects-{{ section.id }}"
+		class="
+			no-js-hidden {% unless product.has_only_default_variant %}
+			borders{% endunless %}
+		"
+		data-section="{{ section.id }}"
+		data-url="{{ product.url }}"
+		{{ block.shopify_attributes }}
+	>
+		{%- unless product.has_only_default_variant -%}
+			{%- for option in product.options_with_values -%}
+				<div class="product-form__input product-form__input--dropdown">
+					<label
+						class="form__label"
+						for="Option-{{ section.id }}-{{ forloop.index0 }}"
+					>
+						{{ option.name }}
+					</label>
+					<div class="select about__more-link">
+						<select
+							id="Option-{{ section.id }}-{{ forloop.index0 }}"
+							class="select__select"
+							name="options[{{ option.name | escape }}]"
+							form="{{ product_form_id }}"
+						>
+							{%- for value in option.values -%}
+								<option
+									value="{{ value | escape }}"
+									{% if option.selected_value == value %}
+										selected="selected"
+									{% endif %}
+									{% if product.variant == false %}
+										disabled
+									{% endif %}
+								>
+									{{ value }}
+								</option>
+							{%- endfor -%}
+						</select>
+						{% render 'icon-button-arrow' %}
+					</div>
+				</div>
+			{%- endfor -%}
+		{% endunless %}
+
+		<script type="application/json">
+			{{ product.variants | json }}
+		</script>
+	</variant-selects>
+{%- endif -%}
+
+<noscript class="product-form__noscript-wrapper-{{ section.id }}">
+	<div class="product-form__input{% if product.has_only_default_variant %} hidden{% endif %}">
+		<label class="form__label" for="Variants-{{ section.id }}">
+			{{- 'products.product.product_variants' | t -}}
+		</label>
+		<div class="select">
+			<select
+				name="id"
+				id="Variants-{{ section.id }}"
+				class="select__select"
+				form="{{ product_form_id }}"
+			>
+				{%- for variant in product.variants -%}
+					<option
+						{% if variant == product.selected_or_first_available_variant %}
+							selected="selected"
+						{% endif %}
+						{% if variant.available == false %}
+							disabled
+						{% endif %}
+						value="{{ variant.id }}"
+					>
+						{{ variant.title }}
+						- {{ variant.price | money | strip_html }}
+						{%- if variant.available == false %}
+							- {{ 'products.product.sold_out' | t -}}
+						{%- endif %}
+					</option>
+				{%- endfor -%}
+			</select>
+			{% render 'icon-button-arrow' %}
+		</div>
+	</div>
+</noscript>

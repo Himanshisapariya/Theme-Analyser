@@ -1,0 +1,84 @@
+<div class="{{ section.settings.extra_class }} main-video-hero-banner ">
+  <div class="ctm-hero-inner relative max-mdscreen2:flex flex-col-reverse max-mdscreen2:bg-[#2fa7d6]">
+    <div class="ctm-hero-video mdscreen2:after:hidden after:w-full after:bg-linear-(--hero-blue-gradient-2) max-mdscreen2:after:h-[200px] max-mdscreen6:after:h-[150px] after:absolute after:top-0 after:left-0 relative max-mdscreen2:-mt-100">
+    {% if section.settings.video != blank %}
+      {{ section.settings.video | video_tag: loop: true, controls: false, muted: true, autoplay: true, class: 'hero_video-video ctm-desktop-hero-video object-cover w-full h-full mdscreen2:!block hidden min-mdscreen2:max-xl:h-[720px]' }}
+      {{ section.settings.mobile-video | video_tag: loop: true, controls: false, muted: true, autoplay: true, class: 'hero_video-video ctm-mobile-hero-video object-cover w-full h-full mdscreen2:hidden block max-mdscreen2:mt-10' }}
+    {% endif %}
+    </div>
+    <div class="ctm-video-text mdscreen2:absolute top-2/4 mdscreen2:-translate-y-2/4 left-0 xl:!pl-[72px] mdscreen2:!pl-50 mdscreen2:z-[1] z-[2] mdscreen2:max-w-[550px] max-w-full text-center max-mdscreen2:pt-[160px] mx-auto max-mdscreen2:bg-linear-(--hero-blue-gradient) w-full">
+      <div class="flex items-center flex-col max-mdscreen2:!px-[15px]">
+      {% if section.settings.heading != blank %}
+        <h1 class="h2 text-white text-40 leading-48 max-mdscreen2:text-32 max-mdscreen2:leading-[42px]">{{ section.settings.heading }}</h1>
+      {% endif %}
+      {% if section.settings.description %}
+        <div class="flex flex-col xl:gap-14 mdscreen2:gap-5 gap-12">
+          {{ section.settings.description }}
+        </div>
+      {% endif %}
+      {% if section.settings.button_text %}
+        <a href="{{ section.settings.button_url }}" class="ctm-button ghost-white-button xl:min-w-[291px] min-w-[236px] max-mdscreen2:min-h-60">{{ section.settings.button_text }}</a>
+      {% endif %}
+      </div>
+    </div>
+      {% if section.settings.bottom_text %}
+    <div class="ctm-bottom-text absolute bottom-80 right-80">
+      <p class="text-white body-18-500">{{ section.settings.bottom_text }}</p>
+    </div>
+    {% endif %}
+  </div>
+</div>
+{% schema %} 
+{
+  "name": "Video Banner",
+  "class": "ctm-video-banner",
+  "settings": [
+    {
+      "type": "text",
+      "label": "Extra Class",
+      "id": "extra_class"
+    },
+    {
+      "type": "html",
+      "label": "Heading",
+      "id": "heading"
+    },
+    {
+      "type": "html",
+      "label": "Description",
+      "id": "description"
+    },
+    {
+      "type": "text",
+      "label": "Bottom Text",
+      "id": "bottom_text"
+    },
+    {
+      "type": "text",
+      "label": "Button Text",
+      "id": "button_text"
+    },
+    {
+      "type": "url",
+      "label": "Button URL",
+      "id": "button_url"
+    },
+    {
+      "type": "video",
+      "label": "Desktop Video",
+      "id": "video"
+    },
+    {
+      "type": "video",
+      "label": "Mobile Video",
+      "id": "mobile-video"
+    }
+  ],
+  "blocks": [],
+  "presets": [
+    {
+      "name": "Video Banner"
+    }
+  ]
+}
+{% endschema %}

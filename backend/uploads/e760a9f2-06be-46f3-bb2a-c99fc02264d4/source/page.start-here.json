@@ -1,0 +1,484 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "shogun-helper": {
+      "type": "shogun-helper",
+      "disabled": true,
+      "settings": {}
+    },
+    "pages": {
+      "type": "main-page",
+      "disabled": true,
+      "custom_css": [
+        ".container {padding-top: 50px; padding-bottom: 50px;}",
+        "h1 {text-align: center;}"
+      ],
+      "settings": {
+        "extra_class": ""
+      }
+    },
+    "shogun-optimizer": {
+      "type": "shogun-optimizer",
+      "disabled": true,
+      "settings": {}
+    },
+    "slideshow_AEVYMz": {
+      "type": "slideshow",
+      "blocks": {
+        "slide_YTrWPp": {
+          "type": "slide",
+          "settings": {
+            "extra_class": "women-day anniversary-also anniversary_ctm champion_ctm stand_fro_women_slide",
+            "color_scheme": "dark",
+            "image": "shopify://shop_images/DESKTOP_BANNER_DIMS_1_ca52426c-b9c7-41ed-9600-0e0ab1c0cb22.jpg",
+            "image2": "shopify://shop_images/MOBILE_BANNER_DIMS_2880d977-6a89-454c-8c44-7606e58f7c42.jpg",
+            "image_size": "adapt",
+            "caption": "",
+            "heading": "",
+            "subtitle": "",
+            "additional_information": "",
+            "show_review_rating": false,
+            "review_count": 5,
+            "text_content_alignment": "top-left",
+            "text_alignment": "left",
+            "max_width": 1200,
+            "button_label1": "",
+            "button_link1": "",
+            "button_label2": "",
+            "button_link2": "",
+            "button_style": "primary",
+            "underline_color": "#000000"
+          }
+        }
+      },
+      "block_order": [
+        "slide_YTrWPp"
+      ],
+      "name": "t:sections.slideshow.presets.name",
+      "settings": {
+        "extra_class": "",
+        "block_size": "full-screen",
+        "overlay_enable": false,
+        "overlay_opacity": 20,
+        "slideshow_speed": 1.1,
+        "slideshow_delay": 3,
+        "autoplay": true,
+        "hover_autoplay_stop": true,
+        "navigation": true,
+        "pagination": true,
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "top_padding_desktop": 0,
+        "bottom_padding_desktop": 0,
+        "top_padding_mobile": 0,
+        "bottom_padding_mobile": 0,
+        "top_margin_desktop": 0,
+        "bottom_margin_desktop": 0,
+        "top_margin_mobile": 0,
+        "bottom_margin_mobile": 0
+      }
+    },
+    "rich_text_Nzr8ri": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_8tiigN": {
+          "type": "heading",
+          "settings": {
+            "heading": "<h1>NEW TO XX-XY ATHLETICS?</h1>",
+            "heading_size": "medium"
+          }
+        }
+      },
+      "block_order": [
+        "heading_8tiigN"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "color_scheme": "background-1",
+        "full_width": true,
+        "padding_top": 20,
+        "padding_bottom": 0,
+        "margin_top": 20,
+        "margin_bottom": 20,
+        "spring_shop_text": ""
+      }
+    },
+    "ctm_tabbing_collection_zYzYyy": {
+      "type": "ctm_tabbing_collection",
+      "blocks": {
+        "collection_GKNffA": {
+          "type": "collection",
+          "settings": {
+            "collection_ctm": "graphic-tees-xx",
+            "enable_img": true,
+            "collection_image": "shopify://shop_images/Riley_Gaines_2_1_1_2_1.png"
+          }
+        },
+        "collection_KhWHNT": {
+          "type": "collection",
+          "settings": {
+            "collection_ctm": "graphic-tees-xy",
+            "enable_img": true,
+            "collection_image": "shopify://shop_images/Untitled_design_21066750-1de0-430a-97ae-8c745eae3f5f.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "collection_GKNffA",
+        "collection_KhWHNT"
+      ],
+      "name": "Collection Tabs",
+      "settings": {
+        "section_extra_class": "",
+        "heading_ctm": "WHAT WE’RE KNOWN FOR",
+        "ctm_subtitle": "We're not just a brand— we're a movement of truth and bravery. Every item we make stands for fairness in women's sports and\nbiological reality. This is the brand for those willing to speak the truth and empower real women. Start with our best-selling graphic\ntees— they speak louder than words.",
+        "btn_text": "SHOP ALL GRAPHIC TEES",
+        "btn_link": "shopify://collections/mix-match-for-20-off",
+        "bottom_btn_text": "",
+        "bottom_btn_link": "",
+        "tab_1": "Women's",
+        "tab_2": "Men's",
+        "desktop_slide": 3.5,
+        "spring_slider_class": "spring-slider-class start-here-collection"
+      }
+    },
+    "fabric_card_LdCRJX": {
+      "type": "fabric-card",
+      "blocks": {
+        "fabric_block_Hrf6im": {
+          "type": "fabric_block",
+          "settings": {
+            "image": "shopify://shop_images/intrepid_d461fbf2-4577-4d37-abc7-3c92588ca205.jpg",
+            "heading": "Intrepid Fabric",
+            "description": "Laid-back, lightweight, and made to move. This fabric is breathable with\na relaxed fit— zero squeeze, all ease.",
+            "button_text": "SHOP INTREPID",
+            "button_link": "shopify://collections/intrepid-collection"
+          }
+        },
+        "fabric_block_CMUbRg": {
+          "type": "fabric_block",
+          "settings": {
+            "image": "shopify://shop_images/LEGIT_6e914d39-4788-4867-a3a4-3b77a9c76f66.jpg",
+            "heading": "Legit Fabric",
+            "description": "Our most sculpting fit. High compression, sleek, and supportive— designed to hold you in and power\nyou through.",
+            "button_text": "SHOP LEGIT",
+            "button_link": "shopify://collections/legit-collection"
+          }
+        },
+        "fabric_block_hHLngN": {
+          "type": "fabric_block",
+          "settings": {
+            "image": "shopify://shop_images/HONEST_56cb9b25-7501-4c0e-a7c9-d23102d9ab3c.jpg",
+            "heading": "Honest Fabric",
+            "description": "Light support. True comfort. A soft,\nflexible feel with gentle compression\nthat keeps up without holding you\nback.",
+            "button_text": "SHOP HONEST",
+            "button_link": "shopify://collections/honest-collection"
+          }
+        },
+        "fabric_block_M9aAXR": {
+          "type": "fabric_block",
+          "settings": {
+            "image": "shopify://shop_images/COURAGEOUS_87fe00eb-5af0-47ee-92b8-7405e958c099.jpg",
+            "heading": "Courageous Core Fabric",
+            "description": "Barely there, but built to perform.\nFeatherlight feel with subtle support\nthat moves with you, not against\nyou",
+            "button_text": "SHOP COURAGEOUS CORE",
+            "button_link": "shopify://collections/courageous-core-collection"
+          }
+        }
+      },
+      "block_order": [
+        "fabric_block_Hrf6im",
+        "fabric_block_CMUbRg",
+        "fabric_block_hHLngN",
+        "fabric_block_M9aAXR"
+      ],
+      "name": "Fabric Features Card",
+      "settings": {
+        "extra_class": "ctm-fabric-start",
+        "extra_class_for_container": "",
+        "title": "QUALITY YOU CAN FEEL",
+        "subtitle": "Premium fabrics, clean fits, no shortcuts. Whether you want lightweight breathability, serious compression, everyday comfort, or balanced support— our gear’s built to perform and made to move with you.",
+        "button_text": "EXPLORE ALL PERFORMANCE FABRICS",
+        "button_link": "shopify://pages/fabric-guide",
+        "background_color": "#eff0f0"
+      }
+    },
+    "ctm_tabbing_collection_pYUyz6": {
+      "type": "ctm_tabbing_collection",
+      "blocks": {
+        "collection_H9heF8": {
+          "type": "collection",
+          "settings": {
+            "collection_ctm": "performance-xy",
+            "enable_img": true,
+            "collection_image": "shopify://shop_images/Untitled_design_eee471ab-e1ee-4e87-92d5-b8f0e008e583.jpg"
+          }
+        },
+        "collection_Ne3bp7": {
+          "type": "collection",
+          "settings": {
+            "collection_ctm": "performance-xx",
+            "enable_img": true,
+            "collection_image": "shopify://shop_images/Untitled_design_1e5d936f-3974-490c-90aa-1669a353c17c.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "collection_H9heF8",
+        "collection_Ne3bp7"
+      ],
+      "name": "Collection Tabs",
+      "settings": {
+        "section_extra_class": "",
+        "heading_ctm": "ATHLETE-FIRST DESIGN",
+        "ctm_subtitle": "Whether you’re on the field, at the gym, or running your own race— our Performance Collection is built to keep up. Sweat-tested, grit-approved, and made for movement that doesn’t quit.",
+        "btn_text": "SHOP ALL PERFORMANCE",
+        "btn_link": "shopify://collections/performance",
+        "bottom_btn_text": "",
+        "bottom_btn_link": "",
+        "tab_1": "Men's",
+        "tab_2": "Women's",
+        "desktop_slide": 3.5,
+        "spring_slider_class": "spring-slider-class start-here-collection"
+      }
+    },
+    "pdp_multicolumn_TJdjYh": {
+      "type": "pdp-multicolumn",
+      "blocks": {
+        "column_WqaWPq": {
+          "type": "column",
+          "settings": {
+            "column_image": "shopify://shop_images/DESKTOP_DIMS.jpg",
+            "display_2_images": true,
+            "diff_mobile_img": true,
+            "mobile_image": "shopify://shop_images/Matching_sets.png",
+            "column_title": "VALUES OVER VOLUME",
+            "column_desc": "We don’t chase trends. We make gear with a backbone—designed to support women, honor men, and challenge the status quo.",
+            "button_1": "SHOP WOMEN’S BEST SELLERS",
+            "url_1": "shopify://collections/best-sellers-xx",
+            "url_2": "shopify://collections/best-sellers-xy",
+            "button_2": "SHOP MEN’S BEST SELLERS",
+            "button_extra_class": "button-white-transparent",
+            "column_url": ""
+          }
+        }
+      },
+      "block_order": [
+        "column_WqaWPq"
+      ],
+      "name": "PDP Multicolumn",
+      "settings": {
+        "heading": "",
+        "pdp_multicolumn_extra_class": "pdp-multicolumn-main ctm_button_flex fullscreen-container ctm-value-volume"
+      }
+    },
+    "ctm_tabbing_collection_xMenmj": {
+      "type": "ctm_tabbing_collection",
+      "blocks": {
+        "collection_k7eihX": {
+          "type": "collection",
+          "settings": {
+            "collection_ctm": "accessories",
+            "enable_img": true,
+            "collection_image": "shopify://shop_images/Untitled_design_875bdf85-4845-4d17-b2c7-713f96ed164a.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "collection_k7eihX"
+      ],
+      "name": "Collection Tabs",
+      "settings": {
+        "section_extra_class": "",
+        "heading_ctm": "TOP IT OFF",
+        "ctm_subtitle": "For anyone who trains hard, speaks up, and doesn’t back down. From structured foam truckers to lived-in performance hats, each one brings the right fit, the right feel, and the right kind of attitude.",
+        "btn_text": "SHOP ALL HATS",
+        "btn_link": "shopify://collections/accessories",
+        "bottom_btn_text": "",
+        "bottom_btn_link": "",
+        "tab_1": "",
+        "tab_2": "",
+        "desktop_slide": 3.5,
+        "spring_slider_class": "spring-slider-class start-here-collection"
+      }
+    },
+    "image_card_aw4nCh": {
+      "type": "image-card",
+      "blocks": {
+        "collection_item_PUa4jp": {
+          "type": "collection_item",
+          "settings": {
+            "collection": "womens-running-1",
+            "link": "",
+            "custom_image": "shopify://shop_images/4_d9cd9e19-0aa2-4c3c-8cc5-b5286cef483f.jpg",
+            "title": "",
+            "enable_title": false,
+            "subtext": "RUNNING",
+            "description": "",
+            "button_label": ""
+          }
+        },
+        "collection_item_DCNDzm": {
+          "type": "collection_item",
+          "settings": {
+            "collection": "womens-tennis",
+            "link": "",
+            "custom_image": "shopify://shop_images/14_c0f8b9aa-fdc4-4662-b756-7bf0e30856cc.jpg",
+            "title": "",
+            "enable_title": false,
+            "subtext": "TENNIS",
+            "description": "",
+            "button_label": ""
+          }
+        },
+        "collection_item_CN8Gyf": {
+          "type": "collection_item",
+          "settings": {
+            "collection": "womens-golf",
+            "link": "",
+            "custom_image": "shopify://shop_images/Untitled_design_19b8fb82-5983-4a8e-a8bf-022c95c09de1.jpg",
+            "title": "",
+            "enable_title": false,
+            "subtext": "GOLF",
+            "description": "",
+            "button_label": ""
+          }
+        },
+        "collection_item_a7cPEy": {
+          "type": "collection_item",
+          "settings": {
+            "collection": "mens-training",
+            "link": "",
+            "custom_image": "shopify://shop_images/Untitled_design_143b784b-5b04-4b03-85d5-baeb36e15b36.jpg",
+            "title": "",
+            "enable_title": false,
+            "subtext": "TRAINING",
+            "description": "",
+            "button_label": ""
+          }
+        },
+        "collection_item_M44z9R": {
+          "type": "collection_item",
+          "settings": {
+            "collection": "womens-recovery",
+            "link": "",
+            "custom_image": "shopify://shop_images/15.jpg",
+            "title": "",
+            "enable_title": false,
+            "subtext": "RECOVERY",
+            "description": "",
+            "button_label": ""
+          }
+        }
+      },
+      "block_order": [
+        "collection_item_PUa4jp",
+        "collection_item_DCNDzm",
+        "collection_item_CN8Gyf",
+        "collection_item_a7cPEy",
+        "collection_item_M44z9R"
+      ],
+      "custom_css": [],
+      "name": "Collection Grid",
+      "settings": {
+        "section_extra_class": "ctm-fit-game",
+        "enable_full_width": false,
+        "heading": "FIT FOR YOUR GAME",
+        "text_alignment": "left",
+        "text-placement": "below_product",
+        "background_color": "#eff0f0",
+        "button_label": "",
+        "button_link": "",
+        "button_style": "primary",
+        "underline_color": "#000000",
+        "desktop_slide": 5,
+        "mobile_slide": 1,
+        "top_padding_desktop": 0,
+        "bottom_padding_desktop": 0,
+        "top_padding_mobile": 0,
+        "bottom_padding_mobile": 0,
+        "top_margin_desktop": 0,
+        "bottom_margin_desktop": 0,
+        "top_margin_mobile": 0,
+        "bottom_margin_mobile": 0
+      }
+    },
+    "section_customer_showcase_VFWLYg": {
+      "type": "section-customer-showcase",
+      "blocks": {
+        "customer_image_LDDRd7": {
+          "type": "customer_image",
+          "settings": {
+            "customer_image": "shopify://shop_images/1_be0a9777-6bf4-415e-aabb-86e41b75669e.jpg"
+          }
+        },
+        "customer_image_n4bAP8": {
+          "type": "customer_image",
+          "settings": {
+            "customer_image": "shopify://shop_images/2_5acfec34-8d01-430e-aff9-c46b511cc2a1.jpg"
+          }
+        },
+        "customer_image_3PGyjU": {
+          "type": "customer_image",
+          "settings": {
+            "customer_image": "shopify://shop_images/3_eb747b05-7adb-4125-80e0-a1354d821008.jpg"
+          }
+        },
+        "customer_image_kjtAhq": {
+          "type": "customer_image",
+          "settings": {
+            "customer_image": "shopify://shop_images/4_29b272d9-5999-4421-a1cd-a896a5c91d2a.jpg"
+          }
+        },
+        "customer_image_tqfXYV": {
+          "type": "customer_image",
+          "settings": {
+            "customer_image": "shopify://shop_images/5_ff6cea2a-81a8-4ade-9edf-34818778f04c.jpg"
+          }
+        },
+        "customer_image_brcBD8": {
+          "type": "customer_image",
+          "settings": {
+            "customer_image": "shopify://shop_images/6_c6236eab-ba30-4029-b357-7c5168a7d185.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "customer_image_LDDRd7",
+        "customer_image_n4bAP8",
+        "customer_image_3PGyjU",
+        "customer_image_kjtAhq",
+        "customer_image_tqfXYV",
+        "customer_image_brcBD8"
+      ],
+      "name": "Customer Showcase",
+      "settings": {
+        "extra_class": "ctm-showcase",
+        "title": "BOLD COMMUNITY. REAL IMPACT.",
+        "desc": "This gear is a nod to the real ones— the early supporters, the bold voices, and the crew that showed up before it was\ncool. You built this with us. Now we wear it together.<br><br>Follow us on Instagram @XX-XYAthletics"
+      }
+    }
+  },
+  "order": [
+    "shogun-helper",
+    "pages",
+    "shogun-optimizer",
+    "slideshow_AEVYMz",
+    "rich_text_Nzr8ri",
+    "ctm_tabbing_collection_zYzYyy",
+    "fabric_card_LdCRJX",
+    "ctm_tabbing_collection_pYUyz6",
+    "pdp_multicolumn_TJdjYh",
+    "ctm_tabbing_collection_xMenmj",
+    "image_card_aw4nCh",
+    "section_customer_showcase_VFWLYg"
+  ]
+}

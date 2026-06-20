@@ -1,0 +1,118 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "shogun-helper": {
+      "type": "shogun-helper",
+      "settings": {}
+    },
+    "pages": {
+      "type": "main-page",
+      "disabled": true,
+      "custom_css": [
+        ".container {padding-top: 50px; padding-bottom: 50px;}",
+        "h1 {text-align: center;}"
+      ],
+      "settings": {
+        "extra_class": ""
+      }
+    },
+    "product_bundle_nBaCBT": {
+      "type": "product-bundle",
+      "blocks": {
+        "bundle_product_NUyidY": {
+          "type": "bundle_product",
+          "settings": {
+            "product": "dad-tee"
+          }
+        },
+        "bundle_product_QGHV8j": {
+          "type": "bundle_product",
+          "settings": {
+            "product": "xx-xy-athletics-water-bottle"
+          }
+        },
+        "bundle_product_w3Qwft": {
+          "type": "bundle_product",
+          "settings": {
+            "product": "performance-logo-cap-with-flag-patch-1"
+          }
+        }
+      },
+      "block_order": [
+        "bundle_product_NUyidY",
+        "bundle_product_QGHV8j",
+        "bundle_product_w3Qwft"
+      ],
+      "settings": {
+        "bundle_title": "Dad Pack",
+        "bundle_category": "",
+        "bundle_description": "",
+        "button_label": "Add Bundle to Cart",
+        "show_vendor": false,
+        "show_qty": true,
+        "payment_note": "Free shipping on orders over $100",
+        "show_accordions": true,
+        "accordion_first_open": true,
+        "accordion_desc_show": true,
+        "accordion_desc_label": "DESCRIPTION",
+        "accordion_desc_content": "<p>The Dad Pack is built for the guys who show up early, stay late, and carry more than they say. Featuring our DAD Tee, Logo Flag Patch Performance Cap, and performance water bottle, this bundle was made for workouts, weekends, golf rounds, garage projects, and everything in between.</p>",
+        "accordion_pd_show": true,
+        "accordion_pd_label": "PRODUCT DETAILS",
+        "accordion_pd_content": "<p>Bundle includes:</p><ul><li>DAD Tee</li><li>Logo Flag Patch Performance Cap</li><li>Freedom Water Bottle (20 oz.)</li></ul>",
+        "accordion_sc_show": true,
+        "accordion_sc_label": "SIZE CHART",
+        "accordion_sc_handle": "YPT",
+        "accordion_sc_content": "",
+        "accordion_care_show": true,
+        "accordion_care_label": "CARE INFORMATION",
+        "accordion_care_content": "<p>Tee + Performance Cap:</p><ul><li>Machine wash cold with like colors</li><li>Tumble dry low or hang dry for best results</li><li>Do not bleach</li><li>Wash inside out to keep graphics from fading</li></ul><p>Water Bottle:</p><ul><li>Hand wash recommended</li></ul>",
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "extra_class": "ctm-fathers-day-bundle gts",
+        "quickview_show": true
+      }
+    },
+    "product_recommendations_NcjWGL": {
+      "type": "product-recommendations",
+      "name": "Product Recommendations",
+      "settings": {
+        "heading": "<p>You May Also Like</p>",
+        "link": "Shop All",
+        "button_link": "",
+        "products_limit": 50,
+        "enable_swiper": true,
+        "image_ratio": "portrait",
+        "image_fit": "cover",
+        "show_secondary_image": false,
+        "show_vendor": false,
+        "show_desc": false,
+        "show_sku": false,
+        "quickview_show": false,
+        "show_link": true,
+        "margin_top": 20,
+        "margin_bottom": 50,
+        "page_heading": "You May Also Like",
+        "page_collection": "dakota-meyers-favorites"
+      }
+    },
+    "shogun-optimizer": {
+      "type": "shogun-optimizer",
+      "settings": {}
+    }
+  },
+  "order": [
+    "shogun-helper",
+    "pages",
+    "product_bundle_nBaCBT",
+    "product_recommendations_NcjWGL",
+    "shogun-optimizer"
+  ]
+}

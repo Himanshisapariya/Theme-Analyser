@@ -1,0 +1,443 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "shogun-helper": {
+      "type": "shogun-helper",
+      "disabled": true,
+      "settings": {}
+    },
+    "pages": {
+      "type": "main-page",
+      "disabled": true,
+      "custom_css": [
+        ".container {padding-top: 50px; padding-bottom: 50px;}",
+        "h1 {text-align: center;}"
+      ],
+      "settings": {
+        "extra_class": ""
+      }
+    },
+    "shogun-optimizer": {
+      "type": "shogun-optimizer",
+      "disabled": true,
+      "settings": {}
+    },
+    "slideshow_PBnHjD": {
+      "type": "slideshow",
+      "blocks": {
+        "slide_er9xNK": {
+          "type": "slide",
+          "settings": {
+            "extra_class": "women-day anniversary-also anniversary_ctm champion_ctm fabric-guide-banner-slide",
+            "color_scheme": "dark",
+            "image": "shopify://shop_images/NEW_0d4e6d77-963e-41bf-9aa4-5d39cc5f1b2f.jpg",
+            "image2": "shopify://shop_images/Untitled_design_5fc74a55-a5ef-4514-a0ce-70cffa43ec13.jpg",
+            "image_size": "adapt",
+            "caption": "",
+            "heading": "",
+            "subtitle": "",
+            "additional_information": "THE FABRIC GUIDE — <br><span>Premium performance materials. Built to move with you.</span>",
+            "show_review_rating": false,
+            "review_count": 5,
+            "text_content_alignment": "bottom-center",
+            "text_alignment": "center",
+            "max_width": 1200,
+            "button_label1": "",
+            "button_link1": "",
+            "button_label2": "",
+            "button_link2": "",
+            "button_style": "primary",
+            "underline_color": "#000000"
+          }
+        }
+      },
+      "block_order": [
+        "slide_er9xNK"
+      ],
+      "name": "t:sections.slideshow.presets.name",
+      "settings": {
+        "extra_class": "fabric-guide-banner-main",
+        "block_size": "full-screen",
+        "overlay_enable": false,
+        "overlay_opacity": 20,
+        "slideshow_speed": 1.1,
+        "slideshow_delay": 3,
+        "autoplay": true,
+        "hover_autoplay_stop": true,
+        "navigation": true,
+        "pagination": true,
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "top_padding_desktop": 0,
+        "bottom_padding_desktop": 0,
+        "top_padding_mobile": 0,
+        "bottom_padding_mobile": 0,
+        "top_margin_desktop": 0,
+        "bottom_margin_desktop": 0,
+        "top_margin_mobile": 0,
+        "bottom_margin_mobile": 0
+      }
+    },
+    "fabric_card_MrW8aH": {
+      "type": "fabric-card",
+      "blocks": {
+        "fabric_block_qJk4Ke": {
+          "type": "fabric_block",
+          "settings": {
+            "image": "shopify://shop_images/intrepid_2e04f78f-5c10-4e2d-a3bc-ee714e954c5a.jpg",
+            "heading": "Intrepid Fabric",
+            "description": "Laid-back, lightweight, and made to move. This fabric is breathable with\na relaxed fit—zero squeeze, all ease.",
+            "button_text": "SHOP INTREPID",
+            "button_link": "shopify://collections/intrepid-collection"
+          }
+        },
+        "fabric_block_JVJ6dy": {
+          "type": "fabric_block",
+          "settings": {
+            "image": "shopify://shop_images/LEGIT_dbac265f-0b20-426c-86ee-0e6da835ce1a.jpg",
+            "heading": "Legit Fabric",
+            "description": "Our most sculpting fit. High-compression, sleek, and supportive—built to power you through the toughest workouts.",
+            "button_text": "SHOP LEGIT",
+            "button_link": "shopify://collections/legit-collection"
+          }
+        },
+        "fabric_block_LrfMcH": {
+          "type": "fabric_block",
+          "settings": {
+            "image": "shopify://shop_images/HONEST_e39829df-0d70-4740-a8ae-b85d2e390ac8.jpg",
+            "heading": "Honest Fabric",
+            "description": "Light support. True comfort. A soft, flexible feel that skims the body and keeps up without holding you back.",
+            "button_text": "SHOP HONEST",
+            "button_link": "shopify://collections/honest-collection"
+          }
+        },
+        "fabric_block_F76mhr": {
+          "type": "fabric_block",
+          "settings": {
+            "image": "shopify://shop_images/COURAGEOUS_b7d4a1d6-6c1c-45d3-8be8-abcfa9ab2617.jpg",
+            "heading": "Courageous Core Fabric",
+            "description": "Barely there, but built to perform.\nFeatherweight feel that moves with you, not against you.",
+            "button_text": "SHOP COURAGEOUS CORE",
+            "button_link": "shopify://collections/courageous-core-collection"
+          }
+        }
+      },
+      "block_order": [
+        "fabric_block_qJk4Ke",
+        "fabric_block_JVJ6dy",
+        "fabric_block_LrfMcH",
+        "fabric_block_F76mhr"
+      ],
+      "name": "Fabric Card Section",
+      "settings": {
+        "extra_class": "ctm-fabric-start fabric-card-main",
+        "extra_class_for_container": "",
+        "title": "XX-XY SIGNATURE FABRICS",
+        "subtitle": "",
+        "button_text": "Shop All Performance Fabrics",
+        "button_link": "shopify://collections/performance",
+        "background_color": "#f7f7f7",
+        "button_style": "button--ctm_wb_global_button"
+      }
+    },
+    "fabric_image_mMRGhX": {
+      "type": "fabric-image",
+      "blocks": {
+        "images_WEtwRc": {
+          "type": "images",
+          "settings": {
+            "images": "shopify://shop_images/1_dc5f3039-d8de-43b2-9987-e0fa55a72bba.jpg"
+          }
+        },
+        "images_zhnVe8": {
+          "type": "images",
+          "settings": {
+            "images": "shopify://shop_images/2_dcfab8a2-4604-45b1-9906-ace50044052f.jpg"
+          }
+        },
+        "images_xXqzGY": {
+          "type": "images",
+          "settings": {
+            "images": "shopify://shop_images/4_04814297-262e-4140-819b-d15f7621997c.jpg"
+          }
+        },
+        "images_BNbXkJ": {
+          "type": "images",
+          "settings": {
+            "images": "shopify://shop_images/3_5dfe6010-0b0b-4086-a130-87b7113e9a68.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "images_WEtwRc",
+        "images_zhnVe8",
+        "images_xXqzGY",
+        "images_BNbXkJ"
+      ],
+      "name": "Fabric Image section",
+      "settings": {
+        "extra_class": "fabric-guide-legit-fabric-main",
+        "extra_class_title": "",
+        "extra_class_for_container": "",
+        "title": "INTREPID FABRIC",
+        "button_text": "Shop All Intrepid Fabric",
+        "button_url": "shopify://collections/intrepid-collection",
+        "description": "<b></b>\n<p><strong>Look</strong>: Super soft breathable matte</p>\n<p><strong>Feel</strong>: Soft and breathable</p>\n<p><strong>Designed For</strong>: Medium intensity. Hikes, walks and everyday wear </p>\n<p><strong>Content</strong>: 89% polyester, 11% spandex</p>",
+        "why_we_love": "<b>Why We Love It:</b>\n<ul>\n<li>Moves with you. 4-way stretch for total freedom</li>\n<li>Moisture-wicking technology keeps sweat in check</li>\n<li>Quick-drying performance for life on the go</li>\n<li>Super soft and featherlight fabric </li>\n</ul>",
+        "we_love_position": "left",
+        "tip_text": "<p><strong>Fit Tip</strong>: Laid-back, everyday comfort. No squeeze, just softness. Runs true to size—but size up if you like a more relaxed fit. </p>",
+        "display_arrow": true,
+        "button_style": "button button--primary"
+      }
+    },
+    "fabric_collection_Qqh9db": {
+      "type": "fabric-collection",
+      "name": "Fabric Collection Section",
+      "settings": {
+        "extra_class": "fabric-page-shop-all-main",
+        "extra_class_for_container": "common-1680-container-for-fabric-product",
+        "heading": "",
+        "button_text": "Shop All Intrepid Fabric",
+        "button_url": "shopify://collections/intrepid-collection",
+        "select_products": [
+          "womens-intrepid-quarter-zip-xx",
+          "womens-intrepid-jogger-xx",
+          "intrepid-hoodie"
+        ],
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "button_style": "button--ctm_wb_global_button"
+      }
+    },
+    "fabric_image_VhHdhp": {
+      "type": "fabric-image",
+      "blocks": {
+        "images_whJrg4": {
+          "type": "images",
+          "settings": {
+            "images": "shopify://shop_images/Untitled_design_42251d15-d201-4d7f-a787-fda41741b9e0.jpg"
+          }
+        },
+        "images_RBe6dH": {
+          "type": "images",
+          "settings": {
+            "images": "shopify://shop_images/Untitled_design_de4edfe3-cb4f-41a6-be82-d8390bc3db87.jpg"
+          }
+        },
+        "images_hMVbz6": {
+          "type": "images",
+          "settings": {
+            "images": "shopify://shop_images/1_09e2c92c-8d55-4d19-a498-a627056d2f3d.jpg"
+          }
+        },
+        "images_PBxAiz": {
+          "type": "images",
+          "settings": {
+            "images": "shopify://shop_images/FABRIC_GUIDE_DIMS_51bfef0b-327f-4c89-8633-f41f041118da.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "images_whJrg4",
+        "images_RBe6dH",
+        "images_hMVbz6",
+        "images_PBxAiz"
+      ],
+      "name": "Fabric Image section",
+      "settings": {
+        "extra_class": "fabric-guide-legit-fabric-main",
+        "extra_class_title": "",
+        "extra_class_for_container": "",
+        "title": "LEGIT FABRIC",
+        "button_text": "Shop All Legit Fabric",
+        "button_url": "shopify://collections/legit-collection",
+        "description": "<b></b>\n<p><strong>Look</strong>: Brushed matte</p>\n<p><strong>Feel</strong>: Buttery soft and second-skin smooth</p>\n<p><strong>Designed For</strong>: Yoga, Pilates, and training days that\nflow </p>\n<p><strong>Content</strong>: 86% polyester, 14% elastane</p>",
+        "why_we_love": "<b>Why We Love It:</b>\n<ul>\n<li>Ultra-soft space dye texture that feels like a hug</li>\n<li>4-way stretch for total freedom of movement</li>\n<li>Just enough compression—holds you in without holding you back</li>\n<li>Great recovery—never bags at the knees, slides down at the waist, or loses its shape</li>\n</ul>",
+        "we_love_position": "left",
+        "tip_text": "<p><strong>Fit Tip</strong>: Our most sculpting fit. Feels snug at first—that’s the point. It molds to you as you move. Size up\nif you like a little breathing room.</p>",
+        "display_arrow": true,
+        "button_style": "button button--primary"
+      }
+    },
+    "fabric_collection_FNyMjy": {
+      "type": "fabric-collection",
+      "name": "Fabric Collection Section",
+      "settings": {
+        "extra_class": "fabric-page-shop-all-main",
+        "extra_class_for_container": "common-1680-container-for-fabric-product",
+        "heading": "",
+        "button_text": "Shop All Legit Fabric",
+        "button_url": "shopify://collections/legit-collection",
+        "select_products": [
+          "legit-knit-tank",
+          "womens-legit-leggings",
+          "legit-multipurpose-skort"
+        ],
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "button_style": "button--ctm_wb_global_button"
+      }
+    },
+    "fabric_image_YhrFEN": {
+      "type": "fabric-image",
+      "blocks": {
+        "images_BBnyyJ": {
+          "type": "images",
+          "settings": {
+            "images": "shopify://shop_images/Untitled_design_f6bf682b-acde-41ff-8c6e-2391e67c3edb.jpg"
+          }
+        },
+        "images_MR8Lqz": {
+          "type": "images",
+          "settings": {
+            "images": "shopify://shop_images/3_c511674d-1ced-465a-8c2d-b6c49c2cd77a.jpg"
+          }
+        },
+        "images_EVzYC8": {
+          "type": "images",
+          "settings": {
+            "images": "shopify://shop_images/1_0505a57e-790c-407c-a7c2-dc14341c6860.jpg"
+          }
+        },
+        "images_ymTjx7": {
+          "type": "images",
+          "settings": {
+            "images": "shopify://shop_images/2_7e302f86-4a05-461e-904b-1a81f8e82fb2.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "images_BBnyyJ",
+        "images_MR8Lqz",
+        "images_EVzYC8",
+        "images_ymTjx7"
+      ],
+      "name": "Fabric Image section",
+      "settings": {
+        "extra_class": "fabric-guide-legit-fabric-main",
+        "extra_class_title": "",
+        "extra_class_for_container": "",
+        "title": "HONEST FABRIC",
+        "button_text": "Shop All Honest Fabric",
+        "button_url": "shopify://collections/honest-collection",
+        "description": "<b></b>\n<p><strong>Look</strong>: Ultra-lightweight and soft, with a touch of sheen</p>\n<p><strong>Feel</strong>: Ultra light, body skimming and super soft</p>\n<p><strong>Designed For</strong>: Any high intensity workout </p>\n<p><strong>Content</strong>: 88% polyester, 12% spandex</p>",
+        "why_we_love": "<b>Why We Love It:</b>\n<ul>\n<li>Quick-drying and moisture-wicking to keep you cool under pressure</li>\n<li>4-way stretch for unrestricted motion</li>\n<li>Tailored for body-skimming silhouettes</li>\n<li>Built to handle your toughest workouts</li>\n</ul>",
+        "we_love_position": "right",
+        "tip_text": "<p><strong>Fit Tip</strong>: Built for high-intensity days. This fabric skims the body without squeezing, all while wicking sweat away. Stick with your usual size for that just-right flattering but not-tight fit. </p>",
+        "display_arrow": true,
+        "button_style": "button button--primary"
+      }
+    },
+    "fabric_collection_B8M8ag": {
+      "type": "fabric-collection",
+      "name": "Fabric Collection Section",
+      "settings": {
+        "extra_class": "fabric-page-shop-all-main",
+        "extra_class_for_container": "common-1680-container-for-fabric-product",
+        "heading": "",
+        "button_text": "Shop All Honest Fabric",
+        "button_url": "shopify://collections/honest-collection",
+        "select_products": [
+          "honest-tank-xx",
+          "honest-crop-tee",
+          "mens-honest-tank-with-logo"
+        ],
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "button_style": "button--ctm_wb_global_button"
+      }
+    },
+    "fabric_image_iWfJxe": {
+      "type": "fabric-image",
+      "blocks": {
+        "images_acmDDk": {
+          "type": "images",
+          "settings": {
+            "images": "shopify://shop_images/Untitled_design_f45b5303-850d-4f7d-b573-0564c5831c06.jpg"
+          }
+        },
+        "images_zaAAxj": {
+          "type": "images",
+          "settings": {
+            "images": "shopify://shop_images/4_5f1c153a-b1bb-4bf2-a689-5bcc3254b51d.jpg"
+          }
+        },
+        "images_AtpDjw": {
+          "type": "images",
+          "settings": {
+            "images": "shopify://shop_images/FABRIC_GUIDE_DIMS.jpg"
+          }
+        },
+        "images_VVD63a": {
+          "type": "images",
+          "settings": {
+            "images": "shopify://shop_images/1_6dfb4c32-3bfb-4494-bf51-2c775ec55954.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "images_acmDDk",
+        "images_zaAAxj",
+        "images_AtpDjw",
+        "images_VVD63a"
+      ],
+      "name": "Fabric Image section",
+      "settings": {
+        "extra_class": "fabric-guide-legit-fabric-main",
+        "extra_class_title": "",
+        "extra_class_for_container": "",
+        "title": "COURAGEOUS CORE FABRIC",
+        "button_text": "Shop All Courageous Core Fabric",
+        "button_url": "shopify://collections/courageous-core-collection",
+        "description": "<b></b>\n<p><strong>Look</strong>: Sleek and barely there shine</p>\n<p><strong>Feel</strong>: Buttery soft and second-skin smooth</p>\n<p><strong>Designed For</strong>: Running, tennis, golf; goes from the studio to the street without changing </p>\n<p><strong>Content</strong>: 48% recycled polyester, 42% polyester, and 10% elastane</p>",
+        "why_we_love": "<b>Why We Love It:</b>\n<ul>\n<li>Barely there feel. Ultra-lightweight for effortless movement</li>\n<li>All-direction flex. 4-way stretch that moves with you</li>\n<li>Built-in breathability for all-day comfort</li>\n<li>Quick-drying fabric keeps you cool and dry</li>\n</ul>",
+        "we_love_position": "right",
+        "tip_text": "<p><strong>Fit Tip</strong>: This one is designed to flatter every body type. It is true to size but if you like it body-hugging,\nsize down.</p>",
+        "display_arrow": true,
+        "button_style": "button button--primary"
+      }
+    },
+    "fabric_collection_RdkzXm": {
+      "type": "fabric-collection",
+      "name": "Fabric Collection Section",
+      "settings": {
+        "extra_class": "fabric-page-shop-all-main",
+        "extra_class_for_container": "common-1680-container-for-fabric-product",
+        "heading": "",
+        "button_text": "Shop All Courageous Core Fabric",
+        "button_url": "shopify://collections/courageous-core-collection",
+        "select_products": [
+          "courageous-core-short-xx",
+          "pleats-please-tennis-skirt",
+          "courageous-core-short"
+        ],
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "button_style": "button--ctm_wb_global_button"
+      }
+    }
+  },
+  "order": [
+    "shogun-helper",
+    "pages",
+    "shogun-optimizer",
+    "slideshow_PBnHjD",
+    "fabric_card_MrW8aH",
+    "fabric_image_mMRGhX",
+    "fabric_collection_Qqh9db",
+    "fabric_image_VhHdhp",
+    "fabric_collection_FNyMjy",
+    "fabric_image_YhrFEN",
+    "fabric_collection_B8M8ag",
+    "fabric_image_iWfJxe",
+    "fabric_collection_RdkzXm"
+  ]
+}

@@ -1,0 +1,348 @@
+<div class="newsroom-banner_inner" style="background-color: {{ section.settings.bg_color }};">
+  <div class="fullscreen-container">
+    <div class="newsroom_info">
+      {% if section.settings.logo != blank %}
+        <div class="logo">
+          <img src="{{ section.settings.logo | image_url: width: 1920 }}" alt="Logo" width="220" height="50">
+        </div>
+      {% endif %}
+      {% if section.settings.title != blank and section.settings.heading_title == false %}
+        <div class="ctm_title uppercase">
+          <h2>{{ section.settings.title }}</h2>
+        </div>
+      {% endif %}
+      {% if section.settings.heading_title %}
+        <div class="ctm_title uppercase">
+          <h1>{{ section.settings.title }}</h1>
+        </div>
+      {% endif %}
+    </div>
+    <div class="blog-filter-section ">
+      <div class="blog-filter-sec pb-[30px] md:pb-[55px]">
+        <nav class="blog-filter-block flex justify-between mdscreen:flex-col">
+          <div class="tabbed-filter w-full max-w-full md:max-w-[304px]">
+            <ul class="tab-list flex flex-wrap border-b">
+              <!-- "All" Tab -->
+              <li class="tab-item {% if current_tags == blank %}active{% endif %}">
+                <a href="{{ shop.url }}{{ blog.url }}" class="tab-link uppercase font-medium">All</a>
+              </li>
+
+              {%- for tag in blog.all_tags -%}
+                <li class="tab-item {% if current_tags contains tag %}active{% endif %}">
+                  <a
+                    href="{{ shop.url }}{{ blog.url }}/tagged/{{ tag | handle }}"
+                    class="tab-link uppercase font-medium"
+                  >
+                    {{- tag -}}
+                  </a>
+                </li>
+              {%- endfor -%}
+            </ul>
+          </div>
+
+          <div class="input-group w-full max-w-full md:max-w-[263px] mdscreen:mb-xl2">
+            <span class="search-box">
+              <button class="border-none p-0 text-vermilion bg-white cursor-pointer pr-[10px]" type="button">
+                <svg role="img" aria-labelledby="search-icon-title" width="15" height="16" viewBox="0 0 15 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <title id="search-icon-title">Search</title>
+                  <path d="M11.0078 10.1567C11.7459 9.1487 12.1874 7.91057 12.1874 6.56835C12.1874 3.20838 9.45368 0.474609 6.09371 0.474609C2.73374 0.474609 0 3.20838 0 6.56835C0 9.92832 2.73377 12.6621 6.09374 12.6621C7.43596 12.6621 8.6742 12.2205 9.68219 11.4824L13.6743 15.4745L15 14.1489C15 14.1488 11.0078 10.1567 11.0078 10.1567ZM6.09374 10.7871C3.76738 10.7871 1.87501 8.8947 1.87501 6.56835C1.87501 4.24199 3.76738 2.34962 6.09374 2.34962C8.42009 2.34962 10.3125 4.24199 10.3125 6.56835C10.3125 8.8947 8.42006 10.7871 6.09374 10.7871Z" fill="currentColor" />
+                </svg>
+              </button>
+              <span id="filter-instructions" class="visually-hidden">
+                The following text field filters the blog articles below as you type. Results update automatically. 
+              </span>
+              <input
+                type="text"
+                id="blog_search_bar"
+                class="form-control font-gothamBook font-normal text-font border-0 rounded-none !p-0 w-full"
+                placeholder="{{ section.settings.placeholder_title }}"
+                aria-live=”assertive”
+                aria-describedby="filter-instructions"
+                aria-label="blog search"
+              >
+            </span>
+          </div>
+        </nav>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="custom-blog-grid">
+  <div class="fullscreen-container">
+    <div class="blog-articles" id="blog_post">
+      {%- for article in blog.articles -%}
+        <div class="blog-list panel_ctm blog-articles__article article" id="collapse{{ forloop.index }}_container">
+          {% render 'article-card-row',
+            blog: blog,
+            article: article,
+            show_image: section.settings.show_image,
+            show_author: section.settings.show_author,
+            show_tags: section.settings.show_tags,
+            show_date: section.settings.show_date
+          %}
+          <div class="read-btn w-fit mx-auto">
+            <a
+              class="text-vermilion outline-1 outline-offset-2 transition-all duration-700 ease-in-out hover:opacity-30 "
+              href="{{ article.url }}"
+              >Read More</a
+            >
+          </div>
+        </div>
+      {%- endfor -%}
+    </div>
+
+    <div class="blog-loadmore-btn flex justify-center items-center border-0 border-t border-solid border-cobaltBlue">
+      <button class="load-more mt-xl3 w-fit btn-lime btn-limeHover m-auto {{ section.settings.button_style }}">Load More</button>
+    </div>
+    <p class="inquiries_form_ctm">For press inquiries, contact us <a href="https://xx-xy-athletics.myshopify.com/pages/press-inquiries">here.</a></p>
+  </div> 
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    (function () {
+      var searchTerm, panelContainerId;
+      var blogContainer = document.getElementById('blog_post');
+      var blogArticlesContainer = document.querySelector('.blog-articles');
+      var loadMoreButton = document.querySelector('.load-more');
+      var blogLoadMoreBtnContainer = document.querySelector('.blog-loadmore-btn');
+
+      document.getElementById('blog_search_bar').addEventListener('input', function () {
+        searchTerm = this.value.toLowerCase();
+
+        // Get all panels with class 'panel_ctm'
+        var panels = document.querySelectorAll('#blog_post > .panel_ctm');
+        var hasResults = false;
+
+        panels.forEach(function (panel) {
+          panelContainerId = panel.id;
+
+          // Check if the panel contains the search term
+          var panelText = (panel.textContent || panel.innerText).toLowerCase();
+
+          if (panelText.indexOf(searchTerm) === -1) {
+            panel.style.display = 'none'; // Hide panel if it doesn't contain the search term
+          } else {
+            panel.style.display = 'block'; // Show panel if it contains the search term
+            hasResults = true; // At least one panel matched the search term
+          }
+        });
+
+        // If no panels match the search term, show the "no results" message
+        var noResultsMessage = document.getElementById('no-results-message');
+        if (!hasResults) {
+          if (!noResultsMessage) {
+            var messageDiv = document.createElement('div');
+            messageDiv.id = 'no-results-message';
+            messageDiv.className = 'no-results-message text-font font-medium mt-4';
+            messageDiv.textContent = `Your search for "${searchTerm}" returned no results.`;
+            blogContainer.parentNode.appendChild(messageDiv); // Append after .blog-articles
+          } else {
+            noResultsMessage.textContent = `Your search for "${searchTerm}" returned no results.`;
+            noResultsMessage.style.display = 'block';
+          }
+
+          // Remove the "load more" button and its parent container if no results are found
+          if (loadMoreButton) {
+            loadMoreButton.style.display = 'none';
+          }
+          if (blogLoadMoreBtnContainer) {
+            blogLoadMoreBtnContainer.style.display = 'none';
+          }
+
+          // Remove the blog-articles container if no results are found
+          if (blogArticlesContainer) {
+            blogArticlesContainer.style.display = 'none'; // Hide the container
+          }
+        } else {
+          if (noResultsMessage) {
+            noResultsMessage.style.display = 'none';
+          }
+
+          // Ensure the "load more" button and its parent container are visible if there are results
+          if (loadMoreButton) {
+            loadMoreButton.style.display = 'flex'; // Use flex for the button
+          }
+          if (blogLoadMoreBtnContainer) {
+            blogLoadMoreBtnContainer.style.display = 'flex'; // Use flex for the container
+          }
+
+          // Ensure the blog-articles container is visible if there are results
+          if (blogArticlesContainer) {
+            blogArticlesContainer.style.display = 'grid'; // Show the container
+          }
+        }
+      });
+    })();
+
+    // Show the first 3 blog-list items
+    var blogLists = document.querySelectorAll('.blog-list');
+    var loadMoreButton = document.querySelector('.load-more');
+
+    blogLists.forEach(function (item, index) {
+      if (index < 3) {
+        item.style.display = 'block'; // Or use the appropriate display style
+      } else {
+        item.style.display = 'none'; // Ensure remaining items are hidden initially
+      }
+    });
+
+    // Hide the "load more" button if there are less than or equal to 3 items
+    if (blogLists.length <= 3) {
+      if (loadMoreButton) {
+        loadMoreButton.style.display = 'none';
+      }
+    } else {
+      if (loadMoreButton) {
+        loadMoreButton.style.display = 'flex'; // Ensure the button is visible when needed
+      }
+    }
+
+    // Show more items when the "load more" button is clicked
+    var currentItemIndex = 3;
+    loadMoreButton.addEventListener('click', function (e) {
+      e.preventDefault();
+
+      for (var i = currentItemIndex; i < currentItemIndex + 3; i++) {
+        if (blogLists[i]) {
+          blogLists[i].style.display = 'block'; // Show the next 3 items
+        }
+      }
+
+      currentItemIndex += 3;
+
+      // Hide the "load more" button if there are no more items to show
+      if (currentItemIndex >= blogLists.length) {
+        loadMoreButton.style.display = 'none';
+      }
+    });
+  });
+</script>
+
+{% schema %}
+{
+  "name": "custom blog grid",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "color",
+      "label": "Background-color",
+      "id": "bg_color"
+    },
+    {
+      "type": "image_picker",
+      "label": "Logo",
+      "id": "logo"
+    },
+    {
+      "type": "text",
+      "label": "Title",
+      "id": "title"
+    },
+    {
+      "type": "checkbox",
+      "label": "Title (h1)",
+      "id": "heading_title"
+    },
+    {
+      "type": "header",
+      "content": "Custome blog post"
+    },
+    {
+      "type": "text",
+      "id": "blog_title",
+      "label": "Blog Title"
+    },
+    {
+      "type": "text",
+      "id": "placeholder_title",
+      "label": "Search Placeholder Title"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_date",
+      "default": true,
+      "label": "Show date"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_image",
+      "default": true,
+      "label": "Show image"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_tags",
+      "default": true,
+      "label": "Show tags"
+    },
+    {
+      "type": "header",
+      "content": "Section padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Top padding",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Bottom padding",
+      "default": 36
+    },
+    {
+    "type": "select",
+    "id": "button_style",
+    "options": [
+      {
+        "value": "button--ctm_global_button",
+        "label": "Global Button"
+      },
+      {
+        "value": "button--ctm_wb_global_button",
+        "label": "Global Button (White Background)"
+      },
+      {
+        "value": "ctm-custom-button",
+        "label": "Custom Button"
+      },
+      {
+        "value": "ctm-custom-outline-button",
+        "label": "Outline Button"
+      },
+      {
+        "value": "button button--primary",
+        "label": "t:sections.all.button.button_style.options__1.label"
+      },
+      {
+        "value": "button button--secondary",
+        "label": "t:sections.all.button.button_style.options__2.label"
+      },
+      {
+        "value": "button button--tertiary",
+        "label": "t:sections.all.button.button_style.options__3.label"
+      }
+    ],
+    "default": "button button--primary",
+    "label": "t:sections.all.button.button_style.label"
+  }
+  ],
+  "presets": [
+    {
+      "name": "custom blog grid"
+    }
+  ]
+}
+{% endschema %}

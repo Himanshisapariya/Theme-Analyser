@@ -1,0 +1,190 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "shogun-helper": {
+      "type": "shogun-helper",
+      "settings": {}
+    },
+    "pages": {
+      "type": "main-page",
+      "disabled": true,
+      "custom_css": [
+        ".container {padding-top: 50px; padding-bottom: 50px;}",
+        "h1 {text-align: center;}"
+      ],
+      "settings": {
+        "extra_class": ""
+      }
+    },
+    "shogun-optimizer": {
+      "type": "shogun-optimizer",
+      "settings": {}
+    },
+    "image_grid_group_sale_jYnF37": {
+      "type": "image-grid-group-sale",
+      "disabled": true,
+      "name": "Image Grid Group Sale",
+      "settings": {
+        "extra_class": "",
+        "heading": "",
+        "button_text1": "GROUP SALE CATALOG",
+        "button_url1": "https://cdn.shopify.com/s/files/1/0575/2009/5363/files/Custom_Order_Catalog.pdf?v=1755103340",
+        "open_new_tab1": false,
+        "button_text2": "APPLY TO GROUP SALES",
+        "button_url2": "https://www.xx-xyathletics.com/pages/apply-to-group-sales",
+        "open_new_tab2": false,
+        "enable_arrow": false,
+        "button_style": "button button--primary"
+      }
+    },
+    "group_sales_gallery_rprXRr": {
+      "type": "group-sales-gallery",
+      "name": "Folder Image Gallery",
+      "settings": {
+        "heading": "Gallery",
+        "subheading": "From teams to organizations—see how groups are wearing XX-XY Athletics.",
+        "folders": [
+          "lutheran-lions-girls-golf",
+          "jhs-hockey",
+          "richland-rangers",
+          "boston-buddies",
+          "team-jamaica",
+          "team-women-run-club"
+        ]
+      }
+    },
+    "faq_accorddion_67H9Jd": {
+      "type": "faq-accorddion",
+      "blocks": {
+        "faq_NyT7qc": {
+          "type": "faq",
+          "settings": {
+            "question": "<h6>Do you provide invoices or receipts for tax purposes?</h6>",
+            "answer": "<p>Yes, an <strong>invoice will be provided</strong> with your order confirmation. If you need additional documentation, please email <a href=\"mailto:orders@xx-xyathletics.com\">orders@xx-xyathletics.com</a>.</p>",
+            "faq_answer": ""
+          }
+        },
+        "faq_C9DfEJ": {
+          "type": "faq",
+          "settings": {
+            "question": "<h6>Can I modify my bulk order after it has been placed?</h6>",
+            "answer": "<p>We can <strong>try</strong> to accommodate changes <strong>before</strong> your order ships, but once it has been processed and sent out, we cannot make modifications. If you need adjustments, email us immediately at <a href=\"mailto:orders@xx-xyathletics.com\">orders@xx-xyathletics.com</a>.</p>",
+            "faq_answer": ""
+          }
+        },
+        "faq_jqwWej": {
+          "type": "faq",
+          "settings": {
+            "question": "<h6>Can I return or exchange items from a bulk order?</h6>",
+            "answer": "<p>Bulk orders are <strong>final sale</strong> and cannot be returned or exchanged. If you need to make <strong>minor adjustments</strong>, please reach out to us at <a href=\"mailto:orders@xx-xyathletics.com\">orders@xx-xyathletics.com</a> as soon as possible—we’ll do our best to accommodate changes before your order ships.</p>",
+            "faq_answer": ""
+          }
+        },
+        "faq_MkNNDe": {
+          "type": "faq",
+          "settings": {
+            "question": "<h6>Can I customize products for my bulk order?</h6>",
+            "answer": "<p>Yes! Once you submit your form, a representative will contact you to gather more details about your design. Please see our design catalog for more information. The best part? Customization is free!</p>",
+            "faq_answer": ""
+          }
+        },
+        "faq_dQTyib": {
+          "type": "faq",
+          "settings": {
+            "question": "<h6>How long will it take for my order to arrive?</h6>",
+            "answer": "<p>Custom order processing times vary based on order size and availability. Typically, orders ship within <strong>10-15 business days</strong>. Shipping times depend on the selected shipping method and destination. If you have a specific deadline, please contact us at <a href=\"mailto:orders@xx-xyathletics.com\">orders@xx-xyathletics.com</a> before placing your order.</p>",
+            "faq_answer": ""
+          }
+        }
+      },
+      "block_order": [
+        "faq_NyT7qc",
+        "faq_C9DfEJ",
+        "faq_jqwWej",
+        "faq_MkNNDe",
+        "faq_dQTyib"
+      ],
+      "name": "FAQ Accordion",
+      "settings": {
+        "title": "Frequently Asked Questions",
+        "desc": "",
+        "extra_class": "gts",
+        "desktop_margin_top": 50,
+        "desktop_margin_bottom": 50,
+        "mobile_margin_top": 30,
+        "mobile_margin_bottom": 30
+      }
+    },
+    "rich_text_cREcA6": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_Eq6iL6": {
+          "type": "heading",
+          "settings": {
+            "heading": "<h3>Tell Us About Your Project.</h3>",
+            "heading_size": "medium",
+            "heading_padding_top": 0,
+            "padding_bottom": 0
+          }
+        },
+        "text_wQPQrM": {
+          "type": "text",
+          "settings": {
+            "text": "<h6>Please fill out a request form and we'll be in touch with you as soon as possible. </h6>"
+          }
+        },
+        "button_gHc4nY": {
+          "type": "button",
+          "settings": {
+            "button_label": "Project Request",
+            "button_link": "https://www.xx-xyathletics.com/pages/apply-to-group-sales",
+            "button_style": "button--ctm_wb_global_button"
+          }
+        },
+        "button_RPRYVJ": {
+          "type": "button",
+          "settings": {
+            "button_label": "Current Catalog",
+            "button_link": "https://cdn.shopify.com/s/files/1/0575/2009/5363/files/Custom_Order_Catalog.pdf?v=1755103340",
+            "button_style": "button--ctm_wb_global_button"
+          }
+        }
+      },
+      "block_order": [
+        "heading_Eq6iL6",
+        "text_wQPQrM",
+        "button_gHc4nY",
+        "button_RPRYVJ"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "color_scheme": "background-1",
+        "full_width": true,
+        "content_alignment_desktop": "center",
+        "content_alignment_mobile": "center",
+        "padding_top": 0,
+        "padding_bottom": 70,
+        "margin_top": 60,
+        "margin_bottom": 100,
+        "spring_shop_text": "gts collection-container test"
+      }
+    }
+  },
+  "order": [
+    "shogun-helper",
+    "pages",
+    "shogun-optimizer",
+    "image_grid_group_sale_jYnF37",
+    "group_sales_gallery_rprXRr",
+    "faq_accorddion_67H9Jd",
+    "rich_text_cREcA6"
+  ]
+}

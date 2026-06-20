@@ -1,0 +1,175 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "pages": {
+      "type": "main-page",
+      "custom_css": [
+        ".container {padding-top: 50px; padding-bottom: 50px;}",
+        "h1 {text-align: center;}"
+      ],
+      "settings": {}
+    },
+    "173951795447bfe110": {
+      "type": "apps",
+      "disabled": true,
+      "settings": {
+        "include_margins": true
+      }
+    },
+    "custom_liquid_Jr8efT": {
+      "type": "custom-liquid",
+      "settings": {
+        "custom_liquid": "<div class=\"powr-form-builder\" id=\"3f2507cc_1740483614\"></div><script src=\"https://www.powr.io/powr.js?platform=shopify\"></script>"
+      }
+    },
+    "custom_liquid_HyeKQw": {
+      "type": "custom-liquid",
+      "settings": {
+        "custom_liquid": "<h3 style=\"text-align: center;\">Frequently Asked Questions</h3>"
+      }
+    },
+    "faq_accorddion_qTN4Gg": {
+      "type": "faq-accorddion",
+      "blocks": {
+        "faq_Rpn99f": {
+          "type": "faq",
+          "settings": {
+            "question": "<p><strong>How long will it take for my order to arrive?</strong></p>",
+            "answer": "Bulk order processing times vary based on order size and availability. Typically, orders ship within <strong>5-10 business days</strong>. Shipping times depend on the selected shipping method and destination. If you have a specific deadline, please contact us at <a href=\"mailto:orders@xx-xyathletics.com\">orders@xx-xyathletics.com</a> before placing your order."
+          }
+        },
+        "faq_etRViK": {
+          "type": "faq",
+          "settings": {
+            "question": "<p><strong>Can I return or exchange items from a bulk order?</strong></p>",
+            "answer": "Bulk orders are <strong>final sale</strong> and cannot be returned or exchanged. If you need to make <strong>minor adjustments</strong>, please reach out to us at <a href=\"mailto:orders@xx-xyathletics.com\">orders@xx-xyathletics.com</a> as soon as possible—we’ll do our best to accommodate changes before your order ships."
+          }
+        },
+        "faq_DCUUGb": {
+          "type": "faq",
+          "settings": {
+            "question": "<p><strong>Can I modify my bulk order after it has been placed?</strong></p>",
+            "answer": "We can <strong>try</strong> to accommodate changes <strong>before</strong> your order ships, but once it has been processed and sent out, we cannot make modifications. If you need adjustments, email us immediately at <a href=\"mailto:orders@xx-xyathletics.com\">orders@xx-xyathletics.com</a>."
+          }
+        },
+        "faq_XxRUAE": {
+          "type": "faq",
+          "settings": {
+            "question": "<p><strong>Do you provide invoices or receipts for tax purposes?</strong></p>",
+            "answer": "Yes, an <strong>invoice will be provided</strong> with your order confirmation. If you need additional documentation, please email <a href=\"mailto:orders@xx-xyathletics.com\">orders@xx-xyathletics.com</a>."
+          }
+        },
+        "faq_cy8ctz": {
+          "type": "faq",
+          "settings": {
+            "question": "<p><strong>How do I track my bulk order once it’s placed?</strong></p>",
+            "answer": "Once your order ships, you’ll receive an <strong>automated email</strong> with a tracking number. If you don’t see it, check your spam folder or reach out to us for assistance."
+          }
+        },
+        "faq_FYR99G": {
+          "type": "faq",
+          "settings": {
+            "question": "<p><strong>Is there a minimum order quantity for bulk orders?</strong></p>",
+            "answer": "Yes, we require a <strong>25-unit minimum</strong> for bulk orders."
+          }
+        },
+        "faq_pAJDeK": {
+          "type": "faq",
+          "settings": {
+            "question": "<p><strong>Can I customize products for my bulk order?</strong></p>",
+            "answer": "Not yet—but we’re working on it! Stay tuned for future updates on customization options."
+          }
+        },
+        "faq_KAtHBT": {
+          "type": "faq",
+          "settings": {
+            "question": "<p><strong>What payment methods do you accept for bulk orders?</strong></p>",
+            "answer": "We accept <strong>Shopify-supported payment methods and PayPal</strong> for bulk orders."
+          }
+        },
+        "faq_9z9MQz": {
+          "type": "faq",
+          "settings": {
+            "question": "<p><strong>Can I apply a promo code or affiliate discount to bulk orders?</strong></p>",
+            "answer": "No additional promo codes or affiliate discounts can be applied to bulk orders. However, all bulk orders automatically receive <strong>20% off</strong>."
+          }
+        },
+        "faq_tDwwTf": {
+          "type": "faq",
+          "settings": {
+            "question": "<p><strong>How does shipping work for bulk orders?</strong></p>",
+            "answer": "Standard shipping is included, but if you need <strong>priority shipping</strong>, it can be arranged for an additional cost. Contact us before placing your order to discuss expedited options."
+          }
+        },
+        "faq_cE4FGh": {
+          "type": "faq",
+          "settings": {
+            "question": "<p><strong>Do bulk orders qualify for free shipping?</strong></p>",
+            "answer": "Yes, bulk orders qualify for <strong>free standard shipping</strong>."
+          }
+        },
+        "faq_nrbGmx": {
+          "type": "faq",
+          "settings": {
+            "question": "<p><strong>Do you ship bulk orders internationally?</strong></p>",
+            "answer": "Yes, we ship <strong>internationally</strong>. Shipping times and costs may vary based on location."
+          }
+        },
+        "faq_tWQhMw": {
+          "type": "faq",
+          "settings": {
+            "question": "<p><strong>Are there any restrictions on reselling bulk order products?</strong></p>",
+            "answer": "Yes, <strong>reselling is not allowed</strong>. Bulk orders are intended for personal use, teams, groups, and organizations."
+          }
+        },
+        "faq_yQ8UyP": {
+          "type": "faq",
+          "settings": {
+            "question": "<p><strong>Who do I contact for questions about my bulk order?</strong></p>",
+            "answer": "For any bulk order inquiries, reach out to us at <a href=\"mailto:orders@xx-xyathletics.com\">orders@xx-xyathletics.com</a>. We’re happy to help!"
+          }
+        }
+      },
+      "block_order": [
+        "faq_Rpn99f",
+        "faq_etRViK",
+        "faq_DCUUGb",
+        "faq_XxRUAE",
+        "faq_cy8ctz",
+        "faq_FYR99G",
+        "faq_pAJDeK",
+        "faq_KAtHBT",
+        "faq_9z9MQz",
+        "faq_tDwwTf",
+        "faq_cE4FGh",
+        "faq_nrbGmx",
+        "faq_tWQhMw",
+        "faq_yQ8UyP"
+      ],
+      "settings": {}
+    },
+    "custom_liquid_QzieJf": {
+      "type": "custom-liquid",
+      "disabled": true,
+      "settings": {
+        "custom_liquid": "<div style=\"text-align: center;\" class=\"title_bulkorders\">Bulk orders require a <strong>minimum purchase of 25 total units per order</strong>. All items purchased through our bulk order program are for <strong>personal or organizational use only</strong> and may not be <strong>resold under any circumstances.</strong> By submitting this form, you agree to these <a href=\"https://www.xx-xyathletics.com/policies/terms-of-service\">terms and conditions.</a>\n</div>"
+      }
+    }
+  },
+  "order": [
+    "pages",
+    "173951795447bfe110",
+    "custom_liquid_Jr8efT",
+    "custom_liquid_HyeKQw",
+    "faq_accorddion_qTN4Gg",
+    "custom_liquid_QzieJf"
+  ]
+}

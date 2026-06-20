@@ -1,0 +1,70 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "rich_text_aTHUjT": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_EdJf3J": {
+          "type": "heading",
+          "settings": {
+            "extra_class_heading": "",
+            "heading": "<h1>Sign in to your account</h1>",
+            "heading_size": "h1"
+          }
+        },
+        "text_WMxRKY": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Please create a new account to explore this experience.<br/><br/></p>"
+          }
+        },
+        "button_yzkExr": {
+          "type": "button",
+          "disabled": true,
+          "settings": {
+            "button_label": "Button label",
+            "button_link": "",
+            "button_style_secondary": false,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_EdJf3J",
+        "text_WMxRKY",
+        "button_yzkExr"
+      ],
+      "settings": {
+        "extra_class": "ctm-account",
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    },
+    "main": {
+      "type": "main-login",
+      "settings": {
+        "enable_shop_login_button": true,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    }
+  },
+  "order": [
+    "rich_text_aTHUjT",
+    "main"
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "selectedIds": [],
+  "selectedCommentIds": [],
+  "selectedUnusedCssFiles": [
+    "component-article-card-small.css",
+    "component-card-extended2.css",
+    "component-popular-card.css",
+    "component-round-stamp.css",
+    "gallery-with-text.css",
+    "jquery.fancybox.css",
+    "main-image-card-grid.css",
+    "main-list-template-collection copy.css"
+  ],
+  "removeMode": "unused-css",
+  "protectedPatterns": [],
+  "ignoreSmallComments": false,
+  "smallCommentMaxLines": 2,
+  "ignoreLiquidDocComments": true,
+  "removedAt": "2026-05-27T11:05:08.764Z"
+}

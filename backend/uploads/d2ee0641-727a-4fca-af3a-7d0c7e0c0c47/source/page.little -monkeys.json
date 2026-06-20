@@ -1,0 +1,153 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "settings": {
+        "extra_class": "",
+        "page_title_black": "",
+        "breadcrumb_image": "shopify://shop_images/header_content_15.png",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "image_with_text_kEHF47": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_YNxh7d": {
+          "type": "heading",
+          "settings": {
+            "heading": "Truly the Best Mattress for Kids",
+            "heading_size": "h3"
+          }
+        },
+        "text_QWiGFW": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Kids have a tendency to sleep hot which can prevent good sleep. We have a proprietary temperature regulating technology in the foam that helps kids sleep at their ideal body temperature for restful sleep.</p><p>Kids have lighter weight bodies, so we designed our support layer to have responsive foam for proper support.</p><p>Kids make \"mistakes\" so we made sure the fabric used on our cover is stain and water resistant, plus the cover is removable and machine washable with a heavy duty zipper for easy clean up.</p> <p>We only use safe materials including organic cotton in our textiles that are OEKO-TEX ® certified and CertiPUR-US (r) certified foam.</p>",
+            "text_style": "body"
+          }
+        }
+      },
+      "block_order": [
+        "heading_YNxh7d",
+        "text_QWiGFW"
+      ],
+      "settings": {
+        "extra_class": "ctm_trulymattress_block",
+        "image": "shopify://shop_images/image_12.png",
+        "txt_under_img": "",
+        "height": "adapt",
+        "desktop_image_width": "medium",
+        "layout": "image_first",
+        "image_radius": 24,
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "left",
+        "content_layout": "no-overlap",
+        "section_color_scheme": "",
+        "color_scheme": "",
+        "image_behavior": "none",
+        "mobile_content_alignment": "left",
+        "padding_top": 80,
+        "padding_bottom": 80
+      }
+    },
+    "multicolumn_cxw8GY": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_CQEi7U": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/premium_comfort.png",
+            "title": "Premium Comfort",
+            "text": "<p>Our mattresses are made with the finest materials to provide cloud-like comfort, ensuring your child sleeps soundly through the night.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_iFh7cX": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/supportive_design.png",
+            "title": "Supportive Design",
+            "text": "<p>Engineered to promote healthy spinal alignment and proper posture, our mattresses offer the ideal balance of support and plushness for growing bodies.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_KH97Ua": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/durability.png",
+            "title": "Durability",
+            "text": "<p>Built to last, our mattresses are crafted with high-quality materials that withstand the wear and tear of childhood adventures.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_xtwAtn": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/hypoallergenic.png",
+            "title": "Hypoallergenic",
+            "text": "<p>Say goodbye to sneezing fits and stuffy noses! Our mattresses are hypoallergenic, keeping allergens at bay for a healthier sleeping environment.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_NGHmig": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/safety_first.png",
+            "title": "Safety First",
+            "text": "<p>Rest easy knowing our mattresses meet strict safety standards, providing a worry-free sleeping experience for your little ones.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "column_CQEi7U",
+        "column_iFh7cX",
+        "column_KH97Ua",
+        "column_xtwAtn",
+        "column_NGHmig"
+      ],
+      "settings": {
+        "extra_class": "ctm_approved_block ctm_little_monkey",
+        "bg_image": "shopify://shop_images/our_story_BG.png",
+        "caption": "",
+        "title": "Parent Approved",
+        "description": "<p>We are proud to have hundreds of excellent 5-star reviews from the many parents and grandparents who have joined the 5 Little Monkeys family.</p><p>Here are just some features they love!</p>",
+        "heading_size": "h3",
+        "image_width": "full",
+        "image_ratio": "adapt",
+        "columns_desktop": 5,
+        "column_alignment": "left",
+        "background_style": "primary",
+        "button_label": "Read Reviews",
+        "button_link": "shopify://pages/reviews",
+        "button_label_2": "",
+        "button_link_2": "",
+        "color_scheme": "",
+        "columns_mobile": "1",
+        "swipe_on_mobile": true,
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    }
+  },
+  "order": [
+    "main",
+    "image_with_text_kEHF47",
+    "multicolumn_cxw8GY"
+  ]
+}

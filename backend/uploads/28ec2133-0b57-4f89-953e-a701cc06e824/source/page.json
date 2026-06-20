@@ -1,0 +1,407 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "1760487761528a9343": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_ded985a_thLXGx": {
+          "type": "ai_gen_block_ded985a",
+          "settings": {
+            "desktop_height": 50,
+            "mobile_height": 30,
+            "background_color": "rgba(0,0,0,0)"
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_ded985a_thLXGx"
+      ],
+      "settings": {}
+    },
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "ctm_video_hero_6y9KAW": {
+      "type": "ctm-video-hero",
+      "name": "Video Banner",
+      "settings": {
+        "extra_class": "",
+        "heading": "Meet the Whitening Strip That Simply Melts Away—Not Your Margin.",
+        "description": "<p class=\"body-18-500\">Clinically proven. Created by Dr. Bill Dorfman, rated by CHAT GPT as the #1 Cosmetic Dentist. </p>",
+        "bottom_text": "",
+        "button_text": "Let’s talk distribution",
+        "button_url": "shopify://pages/contact",
+        "video": "shopify://files/videos/POOF_header_Full_horiz.mp4",
+        "mobile-video": "shopify://files/videos/POOF_header_Full_mobile.mp4"
+      }
+    },
+    "multicolumn_RNUw7D": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_6a3her": {
+          "type": "column",
+          "settings": {
+            "title": "High-Margin",
+            "text": "<p>Premium price point with strong repeat purchase.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_yQyVKV": {
+          "type": "column",
+          "settings": {
+            "title": "Smart Displays",
+            "text": "<p>Shelf-ready boxes and impulse-zone trays for travel, beauty, and oral care.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_EAn874": {
+          "type": "column",
+          "settings": {
+            "title": "Fast Turn",
+            "text": "<p>Low MOQ, easy restock, proven DTC traction, and “POOOF! Proof” demo kits for associates.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "column_6a3her",
+        "column_yQyVKV",
+        "column_EAn874"
+      ],
+      "custom_css": [
+        "h2 {}"
+      ],
+      "name": "t:sections.multicolumn.presets.name",
+      "settings": {
+        "extra_class": "",
+        "title": "Small Footprint. Big Turn. Bigger Margins.",
+        "heading_size": "h1",
+        "image_width": "full",
+        "image_ratio": "adapt",
+        "button_label": "",
+        "button_link": "",
+        "columns_desktop": 3,
+        "column_alignment": "left",
+        "background_style": "primary",
+        "color_scheme": "",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "ctm_banner_list_FznGXT": {
+      "type": "ctm-banner-list",
+      "blocks": {
+        "star_list_pr8fU4": {
+          "type": "star_list",
+          "settings": {
+            "list_text": "<span>A Whiter Smile, Made Smarter</span>\n37% more effective than the leading tooth whitening strip"
+          }
+        },
+        "star_list_Pz8RgD": {
+          "type": "star_list",
+          "settings": {
+            "list_text": "<span>Simpler, Faster Whitening</span>\nDissolves in 10-15 minutes—no peel, no mess"
+          }
+        },
+        "star_list_yKEnYe": {
+          "type": "star_list",
+          "settings": {
+            "list_text": "<span>Better for You, Better for the Planet</span>\nZero sensitivity formula, enamel-remineralizing, great-tasting"
+          }
+        }
+      },
+      "block_order": [
+        "star_list_pr8fU4",
+        "star_list_Pz8RgD",
+        "star_list_yKEnYe"
+      ],
+      "custom_css": [],
+      "name": "Banner with list",
+      "settings": {
+        "extra_class": "",
+        "banner_desktop": "shopify://shop_images/desktop_0845ea0f-d9e7-4eaa-bdc7-a4101f6908d3.png",
+        "banner_mobile": "shopify://shop_images/Frame_4.png",
+        "banner_heading": "The #1 Performing Dissolving<br> Teeth Whitening Strips<br> in the US \nIs ready <br>for the retail shelves.",
+        "banner_description": "Developed by Dr. Bill Dorfman, creator of Zoom Whitening, the #1 in office dental supervised whitening product. Now, POOOF! delivers the same professional tooth whitening results in a take home product that customers love. POOOF! is redefining whitening for today’s beauty and self-care shopper.\n<br>\n<br>\nWhy Retailers Are Paying Attention:"
+      }
+    },
+    "17605065333d6de218": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_e4acaed_cEkeUq": {
+          "type": "ai_gen_block_e4acaed",
+          "settings": {
+            "background_color": "#ffffff",
+            "min_height_desktop": 40,
+            "padding_top_desktop": 40,
+            "padding_bottom_desktop": 40,
+            "padding_left_desktop": 20,
+            "padding_right_desktop": 20,
+            "background_color_mobile": "#ffffff",
+            "min_height_mobile": 80,
+            "padding_top_mobile": 30,
+            "padding_bottom_mobile": 30,
+            "padding_left_mobile": 15,
+            "padding_right_mobile": 15
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_e4acaed_cEkeUq"
+      ],
+      "settings": {}
+    },
+    "176047302672726a94": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_19df699_EWhqrT": {
+          "type": "ai_gen_block_19df699",
+          "settings": {
+            "desktop_image_1": "shopify://shop_images/Frame_14.png",
+            "desktop_image_2": "shopify://shop_images/Frame_19.png",
+            "desktop_image_3": "shopify://shop_images/Frame_16.png",
+            "desktop_image_4": "shopify://shop_images/Frame_12_41c203c7-1a1c-4fe6-a899-1929fa58ab0c.png",
+            "desktop_image_5": "shopify://shop_images/desktop_4_6f029e8f-fb37-4558-9a7a-445d50fccb62.png",
+            "mobile_image_1": "shopify://shop_images/Frame_17_0f2de288-c2c2-4413-82a8-2eab92dbd6f9.png",
+            "mobile_image_2": "shopify://shop_images/Frame_20.png",
+            "mobile_image_3": "shopify://shop_images/Frame_18.png",
+            "mobile_image_4": "shopify://shop_images/Frame_13_e23d96f6-8823-440c-a8b5-9fa43d29bae5.png",
+            "mobile_image_5": "shopify://shop_images/mobile_4_c115b65a-6c1f-4de8-b7b4-3ce3b9dddd86.png",
+            "carousel_height": 500,
+            "carousel_height_mobile": 300,
+            "image_fit": "cover",
+            "border_radius": 0,
+            "show_arrows": true,
+            "arrow_size": 50,
+            "arrow_offset": 20,
+            "arrow_opacity": 80,
+            "arrow_background_color": "#ffffff",
+            "arrow_color": "#121212",
+            "arrow_hover_background_color": "#121212",
+            "arrow_hover_color": "#ffffff",
+            "show_dots": false,
+            "dot_size": 12,
+            "dots_spacing": 15,
+            "dot_active_color": "#121212",
+            "dot_inactive_color": "#cccccc",
+            "autoplay": false,
+            "autoplay_speed": 4,
+            "loop": true
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_19df699_EWhqrT"
+      ],
+      "settings": {}
+    },
+    "blocks_9zNCTn": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_e4acaed_6GxbTE": {
+          "type": "ai_gen_block_e4acaed",
+          "settings": {
+            "background_color": "#ffffff",
+            "min_height_desktop": 20,
+            "padding_top_desktop": 40,
+            "padding_bottom_desktop": 40,
+            "padding_left_desktop": 20,
+            "padding_right_desktop": 20,
+            "background_color_mobile": "#ffffff",
+            "min_height_mobile": 80,
+            "padding_top_mobile": 30,
+            "padding_bottom_mobile": 30,
+            "padding_left_mobile": 15,
+            "padding_right_mobile": 15
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_e4acaed_6GxbTE"
+      ],
+      "settings": {}
+    },
+    "rich_text_Vj9CFP": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_LKAQyY": {
+          "type": "heading",
+          "settings": {
+            "extra_class_heading": "",
+            "heading": "Beauty Culture Is Driving Demand Whitening isn’t just oral care anymore—it’s self-care.",
+            "heading_size": "h1"
+          }
+        },
+        "text_L46nHQ": {
+          "type": "text",
+          "settings": {
+            "text": "<p>POOOF! fits the moment—modern, scientifically proven, and built to move off shelves.</p>",
+            "extra_class_caption": ""
+          }
+        }
+      },
+      "block_order": [
+        "heading_LKAQyY",
+        "text_L46nHQ"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "extra_class": "",
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    },
+    "blocks_FyPACc": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_e4acaed_JH7cJd": {
+          "type": "ai_gen_block_e4acaed",
+          "settings": {
+            "background_color": "#ffffff",
+            "min_height_desktop": 20,
+            "padding_top_desktop": 40,
+            "padding_bottom_desktop": 40,
+            "padding_left_desktop": 20,
+            "padding_right_desktop": 20,
+            "background_color_mobile": "#ffffff",
+            "min_height_mobile": 80,
+            "padding_top_mobile": 30,
+            "padding_bottom_mobile": 30,
+            "padding_left_mobile": 15,
+            "padding_right_mobile": 15
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_e4acaed_JH7cJd"
+      ],
+      "settings": {}
+    },
+    "multirow_nkhjDP": {
+      "type": "multirow",
+      "blocks": {
+        "row_WUiprM": {
+          "type": "row",
+          "settings": {
+            "image": "shopify://shop_images/desktop_48_9a54d2bc-16c8-4699-8b65-c2a197a403f4.png",
+            "caption": "Social Momentum",
+            "heading": "+45% YoY Growth in Whitening Content",
+            "text": "<p>Whitening conversations are lighting up online. With social buzz growing 45% year over year, the demand for brighter smiles is stronger than ever.</p>",
+            "button_label": "",
+            "button_link": ""
+          }
+        },
+        "row_CEkBqB": {
+          "type": "row",
+          "settings": {
+            "image": "shopify://shop_images/desktop_9_4ce2751a-c034-4653-8a99-73eb6e789caf.png",
+            "caption": "Everyday Essentials",
+            "heading": "3 in 5 Gen Z Include Whitening Regularly",
+            "text": "<p>Whitening isn’t just for special occasions anymore. Sixty percent of Gen Z make it part of their regular routine—proof that bright smiles are now a lifestyle standard.</p>",
+            "button_label": "",
+            "button_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "row_WUiprM",
+        "row_CEkBqB"
+      ],
+      "custom_css": [
+        "p {line-height: 140%;}"
+      ],
+      "name": "t:sections.multirow.presets.name",
+      "settings": {
+        "extra_class": "",
+        "image_height": "medium",
+        "desktop_image_width": "medium",
+        "image_layout": "alternate-left",
+        "heading_size": "h1",
+        "text_style": "body",
+        "button_style": "secondary",
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "left",
+        "mobile_content_alignment": "left",
+        "section_color_scheme": "",
+        "row_color_scheme": "",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "1760504668f08dff26": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_1236e23_47tXay": {
+          "type": "ai_gen_block_1236e23",
+          "settings": {
+            "legal_text": "<p>*Independent 10-day in vitro study confirmed POOOF! delivers 37% more whitening power than the top-selling teeth whitening strip. </p>",
+            "font_family": "assistant_n4",
+            "font_size": 7,
+            "mobile_font_size": 7,
+            "line_height": 1.3,
+            "paragraph_spacing": 6,
+            "text_alignment": "center",
+            "max_width": 1200,
+            "padding_top": 20,
+            "padding_bottom": 20,
+            "padding_horizontal": 20,
+            "mobile_padding_top": 16,
+            "mobile_padding_bottom": 16,
+            "mobile_padding_horizontal": 16,
+            "background_color": "#ffffff",
+            "text_color": "#666666",
+            "link_color": "#121212",
+            "link_hover_color": "#334fb4",
+            "link_style": "none"
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_1236e23_47tXay"
+      ],
+      "settings": {}
+    }
+  },
+  "order": [
+    "1760487761528a9343",
+    "main",
+    "ctm_video_hero_6y9KAW",
+    "multicolumn_RNUw7D",
+    "ctm_banner_list_FznGXT",
+    "17605065333d6de218",
+    "176047302672726a94",
+    "blocks_9zNCTn",
+    "rich_text_Vj9CFP",
+    "blocks_FyPACc",
+    "multirow_nkhjDP",
+    "1760504668f08dff26"
+  ]
+}

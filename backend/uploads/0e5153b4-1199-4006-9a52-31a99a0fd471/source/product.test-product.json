@@ -1,0 +1,190 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "custom_liquid_LnbgfJ": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "{% if  product.metafields.custom.promo_message %}\n        <div class=\"promo-message\">\n            {{ product.metafields.custom.promo_message }}\n        </div>\n    {% endif %}"
+          }
+        },
+        "price": {
+          "type": "price",
+          "settings": {}
+        },
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "button"
+          }
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": false,
+            "show_gift_card_recipient": false
+          }
+        },
+        "custom_liquid_trmnrY": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "{% if  product.metafields.custom.extra_variant_message %}\n        <div class=\"variant-message\">\n            {{ product.metafields.custom.extra_variant_message }}\n        </div>\n    {% endif %}"
+          }
+        },
+        "product-description": {
+          "type": "product-description",
+          "settings": {
+            "default_open": true
+          }
+        },
+        "146d82e5-eaaf-49d0-b4da-d73923f32680": {
+          "type": "about",
+          "settings": {
+            "default_open": false,
+            "about_heading": "Size Chart",
+            "about_heading_content": ""
+          }
+        },
+        "perfect-fit": {
+          "type": "perfect-fit",
+          "settings": {
+            "about_heading": "Perfect Fit",
+            "about_heading_content": "<p>Some description</p>",
+            "show_link_slider": false
+          }
+        },
+        "pickup_availability": {
+          "type": "pickup_availability",
+          "settings": {}
+        },
+        "sku_AqYWf3": {
+          "type": "sku",
+          "disabled": true,
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "custom_liquid_LnbgfJ",
+        "price",
+        "variant_picker",
+        "buy_buttons",
+        "custom_liquid_trmnrY",
+        "product-description",
+        "146d82e5-eaaf-49d0-b4da-d73923f32680",
+        "perfect-fit",
+        "pickup_availability",
+        "sku_AqYWf3"
+      ],
+      "custom_css": [
+        ".promo-message {padding-top: 10px; font-size: 18px; color: #2ab572; font-weight: bold;}"
+      ],
+      "settings": {
+        "image_gallery_collage": "thumbnail_carousel",
+        "desktop_alignment": "right",
+        "mobile_alignment": "after",
+        "image_fit": "cover",
+        "show_share_facebook": true,
+        "show_share_twitter": true,
+        "show_share_pinterest": true,
+        "show_share_copy": true
+      }
+    },
+    "171387656909b19bfa": {
+      "type": "apps",
+      "settings": {
+        "include_margins": true
+      }
+    },
+    "product-recommendations": {
+      "type": "product-recommendations",
+      "custom_css": [
+        "h2 {font-size: 24pt;}"
+      ],
+      "settings": {
+        "heading": "<p>You Might Also Like</p>",
+        "link": "",
+        "button_link": "",
+        "products_limit": 4,
+        "image_ratio": "portrait",
+        "image_fit": "cover",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_desc": false,
+        "show_sku": false,
+        "quickview_show": false,
+        "show_link": true,
+        "margin_top": 40,
+        "margin_bottom": 60
+      }
+    },
+    "e4f339f2-3b69-4e29-be3c-e5903b404092": {
+      "type": "instagram-collage",
+      "blocks": {
+        "template--17224267399481__e4f339f2-3b69-4e29-be3c-e5903b404092-168309399123060deb-0": {
+          "type": "card",
+          "settings": {
+            "button_link": ""
+          }
+        },
+        "template--17224267399481__e4f339f2-3b69-4e29-be3c-e5903b404092-168309399123060deb-1": {
+          "type": "card",
+          "settings": {
+            "button_link": ""
+          }
+        },
+        "template--17224267399481__e4f339f2-3b69-4e29-be3c-e5903b404092-168309399123060deb-2": {
+          "type": "card",
+          "settings": {
+            "button_link": ""
+          }
+        },
+        "template--17224267399481__e4f339f2-3b69-4e29-be3c-e5903b404092-168309399123060deb-3": {
+          "type": "card-text",
+          "settings": {
+            "card-text_description": "<p>Some additional information</p>",
+            "heading_size": "medium",
+            "vertical_settings": "end",
+            "horizontal_settings": "left",
+            "color_scheme_2": "background-5"
+          }
+        }
+      },
+      "block_order": [
+        "template--17224267399481__e4f339f2-3b69-4e29-be3c-e5903b404092-168309399123060deb-0",
+        "template--17224267399481__e4f339f2-3b69-4e29-be3c-e5903b404092-168309399123060deb-1",
+        "template--17224267399481__e4f339f2-3b69-4e29-be3c-e5903b404092-168309399123060deb-2",
+        "template--17224267399481__e4f339f2-3b69-4e29-be3c-e5903b404092-168309399123060deb-3"
+      ],
+      "disabled": true,
+      "settings": {
+        "color_scheme": "background-3",
+        "title": "<p>Heading</p>",
+        "text": "Your text",
+        "overlay_enable": false,
+        "overlay_opacity": 10,
+        "button_text": "link label",
+        "button_link": "",
+        "padding_top": 130,
+        "padding_bottom": 160,
+        "margin_top": 140,
+        "margin_bottom": 0
+      }
+    }
+  },
+  "order": [
+    "main",
+    "171387656909b19bfa",
+    "product-recommendations",
+    "e4f339f2-3b69-4e29-be3c-e5903b404092"
+  ]
+}

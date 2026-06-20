@@ -1,0 +1,122 @@
+.sic__content {
+  padding: 15px 20px;
+}
+
+.sic__content .sic__desc {
+  margin: 20px 0;
+}
+
+.sic__buttons {
+  display: none;
+}
+.sic__buttons--show-mobile {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.sic__images {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  gap: 12px;
+  padding: 0 16px 24px;
+  scroll-padding-left: 16px;
+}
+.sic__images::-webkit-scrollbar { display: none; }
+
+.sic__image {
+  flex: 0 0 85%;
+  scroll-snap-align: start;
+  position: relative;
+  overflow: hidden;
+  border-radius: 4px;
+  aspect-ratio: 2/3;
+}
+
+.sic__image img,
+.sic__placeholder-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.sic__overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 16px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 8px;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.5) 0%, transparent 60%);
+}
+
+.sic__label { color: #fff; }
+.sic__image-cta { color: #fff; text-decoration: underline; white-space: nowrap; }
+
+/* Desktop (≥1024px) */
+@media (min-width: 1025px) {
+  .sic-section {
+    display: grid;
+    grid-template-columns: 1fr minmax(340px, 420px) 1fr;
+    align-items: stretch;
+    overflow: hidden;
+    background-color: var(--sic-bg, transparent);
+  }
+
+  .sic__content {
+    grid-column: 2;
+    grid-row: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 60px 48px;
+  }
+
+  .sic__desc {
+    margin-top: var(--sic-desc-mt, 0) !important;
+    margin-bottom: var(--sic-desc-mb, 0) !important;
+  }
+
+  .sic__buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    margin-top: 32px;
+  }
+
+  /* dissolve the wrapper — children become direct grid items */
+  .sic__images {
+    display: contents;
+  }
+
+  .sic__image {
+    flex: none;
+    scroll-snap-align: none;
+    border-radius: 0;
+    aspect-ratio: 4/5;
+  }
+
+  .sic__image-cta {
+    display: none;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .sic__image {
+    flex: 0 0 49%;
+  }
+}
+
+@media (min-width: 1680px) {
+  .sic-section {
+    grid-template-columns: 1fr minmax(340px,540px) 1fr;
+  }
+}

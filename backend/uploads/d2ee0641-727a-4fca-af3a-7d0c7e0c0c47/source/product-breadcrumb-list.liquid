@@ -1,0 +1,31 @@
+{% assign relevant_collection = product.collections.first %}
+{% assign collection_handle = '' %}
+{% for tag in product.tags %}
+  {% if tag contains 'collection:' %}
+    {% assign collection_handle = tag | remove: 'collection:' %}
+  {% endif %}
+{% endfor %}
+{% if collection_handle != '' %}
+  {% assign relevant_collection = collections[collection_handle] %}
+{% endif %}
+<style>
+  .breadcrumb-list {
+    color: #906547;
+    display: flex;
+    column-gap: 10px;
+    font-size: 10px;
+    margin-bottom: 8px;
+    flex-wrap: wrap;
+    @media screen and (max-width: 767px) {
+      font-size: 12px;
+    }
+  }
+  .breadcrumb-list a {
+    color: #906547;
+    font-weight: 400;
+  }
+</style>
+<div class="breadcrumb-list">
+  <a href="{{ shop.url }}">Shop</a> / <a href="{{ relevant_collection.url }}">{{ relevant_collection.title }}</a> /
+  <a href="{{ product.url }}">{{ product.title }}</a>
+</div>

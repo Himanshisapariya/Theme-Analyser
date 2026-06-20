@@ -1,0 +1,16 @@
+{
+  "createdAt": "2026-05-15T13:23:16.447Z",
+  "cssFiles": [],
+  "textFiles": [
+    "index.html",
+    "server.js"
+  ],
+  "summary": {
+    "totalRules": 0,
+    "usedRules": 0,
+    "unusedRules": 0,
+    "estimatedSavingsBytes": 0
+  },
+  "entries": [],
+  "jobId": "b3d6bde0-e810-4dcb-8958-c971bb628d1d"
+}

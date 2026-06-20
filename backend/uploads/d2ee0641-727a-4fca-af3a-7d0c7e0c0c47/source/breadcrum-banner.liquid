@@ -1,0 +1,56 @@
+{%- if section.settings.breadcrumb_image != blank -%}
+  <div class="ctm_breadcrumb_banner">
+    <div class="ctm_breadcrumb_img relative">
+      <img
+        class="w-full object-cover h-[280px] midlarge_desktop:h-[354px]"
+        src="{{ section.settings.breadcrumb_image | image_url: width: 2000 }}"
+        alt="img_logo"
+        width="2000"
+        height="280"
+        fetchpriority="high"
+      >
+      <div class="ctm_breadcrumb_content absolute top-1/2 -translate-y-1/2 left-0 right-0 z-1">
+        <div class="container_fluid">
+          <h1 class="title--primary{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}">
+            {% if section.settings.page_title_black != blank %}
+              <span class="text-black-900">{{ section.settings.page_title_black }}</span>
+            {% else %}
+              {{ blog.title | escape }}
+            {% endif %}
+          </h1>
+        </div>
+      </div>
+    </div>
+  </div>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Breadcrum Banner",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "html",
+      "label": "Title",
+      "id": "page_title_black"
+    },
+    {
+      "type": "image_picker",
+      "label": "Image",
+      "id": "breadcrumb_image"
+    }
+  ],
+  "blocks": [],
+  "presets": [
+    {
+      "name": "Breadcrum Banner"
+    }
+  ]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

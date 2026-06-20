@@ -1,0 +1,786 @@
+{% doc %}
+  @prompt
+    I need an image carousel that will have mobile and desktop upload options for me to place underneath the small footprint big turn greater margins section. I would love if there were arrows for a user to use to flip through the images as well, and that it is looping and doesnt stop once the photos are all viewed
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-image-carousel-{{ ai_gen_id }} {
+    position: relative;
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+    border-radius: {{ block.settings.border_radius }}px;
+  }
+
+  .ai-carousel-container-{{ ai_gen_id }} {
+    position: relative;
+    width: 100%;
+    height: {{ block.settings.carousel_height }}px;
+    overflow: hidden;
+  }
+
+  .ai-carousel-track-{{ ai_gen_id }} {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.5s ease-in-out;
+  }
+
+  .ai-carousel-slide-{{ ai_gen_id }} {
+    flex: 0 0 100%;
+    width: 100%;
+    height: 100%;
+    position: relative;
+  }
+
+  .ai-carousel-slide-{{ ai_gen_id }} img {
+    width: 100%;
+    height: 100%;
+    object-fit: {{ block.settings.image_fit }};
+    display: block;
+  }
+
+  .ai-carousel-placeholder-{{ ai_gen_id }} {
+    width: 100%;
+    height: 100%;
+    background-color: #f4f4f4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+
+  .ai-carousel-placeholder-{{ ai_gen_id }} svg {
+    width: 100%;
+    height: 100%;
+    max-width: 200px;
+    max-height: 200px;
+    opacity: 0.3;
+  }
+
+  .ai-carousel-empty-state-{{ ai_gen_id }} {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 12px 20px;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 8px;
+    font-size: 14px;
+    color: #666;
+    text-align: center;
+    pointer-events: none;
+  }
+
+  .ai-carousel-nav-{{ ai_gen_id }} {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: {{ block.settings.arrow_background_color }};
+    color: {{ block.settings.arrow_color }};
+    border: none;
+    width: {{ block.settings.arrow_size }}px;
+    height: {{ block.settings.arrow_size }}px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 2;
+    transition: all 0.3s ease;
+    opacity: {{ block.settings.arrow_opacity | divided_by: 100.0 }};
+  }
+
+  .ai-carousel-nav-{{ ai_gen_id }}:hover {
+    background-color: {{ block.settings.arrow_hover_background_color }};
+    color: {{ block.settings.arrow_hover_color }};
+    opacity: 1;
+    transform: translateY(-50%) scale(1.1);
+  }
+
+  .ai-carousel-nav-{{ ai_gen_id }}:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+    transform: translateY(-50%) scale(1);
+  }
+
+  .ai-carousel-nav-{{ ai_gen_id }}--prev {
+    left: {{ block.settings.arrow_offset }}px;
+  }
+
+  .ai-carousel-nav-{{ ai_gen_id }}--next {
+    right: {{ block.settings.arrow_offset }}px;
+  }
+
+  .ai-carousel-nav-{{ ai_gen_id }} svg {
+    width: calc({{ block.settings.arrow_size }}px * 0.5);
+    height: calc({{ block.settings.arrow_size }}px * 0.5);
+  }
+
+  .ai-carousel-dots-{{ ai_gen_id }} {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: {{ block.settings.dots_spacing }}px;
+  }
+
+  .ai-carousel-dot-{{ ai_gen_id }} {
+    width: {{ block.settings.dot_size }}px;
+    height: {{ block.settings.dot_size }}px;
+    border-radius: 50%;
+    background-color: {{ block.settings.dot_inactive_color }};
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .ai-carousel-dot-{{ ai_gen_id }}.active {
+    background-color: {{ block.settings.dot_active_color }};
+    transform: scale(1.2);
+  }
+
+  .ai-carousel-dot-{{ ai_gen_id }}:hover {
+    background-color: {{ block.settings.dot_active_color }};
+    transform: scale(1.1);
+  }
+
+  @media screen and (max-width: 749px) {
+    .ai-carousel-container-{{ ai_gen_id }} {
+      height: {{ block.settings.carousel_height_mobile }}px;
+    }
+
+    .ai-carousel-nav-{{ ai_gen_id }} {
+      width: {{ block.settings.arrow_size | times: 0.8 }}px;
+      height: {{ block.settings.arrow_size | times: 0.8 }}px;
+    }
+
+    .ai-carousel-nav-{{ ai_gen_id }} svg {
+      width: calc({{ block.settings.arrow_size | times: 0.8 }}px * 0.5);
+      height: calc({{ block.settings.arrow_size | times: 0.8 }}px * 0.5);
+    }
+
+    .ai-carousel-nav-{{ ai_gen_id }}--prev {
+      left: {{ block.settings.arrow_offset | times: 0.5 }}px;
+    }
+
+    .ai-carousel-nav-{{ ai_gen_id }}--next {
+      right: {{ block.settings.arrow_offset | times: 0.5 }}px;
+    }
+  }
+
+  {% unless block.settings.show_arrows %}
+    .ai-carousel-nav-{{ ai_gen_id }} {
+      display: none;
+    }
+  {% endunless %}
+
+  {% unless block.settings.show_dots %}
+    .ai-carousel-dots-{{ ai_gen_id }} {
+      display: none;
+    }
+  {% endunless %}
+{% endstyle %}
+
+<image-carousel-{{ ai_gen_id }}
+  class="ai-image-carousel-{{ ai_gen_id }}"
+  data-autoplay="{{ block.settings.autoplay }}"
+  data-autoplay-speed="{{ block.settings.autoplay_speed }}"
+  data-loop="{{ block.settings.loop }}"
+  {{ block.shopify_attributes }}
+>
+  <div class="ai-carousel-container-{{ ai_gen_id }}">
+    <div class="ai-carousel-track-{{ ai_gen_id }}">
+      {% liquid
+        assign desktop_images = ''
+        assign mobile_images = ''
+        assign desktop_image_array = ''
+        assign mobile_image_array = ''
+        
+        for i in (1..5)
+          assign desktop_key = 'desktop_image_' | append: i
+          assign mobile_key = 'mobile_image_' | append: i
+          assign desktop_img = block.settings[desktop_key]
+          assign mobile_img = block.settings[mobile_key]
+          
+          if desktop_img != blank
+            if desktop_image_array == ''
+              assign desktop_image_array = desktop_img
+            else
+              assign desktop_image_array = desktop_image_array | append: ',' | append: desktop_img
+            endif
+          endif
+          
+          if mobile_img != blank
+            if mobile_image_array == ''
+              assign mobile_image_array = mobile_img
+            else
+              assign mobile_image_array = mobile_image_array | append: ',' | append: mobile_img
+            endif
+          endif
+        endfor
+        
+        assign desktop_images_split = desktop_image_array | split: ','
+        assign mobile_images_split = mobile_image_array | split: ','
+        assign has_desktop_images = false
+        assign has_mobile_images = false
+        assign max_slides = 0
+        
+        if desktop_images_split.size > 0 and desktop_image_array != ''
+          assign has_desktop_images = true
+          assign max_slides = desktop_images_split.size
+        endif
+        
+        if mobile_images_split.size > 0 and mobile_image_array != ''
+          assign has_mobile_images = true
+          if mobile_images_split.size > max_slides
+            assign max_slides = mobile_images_split.size
+          endif
+        endif
+      %}
+
+      {% if has_desktop_images or has_mobile_images %}
+        {% for i in (1..5) %}
+          {% assign desktop_key = 'desktop_image_' | append: i %}
+          {% assign mobile_key = 'mobile_image_' | append: i %}
+          {% assign desktop_image = block.settings[desktop_key] %}
+          {% assign mobile_image = block.settings[mobile_key] %}
+          
+          {% if desktop_image != blank or mobile_image != blank %}
+            <div class="ai-carousel-slide-{{ ai_gen_id }}" data-slide="{{ forloop.index0 }}">
+              {% if desktop_image or mobile_image %}
+                <picture>
+                  {% if mobile_image %}
+                    <source media="(max-width: 749px)" srcset="{{ mobile_image | image_url: width: 800 }}">
+                  {% endif %}
+                  {% if desktop_image %}
+                    <img
+                      src="{{ desktop_image | image_url: width: 1600 }}"
+                      alt="{{ desktop_image.alt | escape }}"
+                      loading="{% if forloop.first %}eager{% else %}lazy{% endif %}"
+                      width="{{ desktop_image.width }}"
+                      height="{{ desktop_image.height }}"
+                    >
+                  {% elsif mobile_image %}
+                    <img
+                      src="{{ mobile_image | image_url: width: 800 }}"
+                      alt="{{ mobile_image.alt | escape }}"
+                      loading="{% if forloop.first %}eager{% else %}lazy{% endif %}"
+                      width="{{ mobile_image.width }}"
+                      height="{{ mobile_image.height }}"
+                    >
+                  {% endif %}
+                </picture>
+              {% else %}
+                <div class="ai-carousel-placeholder-{{ ai_gen_id }}">
+                  {{ 'image' | placeholder_svg_tag }}
+                </div>
+              {% endif %}
+            </div>
+          {% endif %}
+        {% endfor %}
+      {% else %}
+        <div class="ai-carousel-slide-{{ ai_gen_id }}" data-slide="0">
+          <div class="ai-carousel-placeholder-{{ ai_gen_id }}">
+            {{ 'image' | placeholder_svg_tag }}
+            <div class="ai-carousel-empty-state-{{ ai_gen_id }}">
+              Add images to start your carousel
+            </div>
+          </div>
+        </div>
+      {% endif %}
+    </div>
+
+    {% liquid
+      assign show_arrows = false
+      assign total_images = 0
+      
+      for i in (1..5)
+        assign desktop_key = 'desktop_image_' | append: i
+        assign mobile_key = 'mobile_image_' | append: i
+        assign desktop_img = block.settings[desktop_key]
+        assign mobile_img = block.settings[mobile_key]
+        
+        if desktop_img != blank or mobile_img != blank
+          assign total_images = total_images | plus: 1
+        endif
+      endfor
+      
+      if block.settings.show_arrows and total_images > 1
+        assign show_arrows = true
+      endif
+    %}
+
+    {% if show_arrows %}
+      <button
+        class="ai-carousel-nav-{{ ai_gen_id }} ai-carousel-nav-{{ ai_gen_id }}--prev"
+        aria-label="Previous image"
+        data-direction="prev"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="15,18 9,12 15,6"></polyline>
+        </svg>
+      </button>
+
+      <button
+        class="ai-carousel-nav-{{ ai_gen_id }} ai-carousel-nav-{{ ai_gen_id }}--next"
+        aria-label="Next image"
+        data-direction="next"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="9,18 15,12 9,6"></polyline>
+        </svg>
+      </button>
+    {% endif %}
+  </div>
+
+  {% liquid
+    assign show_dots = false
+    assign total_images = 0
+    
+    for i in (1..5)
+      assign desktop_key = 'desktop_image_' | append: i
+      assign mobile_key = 'mobile_image_' | append: i
+      assign desktop_img = block.settings[desktop_key]
+      assign mobile_img = block.settings[mobile_key]
+      
+      if desktop_img != blank or mobile_img != blank
+        assign total_images = total_images | plus: 1
+      endif
+    endfor
+    
+    if block.settings.show_dots and total_images > 1
+      assign show_dots = true
+    endif
+  %}
+
+  {% if show_dots %}
+    <div class="ai-carousel-dots-{{ ai_gen_id }}">
+      {% for i in (1..5) %}
+        {% assign desktop_key = 'desktop_image_' | append: i %}
+        {% assign mobile_key = 'mobile_image_' | append: i %}
+        {% assign desktop_img = block.settings[desktop_key] %}
+        {% assign mobile_img = block.settings[mobile_key] %}
+        
+        {% if desktop_img != blank or mobile_img != blank %}
+          <button
+            class="ai-carousel-dot-{{ ai_gen_id }}{% if forloop.first %} active{% endif %}"
+            aria-label="Go to slide {{ forloop.index }}"
+            data-slide="{{ forloop.index0 }}"
+          ></button>
+        {% endif %}
+      {% endfor %}
+    </div>
+  {% endif %}
+</image-carousel-{{ ai_gen_id }}>
+
+<script>
+  (function() {
+    class ImageCarousel{{ ai_gen_id }} extends HTMLElement {
+      constructor() {
+        super();
+        this.currentSlide = 0;
+        this.totalSlides = 0;
+        this.autoplayInterval = null;
+        this.isAutoplay = this.dataset.autoplay === 'true';
+        this.autoplaySpeed = parseInt(this.dataset.autoplaySpeed) * 1000;
+        this.isLoop = this.dataset.loop === 'true';
+      }
+
+      connectedCallback() {
+        this.track = this.querySelector('.ai-carousel-track-{{ ai_gen_id }}');
+        this.slides = this.querySelectorAll('.ai-carousel-slide-{{ ai_gen_id }}');
+        this.prevButton = this.querySelector('.ai-carousel-nav-{{ ai_gen_id }}--prev');
+        this.nextButton = this.querySelector('.ai-carousel-nav-{{ ai_gen_id }}--next');
+        this.dots = this.querySelectorAll('.ai-carousel-dot-{{ ai_gen_id }}');
+        
+        this.totalSlides = this.slides.length;
+        
+        if (this.totalSlides <= 1) return;
+        
+        this.setupEventListeners();
+        this.updateCarousel();
+        
+        if (this.isAutoplay) {
+          this.startAutoplay();
+          this.addEventListener('mouseenter', () => this.stopAutoplay());
+          this.addEventListener('mouseleave', () => this.startAutoplay());
+        }
+      }
+
+      setupEventListeners() {
+        if (this.prevButton) {
+          this.prevButton.addEventListener('click', () => this.goToPrevSlide());
+        }
+        
+        if (this.nextButton) {
+          this.nextButton.addEventListener('click', () => this.goToNextSlide());
+        }
+        
+        this.dots.forEach((dot, index) => {
+          dot.addEventListener('click', () => this.goToSlide(index));
+        });
+
+        this.addEventListener('keydown', (e) => {
+          if (e.key === 'ArrowLeft') {
+            e.preventDefault();
+            this.goToPrevSlide();
+          } else if (e.key === 'ArrowRight') {
+            e.preventDefault();
+            this.goToNextSlide();
+          }
+        });
+
+        let startX = 0;
+        let endX = 0;
+        
+        this.addEventListener('touchstart', (e) => {
+          startX = e.touches[0].clientX;
+        });
+        
+        this.addEventListener('touchend', (e) => {
+          endX = e.changedTouches[0].clientX;
+          const diff = startX - endX;
+          
+          if (Math.abs(diff) > 50) {
+            if (diff > 0) {
+              this.goToNextSlide();
+            } else {
+              this.goToPrevSlide();
+            }
+          }
+        });
+      }
+
+      goToSlide(slideIndex) {
+        this.currentSlide = slideIndex;
+        this.updateCarousel();
+        this.resetAutoplay();
+      }
+
+      goToNextSlide() {
+        if (this.currentSlide < this.totalSlides - 1) {
+          this.currentSlide++;
+        } else if (this.isLoop) {
+          this.currentSlide = 0;
+        }
+        this.updateCarousel();
+        this.resetAutoplay();
+      }
+
+      goToPrevSlide() {
+        if (this.currentSlide > 0) {
+          this.currentSlide--;
+        } else if (this.isLoop) {
+          this.currentSlide = this.totalSlides - 1;
+        }
+        this.updateCarousel();
+        this.resetAutoplay();
+      }
+
+      updateCarousel() {
+        const translateX = -this.currentSlide * 100;
+        this.track.style.transform = `translateX(${translateX}%)`;
+        
+        this.dots.forEach((dot, index) => {
+          dot.classList.toggle('active', index === this.currentSlide);
+        });
+        
+        if (this.prevButton && this.nextButton && !this.isLoop) {
+          this.prevButton.disabled = this.currentSlide === 0;
+          this.nextButton.disabled = this.currentSlide === this.totalSlides - 1;
+        }
+      }
+
+      startAutoplay() {
+        if (!this.isAutoplay || this.totalSlides <= 1) return;
+        
+        this.autoplayInterval = setInterval(() => {
+          this.goToNextSlide();
+        }, this.autoplaySpeed);
+      }
+
+      stopAutoplay() {
+        if (this.autoplayInterval) {
+          clearInterval(this.autoplayInterval);
+          this.autoplayInterval = null;
+        }
+      }
+
+      resetAutoplay() {
+        if (this.isAutoplay) {
+          this.stopAutoplay();
+          this.startAutoplay();
+        }
+      }
+
+      disconnectedCallback() {
+        this.stopAutoplay();
+      }
+    }
+
+    customElements.define('image-carousel-{{ ai_gen_id }}', ImageCarousel{{ ai_gen_id }});
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Image carousel",
+  "tag": null,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Desktop images"
+    },
+    {
+      "type": "image_picker",
+      "id": "desktop_image_1",
+      "label": "Desktop image 1"
+    },
+    {
+      "type": "image_picker",
+      "id": "desktop_image_2",
+      "label": "Desktop image 2"
+    },
+    {
+      "type": "image_picker",
+      "id": "desktop_image_3",
+      "label": "Desktop image 3"
+    },
+    {
+      "type": "image_picker",
+      "id": "desktop_image_4",
+      "label": "Desktop image 4"
+    },
+    {
+      "type": "image_picker",
+      "id": "desktop_image_5",
+      "label": "Desktop image 5"
+    },
+    {
+      "type": "header",
+      "content": "Mobile images"
+    },
+    {
+      "type": "paragraph",
+      "content": "Upload different images for mobile devices. If no mobile image is provided, the desktop image will be used."
+    },
+    {
+      "type": "image_picker",
+      "id": "mobile_image_1",
+      "label": "Mobile image 1"
+    },
+    {
+      "type": "image_picker",
+      "id": "mobile_image_2",
+      "label": "Mobile image 2"
+    },
+    {
+      "type": "image_picker",
+      "id": "mobile_image_3",
+      "label": "Mobile image 3"
+    },
+    {
+      "type": "image_picker",
+      "id": "mobile_image_4",
+      "label": "Mobile image 4"
+    },
+    {
+      "type": "image_picker",
+      "id": "mobile_image_5",
+      "label": "Mobile image 5"
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "range",
+      "id": "carousel_height",
+      "min": 200,
+      "max": 800,
+      "step": 50,
+      "unit": "px",
+      "label": "Desktop height",
+      "default": 400
+    },
+    {
+      "type": "range",
+      "id": "carousel_height_mobile",
+      "min": 150,
+      "max": 600,
+      "step": 25,
+      "unit": "px",
+      "label": "Mobile height",
+      "default": 300
+    },
+    {
+      "type": "select",
+      "id": "image_fit",
+      "label": "Image fit",
+      "options": [
+        {
+          "value": "cover",
+          "label": "Cover"
+        },
+        {
+          "value": "contain",
+          "label": "Contain"
+        },
+        {
+          "value": "fill",
+          "label": "Fill"
+        }
+      ],
+      "default": "cover"
+    },
+    {
+      "type": "range",
+      "id": "border_radius",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "label": "Border radius",
+      "default": 0
+    },
+    {
+      "type": "header",
+      "content": "Navigation arrows"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_arrows",
+      "label": "Show navigation arrows",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "arrow_size",
+      "min": 30,
+      "max": 80,
+      "step": 5,
+      "unit": "px",
+      "label": "Arrow size",
+      "default": 50
+    },
+    {
+      "type": "range",
+      "id": "arrow_offset",
+      "min": 10,
+      "max": 50,
+      "step": 5,
+      "unit": "px",
+      "label": "Arrow offset from edge",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "arrow_opacity",
+      "min": 20,
+      "max": 100,
+      "step": 10,
+      "unit": "%",
+      "label": "Arrow opacity",
+      "default": 80
+    },
+    {
+      "type": "color",
+      "id": "arrow_background_color",
+      "label": "Arrow background color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "arrow_color",
+      "label": "Arrow color",
+      "default": "#121212"
+    },
+    {
+      "type": "color",
+      "id": "arrow_hover_background_color",
+      "label": "Arrow hover background color",
+      "default": "#121212"
+    },
+    {
+      "type": "color",
+      "id": "arrow_hover_color",
+      "label": "Arrow hover color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "header",
+      "content": "Dots navigation"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_dots",
+      "label": "Show dots navigation",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "dot_size",
+      "min": 8,
+      "max": 20,
+      "step": 2,
+      "unit": "px",
+      "label": "Dot size",
+      "default": 12
+    },
+    {
+      "type": "range",
+      "id": "dots_spacing",
+      "min": 10,
+      "max": 40,
+      "step": 5,
+      "unit": "px",
+      "label": "Spacing from carousel",
+      "default": 20
+    },
+    {
+      "type": "color",
+      "id": "dot_active_color",
+      "label": "Active dot color",
+      "default": "#121212"
+    },
+    {
+      "type": "color",
+      "id": "dot_inactive_color",
+      "label": "Inactive dot color",
+      "default": "#cccccc"
+    },
+    {
+      "type": "header",
+      "content": "Autoplay"
+    },
+    {
+      "type": "checkbox",
+      "id": "autoplay",
+      "label": "Enable autoplay",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "autoplay_speed",
+      "min": 2,
+      "max": 10,
+      "step": 1,
+      "unit": "s",
+      "label": "Autoplay speed",
+      "default": 4
+    },
+    {
+      "type": "checkbox",
+      "id": "loop",
+      "label": "Loop carousel",
+      "default": true
+    }
+  ],
+  "presets": [
+    {
+      "name": "Image carousel"
+    }
+  ]
+}
+{% endschema %}

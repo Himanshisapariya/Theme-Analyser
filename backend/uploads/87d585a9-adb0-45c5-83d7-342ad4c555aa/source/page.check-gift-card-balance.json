@@ -1,0 +1,161 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "shogun-helper": {
+      "type": "shogun-helper",
+      "settings": {}
+    },
+    "pages": {
+      "type": "main-page",
+      "disabled": true,
+      "custom_css": [
+        ".container {padding-top: 50px; padding-bottom: 50px;}",
+        "h1 {text-align: center;}"
+      ],
+      "settings": {
+        "extra_class": ""
+      }
+    },
+    "shogun-optimizer": {
+      "type": "shogun-optimizer",
+      "settings": {}
+    },
+    "176189427862c85275": {
+      "type": "apps",
+      "blocks": {
+        "rise_ai_gift_cards_loyalty_rise_check_balance_extension_wamXxn": {
+          "type": "shopify://apps/rise-gift-cards-store-credit/blocks/rise-check-balance-extension/d837f9d0-9f22-491a-94b6-f32b41864892",
+          "settings": {
+            "preview_state": "input",
+            "title": "Check Your Balance",
+            "subtitle": "Enter your gift card code to see how much you’ve got left and when it expires.",
+            "inputPlaceholder": "Your code",
+            "buttonText": "Check Balance",
+            "balanceViewTitle": "Your gift card balance",
+            "balanceLabel": "Balance:",
+            "expiresOnLabel": "Expires on",
+            "neverExpiresLabel": "Never expires",
+            "checkAnotherButtonText": "Check Another",
+            "backgroundColor": "#ffffff",
+            "errorColor": "#ff0000",
+            "inputBorderColor": "#000000",
+            "buttonWidthOption": "full"
+          }
+        }
+      },
+      "block_order": [
+        "rise_ai_gift_cards_loyalty_rise_check_balance_extension_wamXxn"
+      ],
+      "settings": {
+        "include_margins": true
+      }
+    },
+    "faq_accorddion_CpLeC7": {
+      "type": "faq-accorddion",
+      "blocks": {
+        "faq_AKzGxa": {
+          "type": "faq",
+          "settings": {
+            "question": "<h6>How do I purchase a gift card?</h6>",
+            "answer": "You can buy an XX-XY Athletics digital gift card directly from our website. Just choose the amount, add it to your cart, and check out like any other product.",
+            "faq_answer": ""
+          }
+        },
+        "faq_ACCh6n": {
+          "type": "faq",
+          "settings": {
+            "question": "<h6>How will the gift card be delivered?</h6>",
+            "answer": "Our gift cards are delivered by email and contain a unique code to use at checkout. No physical card will be mailed.",
+            "faq_answer": ""
+          }
+        },
+        "faq_YrTyfB": {
+          "type": "faq",
+          "settings": {
+            "question": "<h6>Can I use a discount code to buy a gift card?</h6>",
+            "answer": "Gift cards are not eligible for discounts or promotions.",
+            "faq_answer": ""
+          }
+        },
+        "faq_Yw9wCz": {
+          "type": "faq",
+          "settings": {
+            "question": "<h6>Can I use my gift card with a discount code on a future order?</h6>",
+            "answer": "Yes! Once you have a gift card, you can apply it along with any discount code when making a purchase.",
+            "faq_answer": ""
+          }
+        },
+        "faq_kqzeXB": {
+          "type": "faq",
+          "settings": {
+            "question": "<h6>Can I reload or refill a gift card?</h6>",
+            "answer": "Not at this time. You can always purchase a new one if you’d like to send or add more.",
+            "faq_answer": ""
+          }
+        },
+        "faq_UhhCxN": {
+          "type": "faq",
+          "settings": {
+            "question": "<h6>Do gift cards expire?</h6>",
+            "answer": "No — our gift cards never expire.",
+            "faq_answer": ""
+          }
+        },
+        "faq_DBBhTN": {
+          "type": "faq",
+          "settings": {
+            "question": "<h6>Can I return or exchange a gift card?</h6>",
+            "answer": "Gift cards are final sale and can’t be returned or refunded once purchased.",
+            "faq_answer": ""
+          }
+        },
+        "faq_gUMw6J": {
+          "type": "faq",
+          "settings": {
+            "question": "<h6>Can I use a gift card on pre-order items?</h6>",
+            "answer": "Yes! Gift cards can be applied toward any product on our site, including pre-orders.",
+            "faq_answer": ""
+          }
+        }
+      },
+      "block_order": [
+        "faq_AKzGxa",
+        "faq_ACCh6n",
+        "faq_YrTyfB",
+        "faq_Yw9wCz",
+        "faq_kqzeXB",
+        "faq_UhhCxN",
+        "faq_DBBhTN",
+        "faq_gUMw6J"
+      ],
+      "custom_css": [
+        ".faq-accordion-main {padding-top: 0 !important;}"
+      ],
+      "name": "FAQ Accordion",
+      "settings": {
+        "title": "FAQ",
+        "desc": "",
+        "extra_class": "gts",
+        "desktop_margin_top": 50,
+        "desktop_margin_bottom": 50,
+        "mobile_margin_top": 30,
+        "mobile_margin_bottom": 30
+      }
+    }
+  },
+  "order": [
+    "shogun-helper",
+    "pages",
+    "shogun-optimizer",
+    "176189427862c85275",
+    "faq_accorddion_CpLeC7"
+  ]
+}

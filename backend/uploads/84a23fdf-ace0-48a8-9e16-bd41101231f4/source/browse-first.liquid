@@ -1,0 +1,132 @@
+{% assign browse_product = collection.metafields.custom.best_sellers_to_browse_first.value %}
+{% if browse_product != blank %}
+  <div class="ctm-browse-first-main fullscreen-container section-id-{{ section.id }}">
+    <div class="ctm-browse-first-heading">
+      <h3>{{ browse_product.heading }}</h3>
+    </div>
+    <div class="ctm-browse-first-inner swiper browse-first-swiper-{{ section.id }}">
+        <div class="ctm-browse-first-wrapper swiper-wrapper">
+            {% for product in browse_product.product.value %}
+                <div class="collection-product-card ctm-browse-first-card swiper-slide">
+                    {% render 'product-card',
+                    product_card_product: product,
+                    section_id: section.id,
+                    media_size: 'portrait',
+                    media_fit: 'cover'
+                    %}
+                </div>
+            {% endfor %}
+      </div>
+        <div class="slider-controls-box">
+          <div class="browse-first-aerrows">
+            <div class="swiper-button-prev peev-tabbing-btn swiper-prev-{{ section.id }} swiper-button-disabled">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="10"
+                height="18"
+                viewBox="0 0 10 18"
+                fill="none"
+                class="icon icon-caret-left"
+              >
+                <path d="M9 17L0.999999 9L9 1" stroke="currentcolor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+              </svg>
+            </div>
+            <div class="swiper-button-next next-tabbing-btn swiper-next-{{ section.id }}">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="10"
+                height="18"
+                viewBox="0 0 10 18"
+                fill="none"
+                class="icon icon-caret-right"
+              >
+                <path d="M1 1L9 9L1 17" stroke="currentcolor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+              </svg>
+            </div>
+          </div>
+        </div>
+    </div>
+  </div>
+{% endif %}
+
+{% schema %}
+{
+  "name": "Collection Tabs",
+  "settings": [
+    {
+      "type": "text",
+      "id": "extra_class",
+      "label": "Extra Class"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Best sellers to browse first"
+    }
+  ]
+}
+{% endschema %}
+
+{% stylesheet %}
+  .ctm-browse-first-wrapper {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+  }
+  .ctm-browse-first-main .product-parameters.no-js-hidden {
+    display: none;
+  }
+  .ctm-browse-first-main .card-wrapper.js-color-swatches-wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+  .ctm-browse-first-main .swiper-button-next.next-tabbing-btn {
+    right: 2rem!important;
+  }
+  .ctm-browse-first-main .swiper-button-prev.peev-tabbing-btn {
+    left: 2rem!important;
+  }
+  .ctm-browse-first-heading h3 {
+    margin-top: 0 !important;
+    font-size: 18px;
+    color: #2f484c;
+    opacity: 0.7;
+    font-weight: 400;
+  }
+@media (max-width: 750px) {
+  .slider-controls-box {
+    display: none;
+  }
+  .ctm-browse-first-heading h3 {
+    font-size: 16px;
+  }
+}
+{% endstylesheet %}
+
+{% javascript %}
+  (function () {
+    const swiper1 = new Swiper('.ctm-browse-first-inner', {
+      slidesPerView: 4.5,
+      spaceBetween: 4,
+
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+      breakpoints: {
+        320: {
+          slidesPerView: 2.45,
+        },
+        576: {
+          slidesPerView: 2.45,
+        },
+        992: {
+          slidesPerView: 4.5,
+        },
+        1200: {
+          slidesPerView: 6,
+        },
+      },
+    });
+  })();
+{% endjavascript %}

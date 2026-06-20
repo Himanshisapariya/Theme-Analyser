@@ -1,0 +1,513 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "pages": {
+      "type": "main-page",
+      "disabled": true,
+      "custom_css": [
+        ".container {padding-top: 50px; padding-bottom: 50px;}",
+        "h1 {text-align: center;}"
+      ],
+      "settings": {
+        "extra_class": ""
+      }
+    },
+    "banner_with_text_YhJJnr": {
+      "type": "banner-with-text",
+      "settings": {
+        "extra_class": "ctm-banner-main",
+        "spring_banner_class": "",
+        "color_scheme": "light",
+        "image": "shopify://shop_images/Main_Banner.jpg",
+        "image_mobile": "shopify://shop_images/Main_Banner.jpg",
+        "image_size": "large",
+        "title": "<h1>Our Athletes</h1>",
+        "content_text": "<p>Meet the athletes who lead by example, challenge the status quo, and<br/>show the world what it truly means to compete. Together, we’re shaping<br/>a future where women can thrive, compete fairly, and claim their rightful<br/>place.</p>",
+        "caption_class": "Home / Athletes",
+        "text_alignment": "left",
+        "content_width": "max",
+        "overlay_enable": true,
+        "overlay_opacity": 20,
+        "button_link": "",
+        "button_label": "",
+        "second_button_link": "",
+        "second_button_label": "",
+        "button_style": "primary",
+        "mobile_button_style": "button--ctm_global_button",
+        "mobile_cta_button_link": "",
+        "mobile_cta_button_label": "",
+        "mobile_second_cta_button_link": "",
+        "mobile_second_cta_button_label": "",
+        "heading_font_family": "Poppins, sans-serif",
+        "subheading_font_family": "Poppins, sans-serif",
+        "caption_font_family": "Poppins, sans-serif",
+        "heading_font_size_desktop": 48,
+        "heading_font_size_tablet": 40,
+        "heading_font_size_mobile": 32,
+        "subheading_font_size_desktop": 18,
+        "subheading_font_size_mobile": 16,
+        "caption_font_size_desktop": 14,
+        "caption_font_size_mobile": 12,
+        "heading_font_weight": 600,
+        "heading_line_height": 1.2,
+        "heading_letter_spacing": 0,
+        "subheading_font_weight": 400,
+        "subheading_line_height": 1.5,
+        "subheading_margin": 0,
+        "caption_font_weight": 500,
+        "caption_line_height": 1.3,
+        "show_heading_mobile": true,
+        "show_subheading_mobile": true,
+        "mobile_banner_height": 70,
+        "tablet_banner_height": 80,
+        "desktop_content_position": "bottom-left",
+        "mobile_content_position": "bottom",
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "top_margin_mobile": 0,
+        "bottom_margin_mobile": 0,
+        "top_padding_desktop": 0,
+        "bottom_padding_desktop": 0,
+        "top_padding_mobile": 0,
+        "bottom_padding_mobile": 0
+      }
+    },
+    "team_athlete_card_jdWN8b": {
+      "type": "team-athlete-card",
+      "blocks": {
+        "color_block_XMgrcM": {
+          "type": "color_block",
+          "settings": {
+            "block_image": "shopify://shop_images/Riley_Gaines.jpg",
+            "block_title": "Riley Gaines",
+            "block_description": "Swimming",
+            "block_button": "Learn more",
+            "popup_content": "<h5> Riley Gaines | Swimming </h5>\n<h6> 12x All-American | 5x SEC Champion | 2x Olympic Trials Qualifier | 2022 NCAA Woman of the Year Nominee </h6>\n\n<p> Riley Gaines is a dominant force in the pool and a leading voice in the fight for fairness in women’s sports. With 12 All-American titles, five SEC Championships, and two Olympic Trials qualifications, she knows what it takes to compete at the highest level. Now, she’s using her platform to stand up for female athletes and the integrity of women’s sports. </p>",
+            "block_bg_color": "#ffffff",
+            "block_text_color": "#2f484c"
+          }
+        },
+        "color_block_kWndEk": {
+          "type": "color_block",
+          "settings": {
+            "block_image": "shopify://shop_images/Jaycee_Bassett.jpg",
+            "block_title": "Jaycee Bassett",
+            "block_description": "Taekwondo",
+            "block_button": "Learn more",
+            "popup_content": "<h5>Jaycee Bassett | Taekwondo</h5>\n<h6> Costa Rican National Team | Junior Pan American Medalist </h6>\n\n<p> A world-class Taekwondo athlete, Jaycee is the Junior Pan American Champion and a 2x member of the Junior AAU USA National Team. Bassett won silver in Junior World Championship in Chuncheon, Korea, and is currently ranked second in the world ahead of the 2028 Summer Olympics. She is a force to be reckoned with on the mat. </p>\n\n<p> Walkout Song: Kendrick Lamar - DNA </p>\n<p>Instagram: <a href=\"https://www.instagram.com/jayceetkd1\"> @jayceetkd1 </a></p>",
+            "block_bg_color": "#ffffff",
+            "block_text_color": "#2f484c"
+          }
+        },
+        "color_block_8ce49M": {
+          "type": "color_block",
+          "settings": {
+            "block_image": "shopify://shop_images/Sia_Liilii.jpg",
+            "block_title": "Sia Liilii",
+            "block_description": "Volleyball",
+            "block_button": "Learn more",
+            "popup_content": "<h5>Sia Liilii | Volleyball</h5>\n<h6>University of Nevada | Team Captain</h6>\n\n<p> As the captain of the University of Nevada Volleyball Team, Sia leads with power and precision. She’s a standout athlete whose passion for the game and leadership on and off the court set her apart. </p>\n\n<p> Walkout Song: Charlie Wilson - I'm Blessed </p>\n<p>Instagram:<a href=\"https://www.instagram.com/s.yeaah\">  @s.yeaah </a></p>",
+            "block_bg_color": "#ffffff",
+            "block_text_color": "#2f484c"
+          }
+        },
+        "color_block_ibCUa7": {
+          "type": "color_block",
+          "settings": {
+            "block_image": "shopify://shop_images/Lauren_Miller.jpg",
+            "block_title": "Lauren Miller",
+            "block_description": "Golf",
+            "block_button": "Learn more",
+            "popup_content": "<h5> Lauren Miller | Golf </h5>\n<h6> Professional Golfer | 2022 U.S. Women’s Open Participant </h6>\n\n<p> Lauren is a rising talent in the world of golf. With appearances in the 2022 U.S. Women’s Open and multiple championship titles under her belt, she continues to make a name for herself in the sport. </p>\n<p> Walkout Song: Macklemore - Glorious </p>\n\n<p>Instagram:<a href=\"https://www.instagram.com/laurenn_millerr_\">  @laurenn_millerr_ </a></p>",
+            "block_bg_color": "#ffffff",
+            "block_text_color": "#2f484c"
+          }
+        },
+        "color_block_fgJbnA": {
+          "type": "color_block",
+          "settings": {
+            "block_image": "shopify://shop_images/Neely_Gaines.jpg",
+            "block_title": "Neely Gaines",
+            "block_description": "Gymnastics",
+            "block_button": "Learn more",
+            "popup_content": "<h5> Neely Gaines | Gymnastics </h5>\n<h6> Level 9 Gymnast | 2023 Tennessee State Champion </h6>\n\n<p> Neely is a powerhouse in gymnastics, taking home the 2023 Tennessee State Championship titles in both the all-around and floor exercise competitions. Her strength, precision, and resilience make her a true standout in the sport. </p>",
+            "block_bg_color": "#ffffff",
+            "block_text_color": "#2f484c"
+          }
+        },
+        "color_block_JMGgQB": {
+          "type": "color_block",
+          "settings": {
+            "block_image": "shopify://shop_images/Paula_Scanlan.jpg",
+            "block_title": "Paula Scanlan",
+            "block_description": "Swimming",
+            "block_button": "Learn more",
+            "popup_content": "<h5> Paula Scanlan | Swimming </h5>\n<h6> Former NCAA Division I Swimmer | University of Pennsylvania </h6>\n\n<p> A dedicated athlete and fierce competitor, Paula swam at the highest collegiate level, representing the University of Pennsylvania in NCAA Division I Swimming. After her university tried to silence her protest of the issue, Paula turned up the volume. </p>",
+            "block_bg_color": "#ffffff",
+            "block_text_color": "#2f484c"
+          }
+        },
+        "color_block_kGFQfy": {
+          "type": "color_block",
+          "settings": {
+            "block_image": "shopify://shop_images/Naomi.jpg",
+            "block_title": "Naomi",
+            "block_description": "Breakdancing & Cheerleading",
+            "block_button": "Learn more",
+            "popup_content": "<h5> Naomi | Breakdancing &amp; Cheerleading </h5>\n<h6> Denver Broncos Cheerleader | Competitive Breakdancer </h6>\n\n<p> Naomi is redefining athleticism with her dynamic performances as both a Denver Broncos Cheerleader and a competitive breakdancer. Whether on the field or the dance floor, she brings passion, precision, and power to every movement. </p>",
+            "block_bg_color": "#ffffff",
+            "block_text_color": "#2f484c"
+          }
+        },
+        "color_block_AH8dcP": {
+          "type": "color_block",
+          "settings": {
+            "block_image": "shopify://shop_images/Eddie_Ogamba.jpg",
+            "block_title": "Eddie Ogamba",
+            "block_description": "Football",
+            "block_button": "Learn more",
+            "popup_content": "<h5> Eddie Ogamba | Football </h5>\n<h6>NFL Player</h6>\n\n<p>  Eddie Ogamba is an elite competitor with the mindset of a champion. His dedication to the game and commitment to excellence inspire athletes at every level.</p>",
+            "block_bg_color": "#ffffff",
+            "block_text_color": "#2f484c"
+          }
+        },
+        "color_block_8FNFpC": {
+          "type": "color_block",
+          "settings": {
+            "block_image": "shopify://shop_images/Kelly_Garrison-Funderburk.jpg",
+            "block_title": "Kelly Garrison-Funderburk",
+            "block_description": "Gymnastics",
+            "block_button": "Learn more",
+            "popup_content": "<h5> Kelly Garrison-Funderburk | Gymnastics </h5>\n<h6> 1988 U.S. Olympic Team Captain | USA Gymnastics Hall of Famer </h6>\n\n<p>  A legend in gymnastics, Kelly Garrison-Funderburk led Team USA at the 1988 Olympics and earned her place in the USA Gymnastics Hall of Fame. Her impact on the sport continues to inspire gymnasts worldwide. </p>\n\n<p>Instagram: <a href=\"https://www.instagram.com/kelly_garriso_funderburk\"> @kelly_garriso_funderburk </a></p>",
+            "block_bg_color": "#ffffff",
+            "block_text_color": "#2f484c"
+          }
+        }
+      },
+      "block_order": [
+        "color_block_XMgrcM",
+        "color_block_kWndEk",
+        "color_block_8ce49M",
+        "color_block_ibCUa7",
+        "color_block_fgJbnA",
+        "color_block_JMGgQB",
+        "color_block_kGFQfy",
+        "color_block_AH8dcP",
+        "color_block_8FNFpC"
+      ],
+      "settings": {
+        "heading": "MEET OUR TEAM OF ATHLETES"
+      }
+    },
+    "team_athlete_card_NqqN7A": {
+      "type": "team-athlete-card",
+      "blocks": {
+        "color_block_7dPaAC": {
+          "type": "color_block",
+          "settings": {
+            "block_image": "shopify://shop_images/Jordy_Bahl.jpg",
+            "block_title": "Jordy Bahl",
+            "block_description": "Softball",
+            "block_button": "Learn more",
+            "popup_content": "<h5> Jordy Bahl | Softball </h5>\n<h6> 2x Women’s College World Series Champion | University of Nebraska </h6>\n\n<p> Jordy Bahl is a force to be reckoned with on the field. A two-time Women’s College World Series champion, she continues to dominate the game at the University of Nebraska. </p>\n\n<p>Instagram:<a href=\"https://www.instagram.com/jordybahl\">  @jordybahl </a></p>",
+            "block_bg_color": "#ffffff",
+            "block_text_color": "#2f484c"
+          }
+        },
+        "color_block_pNCYwx": {
+          "type": "color_block",
+          "settings": {
+            "block_image": "shopify://shop_images/Macey_Boggs.jpg",
+            "block_title": "Macey Boggs",
+            "block_description": "Volleyball",
+            "block_button": "Learn more",
+            "popup_content": "<h5> Macey Boggs | Volleyball </h5>\n<h6> University of Wyoming Athlete </h6><p> A standout volleyball player for the University of Wyoming, Macey Boggs has taken a bold stance for fairness in women’s sports. She and her team forfeited two matches against a male opponent and later became plaintiffs in a lawsuit against SJSU and the Mountain West Conference. She has testified before Wyoming’s Senate Education Committee, championing equal opportunities for female athletes. </p>\n\n<p>Instagram:<a href=\"https://www.instagram.com/maceyboggs\">  @maceyboggs </a></p>",
+            "block_bg_color": "#ffffff",
+            "block_text_color": "#2f484c"
+          }
+        },
+        "color_block_eUAFyF": {
+          "type": "color_block",
+          "settings": {
+            "block_image": "shopify://shop_images/Jabulani_Newby.jpg",
+            "block_title": "Jabulani Newby",
+            "block_description": "Basketball",
+            "block_button": "Learn more",
+            "popup_content": "<h5> Jabulani Newby | Basketball </h5>\n<h6> Team Jamaica</h6>\n\n<p> Jabulani Newby represents Team Jamaica on the basketball court, showcasing elite skill and dedication to the game. </p>\n\n<p>Instagram: <a href=\"https://www.instagram.com/jabsnewby\"> @jabsnewby </a></p>",
+            "block_bg_color": "#ffffff",
+            "block_text_color": "#2f484c"
+          }
+        },
+        "color_block_PAUEeH": {
+          "type": "color_block",
+          "settings": {
+            "block_image": "shopify://shop_images/Jeff_Watters.jpg",
+            "block_title": "Jeff Watters",
+            "block_description": "Boxing",
+            "block_button": "Learn more",
+            "popup_content": "<h5> Jeff Watters | Boxing </h5>\n<h6> Detroit Red Wings Boxing Coach | Performance Trainer </h6>\n\n<p> Jeff Watters is a top-tier boxing coach and trains elite athletes—including members of the Detroit Red Wings—to reach their peak performance. </p>\n\n<p>Instagram: <a href=\"https://www.instagram.com/wattersperformance\"> @wattersperformance </a></p>",
+            "block_bg_color": "#ffffff",
+            "block_text_color": "#2f484c"
+          }
+        },
+        "color_block_37X6Hz": {
+          "type": "color_block",
+          "settings": {
+            "block_image": "shopify://shop_images/Erica_Weitz.jpg",
+            "block_title": "Erica Weitz",
+            "block_description": "Running",
+            "block_button": "Learn more",
+            "popup_content": "<h5> Erica Weitz | Running </h5>\n<h6> Olympic Trials Marathoner | Coach </h6>\n\n<p> Erica Weitz knows endurance—both in competition and in coaching. A U.S. Olympic Trials marathoner, she now helps others push their limits and achieve their goals. </p>\n\n<p>Instagram:<a href=\"https://www.instagram.com/ericaweitzruns\">  @ericaweitzruns </a></p>",
+            "block_bg_color": "#ffffff",
+            "block_text_color": "#2f484c"
+          }
+        },
+        "color_block_iLtHXk": {
+          "type": "color_block",
+          "settings": {
+            "block_image": "shopify://shop_images/Kaitlynn_Wheeler.jpg",
+            "block_title": "Kaitlynn Wheeler",
+            "block_description": "Swimming",
+            "block_button": "Learn more",
+            "popup_content": "<h5> Kaitlynn Wheeler | Swimming </h5>\n<h6> NCAA Division I Swimmer | SEC Champion </h6>\n\n<p> A former University of Kentucky swimmer, Kaitlynn Wheeler is a multi-time All-American, SEC Champion, and NCAA qualifier. After witnessing a male swimmer dominate the women’s category at the 2022 NCAA Championships, she became a leading advocate for the integrity of women’s sports. She continues to stand up for female athletes, inspired by her sister’s own experience facing discrimination for speaking out. </p>\n\n<p> Instagram:<a href=\"https://www.instagram.com/kaitlynnwheeler19\"> @kaitlynnwheeler19 </a></p>",
+            "block_bg_color": "#ffffff",
+            "block_text_color": "#2f484c"
+          }
+        },
+        "color_block_Q88NaL": {
+          "type": "color_block",
+          "settings": {
+            "block_image": "shopify://shop_images/April_Hutchinson.jpg",
+            "block_title": "April Hutchinson",
+            "block_description": "Powerlifting",
+            "block_button": "Learn more",
+            "popup_content": "<h5> April Hutchinson | Powerlifting </h5>\n<h6> 3x Team Canada Powerlifter | Deadlift Record Holder | North American Champion </h6>\n\n<p> April Hutchinson is one of Canada’s top powerlifters, holding multiple North American titles and a deadlift record. A fierce advocate for fairness in women’s sports, she faced suspension from the Canadian Powerlifting Union after speaking out against male athletes competing in the women’s category. </p>\n\n<p> Instagram:<a href=\"https://www.instagram.com/april.hutchinson\"> @April.Hutchinson </a></p>",
+            "block_bg_color": "#ffffff",
+            "block_text_color": "#2f484c"
+          }
+        },
+        "color_block_ggmNXt": {
+          "type": "color_block",
+          "settings": {
+            "block_image": "shopify://shop_images/Reka_Gyorgy.jpg",
+            "block_title": "Réka György",
+            "block_description": "Swimming",
+            "block_button": "Learn more",
+            "popup_content": "<h5> Réka György | Swimming </h5>\n<h6> Hungarian Olympian | 2x NCAA All-American </h6>\n\n<p> Hungarian Olympian Réka György was an NCAA standout at Virginia Tech. After missing out on the 500-yard freestyle finals due to Lia Thomas’s participation in the women’s category at the 2022 NCAA Championships, she joined 16 other athletes in suing the NCAA over its transgender eligibility policies. </p>\n\n<p> Instagram:<a href=\"https://www.instagram.com/gyorgy.reka96\"> @gyorgy.reka96 </a></p>",
+            "block_bg_color": "#ffffff",
+            "block_text_color": "#2f484c"
+          }
+        },
+        "color_block_y6yrYY": {
+          "type": "color_block",
+          "disabled": true,
+          "settings": {
+            "block_image": "shopify://shop_images/Reka_Gyorgy.jpg",
+            "block_title": "Rebekah Allick",
+            "block_description": "Volleyball",
+            "block_button": "Learn more",
+            "popup_content": "<h5> Rebekah Allick | Volleyball </h5>\n<h5> University of Nebraska Athlete </h5>\n\n<p> A dominant presence on the volleyball court, Rebekah Allick represents the University of Nebraska with strength and skill. Allick led the team to the NCAA Championship semifinals in 2024, with a record 415 blocks. </p>\n\n<p> Instagram:<a href=\"https://www.instagram.com/rebekahallick_\"> @rebekahallick_ </a></p>",
+            "block_bg_color": "#ffffff",
+            "block_text_color": "#2f484c"
+          }
+        },
+        "color_block_A9JFkM": {
+          "type": "color_block",
+          "settings": {
+            "block_image": "shopify://shop_images/Ainsley_Erzen.jpg",
+            "block_title": "Ainsley Erzen",
+            "block_description": "Soccer & Track",
+            "block_button": "Learn more",
+            "popup_content": "<h5> Ainsley Erzen | Soccer &amp; Track </h5>\n<h6> University of Arkansas Dual-Sport Athlete | NCAA 4x800 Record-Holder </h6>\n\n<p> Told she couldn’t compete in both soccer and track? Ainsley Erzen did it anyway. As a junior, Erzen and her 4x800 relay teammates broke the collegiate two-mile relay record in March 2025. She also took a stand for female athletes by writing in the Des Moines Register and joining Iowa Gov. Kim Reynolds as she signed a law protecting women’s sports in Iowa.  </p>\n\n<p> Instagram:<a href=\"https://www.instagram.com/ainsley_erzen\"> @ainsley_erzen </a></p>",
+            "block_bg_color": "#ffffff",
+            "block_text_color": "#2f484c"
+          }
+        },
+        "color_block_gEJiYE": {
+          "type": "color_block",
+          "disabled": true,
+          "settings": {
+            "block_image": "shopify://shop_images/Ainsley_Erzen.jpg",
+            "block_title": "Brooke Slusser",
+            "block_description": "Volleyball",
+            "block_button": "Learn more",
+            "popup_content": "<h5> Brooke Slusser | Volleyball </h5>\n<h5> SJSU Team Captain | Advocate for Title IX Protections </h5>\n\n<p> As the starting setter and co-captain of SJSU’s women’s volleyball team, Brooke Slusser made headlines by taking legal action against the NCAA and the Mountain West Conference for Title IX violations after discovering that her team had secretly allowed a male player to compete for nearly two years. Despite facing retaliation from teammates and coaches, she continues to speak out for fairness and integrity in women’s sports. </p>\n\n<p> Instagram:<a href=\"https://www.instagram.com/brookeslusser04\"> @brookeslusser04 </a></p>",
+            "block_bg_color": "#ffffff",
+            "block_text_color": "#2f484c"
+          }
+        }
+      },
+      "block_order": [
+        "color_block_7dPaAC",
+        "color_block_pNCYwx",
+        "color_block_eUAFyF",
+        "color_block_PAUEeH",
+        "color_block_37X6Hz",
+        "color_block_iLtHXk",
+        "color_block_Q88NaL",
+        "color_block_ggmNXt",
+        "color_block_y6yrYY",
+        "color_block_A9JFkM",
+        "color_block_gEJiYE"
+      ],
+      "settings": {
+        "heading": ""
+      }
+    },
+    "ctm_tabbing_collection_iah3wB": {
+      "type": "ctm_tabbing_collection",
+      "blocks": {
+        "collection_w6aUqR": {
+          "type": "collection",
+          "settings": {
+            "collection_ctm": "performance-xx",
+            "enable_img": false
+          }
+        },
+        "collection_Minw9x": {
+          "type": "collection",
+          "settings": {
+            "collection_ctm": "performance-xy",
+            "enable_img": false
+          }
+        }
+      },
+      "block_order": [
+        "collection_w6aUqR",
+        "collection_Minw9x"
+      ],
+      "settings": {
+        "section_extra_class": "",
+        "heading_ctm": "ATHLETE-APPROVED GEAR",
+        "ctm_subtitle": "Designed for Peak Performance",
+        "btn_text": "",
+        "btn_link": "",
+        "bottom_btn_text": "",
+        "bottom_btn_link": "",
+        "tab_1": "Women's",
+        "tab_2": "Men's",
+        "desktop_slide": 5,
+        "spring_slider_class": "spring-slider-class"
+      }
+    },
+    "column_card_with_text_V3bTg8": {
+      "type": "column_card_with_text",
+      "blocks": {
+        "blog_post_fxqAWq": {
+          "type": "blog_post",
+          "settings": {
+            "image": "shopify://shop_images/neely.jpg",
+            "text": "NOMINATE A BRAVE ATHLETE FOR COURAGE WINS.",
+            "button_text": "NOMINATE HERE",
+            "button_link": "https://www.xx-xyathletics.org/",
+            "button_style": "button button--primary"
+          }
+        },
+        "blog_post_zGEyYr": {
+          "type": "blog_post",
+          "settings": {
+            "image": "shopify://shop_images/coach2.jpg",
+            "text": "A COACH HEAD OF A TEAM AND LOOKING TO OUTFIT YOUR WHOLE TEAM? <span>COMPLETE THIS FORM TO START YOUR GROUP SALES ORDER FOR CUSTOM TEAM GEAR.</span>",
+            "button_text": "CUSTOM SALES",
+            "button_link": "shopify://pages/group-sales",
+            "button_style": "button button--primary"
+          }
+        },
+        "blog_post_ihhHRB": {
+          "type": "blog_post",
+          "settings": {
+            "image": "shopify://shop_images/maybephotos.jpg",
+            "text": "MAYBE AN ATHLETE, <br> DEFINITELY A FREE THINKER &amp; <br> <span>WANT TO JOIN THE MOVEMENT?</span>",
+            "button_text": "AFFILIATE APPLICATION",
+            "button_link": "https://affiliate.xx-xyathletics.com/register",
+            "button_style": "button button--primary"
+          }
+        },
+        "blog_post_Q8BQNd": {
+          "type": "blog_post",
+          "settings": {
+            "image": "shopify://shop_images/neelychalk.jpg",
+            "text": "JOIN OUR NIL ATHLETE PROGRAM.\n<span>\"NAME, IMAGE AND LIKENESS.\" A STUDENT ATHLETE CREATOR PROGRAM BUILT BY ATHLETES, FOR ATHLETES.</span>",
+            "button_text": "APPLY HERE",
+            "button_link": "https://tinyurl.com/XX-XYAthletics",
+            "button_style": "button button--primary"
+          }
+        }
+      },
+      "block_order": [
+        "blog_post_fxqAWq",
+        "blog_post_zGEyYr",
+        "blog_post_ihhHRB",
+        "blog_post_Q8BQNd"
+      ],
+      "disabled": true,
+      "settings": {
+        "heading": "",
+        "button_style": "button--ctm_global_button"
+      }
+    },
+    "main_lookbook_3BiMPA": {
+      "type": "main-lookbook",
+      "blocks": {
+        "about_blocks_jt3cwU": {
+          "type": "about_blocks",
+          "settings": {
+            "color_scheme": "dark",
+            "text": "",
+            "heading": "<strong>XX-XY ATHLETICS:</strong>\n<br>INTRODUCING THE ONLY ATHLETIC\nBRAND TO STAND UP FOR WOMEN'S\nSPORTS\n<a href=\"https://www.xx-xyathletics.com/blogs/press/xx-xy-athletics-introducing-the-only-athletic-brand-to-stand-up-for-women-s-sport\">READ MORE</a>",
+            "heading_link": "https://www.xx-xyathletics.com/blogs/press/xx-xy-athletics-introducing-the-only-athletic-brand-to-stand-up-for-women-s-sport",
+            "block_image": "shopify://shop_images/team_0070_Generative_Fill_144_b3393dc5-aac9-4e5e-a65a-b587d62f0663.webp",
+            "overlay_enable": true,
+            "overlay_opacity": 10
+          }
+        },
+        "about_blocks_dK3mqP": {
+          "type": "about_blocks",
+          "settings": {
+            "color_scheme": "dark",
+            "text": "",
+            "heading": "<strong>I GET ASKED ALL THE TIME:</strong><br>\nWHAT IS THIS BRAND ABOUT?\n<a href=\"https://www.xx-xyathletics.com/blogs/newsroom/i-get-asked-all-the-time-what-is-this-brand-about?_pos=1&amp;_sid=76b459b14&amp;_ss=r\">READ MORE</a>",
+            "heading_link": "https://www.xx-xyathletics.com/blogs/newsroom/i-get-asked-all-the-time-what-is-this-brand-about?_pos=1&_sid=76b459b14&_ss=r",
+            "block_image": "shopify://shop_images/12-HERO_IMAGE_XX-XY-JenYoungGymnastPose_5c9c982e-f048-46cd-abec-f277f968a0ef.webp",
+            "overlay_enable": true,
+            "overlay_opacity": 10
+          }
+        }
+      },
+      "block_order": [
+        "about_blocks_jt3cwU",
+        "about_blocks_dK3mqP"
+      ],
+      "disabled": true,
+      "settings": {
+        "title": "<p>THE NEWSROOM</p>",
+        "extra_class": "ctm-newsroom",
+        "enable_slider": false,
+        "desktop_slide": 4,
+        "subheading": "Where Bold Voices and Big Moves Make Headlines. <a href=\"https://www.xx-xyathletics.com/blogs/newsroom\">View All</a>",
+        "per_row": 2,
+        "image_ratio": "landscape",
+        "margin_top": 40,
+        "margin_bottom": 0,
+        "spring_news_class": "spring-news-class"
+      }
+    }
+  },
+  "order": [
+    "pages",
+    "banner_with_text_YhJJnr",
+    "team_athlete_card_jdWN8b",
+    "team_athlete_card_NqqN7A",
+    "ctm_tabbing_collection_iah3wB",
+    "column_card_with_text_V3bTg8",
+    "main_lookbook_3BiMPA"
+  ]
+}

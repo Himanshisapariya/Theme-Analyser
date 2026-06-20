@@ -1,0 +1,524 @@
+<style>
+  .product-grid.ctm_bg_img_yml {
+    background-image: url('{{ product.metafields.background-img-yml.acf }}');
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 24px;
+  }
+
+  .upsell-heading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+
+  .upsell-heading p {
+    color: #437281 !important;
+    font-weight : bold;
+  }
+
+  @media (max-width:768px){
+     .upsell-heading p {
+      font-size: 15px;
+     }
+  }
+</style>
+
+{% comment %} YML Section start {% endcomment %}
+{% assign current_product = product %}
+{% assign current_product_collection = product.collections.first %}
+
+{% if current_product_collection %}
+  {% assign collection_products = current_product_collection.products | where_not: 'id', current_product.id %}
+  {% if collection_products.size > 0 %}
+    {% if product.metafields.pdp_yml.acf != blank %}
+      <div class="you-may-also-like !mt-40 order-4 !my-0">
+        <h4 class="section-heading !mb-14 !font-bold {{ product.metafields.background-img-yml.acf }}">
+          You May Also Like...
+        </h4>
+        <div class="product-grid ctm_bg_img_yml p-20 desktop:p-40">
+          {% assign pdp_products = product.metafields.pdp_yml.acf %}
+          {% for related_productsss in product.metafields.pdp_yml.acf %}
+            {% assign related_product = all_products[related_productsss] %}
+            {% if related_product != blank %}
+              <div class="product ctm-related-{{ related_product.handle }}" data-product-id="{{ related_product.id }}">
+                {% if related_product.metafields.custom.upsell_heading != blank %}
+                  <div class="upsell-heading">
+                    <p class="upsell-heading-text">{{ related_product.metafields.custom.upsell_heading }}</p>
+                  </div>
+                {% endif %}
+
+                <div class="product-link flex gap-20 desktop:gap-[40px] justify-between">
+                  <div class="product-image-wrapper w-[140px] flex-shrink-0">
+                    <img
+                      class="w-full h-[140px] object-cover rounded-24 overflow-hidden"
+                      src="{{ related_product.featured_image.src | img_url: 'medium' }}"
+                      alt="{{ related_product.featured_image.alt | escape }}"
+                    >
+                  </div>
+                  <div class="qty_btngrp flex-grow">
+                    <div class="product-info group">
+                      <a
+                        class="block text-bloodstone transition-all duration-300 ease-in-out group-hover:text-warm_neutral"
+                        href="{{ related_product.url }}"
+                      >
+                        <h5 class="product-title font-heading font-medium leading-22 mb-10 small_desktop:max-w-[400px] midlarge_desktop:max-w-full group-hover:text-warm_neutral transition-all duration-300 ease-in-out">
+                          {{- related_product.title -}}
+                        </h5>
+                      </a>
+
+                      <!-- Start of Judge.me code -->
+                      <div class="jdgm-widget jdgm-all-reviews-text small_desktop:max-w-[250px] midlarge_desktop:max-w-[250px]">
+                        <span
+                          data-score="{{ shop.metafields.judgeme.all_reviews_rating }}"
+                          class="jdgm-all-reviews-rating"
+                        ></span>
+                        <span
+                          class="jdgm-all-reviews-text__text font-extrabold"
+                          data-score="{{ shop.metafields.judgeme.all_reviews_rating }}"
+                          data-number-of-reviews="{{ shop.metafields.judgeme.all_reviews_count }}"
+                          data-locale="en"
+                        >
+                          {{ shop.metafields.judgeme.all_reviews_count }} reviews
+                        </span>
+                      </div>
+                      <!-- End of Judge.me code -->
+
+                      {%- unless related_product.has_only_default_variant -%}
+                        <variant-selects
+                          id="variant-selects-{{ section.id }}"
+                          class="no-js-hidden pdp_carient_block"
+                          data-section="{{ section.id }}"
+                          data-url="{{ related_product.url }}"
+                          {% if update_url == false %}
+                            data-update-url="false"
+                          {% endif %}
+                          {{ block.shopify_attributes }}
+                        >
+                          {%- for option in related_product.options_with_values -%}
+                            {% assign parent_index = forloop.index0 %}
+                            <fieldset class="js product-form__input product-form__input--pill cmt_swatch_block{{ forloop.index }}">
+                              <legend class="form__label">{{ option.name }}</legend>
+                              {%- for value in option.values -%}
+                                {% assign input_id = section.id
+                                  | append: '-'
+                                  | append: related_product.id
+                                  | append: '-'
+                                  | append: parent_index
+                                  | append: '-'
+                                  | append: forloop.index0
+                                %}
+                                <input
+                                  type="radio"
+                                  id="{{ input_id }}"
+                                  name="{{ option.name }}-{{ related_product.id }}"
+                                  value="{{ value | escape }}"
+                                  form="{{ product_form_id }}"
+                                  data-variant-id="{{ related_product.variants[forloop.index0].id }}"
+                                  data-variant-price="{{ related_product.variants[forloop.index0].price | money }}"
+                                  data-variant-compare-price="{{ related_product.variants[forloop.index0].compare_at_price | money }}"
+                                  {% if option.selected_value == value or forloop.first %}
+                                    checked
+                                  {% endif %}
+                                  {% if option_disabled %}
+                                    class="disabled"
+                                  {% endif %}
+                                >
+                                <label for="{{ input_id }}">{{ value }}</label>
+                              {%- endfor -%}
+                            </fieldset>
+                          {%- endfor -%}
+                        </variant-selects>
+                      {%- endunless -%}
+
+                      <div
+                        class="product-price my-10 flex items-center gap-10"
+                        id="price-container-{{ related_product.id }}"
+                      >
+                        <span class="font-extrabold text-dark_grey" id="price-{{ related_product.id }}">
+                          {{ related_product.price | money }}
+                        </span>
+                        <s class="font-normal text-dark_grey" id="compare-price-{{ related_product.id }}">
+                          {{ related_product.compare_at_price | money }}
+                        </s>
+                      </div>
+
+                      <product-form data-section-id="slide-cart">
+                        {%- assign product_form_id = 'quick-add-'
+                          | append: 'slide-cart'
+                          | append: related_product.id
+                        -%}
+                        {%- form 'product',
+                          product,
+                          id: product_form_id,
+                          class: 'form',
+                          novalidate: 'novalidate',
+                          data-type: 'add-to-cart-form'
+                        -%}
+                          <div class="ctm_quantity_atc_btn flex flex-wrap desktop:flex-nowrap items-center gap-20 large_desktop:gap-[64px] midlarge_desktop:justify-between">
+                            <div class="ctm_quan_main">
+                              <!-- Update this input dynamically -->
+                              <input
+                                type="hidden"
+                                name="id"
+                                value="{{ related_product.selected_or_first_available_variant.id }}"
+                                class="variant-id"
+                              >
+                              <div class="quantity-selector">
+                                <quantity-input
+                                  class="quantity"
+                                  data-url="{{ related_product.url }}"
+                                  data-section="{{ section.id }}"
+                                >
+                                  <button class="quantity__button no-js-hidden" name="minus" type="button">
+                                    <span class="visually-hidden">
+                                      {{-
+                                        'products.product.quantity.decrease'
+                                        | t: product: related_product.title
+                                        | escape
+                                      -}}
+                                    </span>
+                                    {% render 'icon-minus' %}
+                                  </button>
+                                  <input
+                                    class="quantity__input"
+                                    aria-label="quantity"
+                                    type="number"
+                                    name="quantity"
+                                    id="Quantity-{{ section.id }}"
+                                    data-cart-quantity="{{ cart_qty }}"
+                                    data-min="{{ related_product.selected_or_first_available_variant.quantity_rule.min }}"
+                                    min="{{ related_product.selected_or_first_available_variant.quantity_rule.min }}"
+                                    {% if related_product.selected_or_first_available_variant.quantity_rule.max != null
+                                    %}
+                                      data-max="{{ related_product.selected_or_first_available_variant.quantity_rule.max }}"
+                                      max="{{ related_product.selected_or_first_available_variant.quantity_rule.max }}"
+                                    {% endif %}
+                                    step="{{ related_product.selected_or_first_available_variant.quantity_rule.increment }}"
+                                    value="{{ related_product.selected_or_first_available_variant.quantity_rule.min }}"
+                                    form="{{ product_form_id }}"
+                                  >
+                                  <button class="quantity__button no-js-hidden" name="plus" type="button">
+                                    <span class="visually-hidden">
+                                      {{- 'products.product.quantity.increase' | t: product: product.title | escape -}}
+                                    </span>
+                                    {% render 'icon-plus' %}
+                                  </button>
+                                </quantity-input>
+                              </div>
+                            </div>
+                            <div class="ctm_atc_yml_main lgscreen2:w-[200px]">
+                              {%- render 'loading-spinner' -%}
+                              {% comment %}
+                                <button type="submit" class="btn btn-primary aloe_leaf_btn">Upgrade Me!</button>
+                              {% endcomment %}
+                              <button
+                                type="submit"
+                                class="btn btn-primary aloe_leaf_btn upsell_click lgscreen1:w-[200px] lgscreen2:w-full"
+                                data-shopify-analytics-track="click"
+                                data-shopify-analytics-event-name="upsell_click"
+                                data-shopify-analytics-event-product_id="{{ product.id }}"
+                                data-shopify-analytics-event-product_name="{{ product.title | escape }}"
+                                data-shopify-analytics-event-upsell_type="upgrade_offer"
+                                data-shopify-analytics-event-price="{{ product.price | money_without_currency }}"
+                              >
+                                Add To Cart
+                              </button>
+                            </div>
+                          </div>
+                        {%- endform -%}
+                      </product-form>
+                    </div>
+                    <div class="add_btn"></div>
+                  </div>
+                </div>
+
+                {% if related_product.metafields.custom.short_description_image == blank %}
+                  {% if related_product.metafields.yml_1.acf != blank %}
+                    <div class="ctm_pdp_shortdesc pt-40 flex flex-wrap items-center gap-[11px] smscreen:gap-[4px]">
+                      {{ related_product.metafields.yml_1.acf }}
+                      <img
+                        src="https://cdn.shopify.com/s/files/1/0792/4904/7864/files/check_c0da4210-7c16-4165-adb2-13eacd0ce161.png"
+                        alt="plus_icon"
+                        loading="lazy"
+                        width="20"
+                        height="20"
+                      >
+
+                      {% if related_product.metafields.yml_2.acf != blank %}
+                        {{ related_product.metafields.yml_2.acf }}
+                        <img
+                          src="https://cdn.shopify.com/s/files/1/0792/4904/7864/files/check_c0da4210-7c16-4165-adb2-13eacd0ce161.png"
+                          alt="plus_icon"
+                          loading="lazy"
+                          width="20"
+                          height="20"
+                        >
+                      {% endif %}
+                      {{ related_product.metafields.yml_3.acf }}
+                      {% if related_product.metafields.yml_4.acf != blank %}
+                        <img
+                          src="https://cdn.shopify.com/s/files/1/0792/4904/7864/files/check_c0da4210-7c16-4165-adb2-13eacd0ce161.png"
+                          alt="plus_icon"
+                          loading="lazy"
+                          width="20"
+                          height="20"
+                        >
+                      {% endif %}
+                      {% if related_product.metafields.yml_4.acf != blank %}
+                        {{ related_product.metafields.yml_4.acf }}
+                      {% endif %}
+                    </div>
+                  {% endif %}
+
+                {% else %}
+                  {% if related_product.metafields.custom.short_description_image != blank %}
+                    <div class="description-image lgscreen1:hidden lgscreen2:block">
+                      <img
+                        src="{{ related_product.metafields.custom.short_description_image | image_url }}"
+                        alt="{{ related_product.title }}"
+                        height="auto"
+                        width="auto"
+                      >
+                    </div>
+                    <div class="description-mobile-image lgscreen1:block lgscreen2:hidden mt-40 object-cover smscreen1:ml-auto smscreen1:mr-auto smscreen1:max-w-[60%] mdscreen2:max-w-full">
+                      <img
+                        src="{{ related_product.metafields.custom.short_description_mobile_image | image_url }}"
+                        alt="{{ related_product.title }}"
+                        height="auto"
+                        width="auto"
+                      >
+                    </div>
+                  {% endif %}
+                {% endif %}
+              </div>
+            {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+    {% endif %}
+  {% endif %}
+{% endif %}
+
+<script>
+  // popup start
+  document.getElementById('openPopup').addEventListener('click', function () {
+    document.getElementById('ctm-pdp-popup').style.display = 'block';
+  });
+
+  document.getElementById('ctm-closePopup-pdp').addEventListener('click', function () {
+    document.getElementById('ctm-pdp-popup').style.display = 'none';
+  });
+  // popup end
+
+  // Wait for DOM content to be fully loaded
+  document.addEventListener('DOMContentLoaded', function () {
+    // Listen for form submissions
+    document.querySelectorAll('.add-to-cart-form').forEach(function (form) {
+      form.addEventListener('submit', function (event) {
+        event.preventDefault(); // Prevent default form submission
+
+        var formData = new FormData(form);
+        var requestData = {};
+        formData.forEach(function (value, key) {
+          requestData[key] = value;
+        });
+
+        // AJAX request to add the product to cart
+        fetch(form.action, {
+          method: 'POST',
+          body: formData,
+        })
+          .then(function (response) {
+            // Trigger event to refresh the cart drawer
+            window.dispatchEvent(new CustomEvent('cart:refresh'));
+
+            // Add 'active' class to cart drawer
+            var cartDrawer = document.querySelector('cart-drawer');
+            if (cartDrawer) {
+              cartDrawer.classList.add('active');
+            } else {
+              console.error('Error: cart-drawer element not found');
+            }
+
+            // Trigger event to open the cart drawer
+            window.dispatchEvent(new CustomEvent('cart:open'));
+          })
+          .catch(function (error) {
+            console.error('Error:', error);
+          });
+      });
+    });
+
+    // Prevent page refresh when changing quantity
+    document.querySelectorAll('.add-to-cart-form input[name="quantity"]').forEach(function (input) {
+      input.addEventListener('input', function (event) {
+        event.preventDefault(); // Prevent default behavior
+        // Your logic for handling quantity change goes here
+        // For example, you can update a variable with the new quantity value
+        var newQuantity = parseInt(event.target.value);
+        // You can perform any additional logic here, such as validation or updating UI elements
+      });
+    });
+
+    // Prevent page refresh when clicking quantity selector buttons
+    document.querySelectorAll('.add-to-cart-form .quantity-selector button').forEach(function (button) {
+      button.addEventListener('click', function (event) {
+        event.preventDefault(); // Prevent default behavior
+
+        // Get the input field for quantity
+        var inputField = this.parentNode.querySelector('input[name="quantity"]');
+
+        // Get the current quantity value
+        var currentValue = parseInt(inputField.value);
+
+        // Determine the new quantity based on the button clicked
+        var newValue = currentValue + (this.classList.contains('increase') ? 1 : -1);
+
+        // Update the quantity input field
+        inputField.value = newValue;
+
+        // Dispatch a custom input event to trigger any associated logic
+        inputField.dispatchEvent(new Event('input', { bubbles: true }));
+      });
+    });
+
+    // Prevent page refresh when clicking quantity selector buttons
+    document.querySelectorAll('.add-to-cart-form .quantity-selector button').forEach(function (button) {
+      button.addEventListener('click', function (event) {
+        event.preventDefault(); // Prevent default behavior
+        // Your logic for increasing/decreasing quantity goes here
+        var inputField = this.parentNode.querySelector('input[name="quantity"]');
+        var currentValue = parseInt(inputField.value);
+        var newValue = currentValue + (this.classList.contains('increase') ? 1 : -1);
+        inputField.value = newValue;
+        inputField.dispatchEvent(new Event('input', { bubbles: true })); // Trigger input event manually
+      });
+    });
+
+    function refreshCart() {
+      console.log('cart refresh');
+      var cartDrawer = document.querySelector('cart-drawer');
+
+      if (cartDrawer) {
+        const xhr = new XMLHttpRequest();
+        xhr.open('GET', window.location.href);
+        xhr.onload = function () {
+          if (xhr.status === 200) {
+            const parser = new DOMParser();
+            const responseDoc = parser.parseFromString(xhr.responseText, 'text/html');
+            const newContent = responseDoc.querySelector('cart-drawer');
+            console.log('newContent', newContent);
+            if (newContent) {
+              cartDrawer.innerHTML = newContent.innerHTML;
+            }
+          }
+        };
+        xhr.send();
+      }
+    }
+
+    refreshCart();
+
+    // Listen for cart:refresh event
+    window.addEventListener('cart:refresh', function (event) {
+      refreshCart();
+      var cartDrawer = document.querySelector('cart-drawer');
+      fetch('/cart.js')
+        .then((response) => response.json())
+        .then(function (cartData) {
+          if (cartDrawer) {
+            cartDrawer.renderContents(cartData);
+          } else {
+            console.error('Error: cart-drawer element not found');
+          }
+        })
+        .catch((error) => console.error('Error fetching cart data:', error));
+    });
+
+    const triggerCartDrawerOpened = () => {
+      const event = new Event('cartDrawerOpened');
+      document.dispatchEvent(event);
+    };
+
+    // Example: Assuming you have a function that opens the cart drawer, you can trigger the custom event when the cart drawer is opened
+    const openCartDrawer = () => {
+      // Logic to open the cart drawer...
+      // Once the cart drawer is opened, trigger the custom event
+      triggerCartDrawerOpened();
+      refreshCart();
+    };
+
+    // Now, listen for the custom event and call the refreshCart function when it is triggered
+    document.addEventListener('cartDrawerOpened', openCartDrawer);
+  });
+</script>
+
+{% comment %}
+  <script>
+    // custom script to track upsell button clicks
+    document.querySelectorAll('.upsell_click').forEach(function (button) {
+      if (button) {
+        button.addEventListener('click', function (event) {
+          const event_name = this.getAttribute('data-shopify-analytics-event-name');
+          const product_id = this.getAttribute('data-shopify-analytics-event-product_id');
+          const product_name = this.getAttribute('data-shopify-analytics-event-product_name');
+          const upsell_type = this.getAttribute('data-shopify-analytics-event-upsell_type');
+          // const button_text = button.innerText.trim();
+
+          // Subscribe to the custom event
+          Shopify.analytics.publish('upsell_click', {
+            product_id: button.dataset.productId,
+            // button_text: button_text,
+            upsell_type: upsell_type,
+            product_name: product_name,
+          });
+
+          // Send the event to GA4
+          if (typeof gtag === 'function') {
+            gtag('event', 'upsell_click', {
+              upsell_type: upsell_type,
+              product_id: product_id,
+              product_name: product_name,
+              // button_text: button_text,
+              debug_mode: true,
+            });
+          }
+        });
+      }
+    });
+  </script>
+{% endcomment %}
+<script>
+  document.querySelectorAll('.upsell_click').forEach(function (button) {
+    if (button) {
+      button.addEventListener('click', function () {
+        const event_name = this.getAttribute('data-shopify-analytics-event-name');
+        const product_id = this.getAttribute('data-shopify-analytics-event-product_id');
+        const product_name = this.getAttribute('data-shopify-analytics-event-product_name');
+        const upsell_type = this.getAttribute('data-shopify-analytics-event-upsell_type');
+        const product_price = this.getAttribute('data-shopify-analytics-event-price'); // new line
+
+        // Send to GA4
+        if (typeof gtag === 'function') {
+          gtag('event', 'upsell_click', {
+            upsell_type: upsell_type,
+            product_id: product_id,
+            product_name: product_name,
+            value: parseFloat(product_price) || 0, // ✅ required for Event value
+            currency: 'USD', // or use your store currency
+            debug_mode: true,
+          });
+        }
+      });
+    }
+  });
+</script>
+
+{% comment %} YML Section End {% endcomment %}
+<style>
+  .ctm_pdp_shortdesc {
+    display: none;
+  }
+</style>

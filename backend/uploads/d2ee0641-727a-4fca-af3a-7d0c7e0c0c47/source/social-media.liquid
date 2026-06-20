@@ -1,0 +1,70 @@
+<style>
+  .social_container {
+    background-image: url('{{ section.settings.background_image | image_url: width:2000 }}');
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+</style>
+<div class="heading_icon_container mb-55 {{ section.settings.extra_class }}">
+  <div class="xl_container">
+    {% if section.settings.background_image != blank %}
+      <div class="social_container rounded-24 overflow-hidden container_fluid py-55 text-center">
+        {% if section.settings.headline != blank %}
+          <div class="social_heading mb-14">
+            <h3>{{ section.settings.headline }}</h3>
+          </div>
+        {% endif %}
+        <div class="contact_social_block flex items-center justify-center">
+          {% render 'social-icons' %}
+        </div>
+      </div>
+    {% endif %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Social Media",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "label": "Extra Class",
+      "id": "extra_class"
+    },
+    {
+      "type": "image_picker",
+      "label": "Background Image",
+      "id": "background_image"
+    },
+    {
+      "type": "text",
+      "id": "headline",
+      "label": "Headline"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "social_icon",
+      "name": "Social Icon",
+      "settings": [
+        {
+          "type": "image_picker",
+          "label": "Social Media Icon",
+          "id": "social_icon"
+        },
+        {
+          "type": "url",
+          "label": "Add URL",
+          "id": "social_url"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Social Media"
+    }
+  ]
+}
+{% endschema %}

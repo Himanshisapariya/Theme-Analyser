@@ -1,0 +1,272 @@
+{%- style -%}
+    .custom-buttons-bar.section-id-{{ section.id }} {
+      padding-top: {{ section.settings.top_padding_desktop }}px;
+      padding-bottom: {{ section.settings.bottom_padding_desktop }}px;
+    }
+
+    @media screen and (max-width: 990px) {
+      .custom-buttons-bar.section-id-{{ section.id }} {
+          padding-top: {{ section.settings.top_padding_mobile }}px;
+          padding-bottom: {{ section.settings.bottom_padding_mobile }}px;
+      }
+    }
+  .custom-buttons-bar.section-id-{{ section.id }} {
+      margin-top: {{ section.settings.top_margin_desktop}}px;
+      margin-bottom: {{ section.settings.bottom_margin_desktop }}px;
+    }
+
+    @media screen and (max-width: 990px) {
+      .custom-buttons-bar.section-id-{{ section.id }} {
+          margin-top: {{ section.settings.top_margin_mobile }}px;
+          margin-bottom: {{ section.settings.bottom_margin_mobile }}px;
+      }
+    }
+{%- endstyle -%}
+
+<section class="custom-buttons-bar {{ section.settings.extra_class }} {{ section.settings.button_extra_class }} section-id-{{ section.id }}">
+  <div class="buttos-bar fullscreen-container">
+    <div class="button-bar-heading">
+      <h3>{{ section.settings.section_heading }}</h3>
+    </div>
+
+    <div class="button-bar-buttons">
+      {% for block in section.blocks %}
+        <a
+          {% if block.settings.btn_url != blank %}
+            href="{{ block.settings.btn_url }}"
+          {% endif %}
+          class="{{ block.settings.button_style }}"
+        >
+          {{ block.settings.btn_text }}
+        </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<style>
+  .button-bar-buttons {
+    display: flex;
+    gap: 20px;
+  }
+  .buttos-bar {
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    gap: 50px;
+  }
+  .buttos-bar.fullscreen-container {
+    padding-top:0 !important; 
+  }
+  @media screen and (max-width: 1024px) {
+    .buttos-bar {
+      flex-direction: column;
+      gap:20px;
+    }
+    .button-bar-heading {
+      margin-bottom:10px;
+    }
+    .button-bar-heading h4 {
+      margin:0;
+    }
+  }
+
+  @media screen and (max-width: 575px) {
+    .button-bar-heading h3{
+      text-align: center;
+    }
+  }
+
+    @media screen and (max-width: 750px) {
+{% comment %} .button-bar-buttons {
+  flex-direction: column;
+} {% endcomment %}
+.button-bar-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px; 
+}
+
+.button-bar-buttons a {
+  flex: 1 1 auto;
+  max-width: 200px; 
+  text-align: center;
+}
+.button-bar-buttons a:nth-child(3) {
+  flex-basis: 100%; 
+  display: flex;
+  justify-content: center;
+}
+
+    }
+    
+</style>
+
+{% schema %}
+{
+  "name": "Heading with Buttons",
+  "settings": [
+    {
+      "type": "text",
+      "id": "section_heading",
+      "label": "Section Heading",
+      "default": "Your Heading"
+    },
+    {
+      "type": "text",
+      "id": "extra_class",
+      "label": "Extra Class"
+    },
+    {
+      "type": "text",
+      "id": "button_extra_class",
+      "label": "Button Extra Class"
+    },
+    {
+      "type": "header",
+      "content": "Section Spacing"
+    },
+    {
+      "type": "range",
+      "label": "Top Padding Desktop",
+      "id": "top_padding_desktop",
+      "default": 0,
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "label": "Bottom Padding Desktop",
+      "id": "bottom_padding_desktop",
+      "default": 0,
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "label": "Top Padding Mobile",
+      "id": "top_padding_mobile",
+      "default": 0,
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "label": "Bottom Padding Mobile",
+      "id": "bottom_padding_mobile",
+      "default": 0,
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "label": "Top Margin Desktop",
+      "id": "top_margin_desktop",
+      "default": 0,
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "label": "Bottom Margin Desktop",
+      "id": "bottom_margin_desktop",
+      "default": 0,
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "label": "Top Margin Mobile",
+      "id": "top_margin_mobile",
+      "default": 0,
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "label": "Bottom Margin Mobile",
+      "id": "bottom_margin_mobile",
+      "default": 0,
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "button",
+      "name": "Button",
+      "settings": [
+        {
+          "type": "text",
+          "id": "btn_text",
+          "label": "Button Text",
+          "default": "Click Me"
+        },
+        {
+          "type": "url",
+          "id": "btn_url",
+          "label": "Button URL"
+        },
+        {
+          "type": "select",
+          "id": "button_style",
+          "options": [
+            {
+              "value": "button--ctm_global_button",
+              "label": "Global Button"
+            },
+            {
+              "value": "button--ctm_wb_global_button",
+              "label": "Global Button (White Background)"
+            },
+            {
+              "value": "ctm-custom-button",
+              "label": "Custom Button"
+            },
+            {
+              "value": "ctm-custom-outline-button",
+              "label": "Outline Button"
+            },
+            {
+              "value": "button button--primary",
+              "label": "t:sections.all.button.button_style.options__1.label"
+            },
+            {
+              "value": "button button--secondary",
+              "label": "t:sections.all.button.button_style.options__2.label"
+            },
+            {
+              "value": "button button--tertiary",
+              "label": "t:sections.all.button.button_style.options__3.label"
+            }
+          ],
+          "default": "button button--primary",
+          "label": "t:sections.all.button.button_style.label"
+        },
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Buttons Bar"
+    }
+  ]
+}
+{% endschema %}

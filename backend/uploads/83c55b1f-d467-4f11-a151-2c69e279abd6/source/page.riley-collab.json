@@ -1,0 +1,257 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "pages": {
+      "type": "main-page",
+      "disabled": true,
+      "custom_css": [
+        ".container {padding-top: 50px; padding-bottom: 50px;}",
+        "h1 {text-align: center;}"
+      ],
+      "settings": {}
+    },
+    "banner_with_text_pzMTWA": {
+      "type": "banner-with-text",
+      "name": "t:sections.banner-with-text.name",
+      "settings": {
+        "extra_class": "reliy-collab-banner",
+        "color_scheme": "light",
+        "image": "shopify://shop_images/Main_banner_399217db-263f-4a0e-a239-21a5e1230990.jpg",
+        "image_mobile": "shopify://shop_images/Main_banner_399217db-263f-4a0e-a239-21a5e1230990.jpg",
+        "image_size": "adapt",
+        "caption_class": "",
+        "title": "",
+        "content_text": "",
+        "text_alignment": "left",
+        "content_width": "max",
+        "overlay_enable": false,
+        "overlay_opacity": 20,
+        "button_link": "",
+        "button_label": "",
+        "button_style": "primary",
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "spring_banner_class": "fullscreen-container spring-workout"
+      }
+    },
+    "ctm_tabbing_collection_dPGz4f": {
+      "type": "ctm_tabbing_collection",
+      "blocks": {
+        "collection_nWLHUm": {
+          "type": "collection",
+          "settings": {
+            "collection_ctm": "riley-gaines-be-bold-collaboration",
+            "enable_img": false
+          }
+        }
+      },
+      "block_order": [
+        "collection_nWLHUm"
+      ],
+      "name": "Collection Tabs",
+      "settings": {
+        "heading_ctm": "",
+        "ctm_subtitle": "",
+        "btn_text": "",
+        "btn_link": "",
+        "tab_1": "BE BOLD COLLECTION",
+        "tab_2": "",
+        "desktop_slide": 5,
+        "spring_slider_class": ""
+      }
+    },
+    "collection_with_content_XUxE4B": {
+      "type": "collection-with-content",
+      "disabled": true,
+      "custom_css": [
+        ".collection_content_title h2 {color: #2f484c;}"
+      ],
+      "settings": {
+        "extra_class": "mens-section-for-riley",
+        "title": "PART 1",
+        "desc": "<p>We’ve partnered with Riley to bring you the first official XX-XY Athletics collaboration. </p>\n\n<p>A 12x All-American swimmer and fierce women’s advocate, Riley encourages young women to Be Bold and use their voices to stand up for truth, biological reality and fairness and safety for women. </p>\n\n<p>We dropped part 1 of the Be Bold collection on the anniversary of Title IX, the 1972 legislation that changed everything for women and girls.  Get it now to honor the past and defend the future.</p>",
+        "text_color": "#2f484c",
+        "btn_as_link": true,
+        "display_arrow": true,
+        "button_link": "shopify://collections/riley-gaines-be-bold-collaboration",
+        "button_text": "SHOP ALL PART 1",
+        "bg_color": "rgba(0,0,0,0)",
+        "select_collection": "part-1-be-bold-riley-gaines-x-xx-xy-athletics"
+      }
+    },
+    "video_bURMFF": {
+      "type": "video",
+      "name": "t:sections.video.presets.name",
+      "settings": {
+        "extra_class": "",
+        "full_width": true,
+        "height": "large",
+        "video_fit": "cover",
+        "subheading": "",
+        "heading": "",
+        "cover_image": "shopify://shop_images/Screenshot_2025-07-22_at_2.01.57_PM.png",
+        "opacity_overlay": 0.5,
+        "video": "shopify://files/videos/Finished Horiz RG2 July 22 110 29am.mov",
+        "mobile_video": "shopify://files/videos/Finished RG2 Vert July 22 25.mov",
+        "video_url": "",
+        "video_autoplay": true,
+        "video_loop": false,
+        "video_muted": false,
+        "video_controls": true,
+        "description": "",
+        "margin_top": 50,
+        "margin_bottom": 0
+      }
+    },
+    "faq_with_image_fPnUTn": {
+      "type": "faq-with-image",
+      "blocks": {
+        "faq_dMVAci": {
+          "type": "faq",
+          "settings": {
+            "question": "<p>What Is Title IX?</p>",
+            "answer": "<p>Title IX is a federal civil rights law in the United States that was enacted as part of the Education Amendments of 1972. Its primary purpose is to prohibit sex-based discrimination in any school or educational program that receives federal funding.</p><p>\"No person in the United States shall, on the basis of sex, be excluded from participation in, be denied the benefits of, or be subjected to discrimination under any education program or activity receiving Federal financial assistance.\"</p>"
+          }
+        },
+        "faq_JnVzCF": {
+          "type": "faq",
+          "settings": {
+            "question": "<p>Why It Was Passed</p>",
+            "answer": "<p>Title IX was passed to address widespread, systemic discrimination against women and girls in education.</p><p>Before 1972, women were often denied admission to colleges, scholarships, and professional programs simply because of their sex. In athletics, the disparities were even more glaring—few sports teams existed for girls, and those that did often lacked funding, facilities, and support.</p>"
+          }
+        },
+        "faq_mbL4tT": {
+          "type": "faq",
+          "settings": {
+            "question": "<p>Why It Still Matters</p>",
+            "answer": "<p>Title IX was a groundbreaking law that paved the way for women’s increased participation in sports, education, and leadership roles, helping level the playing field in institutions that were once inaccessible or unequal.</p>"
+          }
+        },
+        "faq_Tc7eVz": {
+          "type": "faq",
+          "settings": {
+            "question": "<p>Who Is Riley Gaines?</p>",
+            "answer": "<p>Riley Gaines is a 12x All-American swimmer and outspoken advocate for women’s sports. After competing against a male athlete in the NCAA championships, she began speaking out to protect fairness and single-sex competition.</p>"
+          }
+        },
+        "faq_ryGifE": {
+          "type": "faq",
+          "settings": {
+            "question": "<p>What Is the Riley Gaines BE BOLD Collaboration</p>",
+            "answer": "<p>The collaboration with Riley Gaines and Title IX represents a powerful stand for protecting women’s sports as they were meant to be—fair, female, and grounded in truth.</p><p>The fight isn’t over—and the future of women’s sports is worth protecting.</p>"
+          }
+        },
+        "faq_rPH3Ec": {
+          "type": "faq",
+          "settings": {
+            "question": "<p>What Is the Future Of Title IX?</p>",
+            "answer": "<p>The future of Title IX is being actively shaped—and challenged.</p><p>As more people question what it means to protect “sex-based” rights, the fight is shifting from just equal access to defining fairness.</p><p>At XX-XY Athletics, we believe the future of Title IX must stay true to its intent: protecting opportunities <b><i>for women, as women.</i></b></p>"
+          }
+        },
+        "faq_CR8Eq9": {
+          "type": "faq",
+          "settings": {
+            "question": "<p><strong>What Riley Gaines Wants You to Know</strong></p>",
+            "answer": "“I’m beyond excited for my first-ever true collaboration product line—and I couldn’t love it more. From the red, white, and blue color palette to the baggy tee and hoodie to the signature labeling, every detail feels right. We agreed to call the collection BE BOLD from the start because that’s my mission: to inspire others to speak up and be bold. I love this partnership, and I’m incredibly proud of what we’ve created. It’s the perfect blend of XX-XY Athletics and my personal style. Title IX opened the doors for women in sport—and we’re not giving that up. Be bold, wear your values, and have faith and courage for the girls who need us to be strong for them. This collection is for real athletes who love America.”"
+          }
+        }
+      },
+      "block_order": [
+        "faq_dMVAci",
+        "faq_JnVzCF",
+        "faq_mbL4tT",
+        "faq_Tc7eVz",
+        "faq_ryGifE",
+        "faq_rPH3Ec",
+        "faq_CR8Eq9"
+      ],
+      "settings": {
+        "heading": "TITLE IX TRIBUTE",
+        "desc": "",
+        "heading_alignment": "center",
+        "main-img": "shopify://shop_images/RG_Velour__7562_2.jpg",
+        "open_first": false
+      }
+    },
+    "collection_with_content_Q3KEww": {
+      "type": "collection-with-content",
+      "disabled": true,
+      "custom_css": [
+        ".collection_content_title h2 {color: #2f484c;}"
+      ],
+      "settings": {
+        "extra_class": "mens-section-for-riley",
+        "title": "PART 2",
+        "desc": "<p>On July 4th, we bring you the second part of the Be Bold Riley Gaines collection. This drop features red, white and blue performance gear in honor of her 12x All-American status and timed for Independence Day.</p>\n<p>Be bold. Defend free expression and biological reality. Stand with us and stand with Riley to defend the future of women’s sports. <br></p>",
+        "text_color": "#2f484c",
+        "btn_as_link": true,
+        "display_arrow": true,
+        "button_link": "shopify://collections/riley-gaines-be-bold-collaboration",
+        "button_text": "SHOP ALL PART 2",
+        "bg_color": "rgba(0,0,0,0)",
+        "select_collection": "part-2-be-bold-riley-gaines-x-xx-xy-athletics"
+      }
+    },
+    "pdp_multicolumn_NLyN8k": {
+      "type": "pdp-multicolumn",
+      "blocks": {
+        "column_rF3MLg": {
+          "type": "column",
+          "settings": {
+            "column_image": "shopify://shop_images/Riley_Gaines_2_1_1_1.jpg",
+            "display_2_images": false,
+            "diff_mobile_img": false,
+            "column_title": "RILEY GAINES FINDS HER VOICE",
+            "column_desc": "\"I thought surely someone like a coach or something would be protecting us. But no one did.\"",
+            "button_1": "WATCH NOW",
+            "url_1": "https://www.xx-xyathletics.com/blogs/newsroom/riley-gaines-finds-her-voice",
+            "url_2": "",
+            "button_2": "",
+            "button_extra_class": "red_secondary_btn"
+          }
+        },
+        "column_Hx84EC": {
+          "type": "column",
+          "settings": {
+            "column_image": "shopify://shop_images/Gaines_Group.jpg",
+            "display_2_images": false,
+            "diff_mobile_img": false,
+            "column_title": "BE BOLD: Riley x XX-XY Athletics",
+            "column_desc": "We are proud to announce our first ever collaboration at XX-XY Athletics.",
+            "button_1": "READ MORE",
+            "url_1": "https://www.xx-xyathletics.com/blogs/newsroom/be-bold-riley-x-xx-xy-athletics",
+            "url_2": "",
+            "button_2": "",
+            "button_extra_class": "red_secondary_btn"
+          }
+        }
+      },
+      "block_order": [
+        "column_rF3MLg",
+        "column_Hx84EC"
+      ],
+      "settings": {
+        "heading": "",
+        "pdp_multicolumn_extra_class": "pdp-multicolumn-main fullscreen-container common-fullscreen-container riley-collab-pdp-multicolumn"
+      }
+    }
+  },
+  "order": [
+    "pages",
+    "banner_with_text_pzMTWA",
+    "ctm_tabbing_collection_dPGz4f",
+    "collection_with_content_XUxE4B",
+    "video_bURMFF",
+    "faq_with_image_fPnUTn",
+    "collection_with_content_Q3KEww",
+    "pdp_multicolumn_NLyN8k"
+  ]
+}

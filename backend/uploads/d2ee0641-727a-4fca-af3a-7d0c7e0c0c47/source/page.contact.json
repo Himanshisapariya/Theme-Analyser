@@ -1,0 +1,207 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "settings": {
+        "extra_class": "",
+        "page_title_black": "",
+        "breadcrumb_image": "shopify://shop_images/header_content_13.png",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "image_with_text_GhJUec": {
+      "type": "image-with-text",
+      "blocks": {
+        "caption_WkeGwr": {
+          "type": "caption",
+          "settings": {
+            "caption": "Learn More About the",
+            "text_style": "subtitle",
+            "text_size": "medium"
+          }
+        },
+        "heading_D6EDik": {
+          "type": "heading",
+          "settings": {
+            "heading": "Best Mattress for Kids",
+            "heading_size": "h3"
+          }
+        },
+        "text_6zxgq9": {
+          "type": "text",
+          "settings": {
+            "text": "<p>At 5 Little Monkeys, we have a bold mission: create the <a class=\"text_scots_pine\n\" href=\"https://5littlemonkeysbed.com/collections/mattresses-bedding\">best mattress for kids</a> on the market and help families everywhere achieve healthier, more restful sleep for their little ones. After years of research and testing with our own daughters, we're proud to have created a children's mattress that uses a research-based design and cutting-edge materials to give kids exactly what they need for perfect sleep. We're beyond proud of our work on the 5 Little Monkeys bed - and if you have questions, we have answers.</p>",
+            "text_style": "body"
+          }
+        }
+      },
+      "block_order": [
+        "caption_WkeGwr",
+        "heading_D6EDik",
+        "text_6zxgq9"
+      ],
+      "settings": {
+        "extra_class": "ctm_contact_zigzag",
+        "image": "shopify://shop_images/image_6.png",
+        "txt_under_img": "",
+        "height": "adapt",
+        "desktop_image_width": "medium",
+        "layout": "image_first",
+        "image_radius": 24,
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "left",
+        "content_layout": "no-overlap",
+        "section_color_scheme": "",
+        "color_scheme": "",
+        "image_behavior": "none",
+        "mobile_content_alignment": "left",
+        "padding_top": 80,
+        "padding_bottom": 80
+      }
+    },
+    "image_with_text_iQXjQp": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_bMEne9": {
+          "type": "heading",
+          "settings": {
+            "heading": "We're Here for You",
+            "heading_size": "h3"
+          }
+        },
+        "text_Mjbipr": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Consider us a resource for better sleep. We designed our kids bedding system with organic materials from the ground up, giving kids a better option for the sleep they need to thrive. If you have questions about our kids mattress, the 5 Little Monkeys Sleep System, or our company in general, we'd be happy to answer them. Feel free to contact us by phone, email, or even snail mail, if you prefer!</p>",
+            "text_style": "body"
+          }
+        }
+      },
+      "block_order": [
+        "heading_bMEne9",
+        "text_Mjbipr"
+      ],
+      "settings": {
+        "extra_class": "ctm_contacthere_zigzag",
+        "bg_image": "shopify://shop_images/our_story_BG-2.png",
+        "image": "shopify://shop_images/image_7.png",
+        "txt_under_img": "",
+        "height": "adapt",
+        "desktop_image_width": "medium",
+        "layout": "text_first",
+        "image_radius": 24,
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "left",
+        "content_layout": "no-overlap",
+        "section_color_scheme": "",
+        "color_scheme": "",
+        "image_behavior": "none",
+        "mobile_content_alignment": "left",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "rich_text_Uy6xzr": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_MnJBUJ": {
+          "type": "heading",
+          "settings": {
+            "heading": "Try The Best Mattress for Kids Risk- Free",
+            "heading_size": "h3"
+          }
+        },
+        "text_GV3LEx": {
+          "type": "text",
+          "settings": {
+            "text": "<p>We hope you'll reach out to us with any questions you have, and we look forward to hearing from you. And if you're considering buying our kids mattress but have hesitations, keep in mind that our 100 Night Rest Test means you can try our kids bedding risk-free. Sleep on the bed for 100 nights, and if you and your child aren't absolutely in love with it, we'll give you a full refund, no questions asked. So what are you waiting for? Try our children's mattress today!</p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_MnJBUJ",
+        "text_GV3LEx"
+      ],
+      "settings": {
+        "extra_class": "ctm_contactmattress_block",
+        "desktop_content_position": "center",
+        "bg_image": "shopify://shop_images/our_story_BG-2.png",
+        "content_alignment": "center",
+        "color_scheme": "",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    },
+    "shipping_return_bbbbW3": {
+      "type": "shipping-return",
+      "settings": {
+        "extra_class": "",
+        "main_img": "shopify://shop_images/image_8.png",
+        "headline": "Give Us A Ring",
+        "desc": "Consider us a resource for better sleep. We designed our kids bedding system with organic materials from the ground up, giving kids a better option for the sleep they need to thrive. If you have questions about our kids mattress, the 5 Little Monkeys Sleep System, or our company in general, we'd be happy to answer them. Feel free to contact us by phone, email, or even snail mail, if you prefer!",
+        "call_img": "shopify://shop_images/Vector_390f9bd5-518a-4275-9c3e-e7fead4b2786.png",
+        "call_heading": "",
+        "mobile_number": "844.325.5555",
+        "call_desc": "<p>Call us any time during our office hours:<strong>Monday - Friday: 8am-5pm PST</strong></p>",
+        "mail_img": "shopify://shop_images/Vector.png",
+        "mail_heading": "",
+        "email": "info@5littlemonkeysbed.com"
+      }
+    },
+    "contact_form_FtAzpX": {
+      "type": "contact-form",
+      "settings": {
+        "extra_class": "",
+        "bg_image": "shopify://shop_images/our_story_BG.png",
+        "caption": "Have Questions?",
+        "heading": "Drop Us A Note!",
+        "heading_size": "h1",
+        "description": "Shoot us an email at <a href=\"mailto:info@5littlemonkeysbed.com\">info@5littlemonkeysbed.com</a> or use the form below, and we’ll get back to you as soon as possible—typically within 24 business hours.",
+        "color_scheme": "",
+        "padding_top": 80,
+        "padding_bottom": 36
+      }
+    },
+    "heading_button_p4kNTg": {
+      "type": "heading-button",
+      "settings": {
+        "extra_class": "",
+        "headline": "Questions?",
+        "desc": "Try our FAQ page or read more about our warranties.",
+        "button": "FAQ",
+        "button_url": "shopify://pages/faq",
+        "button1": "Warranty",
+        "button_url1": "shopify://pages/warranty"
+      }
+    },
+    "social_media_ABGHwj": {
+      "type": "social-media",
+      "settings": {
+        "extra_class": "",
+        "background_image": "shopify://shop_images/our_story_BG-2.png",
+        "headline": "Reach Us on Socials"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "image_with_text_GhJUec",
+    "image_with_text_iQXjQp",
+    "rich_text_Uy6xzr",
+    "shipping_return_bbbbW3",
+    "contact_form_FtAzpX",
+    "heading_button_p4kNTg",
+    "social_media_ABGHwj"
+  ]
+}

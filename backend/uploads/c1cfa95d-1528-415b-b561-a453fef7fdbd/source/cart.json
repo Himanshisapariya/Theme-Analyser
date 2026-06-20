@@ -1,0 +1,160 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "cart-items": {
+      "type": "main-cart-items",
+      "blocks": {
+        "gift_with_purchase_B6M3HA": {
+          "type": "gift_with_purchase",
+          "disabled": true,
+          "settings": {
+            "heading": "Free Gift With Purchase",
+            "subheading": "Spend $100, get a free gift.",
+            "gift_product": "woman™-cap-on-navy",
+            "threshold": 100
+          }
+        },
+        "upsell_products_B3CDmz": {
+          "type": "upsell_products",
+          "settings": {
+            "title": "Add-ons",
+            "collection": "accessories",
+            "empty_title": "XX-XY Logo Gear",
+            "empty_collection": "xx-xy-logo-gear"
+          }
+        },
+        "subtotal_yM6RCH": {
+          "type": "subtotal",
+          "settings": {}
+        },
+        "afterpay_on_site_messaging_payments_messaging_788U6Y": {
+          "type": "shopify://apps/afterpay-on-site-messaging/blocks/payments-messaging/f45a5524-d177-4475-bf59-281efd2215a8",
+          "settings": {
+            "text_align": "left",
+            "margin_top": 16,
+            "margin_bottom": 16,
+            "color": "#636363",
+            "size": "xs",
+            "intro_text": "or",
+            "show_interest_free": true,
+            "payment_amount_is_bold": true,
+            "show_with": true,
+            "logo_type": "lockup",
+            "logo_theme": "mint",
+            "modal_link_style": "circled-info-icon",
+            "modal_theme": "mint",
+            "breakpoint": 749,
+            "text_align_mobile": "inherit",
+            "margin_top_mobile": 16,
+            "margin_bottom_mobile": 16,
+            "show_lower_limit": true,
+            "show_upper_limit": true,
+            "show_if_outside_limits": true,
+            "product": ""
+          }
+        },
+        "buttons_VU3PxJ": {
+          "type": "buttons",
+          "settings": {}
+        },
+        "accordion_yaynPr": {
+          "type": "accordion",
+          "settings": {
+            "icon": "shopify://shop_images/conversation.png",
+            "question": "HAVE QUESTIONS?",
+            "answer": "<p>Start with our <a href=\"/pages/faq\" title=\"FAQ\">FAQ page</a> for answers. Need more help? Email us anytime at <a href=\"mailto:orders@xx-xyathletics.com\" target=\"_blank\">orders@xx-xyathletics.com</a>—we’ll get back to you the next business day.</p>"
+          }
+        },
+        "accordion_zCkfnA": {
+          "type": "accordion",
+          "settings": {
+            "icon": "shopify://shop_images/package-box.png",
+            "question": "FREE RETURNS WITH CHECKOUT+",
+            "answer": "<p>Your training is tough — returns shouldn’t be.</p><p>For free returns, simply add <strong>Checkout+</strong> to your order at checkout for a small fee. If Checkout+ is not added, return shipping costs will be deducted from your refund.</p><p>We accept unworn, unwashed, unaltered, and unused items in sellable condition for a full refund or exchange within 30 days of purchase. *<em>Final sale items are excluded and cannot be returned or exchanged.</em></p>"
+          }
+        }
+      },
+      "block_order": [
+        "gift_with_purchase_B6M3HA",
+        "upsell_products_B3CDmz",
+        "subtotal_yM6RCH",
+        "afterpay_on_site_messaging_payments_messaging_788U6Y",
+        "buttons_VU3PxJ",
+        "accordion_yaynPr",
+        "accordion_zCkfnA"
+      ],
+      "custom_css": [],
+      "settings": {
+        "show_vendor": false,
+        "padding_top": 40,
+        "padding_bottom": 0,
+        "margin_top": 0,
+        "margin_bottom": 0
+      }
+    },
+    "cart-footer": {
+      "type": "main-cart-footer",
+      "blocks": {
+        "afterpay_on_site_messaging_payments_messaging_H8EGcN": {
+          "type": "shopify://apps/afterpay-on-site-messaging/blocks/payments-messaging/f45a5524-d177-4475-bf59-281efd2215a8",
+          "settings": {
+            "text_align": "inherit",
+            "margin_top": 16,
+            "margin_bottom": 16,
+            "color": "",
+            "size": "md",
+            "intro_text": "or",
+            "show_interest_free": true,
+            "payment_amount_is_bold": true,
+            "show_with": true,
+            "logo_type": "badge",
+            "logo_theme": "black-on-mint",
+            "modal_link_style": "circled-info-icon",
+            "modal_theme": "mint",
+            "breakpoint": 749,
+            "text_align_mobile": "inherit",
+            "margin_top_mobile": 16,
+            "margin_bottom_mobile": 16,
+            "show_lower_limit": true,
+            "show_upper_limit": true,
+            "show_if_outside_limits": true,
+            "product": ""
+          }
+        },
+        "subtotal": {
+          "type": "subtotal",
+          "settings": {}
+        },
+        "buttons": {
+          "type": "buttons",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "afterpay_on_site_messaging_payments_messaging_H8EGcN",
+        "subtotal",
+        "buttons"
+      ],
+      "disabled": true,
+      "settings": {
+        "show_cart_note": false,
+        "padding_top": 25,
+        "padding_bottom": 12,
+        "margin_top": 0,
+        "margin_bottom": 0
+      }
+    }
+  },
+  "order": [
+    "cart-items",
+    "cart-footer"
+  ]
+}

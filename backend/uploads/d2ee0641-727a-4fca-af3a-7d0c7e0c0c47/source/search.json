@@ -1,0 +1,29 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-search",
+      "settings": {
+        "extra_class": "",
+        "breadcrumb_image": "shopify://shop_images/header_image_1_f2444ca6-b585-4c48-8b2c-68bc35319045.png",
+        "columns_desktop": 3,
+        "image_ratio": "square",
+        "image_shape": "default",
+        "show_product_badge": false,
+        "show_search_bar": false,
+        "show_result_count": false,
+        "show_secondary_image": false,
+        "show_vendor": false,
+        "show_rating": false,
+        "enable_filtering": false,
+        "filter_type": "horizontal",
+        "enable_sorting": false,
+        "article_show_date": false,
+        "article_show_author": false,
+        "columns_mobile": "2",
+        "padding_top": 80,
+        "padding_bottom": 80
+      }
+    }
+  },
+  "order": ["main"]
+}

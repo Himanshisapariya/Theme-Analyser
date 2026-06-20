@@ -1,0 +1,158 @@
+{%- style -%}
+  {% if section.settings.background_image != blank %}
+      .ctm_multi_video_bg {
+          background-image: url('{{ section.settings.background_image | image_url: width:2000 }}');
+          background-repeat: no-repeat;
+          background-size: cover;
+      }
+  {% endif %}
+{%- endstyle -%}
+
+<div class="ctm_multi_video_main pt-55 {{ section.settings.extra_class }}">
+  <div class="xl_container">
+    <div class="ctm_multi_video_heading ctm_multi_video_bg py-55 px-30 lg:px-55 desktop:px-75 rounded-24 overflow-hidden">
+      <div class="ctm_multi_video_head text-center mb-40">
+        <div class="mb-14">
+          <h3>{{ section.settings.heading }}</h3>
+        </div>
+        <div class="max-w-[746px] mx-auto mulit_video_content">
+          {{ section.settings.sub_heading }}
+        </div>
+      </div>
+      <div class="ctm_multi_video_grid !grid grid-cols-1 sm:grid-cols-2 small_desktop:grid-cols-3 gap-40 pb-40">
+        {% assign videos = page.metafields['multi-video-url'].acf %}
+        {% for j in (0..page.metafields['multi-video-head'].acf.size) %}
+          {% if page.metafields['multi-video-head'].acf[j] != blank %}
+            <div
+              class="multi_video_grid_list flex flex-col"
+              {% if forloop.index0 >= 9 %}
+                style="display: none;"
+              {% endif %}
+            >
+              <div class="bg-video relative rounded-24 overflow-hidden h-full">
+                <img
+                  id="placeholder-image{{ j }}"
+                  src="https://5littlemonkeysbed.com/cdn/shop/files/play-svgrepo-com.png"
+                  class="video-placeholder transition-all duration-300 ease-in-out"
+                  alt="play_btn"
+                  loading="lazy"
+                  width="34"
+                  height="36"
+                  onclick="toggleVideo({{ j }})"
+                >
+                <div
+                  class="video_overlay relative pt-[89%] midlarge_desktop:pt-[100%] h-full"
+                  onclick="toggleVideo({{ j }})"
+                >
+                  <video
+                    id="bg-video{{ j }}"
+                    class="video-element absolute top-0 left-0 w-full h-full object-cover"
+                    {% if page.metafields['multi-video-poster-img'].acf != blank %}
+                      poster="{{ page.metafields.multi-video-poster-img.acf[j] }}"
+                    {% endif %}
+                    webkit-playsinline
+                    playsinline
+                    loop
+                    preload
+                  >
+                    <source src="{{ videos[j] }}">
+                  </video>
+                </div>
+              </div>
+              <div class="ctm_multi_video_head pt-28">
+                <h4>{{ page.metafields['multi-video-head'].acf[j] }}</h4>
+              </div>
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+      <button id="load-more-btn" class="aloe_leaf_btn mx-auto" onclick="loadMoreVideos()">See More Videos</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  var videosPerPage = 3;
+  var currentIndex = 9;
+
+  function loadMoreVideos() {
+    var videos = document.querySelectorAll('.multi_video_grid_list');
+    var nextIndex = currentIndex + videosPerPage;
+    for (var i = currentIndex; i < nextIndex && i < videos.length; i++) {
+      videos[i].style.display = 'flex';
+    }
+    currentIndex = nextIndex;
+    if (currentIndex >= videos.length) {
+      document.getElementById('load-more-btn').style.display = 'none';
+    }
+  }
+</script>
+
+<script>
+  function toggleVideo(index) {
+    var videos = document.querySelectorAll('video');
+    var placeholderImages = document.querySelectorAll('.video-placeholder');
+    var videoOverlays = document.querySelectorAll('.video_overlay');
+
+    // Pause all videos except the clicked one
+    videos.forEach(function (video, i) {
+      if (i !== index && !video.paused) {
+        video.pause();
+        placeholderImages[i].style.display = 'block';
+        videoOverlays[i].style.display = 'block';
+      }
+    });
+
+    // Play or pause the clicked video
+    var video = document.getElementById('bg-video' + index);
+    var placeholder = document.getElementById('placeholder-image' + index);
+    var videoOverlay = document.querySelector('#bg-video' + index + ' + .video_overlay');
+
+    if (video.paused) {
+      console.log('Video is paused, playing...');
+      video.play();
+      placeholder.style.display = 'none';
+      videoOverlay.style.display = 'none';
+    } else {
+      console.log('Video is playing, pausing...');
+      video.pause();
+      placeholder.style.display = 'block';
+      videoOverlay.style.display = 'block';
+    }
+  }
+</script>
+
+{% schema %}
+{
+  "name": "Multi Video",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "label": "Extra Class",
+      "id": "extra_class"
+    },
+    {
+      "type": "text",
+      "label": "Heading",
+      "id": "heading"
+    },
+    {
+      "type": "html",
+      "label": "Sub Heading",
+      "id": "sub_heading"
+    },
+    {
+      "type": "image_picker",
+      "label": "Background Image",
+      "id": "background_image"
+    }
+  ],
+  "blocks": [],
+  "presets": [
+    {
+      "name": "Multi Video"
+    }
+  ]
+}
+{% endschema %}

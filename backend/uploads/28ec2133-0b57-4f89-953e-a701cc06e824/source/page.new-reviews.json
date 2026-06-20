@@ -1,0 +1,71 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "rich_text_fiAycz": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_BAYXRp": {
+          "type": "heading",
+          "settings": {
+            "extra_class_heading": "",
+            "heading": "<h1 class=\"main-page-title page-title h0 scroll-trigger animate--fade-in\">\n    Reviews\n  </h1>",
+            "heading_size": "h1"
+          }
+        }
+      },
+      "block_order": [
+        "heading_BAYXRp"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "extra_class": "ctm-reviews-page-head",
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 40
+      }
+    },
+    "174660649927772aa6": {
+      "type": "apps",
+      "blocks": {
+        "okendo_reviews_widget_tQWWec": {
+          "type": "shopify://apps/okendo/blocks/reviews-widget/bb689e69-ea70-4661-8fb7-ad24a2e23c29",
+          "settings": {
+            "product": "pooof-vanishing-teeth-whitening-strips",
+            "widget_type": "reviews_widget"
+          }
+        }
+      },
+      "block_order": [
+        "okendo_reviews_widget_tQWWec"
+      ],
+      "settings": {
+        "extra_class": "",
+        "include_margins": true
+      }
+    }
+  },
+  "order": [
+    "main",
+    "rich_text_fiAycz",
+    "174660649927772aa6"
+  ]
+}

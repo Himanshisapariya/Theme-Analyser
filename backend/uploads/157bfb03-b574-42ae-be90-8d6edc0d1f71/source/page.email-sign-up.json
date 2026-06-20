@@ -1,0 +1,35 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "pages": {
+      "type": "main-page",
+      "custom_css": [
+        "#omnisend-form-683d5fe02acd0c6ef0de28f2 {margin-top: 100px; margin-bottom: 100px;}",
+        "@media(min-width:1025px){#omnisend-form-683d5fe02acd0c6ef0de28f2 {margin-top: 200px; margin-bottom: 200px;}}"
+      ],
+      "settings": {
+        "background_image": "shopify://shop_images/website_847d1452-1dca-4a4f-8e89-2d2db9503ad5.jpg",
+        "extra_class": ""
+      }
+    },
+    "custom_liquid_hjRWRh": {
+      "type": "custom-liquid",
+      "name": "t:sections.custom-liquid.presets.name",
+      "settings": {
+        "custom_liquid": "<div id=\"omnisend-embedded-v2-683d5fe02acd0c6ef0de28f2\"></div>"
+      }
+    }
+  },
+  "order": [
+    "pages",
+    "custom_liquid_hjRWRh"
+  ]
+}

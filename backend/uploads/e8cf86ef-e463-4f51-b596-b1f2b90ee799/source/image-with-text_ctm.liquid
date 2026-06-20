@@ -1,0 +1,74 @@
+{{ 'spring-page-layout.css' | asset_url | stylesheet_tag }}
+
+<div class="image_with-text-main spring-stand-main">
+	<div class="fullscreen-container">
+		<div class="image_with-innercontent">
+			{% for block in section.blocks %}
+				<div class="main-image-with-text">
+					<div class="main-image-with-text-img">
+						<img src="{{ block.settings.image_main_bg |  image_url: width:auto }}" alt="{{ image.alt }}"/>
+					</div>
+					<div class="relative-text-main">
+						<div class="stand-relative-text-above">
+							<div class="stand-relative-text-heading">
+								<h3>{{ block.settings.title_text }}</h3>
+							</div>
+							<div class="stand-relative-text-detail">
+								<p>{{ block.settings.subtitle_text }}</p>
+							</div>
+						</div>
+						<div class="stand-relative-text-below color-background-5 bg-transparent br-0">
+							<a type="button" class="button button--secondary" href="{{ block.settings.button_url }}">{{ block.settings.button_text }}</a>
+						</div>
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+	</div>
+</div>
+
+{% schema %}
+{
+	"name": "Image With Text CTM",
+	"tag": "section",
+	"class": "section-imagewithtext",
+	"blocks": [
+		{
+			"type": "about_blocks",
+			"name": "t:sections.main-lookbook.blocks.categories.name",
+			"settings": [
+				{
+					"type": "image_picker",
+					"id": "image_main_bg",
+					"label": "Image"
+				},
+				{
+					"type": "html",
+					"id": "title_text",
+					"label": "Title"
+				},
+				{
+					"type": "html",
+					"id": "subtitle_text",
+					"label": "Subtitle"
+				},
+				{
+					"type": "url",
+					"id": "button_url",
+					"label": "Link Button"
+				},
+				{
+					"type": "text",
+					"id": "button_text",
+					"label": "Link Text"
+				}
+			]
+		}
+	],
+	"presets": [
+		{
+			"name": "Image with text Ctm"
+		}
+	]
+}
+{% endschema %}

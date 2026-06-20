@@ -1,0 +1,22 @@
+.brand__image-wrapper-ratio img {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100% !important;
+  object-fit: cover;
+}
+
+.brand-list__item img {
+  display: block;
+  max-width: 100%;
+  align-self: flex-start;
+  height: auto;
+  margin: 0 auto;
+}
+
+.brand-list__item.center {
+  align-items: center;
+}

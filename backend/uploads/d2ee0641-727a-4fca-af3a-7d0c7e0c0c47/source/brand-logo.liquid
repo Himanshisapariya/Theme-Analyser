@@ -1,0 +1,80 @@
+<style>
+  {% if section.settings.background_image != blank %}
+    .ctm_brand_img_main {
+        background-image: url('{{ section.settings.background_image | image_url: width:2000 }}');
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+  {% endif %}
+</style>
+
+<div class="xl_container {{ section.settings.extra_class }}">
+  <div class="ctm_brand_img_main rounded-24 overflow-hidden ">
+    {% if section.settings.head != blank %}
+      <div class="ctm_brand_head text-center pt-40">
+        <h3>{{ section.settings.head }}</h3>
+      </div>
+    {% endif %}
+    <div class="barand_logo_slider swiper">
+      <div class="ctm_brand_bg_img py-55 desktop:p-55 swiper-wrapper">
+        {% for block in section.blocks %}
+          {% if block.settings.logo != blank %}
+            <div class="ctm_brand_img swiper-slide">
+              <img
+                class="w-[70px] h-[70px] md:w-[88px] md:h-[88px] object-contain desktop:mx-auto"
+                src="{{ block.settings.logo | image_url: width: 1500 }}"
+                alt="{{ block.settings.logo.alt }}"
+                loading="lazy"
+                width="88"
+                height="88"
+                fetchpriority="high"
+              >
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Brand Logo Slider",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "label": "Extra Class",
+      "id": "extra_class"
+    },
+    {
+      "type": "text",
+      "label": "Head",
+      "id": "head"
+    },
+    {
+      "type": "image_picker",
+      "label": "Background Image",
+      "id": "background_image"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "logo_image",
+      "name": "Logo Image",
+      "settings": [
+        {
+          "type": "image_picker",
+          "label": "Logo",
+          "id": "logo"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Brand Logo Slider"
+    }
+  ]
+}
+{% endschema %}

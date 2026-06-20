@@ -1,0 +1,294 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "settings": {
+        "extra_class": "",
+        "page_title_black": "",
+        "breadcrumb_image": "shopify://shop_images/header_content_12.png",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "brand_logo_8UgCJm": {
+      "type": "brand-logo",
+      "blocks": {
+        "logo_image_GwqE7j": {
+          "type": "logo_image",
+          "settings": {
+            "logo": "shopify://shop_images/certipur-logo-nobkgrd-250px-1.png"
+          }
+        },
+        "logo_image_QKAi84": {
+          "type": "logo_image",
+          "settings": {
+            "logo": "shopify://shop_images/OEKO_TEX_1_c8614aaf-cecf-4c10-9955-b5b79ca628dc.png"
+          }
+        },
+        "logo_image_TDDt3M": {
+          "type": "logo_image",
+          "settings": {
+            "logo": "shopify://shop_images/CPSIA-certified_1_upscayl_4x_realesrgan-x4plus_1.png"
+          }
+        },
+        "logo_image_yMbb6d": {
+          "type": "logo_image",
+          "settings": {
+            "logo": "shopify://shop_images/Prop_65_1.png"
+          }
+        },
+        "logo_image_ydCHAz": {
+          "type": "logo_image",
+          "settings": {
+            "logo": "shopify://shop_images/fair_trade_1.png"
+          }
+        },
+        "logo_image_y8JgDB": {
+          "type": "logo_image",
+          "settings": {
+            "logo": "shopify://shop_images/organic_textile.png"
+          }
+        },
+        "logo_image_dWNL8r": {
+          "type": "logo_image",
+          "settings": {
+            "logo": "shopify://shop_images/Greenguard_1.png"
+          }
+        }
+      },
+      "block_order": [
+        "logo_image_GwqE7j",
+        "logo_image_QKAi84",
+        "logo_image_TDDt3M",
+        "logo_image_yMbb6d",
+        "logo_image_ydCHAz",
+        "logo_image_y8JgDB",
+        "logo_image_dWNL8r"
+      ],
+      "custom_css": [
+        ".xl_container {margin-top: 3rem;}"
+      ],
+      "settings": {
+        "extra_class": "",
+        "head": "",
+        "background_image": "shopify://shop_images/background_image.jpg"
+      }
+    },
+    "certificate_zig_zag_wyMMi6": {
+      "type": "certificate-zig-zag",
+      "settings": {
+        "extra_class": "",
+        "upper_sub_head": "Certifications",
+        "heading": "A World-Class Childrens Mattress",
+        "image_caption": "Courtney Harrow | Co-Founder and Mom",
+        "image": "shopify://shop_images/image_1.jpg",
+        "button_text": "Our Story",
+        "button_url": "shopify://pages/our-story",
+        "description": "<p>At 5 Little Monkeys, our mission is to help kids everywhere get better sleep and live a healthier, happier life with our revolutionary childrens mattress. The 5 Little Monkeys Sleep System uses a childrens mattress designed and engineered from the ground up to meet the needs of kids, providing growing bodies everything they need for sound, healthy sleep. We're committed to making the best kids mattress on the market, which is why we've taken it one step further and earned a variety of certifications so you know you're getting a high-quality product that's safe for your child.</p>"
+      }
+    },
+    "image_content_section_rcTHKJ": {
+      "type": "image-content-section",
+      "blocks": {
+        "text_xbpp89": {
+          "type": "text",
+          "settings": {
+            "block_title": "Sheets",
+            "image": "shopify://shop_images/image.jpg",
+            "btn_text": "Learn About Sheets",
+            "btn_link": "shopify://products/sheets",
+            "desktop_content_alignment": "left",
+            "logo1-image": "shopify://shop_images/1_926704c4-bc86-4b94-8467-237579f4814c.png",
+            "logo1-title": "Fair Trade Certified",
+            "logo1-content": "Fair Trade USA™ is building an innovative model of responsible business, conscious consumerism, and shared value to eliminate poverty and enable sustainable development for farmers, workers, their families, and communities around the world.",
+            "logo2-image": "shopify://shop_images/2_4c9d6d48-0af5-40ae-b42a-1a72a34611c5.png",
+            "logo2-title": "GOTS Certified",
+            "logo2-content": "The Global Organic Textile Standard (GOTS) was developed by leading standard setters to define world-wide recognised requirements for organic textiles. From the harvesting of the raw materials, environmentally and socially responsible manufacturing to labelling, textiles certified to GOTS provide a credible assurance to the consumer.",
+            "logo3-image": "shopify://shop_images/3_77892360-63e2-46e0-951c-2319585bf3e4.png",
+            "logo3-title": "OCS Certified",
+            "logo3-content": "Textile Exchange is a global non-profit driving positive impact on climate change across the fashion and textile industry. It guides a growing community of brands, manufacturers, and farmers towards more purposeful production from the very start of the supply chain.  Its goal is to help the industry to achieve a 45% reduction in the emissions that come from producing fibers and raw materials by 2030."
+          }
+        },
+        "text_FcAGze": {
+          "type": "text",
+          "settings": {
+            "block_title": "Mattress",
+            "image": "shopify://shop_images/image_2.jpg",
+            "btn_text": "Learn About Mattresses",
+            "btn_link": "shopify://collections/mattresses-bedding",
+            "desktop_content_alignment": "right",
+            "logo1-image": "shopify://shop_images/4_d34d6564-140a-4cd9-9d87-7b8e8ff05e35.png",
+            "logo1-title": "16 CFR Part 1632",
+            "logo1-content": "This certification demonstrates that our mattress is resistant to ignition sources by lit cigarettes.",
+            "logo2-image": "shopify://shop_images/5_3d6f33de-b4c8-4954-9c01-e770bd6a88a1.png",
+            "logo2-title": "16 CFR Part 1633",
+            "logo2-content": "Our mattress meets or exceeds all safety standards for flame retardance and flammability.",
+            "logo3-title": "",
+            "logo3-content": ""
+          }
+        },
+        "text_mjEdcz": {
+          "type": "text",
+          "settings": {
+            "block_title": "Foam",
+            "image": "shopify://shop_images/image_3.jpg",
+            "btn_text": "Learn About Foam Mattress",
+            "btn_link": "shopify://products/original-memory-foam-mattress",
+            "desktop_content_alignment": "left",
+            "logo1-image": "shopify://shop_images/6_d0f49e49-6c2c-407e-b20c-a638a9fcd575.png",
+            "logo1-title": "CertiPUR-US ® Certified",
+            "logo1-content": "This certifies that the foam in our kids mattress is free of mercury, lead, PBDEs, formaldehyde, phthalates, and more.",
+            "logo2-title": "",
+            "logo2-content": "",
+            "logo3-title": "",
+            "logo3-content": ""
+          }
+        },
+        "text_989j6B": {
+          "type": "text",
+          "settings": {
+            "block_title": "FR Sock",
+            "image": "shopify://shop_images/Untitledimage.jpg",
+            "btn_text": "Learn About Mattresses",
+            "btn_link": "shopify://collections/mattresses-bedding",
+            "desktop_content_alignment": "right",
+            "logo1-image": "shopify://shop_images/7_7ee338c4-a302-41d2-9000-1ba65409b2ff.png",
+            "logo1-title": "UL GREENGUARD GOLD Certification",
+            "logo1-content": "Our 100% glass free FR Sock is certified by GREENGUARD providing maximum FR protection with high char strength. Made with FR cellulosic fiber it has no chemical finishes and is safe on the skin.",
+            "logo2-title": "",
+            "logo2-content": "",
+            "logo3-title": "",
+            "logo3-content": ""
+          }
+        },
+        "text_m7gitW": {
+          "type": "text",
+          "settings": {
+            "block_title": "Mattress Cover",
+            "image": "shopify://shop_images/Untitledimage_1.jpg",
+            "btn_text": "Learn About Mattress Protector",
+            "btn_link": "shopify://products/mattress-protector",
+            "desktop_content_alignment": "left",
+            "logo1-image": "shopify://shop_images/8_56051652-61b3-44dd-8dc7-c0c1a5cee2e6.png",
+            "logo1-title": "OEKO-TEX ®Certification",
+            "logo1-content": "All of our fabric is certified to be free from various toxic chemicals such as formaldehyde, cadmium, nickel, and more, meeting both US & European standards.",
+            "logo2-image": "shopify://shop_images/9_94788c7a-b940-41c3-8652-c173322b473c.png",
+            "logo2-title": "Fair TradeCertified",
+            "logo2-content": "Fair Trade USA™ is building an innovative model of responsible business, conscious consumerism, and shared value to eliminate poverty and enable sustainable development for farmers, workers, their families, and communities around the world.",
+            "logo3-image": "shopify://shop_images/10.png",
+            "logo3-title": "OCS Certified",
+            "logo3-content": "Textile Exchange is a global non-profit driving positive impact on climate change across the fashion and textile industry. It guides a growing community of brands, manufacturers, and farmers towards more purposeful production from the very start of the supply chain.  Its goal is to help the industry to achieve a 45% reduction in the emissions that come from producing fibers and raw materials by 2030."
+          }
+        },
+        "text_fGiAUz": {
+          "type": "text",
+          "settings": {
+            "block_title": "All Products",
+            "image": "shopify://shop_images/image_4.jpg",
+            "btn_text": "Learn About Our Products",
+            "btn_link": "shopify://collections/shop-all",
+            "desktop_content_alignment": "right",
+            "logo1-image": "shopify://shop_images/11.png",
+            "logo1-title": "CPSIA Certified",
+            "logo1-content": "Our products meet all standards from the Consumer Product Safety Commission, ensuring they're free of lead, phthalates, and other harmful chemicals.",
+            "logo2-image": "shopify://shop_images/12.png",
+            "logo2-title": "Proposition 65 Compliant",
+            "logo2-content": "All of our products comply with Prop 65, which means we will disclose any chemicals known to cause cancer, birth defects, or other reproductive harm. Thankfully we don't make our products with these chemicals - so there's no need to worry about it.",
+            "logo3-title": "",
+            "logo3-content": ""
+          }
+        }
+      },
+      "block_order": [
+        "text_xbpp89",
+        "text_FcAGze",
+        "text_mjEdcz",
+        "text_989j6B",
+        "text_m7gitW",
+        "text_fGiAUz"
+      ],
+      "settings": {
+        "extra_class": "",
+        "top_title": "Our Children's",
+        "title": "Mattress Certifications",
+        "description": "We're dedicated to quality. The 5 Little Monkeys kids mattress has earned itself a plethora of certifications, demonstrating not only that it's an excellent mattress for children, but that it's made to be 100% safe, non-toxic, and healthy for your child. Our certifications include:",
+        "bg-image": "shopify://shop_images/background_image.jpg"
+      }
+    },
+    "image_with_text_HEDQBD": {
+      "type": "image-with-text",
+      "blocks": {
+        "caption_XEKtr6": {
+          "type": "caption",
+          "settings": {
+            "caption": "Get Our",
+            "text_style": "subtitle",
+            "text_size": "small"
+          }
+        },
+        "heading_MyV8RX": {
+          "type": "heading",
+          "settings": {
+            "heading": "Safe Childrens Mattress",
+            "heading_size": "h3"
+          }
+        },
+        "text_iyLtkY": {
+          "type": "text",
+          "settings": {
+            "text": "We believe that no kids mattress should pose a threat to the kid sleeping on it, which is why we're proud to make every piece of our sleep system compliant to a wide range of standards, regulations, and certifications. If you'd like to try our non-toxic childrens mattress, we encourage you to order one online today. You'll be able to try it risk-free for 100 nights, and if you don't love it, we'll provide a full refund, no questions asked. Try our kids bedding today!",
+            "text_style": "body"
+          }
+        },
+        "button_dnbwx4": {
+          "type": "button",
+          "settings": {
+            "button_label": "Shop Now",
+            "button_link": "shopify://collections/all",
+            "button_style_secondary": false
+          }
+        }
+      },
+      "block_order": [
+        "caption_XEKtr6",
+        "heading_MyV8RX",
+        "text_iyLtkY",
+        "button_dnbwx4"
+      ],
+      "settings": {
+        "extra_class": "ctm_getour_child_block",
+        "image": "shopify://shop_images/image_5.jpg",
+        "txt_under_img": "",
+        "height": "adapt",
+        "desktop_image_width": "medium",
+        "layout": "text_first",
+        "image_radius": 24,
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "left",
+        "content_layout": "no-overlap",
+        "section_color_scheme": "",
+        "color_scheme": "",
+        "image_behavior": "none",
+        "mobile_content_alignment": "left",
+        "padding_top": 80,
+        "padding_bottom": 80
+      }
+    }
+  },
+  "order": [
+    "main",
+    "brand_logo_8UgCJm",
+    "certificate_zig_zag_wyMMi6",
+    "image_content_section_rcTHKJ",
+    "image_with_text_HEDQBD"
+  ]
+}

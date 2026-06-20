@@ -1,0 +1,61 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "settings": {
+        "extra_class": "",
+        "page_title_black": "",
+        "breadcrumb_image": "shopify://shop_images/header_content_14.png",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "image_with_text_JXeG9H": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_T3dg9V": {
+          "type": "heading",
+          "settings": {
+            "heading": "5 Little Monkeys’ Mattress for Kids",
+            "heading_size": "h3"
+          }
+        },
+        "text_LKHK9W": {
+          "type": "text",
+          "settings": {
+            "text": "At 5 Little Monkeys, we believe that healthy, sound sleep is critical for kids. Unfortunately, most kids mattresses on the market leave a lot to be desired. That's why we’ve created the 5 Little Monkeys Sleep System: a revolutionary children’s mattress that uses specialized technology and organic materials to create a bed designed for kids from the ground up. Learn more about our kids mattress, or if you have questions about our kids mattress, take a look at some of our FAQs below.",
+            "text_style": "body"
+          }
+        }
+      },
+      "block_order": ["heading_T3dg9V", "text_LKHK9W"],
+      "settings": {
+        "extra_class": "ctm_faq_zigzag_block",
+        "image": "shopify://shop_images/image_18.png",
+        "txt_under_img": "",
+        "height": "adapt",
+        "desktop_image_width": "medium",
+        "layout": "image_first",
+        "image_radius": 24,
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "left",
+        "content_layout": "no-overlap",
+        "section_color_scheme": "",
+        "color_scheme": "",
+        "image_behavior": "none",
+        "mobile_content_alignment": "left",
+        "padding_top": 80,
+        "padding_bottom": 80
+      }
+    },
+    "faq_2_amnQPP": {
+      "type": "faq-2",
+      "settings": {
+        "extra_class": "",
+        "first_accordion_open": true,
+        "search_bar_display": false
+      }
+    }
+  },
+  "order": ["main", "image_with_text_JXeG9H", "faq_2_amnQPP"]
+}

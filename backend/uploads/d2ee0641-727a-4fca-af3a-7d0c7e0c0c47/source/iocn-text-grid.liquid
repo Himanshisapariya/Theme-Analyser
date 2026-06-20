@@ -1,0 +1,122 @@
+<style>
+  .ctm_icontext_grid {
+    background-image: url('{{ section.settings.background_image | image_url: width:2000 }}');
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+</style>
+<div class=" .ctm_icontext_grid_section {{ section.settings.extra_class }}">
+  <div class="xl_container">
+    <div class="ctm_icontext_grid rounded-24 overflow-hidden py-55">
+      <div class="ctm_icontext_grid_main text-center pb-40 px-40 lg:px-55 desktop:px-75">
+        {% if section.settings.upper_sub_head != blank %}
+          <div class="text_caption_title mb-10">
+            <h5>{{ section.settings.upper_sub_head }}</h5>
+          </div>
+        {% endif %}
+        {% if section.settings.main_head != blank %}
+          <div class="text_section_title mb-15">
+            <h3>{{ section.settings.main_head }}</h3>
+          </div>
+        {% endif %}
+      </div>
+      <div class="xl:!px-55 desktop:!px-75">
+        <div class="flex flex-wrap justify-center gap-40 lg:gap-55 desktop:gap-100 px-[46px]">
+          {% for block in section.blocks %}
+            <div class=" w-full md:!w-[calc(50%_-_55px)] xl:!w-[calc(33%_-_100px)] flex-grow">
+              <div class="ctm_icontext_grid_block flex flex-col gap-16 items-center">
+                <div class="ctm_icon_img flex-shrink-0">
+                  {% if block.settings.icon_image != blank %}
+                    <img
+                      src="{{ block.settings.icon_image | image_url: width: 500 }}"
+                      alt="{{ block.settings.icon_image.alt }}"
+                      loading="lazy"
+                      width="64"
+                      height="64"
+                    >
+                  {% endif %}
+                </div>
+                <div class="ctm_icon_text text-center">
+                  <h6 class="font-extrabold text-bloodstone">{{ block.settings.icon_text }}</h6>
+                </div>
+                {% if block.settings.icon_description != blank %}
+                  <div class="ctm_icon_description text-center">
+                    {{ block.settings.icon_description }}
+                  </div>
+                {% endif %}
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+
+    {% if section.settings.under_desc != blank %}
+      <div class="text_descript_title max-w-[747px] mx-auto">
+        {{ section.settings.under_desc }}
+      </div>
+    {% endif %}
+    {% if section.settings.button_url != blank %}
+      <div class="sign_up_btn">
+        <a class="aloe_leaf_btn" href="{{ section.settings.button_url }}">{{ section.settings.button_text }}</a>
+      </div>
+    {% endif %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Icon Text Grid",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "label": "Extra Class",
+      "id": "extra_class"
+    },
+    {
+      "type": "image_picker",
+      "label": "Background Image",
+      "id": "background_image"
+    },
+    {
+      "type": "text",
+      "label": "Upper Sub Head",
+      "id": "upper_sub_head"
+    },
+    {
+      "type": "text",
+      "label": "Main Head",
+      "id": "main_head"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "icon_text_grid",
+      "name": "Icon Text Grid",
+      "settings": [
+        {
+          "type": "image_picker",
+          "label": "Icon Image",
+          "id": "icon_image"
+        },
+        {
+          "type": "html",
+          "label": "Icon Text",
+          "id": "icon_text"
+        },
+        {
+          "type": "html",
+          "label": "Icon Description",
+          "id": "icon_description"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Icon Text Grid"
+    }
+  ]
+}
+{% endschema %}

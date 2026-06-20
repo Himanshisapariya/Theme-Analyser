@@ -1,0 +1,57 @@
+<style>
+.collection-seo-description {
+  padding-top: 20px;
+}
+
+.collection-seo-description .rich-text__blocks {
+  width: 100%;
+
+}
+
+@media (min-width: 1400px) {
+  .collection-seo-description .rich-text__blocks {
+    max-width: 1300px !important;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+</style>
+
+{% assign summary = collection.metafields.custom.collection_page_summary.value %}
+
+{% if summary and summary.seo_description != blank %}
+  <section class="collection-seo-description">
+
+    <div class="rich-text rich-text--full-width">
+      <div class="rich-text__blocks fullscreen-container">
+
+        {% if collection.title != blank %}
+          <h5 class="ctm-seo-heading">
+            {{ collection.title }}
+          </h5>
+        {% endif %}
+
+        <div class="ctm-description rte">
+          {{ summary.seo_description | metafield_tag }}
+        </div>
+
+      </div>
+    </div>
+
+  </section>
+{% endif %}
+
+
+{% schema %}
+{
+  "name": "Collection SEO Summary",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Collection SEO Summary",
+      "category": "Collection"
+    }
+  ]
+}
+{% endschema %}

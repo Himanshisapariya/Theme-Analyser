@@ -1,0 +1,241 @@
+{%- if card_product and card_product != empty -%}
+  {%- liquid
+    assign ratio = 1
+  -%}
+  <div class="card-wrapper product-card-wrapper">
+    <div
+      class="
+        card
+        cart-upsell
+        cart-upsell-card
+        {% if card_product.featured_media %} card--media{% else %} card--text{% endif %}
+        {% if extend_height %} card--extend-height{% endif %}
+        {% if card_product.featured_media == nil and settings.card_style == 'card' %} ratio{% endif %}
+        {% if horizontal_class %} card--horizontal{% endif %}
+      "
+      style="--ratio-percent: {{ 1 | divided_by: ratio | times: 100 }}%;"
+      {% if additional_id != blank %}
+        id="{{ additional_id }}cart-upsell-{{ card_product.id }}"
+      {% else %}
+        id="cart-upsell-{{ card_product.id }}"
+      {% endif %}
+    >
+      <div class="card__inner ratio" style="--ratio-percent: {{ 1 | divided_by: ratio | times: 100 }}%;">
+        {%- if card_product.featured_media -%}
+          <div class="card__media">
+            <div class="media media--transparent">
+              <img
+                src="{{ card_product.featured_media | image_url }}"
+                srcset="
+                  {%- if card_product.featured_media.width >= 550 -%}{{ card_product.featured_media | image_url: width: 550 }} 550w,{%- endif -%}
+                  {%- if card_product.featured_media.width >= 1100 -%}{{ card_product.featured_media | image_url: width: 1100 }} 1100w,{%- endif -%}
+                  {%- if card_product.featured_media.width >= 1445 -%}{{ card_product.featured_media | image_url: width: 1445 }} 1445w,{%- endif -%}
+                  {%- if card_product.featured_media.width >= 1680 -%}{{ card_product.featured_media | image_url: width: 1680 }} 1680w,{%- endif -%}
+                  {%- if card_product.featured_media.width >= 2048 -%}{{ card_product.featured_media | image_url: width: 2048 }} 2048w,{%- endif -%}
+                  {%- if card_product.featured_media.width >= 2200 -%}{{ card_product.featured_media | image_url: width: 2200 }} 2200w,{%- endif -%}
+                  {%- if card_product.featured_media.width >= 2890 -%}{{ card_product.featured_media | image_url: width: 2890 }} 2890w,{%- endif -%}
+                  {%- if card_product.featured_media.width >= 4096 -%}{{ card_product.featured_media | image_url: width: 4096 }} 4096w,{%- endif -%}
+                  {{ card_product.featured_media | image_url }} {{ card_product.featured_media.width }}w
+                "
+                sizes="(min-width: 750px) calc(100vw - 22rem), 1100px"
+                alt="{{ card_product.featured_media.alt | escape }}"
+                class="motion-reduce"
+                loading="lazy"
+                width="{{ card_product.featured_media.width }}"
+                height="{{ card_product.featured_media.height }}"
+              >
+            </div>
+          </div>
+        {%- endif -%}
+      </div>
+      <div class="card__content 2">
+        <div class="card__information flex flex-col h-full">
+          <h4 class="card__heading flex-1 {%  if card_product.has_only_default_variant != blank %}pb-[24px] {% endif %}">
+            <a
+              href="{{ card_product.url }}"
+              id="CardLink-{{ section_id }}-{{ card_product.id }}"
+              class="{{ card_product.handle }} full-unstyled-link font-body font-bold !no-underline transition-all duration-300 ease-in-out text-12 uppercase leading-normal"
+            >
+              {{ card_product.title | escape }}
+            </a>
+          </h4>
+
+          {% if card_product.handle == 'foam-mattress-bundle' %}
+            <img
+              src="https://cdn.shopify.com/s/files/1/0792/4904/7864/files/Bundle_elements_8_MemoryFoam-_final.png?v=1754543762"
+              class="bundle-4-step-img-desktop lgscreen:hidden custom_576_750:block"
+            >
+            <img
+              src="https://cdn.shopify.com/s/files/1/0792/4904/7864/files/Bundle_elements_8__2x2_43bc2126-ca8d-4da8-978f-ccde9a4893a4.png?v=1752134470"
+              class="bundle-4-step-img-mobile min_1024:hidden custom_576_750:hidden smscreen:w-[150px]"
+            >
+          {% endif %}
+          {% if card_product.handle == 'hybrid-mattress-bundle' %}
+            <img
+              src="https://cdn.shopify.com/s/files/1/0792/4904/7864/files/Bundle_elements_8__v2_cbe87827-c51a-46b2-be54-124593d98564.png?v=1754397791"
+              class="bundle-4-step-img-desktop lgscreen:hidden custom_576_750:block"
+            >
+            <img
+              src="https://cdn.shopify.com/s/files/1/0792/4904/7864/files/image_2_c3beb54f-bab2-446b-9bff-289eddd9aa69.png?v=1754549048"
+              class="bundle-4-step-img-mobile min_1024:hidden custom_576_750:hidden smscreen:w-[150px]"
+            >
+          {% endif %}
+
+          {% if card_product.handle == 'bedding-bundle' %}
+            <img
+              src="https://cdn.shopify.com/s/files/1/0792/4904/7864/files/Bundle_elements_Bedding_-_cropped.png?v=1755145644"
+              class="bundle-4-step-img-desktop lgscreen:hidden custom_576_750:block"
+            >
+            <img
+              src="https://cdn.shopify.com/s/files/1/0792/4904/7864/files/Bundle_elements_bedding_1x2_-_cropped.png?v=1755081102"
+              class="bundle-4-step-img-mobile min_1024:hidden custom_576_750:hidden smscreen:w-[150px]"
+            >
+          {% endif %}
+
+          <div class="ctm_cta_block relative z-1">
+            {%- unless card_product.has_only_default_variant -%}
+              <div class="swatch-container py-[10px]">
+                {% render 'custom-swatch', product: card_product %}
+              </div>
+            {% endunless %}
+          </div>
+          {% render 'price',
+            product: card_product,
+            price_class: '',
+            show_compare_at_price: true,
+            is_cart_upsell: true
+          %}
+
+          <div class="ctm_cta_btnblock mt-10 relative z-1">
+            {%- assign product_form_id = 'quick-add-' | append: section_id | append: card_product.id -%}
+            <product-form
+              data-section-id="{{ section.id }}"
+              {% if swap_upsell and base_item != blank %}
+                data-remove-cart-item="{{ base_item.id }}"
+              {% endif %}
+            >
+              {%- form 'product', card_product, id: product_form_id, class: 'form', novalidate: 'novalidate' -%}
+                <select
+                  title="Product Selection"
+                  aria-label="Product Selection"
+                  name="id"
+                  id="ProductSelect-{{ card_product.id }}"
+                  class="shadlist_dropdown mb-15 hidden"
+                >
+                  {% assign has_sold_out_variant = false %}
+                  {% for variant in card_product.variants %}
+                    {% if variant.available %}
+                      <option
+                        {% if variant == card_product.selected_or_first_available_variant %}
+                          selected="selected"
+                        {% endif %}
+                        data-sku="{{ variant.sku }}"
+                        data-image-id="{{ variant.featured_image | img_url : 'master' }}"
+                        value="{{ variant.id }}"
+                        data-product-title="{{ variant.title }}"
+                        data-option-color="{{ variant.option2 }}"
+                        data-option-size="{{ variant.option1 | escape }}"
+                      >
+                        {{ variant.title }}
+                      </option>
+                    {% else %}
+                      {% assign has_sold_out_variant = true %}
+                      <option
+                        {% if variant == card_product.selected_or_first_available_variant %}
+                          selected="selected"
+                        {% endif %}
+                        disabled="disabled"
+                        data-image-id="{{ variant.featured_image }}"
+                        value="{{ variant.id }}"
+                        data-product-title="{{ variant.title }}"
+                        data-option-color="{{ variant.option2 }}"
+                        data-option-size="{{ variant.option1 }}"
+                      >
+                        {{ variant.title }} - {{ 'products.product.sold_out' | t }}
+                      </option>
+                    {% endif %}
+                  {% endfor %}
+                </select>
+
+                {% comment %} <input type="hidden" name="id" value="{{ card_product.variants[0].id }}" disabled> {% endcomment %}
+                {%- render 'loading-spinner' -%}
+
+                <div class="flex flex-row !items-center !justify-start !flex-wrap !gap-y-[5px] !gap-x-[10px]">
+                  <quantity-input class="quantity">
+                    <button
+                      class="quantity__button no-js-hidden"
+                      name="minus"
+                      type="button"
+                    >
+                      <span class="visually-hidden">
+                        {{- 'products.product.quantity.decrease' | t: product: card_product.title | escape -}}
+                      </span>
+                      {% render 'icon-minus' %}
+                    </button>
+                    <input
+                      class="quantity__input"
+                      aria-label="quantity"
+                      type="number"
+                      name="quantity"
+                      data-min="1"
+                      min="1"
+                      step="1"
+                      value="1"
+                      form="{{ product_form_id }}"
+                    >
+                    <button
+                      class="quantity__button no-js-hidden"
+                      name="plus"
+                      type="button"
+                    >
+                      <span class="visually-hidden">
+                        {{- 'products.product.quantity.increase' | t: product: card_product.title | escape -}}
+                      </span>
+                      {% render 'icon-plus' %}
+                    </button>
+                  </quantity-input>
+                  <button
+                    id="{{ product_form_id }}-submit"
+                    type="submit"
+                    name="add"
+                    class="
+                      shponow-btn normal-case border rounded-full px-10 h-6 {% if swap_upsell and base_item != blank %}
+                        !bg-[#FFD814]
+                      {% else %}
+                        !bg-[#417281] !text-white
+                      {% endif %}
+                    "
+                    data-shopify-analytics-event-product_id="{{ card_product.id }}"
+                    data-shopify-analytics-event-product_name="{{ card_product.title | escape }}"
+                    data-shopify-analytics-event-upsell_type="upgrade_offer"
+                    data-shopify-analytics-event-price="{{ card_product.price }}"
+                    aria-haspopup="dialog"
+                    aria-labelledby="{{ product_form_id }}-submit title-{{ section_id }}-{{ card_product.id }}"
+                    aria-live="polite"
+                    data-sold-out-message="true"
+                    {% if card_product.selected_or_first_available_variant.available == false %}
+                      disabled
+                    {% endif %}
+                  >
+                    <span class="col-atc flex flex-wrap items-center justify-center font-bold text-10 uppercase">
+                      {%- if card_product.selected_or_first_available_variant.available -%}
+                        {% if swap_upsell and base_item != blank %}
+                          Swap for Bundle
+                        {% else %}
+                          Add
+                        {% endif %}
+                      {%- else -%}
+                        Sold out
+                      {%- endif -%}
+                    </span>
+                    <span class="sold-out-message hidden"> Sold out </span>
+                  </button>
+                </div>
+              {%- endform -%}
+            </product-form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{%- endif -%}

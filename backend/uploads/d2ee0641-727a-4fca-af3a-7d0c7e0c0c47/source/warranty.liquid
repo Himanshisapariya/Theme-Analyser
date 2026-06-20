@@ -1,0 +1,433 @@
+<style>
+  .ctm_warranty_bg_img {
+    background-image: url('{{ page.metafields.warranty-bg.acf }}');
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  .faq_question.active .icon-shape.active svg path:last-child {
+    display: none;
+  }
+  .faq_question.active .icon-shape.active svg path {
+    stroke: #62673c;
+  }
+</style>
+
+{% liquid
+  assign head1 = page.metafields['warranty-head-1'].acf
+  assign sub-head1 = page.metafields['warranty-sub-head-1'].acf
+
+  assign head2 = page.metafields['warranty-head-2'].acf
+  assign sub-head2 = page.metafields['warranty-sub-head-2'].acf
+
+  assign head3 = page.metafields['warranty-head-3'].acf
+  assign sub-head3 = page.metafields['warranty-sub-head-3'].acf
+
+  assign head4 = page.metafields['warranty-head-4'].acf
+  assign sub-head4 = page.metafields['warranty-sub-head-4'].acf
+
+  assign head5 = page.metafields['warranty-head-5'].acf
+  assign sub-head5 = page.metafields['warranty-sub-head-5'].acf
+
+  assign q1 = page.metafields.question_mattress.acf
+  assign a1 = page.metafields.answer_mattress.acf
+
+  assign q2 = page.metafields.question_foundation.acf
+  assign a2 = page.metafields.answer_foundation.acf
+
+  assign q3 = page.metafields.question_mattressprotector.acf
+  assign a3 = page.metafields.answer_mattressprotector.acf
+
+  assign q4 = page.metafields.question_pillow.acf
+  assign a4 = page.metafields.answer_pillow.acf
+
+  assign q5 = page.metafields.question_kids.acf
+  assign a5 = page.metafields.answer_kids.acf
+%}
+
+<div class="faq_main_section ctm_warranty_faq_block pt-55 small_desktop:pt-80">
+  <div class="xl_container">
+    <div class="ctm_faq_filtegrp flex flex-wrap items-center gap-20 justify-between mb-55">
+      {% if section.settings.search_bar_display != true %}
+        <div class="faq_search w-full max-w-[303px]">
+          <div class="field px-[33px] py-[18px] flex items-center gap-[11px]">
+            <svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <g clip-path="url(#clip0_8216_10313)">
+                 <path d="M13 13.75L19 19.75M8 15.75C4.13401 15.75 1 12.616 1 8.75C1 4.88401 4.13401 1.75 8 1.75C11.866 1.75 15 4.88401 15 8.75C15 12.616 11.866 15.75 8 15.75Z" stroke="#62673C" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+              </g>
+              <defs>
+                 <clipPath id="clip0_8216_10313">
+                    <rect width="20" height="20" fill="white" transform="translate(0 0.75)"/>
+                 </clipPath>
+              </defs>
+            </svg>
+            <input class="focus-visible:outline-none" type="text" id="faqSearchInput" placeholder="Search...">
+          </div>
+        </div>
+      {% endif %}
+      <div class="filter-dropdown {% if section.settings.search_bar_display == true %} ml-auto {% endif %}">
+        <label>Filter By</label>
+        <ul id="faq-filter">
+          <li data-category="all">All</li>
+          <li data-category="ctm_faq_head_1">{{ sub-head1 }}</li>
+          <li data-category="ctm_faq_head_2">{{ sub-head2 }}</li>
+          <li data-category="ctm_faq_head_3">{{ sub-head3 }}</li>
+          <li data-category="ctm_faq_head_4">{{ sub-head4 }}</li>
+          <li data-category="ctm_faq_head_5">{{ sub-head5 }}</li>
+        </ul>
+      </div>
+    </div>
+    <div
+      id="{{ section.settings.extra_class }}"
+      class="faq_main_container max-w-full mdscreen2:m-auto px-0 flex flex-col gap-55"
+    >
+      <div class="ctm_faq_head_1 ctm_warranty_bg_img py-30 desktop:py-55 rounded-24 overflow-hidden ">
+        <div class="max-w-[1000px] midlarge_desktop:max-w-[1512px] mx-auto px-15">
+          <div class="warranty_titlegrp text-center pb-40 border-b-1 border-solid border-warm_neutral">
+            <div class="warranty_caption mb-10">
+              <h5>{{ sub-head1 }}</h5>
+            </div>
+            <div class="warranty_faq_title">
+              <h3 id="ctm_head_faq_1">{{ head1 }}</h3>
+            </div>
+          </div>
+          {%- for j in (0..page.metafields.question_mattress.acf.size) -%}
+            {% if page.metafields.question_mattress.acf[j] != blank %}
+              <div class="faq_container">
+                <div class="faq_question border-b-1 border-solid border-warm_neutral py-20 last:border-b-0 flex items-center justify-between">
+                  <div class="faq_question-text pr-10">
+                    <h4>{{ q1[j] }}</h4>
+                  </div>
+                  <div class="icon">
+                    <div class="icon-shape">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <path class="vertical-line" d="M20.4853 12.0009H3.51472" stroke="#222222" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M12 3.51562V20.4862" stroke="#222222" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+                <div class="answercont max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
+                  <div class="answer  py-20 border-b-1 border-solid border-warm_neutral px-28 bg-cream_washed">
+                    {{ a1[j] }}
+                  </div>
+                </div>
+              </div>
+            {% endif %}
+          {%- endfor -%}
+        </div>
+      </div>
+
+      <div class="ctm_faq_head_2 ctm_warranty_bg_img py-30 desktop:py-55 rounded-24 overflow-hidden">
+        <div class="max-w-[1000px] midlarge_desktop:max-w-[1512px] mx-auto px-15">
+          <div class="warranty_titlegrp text-center pb-40 border-b-1 border-solid border-warm_neutral">
+            <div class="warranty_caption mb-10">
+              <h5>{{ sub-head2 }}</h5>
+            </div>
+            <div class="warranty_faq_title">
+              <h3 id="ctm_head_faq_2">{{ head2 }}</h3>
+            </div>
+          </div>
+          {%- for j in (0..page.metafields.question_foundation.acf.size) -%}
+            {% if page.metafields.question_foundation.acf[j] != blank %}
+              <div class="faq_container">
+                <div class="faq_question border-b-1 border-solid border-warm_neutral py-20 last:border-b-0 flex items-center justify-between">
+                  <div class="faq_question-text pr-10">
+                    <h4>{{ q2[j] }}</h4>
+                  </div>
+                  <div class="icon">
+                    <div class="icon-shape">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <path class="vertical-line" d="M20.4853 12.0009H3.51472" stroke="#222222" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M12 3.51562V20.4862" stroke="#222222" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+                <div class="answercont max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
+                  <div class="answer  py-20 border-b-1 border-solid border-warm_neutral px-28 bg-cream_washed">
+                    {{ a2[j] }}
+                  </div>
+                </div>
+              </div>
+            {% endif %}
+          {%- endfor -%}
+        </div>
+      </div>
+      <div class="ctm_faq_head_3 ctm_warranty_bg_img py-30 desktop:py-55 rounded-24 overflow-hidden">
+        <div class="max-w-[1000px] midlarge_desktop:max-w-[1512px] mx-auto px-15">
+          <div class="warranty_titlegrp text-center pb-40 border-b-1 border-solid border-warm_neutral">
+            <div class="warranty_caption mb-10">
+              <h5>{{ sub-head3 }}</h5>
+            </div>
+            <div class="warranty_faq_title">
+              <h3 id="ctm_head_faq_3">{{ head3 }}</h3>
+            </div>
+          </div>
+          {%- for j in (0..page.metafields.question_mattressprotector.acf.size) -%}
+            {% if page.metafields.question_mattressprotector.acf[j] != blank %}
+              <div class="faq_container">
+                <div class="faq_question border-b-1 border-solid border-warm_neutral py-20 last:border-b-0 flex items-center justify-between">
+                  <div class="faq_question-text pr-10">
+                    <h4>{{ q3[j] }}</h4>
+                  </div>
+                  <div class="icon">
+                    <div class="icon-shape">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <path class="vertical-line" d="M20.4853 12.0009H3.51472" stroke="#222222" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M12 3.51562V20.4862" stroke="#222222" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+                <div class="answercont max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
+                  <div class="answer  py-20 border-b-1 border-solid border-warm_neutral px-28 bg-cream_washed">
+                    {{ a3[j] }}
+                  </div>
+                </div>
+              </div>
+            {% endif %}
+          {%- endfor -%}
+        </div>
+      </div>
+      <div class="ctm_faq_head_4 ctm_warranty_bg_img py-30 desktop:py-55 rounded-24 overflow-hidden">
+        <div class="max-w-[1000px] midlarge_desktop:max-w-[1512px] mx-auto px-15">
+          <div class="warranty_titlegrp text-center pb-40 border-b-1 border-solid border-warm_neutral">
+            <div class="warranty_caption mb-10">
+              <h5>{{ sub-head4 }}</h5>
+            </div>
+            <div class="warranty_faq_title">
+              <h3 id="ctm_head_faq_4">{{ head4 }}</h3>
+            </div>
+          </div>
+          {%- for j in (0..page.metafields.question_pillow.acf.size) -%}
+            {% if page.metafields.question_pillow.acf[j] != blank %}
+              <div class="faq_container">
+                <div class="faq_question border-b-1 border-solid border-warm_neutral py-20 last:border-b-0 flex items-center justify-between">
+                  <div class="faq_question-text pr-10">
+                    <h4>{{ q4[j] }}</h4>
+                  </div>
+                  <div class="icon">
+                    <div class="icon-shape">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <path class="vertical-line" d="M20.4853 12.0009H3.51472" stroke="#222222" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M12 3.51562V20.4862" stroke="#222222" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+                <div class="answercont max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
+                  <div class="answer  py-20 border-b-1 border-solid border-warm_neutral px-28 bg-cream_washed">
+                    {{ a4[j] }}
+                  </div>
+                </div>
+              </div>
+            {% endif %}
+          {%- endfor -%}
+        </div>
+      </div>
+      <div class="ctm_faq_head_5 ctm_warranty_bg_img py-30 desktop:py-55 rounded-24 overflow-hidden">
+        <div class="max-w-[1000px] midlarge_desktop:max-w-[1512px] mx-auto px-15">
+          <div class="warranty_titlegrp text-center pb-40 border-b-1 border-solid border-warm_neutral">
+            <div class="warranty_caption mb-10">
+              <h5>{{ sub-head5 }}</h5>
+            </div>
+            <div class="warranty_faq_title">
+              <h3 id="ctm_head_faq_5">{{ head5 }}</h3>
+            </div>
+          </div>
+          {%- for j in (0..page.metafields.question_kids.acf.size) -%}
+            {% if page.metafields.question_kids.acf[j] != blank %}
+              <div class="faq_container">
+                <div class="faq_question border-b-1 border-solid border-warm_neutral py-20 last:border-b-0 flex items-center justify-between">
+                  <div class="faq_question-text pr-10">
+                    <h4>{{ q5[j] }}</h4>
+                  </div>
+                  <div class="icon">
+                    <div class="icon-shape">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <path class="vertical-line" d="M20.4853 12.0009H3.51472" stroke="#222222" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M12 3.51562V20.4862" stroke="#222222" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+                <div class="answercont max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
+                  <div class="answer  py-20 border-b-1 border-solid border-warm_neutral px-28 bg-cream_washed">
+                    {{ a5[j] }}
+                  </div>
+                </div>
+              </div>
+            {% endif %}
+          {%- endfor -%}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    // Get the ul element with id "faq-filter"
+    var filterList = document.getElementById('faq-filter');
+
+    // Get all li elements inside the ul with id "faq-filter"
+    var filterItems = filterList.querySelectorAll('li');
+
+    // Attach click event listener to each li element
+    filterItems.forEach(function (item) {
+      item.addEventListener('click', function () {
+        // Remove active class from all li elements
+        filterItems.forEach(function (item) {
+          item.classList.remove('active');
+        });
+
+        // Add active class to the clicked li element
+        this.classList.add('active');
+
+        // Remove active class from the ul element
+        filterList.classList.remove('active');
+      });
+    });
+  });
+
+  // Wait for the DOM content to load
+  document.addEventListener('DOMContentLoaded', function () {
+    // Get all main FAQ sections
+    var mainFAQSections = document.querySelectorAll("[class^='ctm_faq_head_']");
+
+    // Loop through each main FAQ section
+    mainFAQSections.forEach(function (section) {
+      // Find the first FAQ item in the current section
+      var firstFAQItem = section.querySelector('.faq_container .answercont');
+
+      // Open the first FAQ item if found
+      if (firstFAQItem) {
+        firstFAQItem.classList.remove('max-h-0');
+      }
+    });
+
+    // Get all FAQ question containers
+    var faqQuestions = document.querySelectorAll('.faq_question');
+
+    // Loop through each FAQ question container
+    faqQuestions.forEach(function (faqQuestion) {
+      // Add click event listener to each FAQ question
+      faqQuestion.addEventListener('click', function () {
+        // Get the answer container corresponding to the clicked question
+        var answerContainer = faqQuestion.nextElementSibling;
+
+        // Close all other answer containers
+        closeAllAnswers();
+
+        // Toggle the visibility of the clicked question's answer container
+        if (answerContainer) {
+          answerContainer.classList.toggle('max-h-0');
+        }
+      });
+    });
+
+    // Function to close all answer containers
+    function closeAllAnswers() {
+      var allAnswerContainers = document.querySelectorAll('.answercont');
+      allAnswerContainers.forEach(function (container) {
+        container.classList.add('max-h-0');
+      });
+    }
+  });
+
+  document.addEventListener('DOMContentLoaded', function () {
+    var label = document.querySelector('.filter-dropdown label');
+    var ul = document.getElementById('faq-filter');
+
+    label.addEventListener('click', function () {
+      ul.classList.toggle('active');
+    });
+  });
+</script>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    // Get the ul element
+    const categoryList = document.getElementById('faq-filter');
+
+    // Function to update the filter label
+    function updateFilterLabel(selectedListItem) {
+      const filterLabel = document.querySelector('.filter-dropdown label');
+      filterLabel.textContent = selectedListItem.textContent;
+    }
+
+    // Add event listener to handle click on list items
+    categoryList.addEventListener('click', function (event) {
+      // Get the clicked list item
+      const selectedListItem = event.target.closest('li');
+
+      // Check if a list item is clicked
+      if (selectedListItem) {
+        // Update the filter label
+        updateFilterLabel(selectedListItem);
+
+        // Remove the 'active' class from all list items
+        const listItems = categoryList.querySelectorAll('li');
+        listItems.forEach(function (item) {
+          item.classList.remove('active');
+        });
+
+        // Add the 'active' class to the clicked list item
+        selectedListItem.classList.add('active');
+
+        // Get the data-category attribute value
+        const selectedCategory = selectedListItem.getAttribute('data-category');
+
+        // Hide all FAQ categories
+        const faqCategories = document.querySelectorAll('.faq_main_container > div');
+        faqCategories.forEach(function (category) {
+          category.style.display = 'none';
+        });
+
+        // Show all FAQs if "All FAQs" is selected
+        if (selectedCategory === 'all') {
+          faqCategories.forEach(function (category) {
+            category.style.display = 'block';
+          });
+        } else {
+          // Show the selected FAQ category
+          const selectedCategoryElement = document.querySelector(`.${selectedCategory}`);
+          if (selectedCategoryElement) {
+            selectedCategoryElement.style.display = 'block';
+          }
+        }
+      }
+    });
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Warranty",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "label": "Extra Class",
+      "id": "extra_class"
+    },
+    {
+      "type": "checkbox",
+      "label": "First Accordion Open",
+      "id": "first_accordion_open",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "search_bar_display",
+      "label": "Want to hide search bar?",
+      "default": false
+    }
+  ],
+  "blocks": [],
+  "presets": [
+    {
+      "name": "Warranty"
+    }
+  ]
+}
+{% endschema %}

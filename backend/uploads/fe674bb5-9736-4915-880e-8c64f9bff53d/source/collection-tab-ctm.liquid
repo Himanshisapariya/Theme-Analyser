@@ -1,0 +1,206 @@
+<style>
+.tabbing-content {
+  max-width: 1775px;
+  margin: 0;
+}
+
+.tabbing-content ul.tabbing-list-group {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  padding: 0;
+  gap: 0;
+}
+
+
+.tabbing-list-group .item-tabbing {
+  border: 1px solid #bfc6c6;
+  border-right: 0;
+  background: #fff;
+  text-align: center;
+}
+
+.tabbing-list-group .item-tabbing:last-child {
+  border-right: 1px solid #bfc6c6;
+}
+
+.tabbing-list-group .item-tabbing a {
+  display: block;
+  padding:8px 30px;
+  text-decoration: none;
+  font-size: {{ section.settings.tab_font_size_desktop }}px;
+  font-family: 'Poppins';
+  font-weight: 500;
+  color: #5f6f73;
+  white-space: nowrap;
+}
+
+
+.tabbing-list-group .item-tabbing.active-tab {
+  background: #2f4b4c;
+}
+
+.tabbing-list-group .item-tabbing.active-tab a {
+  color: #ffffff;
+}
+
+
+@media (hover: hover) {
+  .tabbing-list-group .item-tabbing:not(.active-tab):hover {
+    background: #f3f5f5;
+  }
+}
+
+
+@media screen and (max-width: 1024px) {
+  .tabbing-list-group .item-tabbing a {
+    font-size: {{ section.settings.tab_font_size_mobile }}px;
+    padding: 8px 14px;
+  }
+}
+
+
+.swiper-slide.item-tabbing {
+  width: auto;
+}
+
+
+
+.ctm-gender-filter-btn {
+  font-size: {{ section.settings.gender_font_size_desktop }}px;
+  font-weight: 600;
+  cursor: pointer;
+  text-transform: uppercase;
+  color: #777; 
+  padding-bottom: 2px; 
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.ctm-gender-filter-btn.active {
+  color: #000;
+  border-bottom: 2px solid black;
+}
+
+@media (max-width: 575px) {
+  .ctm-gender-filter-btn {
+    font-size: {{ section.settings.gender_font_size_mobile }}px !important;
+  }
+  .ctm-gender-filter-buttons {
+    gap: 10px;
+  }
+}
+
+.collection-product-card {
+	transition: opacity 0.3s ease;
+}
+
+.collection-product-card.hidden {
+	display: none;
+}
+
+.ctm-gender-filter-buttons .item-tabbing a {
+  cursor: pointer;
+}
+
+</style>
+{% if collection.metafields.custom.tabbing_list.value != blank %}
+    <div class="fullscreen-container collection-taning-ctm">
+        <nav class="tabbing-content swiper swiper_tabbing">
+            <ul class="tabbing-list-group swiper-wrapper">
+                {% for coll_list in collection.metafields.custom.tabbing_list.value %}
+                    <li class="swiper-slide item-tabbing {% if coll_list.title == collection.title %}active-tab{% endif %}" {% if coll_list.title == collection.title %}aria-current="true"{% endif %}>
+                        <a class="link-tab" href="{{ coll_list.url }}">
+                            {{ coll_list.title 
+                              | replace: "Women's", "" 
+                              | replace: "Men's", "" 
+                              | replace: "Womens", "" 
+                              | replace: "Mens", "" 
+                              | strip 
+                            }}
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </nav>
+    </div>
+{% endif %}
+
+{% if collection.metafields.custom.add_gender_filter %}
+<div class="fullscreen-container ctm-gender-filter-buttons tabbing-content">
+  <ul class="tabbing-list-group">
+    <li class="item-tabbing active-tab">
+      <a class="ctm-gender-filter-btn" data-gender="Women">Women</a>
+    </li>
+    <li class="item-tabbing">
+      <a class="ctm-gender-filter-btn" data-gender="Men">Men</a>
+    </li>
+  </ul>
+</div>
+{% endif %}
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  new Swiper('.swiper_tabbing', {
+    slidesPerView: 'auto',
+    spaceBetween: 0,
+    a11y: false,
+    freeMode: true,
+    watchOverflow: true,
+  });
+});
+</script>
+
+{% if collection.metafields.custom.add_gender_filter %}
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+
+  const filterButtons = document.querySelectorAll('.ctm-gender-filter-btn');
+  let currentFilter = 'Women';
+
+  function applyFilter(selectedGender) {
+    const productCards = document.querySelectorAll('#product-grid .collection-product-card');
+
+    productCards.forEach(card => {
+      const productTags = card.getAttribute('data-product-tags') || '';
+      const tagsArray = productTags
+        .split(',')
+        .map(tag => tag.trim().toLowerCase());
+
+      const hasGenderTag = tagsArray.includes(selectedGender.toLowerCase());
+      card.classList.toggle('hidden', !hasGenderTag);
+    });
+  }
+
+  filterButtons.forEach(button => {
+    button.addEventListener('click', function () {
+      currentFilter = this.getAttribute('data-gender');
+
+      document
+        .querySelectorAll('.ctm-gender-filter-buttons .item-tabbing')
+        .forEach(tab => tab.classList.remove('active-tab'));
+
+      this.closest('.item-tabbing').classList.add('active-tab');
+
+      applyFilter(currentFilter);
+    });
+  });
+
+  const productGrid = document.getElementById('product-grid');
+  if (productGrid) {
+    const observer = new MutationObserver(mutations => {
+      mutations.forEach(mutation => {
+        if (mutation.addedNodes.length > 0) {
+          applyFilter(currentFilter);
+        }
+      });
+    });
+
+    observer.observe(productGrid, { childList: true });
+  }
+
+  applyFilter(currentFilter);
+});
+</script>
+{% endif %}
+

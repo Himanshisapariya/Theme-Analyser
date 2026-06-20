@@ -1,0 +1,474 @@
+{% comment %}
+  Renders cart drawer
+
+  Usage:
+  {% render 'cart-drawer' %}
+{% endcomment %}
+
+{{ 'quantity-popover.css' | asset_url | stylesheet_tag }}
+{{ 'component-card.css' | asset_url | stylesheet_tag }}
+
+<script src="{{ 'cart.js' | asset_url }}" defer></script>
+<script src="{{ 'quantity-popover.js' | asset_url }}" defer></script>
+<script src="{{ 'product-form.js' | asset_url }}" defer></script>
+
+<style>
+  .drawer {
+    visibility: hidden;
+  }
+</style>
+
+<cart-drawer class="drawer ctm_cartdrawer{% if cart == empty %} is-empty{% endif %} {% unless settings.enable_cart_upsell %}no-upsell{% endunless %}">
+  <div id="CartDrawer" class="cart-drawer">
+    <div id="CartDrawer-Overlay" class="cart-drawer__overlay"></div>
+    <div
+      class="drawer__inner !overflow-y-auto focus-visible:outline-none gradient color-{{ settings.cart_color_scheme }}"
+      role="dialog"
+      aria-modal="true"
+      aria-label="{{ 'sections.cart.title' | t }}"
+      tabindex="-1"
+    >
+      {%- if cart == empty -%}
+        <div class="drawer__inner-empty">
+          <div class="cart-drawer__warnings center{% if settings.cart_drawer_collection != blank %} cart-drawer__warnings--has-collection{% endif %}">
+            <div class="cart-drawer__empty-content">
+              <h3 class="cart__empty-text">{{ 'sections.cart.empty' | t }}</h3>
+              <button
+                class="drawer__close"
+                type="button"
+                onclick="this.closest('cart-drawer').close()"
+                aria-label="{{ 'accessibility.close' | t }}"
+              >
+                {% render 'icon-close' %}
+              </button>
+              <a href="{{ routes.all_products_collection_url }}" class="buttons aloe_leaf_btn mx-auto">
+                {{ 'general.continue_shopping' | t }}
+              </a>
+
+              {%- if shop.customer_accounts_enabled and customer == null -%}
+                <p class="cart__login-title h4 font-heading font-medium">{{ 'sections.cart.login.title' | t }}</p>
+                <p class="cart__login-paragraph">
+                  {{ 'sections.cart.login.paragraph_html' | t: link: routes.account_login_url }}
+                </p>
+              {%- endif -%}
+            </div>
+          </div>
+          {%- if settings.cart_drawer_collection != blank -%}
+            <div class="cart-drawer__collection">
+              {% render 'card-collection', card_collection: settings.cart_drawer_collection, columns: 1 %}
+            </div>
+          {%- endif -%}
+        </div>
+      {%- else -%}
+        <div class="drawer__header py-4">
+          <h4 class="drawer__heading font-bold flex items-center gap-5 uppercase text-14 text-[#4a4a4a] leading-normal font-body">
+            Your Cart
+            <span class="cart-count-bubble text-[#4a4a4a] text-14 font-bold">
+              {%- if cart.item_count < 100 -%}
+                <span class="text_brown text-[#4a4a4a] text-14 font-semibold" aria-hidden="true"
+                  >(<span class="text-[#4a4a4a]" style="margin-right: -3px;">
+                    {{- cart.item_count }}
+                    {% if cart.item_count == 1 %}Item{% else %}Items{% endif %} </span
+                  >)
+                </span>
+              {%- endif -%}
+              <span class="visually-hidden">{{ 'sections.header.cart_count' | t: count: cart.item_count }}</span>
+            </span>
+          </h4>
+          <button
+            class="drawer__close"
+            type="button"
+            onclick="this.closest('cart-drawer').close()"
+            aria-label="{{ 'accessibility.close' | t }}"
+          >
+            {% render 'icon-close' %}
+          </button>
+        </div>
+        <div class="drawer__cart_container">
+          <div class="drawer__cart_container-main">
+            <p class="drawer__cart_container-main--note">Your Order Has Free Shipping</p>
+            <cart-drawer-items
+              {% if cart == empty %}
+                class=" is-empty"
+              {% endif %}
+            >
+              <form
+                action="{{ routes.cart_url }}"
+                id="CartDrawer-Form"
+                class="cart__contents cart-drawer__form"
+                method="post"
+              >
+                <div id="CartDrawer-CartItems" class="drawer__contents js-contents">
+                  {%- if cart != empty -%}
+                    <div class="drawer__cart-items-wrapper">
+                      <div class="cart-items">
+                        {%- for item in cart.items -%}
+                          {% render 'cart-item', item: item %}
+                        {%- endfor -%}
+                      </div>
+                    </div>
+                  {%- endif -%}
+                  <p
+                    id="CartDrawer-LiveRegionText"
+                    class="visually-hidden"
+                    role="status"
+                  ></p>
+                  <p
+                    id="CartDrawer-LineItemStatus"
+                    class="visually-hidden"
+                    aria-hidden="true"
+                    role="status"
+                  >
+                    {{ 'accessibility.loading' | t }}
+                  </p>
+                </div>
+                <div id="CartDrawer-CartErrors" role="alert"></div>
+              </form>
+            </cart-drawer-items>
+            <div class="drawer__footer desktop !pt-30 max_750:!pt-[10px] !pb-[70px] custom_751_767:!pb-[20px] max_750:!pb-[30px] !px-20 left-0 right-0 bottom-0 bg-white z-10 !max-h-[210px] hidden md:relative">
+              {% capture drawer_footer %}
+              <div class="cart-drawer__footer" {{ block.shopify_attributes }}>
+                <div>
+                  {%- if cart.cart_level_discount_applications.size > 0 -%}
+                    <ul
+                      class="discounts list-unstyled"
+                      role="list"
+                      aria-label="{{ 'customer.order.discount' | t }}"
+                    >
+                      {%- for discount in cart.cart_level_discount_applications -%}
+                        <li class="discounts__discount discounts__discount--end">
+                          {%- render 'icon-discount' -%}
+                          {{ discount.title }}
+                          (-{{ discount.total_allocated_amount | money }})
+                        </li>
+                      {%- endfor -%}
+                    </ul>
+                  {%- endif -%}
+                </div>
+
+                {% assign compare_at_total = 0 %}
+                {% assign current_total = cart.total_price %}
+
+                {% for item in cart.items %}
+                  {% if item.variant.compare_at_price %}
+                    {% assign line_compare_at = item.variant.compare_at_price | times: item.quantity %}
+                    {% assign compare_at_total = compare_at_total | plus: line_compare_at %}
+                  {% else %}
+                    {% assign line_current = item.final_price | times: item.quantity %}
+                    {% assign compare_at_total = compare_at_total | plus: line_current %}
+                  {% endif %}
+                {% endfor %}
+
+                {% assign savings = compare_at_total | minus: current_total %}
+
+                {% if savings > 0 %}
+                <div class="flex flex-col items-start mb-4">
+                  <div class="flex items-center gap-2 ml-auto w-[200px]">
+                    <!-- Current Total -->
+                    <p class="!text-19 !leading-19 !text-bloodstone !font-body font-extrabold mr-auto">
+                      {{ current_total | money }}
+                    </p>
+
+                    {% if savings > 0 %}
+                      <!-- Original Total -->
+                      <p class="!text-16 !leading-16 text-gray-500 line-through">
+                        {{ compare_at_total | money }}
+                      </p>
+                    {% endif %}
+                  </div>
+
+                  {% if savings > 0 %}
+                    <!-- Savings -->
+                    <div class="flex items-center gap-2 ml-auto w-[200px]">
+                      <p class="!text-16 !leading-16 !text-bloodstone !font-body font-extrabold mr-auto">You Saved:</p>
+                      <p class="!text-14 !leading-14 !text-bloodstone font-bold ml-auto">{{ savings | money }}</p>
+                    </div>
+                  {% endif %}
+                </div>
+                {% endif %}
+
+                <!-- SUBTOTAL label & value -->
+                <div class="totals !mt-0 !items-center !mb-28 max_750:!mb-[20px]" role="status">
+                  <h3 class="totals__total !text-16 !leading-16 !mt-0 font-bold uppercase !font-body">
+                    {{ 'sections.cart.estimated_total' | t }}
+                  </h3>
+                  <p class="totals__total-value !text-19 !leading-19 !mt-0 !text-bloodstone !font-body font-extrabold">
+                    {{ current_total | money }}
+                  </p>
+                </div>
+
+                <small class="tax-note caption-large rte hidden">
+                  {%- if cart.taxes_included and shop.shipping_policy.body != blank -%}
+                    {{ 'sections.cart.taxes_included_and_shipping_policy_html' | t: link: shop.shipping_policy.url }}
+                  {%- elsif cart.taxes_included -%}
+                    {{ 'sections.cart.taxes_included_but_shipping_at_checkout' | t }}
+                  {%- elsif shop.shipping_policy.body != blank -%}
+                    {{ 'sections.cart.taxes_and_shipping_policy_at_checkout_html' | t: link: shop.shipping_policy.url }}
+                  {%- else -%}
+                    {{ 'sections.cart.taxes_and_shipping_at_checkout' | t }}
+                  {%- endif -%}
+                </small>
+              </div>
+
+              <!-- CTAs -->
+
+              <div class="cart__ctas" {{ block.shopify_attributes }}>
+                {% comment %}
+                  <noscript>
+                  <button type="submit" class="cart__update-button button button--secondary" form="CartDrawer-Form">
+                  {{ 'sections.cart.update' | t }}
+                  </button>
+                  </noscript>
+                {% endcomment %}
+
+                <button
+                  type="submit"
+                  id="CartDrawer-Checkout"
+                  class="aloe_leaf_btn cart__checkout-button button !bg-[#FFD814] uppercase hover:!bg-white  !border-[#FFD814] !text-[#413432]"
+                  name="checkout"
+                  form="CartDrawer-Form"
+                  {% if cart == empty %}
+                    disabled
+                  {% endif %}
+                >
+                  {% render 'icon-lock' %}
+                  Checkout now
+                </button>
+              </div>
+
+              <div class="cart-drawer-shoppay">
+                <span>Easy Installments with</span>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 99 25" class="h-[14px] w-[59px]">
+                  <path fill="currentColor" d="M70.842 7.915h2.25c1.561 0 2.328.642 2.328 1.715 0 1.074-.739 1.715-2.259 1.715h-2.32v-3.43ZM80.525 16.142c-.879 0-1.227-.474-1.227-.948 0-.642.725-.935 2.147-1.102l1.115-.125c-.07 1.227-.892 2.175-2.035 2.175Z"></path><path fill="currentColor" fill-rule="evenodd" d="M65.645.5a3.64 3.64 0 0 0-3.64 3.64V20.7a3.64 3.64 0 0 0 3.64 3.64h29.668a3.64 3.64 0 0 0 3.64-3.64V4.14A3.64 3.64 0 0 0 95.314.5H65.645Zm5.197 16.674v-4.197h2.64c2.412 0 3.695-1.353 3.695-3.402 0-2.05-1.283-3.277-3.695-3.277h-4.341v10.876h1.7Zm9.334.223c1.297 0 2.147-.572 2.538-1.548.112 1.088.767 1.645 2.189 1.269l.014-1.157c-.572.055-.683-.154-.683-.753v-2.845c0-1.673-1.102-2.663-3.138-2.663-2.008 0-3.165 1.004-3.165 2.705h1.562c0-.809.572-1.297 1.576-1.297 1.06 0 1.547.46 1.534 1.255v.363l-1.8.195c-2.021.223-3.137.99-3.137 2.329 0 1.101.781 2.147 2.51 2.147Zm9.906.32c-.711 1.73-1.855 2.245-3.64 2.245h-.766V18.54h.822c.977 0 1.45-.307 1.966-1.185L85.3 9.923h1.757l2.259 5.424 2.008-5.424h1.715l-2.956 7.795Z" clip-rule="evenodd"></path><path fill="currentColor" d="M6.992 11.055c-2.359-.509-3.41-.708-3.41-1.612 0-.85.711-1.274 2.134-1.274 1.25 0 2.165.544 2.839 1.61.05.081.155.11.241.066l2.655-1.335a.186.186 0 0 0 .076-.259c-1.102-1.9-3.137-2.94-5.818-2.94C2.188 5.311 0 7.037 0 9.781c0 2.915 2.664 3.651 5.027 4.16 2.362.51 3.417.709 3.417 1.613s-.769 1.33-2.303 1.33c-1.416 0-2.467-.644-3.102-1.896a.186.186 0 0 0-.251-.082L.14 16.21a.188.188 0 0 0-.083.253c1.051 2.102 3.207 3.285 6.087 3.285 3.668 0 5.885-1.698 5.885-4.527 0-2.83-2.677-3.651-5.037-4.16v-.007ZM21.218 5.311c-1.505 0-2.835.531-3.791 1.477-.06.057-.159.015-.159-.067V.687A.185.185 0 0 0 17.081.5h-3.322a.185.185 0 0 0-.187.187v18.73c0 .104.083.186.187.186h3.322a.185.185 0 0 0 .187-.186V11.2c0-1.587 1.223-2.804 2.87-2.804 1.649 0 2.843 1.191 2.843 2.804v8.216c0 .104.082.186.187.186h3.322a.185.185 0 0 0 .187-.186V11.2c0-3.452-2.274-5.89-5.459-5.89ZM33.415 4.774c-1.803 0-3.493.55-4.706 1.343a.186.186 0 0 0-.06.25l1.464 2.488c.054.089.168.12.257.066a5.853 5.853 0 0 1 3.052-.834c2.899 0 5.03 2.036 5.03 4.726 0 2.292-1.706 3.99-3.868 3.99-1.762 0-2.985-1.022-2.985-2.463 0-.825.352-1.502 1.27-1.98a.183.183 0 0 0 .073-.258l-1.381-2.327a.187.187 0 0 0-.226-.079c-1.85.683-3.15 2.327-3.15 4.533 0 3.338 2.67 5.83 6.396 5.83 4.35 0 7.478-3 7.478-7.303 0-4.612-3.64-7.982-8.644-7.982ZM51.776 5.283c-1.68 0-3.182.62-4.277 1.707a.093.093 0 0 1-.16-.066v-1.31a.185.185 0 0 0-.187-.186h-3.235a.185.185 0 0 0-.188.187v18.702c0 .104.083.186.188.186h3.32a.185.185 0 0 0 .188-.186v-6.133c0-.082.099-.123.16-.07 1.091 1.012 2.536 1.603 4.19 1.603 3.897 0 6.936-3.139 6.936-7.217 0-4.078-3.042-7.217-6.935-7.217Zm-.63 11.266c-2.215 0-3.895-1.754-3.895-4.074S48.928 8.4 51.147 8.4c2.22 0 3.893 1.726 3.893 4.075 0 2.348-1.651 4.074-3.896 4.074h.003Z"></path>
+                </svg>
+              </div>
+
+              <div class="cart-logos">
+                <img
+                  src="https://cdn.shopify.com/s/files/1/0792/4904/7864/files/CertiPUR-US_2.png?v=1712670235"
+                  width="90px"
+                  height="90px"
+                  class="max-w-full object-contain max_374:flex-[0_0_28%] max_374:w-[28%]"
+                >
+                <img
+                  src="https://cdn.shopify.com/s/files/1/0792/4904/7864/files/100Night_MoneyGuarantee_Logo.png?v=1751549782"
+                  width="90px"
+                  height="90px"
+                  class="max-w-full object-contain max_374:flex-[0_0_28%] max_374:w-[28%]"
+                >
+                <img
+                  src="https://cdn.shopify.com/s/files/1/0792/4904/7864/files/15_Year_Warranty_optimized.svg?v=1751549586"
+                  width="90px"
+                  height="90px"
+                  class="max-w-full object-contain max_374:flex-[0_0_28%] max_374:w-[28%]"
+                >
+              </div>
+
+              {%- if settings.show_cart_note -%}
+                <cart-note class="cart__note field max-w-[285px] mx-auto !block !top-0 !mt-[10px] before:!hidden after:!hidden  mdscreen:!hidden">
+                  <label
+                    for="Cart-note "
+                    class="uppercase !font-[600] !relative !block !h-auto !top-0 !leading-[100%] !text-center !text-[12px] !text-[#413432] !mb-10"
+                  >
+                    {{- 'sections.cart.note' | t -}}
+                  </label>
+                  <textarea
+                    class="text-area field__input !border-[1px] !border-solid !border-[#555]"
+                    name="note"
+                    form="cart"
+                    id="Cart-note"
+                    placeholder="{{ 'sections.cart.note' | t }}"
+                  >{{ cart.note }}</textarea>
+                </cart-note>
+              {%- endif -%}
+            {% endcapture %}
+              {{ drawer_footer }}
+            </div>
+          </div>
+          {% if settings.enable_cart_upsell %}
+            <div class="drawer__cart_container-upsell">
+              <p class="drawer__cart_container-upsell--note">You might also love these customer favorites!</p>
+              <div class="drawer__cart_container-upsell--products-container desktop">
+                {% assign upsell_product_handles = '' %}
+                {% assign cart_product_handles = cart.items | map: 'product' | map: 'handle' | join: ',' %}
+
+                {% for item in cart.items %}
+                  {% for collection in item.product.collections %}
+                    {% if collection.metafields.custom.upsell_products != blank %}
+                      {% assign item_upsells = collection.metafields.custom.upsell_products.value
+                        | map: 'handle'
+                        | join: ','
+                      %}
+                      {% assign upsell_product_handles = upsell_product_handles | append: ',' | append: item_upsells %}
+                    {% endif %}
+                  {% endfor %}
+                {% endfor %}
+
+                {% assign default_handles = settings['cart-upsell-products'] | map: 'handle' | join: ',' %}
+                {% if settings['cart-upsell-collection'] != blank %}
+                  {% assign default_handles = settings['cart-upsell-collection'].products | map: 'handle' | join: ',' %}
+                {% endif %}
+                {% assign upsell_product_handles = upsell_product_handles | append: ',' | append: default_handles %}
+
+                {% assign swap_upsell_product_handles = '' %}
+                {% for item in cart.items %}
+                  {% assign swap_upsell_product = item.product.metafields.custom.swap_upsell_product.value %}
+                  {% if swap_upsell_product != blank %}
+                    {% unless swap_upsell_product_handles contains swap_upsell_product.handle %}
+                      {% assign swap_upsell_product_handles_string = swap_upsell_product_handles
+                        | join: ', '
+                        | append: swap_upsell_product.handle
+                        | append: ', '
+                      %}
+                      {% assign swap_upsell_product_handles = swap_upsell_product_handles_string | split: ', ' | uniq %}
+
+                      {% unless cart_product_handles contains swap_upsell_product.handle %}
+                        {% if swap_upsell_product.available %}
+                          {% render 'cart-upsell-item',
+                            card_product: swap_upsell_product,
+                            horizontal_class: true,
+                            swap_upsell: true,
+                            base_item: item
+                          %}
+                          <p class="drawer__cart_upsell_disclaimer">
+                            *When swapping for {{ swap_upsell_product.title | escape }}, it will replace
+                            {{ item.product.title }} in your cart
+                          </p>
+                        {% endif %}
+                      {% endunless %}
+                    {% endunless %}
+                  {% endif %}
+                {% endfor %}
+
+                {% assign unique_handles = upsell_product_handles | split: ',' | uniq %}
+
+                {% for handle in unique_handles %}
+                  {% unless swap_upsell_product_handles contains handle %}
+                    {% unless cart_product_handles contains handle %}
+                      {% assign product = all_products[handle] %}
+                      {% if product != blank and product.available %}
+                        {% render 'cart-upsell-item', card_product: product, horizontal_class: true %}
+                      {% endif %}
+                    {% endunless %}
+                  {% endunless %}
+                {% endfor %}
+              </div>
+              <div class="drawer__cart_container-upsell--products-container mobile">
+                <div class="swiper upsell-swiper">
+                  <div class="swiper-wrapper">
+                    {% assign upsell_product_handles = '' %}
+                    {% assign cart_product_handles = cart.items | map: 'product' | map: 'handle' | join: ',' %}
+
+                    {% for item in cart.items %}
+                      {% for collection in item.product.collections %}
+                        {% if collection.metafields.custom.upsell_products != blank %}
+                          {% assign item_upsells = collection.metafields.custom.upsell_products.value
+                            | map: 'handle'
+                            | join: ','
+                          %}
+                          {% assign upsell_product_handles = upsell_product_handles
+                            | append: ','
+                            | append: item_upsells
+                          %}
+                        {% endif %}
+                      {% endfor %}
+                    {% endfor %}
+
+                    {% assign default_handles = settings['cart-upsell-products'] | map: 'handle' | join: ',' %}
+                    {% if settings['cart-upsell-collection'] != blank %}
+                      {% assign default_handles = settings['cart-upsell-collection'].products
+                        | map: 'handle'
+                        | join: ','
+                      %}
+                    {% endif %}
+                    {% assign upsell_product_handles = upsell_product_handles | append: ',' | append: default_handles %}
+
+                    {% assign swap_upsell_product_handles = '' %}
+                    {% for item in cart.items %}
+                      {% assign swap_upsell_product = item.product.metafields.custom.swap_upsell_product.value %}
+                      {% if swap_upsell_product != blank %}
+                        {% unless swap_upsell_product_handles contains swap_upsell_product.handle %}
+                          {% assign swap_upsell_product_handles_string = swap_upsell_product_handles
+                            | join: ', '
+                            | append: swap_upsell_product.handle
+                            | append: ', '
+                          %}
+                          {% assign swap_upsell_product_handles = swap_upsell_product_handles_string
+                            | split: ', '
+                            | uniq
+                          %}
+
+                          {% unless cart_product_handles contains swap_upsell_product.handle %}
+                            {% if swap_upsell_product.available %}
+                              <div class="swiper-slide">
+                                {% render 'cart-upsell-item',
+                                  card_product: swap_upsell_product,
+                                  horizontal_class: true,
+                                  swap_upsell: true,
+                                  base_item: item,
+                                  additional_id: 'mobile_'
+                                %}
+                                <p class="drawer__cart_upsell_disclaimer">
+                                  *When swapping for {{ swap_upsell_product.title | escape }}, it will replace
+                                  {{ item.product.title }} in your cart
+                                </p>
+                              </div>
+                            {% endif %}
+                          {% endunless %}
+                        {% endunless %}
+                      {% endif %}
+                    {% endfor %}
+
+                    {% assign unique_handles = upsell_product_handles | split: ',' | uniq %}
+
+                    {% for handle in unique_handles %}
+                      {% unless swap_upsell_product_handles contains handle %}
+                        {% unless cart_product_handles contains handle %}
+                          {% assign product = all_products[handle] %}
+                          {% if product != blank and product.available %}
+                            <div class="swiper-slide">
+                              {% render 'cart-upsell-item',
+                                card_product: product,
+                                horizontal_class: true,
+                                additional_id: 'mobile_'
+                              %}
+                            </div>
+                          {% endif %}
+                        {% endunless %}
+                      {% endunless %}
+                    {% endfor %}
+                  </div>
+                  <div class="swiper-pagination upsell_pagination"></div>
+                </div>
+              </div>
+            </div>
+          {% endif %}
+          <div class="drawer__footer !pt-30 max_750:!pt-[10px] !pb-[70px] custom_751_767:!pb-[20px] max_750:!pb-[30px] !px-20 relative left-0 right-0 bottom-0 bg-white z-10 !min-h-[280px] md:hidden">
+            {{ drawer_footer }}
+          </div>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</cart-drawer>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    function isIE() {
+      const ua = window.navigator.userAgent;
+      const msie = ua.indexOf('MSIE ');
+      const trident = ua.indexOf('Trident/');
+
+      return msie > 0 || trident > 0;
+    }
+
+    if (!isIE()) return;
+    const cartSubmitInput = document.createElement('input');
+    cartSubmitInput.setAttribute('name', 'checkout');
+    cartSubmitInput.setAttribute('type', 'hidden');
+    document.querySelector('#cart').appendChild(cartSubmitInput);
+    document.querySelector('#checkout').addEventListener('click', function (event) {
+      document.querySelector('#cart').submit();
+    });
+  });
+</script>

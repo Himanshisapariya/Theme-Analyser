@@ -1,0 +1,116 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "type": "footer",
+  "name": "Footer Group",
+  "sections": {
+    "footer": {
+      "type": "footer",
+      "blocks": {
+        "footer-0": {
+          "type": "subscribe",
+          "settings": {
+            "heading": "<h4>Truth, and other cool stuff.<br/>Delivered to your inbox.</h4>",
+            "heading_text": "You'll get 20% off + free shipping on your first order. And we promise not to drown you in emails.",
+            "newsletter_text": "",
+            "button_style": "tertiary"
+          }
+        },
+        "link_list_hcVfba": {
+          "type": "link_list",
+          "settings": {
+            "heading": "MY ACCOUNT",
+            "menu": "footer-my-account",
+            "extra_class": "ctm-footer-my-account"
+          }
+        },
+        "footer-2": {
+          "type": "link_list",
+          "settings": {
+            "heading": "CUSTOMER SERVICE",
+            "menu": "footer-customer-service-menu",
+            "extra_class": ""
+          }
+        },
+        "footer-3": {
+          "type": "link_list",
+          "settings": {
+            "heading": "OUR WHY",
+            "menu": "brand-menu",
+            "extra_class": ""
+          }
+        },
+        "link_list_TWBzPa": {
+          "type": "link_list",
+          "settings": {
+            "heading": "TAKE ACTION",
+            "menu": "footer-take-action-menu",
+            "extra_class": ""
+          }
+        },
+        "link_list_T6pHtM": {
+          "type": "link_list",
+          "settings": {
+            "heading": "LEGAL",
+            "menu": "footer-legal-test",
+            "extra_class": "ctm-footer-legal-menu"
+          }
+        },
+        "mission_fmTpNp": {
+          "type": "mission",
+          "settings": {
+            "heading_mission": "BE BRAVE. JOIN THE CONVO.",
+            "mission_text": "<p>You’re clearly not a follower, but we’d love to connect.</p>",
+            "show_social": true,
+            "signup_for_text": "Sign Up for Email",
+            "signup_for_text_url": "shopify://pages/email-sign-up",
+            "signup_for_email": "Sign Up for Text",
+            "signup_for_email_url": "https://www.xx-xyathletics.com/pages/sign-up-for-text-updates",
+            "show_right": "left"
+          }
+        }
+      },
+      "block_order": [
+        "footer-0",
+        "link_list_hcVfba",
+        "footer-2",
+        "footer-3",
+        "link_list_TWBzPa",
+        "link_list_T6pHtM",
+        "mission_fmTpNp"
+      ],
+      "custom_css": [
+        "h2 {font-weight: bold;}",
+        ".footer__logo-box {padding-bottom: 20px;}",
+        ".footer-block subscribe_form {text-align: left;}",
+        ".footer {padding: 10px;}",
+        ".footer__column--social {margin-top: 0px;}",
+        "h4 {font-size: 23px;}"
+      ],
+      "settings": {
+        "logo": "shopify://shop_images/Logo-Horiz-Reduced-Green_1.png",
+        "footer_horizontal_menu": "footer-legal-test",
+        "logo_width": 125,
+        "color_scheme": "background-4",
+        "show_border": false,
+        "phone_number": "",
+        "email_address": "",
+        "payment_enable": false,
+        "enable_country_selector": false,
+        "enable_language_selector": false,
+        "show_policy": false,
+        "enable_follow_on_shop": false
+      }
+    }
+  },
+  "order": [
+    "footer"
+  ]
+}

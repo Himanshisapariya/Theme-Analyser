@@ -1,0 +1,463 @@
+{% comment %}
+  Gift with Purchase Snippet
+  Usage: {% render 'gift-with-purchase' %}
+{% endcomment %}
+
+{% assign gift_product_handle = block.settings.gift_product %}
+{% assign threshold = block.settings.threshold | times: 100 %}
+
+{% if gift_product_handle != blank %}
+  {% assign gift_product = all_products[gift_product_handle] %}
+  
+  
+  {% assign all_variants_out_of_stock = true %}
+  {% for variant in gift_product.variants %}
+    {% if variant.available %}
+      {% assign all_variants_out_of_stock = false %}
+      {% break %}
+    {% endif %}
+  {% endfor %}
+  
+  
+  {% unless all_variants_out_of_stock %}
+  
+  <style>
+.gwp-container {
+  border: none;
+}
+
+
+ .gwp-header h4 {
+  font-weight: 400;
+  margin: 0 0 8px 0;
+  color: #2f484c;
+}
+
+.gwp-header p {
+  color: {{ settings.promo_msg_color }};
+  margin: 0 0 20px 0;
+} 
+
+
+.gwp-grid {
+  display: grid;
+  grid-template-columns: 150px 1fr;
+  grid-template-areas:
+    "header header"
+    "image details";
+  gap: 0 24px;
+  align-items: center;
+}
+
+.gwp-header {
+  grid-area: header;
+}
+
+.gwp-product-image {
+  grid-area: image;
+  width: 150px;
+  height: auto;
+  object-fit: cover;
+  border-radius: 4px;
+  background: #f5f5f5;
+}
+
+.gwp-details {
+  grid-area: details;
+}
+
+.gwp-product-title {
+  font-weight: 400;
+  margin: 0 0 5px 0;
+}
+
+.gwp-progress-text {
+  color: #666;
+  margin-bottom: 16px;  
+}
+
+.gwp-progress-text .amount-left {
+  font-weight: 500;
+  color: #d32f2f;
+}
+
+.gwp-qualified {
+  color: #4caf50;
+  font-weight: 500;
+  font-family: 'Poppins';
+}
+
+.gwp-variant-selector {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.gwp-variant-selector label {
+  display: block;
+  font-size: 16px;
+  font-weight: 500;
+  font-family: 'Poppins';
+}
+
+.gwp-variant-dropdown {
+  width: 100%;
+  max-width: 200px;
+  padding: 8px 12px;
+  padding-right: 30px;
+  border: 1px solid #ddd;
+  border-radius: 30px;
+  font-size: 16px;
+  color: rgb(var(--color-foreground-title));
+  cursor: pointer;
+  font-family: 'Figtree';
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+  background-position: right 8px center;
+  background-repeat: no-repeat;
+  background-size: 16px;
+}
+
+.gwp-variant-dropdown:focus {
+  outline: none;
+  border-color: #2f484c;
+  box-shadow: 0 0 0 2px rgba(47, 72, 76, 0.1);
+}
+
+
+@media (min-width: 769px) {
+  .gwp-container {
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 24px;
+    margin-top: 20px;
+    
+  }
+  .gwp-variant-selector {
+  margin-bottom: 16px;
+  }
+}
+
+
+@media (max-width: 768px) {
+  .gwp-qualified {
+    display: none;
+  } 
+  .gwp-container {
+    padding: 20px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+  }
+
+  .gwp-variant-selector {
+    margin-bottom: 8px;
+    margin-top: 8px;
+  }
+
+
+  .gwp-grid {
+    grid-template-columns: 120px 1fr;
+    grid-template-areas:
+      "image header"
+      "image details";
+    gap: 0 12px;
+    align-items: start;
+  }
+
+  .gwp-product-image {
+    width: 120px;
+    height: 100%;
+  }
+
+  .gwp-header h4 {
+    font-family: 'Poppins';
+    font-weight: 500;
+    margin: 5px 0px 0px 0px;
+  }
+
+  .gwp-header p {
+    margin: 5px 0;
+    line-height: normal;
+  }
+
+  .gwp-product-title {
+    margin: 0 0 5px 0;
+  }
+
+  .gwp-progress-text {
+    font-size: 11px;
+    margin-bottom: 0;
+  }
+
+  .gwp-variant-selector label {
+    font-size: 12px;
+    text-align: left;
+  }
+
+  .gwp-variant-dropdown {
+    max-width: 100%;
+    padding: 6px 10px;
+    font-size: 12px;
+  }
+
+  .cart-gwp-section .gwp-container {
+    padding:9px;
+  }
+}
+
+@media (max-width: 768px) {
+  .gwp-details {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .gwp-details .gwp-button {
+    order: 1;
+    margin-bottom: 8px;
+    margin-top:5px;
+  }
+
+  .gwp-details .gwp-progress-text {
+    order: 2;
+  }
+
+.gwp-button.button--ctm_wb_global_button {
+    padding: 6px 34px;
+    font-size: 11px !important;
+    min-width: max-content;
+    width: 100px;
+}
+}
+
+.gwp-button.button--ctm_wb_global_button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.gwp-variant-dropdown:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+  </style>
+
+ <div class="gwp-container" data-gwp-threshold="{{ threshold }}" data-gwp-variant="{{ gift_product.variants.first.id }}">
+  <div class="gwp-grid">
+
+    <div class="gwp-header">
+      <h4>{{ block.settings.heading }}</h4>
+      <p>{{ block.settings.subheading }}</p>
+    </div>
+
+    {% if gift_product.featured_image %}
+      <img
+        src="{{ gift_product.featured_image | img_url: '300x300' }}"
+        alt="{{ gift_product.title }}"
+        class="gwp-product-image"
+        loading="lazy"
+      >
+    {% endif %}
+
+    <div class="gwp-details">
+      <h6 class="gwp-product-title">{{ gift_product.title }}</h6>
+      
+      {% if gift_product.variants.size > 1 %}
+        <div class="gwp-variant-selector">
+          <label for="gwp-variant-select">Size:</label>
+          <select id="gwp-variant-select" class="gwp-variant-dropdown">
+            {% for variant in gift_product.variants %}
+              {% if variant.available %}
+                <option value="{{ variant.id }}" {% if forloop.first %}selected{% endif %}>
+                  {{ variant.title }}{% if variant.price > 0 %} - {{ variant.price | money }}{% endif %}
+                </option>
+              {% endif %}
+            {% endfor %}
+          </select>
+        </div>
+      {% endif %}
+      
+      <div class="gwp-progress-text" data-gwp-status>
+        <span>Calculating...</span>
+      </div>
+      <button class="gwp-button button--ctm_wb_global_button" type="button">
+        Keep Shopping
+      </button>
+    </div>
+
+  </div>
+</div>
+
+
+<script>
+    (function () {
+      const container = document.querySelector('[data-gwp-threshold]');
+      if (!container) return;
+    
+      const threshold = parseInt(container.dataset.gwpThreshold);
+      const statusEl = container.querySelector('[data-gwp-status]');
+      const button = container.querySelector('.gwp-button');
+      const variantSelect = document.getElementById('gwp-variant-select');
+    
+      let cartData = null;
+      let processing = false;
+    
+      function getSelectedVariantId() {
+        return variantSelect ? parseInt(variantSelect.value) : parseInt(container.dataset.gwpVariant);
+      }
+    
+      function updateUI(cart) {
+        cartData = cart;
+    
+        const subtotal = cart.total_price;
+        const amountLeft = threshold - subtotal;
+        const qualified = subtotal >= threshold;
+        const selectedVariantId = getSelectedVariantId();
+        
+        const giftVariantIds = {% if gift_product.variants.size > 1 %}[{% for variant in gift_product.variants %}{{ variant.id }}{% unless forloop.last %},{% endunless %}{% endfor %}]{% else %}[{{ gift_product.variants.first.id }}]{% endif %};
+        const hasAnyGift = cart.items.some(item => giftVariantIds.includes(item.variant_id));
+    
+        if (qualified) {
+          statusEl.innerHTML =
+            '<span class="gwp-qualified">You qualified for a free gift!</span>';
+
+          const giftItem = cart.items.find(item => giftVariantIds.includes(item.variant_id));
+          if (giftItem && giftItem.quantity > 1 && !processing) {
+            processing = true;
+            fetch('/cart/change.js', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ id: giftItem.key, quantity: 1 })
+            }).then(() => {
+              processing = false;
+              document.dispatchEvent(new CustomEvent('cart:refresh'));
+            }).catch(() => { processing = false; });
+            return;
+          }
+
+          button.textContent = hasAnyGift ? 'Gift Added' : 'Add to Cart';
+          button.disabled = hasAnyGift;
+          if (variantSelect) variantSelect.disabled = hasAnyGift;
+        } else {
+          const amountLeftFormatted = (amountLeft / 100).toFixed(2);
+          statusEl.innerHTML = `
+            You are only 
+            <span class="amount-left">$${amountLeftFormatted}</span> 
+            away from a free gift.
+          `;
+    
+          button.textContent = 'Keep Shopping';
+          button.disabled = false;
+          if (variantSelect) variantSelect.disabled = false;
+    
+          if (hasAnyGift && !processing) {
+            processing = true;
+            const giftItem = cart.items.find(item => giftVariantIds.includes(item.variant_id));
+            const ctas = document.querySelector('.cart__ctas');
+            if (ctas) { ctas.style.pointerEvents = 'none'; ctas.style.opacity = '0.4'; }
+
+            fetch('/cart/change.js', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ id: giftItem.key, quantity: 0 })
+            }).then(() => {
+              processing = false;
+              if (ctas) { ctas.style.pointerEvents = ''; ctas.style.opacity = ''; }
+              document.dispatchEvent(new CustomEvent('cart:refresh'));
+            });
+          }
+        }
+      }
+    
+      button.addEventListener('click', function () {
+        if (!cartData) return;
+    
+        const qualified = cartData.total_price >= threshold;
+        if (!qualified) {
+          window.location.href = '/collections/all';
+          return;
+        }
+    
+        if (processing) return;
+        processing = true;
+    
+        const selectedVariantId = getSelectedVariantId();
+        
+        const giftVariantIds = {% if gift_product.variants.size > 1 %}[{% for variant in gift_product.variants %}{{ variant.id }}{% unless forloop.last %},{% endunless %}{% endfor %}]{% else %}[{{ gift_product.variants.first.id }}]{% endif %};
+        const hasAnyGift = cartData.items.some(item => giftVariantIds.includes(item.variant_id));
+        
+        if (hasAnyGift) {
+          processing = false;
+          return;
+        }
+    
+        fetch('/cart/add.js', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            items: [
+              {
+                id: selectedVariantId,
+                quantity: 1,
+                properties: { _gwp: '1' }
+              }
+            ]
+          })
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            processing = false;
+            
+            button.textContent = 'Gift Added';
+            button.disabled = true;
+            if (variantSelect) variantSelect.disabled = true;
+            
+            document.dispatchEvent(new CustomEvent('cart:refresh'));
+          })
+          .catch((error) => {
+            processing = false;
+            console.error('GWP add error:', error);
+          });
+      });
+    
+      if (variantSelect) {
+        variantSelect.addEventListener('change', function() {
+          if (cartData) {
+            updateUI(cartData);
+          } else {
+            fetch('/cart.js')
+              .then(res => res.json())
+              .then(updateUI)
+              .catch(err => console.error('GWP variant change error:', err));
+          }
+        });
+      }
+    
+      let cartUpdateTimeout;
+      const debouncedCartUpdate = function() {
+        clearTimeout(cartUpdateTimeout);
+        cartUpdateTimeout = setTimeout(() => {
+          fetch('/cart.js')
+            .then(res => res.json())
+            .then(cart => {
+              updateUI(cart);
+              document.dispatchEvent(new CustomEvent('gwp:cart-updated', { detail: { cart } }));
+            })
+            .catch(err => console.error('GWP cart update error:', err));
+        }, 300);
+      };
+
+      document.addEventListener('cart:refresh', debouncedCartUpdate);
+
+      document.addEventListener('gwp:cart-updated', function(e) {
+        updateUI(e.detail.cart);
+      });
+
+      fetch('/cart.js')
+        .then(res => res.json())
+        .then(updateUI)
+        .catch(err => console.error('GWP error:', err));
+    })();
+    </script>
+  {% endunless %}
+{% endif %}

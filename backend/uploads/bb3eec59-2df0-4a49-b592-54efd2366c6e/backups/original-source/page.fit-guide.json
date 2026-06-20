@@ -1,0 +1,522 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "shogun-helper": {
+      "type": "shogun-helper",
+      "disabled": true,
+      "settings": {}
+    },
+    "pages": {
+      "type": "main-page",
+      "disabled": true,
+      "custom_css": [
+        ".container {padding-top: 50px; padding-bottom: 50px;}",
+        "h1 {text-align: center;}"
+      ],
+      "settings": {
+        "extra_class": ""
+      }
+    },
+    "shogun-optimizer": {
+      "type": "shogun-optimizer",
+      "disabled": true,
+      "settings": {}
+    },
+    "slideshow_rjj4id": {
+      "type": "slideshow",
+      "blocks": {
+        "slide_yYixH8": {
+          "type": "slide",
+          "settings": {
+            "extra_class": "women-day anniversary-also champion_ctm fit_guide_banner",
+            "color_scheme": "dark",
+            "image": "shopify://shop_images/Main_Banner_desktop_c893520d-caeb-4752-bea1-43254eb4fe6e.jpg",
+            "image2": "shopify://shop_images/Main_banner_mobile_aee59816-8bc1-4c02-972a-1a48b96a5879.jpg",
+            "image_size": "adapt",
+            "caption": "WOMEN’S",
+            "heading": "LEGGINGS FIT GUIDE",
+            "subtitle": "",
+            "additional_information": "Find your perfect fit—so you can focus on\nperformance, not pulling your waistband up. Choose\nyour fit and get after it.",
+            "show_review_rating": false,
+            "review_count": 5,
+            "text_content_alignment": "center-left",
+            "text_alignment": "left",
+            "max_width": 700,
+            "button_label1": "Shop Women’s Leggings",
+            "button_link1": "shopify://collections/leggings",
+            "button_label2": "",
+            "button_link2": "",
+            "button_style": "link",
+            "underline_color": "#3eb671"
+          }
+        }
+      },
+      "block_order": [
+        "slide_yYixH8"
+      ],
+      "name": "t:sections.slideshow.presets.name",
+      "settings": {
+        "extra_class": "ctm_fit-leggings ctm-button-above-banner",
+        "block_size": "full-screen",
+        "overlay_enable": false,
+        "overlay_opacity": 20,
+        "slideshow_speed": 1.1,
+        "slideshow_delay": 3,
+        "autoplay": true,
+        "hover_autoplay_stop": true,
+        "navigation": true,
+        "pagination": true,
+        "margin_top": 0,
+        "margin_bottom": 50,
+        "top_padding_desktop": 0,
+        "bottom_padding_desktop": 0,
+        "top_padding_mobile": 0,
+        "bottom_padding_mobile": 0,
+        "top_margin_desktop": 0,
+        "bottom_margin_desktop": 0,
+        "top_margin_mobile": 0,
+        "bottom_margin_mobile": 0
+      }
+    },
+    "image_card_yyCdRU": {
+      "type": "image-card",
+      "blocks": {
+        "collection_item_UbDeAt": {
+          "type": "collection_item",
+          "settings": {
+            "collection": "",
+            "link": "",
+            "custom_image": "shopify://shop_images/BIKER_SHORTS.jpg",
+            "title": "BIKER SHORTS ",
+            "enable_title": false,
+            "subtext": "",
+            "description": "<p class=\"desc-main1\">All the performance, just cut shorter. High-\nrise and sculpting, made to stay put while\nyou move.</p>\n\n<p class=\"desc-main2\"><strong>Inseam:</strong> 5\"<br>\n<strong>Best for:</strong> Warm weather workouts, layering,\nor just keeping it cool.</p>",
+            "button_label": "SHOP BIKER SHORTS"
+          }
+        },
+        "collection_item_QC4Mep": {
+          "type": "collection_item",
+          "settings": {
+            "collection": "",
+            "link": "",
+            "custom_image": "shopify://shop_images/7_8_LENGTH.jpg",
+            "title": "7/8 LENGTH",
+            "enable_title": false,
+            "subtext": "",
+            "description": "<p class=\"desc-main1\">Hits just above the ankle. Perfect for\neveryday training, hot weather, or when you\nwant a little less fabric without going full\ncrop.</p>\n\n<p class=\"desc-main2\"><strong>Inseam:</strong> 23\"<br>\n<strong>Best for:</strong> Petite builds or anyone who likes a\nlighter look.</p>",
+            "button_label": "SHOP ⅞ LEGGINGS"
+          }
+        },
+        "collection_item_7b4zRG": {
+          "type": "collection_item",
+          "settings": {
+            "collection": "",
+            "link": "",
+            "custom_image": "shopify://shop_images/STANDARD_LENGTH.jpg",
+            "title": "STANDARD LENGTH",
+            "enable_title": false,
+            "subtext": "",
+            "description": "<p class=\"desc-main1\">Classic full-length leggings that hit at the\nankle. Clean, streamlined, and built for\nmovement.</p>\n\n<p class=\"desc-main2\"><strong>Inseam:</strong> 25\"<br>\n<strong>Best for:</strong> Most heights and activities.</p>",
+            "button_label": "SHOP REGULAR LEGGINGS"
+          }
+        },
+        "collection_item_JrgCiU": {
+          "type": "collection_item",
+          "settings": {
+            "collection": "",
+            "link": "",
+            "custom_image": "shopify://shop_images/STANDARD_LENGTH_WITH_POCKETS.jpg",
+            "title": "STANDARD LENGTH WITH POCKETS",
+            "enable_title": false,
+            "subtext": "",
+            "description": "<p class=\"desc-main1\">The same classic length as our standard fit — but with pockets that actually hold your phone.\n</p>\n\n<p class=\"desc-main2\"><strong>Inseam:</strong> 25\"<br>\n<strong>Best for:</strong> Most heights and activities.</p>",
+            "button_label": "SHOP LEGGINGS WITH POCKETS"
+          }
+        },
+        "collection_item_aLmjhA": {
+          "type": "collection_item",
+          "settings": {
+            "collection": "",
+            "link": "",
+            "custom_image": "shopify://shop_images/TALL_LENGTH.jpg",
+            "title": "TALL LENGTH",
+            "enable_title": false,
+            "subtext": "",
+            "description": "<p class=\"desc-main1\">A longer inseam that gives more coverage\nfor longer legs without riding up or sliding\ndown.</p>\n<p class=\"desc-main2\"><strong>Inseam:</strong> 30\"<br>\n<strong>Best for:</strong> 5’9” and up, or anyone who wants\nextra length.</p>",
+            "button_label": "SHOP TALL LEGGINGS"
+          }
+        }
+      },
+      "block_order": [
+        "collection_item_UbDeAt",
+        "collection_item_QC4Mep",
+        "collection_item_7b4zRG",
+        "collection_item_JrgCiU",
+        "collection_item_aLmjhA"
+      ],
+      "name": "Collection Grid",
+      "settings": {
+        "section_extra_class": "custom-button-border text-left-align perfect-fit-collection-grid",
+        "enable_full_width": false,
+        "heading": "FIND YOUR PERFECT FIT",
+        "text_alignment": "left",
+        "text-placement": "below_product",
+        "background_color": "#f7f7f7",
+        "button_label": "SHOP ALL LEGGINGS",
+        "button_link": "shopify://collections/leggings",
+        "button_style": "link",
+        "underline_color": "#000000",
+        "desktop_slide": 5,
+        "mobile_slide": 1.1,
+        "top_padding_desktop": 0,
+        "bottom_padding_desktop": 0,
+        "top_padding_mobile": 0,
+        "bottom_padding_mobile": 0,
+        "top_margin_desktop": 0,
+        "bottom_margin_desktop": 0,
+        "top_margin_mobile": 0,
+        "bottom_margin_mobile": 0
+      }
+    },
+    "image_with_text_3wJdaC": {
+      "type": "image-with-text",
+      "name": "t:sections.image_with_text.name",
+      "settings": {
+        "row-reverse": "row",
+        "image": "shopify://shop_images/Size_desktop.jpg",
+        "image_size": "adapt",
+        "show_frame": true,
+        "color_scheme": "background-2",
+        "frame-text": "",
+        "frame-text-right": "",
+        "color_scheme_2": "background-2",
+        "heading": "<h1>HOW TO MEASURE YOURSELF</h1>",
+        "subheading": "<p>Use a soft measuring tape to take your measurements\nand find the fit that works best for you. No guesswork—just\ncomfortable, reliable leggings that move with you.</p>",
+        "desc": "<p>1. <b>Waist</b> – Measure around your natural waist—the smallest\npart, right above your belly button.</p>\n<p>2. <b>Hips</b> – Measure around the widest part of your hips while\nwearing fitted, non-bulky bottoms.</p>\n<p>3. <b>Inseam</b> – Start at the base where your legs meet and\nmeasure down to your ankle.</p>\n\n<div class=\"image-with-text__content-item\">\n  <button class=\"button  button--rebuy  button--link size-chart-button\" type=\"button\">Size Chart</button>\n</div>",
+        "subheading_left_top": "",
+        "subheading_left_bottom": "",
+        "subheading_right_top": "",
+        "subheading_right_bottom": "",
+        "button_text": "",
+        "button_link": "",
+        "button_style": "link",
+        "underline_color": "#000000",
+        "margin_top": 50,
+        "margin_bottom": 50,
+        "lookbook_detail_class": "fullscreen-container fit-guide-ctm",
+        "top_padding_desktop": 0,
+        "bottom_padding_desktop": 0,
+        "top_padding_mobile": 0,
+        "bottom_padding_mobile": 0,
+        "top_margin_desktop": 0,
+        "bottom_margin_desktop": 0,
+        "top_margin_mobile": 0,
+        "bottom_margin_mobile": 0
+      }
+    },
+    "slideshow_At8NpH": {
+      "type": "slideshow",
+      "blocks": {
+        "slide_iyKdQJ": {
+          "type": "slide",
+          "settings": {
+            "extra_class": "women-day anniversary-also champion_ctm ctm-sizing-banner",
+            "color_scheme": "dark",
+            "image": "shopify://shop_images/NOT_SURE_ABOUT_SIZING__desktop.jpg",
+            "image2": "shopify://shop_images/NOT_SURE_ABOUT_SIZING__mobile.jpg",
+            "image_size": "adapt",
+            "caption": "",
+            "heading": "NOT SURE ABOUT SIZING?",
+            "subtitle": "",
+            "additional_information": "You’ve got 30 days to try it on at home and decide if it’s a keeper. No pressure,\nno hassle.<br><br>\nContact us or check out real customer reviews for fit notes.",
+            "show_review_rating": false,
+            "review_count": 5,
+            "text_content_alignment": "center",
+            "text_alignment": "center",
+            "max_width": 1200,
+            "button_label1": "CONTACT US",
+            "button_link1": "shopify://pages/customer-service",
+            "button_label2": "",
+            "button_link2": "",
+            "button_style": "secondary",
+            "underline_color": "#3eb671"
+          }
+        }
+      },
+      "block_order": [
+        "slide_iyKdQJ"
+      ],
+      "name": "t:sections.slideshow.presets.name",
+      "settings": {
+        "extra_class": "not-sure-sizing-guide ctm-button-above-banner",
+        "block_size": "full-screen",
+        "overlay_enable": false,
+        "overlay_opacity": 20,
+        "slideshow_speed": 1.1,
+        "slideshow_delay": 3,
+        "autoplay": true,
+        "hover_autoplay_stop": true,
+        "navigation": true,
+        "pagination": true,
+        "margin_top": 40,
+        "margin_bottom": 40,
+        "top_padding_desktop": 0,
+        "bottom_padding_desktop": 0,
+        "top_padding_mobile": 0,
+        "bottom_padding_mobile": 0,
+        "top_margin_desktop": 0,
+        "bottom_margin_desktop": 0,
+        "top_margin_mobile": 0,
+        "bottom_margin_mobile": 0
+      }
+    },
+    "image_card_ahVYpj": {
+      "type": "image-card",
+      "blocks": {
+        "collection_item_zyJMYk": {
+          "type": "collection_item",
+          "settings": {
+            "collection": "teal",
+            "link": "",
+            "custom_image": "shopify://shop_images/Teal_c76646ef-bb56-4a3d-b417-8c28ace9edb1.jpg",
+            "title": "",
+            "enable_title": false,
+            "subtext": "",
+            "description": "",
+            "button_label": "SHOP TEAL"
+          }
+        },
+        "collection_item_QddMgk": {
+          "type": "collection_item",
+          "settings": {
+            "collection": "indigo",
+            "link": "",
+            "custom_image": "shopify://shop_images/Indigo_77cc649f-b367-4253-8888-7419edbf89b2.jpg",
+            "title": "",
+            "enable_title": false,
+            "subtext": "",
+            "description": "",
+            "button_label": "SHOP INDIGO"
+          }
+        },
+        "collection_item_36J3QE": {
+          "type": "collection_item",
+          "settings": {
+            "collection": "black",
+            "link": "",
+            "custom_image": "shopify://shop_images/Black.jpg",
+            "title": "",
+            "enable_title": false,
+            "subtext": "",
+            "description": "",
+            "button_label": "SHOP BLACK"
+          }
+        },
+        "collection_item_kpt3fL": {
+          "type": "collection_item",
+          "settings": {
+            "collection": "navy",
+            "link": "",
+            "custom_image": "shopify://shop_images/Navy_46208123-d3e4-4188-80d0-fdf354309f04.jpg",
+            "title": "",
+            "enable_title": false,
+            "subtext": "",
+            "description": "",
+            "button_label": "SHOP NAVY"
+          }
+        }
+      },
+      "block_order": [
+        "collection_item_zyJMYk",
+        "collection_item_QddMgk",
+        "collection_item_36J3QE",
+        "collection_item_kpt3fL"
+      ],
+      "name": "Collection Grid",
+      "settings": {
+        "section_extra_class": "ctm-by-color ctm-fit-by-color",
+        "enable_full_width": false,
+        "heading": "SHOP BY COLOR",
+        "text_alignment": "left",
+        "text-placement": "below_product",
+        "background_color": "#f7f7f7",
+        "button_label": "SHOP ALL LEGGINGS",
+        "button_link": "shopify://collections/leggings",
+        "button_style": "link",
+        "underline_color": "#000000",
+        "desktop_slide": 4,
+        "mobile_slide": 1,
+        "top_padding_desktop": 0,
+        "bottom_padding_desktop": 0,
+        "top_padding_mobile": 0,
+        "bottom_padding_mobile": 0,
+        "top_margin_desktop": 0,
+        "bottom_margin_desktop": 0,
+        "top_margin_mobile": 0,
+        "bottom_margin_mobile": 0
+      }
+    },
+    "banner_with_text_y4X8gU": {
+      "type": "banner-with-text",
+      "name": "t:sections.banner-with-text.name",
+      "settings": {
+        "extra_class": "ctm-fit-banner ctm-white-btn",
+        "spring_banner_class": "",
+        "color_scheme": "light",
+        "image": "shopify://shop_images/NOT_SURE_ABOUT_SIZING__desktop.jpg",
+        "image_mobile": "shopify://shop_images/NOT_SURE_ABOUT_SIZING__desktop.jpg",
+        "image_size": "small",
+        "desktop_banner_height": 0,
+        "tablet_banner_height": 80,
+        "mobile_banner_height": 70,
+        "title": "",
+        "content_text": "",
+        "caption_class": "",
+        "text_alignment": "center",
+        "content_width": "sixty",
+        "overlay_enable": true,
+        "overlay_opacity": 20,
+        "button_link": "shopify://pages/fabric-guide",
+        "button_label": "EXPLORE OUR PERFORMANCE FABRICS",
+        "second_button_link": "",
+        "second_button_label": "",
+        "button_style": "secondary",
+        "mobile_button_style": "button--ctm_global_button",
+        "mobile_cta_button_link": "",
+        "mobile_cta_button_label": "",
+        "mobile_second_cta_button_link": "",
+        "mobile_second_cta_button_label": "",
+        "heading_font_family": "Poppins, sans-serif",
+        "subheading_font_family": "Poppins, sans-serif",
+        "caption_font_family": "Poppins, sans-serif",
+        "heading_font_size_desktop": 48,
+        "heading_font_size_tablet": 40,
+        "heading_font_size_mobile": 32,
+        "subheading_font_size_desktop": 18,
+        "subheading_font_size_mobile": 16,
+        "caption_font_size_desktop": 14,
+        "caption_font_size_mobile": 12,
+        "heading_font_weight": 600,
+        "heading_line_height": 1.2,
+        "heading_letter_spacing": 0,
+        "subheading_font_weight": 400,
+        "subheading_line_height": 1.5,
+        "subheading_margin": 0,
+        "caption_font_weight": 500,
+        "caption_line_height": 1.3,
+        "show_heading_mobile": true,
+        "show_subheading_mobile": true,
+        "desktop_content_position": "center",
+        "mobile_content_position": "center",
+        "margin_top": 80,
+        "margin_bottom": 80,
+        "top_margin_mobile": 0,
+        "bottom_margin_mobile": 0,
+        "top_padding_desktop": 0,
+        "bottom_padding_desktop": 0,
+        "top_padding_mobile": 0,
+        "bottom_padding_mobile": 0
+      }
+    },
+    "faq_accorddion_TxQRAy": {
+      "type": "faq-accorddion",
+      "blocks": {
+        "faq_VHwNmg": {
+          "type": "faq",
+          "settings": {
+            "question": "<p>Are your leggings true to size?</p>",
+            "answer": "Yes—our leggings are designed to fit true to size. They’re high-rise with a snug, sculpting fit that moves with you. For a little more room, size up. Be sure to check the size chart on each product page for the best fit.",
+            "faq_answer": ""
+          }
+        },
+        "faq_YCfCPN": {
+          "type": "faq",
+          "settings": {
+            "question": "<p>What if I’m between sizes?</p>",
+            "answer": "If you’re between sizes, it depends on how you like your fit. For a snug, sculpting feel—especially in our high-rise leggings—we recommend sizing down. If you prefer a bit more room to move, go with the larger size. Check the size chart and product details for guidance specific to each style.",
+            "faq_answer": ""
+          }
+        },
+        "faq_mB7xGP": {
+          "type": "faq",
+          "settings": {
+            "question": "<p>Do all of the leggings have pockets?</p>",
+            "answer": "Not all of our leggings have pockets. Some styles feature convenient, secure pockets designed for your essentials, while others focus on a sleek, streamlined fit. Check the product description for each legging to see if pockets are included.",
+            "faq_answer": ""
+          }
+        },
+        "faq_DeitFA": {
+          "type": "faq",
+          "settings": {
+            "question": "<p>What materials are the leggings made from?</p>",
+            "answer": "Our leggings are crafted from our exclusive Legit™ fabric—made of 86% polyester and 14% elastane. Think soft, durable, and ready to keep up with every move you make. This high-performance blend feels amazing against your skin, stretches where you need it, and holds its shape so you can squat, run, and chill without missing a beat.",
+            "faq_answer": ""
+          }
+        },
+        "faq_RHxYHW": {
+          "type": "faq",
+          "settings": {
+            "question": "<p>Are they all high-waisted?</p>",
+            "answer": "Yes. All of our leggings feature a high-rise fit designed to offer support and a flattering, sculpting feel.",
+            "faq_answer": ""
+          }
+        },
+        "faq_JmVXYD": {
+          "type": "faq",
+          "settings": {
+            "question": "<p>Are they see-through?</p>",
+            "answer": "Nope. Our leggings are made with high-quality, performance fabrics designed to keep you covered—no surprises here. You can squat, stretch, and sprint with confidence. If you’re worried about sheerness, check out the product details or reviews for extra peace of mind.",
+            "faq_answer": ""
+          }
+        },
+        "faq_xWaBzD": {
+          "type": "faq",
+          "settings": {
+            "question": "<p>Do they shrink in the wash?</p>",
+            "answer": "Our leggings are made with durable fabrics designed to hold their shape wash after wash. To keep them looking and fitting their best, follow the care instructions on the label—usually cold wash and air dry or tumble dry low. Proper care helps prevent any shrinking or stretching.",
+            "faq_answer": ""
+          }
+        }
+      },
+      "block_order": [
+        "faq_VHwNmg",
+        "faq_YCfCPN",
+        "faq_mB7xGP",
+        "faq_DeitFA",
+        "faq_RHxYHW",
+        "faq_JmVXYD",
+        "faq_xWaBzD"
+      ],
+      "name": "FAQ Accordion",
+      "settings": {
+        "title": "FAQS",
+        "desc": "Still need help? Contact us at orders@xx-xyathletics.com for support.",
+        "extra_class": "",
+        "desktop_margin_top": 50,
+        "desktop_margin_bottom": 50,
+        "mobile_margin_top": 30,
+        "mobile_margin_bottom": 30
+      }
+    }
+  },
+  "order": [
+    "shogun-helper",
+    "pages",
+    "shogun-optimizer",
+    "slideshow_rjj4id",
+    "image_card_yyCdRU",
+    "image_with_text_3wJdaC",
+    "slideshow_At8NpH",
+    "image_card_ahVYpj",
+    "banner_with_text_y4X8gU",
+    "faq_accorddion_TxQRAy"
+  ]
+}

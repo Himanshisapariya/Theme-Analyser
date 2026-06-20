@@ -1,0 +1,315 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "custom_liquid_LnbgfJ": {
+          "type": "custom_liquid",
+          "disabled": true,
+          "settings": {
+            "custom_liquid": "{% if  product.metafields.custom.promo_message %}\n        <div class=\"promo-message pdp-promo-message\">\n            {{ product.metafields.custom.promo_message }}\n        </div>\n    {% endif %}"
+          }
+        },
+        "price": {
+          "type": "price",
+          "disabled": true,
+          "settings": {
+            "show_shoppay": false
+          }
+        },
+        "d7d20120-c860-4d76-89a0-5c5b7cc4350f": {
+          "type": "shopify://apps/yotpo-product-reviews/blocks/star-rating/eb7dfd7d-db44-4334-bc49-c893b51b36cf",
+          "disabled": true,
+          "settings": {
+            "product": "{{product}}"
+          }
+        },
+        "custom_liquid_HaxTGE": {
+          "type": "custom_liquid",
+          "disabled": true,
+          "settings": {
+            "custom_liquid": "<div class=\"yotpo-widget-instance\" data-yotpo-instance-id=\"733680\" data-yotpo-product-id=\"{{product.id}}\" data-yotpo-cart-product-id=\"{{item.product.id}}\" data-yotpo-section-id=\"{{template.name}}\"></div>"
+          }
+        },
+        "yotpo_product_reviews_ugc_star_rating_TCmwmW": {
+          "type": "shopify://apps/yotpo-product-reviews/blocks/star-rating/eb7dfd7d-db44-4334-bc49-c893b51b36cf",
+          "disabled": true,
+          "settings": {
+            "product": "{{product}}"
+          }
+        },
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "button"
+          }
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": false,
+            "show_gift_card_recipient": false
+          }
+        },
+        "custom_liquid_7kkQdg": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "<div class=\"ctm-gift-card-note\">\n<p><strong>IMPORTANT:</strong> Gift Cards cannot be purchased using discount codes and must be purchased on their own (they can’t be combined with other products at checkout). They’re redeemable for XX-XY Athletics gear on our U.S. site only. Please note: Gift Cards are valid only in the country where they’re purchased, and promotions such as gifts with purchase do not apply.</p>\n</div>"
+          }
+        },
+        "custom_liquid_NMdt6c": {
+          "type": "custom_liquid",
+          "disabled": true,
+          "settings": {
+            "custom_liquid": "{% if  product.metafields.custom.extra_variant_message %}\n        <div class=\"variant-message\">\n            {{ product.metafields.custom.extra_variant_message }}\n        </div>\n    {% endif %}"
+          }
+        },
+        "custom_liquid_RqKffA": {
+          "type": "custom_liquid",
+          "disabled": true,
+          "settings": {
+            "custom_liquid": "<div class=\"ctm-shipping-wrapper\">\n    <div class=\"ctm-svg-wrapper\">\n        <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"30\" height=\"30\" aria-hidden=\"true\" viewBox=\"0 0 25 24\"\n            fill=\"none\">\n            <path\n                d=\"M16.5804 17.5267V12.9131M16.5804 17.5267C16.5804 18.7258 17.5524 19.6979 18.7515 19.6979C19.9506 19.6979 20.9226 18.7258 20.9226 17.5267M16.5804 17.5267C16.5804 17.0514 16.7332 16.6117 16.9923 16.2541M16.5804 8.84225V5.13925C16.5804 4.7862 16.2942 4.5 15.9411 4.5H5.82124C5.46819 4.5 5.18199 4.7862 5.18199 5.13925V15.8422C5.18199 16.0697 5.36641 16.2541 5.5939 16.2541V16.2541M16.5804 8.84225H19.8371L23.0938 12.9131M16.5804 8.84225V12.9131M23.0938 12.9131V17.5267H20.9226M23.0938 12.9131H16.5804M20.9226 17.5267C20.9226 16.3277 19.9506 15.3556 18.7515 15.3556C18.0278 15.3556 17.3868 15.7097 16.9923 16.2541M13.231 11.5368H5.18199H1.34375M10.674 9.29779H5.18199H2.30331M16.9923 16.2541H9.11232M9.11232 16.2541C8.71782 15.7097 8.07682 15.3556 7.35311 15.3556C6.62941 15.3556 5.98841 15.7097 5.5939 16.2541M9.11232 16.2541C9.37146 16.6117 9.52423 17.0514 9.52423 17.5267C9.52423 18.7258 8.55219 19.6979 7.35311 19.6979C6.15403 19.6979 5.18199 18.7258 5.18199 17.5267C5.18199 17.0514 5.33477 16.6117 5.5939 16.2541\"\n                stroke=\"#1C1519\"></path>\n        </svg>\n    </div>\n    <div clas=\"ctm-content\">\n        <div class=\"delivery-promise__promise-container\"></div>\n        {% if product.handle != 'team-women-running-club-membership' %}\n        <div style=\"font-size: 14px !important;color: black !important;\">\n            <b>Free Shipping </b>for $100+ Orders and <b>Free Returns</b>\n        </div>\n        {% endif %}\n    </div>\n</div>"
+          }
+        },
+        "product-description": {
+          "type": "product-description",
+          "settings": {
+            "default_open": true
+          }
+        },
+        "perfect-fit": {
+          "type": "perfect-fit",
+          "disabled": true,
+          "settings": {
+            "about_heading": "Perfect Fit",
+            "about_heading_content": "<p>Some description</p>",
+            "show_link_slider": false
+          }
+        },
+        "pickup_availability": {
+          "type": "pickup_availability",
+          "disabled": true,
+          "settings": {}
+        },
+        "sku_AqYWf3": {
+          "type": "sku",
+          "disabled": true,
+          "settings": {}
+        },
+        "upsell_products_UyWzPR": {
+          "type": "upsell_products",
+          "disabled": true,
+          "settings": {
+            "extra_class": ""
+          }
+        }
+      },
+      "block_order": [
+        "custom_liquid_LnbgfJ",
+        "price",
+        "d7d20120-c860-4d76-89a0-5c5b7cc4350f",
+        "custom_liquid_HaxTGE",
+        "yotpo_product_reviews_ugc_star_rating_TCmwmW",
+        "variant_picker",
+        "buy_buttons",
+        "custom_liquid_7kkQdg",
+        "custom_liquid_NMdt6c",
+        "custom_liquid_RqKffA",
+        "product-description",
+        "perfect-fit",
+        "pickup_availability",
+        "sku_AqYWf3",
+        "upsell_products_UyWzPR"
+      ],
+      "custom_css": [
+        ".pdp-promo-message {padding-top: 10px; font-size: 18px; color: #2ab572; font-weight: bold;}",
+        ".pdp-promo-message a {padding-top: 10px; font-size: 18px; color: #2ab572; font-weight: bold;}",
+        ".pdp-promo-message a {text-decoration: underline; text-decoration-color: #2ab572;}",
+        ".product__subtitle,.yotpo-widget-instance {display: block; width: 100%;}"
+      ],
+      "settings": {
+        "image_gallery_collage": "stacked",
+        "image_grid": "2",
+        "desktop_alignment": "right",
+        "mobile_alignment": "after",
+        "image_fit": "cover",
+        "show_share_facebook": false,
+        "show_share_twitter": false,
+        "show_share_pinterest": false,
+        "show_share_copy": false
+      }
+    },
+    "ctm_mix_match_collection_dLptJr": {
+      "type": "ctm-mix-match-collection",
+      "custom_css": [
+        ".product-carousel .product-carousel__top {padding-bottom: 25px; padding-top: 15px;}"
+      ],
+      "settings": {
+        "heading": "<p>Mix & Match: 3 Graphic Tees or Hats for 20% Off</p>",
+        "collection": "mix-match-for-20-off",
+        "product_list": [],
+        "products_count": 5,
+        "link": "View All",
+        "button_link": "shopify://collections/mix-match-for-20-off",
+        "image_ratio": "square",
+        "image_fit": "cover",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_desc": false,
+        "show_sku": false,
+        "quickview_show": true,
+        "show_link_carousel": false,
+        "margin_top": 50,
+        "margin_bottom": 50,
+        "lookbook_slider_class": ""
+      }
+    },
+    "product-recommendations": {
+      "type": "product-recommendations",
+      "custom_css": [
+        "h2 {font-size: 24px; line-height: 32px; padding-top: 20px;}"
+      ],
+      "settings": {
+        "heading": "<p>You Might Also Like</p>",
+        "link": "",
+        "button_link": "",
+        "products_limit": 8,
+        "enable_swiper": false,
+        "image_ratio": "portrait",
+        "image_fit": "cover",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_desc": false,
+        "show_sku": false,
+        "quickview_show": true,
+        "show_link": true,
+        "margin_top": 40,
+        "margin_bottom": 60
+      }
+    },
+    "recetly_product_HAPeMi": {
+      "type": "recetly-product",
+      "name": "Recently Viewed Product",
+      "settings": {
+        "title": "Recently viewed",
+        "products_limit": 8,
+        "desk_slides_per_view": 5
+      }
+    },
+    "f7d0684b3932c1b79b63": {
+      "type": "apps",
+      "blocks": {
+        "98c13756-dc34-4953-8818-c1f58543b699": {
+          "type": "shopify://apps/yotpo-product-reviews/blocks/reviews/eb7dfd7d-db44-4334-bc49-c893b51b36cf",
+          "settings": {
+            "product": "{{product}}"
+          }
+        }
+      },
+      "block_order": [
+        "98c13756-dc34-4953-8818-c1f58543b699"
+      ],
+      "settings": {
+        "include_margins": true
+      }
+    },
+    "custom_liquid_6BVt3f": {
+      "type": "custom-liquid",
+      "disabled": true,
+      "settings": {
+        "custom_liquid": "<div class=\"yotpo-widget-instance\" data-yotpo-instance-id=\"733679\" data-yotpo-product-id=\"{{product.id}}\" data-yotpo-name=\"{{ product.title | escape }}\" data-yotpo-url=\"{{ shop.url }}{{ product.url }}\" data-yotpo-image-url=\"{{ product.featured_image | product_img_url: \"large\" | prepend: \"https:\" | replace: '?', '%3F' | replace: '&','%26'}}\" data-yotpo-price=\"{{ product.price | divided_by: 100.00 }}\" data-yotpo-currency=\"{{ shop.currency }}\" data-yotpo-description=\"{{ product.description | escape }}\"></div>"
+      }
+    },
+    "e4f339f2-3b69-4e29-be3c-e5903b404092": {
+      "type": "instagram-collage",
+      "blocks": {
+        "template--17224267399481__e4f339f2-3b69-4e29-be3c-e5903b404092-168309399123060deb-0": {
+          "type": "card",
+          "settings": {
+            "button_link": ""
+          }
+        },
+        "template--17224267399481__e4f339f2-3b69-4e29-be3c-e5903b404092-168309399123060deb-1": {
+          "type": "card",
+          "settings": {
+            "button_link": ""
+          }
+        },
+        "template--17224267399481__e4f339f2-3b69-4e29-be3c-e5903b404092-168309399123060deb-2": {
+          "type": "card",
+          "settings": {
+            "button_link": ""
+          }
+        },
+        "template--17224267399481__e4f339f2-3b69-4e29-be3c-e5903b404092-168309399123060deb-3": {
+          "type": "card-text",
+          "settings": {
+            "card-text_description": "<p>Some additional information</p>",
+            "heading_size": "medium",
+            "vertical_settings": "end",
+            "horizontal_settings": "left",
+            "color_scheme_2": "background-5"
+          }
+        }
+      },
+      "block_order": [
+        "template--17224267399481__e4f339f2-3b69-4e29-be3c-e5903b404092-168309399123060deb-0",
+        "template--17224267399481__e4f339f2-3b69-4e29-be3c-e5903b404092-168309399123060deb-1",
+        "template--17224267399481__e4f339f2-3b69-4e29-be3c-e5903b404092-168309399123060deb-2",
+        "template--17224267399481__e4f339f2-3b69-4e29-be3c-e5903b404092-168309399123060deb-3"
+      ],
+      "disabled": true,
+      "settings": {
+        "color_scheme": "background-3",
+        "title": "<p>Heading</p>",
+        "text": "Your text",
+        "overlay_enable": false,
+        "overlay_opacity": 10,
+        "button_text": "link label",
+        "button_link": "",
+        "padding_top": 130,
+        "padding_bottom": 160,
+        "margin_top": 140,
+        "margin_bottom": 0
+      }
+    },
+    "171387656909b19bfa": {
+      "type": "apps",
+      "blocks": {
+        "yotpo_product_reviews_ugc_reviews_gCcG7p": {
+          "type": "shopify://apps/yotpo-product-reviews/blocks/reviews/eb7dfd7d-db44-4334-bc49-c893b51b36cf",
+          "disabled": true,
+          "settings": {
+            "product": "{{product}}"
+          }
+        }
+      },
+      "block_order": [
+        "yotpo_product_reviews_ugc_reviews_gCcG7p"
+      ],
+      "custom_css": [],
+      "settings": {
+        "include_margins": true
+      }
+    }
+  },
+  "order": [
+    "main",
+    "ctm_mix_match_collection_dLptJr",
+    "product-recommendations",
+    "recetly_product_HAPeMi",
+    "f7d0684b3932c1b79b63",
+    "custom_liquid_6BVt3f",
+    "e4f339f2-3b69-4e29-be3c-e5903b404092",
+    "171387656909b19bfa"
+  ]
+}

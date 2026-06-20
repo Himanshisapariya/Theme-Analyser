@@ -1,0 +1,26 @@
+  <div class="inventory__title">
+  <span id="Inventory-{{ section.id }}">
+    {% if product.selected_or_first_available_variant.inventory_quantity < 6 and product.selected_or_first_available_variant.inventory_quantity != 0 %}
+      <span class="advantage__title">
+       
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+          >
+            <path d="M9 20H15" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M6.26945 9.85C6.26945 8.29848 6.87312 6.81051 7.94766 5.71343C9.02219 4.61634 10.4796 4 11.9992 4C13.5188 4 14.9762 4.61634 16.0508 5.71343C17.1253 6.81051 17.729 8.29848 17.729 9.85C17.729 12.7604 18.3895 15.0987 18.9147 16.025C18.9705 16.1236 18.9999 16.2355 19 16.3494C19.0001 16.4633 18.9709 16.5753 18.9153 16.674C18.8597 16.7728 18.7796 16.8548 18.6831 16.9121C18.5867 16.9693 18.4772 16.9996 18.3656 17H5.63281C5.52138 16.9993 5.41208 16.9688 5.31583 16.9115C5.21958 16.8541 5.13976 16.772 5.08434 16.6733C5.02891 16.5746 4.99983 16.4628 5 16.349C5.00017 16.2353 5.02958 16.1235 5.0853 16.025C5.60973 15.0987 6.26945 12.7596 6.26945 9.85Z" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span>
+            {{
+              'products.product.quantity.in_stock'
+              | t: quantity: product.selected_or_first_available_variant.inventory_quantity
+            -}}
+          </span>
+      </span>
+    {% endif %}
+  </span>
+</div>
+

@@ -1,0 +1,73 @@
+<div class="{{ section.settings.extra_class }} ctm-pooof-sticky-btn w-max mx-auto">
+  <a href="{{ section.settings.button_url }}" class="ctm-button secondary-button !px-16">{{ section.settings.button_text }}</a>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const stickyBtn = document.querySelector('.ctm-pooof-sticky-btn');
+    const targetSection = document.getElementById('ctm-sticky-btn');
+    
+    // If target section doesn't exist, keep button hidden and exit
+    if (!targetSection) {
+      stickyBtn.style.display = 'none';
+      return;
+    }
+
+    function checkVisibility() {
+      const sectionRect = targetSection.getBoundingClientRect();
+      const windowHeight = window.innerHeight;
+      
+      // Show button only when section is in viewport
+      const isSectionInView = (
+        sectionRect.top <= windowHeight && 
+        sectionRect.bottom >= 0
+      );
+      
+      // Only show the button if the section is within the viewport range
+      stickyBtn.style.display = isSectionInView ? 'flex' : 'none';
+    }
+
+    // Call checkVisibility function when scrolling and on resize (to account for layout changes)
+    let isScrolling;
+    window.addEventListener('scroll', function() {
+      clearTimeout(isScrolling);
+      isScrolling = setTimeout(checkVisibility, 50);
+    });
+
+    // Also check visibility on window resize
+    window.addEventListener('resize', checkVisibility);
+
+    // Initial check
+    checkVisibility();
+  });
+</script>
+
+
+{% schema %}
+{
+  "name": "Sticky Pooof ATC",
+  "class": "ctm-sticky-pooof-atc-main",
+  "settings": [
+    {
+      "type": "text",
+      "label": "Extra Class",
+      "id": "extra_class"
+    },
+    {
+      "type": "text",
+      "label": "Button Text",
+      "id": "button_text"
+    },
+    {
+      "type": "url",
+      "label": "Button URL",
+      "id": "button_url"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Sticky Pooof ATC"
+    }
+  ]
+}
+{% endschema %}

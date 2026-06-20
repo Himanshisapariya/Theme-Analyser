@@ -1,0 +1,104 @@
+{{ 'section-main-page.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+<div class="ctm_breadcrumb_section page-widths page-width--narrows section-{{ section.id }}-padding {{ section.settings.extra_class }}">
+  {%- if section.settings.breadcrumb_image != blank -%}
+    <div class="ctm_breadcrumb_banner">
+      <div class="ctm_breadcrumb_img relative">
+        <img
+          class="w-full {% if page.handle == 'reviews' %} object-80 {% endif %} object-cover h-[280px] midlarge_desktop:h-[354px]"
+          src="{{ section.settings.breadcrumb_image | image_url: width: 2000 }}"
+          alt="img_logo"
+          width="2000"
+          height="280"
+          fetchpriority="high"
+        >
+        <div class="ctm_breadcrumb_content absolute top-1/2 -translate-y-1/2 left-0 right-0 z-1">
+          <div class="container_fluid">
+            <h1 class="main-page-title page-title mb-0 {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}">
+              {% if section.settings.page_title_black != blank %}
+                <span class="text-black-900">{{ section.settings.page_title_black }}</span>
+              {% else %}
+                {{ page.title | escape }}
+              {% endif %}
+            </h1>
+          </div>
+        </div>
+      </div>
+    </div>
+  {%- endif -%}
+
+  <div class="rte{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+    {%- if page.content != blank -%}
+      <div class="container_fluid container_xl">
+    {% endif %}
+    <div class="ctm_globle_content">
+      {{ page.content }}
+    </div>
+    {%- if page.content != blank -%}
+      </div>
+    {% endif %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "t:sections.main-page.name",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "label": "Extra Class",
+      "id": "extra_class"
+    },
+    {
+      "type": "html",
+      "label": "Title",
+      "id": "page_title_black"
+    },
+    {
+      "type": "image_picker",
+      "label": "Image",
+      "id": "breadcrumb_image"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 36
+    }
+  ]
+}
+{% endschema %}

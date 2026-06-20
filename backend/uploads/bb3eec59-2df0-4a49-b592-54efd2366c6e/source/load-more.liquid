@@ -1,0 +1,10 @@
+<input type="hidden" value="{{ next_url }}" data-next-url>
+<input type="hidden" value="{{ count_pages }}" data-total-pages>
+<input type="hidden" value="{{ current_page }}" data-current-page>
+<div class="button-wrapper">
+	<button class="button btn {{ settings.button_style }} js-load-more">
+		<span>
+			{{ 'products.load_more.label' | t }}
+		</span>
+	</button>
+</div>

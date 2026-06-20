@@ -1,0 +1,464 @@
+{% comment %}
+  breadcrumb start here
+{% endcomment %}
+
+<section class="breadcrumb overflow-hidden relative {{ section.settings.extra }}">
+  <div class="ctm_faq_filter_main">
+    <select id="faq-filter" class="form-control">
+      <option value="">Select FAQ Title</option>
+      {% for j in (0..2) %}
+        {% if page.metafields.option.acf[j] != blank %}
+          <option value="{{page.metafields.option.acf}}">{{ page.metafields.option.acf }}</option>
+        {% endif %}
+      {% endfor %}
+    </select>
+  </div>
+  {% if section.settings.search_bar_display != true %}
+    <div class="searchbar-main mx-auto max-w-[600px] w-full px-20">
+      <div class="input-group bg-white py-12 px-15 rounded-5 h-50 w-full ">
+        <span class="input-group-btn w-full">
+          <button class="btn btn-default flex flex-row items-center w-full" type="button">
+            <img class="block s-icon i-search mr-15" alt="Login" src="{{ 'search.svg' | asset_url }}">
+            <div class="clear flex flex-row items-center w-full autocomplete">
+              <input
+                type="text"
+                id="accordion_search_barr"
+                class="form-control text-16 leading-26 text-fonts font-light-gray w-full"
+                placeholder="Search for Answers"
+                value=""
+                name=""
+                autocapitalize="off"
+                autocomplete="off"
+                autocorrect="off"
+              >
+              <svg
+                class="icon-aero"
+                xmlns="http://www.w3.org/2000/svg"
+                width="12.093"
+                height="11.787"
+                viewBox="0 0 12.093 11.787"
+              >
+                <path id="Icon_awesome-arrow-right" data-name="Icon awesome-arrow-right"
+                  d="M5.142,3.437l.6-.6a.645.645,0,0,1,.915,0L11.9,8.082A.645.645,0,0,1,11.9,9L6.656,14.244a.645.645,0,0,1-.915,0l-.6-.6a.649.649,0,0,1,.011-.926L8.4,9.62H.648A.646.646,0,0,1,0,8.973V8.109a.646.646,0,0,1,.648-.648H8.4l-3.252-3.1A.644.644,0,0,1,5.142,3.437Z"
+                  transform="translate(0 -2.647)"></path>
+              </svg>
+            </div>
+          </button>
+        </span>
+      </div>
+    </div>
+  {% endif %}
+</section>
+{% comment %}
+  breadcrumb end here
+{% endcomment %}
+
+<section class="faq w-full py-55 container  md:pt-[55px] md:pb-55 xl:pb-80 px-20 md:px-55  {{ section.settings.extra_class }}">
+  <div class="faq-content flex flex-wrap">
+    <div class="faq-content-option {{ section.blocks.size }} lgscreen:mb-40 lg:w-[30%] xl:w-[20%] 2xl:w-[15%] block w-full">
+      <div class="faqinner-menu sticky top-[10px]">
+        {%- for block in section.blocks -%}
+          <nav id="faq-mainNav" class="faq-nav faq-list{{ forloop.index }}">
+            {% if block.settings.option_title != blank %}
+              <a
+                class="faqnav__link {% if forloop.first %}active{% endif %}"
+                href="{{ block.settings.option-title_link }}"
+              >
+                {{- block.settings.option_title }}
+              </a>
+            {% endif %}
+          </nav>
+        {%- endfor -%}
+      </div>
+    </div>
+
+    <div class="faq-collection mx-auto lg:w-[70%] xl:w-[80%] 2xl:w-[85%] w-full px-0 {% if section.blocks.size > 0 %}lg:px-55 xl:px-100 {% else %}px-0{% endif %}">
+      <div class="faq-content-heading">
+        {% if section.settings.faq_content != blank %}
+          <div class="faq_content mt-10">
+            {{ section.settings.faq_content }}
+          </div>
+        {% endif %}
+        <div class="accordion-container mt-0 " id="accordion{{ forloop.index }}">
+          {% assign question = page.metafields.question.acf %}
+          {% assign answer = page.metafields.answer.acf %}
+          {% assign title = page.metafields.title.acf %}
+
+          {% for k in (0..50) %}
+            {% if question[k] != blank %}
+              <div class="qna panel panel-default" id="collapse{{ forloop.index }}_container block_{{ forloop.index }}">
+                {% if title[k] != blank %}
+                  <h2 class=" option-title h2 text-32 leading-42 !font-light mt-30 lg:!mt-[65px] mb-10">
+                    {{ title[k] }}
+                  </h2>
+                {% endif %}
+                <h4 class="question h5 text-15 md:!text-17 !leading-23 text-fonts font-medium">{{ question[k] }}</h4>
+                <h5 class="answer panel-body">
+                  {{ answer[k] }}
+                </h5>
+              </div>
+            {% endif %}
+          {% endfor %}
+        </div>
+        <div class="no_data text-center capitalize pt-15 hidden">
+          <h2>no results found</h2>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    var faqContainers = document.querySelectorAll('.faq-collection .qna');
+
+    faqContainers.forEach(function (container) {
+      var title = container.querySelector('.option-title');
+      if (!title) {
+        var question = container.querySelector('.question');
+        var answer = container.querySelector('.answer');
+        container.parentNode.insertBefore(question, container);
+        container.parentNode.insertBefore(answer, container);
+        container.remove();
+      }
+    });
+  });
+</script>
+<script>
+  function autocomplete(inp, arr) {
+    /*the autocomplete function takes two arguments,
+    the text field element and an array of possible autocompleted values:*/
+    var currentFocus;
+    /*execute a function when someone writes in the text field:*/
+    inp.addEventListener("input", function(e) {
+        var a, b, i, val = this.value;
+        /*close any already open lists of autocompleted values*/
+        closeAllLists();
+        if (!val) { return false;}
+        currentFocus = -1;
+        /*create a DIV element that will contain the items (values):*/
+        a = document.createElement("DIV");
+        a.setAttribute("id", this.id + "autocomplete-list");
+        a.setAttribute("class", "autocomplete-items");
+        /*append the DIV element as a child of the autocomplete container:*/
+        this.parentNode.appendChild(a);
+        /*for each item in the array...*/
+        for (i = 0; i < arr.length; i++) {
+          /*check if the item starts with the same letters as the text field value:*/
+          if (arr[i].substr(0, val.length).toUpperCase() == val.toUpperCase()) {
+            /*create a DIV element for each matching element:*/
+            b = document.createElement("DIV");
+            /*make the matching letters bold:*/
+            b.innerHTML = "<strong>" + arr[i].substr(0, val.length) + "</strong>";
+            b.innerHTML += arr[i].substr(val.length);
+            /*insert a input field that will hold the current array item's value:*/
+            b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
+            /*execute a function when someone clicks on the item value (DIV element):*/
+            b.addEventListener("click", function(e) {
+                /*insert the value for the autocomplete text field:*/
+                inp.value = this.getElementsByTagName("input")[0].value;
+                /*close the list of autocompleted values,
+                (or any other open lists of autocompleted values:*/
+                closeAllLists();
+            });
+            a.appendChild(b);
+          }
+        }
+    });
+    /*execute a function presses a key on the keyboard:*/
+    inp.addEventListener("keydown", function(e) {
+        var x = document.getElementById(this.id + "autocomplete-list");
+        if (x) x = x.getElementsByTagName("div");
+        if (e.keyCode == 40) {
+          /*If the arrow DOWN key is pressed,
+          increase the currentFocus variable:*/
+          currentFocus++;
+          /*and and make the current item more visible:*/
+          addActive(x);
+        } else if (e.keyCode == 38) { //up
+          /*If the arrow UP key is pressed,
+          decrease the currentFocus variable:*/
+          currentFocus--;
+          /*and and make the current item more visible:*/
+          addActive(x);
+        } else if (e.keyCode == 13) {
+          /*If the ENTER key is pressed, prevent the form from being submitted,*/
+          e.preventDefault();
+          if (currentFocus > -1) {
+            /*and simulate a click on the "active" item:*/
+            if (x) x[currentFocus].click();
+          }
+        }
+    });
+    function addActive(x) {
+      /*a function to classify an item as "active":*/
+      if (!x) return false;
+      /*start by removing the "active" class on all items:*/
+      removeActive(x);
+      if (currentFocus >= x.length) currentFocus = 0;
+      if (currentFocus < 0) currentFocus = (x.length - 1);
+      /*add class "autocomplete-active":*/
+      x[currentFocus].classList.add("autocomplete-active");
+    }
+    function removeActive(x) {
+      /*a function to remove the "active" class from all autocomplete items:*/
+      for (var i = 0; i < x.length; i++) {
+        x[i].classList.remove("autocomplete-active");
+      }
+    }
+    function closeAllLists(elmnt) {
+      /*close all autocomplete lists in the document,
+      except the one passed as an argument:*/
+      var x = document.getElementsByClassName("autocomplete-items");
+      for (var i = 0; i < x.length; i++) {
+        if (elmnt != x[i] && elmnt != inp) {
+          x[i].parentNode.removeChild(x[i]);
+        }
+      }
+    }
+    /*execute a function when someone clicks in the document:*/
+    document.addEventListener("click", function (e) {
+        closeAllLists(e.target);
+    });
+  }
+
+  /*An array containing all the country names in the world:*/
+  var countries = [
+    {%- for block in section.blocks -%}
+      "{{ block.settings.option-title }}",
+    {% endfor %}
+  ];
+
+  /*initiate the autocomplete function on the "myInput" element, and pass along the countries array as possible autocomplete values:*/
+  autocomplete(document.getElementById("accordion_search_bar"), countries);
+  $(document).ready(function () {
+    $('.faq-list1 .faqnav__link').addClass('active');
+    $('.faqnav__link').click(function () {
+      $('.faqnav__link').removeClass('active');
+      $(this).addClass('active');
+
+    });
+
+
+    $('.faqnav__link').bind('click', function (e) {
+
+      e.preventDefault(); // prevent hard jump, the default behavior
+
+      var target = $(this).attr("href");
+
+      // Set the target as variable
+
+      // perform animated scrolling by getting top-position of target-element and set it as scroll target
+      $('html, body').stop().animate({
+        scrollTop: $(target).offset().top
+      }, 1000, function () {
+        location.hash = target; // attach the hash (#jumptarget) to the pageurl
+      });
+
+      return false;
+    });
+
+
+
+  });
+
+
+
+  $(window).scroll(function () {
+    var scrollDistance = $(window).scrollTop($(target).offset().top - 120);
+  }).scroll();
+</script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+<style>
+  .searchbar-main {
+    position: relative;
+  }
+
+  .searchbar-main .popup-dropdown {
+    left: 4%;
+    top: 105%;
+  }
+  .hidden {
+    display: none;
+  }
+  .autocomplete-items {
+    position: absolute;
+    border: 1px solid #d4d4d4;
+    border-bottom: none;
+    border-top: none;
+    z-index: 99;
+    /*position the autocomplete items to be the same width as the container:*/
+    top: 100%;
+    left: 0;
+    right: 0;
+  }
+
+  .autocomplete-items div {
+    padding: 10px;
+    cursor: pointer;
+    background-color: #fff;
+    border-bottom: 1px solid #d4d4d4;
+  }
+
+  /*when hovering an item:*/
+  .autocomplete-items div:hover {
+    background-color: #e9e9e9;
+  }
+
+  /*when navigating through the items using the arrow keys:*/
+  .autocomplete-active {
+    background-color: DodgerBlue !important;
+    color: #ffffff;
+  }
+
+  @media (max-width: 590px) {
+    body.template-page-find-retailer-installer .faq {
+      padding-top: 0 !important;
+    }
+  }
+  .qna {
+    padding: 0.5em 0;
+    border-bottom: 1px solid #ccc;
+  }
+  .qna:hover,
+  .qna.active {
+    background: #83fd9d32;
+  }
+  .question {
+    color: #333;
+    cursor: pointer;
+    user-select: none;
+    transition: color 0.3s;
+  }
+  .question:hover {
+    color: #000;
+  }
+  .qna.active .question {
+    color: rgb(2, 191, 75);
+  }
+  .qna .question::before {
+    content: '>';
+    display: inline-block;
+    margin-right: 5px;
+    transition: transform 0.3s;
+  }
+  .qna.active .question::before {
+    transform: rotate(90deg);
+  }
+
+  .qna .answer {
+    height: 0px;
+    transition: 0.3s linear;
+    overflow: hidden;
+    padding: 0 0.8em;
+  }
+</style>
+
+{% schema %}
+{
+  "name": "FAQ",
+  "tag": "section",
+  "class": "spaced-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "extra",
+      "label": "Extra class"
+    },
+    {
+      "type": "text",
+      "id": "extra_class",
+      "label": "Extra Class"
+    },
+    {
+      "type": "checkbox",
+      "id": "search_bar_display",
+      "label": "Want to hide search bar?",
+      "default": false
+    }
+  ],
+  "blocks": [
+    {
+      "type": "column",
+      "name": "FAQ Item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "option_title",
+          "label": "Title"
+        },
+        {
+          "type": "url",
+          "id": "option-title_link",
+          "label": "Link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "FAQ"
+    }
+  ]
+}
+{% endschema %}
+
+<script>
+  // Function to handle filtering based on search term
+  (function () {
+    var searchTerm;
+
+    $('#accordion_search_barr').on('change keyup', function () {
+      searchTerm = $(this).val().toLowerCase();
+      $('#accordion > .panel').each(function () {
+        var $panel = $(this);
+        var panelText = $panel.text().toLowerCase();
+        if (panelText.includes(searchTerm)) {
+          $panel.show();
+        } else {
+          $panel.hide();
+        }
+      });
+    });
+  })();
+
+  // Function to handle filtering based on selected title
+  $(document).ready(function () {
+    $('#faq-filter').change(function () {
+      var selectedTitle = $(this).val();
+      if (selectedTitle === '') {
+        $('.qna').show(); // Show all FAQ items if no title selected
+      } else {
+        $('.qna').each(function () {
+          var $faqItem = $(this);
+          var faqTitle = $faqItem.find('.option-title').text().trim();
+          if (faqTitle === selectedTitle) {
+            $faqItem.show(); // Show FAQ items with the selected title
+          } else {
+            $faqItem.hide(); // Hide FAQ items without the selected title
+          }
+        });
+      }
+    });
+
+    // Functionality for FAQ accordion
+    let question = document.querySelectorAll('.question');
+    question.forEach((qsitem) => {
+      qsitem.addEventListener('click', function (e) {
+        let sibling = qsitem.nextElementSibling;
+        question.forEach((item) => {
+          item.nextElementSibling.style.height = '0px';
+          item != qsitem && item.parentNode.classList.remove('active');
+        });
+        this.parentNode.classList.toggle('active');
+        if (qsitem.parentNode.classList.contains('active')) {
+          sibling.style.height = sibling.scrollHeight + 'px';
+        } else {
+          sibling.style.height = '0px';
+        }
+      });
+    });
+  });
+</script>

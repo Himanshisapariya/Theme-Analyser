@@ -1,0 +1,113 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "settings": {
+        "extra_class": "",
+        "page_title_black": "",
+        "breadcrumb_image": "shopify://shop_images/header_content_18.png",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "image_with_text_j7LXh4": {
+      "type": "image-with-text",
+      "blocks": {
+        "caption_etTpYC": {
+          "type": "caption",
+          "settings": {
+            "caption": "We'd Love To",
+            "text_style": "subtitle",
+            "text_size": "medium"
+          }
+        },
+        "heading_FkfmNx": {
+          "type": "heading",
+          "settings": {
+            "heading": "Hear From You",
+            "heading_size": "h3"
+          }
+        },
+        "text_dGaMjY": {
+          "type": "text",
+          "settings": {
+            "text": "Sharing your experience is a fantastic means of assisting others. Each review is carefully considered, as we're eager to learn about your shopping experience on our website, the delivery process, product setup, and, most importantly, whether your little one adores our products.",
+            "text_style": "body"
+          }
+        }
+      },
+      "block_order": [
+        "caption_etTpYC",
+        "heading_FkfmNx",
+        "text_dGaMjY"
+      ],
+      "disabled": true,
+      "settings": {
+        "extra_class": "ctm_review_zigzag",
+        "image": "shopify://shop_images/image_17.png",
+        "txt_under_img": "",
+        "height": "adapt",
+        "desktop_image_width": "medium",
+        "layout": "image_first",
+        "image_radius": 24,
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "left",
+        "content_layout": "no-overlap",
+        "section_color_scheme": "",
+        "color_scheme": "",
+        "image_behavior": "none",
+        "mobile_content_alignment": "left",
+        "padding_top": 80,
+        "padding_bottom": 80
+      }
+    },
+    "video_with_text_pLKPVh": {
+      "type": "video-with-text",
+      "settings": {
+        "extra_Class": "reviews-video",
+        "upper_sub_head": "We'd Love To",
+        "main_head": "Hear From You",
+        "lower_sub_head": "Sharing your experience is a fantastic means of assisting others. Each review is carefully considered, as we're eager to learn about your shopping experience on our website, the delivery process, product setup, and, most importantly, whether your little one adores our products.",
+        "description": "",
+        "button_text": "",
+        "button_url": "",
+        "play_btn_image": "shopify://shop_images/play-svgrepo-com.png",
+        "video": "https://cdn.shopify.com/videos/c/o/v/24830d1f0bff4895912ba71be1f635a6.mp4",
+        "align_right": false
+      }
+    },
+    "1713188797cc01eff9": {
+      "type": "apps",
+      "blocks": {
+        "judge_me_reviews_all_reviews_page_tP7tRP": {
+          "type": "shopify://apps/judge-me-reviews/blocks/all_reviews_page/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "judge_me_reviews_all_reviews_page_tP7tRP"
+      ],
+      "settings": {
+        "extra_class": "ctm_review_section pdp_review_block",
+        "background_image": "shopify://shop_images/background_image.jpg",
+        "background_color": "",
+        "include_margins": true
+      }
+    }
+  },
+  "order": [
+    "main",
+    "image_with_text_j7LXh4",
+    "video_with_text_pLKPVh",
+    "1713188797cc01eff9"
+  ]
+}

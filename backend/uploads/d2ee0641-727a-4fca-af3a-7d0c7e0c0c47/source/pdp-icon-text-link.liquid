@@ -1,0 +1,81 @@
+{% liquid
+  assign upper-sub-head = product.metafields['upper-sub-head-choose'].acf
+  assign head = product.metafields['head-choose'].acf
+  assign icon = product.metafields['icon-choose'].acf
+  assign icon-txt = product.metafields['icon-txt-choose'].acf
+  assign icon-text-link = product.metafields['text-link-choose'].acf
+%}
+
+<div class="pdp_learnmore_section py-55 desktop:py-80 {{ section.settings.extra_class }}">
+  <div class="xl_container mdscreen:px-0">
+    <div class="rounded-24 overflow-hidden">
+      <div class="ctm_icon_txt_head_main text-center px-40 lg:px-55 desktop:px-75">
+        {% if upper-sub-head != blank %}
+          <div class="text_caption_title mb-10">
+            <h5>{{ upper-sub-head }}</h5>
+          </div>
+        {% endif %}
+        {% if head != blank %}
+          <div class="text_section_title">
+            <h3>{{ head }}</h3>
+          </div>
+        {% endif %}
+      </div>
+      <div class="ctm_learnmore_block icon-swiper-text swiper xl:!px-55 desktop:!px-75 !pb-80 small_desktop:!pb-[105px] desktop:!pb-0 !pt-40">
+        <div class="swiper-wrapper">
+          {% for j in (0..icon-txt.size) %}
+            {% if icon-txt[j] != blank %}
+              <div class="swiper-slide">
+                <div class="ctm_icon_cont_block flex xlscreen2:flex-col gap-16 items-center justify-center">
+                  <a class="transition-all duration-300 ease-in-out" href="{{ icon-text-link[j] }}">
+                    <div class="ctm_icon_img flex-shrink-0 w-fit mx-auto mb-28 transition-all duration-300 ease-in-out">
+                      {% if icon-txt != blank %}
+                        <img
+                          class="w-[64px] h-[64px] object-cover"
+                          src="{{ icon[j] }}"
+                          alt="{{ icon[j].alt }}"
+                          loading="lazy"
+                          width="64"
+                          height="64"
+                        >
+                      {% endif %}
+                    </div>
+                    <div class="ctm_icon_text xlscreen2:text-center transition-all duration-300 ease-in-out">
+                      <h6 class="font-extrabold text-bloodstone transition-all duration-300 ease-in-out">
+                        {{ icon-txt[j] }}
+                      </h6>
+                    </div>
+                  </a>
+                </div>
+              </div>
+            {% endif %}
+          {% endfor %}
+        </div>
+        <div class="next_prev_aero absolute bottom-20 small_desktop:bottom-[43px] left-0 right-0 w-full max-w-[108px] small_desktop:max-w-[156px] mx-auto desktop:hidden">
+          <div class="swiper-button-next ctm_icontext_next">{% render 'icon-next' %}</div>
+          <div class="swiper-button-prev ctm_icontext_prev">{% render 'icon-prev' %}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "PDP Icon Text Link",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "label": "Extra Class",
+      "id": "extra_class"
+    }
+  ],
+  "blocks": [],
+  "presets": [
+    {
+      "name": "PDP Icon Text Link"
+    }
+  ]
+}
+{% endschema %}

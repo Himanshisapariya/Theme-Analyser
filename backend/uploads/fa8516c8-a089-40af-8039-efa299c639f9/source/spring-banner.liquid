@@ -1,0 +1,105 @@
+{{ 'spring-new-sections.css' | asset_url | stylesheet_tag }}
+
+<div class="spring_banner-main {{ section.settings.spring_new_banner_class }}">
+  <div class="spring_banner flex_one">
+    <div class="spring_banner flex_one_inside">
+      <div class="spring-new-banner-small-text">
+        <p>{{ section.settings.subheading_spring }}</p>
+      </div>
+      <div class="spring-new-banner-title">
+        <h2>{{ section.settings.heading }}</h2>
+      </div>
+      <div class="spring-new-banner-text">
+        <p>{{ section.settings.content }}</p>
+      </div>
+      <div class="spring-new-banner-btn banner-with-text__content-box color-background-5 bg-transparent ">
+        <a href="{{ section.settings.link_1 }}" class="button button--secondary">{{ section.settings.button_one }}</a>
+        <a href="{{ section.settings.link_2 }}" class="button button--secondary">{{ section.settings.button_two }}</a>
+      </div>
+    </div>
+  </div>
+  <div class="spring_banner flex_two">
+    <img src="{{ section.settings.image_spring | image_url: width: 2000 }}" class="spring-new-lookout-desktop">
+    {%- if section.settings.image_mobile_spring != blank -%}
+      <img src="{{ section.settings.image_mobile_spring | image_url: width: auto }}" class="spring-new-lookout-mobile">
+		{%- endif -%}
+  </div>
+</div>
+<style>
+.spring_banner-main{
+  display:flex;
+}
+.spring_banner.flex_one{
+  padding: 10rem;
+}
+</style>
+
+{% schema %}
+{
+  "name": "Spring Collection",
+  "class": "spring_collection_ctm",
+  "settings": [
+    {
+      "type": "text",
+      "label": "Subheading",
+      "id": "subheading_spring"
+    },
+    {
+      "type": "text",
+      "label": "Heading",
+      "id": "heading"
+    },
+    {
+      "type": "text",
+      "label": "Content",
+      "id": "content"
+    },
+    {
+      "type": "text",
+      "label": "Button One",
+      "id": "button_one"
+    },
+    {
+      "type": "url",
+      "label": "Link 1",
+      "id": "link_1"
+    },
+    {
+      "type": "text",
+      "label": "Button Two",
+      "id": "button_two"
+    },
+    {
+      "type": "url",
+      "label": "Link 2",
+      "id": "link_2"
+    },
+    {
+      "type": "image_picker",
+      "label": "Image Banner",
+      "id": "image_spring"
+    },
+    {
+      "type": "image_picker",
+      "label": "Mobile Image",
+      "id": "image_mobile_spring"
+    },
+    {
+      "type": "text",
+      "label": "Spring New Banner Class",
+      "id": "spring_new_banner_class"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Spring Collection"
+    }
+  ]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

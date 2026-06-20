@@ -1,0 +1,14 @@
+{% comment %}
+  Product Card Section for AJAX rendering
+  Used by promo drawer to render individual product cards
+{% endcomment %}
+
+<div class="promo-drawer-product-card collection-product-card" data-product-handle="{{ product.handle }}" data-product-tags="{{ product.tags | join: ',' | downcase | escape }}">
+  {% render 'product-card',
+    product_card_product: product,
+    section_id: section.id,
+    media_size: 'portrait',
+    quickview_show: true,
+    media_fit: 'cover'
+  %}
+</div>

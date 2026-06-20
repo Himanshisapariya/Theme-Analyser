@@ -1,0 +1,15 @@
+{
+  "createdAt": "2026-05-15T13:36:51.559Z",
+  "cssFiles": [],
+  "textFiles": [
+    "announcement-bar.liquid"
+  ],
+  "summary": {
+    "totalRules": 0,
+    "usedRules": 0,
+    "unusedRules": 0,
+    "estimatedSavingsBytes": 0
+  },
+  "entries": [],
+  "jobId": "77662b68-d5ca-4347-a910-aa487718b268"
+}

@@ -1,0 +1,119 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "shogun-helper": {
+      "type": "shogun-helper",
+      "settings": {}
+    },
+    "product_bundle_Qmhm9M": {
+      "type": "product-bundle",
+      "blocks": {
+        "bundle_product_C3dNDd": {
+          "type": "bundle_product",
+          "settings": {
+            "product": "mens-girl-dad-graphic-tee"
+          }
+        },
+        "bundle_product_HFYy8w": {
+          "type": "bundle_product",
+          "settings": {
+            "product": "xx-xy-athletics-water-bottle"
+          }
+        },
+        "bundle_product_yWHwAn": {
+          "type": "bundle_product",
+          "settings": {
+            "product": "mens-girl-dad-cap"
+          }
+        }
+      },
+      "block_order": [
+        "bundle_product_C3dNDd",
+        "bundle_product_HFYy8w",
+        "bundle_product_yWHwAn"
+      ],
+      "name": "Product Bundle",
+      "settings": {
+        "bundle_title": "Girl Dad Pack",
+        "bundle_category": "",
+        "bundle_description": "",
+        "button_label": "Add Bundle to Cart",
+        "show_vendor": false,
+        "show_qty": true,
+        "payment_note": "Free shipping on orders over $100",
+        "show_accordions": true,
+        "accordion_first_open": true,
+        "accordion_desc_show": true,
+        "accordion_desc_label": "DESCRIPTION",
+        "accordion_desc_content": "<p>The Girl Dad Pack is for the dads raising strong daughters and showing up for every practice, pickup, race, and hard conversation along the way. Clean, premium essentials for the dads who proudly support the next generation of female athletes — on and off the field.</p>",
+        "accordion_pd_show": true,
+        "accordion_pd_label": "PRODUCT DETAILS",
+        "accordion_pd_content": "<p>Bundle includes:</p><ul><li>Girl Dad Tee</li><li>Girl Dad Cap</li><li>XX-XY Athletics Water Bottle (32 oz.)</li></ul>",
+        "accordion_sc_show": true,
+        "accordion_sc_label": "SIZE CHART",
+        "accordion_sc_handle": "YPT",
+        "accordion_sc_content": "",
+        "accordion_care_show": true,
+        "accordion_care_label": "CARE INFORMATION",
+        "accordion_care_content": "<p>Tee + Girl Dad Cap:</p><ul><li>Machine wash cold with like colors</li><li>Tumble dry low or hang dry for best results</li><li>Do not bleach</li><li>Wash inside out to keep graphics from fading</li></ul><p>Water Bottle:</p><ul><li>Hand wash recommended</li></ul>",
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "extra_class": "gts ctm-fathers-day-bundle gts",
+        "quickview_show": true
+      }
+    },
+    "product_recommendations_FrfriY": {
+      "type": "product-recommendations",
+      "name": "Product Recommendations",
+      "settings": {
+        "heading": "<p>You May Also Like</p>",
+        "link": "Shop All",
+        "button_link": "",
+        "products_limit": 50,
+        "enable_swiper": true,
+        "image_ratio": "portrait",
+        "image_fit": "cover",
+        "show_secondary_image": false,
+        "show_vendor": false,
+        "show_desc": false,
+        "show_sku": false,
+        "quickview_show": false,
+        "show_link": true,
+        "margin_top": 20,
+        "margin_bottom": 50,
+        "page_heading": "You May Also Like",
+        "page_collection": "dakota-meyers-favorites"
+      }
+    },
+    "pages": {
+      "type": "main-page",
+      "disabled": true,
+      "custom_css": [
+        ".container {padding-top: 50px; padding-bottom: 50px;}",
+        "h1 {text-align: center;}"
+      ],
+      "settings": {
+        "extra_class": ""
+      }
+    },
+    "shogun-optimizer": {
+      "type": "shogun-optimizer",
+      "settings": {}
+    }
+  },
+  "order": [
+    "shogun-helper",
+    "product_bundle_Qmhm9M",
+    "product_recommendations_FrfriY",
+    "pages",
+    "shogun-optimizer"
+  ]
+}

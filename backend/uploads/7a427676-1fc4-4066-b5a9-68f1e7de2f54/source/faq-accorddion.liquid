@@ -1,0 +1,241 @@
+{{ 'faq-accordion.css' | asset_url | stylesheet_tag }}
+{% assign faq_items_present = false %}
+{% for block in section.blocks %}
+  {% if block.settings.question != blank or block.settings.answer != blank %}
+    {% assign faq_items_present = true %}
+    {% break %}
+  {% elsif template contains 'collection' and block.settings.faq_answer != blank %}
+    {% assign faq_items_present = true %}
+    {% break %}
+  {% endif %}
+{% endfor %}
+
+<div class="faq-accordion-main fullscreen-container{% if section.settings.extra_class != blank %} {{ section.settings.extra_class }}{% endif %}">
+{% if faq_items_present %}
+<div class="faq-accordion-header">
+  {% if section.settings.title != blank %}
+    <h3 class="faq-accordion-title">{{ section.settings.title }}</h3>
+  {% endif %}
+  {% if section.settings.desc != blank %}
+    <div class="faq-accordion-desc">
+      {{ section.settings.desc }}
+    </div>
+  {% endif %}
+</div>
+{% endif %}
+<div class="faq-accordion">
+  {% for block in section.blocks %}
+    <div class="faq-item">
+        {% if block.settings.question != blank %}
+      <button class="faq-question">
+        {{ block.settings.question }}
+        <span class="faq-icon">+</span>
+      </button>
+      {% endif %}
+      {% if block.settings.answer  != blank %}
+      <div class="faq-answer">
+        <div class="faq-answer-inner">
+        <p>{{ block.settings.answer }}</p>
+        </div>
+      </div>
+    {% endif %}
+    {% if template contains 'collection' %}
+      {% if block.settings.faq_answer  != blank %}
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+          <p>{{ block.settings.faq_answer }}</p>
+          </div>
+        </div>
+      {% endif %}
+    {%  endif %}
+    </div>
+  {% endfor %}
+</div>
+</div>
+<style>
+.faq-accordion-section {
+  margin-top: {{ section.settings.desktop_margin_top }}px;
+  margin-bottom: {{ section.settings.desktop_margin_bottom }}px;
+}
+
+@media only screen and (max-width: 767px) {
+  .faq-accordion-section {
+    margin-top: {{ section.settings.mobile_margin_top }}px;
+    margin-bottom: {{ section.settings.mobile_margin_bottom }}px;
+  }
+}
+
+.faq-answer {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease, opacity 0.3s ease;
+  background: #fff;
+}
+
+.faq-item.active .faq-answer {
+  max-height: 500px; 
+  opacity: 1;
+}
+.faq-item.active .faq-icon {
+  transform: rotate(135deg); 
+  content: "x";
+}
+
+.faq-accordion .faq-answer-inner p {
+    padding-bottom: 0;
+    margin: 0;
+}
+</style>
+
+<script>
+function initFaqAccordion() {
+  const faqItems = document.querySelectorAll('.faq-item');
+  if (!faqItems.length) return;
+
+  faqItems.forEach(item => {
+    const question = item.querySelector('.faq-question');
+    const answer = item.querySelector('.faq-answer');
+    const icon = item.querySelector('.faq-icon');
+    if (!question || !answer || !icon) return;
+
+    question.addEventListener('click', () => {
+      const isActive = item.classList.contains('active');
+
+      faqItems.forEach(i => {
+        if (i !== item) {
+          i.classList.remove('active');
+          const iIcon = i.querySelector('.faq-icon');
+          const iAnswer = i.querySelector('.faq-answer');
+          if (iIcon) {
+            iIcon.textContent = '+';
+            iIcon.style.transform = 'rotate(0deg)';
+          }
+          if (iAnswer) iAnswer.style.maxHeight = null;
+        }
+      });
+
+      if (!isActive) {
+        item.classList.add('active');
+        icon.textContent = '×';
+        icon.style.transform = 'rotate(180deg)';
+        answer.style.maxHeight = answer.scrollHeight + "px";
+      } else {
+        item.classList.remove('active');
+        icon.textContent = '+';
+        icon.style.transform = 'rotate(0deg)';
+        answer.style.maxHeight = null;
+      }
+    });
+  });
+}
+
+document.addEventListener('DOMContentLoaded', initFaqAccordion);
+
+document.addEventListener('shopify:section:load', initFaqAccordion);
+</script>
+
+
+{% schema %}
+    {
+      "name": "FAQ Accordion",
+      "tag": "section",
+      "class": "faq-accordion-section",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        },
+        {
+          "type": "html",
+          "id": "desc",
+          "label": "Description"
+        },
+        {
+          "type": "text",
+          "id": "extra_class",
+          "label": "Extra Class",
+          "info": "Add custom CSS class to this FAQ section"
+        },
+        {
+          "type": "header",
+          "content": "Desktop Margins"
+        },
+        {
+          "type": "range",
+          "id": "desktop_margin_top",
+          "label": "Desktop Top Margin",
+          "min": 0,
+          "max": 100,
+          "step": 5,
+          "default": 50,
+          "unit": "px"
+        },
+        {
+          "type": "range",
+          "id": "desktop_margin_bottom",
+          "label": "Desktop Bottom Margin",
+          "min": 0,
+          "max": 100,
+          "step": 5,
+          "default": 50,
+          "unit": "px"
+        },
+        {
+          "type": "header",
+          "content": "Mobile Margins"
+        },
+        {
+          "type": "range",
+          "id": "mobile_margin_top",
+          "label": "Mobile Top Margin",
+          "min": 0,
+          "max": 100,
+          "step": 5,
+          "default": 30,
+          "unit": "px"
+        },
+        {
+          "type": "range",
+          "id": "mobile_margin_bottom",
+          "label": "Mobile Bottom Margin",
+          "min": 0,
+          "max": 100,
+          "step": 5,
+          "default": 30,
+          "unit": "px"
+        }
+      ],
+      "blocks": [
+        {
+          "type": "faq",
+          "name": "FAQ Item",
+          "settings": [
+            {
+              "type": "richtext",
+              "id": "question",
+              "label": "Question"
+            },
+            {
+              "type": "html",
+              "id": "answer",
+              "label": "Answer"
+            },
+            {
+              "type": "richtext",
+              "id": "faq_answer",
+              "label": "FAQ Answer",
+              "info": "will only works for collection pages SEO FAQs."
+            }
+          ]
+        }
+      ],
+      "presets": [
+        {
+          "name": "FAQ Accordion",
+          "category": "Custom"
+        }
+      ]
+    }
+    {% endschema %}

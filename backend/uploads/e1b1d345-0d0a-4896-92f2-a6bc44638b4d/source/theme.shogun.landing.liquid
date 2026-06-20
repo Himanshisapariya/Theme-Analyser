@@ -1,0 +1,578 @@
+
+
+{% include 'shogun-content-handler' %}
+<html class="no-js" lang="{{ request.locale.iso_code }}">
+  <head>
+    <script src="https://www.pledge.to/assets/shop/round-up.js" async></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="theme-color" content="">
+    <link rel="canonical" href="{{ canonical_url }}">
+    <link rel="preconnect" href="https://cdn.shopify.com" crossorigin>
+
+    {%- if settings.favicon != blank -%}
+      <link
+        rel="icon"
+        type="image/png"
+        href="{{ settings.favicon | img_url: '48x48' }}"
+      >
+    {%- endif -%}
+
+    {%- unless settings.type_header_font.system? -%}
+      <link rel="preconnect" href="https://fonts.shopifycdn.com" crossorigin>
+    {%- endunless -%}
+
+    <title>{{ page_title }}</title>
+
+    {% if page_description %}
+      <meta name="description" content="{{ page_description | escape }}">
+    {% endif %}
+
+    {% render 'meta-tags' %}
+    <script src="{{ 'constants.js' | asset_url }}" defer="defer"></script>
+    <script src="{{ 'pubsub.js' | asset_url }}" defer="defer"></script>
+    <script src="{{ 'custom.js' | asset_url }}" defer="defer"></script>
+    <script src="{{ 'global.js' | asset_url }}" defer="defer"></script>
+    
+    <script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
+    {{ content_for_header }}
+
+    {%- liquid
+      assign body_font_ligh = settings.type_body_font | font_modify: 'weight', '300'
+      assign body_font_regular = settings.type_body_font | font_modify: 'weight', '400'
+      assign body_font_bold = settings.type_body_font | font_modify: 'weight', 'bold'
+      assign body_font_italic = settings.type_body_font | font_modify: 'style', 'italic'
+      assign body_font_bold_italic = body_font_bold | font_modify: 'style', 'italic'
+      assign heading_font_italic = settings.type_header_font | font_modify: 'style', 'italic'
+    %}
+
+    {% style %}
+      {{ settings.type_body_font | font_face: font_display: 'swap' }}
+      {{ settings.type_header_font | font_face: font_display: 'swap' }}
+      {{ settings.type_header_font_alt | font_face: font_display: 'swap' }}
+      {{ settings.type_button_font | font_face: font_display: 'swap' }}
+      {{ settings.type_header_font_card | font_face: font_display: 'swap' }}
+      {{ body_font_ligh | font_face: font_display: 'swap' }}
+      {{ body_font_regular | font_face: font_display: 'swap' }}
+      {{ body_font_bold | font_face: font_display: 'swap' }}
+      {{ body_font_italic | font_face: font_display: 'swap' }}
+      {{ heading_font_italic | font_face: font_display: 'swap' }}
+      {{ body_font_bold_italic | font_face: font_display: 'swap' }}
+
+      :root {
+      --font-body-family: {{ settings.type_body_font.family }}, {{ settings.type_body_font.fallback_families }};
+      --font-body-style: {{ settings.type_body_font.style }};
+      --font-body-weight: {{ settings.type_body_font.weight }};
+
+      --font-body-size: {{ settings.body_size }}px;
+      --font-body-line-height: {{ settings.type_body_line_height }}%;
+
+      --font-heading-family: {{ settings.type_header_font.family }}, {{ settings.type_header_font.fallback_families }};
+      --font-heading-style: {{ settings.type_header_font.style }};
+      --font-heading-weight: {{ settings.type_header_font.weight }};
+      --font-heading-letter-spacing: {{ settings.type_header_letter_spacing }}em;
+      --body-letter-spacing: 0em;
+
+      --font-heading-italic-interval: {{ settings.type_header_interval }};
+      --font-heading-line-height: {{ settings.type_header_line_height }};
+
+      --font-heading-alt-family: {{ settings.type_header_font_alt.family }}, {{ settings.type_header_font.fallback_families }};
+      --font-heading-alt-style: {{ settings.type_header_font_alt.style }};
+      --font-heading-alt-weight: {{ settings.type_header_font_alt.weight }};
+
+      --font-subtitle-family: {{ settings.type_subtitle_font.family }}, {{ settings.type_subtitle_font.fallback_families }};
+      --font-subtitle-style: {{ settings.type_subtitle_font.style }};
+      --font-subtitle-weight: {{ settings.type_subtitle_font.weight }};
+      --font-subtitle-text-transform: {{ settings.subtitle_text_transform }};
+      --font-subtitle-size: {{ settings.subtitle_size }}px;
+
+      --font-heading-h1-size: {{ settings.heading_h1_size }}px;
+      --font-heading-h2-size: {{ settings.heading_h2_size }}px;
+      --font-heading-h3-size: {{ settings.heading_h3_size }}px;
+      --font-heading-h4-size: {{ settings.heading_h4_size }}px;
+      --font-heading-h5-size: {{ settings.heading_h5_size }}px;
+      --font-heading-h6-size: {{ settings.heading_h6_size }}px;
+
+      --font-heading-card-family: {{ settings.type_header_font_card.family }}, {{ settings.type_header_font_card.fallback_families }};
+      --font-heading-card-style: {{ settings.type_header_font_card.style }};
+      --font-heading-card-weight: {{ settings.type_header_font_card.weight }};
+      --font-text-card-family: {{ settings.type_text_font_card.family }}, {{ settings.type_text_font_card.fallback_families }};
+      --font-text-card-style: {{ settings.type_text_font_card.style }};
+      --font-text-card-weight: {{ settings.type_text_font_card.weight }};
+
+      --font-heading-card-size: {{ settings.heading_size_card }}px;
+      --font-heading-card-size-big: {{ settings.heading_size_card_big }}px;
+      --font-text-card-size: {{ settings.text_size_card }}px;
+
+      --font-button-family: {{ settings.type_button_font.family }}, {{ settings.type_button_font.fallback_families }};
+      --font-button-style: {{ settings.type_button_font.style }};
+      --font-button-weight: {{ settings.type_button_font.weight }};
+      --font-button-text-transform: {{ settings.button_text_transform }};
+      --button-text-size: {{ settings.btn_text_size }}px;
+
+      --font-button-family: {{ settings.type_button_font.family }}, {{ settings.type_button_font.fallback_families }};
+      --font-button-style: {{ settings.type_button_font.style }};
+      --font-button-weight: {{ settings.type_button_font.weight }};
+      --font-button-text-transform: {{ settings.button_text_transform }};
+      --font-button-letter-spacing: {{ settings.type_body_letter_spacing }}em;
+      --font-subtitle-letter-spacing: {{ settings.type_body_letter_spacing }}em;
+
+      --font-header-menu-family: {{ settings.type_header_menu_font.family }}, {{ settings.type_header_menu_font.fallback_families }};
+      --font-header-menu-style: {{ settings.type_header_menu_font.style }};
+      --font-header-menu-weight: {{ settings.type_header_menu_font.weight }};
+      --font-header-menu-text-transform: {{ settings.header_menu_text_transform }};
+      --font-header-link-size: {{ settings.link_size_header }}px;
+
+      --font-footer-menu-family: {{ settings.type_footer_menu_font.family }}, {{ settings.type_footer_menu_font.fallback_families }};
+      --font-footer-menu-style: {{ settings.type_footer_menu_font.style }};
+      --font-footer-menu-weight: {{ settings.type_footer_menu_font.weight }};
+      --font-footer-link-size: {{ settings.link_size_footer }}px;
+      --font-footer-bottom-link-size: {{ settings.link_size_footer_bottom }}px;
+
+      --font-popups-heading-family: {{ settings.type_popups_heading_font.family }}, {{ settings.type_popups_heading_font.fallback_families }};
+      	--font-popups-heading-style: {{ settings.type_popups_heading_font.style }};
+      	--font-popups-heading-weight: {{ settings.type_popups_heading_font.weight }};
+      	--font-popups-text-family: {{ settings.type_popups_text_font.family }}, {{ settings.type_popups_text_font.fallback_families }};
+      	--font-popups-text-style: {{ settings.type_popups_text_font.style }};
+      	--font-popups-text-weight: {{ settings.type_popups_text_font.weight }};
+      	--font-popup-heading-size: {{ settings.popup_heading_size }}px;
+      	--font-popup-text-size: {{ settings.popup_text_size }}px;
+      	--font-notification-heading-size: {{ settings.notification_heading_size }}px;
+      	--font-notification-text-size: {{ settings.notification_text_size }}px;
+
+      --color-base-text: {{ settings.colors_text.red }}, {{ settings.colors_text.green }}, {{ settings.colors_text.blue }};
+      --color-title-text: {{ settings.colors_text_title.red }}, {{ settings.colors_text_title.green }}, {{ settings.colors_text_title.blue }};
+
+      --color-base-text-default: {{ settings.colors_text.red }}, {{ settings.colors_text.green }}, {{ settings.colors_text.blue }};
+
+      --color-base-text-dark: {{ settings.colors_text_dark.red }}, {{ settings.colors_text_dark.green }}, {{ settings.colors_text_dark.blue }};
+      --color-title-text-dark: {{ settings.colors_text_title_dark.red }}, {{ settings.colors_text_title_dark.green }}, {{ settings.colors_text_title_dark.blue }};
+
+      --color-base-background-1: {{ settings.colors_background_1.red }}, {{ settings.colors_background_1.green }}, {{ settings.colors_background_1.blue }};
+      --color-base-background-2: {{ settings.colors_background_2.red }}, {{ settings.colors_background_2.green }}, {{ settings.colors_background_2.blue }};
+      --color-base-background-5: {{ settings.colors_background_5.red }}, {{ settings.colors_background_5.green }}, {{ settings.colors_background_5.blue }};
+      --color-base-background-3: {{ settings.colors_background_3.red }}, {{ settings.colors_background_3.green }}, {{ settings.colors_background_3.blue }};
+      --color-base-background-4: {{ settings.colors_background_4.red }}, {{ settings.colors_background_4.green }}, {{ settings.colors_background_4.blue }};
+
+      --color-announcement-bar-background-1: {{ settings.colors_background_announcement_bar_1.red }}, {{ settings.colors_background_announcement_bar_1.green }}, {{ settings.colors_background_announcement_bar_1.blue }};
+      --color-announcement-bar-background-2: {{ settings.colors_background_announcement_bar_2.red }}, {{ settings.colors_background_announcement_bar_2.green }}, {{ settings.colors_background_announcement_bar_2.blue }};
+
+      --color-base-solid-button-labels: {{ settings.colors_solid_button_labels.red }}, {{ settings.colors_solid_button_labels.green }}, {{ settings.colors_solid_button_labels.blue }};
+      --color-base-button-labels-hover: {{ settings.colors_solid_button_hover_labels.red }}, {{ settings.colors_solid_button_hover_labels.green }}, {{ settings.colors_solid_button_hover_labels.blue }};
+      --color-base-button-background: {{ settings.colors_solid_button_background.red }}, {{ settings.colors_solid_button_background.green }}, {{ settings.colors_solid_button_background.blue }};
+      --color-base-button-background-hover: {{ settings.colors_solid_button_hover_background.red }}, {{ settings.colors_solid_button_hover_background.green }}, {{ settings.colors_solid_button_hover_background.blue }};
+      --color-base-outline-button-labels: {{ settings.colors_outline_button_labels.red }}, {{ settings.colors_outline_button_labels.green }}, {{ settings.colors_outline_button_labels.blue }};
+      --color-secondary-button-background-hover: {{ settings.colors_secondary_button_hover_background.red }}, {{ settings.colors_secondary_button_hover_background.green }}, {{ settings.colors_secondary_button_hover_background.blue }};
+      --color-secondary-button-labels: {{ settings.colors_secondary_button_labels.red }}, {{ settings.colors_secondary_button_labels.green }}, {{ settings.colors_secondary_button_labels.blue }};
+      --color-secondary-button-labels-hover: {{ settings.colors_secondary_button_hover_labels.red }}, {{ settings.colors_secondary_button_hover_labels.green }}, {{ settings.colors_secondary_button_hover_labels.blue }};
+      --color-tertiary-button-labels: {{ settings.colors_tertiary_button_labels.red }}, {{ settings.colors_tertiary_button_labels.green }}, {{ settings.colors_tertiary_button_labels.blue }};
+      --color-tertiary-button-background: {{ settings.colors_tertiary_button_background.red }}, {{ settings.colors_tertiary_button_background.green }}, {{ settings.colors_tertiary_button_background.blue }};
+      --color-underline-button-labels: {{ settings.colors_underline_button_labels.red }}, {{ settings.colors_underline_button_labels.green }}, {{ settings.colors_underline_button_labels.blue }};
+      --payment-terms-background-color: {{ settings.colors_background_1 }};
+      --color-overlay-background: {{ settings.colors_background_overlay.red }}, {{ settings.colors_background_overlay.green }}, {{ settings.colors_background_overlay.blue }};
+      --color-accent: {{ settings.colors_accent.red }}, {{ settings.colors_accent.green }}, {{ settings.colors_accent.blue }};
+
+      --color-base-background-input: {{ settings.colors_input_background.red }}, {{ settings.colors_input_background.green }}, {{ settings.colors_input_background.blue }};
+
+      --color-base-border-input: {{ settings.colors_input_border.red }}, {{ settings.colors_input_border.green }}, {{ settings.colors_input_border.blue }};
+      --color-hover-border-input: {{ settings.colors_input_hover_border.red }}, {{ settings.colors_input_hover_border.green }}, {{ settings.colors_input_hover_border.blue }};
+
+      --color-badge-icon: {{ settings.badge_icon_color }};
+      --badge-icon-size: {{ settings.badge_icon_size }}px;
+      --badge-discount-size: {{ settings.badge_discount_size }}px;
+      --color-border: {{ settings.color_border.red }}, {{ settings.color_border.green }}, {{ settings.color_border.blue }};
+      }
+
+      *,
+      *::before,
+      *::after {
+      box-sizing: inherit;
+      }
+
+      html {
+      box-sizing: border-box;
+      font-size: 10px;
+      height: 100%;
+      }
+
+      body {
+      position: relative;
+      display: grid;
+      grid-template-rows: auto auto 1fr auto;
+      grid-template-columns: 100%;
+      min-height: 100%;
+      margin: 0;
+      font-size: var(--font-body-size);
+      line-height: 1.5;
+      font-family: var(--font-body-family);
+      font-style: var(--font-body-style);
+      font-weight: var(--font-body-weight);
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      }
+      .product__media-sublist{
+        height: 800px;
+      }
+    {% endstyle %}
+
+    {% if collection.handle == 'based-velour-tracksuit' %}
+      <style>
+        .collection-hero--overlay .collection-hero__title {
+        color: white !important;
+        }
+        .collection-hero .collection-hero__inner .collection-hero__text-wrapper {
+          flex-direction: column !important;
+        }
+        .collection-hero .collection-hero__inner h2.collection-hero__title.title--page {
+          margin: 0px auto;
+          max-width: 300px;
+          text-align: center;
+          padding-top: 0;
+        }
+        
+      </style>
+    {% endif %}
+    {{ 'swiper-bundle.min.css' | asset_url | stylesheet_tag }}
+    {{ 'base.css' | asset_url | stylesheet_tag }}
+    {{ 'custom.css' | asset_url | stylesheet_tag }}
+    {{ 'rebuy-search.css' | asset_url | stylesheet_tag }}
+
+
+    {%- if settings.predictive_search_enabled -%}
+      <link
+        rel="stylesheet"
+        href="{{ 'component-predictive-search.css' | asset_url }}"
+        media="print"
+        onload="this.media='all'"
+      >
+    {%- endif -%}
+
+    {%- unless settings.type_body_font.system? -%}
+      <link
+        rel="preload"
+        as="font"
+        href="{{ settings.type_body_font | font_url }}"
+        type="font/woff2"
+        crossorigin
+      >
+    {%- endunless -%}
+    {%- unless settings.type_header_font.system? -%}
+      <link
+        rel="preload"
+        as="font"
+        href="{{ settings.type_header_font | font_url }}"
+        type="font/woff2"
+        crossorigin
+      >
+    {%- endunless -%}
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="{{ 'popup.js' | asset_url }}" defer="defer"></script>
+    {% if settings.show_back_to_top %}
+      <script src="{{ 'scroll-top.js' | asset_url }}" defer="defer"></script>
+    {% endif %}
+    {% if settings.show_color_swatch %}
+      <script src="{{ 'product-card.js' | asset_url }}" defer="defer"></script>
+    {% endif %}
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="{{ 'gsap.min.js' | asset_url }}" defer="defer"></script>
+    <script
+      src="{{ 'ScrollTrigger.min.js' | asset_url }}"
+      defer="defer"
+    ></script>
+
+    <script
+      src="https://cdn-widgetsrepository.yotpo.com/v1/loader/SKusv8TxoqZBPH3Bkt5lDZ9QbUEDv1QNeIZ2xXDL?languageCode={{ localization.language.iso_code | escape }}"
+      async
+    ></script>
+
+    {% render 'shogun-head' %}
+
+
+<script>!function(){"use strict";function l(e){for(var t=e,r=0,n=document.cookie.split(";");r<n.length;r++){var o=n[r].split("=");if(o[0].trim()===t)return o[1]}}function s(e){return localStorage.getItem(e)}function u(e){return window[e]}function A(e,t){e=document.querySelector(e);return t?null==e?void 0:e.getAttribute(t):null==e?void 0:e.textContent}var e=window,t=document,r="script",n="dataLayer",o="https://sst.xx-xyathletics.com",a="",i="9ac6ghkwdhgbl",c="4nakr=",g="stapeUserId",v="",E="",d=!1;try{var d=!!g&&(m=navigator.userAgent,!!(m=new RegExp("Version/([0-9._]+)(.*Mobile)?.*Safari.*").exec(m)))&&16.4<=parseFloat(m[1]),f="stapeUserId"===g,I=d&&!f?function(e,t,r){void 0===t&&(t="");var n={cookie:l,localStorage:s,jsVariable:u,cssSelector:A},t=Array.isArray(t)?t:[t];if(e&&n[e])for(var o=n[e],a=0,i=t;a<i.length;a++){var c=i[a],c=r?o(c,r):o(c);if(c)return c}else console.warn("invalid uid source",e)}(g,v,E):void 0;d=d&&(!!I||f)}catch(e){console.error(e)}var m=e,g=(m[n]=m[n]||[],m[n].push({"gtm.start":(new Date).getTime(),event:"gtm.js"}),t.getElementsByTagName(r)[0]),v=I?"&bi="+encodeURIComponent(I):"",E=t.createElement(r),f=(d&&(i=8<i.length?i.replace(/([a-z]{8}$)/,"kp$1"):"kp"+i),!d&&a?a:o);E.async=!0,E.src=f+"/"+i+".js?"+c+v,null!=(e=g.parentNode)&&e.insertBefore(E,g)}();</script>
+
+
+    
+    <img src="https://arttrk.com/pixel/?ad_log=referer&action=lead&pixid=20a70071-61e2-4a25-be90-d36c190e4268" width="1" height="1" border="0" alt="">
+    
+
+  {% if settings.rebuy_enable == true %}
+    
+    <div data-rebuy-id="217620"></div>
+    
+  {% endif %}
+
+    
+<script>
+    (function(t,e,n,r){function a(){return e&&e.now?e.now():null}if(!n.version){n._events=[];n._errors=[];n._metadata={};n._urlGroup=null;window.RM=n;n.install=function(e){n._options=e;var a=t.createElement("script");a.async=true;a.crossOrigin="anonymous";a.src=r;var o=t.getElementsByTagName("script")[0];o.parentNode.insertBefore(a,o)};n.identify=function(t,e){n._userId=t;n._identifyOptions=e};n.sendEvent=function(t,e){n._events.push({eventName:t,metadata:e,time:a()})};n.setUrlGroup=function(t){n._urlGroup=t};n.track=function(t,e){n._errors.push({error:t,metadata:e,time:a()})};n.addMetadata=function(t){n._metadata=Object.assign(n._metadata,t)}}})(document,window.performance,window.RM||{},"https://cdn.requestmetrics.com/agent/current/rm.js");
+    RM.install({ 
+        token: "d9yk9ve:s9yv2hu"
+    });
+</script>
+      
+
+<script async="async" src="https://www.pledge.to/assets/widget.js"></script>
+    
+  </head>
+  <body class="{{ page.title | handle }} template-{{ template.name }} template-{{ template | replace: '.', '-' }} product-{{ product.handle }} ctm-collection-{{ collection.handle }}" data-scheme="{{ settings.color_scheme }}">
+    {% include 'shogun-content-handler' %}
+
+    
+    <link rel="stylesheet" href="{{%20'promo-tag-collection.css'%20|%20asset_url%20}}">
+    {{ content_for_layout }}
+    
+    <script>
+      {% capture content %}{% include 'quickview' %}{% endcapture %}
+      let content = {{ content | json }};
+    </script>
+<script>
+      let cscoDarkMode = {};
+
+      (function () {
+      	const body = document.querySelector('body[data-scheme]');
+
+      	cscoDarkMode = {
+      		init: function (e) {
+      			this.initMode(e);
+      			window
+      				.matchMedia('(prefers-color-scheme: dark)')
+      				.addListener((e) => {
+      					this.initMode(e);
+      				});
+      				document
+      				.querySelector('.header__toggle-scheme') && document
+      				.querySelector('.header__toggle-scheme')
+      				.addEventListener('click', (e) => {
+      					if ('dark' === body.getAttribute('data-scheme')) {
+      						this.changeScheme('light', true);
+      					} else {
+      						this.changeScheme('dark', true);
+      					}
+      				});
+      		},
+      		initMode: function (e) {
+      			let siteScheme = false;
+      			switch (
+      				'{{ settings.color_scheme }}' // Field. User’s system preference.
+      			) {
+      				case 'dark':
+      					siteScheme = 'dark';
+      					break;
+      				case 'light':
+      					siteScheme = 'light';
+      					break;
+      				case 'system':
+      					siteScheme = 'auto';
+      					break;
+      			}
+      			if ('{{ settings.dark_mode_toggle }}') {
+      				if ('light' === localStorage.getItem('_color_schema')) {
+      					siteScheme = 'light';
+      				}
+      				if ('dark' === localStorage.getItem('_color_schema')) {
+      					siteScheme = 'dark';
+      				}
+      			}
+      			if (siteScheme && siteScheme !== body.getAttribute('data-scheme')) {
+      				this.changeScheme(siteScheme, false);
+      			}
+      		},
+      		changeScheme: function (siteScheme, cookie) {
+      			body.classList.add('scheme-toggled');
+      			body.setAttribute('data-scheme', siteScheme);
+      			if (cookie) {
+      				localStorage.setItem('_color_schema', siteScheme);
+      			}
+      			setTimeout(() => {
+      				body.classList.remove('scheme-toggled');
+      			}, 100);
+      		},
+      	};
+      })();
+
+      cscoDarkMode.init();
+
+      document.addEventListener('shopify:section:load', function () {
+      	setTimeout(() => {
+      		cscoDarkMode.init();
+      	}, 100);
+      });
+    </script>
+<script>
+			window.routes = {
+				cart_add_url: '{{ routes.cart_add_url }}',
+				cart_change_url: '{{ routes.cart_change_url }}',
+				cart_update_url: '{{ routes.cart_update_url }}',
+				cart_url: '{{ routes.cart_url }}',
+				predictive_search_url: '{{ routes.predictive_search_url }}'
+			};
+
+			window.cartStrings = {
+				error: `{{ 'sections.cart.cart_error' | t }}`,
+				quantityError: `{{ 'sections.cart.cart_quantity_error_html' | t }}`,
+				empty: `{{ 'general.cart.empty_cart' | t }}`,
+				shop_now: `{{ 'customer.account.account_button_shop' | t }}`,
+				collections_url: `{{ routes.collections_url | sort_by: 'best-selling' }}`
+			}
+
+			window.variantStrings = {
+				addToCart: `{{ 'products.product.add_to_cart' | t }}`,
+				soldOut: `{{ 'products.product.sold_out' | t }}`,
+				unavailable: `{{ 'products.product.unavailable' | t }}`,
+				unavailable_with_option: `{{ 'products.product.value_unavailable' | t: option_value: '[value]' }}`
+			}
+
+			window.theme = {
+				moneyFormat: {{ shop.money_format | json }},
+				quickviewText: `{{ settings.quickview }}`,
+				quickviewMore: `{{ 'general.card.view__more' | t }}`
+			}
+    </script>
+<script src="{{ 'search-form.js' | asset_url }}" defer></script>
+<script src="{{ 'predictive-search.js' | asset_url }}" defer></script>
+<script>
+      document.addEventListener('DOMContentLoaded', function () {
+subscribe(PUB_SUB_EVENTS.cartUpdate, async function (e) {
+    setTimeout(()=>{
+     var swiper;
+  function initializeSwiper() {
+    swiper = new Swiper(".cart_pdp_slider", {
+      slidesPerView: 3.2,
+      spaceBetween: 10,
+    });
+  }
+  initializeSwiper();
+  },500)
+    });
+  var swiper;
+  function initializeSwiper() {
+    swiper = new Swiper(".cart_pdp_slider", {
+      slidesPerView: 3.2,
+      spaceBetween: 10,
+    });
+  }
+  initializeSwiper();
+  document.addEventListener('DOMContentLoaded', function () {
+  const cartDrawerButton = document.querySelector('.cart-drawer-button');
+  if (cartDrawerButton) {
+    cartDrawerButton.addEventListener('click', function () {
+      initializeSwiper();
+    });
+  }
+});
+
+});
+var timeoutId;
+
+var slideImage = function(step) {
+    if (step === undefined) step = 1;
+    clearTimeout(timeoutId);
+
+    var $messages = $('.announcement-bar__message');
+    var visibleMessage = $messages.filter(function() {
+        return $(this).css('opacity') == 1;
+    });
+    var indx = visibleMessage.index('.announcement-bar__message');
+    
+    if (step != 0) {
+        visibleMessage
+        .attr('tabindex', -1)
+        .find('a')
+        .attr('tabindex', -1);
+
+      visibleMessage.animate({ opacity: 0 }, 500, function() {
+        $(this).css('display', 'none').attr('aria-hidden', 'true');
+      });
+    }
+
+    indx = indx + step;
+    if (indx >= $messages.length) {
+        indx = 0;
+    } else if (indx < 0) {
+        indx = $messages.length - 1;
+    }
+
+    if (step != 0) {
+         const message = $messages.eq(indx)
+          .css({ display: 'inline-block', opacity: 0 })
+          .attr({ tabindex: 0, 'aria-hidden': 'false' })
+          .find('a')
+          .attr('tabindex', 0)
+          .end();
+
+        message.animate({ opacity: 1 }, 500);
+    }
+
+    if (step !== 0) {
+        timeoutId = setTimeout(slideImage, 4000);
+    }
+};
+
+slideImage(0);
+
+timeoutId = setTimeout(slideImage, 500);
+
+$('#pause').click(function() {
+    clearTimeout(timeoutId);
+    $(this).hide();
+    $('#play').show();
+});
+
+$('#play').click(function() {
+    slideImage(0);
+    $(this).hide();
+    $('#pause').show();
+});
+
+var swiper = new Swiper(".cross_swiper", {     
+    slidesPerView: 1.3,
+    spaceBetween: 10,
+    breakpoints: {
+      0: {
+        slidesPerView: 1.3,
+      },
+      375: {
+        slidesPerView: 2.3,
+      },
+      990: {
+        slidesPerView: 1.3,
+      },
+      1280: {
+        slidesPerView: 2.3,
+      },
+      1400: {
+        slidesPerView: 3,
+      },
+    },
+ });
+</script>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+   Object.values(PUB_SUB_EVENTS).forEach(eventName =>
+      subscribe(eventName, () => dispatchEvent(new Event('ShopifyCartChanged')))
+    )
+  });
+ </script>
+<script>
+    document.documentElement.className =
+            document.documentElement.className.replace('no-js', 'js');
+    if (Shopify.designMode) {
+      document.documentElement.classList.add('shopify-design-mode');
+    }
+  </script>
+<script src="{{ 'promo-tag-drawer.js' | asset_url }}" defer></script>
+<script type="module"> import { onCLS, onINP, onLCP, onFCP, onTTFB } from 'https://unpkg.com/web- vitals/dist/web-vitals.attribution.js?module&#039;;
+
+function sendToGA4 (metric) { window.gtag?.('event', metric.name, { value: Math.round(metric.name === 'CLS' ? metric.value * 1000: metric.value), metric_id: metric.id, metric_value: metric.value, metric_delta: metric.delta, non_interaction: true, }); }
+
+onCLS(sendToGA4); onINP (sendToGA4); onLCP(sendToGA4); onFCP (send TOGA4); onTTFB (sendToGA4); </script>
+    <style type="text/css">
+      body, html {
+        width: 100% !important;
+        background: white !important;
+      }
+    </style>
+    
+  </body>
+</html>

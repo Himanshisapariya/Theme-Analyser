@@ -1,0 +1,53 @@
+<div id="registration-success-popup" style="display: none;">
+    <div class="popup-overlay">
+      <div class="popup-content xl:p-[55px] mdscreen6:py-40 mdscreen6:px-30 py-20 px-12 mdscreen6:max-w-full max-w-[90%]">
+        <h3 class="mdscreen2:mb-20 mb-16 max-mdscreen6:text-16">
+          🎉  Account Created Successfully!<br>
+        </h3>
+        <div class="flex flex-col mdscreen2:gap-y-20 gap-y-14 items-center">
+        <h4 class="max-mdscreen6:text-14">Welcome to our community!</h4>
+        <button id="close-popup" class="ctm-button secondary-button min-w-[120px] min-h-40">OK</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <style>
+    .popup-overlay {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+    }
+    .popup-content {
+      background: #fff;
+      border-radius: 10px;
+      text-align: center;
+      font-size: 1.2rem;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    }
+  </style>
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const urlParams = new URLSearchParams(window.location.search);
+      if (urlParams.get('registered') === 'success') {
+        const popup = document.getElementById('registration-success-popup');
+        popup.style.display = 'block';
+  
+        document.getElementById('close-popup').addEventListener('click', function() {
+          popup.style.display = 'none';
+          // Optional: clean the URL
+          const url = new URL(window.location.href);
+          url.searchParams.delete('registered');
+          window.history.replaceState({}, document.title, url.pathname);
+        });
+      }
+    });
+  </script>
+  

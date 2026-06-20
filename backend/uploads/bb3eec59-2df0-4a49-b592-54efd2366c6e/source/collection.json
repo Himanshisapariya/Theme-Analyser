@@ -1,0 +1,112 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "shogun-helper": {
+      "type": "shogun-helper",
+      "settings": {}
+    },
+    "shogun-above": {
+      "type": "shogun-above",
+      "settings": {}
+    },
+    "banner": {
+      "type": "main-collection-banner",
+      "settings": {
+        "header_color_scheme": "light",
+        "add_word": "Collection",
+        "show_word": false,
+        "show_collection_description": true,
+        "show_collection_image": true,
+        "overlay_enable": true,
+        "overlay_opacity": 10,
+        "mobile_image_products": "shopify://shop_images/boycott-mobile.jpg"
+      }
+    },
+    "custom_liquid_hWbXzB": {
+      "type": "custom-liquid",
+      "custom_css": [
+        ".collection-hero__text-wrapper {flex-direction: column-reverse; margin-bottom: 20px;}",
+        ".banner_text_ctm {font-size: 18px; line-height: 190%;}"
+      ],
+      "settings": {
+        "custom_liquid": "<div class=\"banner_text_ctm\" >The BOYCott Collection is a collaboration with The Riley Gaines Center at the Leadership Institute <a href=\"https://rileygainescenter.org/\">Leadership Institute </a>, dedicated to celebrating and supporting women and girls who have the courage to say “no” to unfair and unsafe competition. 15% of purchases go to funding female athletes who refuse to compromise the integrity of their sports or surrender their spaces to men, standing up for the fundamental right to fairness.</div>"
+      }
+    },
+    "product-grid": {
+      "type": "main-collection-product-grid",
+      "settings": {
+        "show_gender_filter": false,
+        "collection_product_title_invisible": "",
+        "product_lists": [
+          "boycott-classic-tee-xx",
+          "boycott-tee-xy",
+          "boycott-dad-cap",
+          "boycott-eyeblack",
+          "boycott-bumper-sticker",
+          "rgi-square-save-womens-sports-sticker"
+        ],
+        "products_per_page": 12,
+        "columns_mobile": "1",
+        "image_ratio": "portrait",
+        "image_fit": "cover",
+        "show_secondary_image": false,
+        "show_vendor": false,
+        "show_desc": false,
+        "show_sku": false,
+        "quickview_show": true,
+        "enable_filtering": true,
+        "enable_sorting": true,
+        "image_filter_ratio": "4/5",
+        "image_filter_fit": "cover",
+        "image_filter_columns": 5
+      }
+    },
+    "product_carousel_hbNbh4": {
+      "type": "product-carousel",
+      "disabled": true,
+      "settings": {
+        "heading": "<p> <strong>New Arrivals</strong></p>",
+        "products_count": 4,
+        "link": "",
+        "button_link": "",
+        "image_ratio": "portrait",
+        "image_fit": "cover",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_desc": false,
+        "show_sku": false,
+        "quickview_show": false,
+        "show_link_carousel": false,
+        "margin_top": 100,
+        "margin_bottom": 100,
+        "lookbook_slider_class": ""
+      }
+    },
+    "shogun-below": {
+      "type": "shogun-below",
+      "settings": {}
+    },
+    "shogun-optimizer": {
+      "type": "shogun-optimizer",
+      "settings": {}
+    }
+  },
+  "order": [
+    "shogun-helper",
+    "shogun-above",
+    "banner",
+    "custom_liquid_hWbXzB",
+    "product-grid",
+    "product_carousel_hbNbh4",
+    "shogun-below",
+    "shogun-optimizer"
+  ]
+}

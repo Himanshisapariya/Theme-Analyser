@@ -1,0 +1,166 @@
+<div class="{{ section.settings.extra_class }} ctm-main-benefits bg-lightest-blue py-50">
+  <div class="ctm-benefits-header-txt-icon-main {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"  
+    {% if settings.animations_reveal_on_scroll %}
+    data-cascade
+  {% endif %}>
+    {% if section.settings.heading != blank %}
+      <div class="ctm-main-benefits-header pb-[38px]">
+        <h3 class="flex items-center text-center mdscreen6:gap-x-[33px] gap-x-16 justify-center max-mdscreen6:max-w-[290px] max-mdscreen6:mx-auto max-mdscreen6:leading-24 max-mdscreen:text-32">
+          {% render 'stars-section' %} {{ section.settings.heading }} {% render 'stars-section' %}
+        </h3>
+      </div>
+    {% endif %}
+  
+  
+      <div class="ctm-benefits-icon-txt flex justify-center flex-wrap max-w-[800px] max-mdscreen:flex-col max-mdscreen:w-max mx-auto gap-x-40 gap-y-20">
+        {% for block in section.blocks %}
+          {% if block.settings.icons != blank or block.settings.text != blank %}
+            <div class="ctm-benefits-icon-txt-main flex items-center gap-8">
+              {% if block.settings.icons != blank %}
+                <div class="ctm-benefits-icon">
+                  <img src="{{ block.settings.icons | image_url }}" alt="benefits-icons" width="50" height="50">
+                </div>
+              {% endif %}
+              {% if block.settings.text != blank %}
+                <div class="ctm-benefits-txt uppercase">
+                  <p class="text-20 max-mdscreen2:text-16 leading-100p font-bold text-primary-blue ">{{ block.settings.text }}</p>
+                </div>
+              {% endif %}
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+
+     
+
+  
+    {% if section.settings.reviews_heading != blank or section.settings.reviews_code != blank %}
+      <div class="ctm-benefits-reviews-main pt-[38px]">
+        {% if section.settings.reviews_heading != blank %}
+          <div class="ctm-benefits-review-head">
+            <h4 class="flex items-center text-center mdscreen6:gap-x-[33px] gap-x-16 justify-center max-mdscreen6:max-w-[290px] max-mdscreen6:mx-auto max-mdscreen6:leading-24">
+              {{ section.settings.reviews_heading }}
+            </h4>
+          </div>
+        {% endif %}
+        {% if section.settings.reviews_code != blank %}
+          <div class="ctm-benefits-reviews">
+            {{ section.settings.reviews_code }}
+          </div>
+        {% endif %}
+        {% assign slider_blocks = section.blocks | where: "type", "slider_reviews" %}
+      
+        {% if slider_blocks.size > 0 %}
+          <div class="swiper-container ctm-review-slider mt-[10px] max-w-[1100px] mx-auto !px-20 max-smscreen:!px-40">
+            <div class="swiper-wrapper">
+              {% for block in slider_blocks %}
+                <div class="swiper-slide">
+                  <div class="bg-white rounded-[12px] py-[40px] px-[30px] text-center shadow-md max-w-[885px] mx-auto w-full">
+                    <div class="text-primary-blue text-[30px] font-bold leading-none mb-4">“”</div>
+                    <div class="text-[16px] text-[#555555] max-w-[550px] mx-auto leading-relaxed">
+                      {{ block.settings.review_text }}
+                    </div>
+                  </div>
+                </div>
+              {% endfor %}
+            </div>
+
+            <!-- Swiper navigation -->
+            <div class="swiper-button-prev !w-auto !h-auto max-mdscreen2:!hidden"> {% render 'study-prev' %} </div>
+            <div class="swiper-button-next !w-auto !h-auto max-mdscreen2:!hidden"> {% render 'study-next' %} </div> 
+          </div>
+        {% endif %}
+      </div>
+    {% endif %}
+  </div>
+</div>
+  
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    new Swiper('.ctm-review-slider', {
+      slidesPerView: 1,
+      spaceBetween: 40,
+      loop: true,
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+    });
+  });
+</script>
+
+<style>
+  .ctm-review-slider {
+    position: relative;
+    padding: 20px 0;
+    overflow-x: hidden;
+  }
+  
+  .ctm-review-slider .swiper-slide {
+    display: flex;
+    justify-content: center;
+  }
+  
+  </style>
+{% schema %}
+{
+  "name": "Study Benefits",
+  "class": "ctm-study-benefits",
+  "settings": [
+    {
+      "type": "text",
+      "label": "Extra Class",
+      "id": "extra_class"
+    },
+    {
+      "type": "text",
+      "label": "Heading",
+      "id": "heading"
+    },
+    {
+      "type": "text",
+      "label": "Reviews Heading",
+      "id": "reviews_heading"
+    },
+    {
+      "type": "html",
+      "label": "Reviews Code",
+      "id": "reviews_code"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "image_with_text",
+      "name": "Image With Text",
+      "settings": [
+        {
+          "type": "image_picker",
+          "label": "Icons",
+          "id": "icons"
+        },
+        {
+          "type": "text",
+          "label": "Text",
+          "id": "text"
+        }
+      ]
+    },
+    {
+      "type": "slider_reviews",
+      "name": "Slider Reviews",
+      "settings": [
+        {
+          "type": "html",
+          "label": "Review Text",
+          "id": "review_text"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Study Benefits"
+    }
+  ]
+}
+{% endschema %}

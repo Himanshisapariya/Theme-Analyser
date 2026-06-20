@@ -1,0 +1,551 @@
+{{ 'component-cart.css' | asset_url | stylesheet_tag }}
+{{ 'component-cart-items.css' | asset_url | stylesheet_tag }}
+{{ 'component-totals.css' | asset_url | stylesheet_tag }}
+{{ 'component-price.css' | asset_url | stylesheet_tag }}
+
+{%- unless settings.cart_type == 'drawer' -%}
+  {{ 'component-discounts.css' | asset_url | stylesheet_tag }}
+  {{ 'component-loading-overlay.css' | asset_url | stylesheet_tag }}
+  <script src="{{ 'cart.js' | asset_url }}" defer="defer"></script>
+{%- endunless -%}
+
+<style>
+
+/* Base font-family for all text */
+.section-cart-items , 
+.section-cart-items a , 
+.section-cart-items p , 
+.section-cart-items span {
+  font-family: 'Poppins', sans-serif;
+}
+
+
+
+/* H2 — Main Heading */
+.section-cart-items h2 ,
+.section-cart-items .h2 {
+  font-size: 30px;
+  font-weight: 500;
+}
+
+/* H3 — Subheading */
+.section-cart-items h3 ,
+.section-cart-items .h3 {
+  font-weight: 500;
+  margin: 5px 0;
+}
+
+.section-cart-items h4 ,
+.section-cart-items .h4 {
+  font-size: 18px;
+  font-weight: 500;
+  line-height: normal;
+}
+
+/* H5 — Product Titles scale */
+.section-cart-items h5,
+.section-cart-items .h5{
+  font-size: 16px;
+  font-weight: 500;
+  margin: 0;
+  line-height: normal;
+}
+
+/* H6 — Subheadings */
+.section-cart-items h6,
+.section-cart-items .h6{
+  font-size: 16px;
+  font-weight: 500;
+  margin: 3px 0;
+  line-height: normal;
+}
+
+/* Body Text */
+.section-cart-items a,
+.section-cart-items p,
+.section-cart-items span {
+  font-size: 14px;
+  font-weight: 400;
+}
+
+
+@media (min-width: 1024px) {
+  .section-cart-items h2 , .section-cart-items .h2 { font-size: 28px; }
+  .section-cart-items h3 , .section-cart-items .h3 { font-size: 23px; }
+  .section-cart-items h4 , .section-cart-items .h4 { font-size: 18px; }
+
+  .section-cart-items h5 , .section-cart-items .h5 { font-size: 14px; }
+  .section-cart-items h6 , .section-cart-items .h6 { font-size: 16px; }
+
+  .section-cart-items a,
+  .section-cart-items p,
+  .section-cart-items span {
+    font-size: 12px;
+  }
+}
+
+
+@media (min-width: 1861px) {
+  .section-cart-items h2 , .section-cart-items .h2 { font-size: 44px; }
+  .section-cart-items h3 , .section-cart-items .h3 { font-size: 34px; }
+  .section-cart-items h4 , .section-cart-items .h4 { font-size: 24px; }
+
+  .section-cart-items h5 , .section-cart-items .h5 { font-size: 16px; }
+  .section-cart-items h6 , .section-cart-items .h6 { font-size: 18px; }
+
+  .section-cart-items a,
+  .section-cart-items p,
+  .section-cart-items span {
+    font-size: 14px;
+  }
+}
+</style>
+
+{% assign has_gwp = false %}
+{% for block in section.blocks %}
+  {% if block.type == 'gift_with_purchase' %}
+    {% assign gift_product_handle = block.settings.gift_product %}
+    {% if gift_product_handle != blank %}
+      {% assign gift_product = all_products[gift_product_handle] %}
+      {% assign all_variants_out_of_stock = true %}
+      {% for variant in gift_product.variants %}
+        {% if variant.available %}
+          {% assign all_variants_out_of_stock = false %}
+          {% break %}
+        {% endif %}
+      {% endfor %}
+      {% unless all_variants_out_of_stock %}
+        {% assign has_gwp = true %}
+      {% endunless %}
+    {% endif %}
+  {% endif %}
+{% endfor %}
+
+<style>
+  .ctm-main-cart-data {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-auto-rows: min-content;
+    gap: 0;
+    {% if has_gwp %}
+      grid-template-areas:
+        'gwp'
+        'items'
+        'freeShipping'
+        'summary'
+        'upsell';
+    {% else %}
+      grid-template-areas:
+        'items'
+        'freeShipping'
+        'summary'
+        'upsell';
+    {% endif %}
+  }
+
+  .cart-empty .cart-free-shipping {
+    background: none !important;
+  }
+
+  @media (max-width: 1024px) {
+    .ctm-main-cart-data {
+      margin-top: 0;
+    }
+    .cart-free-shipping {
+      background: #efeff0;
+      border-radius: 15px;
+      padding: 8px 14px;
+    }
+    .ctm-main-cart-data {
+      gap: 20px;
+    }
+    .cart-upsell-section,
+    .cart-help-accordion,
+    .ctm-cart-cta-content {
+      display: none !important;
+    }
+  }
+
+  @media (min-width: 1025px) {
+    .ctm-main-cart-data {
+    grid-template-columns: 2fr 1fr;
+    grid-auto-rows: min-content;
+    gap: 0 50px;
+    {% if has_gwp %}
+      grid-template-areas:
+        'gwp summary'
+        'items summary'
+        'upsell summary';
+    {% else %}
+      grid-template-areas:
+        'items summary'
+        'upsell summary';
+    {% endif %}
+  }
+
+    .main-cart-right-items {
+      position: sticky;
+      top: 20px;
+      align-self: start;
+    }
+  }
+
+  .cart-gwp-section {
+    grid-area: gwp;
+  }
+
+  .main-cart-left-items {
+    grid-area: items;
+  }
+
+  .main-cart-right-items {
+    grid-area: summary;
+  }
+
+  .cart-upsell-section {
+    grid-area: upsell;
+  }
+
+  .cart-free-shipping {
+    grid-area: freeShipping;
+  }
+
+  .ctm-main-cart-data.cart-empty {
+    display: block;
+  }
+
+  @media (min-width: 1025px) {
+    .cart-free-shipping {
+      grid-column: 2; /* right column */
+      grid-row: 1; /* very top */
+      align-self: start;
+      margin-bottom: 16px;
+    }
+  }
+
+  /* Remove Button Loader Styles */
+  .remove-button-wrapper {
+    position: relative;
+    display: inline-block;
+  }
+
+  .remove-text {
+    display: inline-block;
+    transition: opacity 0.2s ease;
+  }
+
+  .remove-loader {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Quantity Button Loader Styles - Optimized */
+  .quantity__button {
+    position: relative;
+  }
+
+  .quantity__button svg {
+    transition: opacity 0.15s ease;
+    will-change: opacity;
+  }
+
+  .quantity-loader {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+  }
+
+  .spinner {
+    width: 12px;
+    height: 12px;
+    border: 1.5px solid #f3f3f3;
+    border-top: 1.5px solid #333;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+    will-change: transform;
+  }
+
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+  /* Use display:none for better performance than class toggling */
+  .quantity-loader {
+    display: none;
+  }
+
+  .remove-loader.hidden .spinner,
+  .quantity-loader.hidden .spinner {
+    display: none;
+  }
+
+  .remove-loader:not(.hidden) .spinner,
+  .quantity-loader:not(.hidden) .spinner {
+    display: block;
+  }
+
+  .remove-loader:not(.hidden) ~ .remove-text {
+    opacity: 0;
+  }
+</style>
+
+<div class="ctm-main-cart-data {% if cart.item_count == 0 %}cart-empty{% endif %}">
+  <!-- GWP Section -->
+
+    {%- for block in section.blocks -%}
+      {%- case block.type -%}
+        {%- when 'gift_with_purchase' -%}
+            <div class="cart-gwp-section">
+              {% render 'gwp', block: block, section_id: section.id %}
+            </div>
+      {%- endcase -%}
+      
+    {%- endfor -%}
+
+
+  <div class="cart-free-shipping">
+    {% render 'free-shipping-bar' %}
+  </div>
+  <!-- Cart Items (Left) -->
+  <div class="main-cart-left-items">
+    {% render 'main-cart-products', block: section.blocks %}
+  </div>
+
+  <!-- Order Summary & Accordion (Right) -->
+  <div class="main-cart-right-items">
+    {% render 'main-cart-subtotal', block: section.blocks %}
+  </div>
+
+  <!-- Upsell Section -->
+  <div class="cart-upsell-section">
+    {%- for block in section.blocks -%}
+      {%- case block.type -%}
+        {%- when 'upsell_products' -%}
+          {% render 'cart-upsell', block: block, section_id: section.id %}
+      {%- endcase -%}
+    {%- endfor -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "t:sections.main-cart-items.name",
+  "class": "section-cart-items",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_vendor",
+      "default": false,
+      "label": "t:sections.main-cart-items.settings.show_vendor.label"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.section-padding.header.content"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 200,
+      "step": 10,
+      "default": 40,
+      "unit": "px",
+      "label": "t:sections.all.section-padding.padding_top.label"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 200,
+      "step": 10,
+      "default": 0,
+      "unit": "px",
+      "label": "t:sections.all.section-padding.padding_bottom.label"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.section-margin.header.content"
+    },
+    {
+      "type": "range",
+      "id": "margin_top",
+      "min": 0,
+      "max": 200,
+      "step": 10,
+      "default": 0,
+      "unit": "px",
+      "label": "t:sections.all.section-margin.margin_top.label"
+    },
+    {
+      "type": "range",
+      "id": "margin_bottom",
+      "min": 0,
+      "max": 200,
+      "step": 10,
+      "default": 0,
+      "unit": "px",
+      "label": "t:sections.all.section-margin.margin_bottom.label"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "subtotal",
+      "name": "t:sections.main-cart-footer.blocks.subtotal.name",
+      "limit": 1
+    },
+    {
+      "type": "buttons",
+      "name": "t:sections.main-cart-footer.blocks.buttons.name",
+      "limit": 1
+    },
+    {
+      "type": "accordion",
+      "name": "Accordion (FAQ)",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Accordion icon"
+        },
+        {
+          "type": "text",
+          "id": "question",
+          "label": "Question",
+          "default": "Shipping & Returns"
+        },
+        {
+          "type": "richtext",
+          "id": "answer",
+          "label": "Answer",
+          "default": "<p>Shipping and return information goes here.</p>"
+        }
+      ]
+    },
+    {
+      "type": "upsell_products",
+      "name": "Upsell Products",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Section Title",
+          "default": "Accessories"
+        },
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "Collection",
+          "info": "Select collection to show as upsell products"
+        },
+        {
+          "type": "header",
+          "content": "Empty Cart"
+        },
+        {
+          "type": "text",
+          "id": "empty_title",
+          "label": "Empty Cart Title",
+          "default": "You May Also Like"
+        },
+        {
+          "type": "collection",
+          "id": "empty_collection",
+          "label": "Empty Cart Collection",
+          "info": "Collection to show when cart is empty"
+        }
+      ]
+    },
+    {
+      "type": "cart_banner_with_text",
+      "name": "Cart Banner With Text",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Background Image"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_mobile",
+          "label": "Mobile Image"
+        },
+        {
+          "type": "select",
+          "id": "image_size",
+          "label": "Banner Height",
+          "default": "medium",
+          "options": [
+            { "value": "adapt", "label": "Adapt to Image" },
+            { "value": "small", "label": "Small" },
+            { "value": "medium", "label": "Medium" },
+            { "value": "large", "label": "Large" }
+          ]
+        },
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading"
+        },
+        {
+          "type": "text",
+          "id": "subheading",
+          "label": "Subheading"
+        },
+        {
+          "type": "liquid",
+          "id": "custom_liquid",
+          "label": "Custom Liquid"
+        },
+        {
+          "type": "text",
+          "id": "extra_class",
+          "label": "Extra CSS Class"
+        }
+      ]
+    },
+    {
+      "type": "gift_with_purchase",
+      "name": "Gift with Purchase",
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading",
+          "default": "Free Gift With Purchase"
+        },
+        {
+          "type": "text",
+          "id": "subheading",
+          "label": "Subheading",
+          "default": "Spend $250, get a free gift.*"
+        },
+        {
+          "type": "product",
+          "id": "gift_product",
+          "label": "Gift Product"
+        },
+        {
+          "type": "number",
+          "id": "threshold",
+          "label": "Threshold Amount ($)",
+          "default": 250
+        }
+      ]
+    },
+    {
+      "type": "@app"
+    }
+  ]
+}
+{% endschema %}

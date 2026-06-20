@@ -1,0 +1,95 @@
+{%- style -%}
+  {% if product.metafields['pdp-risk-bg'].acf != blank %}
+      .ctm_icon_text_bg {
+        background-image: url('{{ product.metafields['pdp-risk-bg'].acf }}');
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
+    {% endif %}
+{%- endstyle -%}
+
+{% liquid
+  assign pdp-risk-bg = product.metafields['pdp-risk-bg'].acf
+  assign pdp-risk-sub-head = product.metafields['upper-sub-text'].acf
+  assign pdp-head = product.metafields.heading.acf
+  assign pdp-desc = product.metafields.description.acf
+  assign pdp-risk-icons = product.metafields['icon-risk-free'].acf
+  assign pdp-risk-icon-txt = product.metafields['text-risk-free'].acf
+%}
+
+<div class="pt-55 desktop:pt-80 pdp_icontext_section {{ section.settings.extra_class }}">
+  <div class="xl_container">
+    <div class="ctm_icon_text_bg rounded-24 overflow-hidden py-55">
+      <div class="ctm_icon_txt_head_main text-center pb-40 px-30 lg:px-55 desktop:px-75">
+        {% if pdp-risk-sub-head != blank %}
+          <div class="text_caption_title mb-10">
+            <h5>{{ pdp-risk-sub-head }}</h5>
+          </div>
+        {% endif %}
+        {% if pdp-head != blank %}
+          <div class="text_section_title mb-15">
+            <h3>{{ pdp-head }}</h3>
+          </div>
+        {% endif %}
+        {% if lower_sub_head != blank %}
+          <div class="text_content_title">
+            <p>{{ lower_sub_head }}</p>
+          </div>
+        {% endif %}
+        {% if pdp-desc != blank %}
+          <div class="text_descript_title max-w-[747px] mx-auto">
+            <p>{{ pdp-desc }}</p>
+          </div>
+        {% endif %}
+      </div>
+      <div class="ctm_icontext_block icon-swiper-text swiper xl:!px-55 desktop:!px-75 xlscreen2:!pb-50">
+        <div class="swiper-wrapper">
+          {% for j in (0..pdp-risk-icon-txt.size) %}
+            {% if pdp-risk-icons[j] != blank %}
+              <div class="swiper-slide">
+                <div class="ctm_icon_cont_block flex xlscreen2:flex-col gap-16 items-center">
+                  <div class="ctm_icon_img flex-shrink-0">
+                    {% if pdp-risk-icon-txt != blank %}
+                      <img
+                        src="{{ pdp-risk-icons[j] }}"
+                        alt="{{ pdp-risk-icons[j].alt }}"
+                        loading="lazy"
+                        width="64"
+                        height="64"
+                      >
+                    {% endif %}
+                  </div>
+                  <div class="ctm_icon_text xlscreen2:text-center">
+                    <h6 class="font-extrabold text-bloodstone">{{ pdp-risk-icon-txt[j] }}</h6>
+                  </div>
+                </div>
+              </div>
+            {% endif %}
+          {% endfor %}
+        </div>
+        <div class="ctm_slide_pagination xl:hidden">
+          <div class="swiper-pagination pagifill_alaloe_leaf"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% schema %}
+{
+  "name": "PDP Icon Text",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "label": "Extra Class",
+      "id": "extra_class"
+    }
+  ],
+  "blocks": [],
+  "presets": [
+    {
+      "name": "PDP Icon Text"
+    }
+  ]
+}
+{% endschema %}

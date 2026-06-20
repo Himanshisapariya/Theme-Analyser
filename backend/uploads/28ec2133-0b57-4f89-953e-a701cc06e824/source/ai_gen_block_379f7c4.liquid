@@ -1,0 +1,164 @@
+{% doc %}
+  @prompt
+    can you give me a spacer block thats just empty and allows me to change the colors of the spacer to match blocks next to it?
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-spacer-{{ ai_gen_id }} {
+    width: 100%;
+    height: {{ block.settings.spacer_height }}px;
+    background-color: {{ block.settings.background_color }};
+    {% if block.settings.background_gradient != blank %}
+      background: {{ block.settings.background_gradient }};
+    {% endif %}
+    border-radius: {{ block.settings.border_radius }}px;
+    {% if block.settings.border_thickness > 0 %}
+      border: {{ block.settings.border_thickness }}px solid {{ block.settings.border_color }};
+    {% endif %}
+    {% if block.settings.shadow_opacity > 0 %}
+      box-shadow: {{ block.settings.shadow_horizontal_offset }}px {{ block.settings.shadow_vertical_offset }}px {{ block.settings.shadow_blur }}px rgba({{ block.settings.shadow_color | color_extract: 'red' }}, {{ block.settings.shadow_color | color_extract: 'green' }}, {{ block.settings.shadow_color | color_extract: 'blue' }}, {{ block.settings.shadow_opacity | divided_by: 100.0 }});
+    {% endif %}
+  }
+
+  @media screen and (max-width: 749px) {
+    .ai-spacer-{{ ai_gen_id }} {
+      height: {{ block.settings.spacer_height_mobile }}px;
+    }
+  }
+{% endstyle %}
+
+<div class="ai-spacer-{{ ai_gen_id }}" {{ block.shopify_attributes }}></div>
+
+{% schema %}
+{
+  "name": "Spacer",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Spacing"
+    },
+    {
+      "type": "range",
+      "id": "spacer_height",
+      "min": 10,
+      "max": 200,
+      "step": 5,
+      "unit": "px",
+      "label": "Height on desktop",
+      "default": 50
+    },
+    {
+      "type": "range",
+      "id": "spacer_height_mobile",
+      "min": 10,
+      "max": 150,
+      "step": 5,
+      "unit": "px",
+      "label": "Height on mobile",
+      "default": 30
+    },
+    {
+      "type": "header",
+      "content": "Background"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color_background",
+      "id": "background_gradient",
+      "label": "Background gradient"
+    },
+    {
+      "type": "header",
+      "content": "Border"
+    },
+    {
+      "type": "range",
+      "id": "border_thickness",
+      "min": 0,
+      "max": 10,
+      "step": 1,
+      "unit": "px",
+      "label": "Border thickness",
+      "default": 0
+    },
+    {
+      "type": "color",
+      "id": "border_color",
+      "label": "Border color",
+      "default": "#e5e5e5"
+    },
+    {
+      "type": "range",
+      "id": "border_radius",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "label": "Border radius",
+      "default": 0
+    },
+    {
+      "type": "header",
+      "content": "Shadow"
+    },
+    {
+      "type": "range",
+      "id": "shadow_opacity",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "label": "Shadow opacity",
+      "default": 0
+    },
+    {
+      "type": "color",
+      "id": "shadow_color",
+      "label": "Shadow color",
+      "default": "#121212"
+    },
+    {
+      "type": "range",
+      "id": "shadow_horizontal_offset",
+      "min": -20,
+      "max": 20,
+      "step": 2,
+      "unit": "px",
+      "label": "Horizontal offset",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "shadow_vertical_offset",
+      "min": -20,
+      "max": 20,
+      "step": 2,
+      "unit": "px",
+      "label": "Vertical offset",
+      "default": 4
+    },
+    {
+      "type": "range",
+      "id": "shadow_blur",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "label": "Shadow blur",
+      "default": 4
+    }
+  ],
+  "presets": [
+    {
+      "name": "Spacer"
+    }
+  ],
+  "tag": null
+}
+{% endschema %}

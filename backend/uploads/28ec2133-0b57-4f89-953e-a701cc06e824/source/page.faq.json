@@ -1,0 +1,119 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "ctm_faq_jWJQmy": {
+      "type": "ctm-faq",
+      "blocks": {
+        "faq_block_U8M6Mz": {
+          "type": "faq_block",
+          "settings": {
+            "faq_question": "What ingredients are in POOOF!® whitening™ Strips?",
+            "faq_answer": "PVP, Hydrogen Peroxide, Hydroxyapatite, Aqua, Pectin, Glycerin, Pentasodium Triphosphate, Sodium Hexametaphosphate, peppermint flavoring (Aroma), Polysorbate 80, Sucralose, Polycarbophil, Limonene, Linalool are part of the whitening components. The actual STRIP is made of a food-grade water soluble polymer (starch) which is infused with the whitening components for optimal teeth whitening (note: Limonene and Linalool are components of the Peppermint flavoring and listed as are potential allergens)."
+          }
+        },
+        "faq_block_mM3q4M": {
+          "type": "faq_block",
+          "settings": {
+            "faq_question": "Are POOOF!® whitening™ Strips safe for my teeth?",
+            "faq_answer": "Yes! They are created with a neutral pH and the HA (hydroxyapatite) actually helps remineralize enamel."
+          }
+        },
+        "faq_block_g6CgwH": {
+          "type": "faq_block",
+          "settings": {
+            "faq_question": "Can I eat and drink while wearing whitening strips?",
+            "faq_answer": "No! Wait until the strips dissolve. Typically 10-15 minutes.."
+          }
+        },
+        "faq_block_fCPaUW": {
+          "type": "faq_block",
+          "settings": {
+            "faq_question": "Can I use whitening strips if I have sensitive teeth?",
+            "faq_answer": "YES!!! Even if you have had sensitivity in the past, you may not have any with POOOF!®. We have designed POOOF!® with a ZERO sensitivity formula. First hydroxyapatite will remineralize teeth and block the sponge-like pores on your teeth. We also have a proprietary compound called P3 which maximizes the whitening effect of our 12% Hydrogen Peroxide. Although we have not had any POOOF! users complain of sensitivity; important to know that any tooth sensitivity as a result of whitening is always transitory and will always dissipate."
+          }
+        },
+        "faq_block_zAGFF4": {
+          "type": "faq_block",
+          "settings": {
+            "faq_question": "How long will it take to see results with whitening strips?",
+            "faq_answer": "Results are often seen immediately after the first use! However, in an independent clinical study demonstrated that POOOF! is 2X more effective than the leading strips after 3 days and a 10-day in-vitro utilization, POOOF!® Whitening Strips showed 37% BETTER whitening than the leading whitening strips."
+          }
+        },
+        "faq_block_RwcTQQ": {
+          "type": "faq_block",
+          "settings": {
+            "faq_question": "How do I store whitening strips properly?",
+            "faq_answer": "It is best to store strips at room temperature. If you live in a warm climate you may keep the strips in a refrigerator, however under normal circumstances, this is not required."
+          }
+        },
+        "faq_block_wkgAgC": {
+          "type": "faq_block",
+          "settings": {
+            "faq_question": "Are whitening strips suitable for everyone?",
+            "faq_answer": "White strips only work on natural teeth. However, if you have crowns or veneers and have stains in between your teeth, POOOF!® may be effective in removing superficial stains."
+          }
+        },
+        "faq_block_CfFY8T": {
+          "type": "faq_block",
+          "settings": {
+            "faq_question": "Can I use whitening strips if I have braces or other orthodontic appliances?",
+            "faq_answer": "If you are doing Invisalign, or your braces are lingual braces (behind your teeth), you can use POOOF!®. If your braces are on the front surfaces of your teeth, then you should wait until you are finished with your orthodontic treatment to use POOOF!®."
+          }
+        },
+        "faq_block_m8Kemf": {
+          "type": "faq_block",
+          "settings": {
+            "faq_question": "Isn't a whitening toothpaste enough to whiten my teeth?",
+            "faq_answer": "No! Whitening toothpastes can't ACTUALLY whiten teeth. The best that they can do is possibly remove superficial stains, which POOOF!® will also do."
+          }
+        },
+        "faq_block_jDCCCq": {
+          "type": "faq_block",
+          "settings": {
+            "faq_question": "How do POOOF!® Whitening Strips dissolve?",
+            "faq_answer": "POOOF!® strips are mainly made of a food-grade water soluble polymer (starch) which has been created to dissolve and melt in 10-15 minutes with normal saliva. These strips are infused with hydrogen peroxide, hydroxyapatite and P3 technology."
+          }
+        }
+      },
+      "block_order": [
+        "faq_block_U8M6Mz",
+        "faq_block_mM3q4M",
+        "faq_block_g6CgwH",
+        "faq_block_fCPaUW",
+        "faq_block_zAGFF4",
+        "faq_block_RwcTQQ",
+        "faq_block_wkgAgC",
+        "faq_block_CfFY8T",
+        "faq_block_m8Kemf",
+        "faq_block_jDCCCq"
+      ],
+      "settings": {
+        "main_title": "<h1>Frequently Asked Questions</h1>",
+        "extra_class": "",
+        "button_text": "",
+        "button_url": "",
+        "first_accordion_open": false
+      }
+    }
+  },
+  "order": [
+    "main",
+    "ctm_faq_jWJQmy"
+  ]
+}

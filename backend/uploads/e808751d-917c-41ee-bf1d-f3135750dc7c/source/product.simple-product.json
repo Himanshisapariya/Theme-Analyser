@@ -1,0 +1,226 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "custom_liquid_TJB4zG": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "{% if  product.metafields.custom.promo_message %}\n        <div class=\"promo-message\">\n            {{ product.metafields.custom.promo_message }}\n        </div>\n    {% endif %}"
+          }
+        },
+        "price": {
+          "type": "price",
+          "settings": {}
+        },
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "button"
+          }
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": false,
+            "show_gift_card_recipient": false
+          }
+        },
+        "product-description": {
+          "type": "product-description",
+          "settings": {
+            "default_open": true
+          }
+        },
+        "perfect-fit": {
+          "type": "perfect-fit",
+          "settings": {
+            "about_heading": "Perfect Fit",
+            "about_heading_content": "<p>Some description</p>",
+            "show_link_slider": false
+          }
+        },
+        "pickup_availability": {
+          "type": "pickup_availability",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "custom_liquid_TJB4zG",
+        "price",
+        "variant_picker",
+        "buy_buttons",
+        "product-description",
+        "perfect-fit",
+        "pickup_availability"
+      ],
+      "custom_css": [
+        ".promo-message {padding-top: 10px; font-size: 18px; color: #2ab572; font-weight: bold;}",
+        ".product__subtitle,.yotpo-widget-instance {display: block; width: 100%;}"
+      ],
+      "settings": {
+        "image_gallery_collage": "thumbnail_carousel",
+        "desktop_alignment": "right",
+        "mobile_alignment": "after",
+        "image_fit": "cover",
+        "show_share_facebook": false,
+        "show_share_twitter": false,
+        "show_share_pinterest": false,
+        "show_share_copy": false
+      }
+    },
+    "product-recommendations": {
+      "type": "product-recommendations",
+      "custom_css": [
+        "h2 {font-size: 24pt;}"
+      ],
+      "settings": {
+        "heading": "<p>You Might Also Like</p>",
+        "link": "",
+        "button_link": "",
+        "products_limit": 4,
+        "image_ratio": "portrait",
+        "image_fit": "cover",
+        "show_secondary_image": true,
+        "show_vendor": true,
+        "show_desc": false,
+        "show_sku": false,
+        "quickview_show": false,
+        "show_link": true,
+        "margin_top": 70,
+        "margin_bottom": 70
+      }
+    },
+    "e4f339f2-3b69-4e29-be3c-e5903b404092": {
+      "type": "instagram-collage",
+      "blocks": {
+        "template--17224267399481__e4f339f2-3b69-4e29-be3c-e5903b404092-168309399123060deb-0": {
+          "type": "card",
+          "settings": {
+            "button_link": ""
+          }
+        },
+        "template--17224267399481__e4f339f2-3b69-4e29-be3c-e5903b404092-168309399123060deb-1": {
+          "type": "card",
+          "settings": {
+            "button_link": ""
+          }
+        },
+        "template--17224267399481__e4f339f2-3b69-4e29-be3c-e5903b404092-168309399123060deb-2": {
+          "type": "card",
+          "settings": {
+            "button_link": ""
+          }
+        },
+        "template--17224267399481__e4f339f2-3b69-4e29-be3c-e5903b404092-168309399123060deb-3": {
+          "type": "card-text",
+          "settings": {
+            "card-text_description": "<p>Some additional information</p>",
+            "heading_size": "medium",
+            "vertical_settings": "end",
+            "horizontal_settings": "left",
+            "color_scheme_2": "background-5"
+          }
+        }
+      },
+      "block_order": [
+        "template--17224267399481__e4f339f2-3b69-4e29-be3c-e5903b404092-168309399123060deb-0",
+        "template--17224267399481__e4f339f2-3b69-4e29-be3c-e5903b404092-168309399123060deb-1",
+        "template--17224267399481__e4f339f2-3b69-4e29-be3c-e5903b404092-168309399123060deb-2",
+        "template--17224267399481__e4f339f2-3b69-4e29-be3c-e5903b404092-168309399123060deb-3"
+      ],
+      "disabled": true,
+      "settings": {
+        "color_scheme": "background-3",
+        "title": "<p>Heading</p>",
+        "text": "Your text",
+        "overlay_enable": false,
+        "overlay_opacity": 10,
+        "button_text": "link label",
+        "button_link": "",
+        "padding_top": 130,
+        "padding_bottom": 160,
+        "margin_top": 140,
+        "margin_bottom": 0
+      }
+    },
+    "instagram_collage_nNpe8n": {
+      "type": "instagram-collage",
+      "blocks": {
+        "card_MfcDUn": {
+          "type": "card",
+          "settings": {
+            "button_link": ""
+          }
+        },
+        "card_Fc3Qc4": {
+          "type": "card",
+          "settings": {
+            "button_link": ""
+          }
+        },
+        "card_DbX4Tx": {
+          "type": "card",
+          "settings": {
+            "button_link": ""
+          }
+        },
+        "card_text_A6e3Cy": {
+          "type": "card-text",
+          "settings": {
+            "card-text_description": "<p>Some additional information</p>",
+            "heading_size": "medium",
+            "vertical_settings": "end",
+            "horizontal_settings": "left",
+            "color_scheme_2": "background-5"
+          }
+        }
+      },
+      "block_order": [
+        "card_MfcDUn",
+        "card_Fc3Qc4",
+        "card_DbX4Tx",
+        "card_text_A6e3Cy"
+      ],
+      "disabled": true,
+      "settings": {
+        "color_scheme": "background-3",
+        "title": "<p>Born Brave</p>",
+        "text": "",
+        "overlay_enable": false,
+        "overlay_opacity": 10,
+        "button_text": "",
+        "button_link": "",
+        "padding_top": 130,
+        "padding_bottom": 160,
+        "margin_top": 0,
+        "margin_bottom": 0
+      }
+    },
+    "1713919142b7ed1a75": {
+      "type": "apps",
+      "custom_css": [
+        ".omnisend-main-review-block {display: none;}"
+      ],
+      "settings": {
+        "include_margins": true
+      }
+    }
+  },
+  "order": [
+    "main",
+    "product-recommendations",
+    "e4f339f2-3b69-4e29-be3c-e5903b404092",
+    "instagram_collage_nNpe8n",
+    "1713919142b7ed1a75"
+  ]
+}

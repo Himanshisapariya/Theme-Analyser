@@ -1,0 +1,250 @@
+{%- style -%}
+  {% if section.settings.bg-image != blank %}
+      .image-content-{{ section.id }} {
+        background-image: url('{{ section.settings.bg-image | image_url: width:2000 }}');
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
+    {% endif %}
+{%- endstyle -%}
+
+<div class="matres_certificat_section {{ section.settings.extra_class }}">
+  <div class="xl_container smscreen:px-0">
+    <div class="image-content-{{ section.id }} px-30 desktop:px-75 py-55 rounded-24 overflow-hidden">
+      {% if section.settings.title != blank %}
+        <div class="matrescerti_title_block text-center mb-40">
+          <div class="certificat_caption mb-10">
+            <h5 class="certi-sub-title">{{ section.settings.top_title }}</h5>
+          </div>
+          <div class="certificat_section_title mb-14">
+            <h3 class="certi-main-title">{{ section.settings.title }}</h3>
+          </div>
+          <div class="certificat_content max-w-[746px] mx-auto">
+            <p class="certi-desc">{{ section.settings.description }}</p>
+          </div>
+        </div>
+      {% endif %}
+      <div class="matres_certificat_list flex flex-col gap-40">
+        {%- for block in section.blocks -%}
+          <div class="certificat_list_block certificat_list_block{{ forloop.index }} border-1 border-solid border-warm_neutral py-40 px-20 desktop:p-55 rounded-24 overflow-hidden bg-white/40 ctm_block_{{ block.settings.block_title | handle }}">
+            {% if block.settings.image != blank %}
+              <div class="certificat_list_title mb-28">
+                <h4 class="block-main-title text-center font-bold">{{ block.settings.block_title }}</h4>
+              </div>
+              <div class="certificat_list_zigzag flex flex-wrap items-center gap-40 desktop:gap-55">
+                <div class="img-btn-block p-20 desktop:p-[44px] rounded-24 bg-spilt_milk flex flex-col gap-28 w-full lg:w-1/2 desktop:w-[42%] h-full ctm_image_{{  block.settings.desktop_content_alignment }}">
+                  <div class="image-block rounded-24 overflow-hidden">
+                    <img
+                      class="w-full h-full object-cover"
+                      src="{{ block.settings.image | image_url: width: 2000 }}"
+                      alt="{{ block.settings.image.alt }}"
+                      loading="lazy"
+                      width="455"
+                      height="400"
+                    >
+                  </div>
+                  <div class="btn_block ">
+                    <a class="aloe_leaf_btn mx-auto" href="{{ block.settings.btn_link }}">
+                      {{- block.settings.btn_text -}}
+                    </a>
+                  </div>
+                </div>
+
+                {% if block.settings['logo1-image'] != blank %}
+                  <div class="logo-content-block w-full lg:w-[calc(50%_-_40px)] desktop:w-[calc(58%_-_55px)] flex flex-wrap justify-center gap-25 lg:gap-40">
+                    <div class="logo_content_block">
+                      <div class="logo_content_img">
+                        <img
+                          class="h-[140px] object-contain"
+                          src="{{ block.settings.logo1-image | image_url: width: 500 }}"
+                          alt="{{ block.settings.logo1-image.alt }}"
+                          loading="lazy"
+                          width="140"
+                          height="140"
+                        >
+                      </div>
+                      <div class="logo_content_title">
+                        <h5 class="logo-title">{{ block.settings['logo1-title'] }}</h5>
+                      </div>
+                      <div class="logo_content_descrip">
+                        <p class="logo-desc">{{ block.settings['logo1-content'] }}</p>
+                      </div>
+                    </div>
+                    {% if block.settings['logo2-image'] != blank %}
+                      <div class="logo_content_block">
+                        <div class="logo_content_img">
+                          <img
+                            class="h-[140px] object-contain"
+                            src="{{ block.settings.logo2-image | image_url: width: 500 }}"
+                            alt="{{ block.settings.logo2-image.alt }}"
+                            loading="lazy"
+                            width="140"
+                            height="140"
+                          >
+                        </div>
+                        <div class="logo_content_title">
+                          <h5 class="logo-title">{{ block.settings['logo2-title'] }}</h5>
+                        </div>
+                        <div class="logo_content_descrip">
+                          <p class="logo-desc">{{ block.settings['logo2-content'] }}</p>
+                        </div>
+                      </div>
+                    {% endif %}
+                    {% if block.settings['logo3-image'] != blank %}
+                      <div class="logo_content_block">
+                        <div class="logo_content_img">
+                          <img
+                            class="h-[140px] object-contain"
+                            src="{{ block.settings.logo3-image | image_url: width: 500 }}"
+                            alt="{{ block.settings.logo3-image.alt }}"
+                            loading="lazy"
+                            width="140"
+                            height="140"
+                          >
+                        </div>
+                        <div class="logo_content_title">
+                          <h5 class="logo-title">{{ block.settings['logo3-title'] }}</h5>
+                        </div>
+                        <div class="logo_content_descrip">
+                          <p class="logo-desc">{{ block.settings['logo3-content'] }}</p>
+                        </div>
+                      </div>
+                    {% endif %}
+                  </div>
+                {% endif %}
+              </div>
+            {% endif %}
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Image with Content",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "label": "Extra Class",
+      "id": "extra_class"
+    },
+    {
+      "type": "text",
+      "label": "Top Title",
+      "id": "top_title"
+    },
+    {
+      "type": "text",
+      "label": "Title",
+      "id": "title"
+    },
+    {
+      "type": "text",
+      "label": "Description",
+      "id": "description"
+    },
+    {
+      "type": "image_picker",
+      "label": "Background Image",
+      "id": "bg-image"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "text",
+      "name": "Image with Content",
+      "settings": [
+        {
+          "type": "text",
+          "label": "Title",
+          "id": "block_title"
+        },
+        {
+          "type": "image_picker",
+          "label": "Image",
+          "id": "image"
+        },
+        {
+          "type": "text",
+          "label": "Button Text",
+          "id": "btn_text"
+        },
+        {
+          "type": "url",
+          "label": "Button URL",
+          "id": "btn_link"
+        },
+        {
+          "type": "select",
+          "label": "Select the position of Image",
+          "id": "desktop_content_alignment",
+          "options": [
+            {
+              "label": "Image on Left",
+              "value": "left"
+            },
+            {
+              "label": "Image on Right",
+              "value": "right"
+            }
+          ]
+        },
+        {
+          "type": "image_picker",
+          "label": "Logo-1 Image",
+          "id": "logo1-image"
+        },
+        {
+          "type": "text",
+          "label": "Logo-1 Title",
+          "id": "logo1-title"
+        },
+        {
+          "type": "text",
+          "label": "Logo-1 Content",
+          "id": "logo1-content"
+        },
+        {
+          "type": "image_picker",
+          "label": "Logo-2 Image",
+          "id": "logo2-image"
+        },
+        {
+          "type": "text",
+          "label": "Logo-2 Title",
+          "id": "logo2-title"
+        },
+        {
+          "type": "text",
+          "label": "Logo-2 Content",
+          "id": "logo2-content"
+        },
+        {
+          "type": "image_picker",
+          "label": "Logo-3 Image",
+          "id": "logo3-image"
+        },
+        {
+          "type": "text",
+          "label": "Logo-3 Title",
+          "id": "logo3-title"
+        },
+        {
+          "type": "text",
+          "label": "Logo-3 Content",
+          "id": "logo3-content"
+        }
+      ]
+    }
+  ],
+
+  "presets": [
+    {
+      "name": "Image with Content"
+    }
+  ]
+}
+{% endschema %}

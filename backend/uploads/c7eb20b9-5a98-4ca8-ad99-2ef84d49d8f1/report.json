@@ -1,0 +1,51 @@
+{
+  "createdAt": "2026-05-16T06:05:08.076Z",
+  "cssFiles": [
+    "theme.css"
+  ],
+  "textFiles": [
+    "product.liquid"
+  ],
+  "summary": {
+    "totalRules": 2,
+    "usedRules": 2,
+    "unusedRules": 0,
+    "estimatedSavingsBytes": 0
+  },
+  "entries": [
+    {
+      "id": "theme.css:0:0",
+      "filePath": "theme.css",
+      "fileName": "theme.css",
+      "selector": ".used-class",
+      "ruleIndex": 0,
+      "selectorIndex": 0,
+      "status": "used",
+      "matchedBy": "static",
+      "estimatedBytes": 31,
+      "fileByteSize": 95,
+      "sourceType": "css",
+      "sourceKey": "theme.css",
+      "embeddedIndex": null,
+      "sourceLabel": "/Users/himanshi/Himanshi - TS/Himanshi - github/CSS Analyser - copy/backend/uploads/c7eb20b9-5a98-4ca8-ad99-2ef84d49d8f1/source/theme.css"
+    },
+    {
+      "id": "theme.css:1:0",
+      "filePath": "theme.css",
+      "fileName": "theme.css",
+      "selector": ".product-card",
+      "ruleIndex": 1,
+      "selectorIndex": 0,
+      "status": "used",
+      "matchedBy": "static",
+      "estimatedBytes": 60,
+      "fileByteSize": 95,
+      "sourceType": "css",
+      "sourceKey": "theme.css",
+      "embeddedIndex": null,
+      "sourceLabel": "/Users/himanshi/Himanshi - TS/Himanshi - github/CSS Analyser - copy/backend/uploads/c7eb20b9-5a98-4ca8-ad99-2ef84d49d8f1/source/theme.css"
+    }
+  ],
+  "warnings": [],
+  "jobId": "c7eb20b9-5a98-4ca8-ad99-2ef84d49d8f1"
+}

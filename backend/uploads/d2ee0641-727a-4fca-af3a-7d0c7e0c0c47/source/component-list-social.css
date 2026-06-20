@@ -1,0 +1,38 @@
+.list-social {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+@media only screen and (max-width: 749px) {
+  .list-social {
+    justify-content: center;
+  }
+}
+
+.list-social__item .icon {
+  height: 2rem;
+  width: auto;
+  transition: all 0.3s ease-in-out;
+}
+
+.list-social__link {
+  align-items: center;
+  display: flex;
+  padding: 1.1rem;
+  color: rgb(var(--color-foreground));
+}
+
+.utility-bar .list-social__link {
+  padding: 0 0.8rem;
+  height: 3.8rem;
+}
+
+.list-social__link:hover .list-social__link {
+  transform: scale(1.4);
+  color: #f1dfc7;
+}
+.list-social__link:hover .icon {
+  color: #f1dfc7;
+  fill: #f1dfc7;
+}

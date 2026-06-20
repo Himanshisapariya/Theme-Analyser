@@ -1,0 +1,44 @@
+<div class="ctm_collection-banner">
+	<div class="ctm_text-content">
+		{%- for block in section.blocks -%}
+            <a href="{{ block.settings.link_ctm }}">
+                {{ block.settings.title_ctm }}
+            </a>
+        {% endfor %}
+	</div>
+</div>
+
+
+{% schema %}
+{
+	"name": "Banner CTM",
+	"tag": "section",
+	"class": "text-banner-section",
+	"settings": [
+	],
+	"blocks": [
+        {
+			"type": "slide",
+			"name": "Slide",
+			"limit": 7,
+			"settings": [
+                {
+					"type": "text",
+					"id": "title_ctm",
+					"label": "Name"
+				},
+                {
+					"type": "url",
+					"id": "link_ctm",
+					"label": "Link"
+				}
+            ]
+        }
+	],
+	"presets": [
+		{
+			"name": "Collection banner text"
+		}
+	]
+}
+{% endschema %}

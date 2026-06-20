@@ -1,0 +1,85 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "settings": {
+        "extra_class": "",
+        "page_title_black": "Video Gallery",
+        "breadcrumb_image": "shopify://shop_images/header_image_1_124dc823-e1d1-4707-a102-7b2181f028ae.png",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "video_gallery_YCXXCD": {
+      "type": "video-gallery",
+      "blocks": {
+        "video_block_n8XpLH": {
+          "type": "video_block",
+          "settings": {
+            "video_type": "shorts",
+            "video_embed": "",
+            "youtube_shorts_embed": "<iframe width=\"315\" height=\"560\" src=\"https://www.youtube.com/embed/MQzyoBqmnrc\" title=\"YouTube Shorts video player\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" allowfullscreen>\n  </iframe>",
+            "video_title": "",
+            "thumbnail_quality": "sddefault"
+          }
+        },
+        "video_block_WgXFGH": {
+          "type": "video_block",
+          "settings": {
+            "video_type": "shorts",
+            "video_embed": "",
+            "youtube_shorts_embed": "<iframe width=\"315\" height=\"560\" src=\"https://www.youtube.com/embed/1mmIHRVcE2g\" title=\"YouTube Shorts video player\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" allowfullscreen>\n  </iframe>",
+            "video_title": "",
+            "thumbnail_quality": "maxresdefault"
+          }
+        },
+        "video_block_XWDjKQ": {
+          "type": "video_block",
+          "settings": {
+            "video_type": "shorts",
+            "video_embed": "",
+            "youtube_shorts_embed": "<iframe width=\"315\" height=\"560\" src=\"https://www.youtube.com/embed/oSYFeJht4QE\" title=\"YouTube Shorts video player\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" allowfullscreen>\n  </iframe>",
+            "video_title": "",
+            "thumbnail_quality": "maxresdefault"
+          }
+        },
+        "video_block_eaMDJe": {
+          "type": "video_block",
+          "settings": {
+            "video_type": "shorts",
+            "video_embed": "",
+            "youtube_shorts_embed": "<iframe width=\"315\" height=\"560\" src=\"https://www.youtube.com/embed/fGWPccus9Ic\" title=\"YouTube Shorts video player\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" allowfullscreen>\n  </iframe>",
+            "video_title": "",
+            "thumbnail_quality": "maxresdefault"
+          }
+        }
+      },
+      "block_order": [
+        "video_block_n8XpLH",
+        "video_block_WgXFGH",
+        "video_block_XWDjKQ",
+        "video_block_eaMDJe"
+      ],
+      "name": "Video Gallery",
+      "settings": {
+        "extra_class": "",
+        "heading": "Our Happy Customers",
+        "sub_heading": "<p>At 5 Little Monkeys we believe milestones should be celebrated! The transition from crib to big kid bed is a BIG deal and only happens once. Therefore, we have created an experience that’s memorable, exciting and joyous for the whole family. </p>\n\n<p>The moment the box arrives, your child knows it’s for them! We’ve thought of every detail to make the move to their first big kid bed a special memory to be remembered forever. From our box that turns into a fort for playing to the stuffed plushy monkey waiting for night time cuddles, our goal has always been to create an experience for your child that makes them comforted and excited to sleep on their 5 Little Monkeys mattress for years to come.</p>\n\n<p>Whether your child is ready for their new bed or is unsure about the change, we have you covered! 5 Little Monkeys is the only kids mattress that provides an interactive experience involving you and your child to ensure a positive transition designed to make memories and celebrate milestones! </p>\n\n<p>It’s not just a mattress, it’s a milestone!</p>",
+        "background_image": "shopify://shop_images/background_image.jpg"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "video_gallery_YCXXCD"
+  ]
+}

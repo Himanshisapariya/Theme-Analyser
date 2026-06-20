@@ -1,0 +1,101 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "coc_main": {
+      "type": "coc",
+      "blocks": {
+        "pdf_item_AewEh4": {
+          "type": "pdf_item",
+          "settings": {
+            "group_heading": "The Sleep System",
+            "pdf_title": "",
+            "pdf_cdn_url": "https://cdn.shopify.com/s/files/1/0792/4904/7864/files/PUS23001169.1R0.1632.ECS_Ontario_Champagne_1671_.ECS2306HD.pdf?v=1776406313",
+            "preview_image": "shopify://shop_images/PUS23001169.1R0.1632.ECS_Ontario_Champagne_1671_.ECS2306HD-1.png",
+            "preview_image_url": "",
+            "show_embed": false
+          }
+        },
+        "pdf_item_VXKiQy": {
+          "type": "pdf_item",
+          "settings": {
+            "group_heading": "",
+            "pdf_title": "",
+            "pdf_cdn_url": "https://cdn.shopify.com/s/files/1/0792/4904/7864/files/PUS23001169.1R0.1633.ECS_Ontario-Champagne_1671.pdf?v=1776406314",
+            "preview_image": "shopify://shop_images/PUS23001169.1R0.1633.ECS_Ontario-Champagne_1671_-1.png",
+            "preview_image_url": "",
+            "show_embed": false
+          }
+        },
+        "pdf_item_TTC3p4": {
+          "type": "pdf_item",
+          "settings": {
+            "group_heading": "",
+            "pdf_title": "",
+            "pdf_cdn_url": "https://cdn.shopify.com/s/files/1/0792/4904/7864/files/PUS23001169.2R0.1632.ECS_Ontario_Champagne_1671_.ECS2306LD.pdf?v=1776406314",
+            "preview_image": "shopify://shop_images/PUS23001169.2R0.1632.ECS_Ontario_Champagne_1671_.ECS2306LD-1.png",
+            "preview_image_url": "",
+            "show_embed": false
+          }
+        },
+        "pdf_item_mAgYdh": {
+          "type": "pdf_item",
+          "settings": {
+            "group_heading": "",
+            "pdf_title": "",
+            "pdf_cdn_url": "https://cdn.shopify.com/s/files/1/0792/4904/7864/files/PUS23001169.2R0.1633.ECS_Ontario-Champagne_1671.pdf?v=1776406314",
+            "preview_image": "shopify://shop_images/PUS23001169.2R0.1633.ECS_Ontario-Champagne_1671_-1.png",
+            "preview_image_url": "",
+            "show_embed": false
+          }
+        },
+        "pdf_item_6xaHDf": {
+          "type": "pdf_item",
+          "settings": {
+            "group_heading": "",
+            "pdf_title": "",
+            "pdf_cdn_url": "https://cdn.shopify.com/s/files/1/0792/4904/7864/files/PUS23001169.3R0.1632.ECS_Onterio_Champagne_1671_.ECS231017.pdf?v=1776406314",
+            "preview_image": "shopify://shop_images/PUS23001169.3R0.1632.ECS_Onterio_Champagne_1671_.ECS231017-1.png",
+            "preview_image_url": "",
+            "show_embed": false
+          }
+        },
+        "pdf_item_dw9Fem": {
+          "type": "pdf_item",
+          "settings": {
+            "group_heading": "",
+            "pdf_title": "",
+            "pdf_cdn_url": "https://cdn.shopify.com/s/files/1/0792/4904/7864/files/PUS23001169.3R0.1633.ECS_Ontario-Champagne_1671.pdf?v=1776406314",
+            "preview_image": "shopify://shop_images/PUS23001169.3R0.1633.ECS_Ontario-Champagne_1671_-1.png",
+            "preview_image_url": "",
+            "show_embed": false
+          }
+        }
+      },
+      "block_order": [
+        "pdf_item_AewEh4",
+        "pdf_item_VXKiQy",
+        "pdf_item_TTC3p4",
+        "pdf_item_mAgYdh",
+        "pdf_item_6xaHDf",
+        "pdf_item_dw9Fem"
+      ],
+      "settings": {
+        "page_title": "Certificates of Compliance",
+        "intro_text": "<p>The consumer product safety improvement act general certificates of conformity.</p>",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    }
+  },
+  "order": [
+    "coc_main"
+  ]
+}

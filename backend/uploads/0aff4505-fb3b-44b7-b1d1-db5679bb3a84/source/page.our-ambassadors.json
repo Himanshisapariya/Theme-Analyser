@@ -1,0 +1,345 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "shogun-helper": {
+      "type": "shogun-helper",
+      "settings": {}
+    },
+    "pages": {
+      "type": "main-page",
+      "settings": {}
+    },
+    "image_with_text_ryzxB4": {
+      "type": "image-with-text",
+      "custom_css": [
+        "h3 {font-size: 24px;}",
+        "div.h6 {margin-top: 16px;}"
+      ],
+      "settings": {
+        "row-reverse": "row",
+        "image": "shopify://shop_images/IMG_0737.jpg",
+        "image_size": "small",
+        "show_frame": false,
+        "color_scheme": "background-4",
+        "frame-text": "",
+        "frame-text-right": "",
+        "color_scheme_2": "background-1",
+        "heading": "<h3>Riley Gaines</h3>",
+        "subheading": "<p><em><strong>“Being brave doesn’t mean not having fear, but rather overcoming that fear to do the right, just and moral thing.”</strong></em></p><p></p><p>Perhaps no other female athlete has demonstrated more bravery than Riley Gaines, who made waves after speaking out after tying University of Pennsylvania's Lia Thomas, a biological male swimmer. When no one else spoke up, Riley did. And she has been tirelessly standing up for the protection of women’s sports and spaces ever since. Inarguably, her advocacy has made her an icon for women’s rights and the face of the movement.</p>",
+        "subheading_left_top": "",
+        "subheading_left_bottom": "",
+        "subheading_right_top": "",
+        "subheading_right_bottom": "",
+        "button_text": "",
+        "button_link": "",
+        "button_style": "tertiary",
+        "margin_top": 60,
+        "margin_bottom": 30,
+        "lookbook_detail_class": ""
+      }
+    },
+    "image_with_text_YKcHB6": {
+      "type": "image-with-text",
+      "custom_css": [
+        "h3 {font-size: 24px;}",
+        "div.h6 {margin-top: 16px;}"
+      ],
+      "settings": {
+        "row-reverse": "row-reverse",
+        "image": "shopify://shop_images/Jaycee_Bassett_Ambassador.jpg",
+        "image_size": "small",
+        "show_frame": false,
+        "color_scheme": "background-4",
+        "frame-text": "",
+        "frame-text-right": "",
+        "color_scheme_2": "background-1",
+        "heading": "<h3>Jaycee Bassett</h3>",
+        "subheading": "<p><em><strong>\"If I were to step on the mat and face a boy, I wouldn’t go through with the fight. It would be too dangerous for me and could lead to serious injury, so I would have to forfeit.” </strong></em><br/><br/>Jaycee is a Senior on the Costa Rican National Team. She is the current Junior Pan American Champion, and the Junior World Taekwondo Championship Silver Medalist. She is 2x member of the AAU USA Taekwondo National Team. Jaycee will compete in the Grand Prix Challenge to be held in USA, Korea, and Thailand, as well as in the 2025 Senior World Championships in Wuxi, China.</p>",
+        "subheading_left_top": "",
+        "subheading_left_bottom": "",
+        "subheading_right_top": "",
+        "subheading_right_bottom": "",
+        "button_text": "",
+        "button_link": "",
+        "button_style": "tertiary",
+        "margin_top": 30,
+        "margin_bottom": 30,
+        "lookbook_detail_class": ""
+      }
+    },
+    "banner-with-text": {
+      "type": "banner-with-text",
+      "disabled": true,
+      "custom_css": [
+        ".banner-with-text__content-wrapper {display: flex; flex-direction: column; justify-content: flex-end; height: 100%;}",
+        ".banner-with-text__content-box {width: 100%;}",
+        "h2 {margin-bottom: 0px;}"
+      ],
+      "settings": {
+        "extra_class": "",
+        "color_scheme": "light",
+        "image": "shopify://shop_images/kick-wide.jpg",
+        "image_size": "small",
+        "title": "<h2>Our Ambassadors</h2>",
+        "content_text": "",
+        "text_alignment": "left",
+        "content_width": "max",
+        "overlay_enable": false,
+        "overlay_opacity": 10,
+        "button_link": "",
+        "button_label": "",
+        "button_style": "primary",
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "spring_banner_class": ""
+      }
+    },
+    "image_with_text_e4iEFF": {
+      "type": "image-with-text",
+      "custom_css": [
+        "h3 {font-size: 24px;}",
+        "div.h6 {margin-top: 16px;}"
+      ],
+      "settings": {
+        "row-reverse": "row",
+        "image": "shopify://shop_images/Screenshot_2025-02-04_at_11.36.18_AM.png",
+        "image_size": "small",
+        "show_frame": false,
+        "color_scheme": "background-4",
+        "frame-text": "",
+        "frame-text-right": "",
+        "color_scheme_2": "background-1",
+        "heading": "<h3>Sia LiiLii </h3>",
+        "subheading": "<p><em><strong>“Women's sports belong to women only and men's sports belong to men only because it gives us a chance to champion the sport without being dominated by the other sex.” </strong></em><br/><br/>Sia is a graduating senior from the University of Nevada, Reno, and team captain of the women’s volleyball team, who led a boycott of SJSU without support from her university.    </p><p></p><p></p><p></p><p></p>",
+        "subheading_left_top": "",
+        "subheading_left_bottom": "",
+        "subheading_right_top": "",
+        "subheading_right_bottom": "",
+        "button_text": "",
+        "button_link": "",
+        "button_style": "tertiary",
+        "margin_top": 30,
+        "margin_bottom": 30,
+        "lookbook_detail_class": ""
+      }
+    },
+    "image_with_text_WNNtyC": {
+      "type": "image-with-text",
+      "custom_css": [
+        "h3 {font-size: 24px;}",
+        "div.h6 {margin-top: 16px;}"
+      ],
+      "settings": {
+        "row-reverse": "row-reverse",
+        "image": "shopify://shop_images/Screenshot_2025-02-04_at_12.19.06_PM.png",
+        "image_size": "small",
+        "show_frame": false,
+        "color_scheme": "background-4",
+        "frame-text": "",
+        "frame-text-right": "",
+        "color_scheme_2": "background-1",
+        "heading": "<h3><strong>Lauren Miller</strong></h3>",
+        "subheading": "<p><em><strong>\"Truth is worth it. Fairness is worth it. Women are worth it. Women sports matter and I do not want to see it be erased. I care so much more about the future generation than my own career. I want to have daughters one day that can pursue professional sports or college sports. I want them to thrive in an environment that is fair and has integrity and really focuses on the truth and beauty of women’s sports.\"</strong></em><br/><br/>Lauren is a professional golfer. After she lost her first-place title to male golfer Hailey Davidson at the 2024 NXXT Women's Championship, Lauren stood up for women’s sports by pushing hard for fair regulations, working with NXXT Golf to help them adopt a new policy that ensures only biologically female players are eligible to compete, and she pushed the LPGA, USGA and IGF to adopt the same standards. The LPGA and IGF took a strong first step forward in December 2024.</p>",
+        "subheading_left_top": "",
+        "subheading_left_bottom": "",
+        "subheading_right_top": "",
+        "subheading_right_bottom": "",
+        "button_text": "",
+        "button_link": "",
+        "button_style": "tertiary",
+        "margin_top": 30,
+        "margin_bottom": 30,
+        "lookbook_detail_class": ""
+      }
+    },
+    "image_with_text_wUEzfB": {
+      "type": "image-with-text",
+      "custom_css": [
+        "h3 {font-size: 24px;}",
+        "div.h6 {margin-top: 16px;}"
+      ],
+      "settings": {
+        "row-reverse": "row",
+        "image": "shopify://shop_images/Screenshot_2025-02-04_at_12.29.37_PM.png",
+        "image_size": "small",
+        "show_frame": false,
+        "color_scheme": "background-4",
+        "frame-text": "",
+        "frame-text-right": "",
+        "color_scheme_2": "background-1",
+        "heading": "<h3><strong>Neely Gaines</strong></h3>",
+        "subheading": "<p><em><strong>“XX-XY Athletics is leading the charge to protect women sports, and I’m proud to be part of the brand!”</strong></em><br/><br/>Neely is a level 9 gymnast. She’s the 2023 all around and floor exercise Tennessee state champion and the 2022 vault and floor exercise state champion. She is also the younger sister to Riley Gaines, the face of the women’s sports movement.</p>",
+        "subheading_left_top": "",
+        "subheading_left_bottom": "",
+        "subheading_right_top": "",
+        "subheading_right_bottom": "",
+        "button_text": "",
+        "button_link": "",
+        "button_style": "tertiary",
+        "margin_top": 30,
+        "margin_bottom": 30,
+        "lookbook_detail_class": ""
+      }
+    },
+    "image_with_text_fmjktp": {
+      "type": "image-with-text",
+      "custom_css": [
+        "h3 {font-size: 24px;}",
+        "div.h6 {margin-top: 16px;}"
+      ],
+      "settings": {
+        "row-reverse": "row-reverse",
+        "image": "shopify://shop_images/Paula_Scanlan_Ambassador.jpg",
+        "image_size": "small",
+        "show_frame": false,
+        "color_scheme": "background-4",
+        "frame-text": "",
+        "frame-text-right": "",
+        "color_scheme_2": "background-1",
+        "heading": "<h3>Paula Scanlan</h3>",
+        "subheading": "<p><em><strong>“The more voices we have, the harder it’s going to be to shut us down.” </strong></em><br/><br/>Former University of Pennsylvania swimmer, Paula Scanlan, was shamed after admitting she felt unsafe sharing a locker room with biological male, Lia Thomas, who joined the UPenn women’s swim team mid-season. Yet rather than slink away and hide, she found her voice and began standing up for women's safety. As a survivor of sexual assault that occurred in a bathroom at 16, this issue is truly personal for Paula. Today, she has become one of the most powerful advocates for protecting women's spaces. </p>",
+        "subheading_left_top": "",
+        "subheading_left_bottom": "",
+        "subheading_right_top": "",
+        "subheading_right_bottom": "",
+        "button_text": "",
+        "button_link": "",
+        "button_style": "tertiary",
+        "margin_top": 30,
+        "margin_bottom": 30,
+        "lookbook_detail_class": ""
+      }
+    },
+    "image_with_text_RqcUAx": {
+      "type": "image-with-text",
+      "custom_css": [
+        "h3 {font-size: 24px;}",
+        "div.h6 {margin-top: 16px;}"
+      ],
+      "settings": {
+        "row-reverse": "row",
+        "image": "shopify://shop_images/Adam_B._Coleman_Ambassador.jpg",
+        "image_size": "small",
+        "show_frame": false,
+        "color_scheme": "background-4",
+        "frame-text": "",
+        "frame-text-right": "",
+        "color_scheme_2": "background-1",
+        "heading": "<h3>Adam B. Coleman</h3>",
+        "subheading": "<p><em><strong>“I believe in speaking wrong at the right time.”</strong></em><br/><br/>Adam is an Author, Op-Ed Writer, Public Speaker, and the Founder of Wrong Speak Publishing. He’s known for asking uncomfortable questions and writes openly about his struggles with fatherlessness, homelessness, and masculinity. Adam is attempting to help change the way we discuss cultural narratives by being honest, humble and resolute. He believes everyone should have the ability to speak freely and advocates for people who feel voiceless to be heard.</p>",
+        "subheading_left_top": "",
+        "subheading_left_bottom": "",
+        "subheading_right_top": "",
+        "subheading_right_bottom": "",
+        "button_text": "",
+        "button_link": "",
+        "button_style": "tertiary",
+        "margin_top": 30,
+        "margin_bottom": 30,
+        "lookbook_detail_class": ""
+      }
+    },
+    "image_with_text_bXWPpg": {
+      "type": "image-with-text",
+      "custom_css": [
+        "h3 {font-size: 24px;}",
+        "div.h6 {margin-top: 16px;}"
+      ],
+      "settings": {
+        "row-reverse": "row-reverse",
+        "image": "shopify://shop_images/Chloe_Cole_Ambassador.jpg",
+        "image_size": "small",
+        "show_frame": false,
+        "color_scheme": "background-4",
+        "frame-text": "",
+        "frame-text-right": "",
+        "color_scheme_2": "background-1",
+        "heading": "<h3>Chloe Cole</h3>",
+        "subheading": "<p><em><strong>“I think if you just live your whole life refusing to speak the truth, by the end of it you’ll be filled with regret for not standing up.” </strong></em><br/><br/>Detransitioner, Chloe Cole, is a brave advocate for the rights of children to grow up with their bodies fully intact. She speaks with authority on the issue of “gender-affirming” care for minors, having embarked on her own transition journey at the age of 12, only to then detransition at 16. Today, via her advocacy, Chloe is successfully changing the national conversation on this controversial issue. She says that speaking the truth, while hard, has given her life true purpose.</p>",
+        "subheading_left_top": "",
+        "subheading_left_bottom": "",
+        "subheading_right_top": "",
+        "subheading_right_bottom": "",
+        "button_text": "",
+        "button_link": "",
+        "button_style": "tertiary",
+        "margin_top": 30,
+        "margin_bottom": 30,
+        "lookbook_detail_class": ""
+      }
+    },
+    "categories_list_JXUdyx": {
+      "type": "categories-list",
+      "blocks": {
+        "collection_item_dcdbAJ": {
+          "type": "collection_item",
+          "settings": {
+            "collection": "womens"
+          }
+        },
+        "collection_item_R4UaLk": {
+          "type": "collection_item",
+          "settings": {
+            "collection": "mens"
+          }
+        },
+        "collection_item_xATKRh": {
+          "type": "collection_item",
+          "settings": {
+            "collection": "accessories"
+          }
+        },
+        "collection_item_nJfyri": {
+          "type": "collection_item",
+          "disabled": true,
+          "settings": {
+            "collection": ""
+          }
+        }
+      },
+      "block_order": [
+        "collection_item_dcdbAJ",
+        "collection_item_R4UaLk",
+        "collection_item_xATKRh",
+        "collection_item_nJfyri"
+      ],
+      "settings": {
+        "title": "",
+        "per_row": 3,
+        "image_ratio": "landscape",
+        "overlay_enable": true,
+        "overlay_opacity": 15,
+        "margin_top": 30,
+        "margin_bottom": 90,
+        "image_resolution_enable": ""
+      }
+    },
+    "shogun-optimizer": {
+      "type": "shogun-optimizer",
+      "settings": {}
+    }
+  },
+  "order": [
+    "shogun-helper",
+    "pages",
+    "image_with_text_ryzxB4",
+    "image_with_text_YKcHB6",
+    "banner-with-text",
+    "image_with_text_e4iEFF",
+    "image_with_text_WNNtyC",
+    "image_with_text_wUEzfB",
+    "image_with_text_fmjktp",
+    "image_with_text_RqcUAx",
+    "image_with_text_bXWPpg",
+    "categories_list_JXUdyx",
+    "shogun-optimizer"
+  ]
+}

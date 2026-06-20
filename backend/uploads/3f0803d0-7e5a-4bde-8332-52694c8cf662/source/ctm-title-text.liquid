@@ -1,0 +1,198 @@
+<div class="fullscreen-container ctm-title-banner">
+<div class="custom-title-text section-{{ section.id }} {{ section.settings.extra_class }}" style="color: {{ section.settings.text_color }}; background-color: {{ section.settings.color_code }}">
+  <div class="title-txt-container">
+    <div class="ctm_title-text-inner">
+      <div class="title-text-content text-{{ section.settings.text_alignment }} {% if section.settings.display_in_flex %} flex_ctm_title-text {% endif %}">
+        {% if section.settings.caption %}
+          <p class="ctm_caption">{{ section.settings.caption }}</p>
+        {% endif %}
+        {% if section.settings.title %}
+          <h3 class="ctm_title">{{ section.settings.title }}</h3>
+        {% endif %}
+        {% if section.settings.desc %}
+          <p class="ctm_description">{{ section.settings.desc }}</p>
+        {% endif %}
+        {% if section.settings.button_text and section.settings.button_url %}
+          <a href="{{ section.settings.button_url }}" class="button button--primary">{{ section.settings.button_text }}</a>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+{%- style -%}
+  .custom-title-text.section-{{ section.id }} {
+  	padding-top: {{ section.settings.top_padding_desktop }}px;
+  	padding-bottom: {{ section.settings.bottom_padding_desktop }}px;
+  }
+
+  @media screen and (max-width: 990px) {
+  	.custom-title-text.section-{{ section.id }} {
+  		padding-top: {{ section.settings.top_padding_mobile }}px;
+  		padding-bottom: {{ section.settings.bottom_padding_mobile }}px;
+  	}
+  }
+.custom-title-text.section-{{ section.id }} {
+  	margin-top: {{ section.settings.top_margin_desktop}}px;
+  	margin-bottom: {{ section.settings.bottom_margin_desktop }}px;
+  }
+
+  @media screen and (max-width: 990px) {
+  	.custom-title-text.section-{{ section.id }} {
+  		margin-top: {{ section.settings.top_margin_mobile }}px;
+  		margin-bottom: {{ section.settings.bottom_margin_mobile }}px;
+  	}
+  }
+{%- endstyle -%}
+
+{% schema %}
+
+{
+  "name": "Custom Title Text",
+  "settings": [
+    {
+      "type": "text",
+      "label": "Extra Class",
+      "id": "extra_class"
+    },
+    {
+      "type": "html",
+      "label": "Caption",
+      "id": "caption"
+    },
+    {
+      "type": "text",
+      "label": "Title",
+      "id": "title"
+    },
+    {
+      "type": "html",
+      "label": "Description",
+      "id": "desc"
+    },
+    {
+      "type": "color",
+      "label": "Text Color",
+      "id": "text_color"
+    },
+    {
+      "type": "text",
+      "label": "Background Color",
+      "id": "color_code",
+      "info": "Add Only Hex Code"
+    },
+    {
+      "type": "text",
+      "label": "Button Text",
+      "id": "button_text"
+    },
+    {
+      "type": "url",
+      "label": "Button URL",
+      "id": "button_url"
+    },
+    {
+      "type": "text_alignment",
+      "label": "Text Alignment",
+      "id": "text_alignment",
+      "default": "left"
+    },
+    {
+      "type": "checkbox",
+      "label": "Display in Flex",
+      "id": "display_in_flex",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "Section Spacing"
+    },
+    {
+      "type": "range",
+      "label": "Top Padding Desktop",
+      "id": "top_padding_desktop",
+      "default": 0,
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "label": "Bottom Padding Desktop",
+      "id": "bottom_padding_desktop",
+      "default": 0,
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "label": "Top Padding Mobile",
+      "id": "top_padding_mobile",
+      "default": 0,
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "label": "Bottom Padding Mobile",
+      "id": "bottom_padding_mobile",
+      "default": 0,
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "label": "Top Margin Desktop",
+      "id": "top_margin_desktop",
+      "default": 0,
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "label": "Bottom Margin Desktop",
+      "id": "bottom_margin_desktop",
+      "default": 0,
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "label": "Top Margin Mobile",
+      "id": "top_margin_mobile",
+      "default": 0,
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "label": "Bottom Margin Mobile",
+      "id": "bottom_margin_mobile",
+      "default": 0,
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom Title Text"
+    }
+  ]
+}
+{% endschema %}

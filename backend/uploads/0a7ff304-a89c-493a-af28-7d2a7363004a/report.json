@@ -1,0 +1,83 @@
+{
+  "createdAt": "2026-05-16T05:45:34.169Z",
+  "cssFiles": [
+    "theme.css"
+  ],
+  "textFiles": [
+    "product.liquid"
+  ],
+  "summary": {
+    "totalRules": 4,
+    "usedRules": 2,
+    "unusedRules": 2,
+    "estimatedSavingsBytes": 91
+  },
+  "entries": [
+    {
+      "id": "theme.css:0:0",
+      "filePath": "theme.css",
+      "fileName": "theme.css",
+      "selector": ".used-class",
+      "ruleIndex": 0,
+      "selectorIndex": 0,
+      "status": "used",
+      "matchedBy": "static",
+      "estimatedBytes": 31,
+      "fileByteSize": 190,
+      "sourceType": "css",
+      "sourceKey": "theme.css",
+      "embeddedIndex": null,
+      "sourceLabel": "/Users/himanshi/Himanshi - TS/CSS Analyser - copy/backend/uploads/0a7ff304-a89c-493a-af28-7d2a7363004a/source/theme.css"
+    },
+    {
+      "id": "theme.css:1:0",
+      "filePath": "theme.css",
+      "fileName": "theme.css",
+      "selector": ".product-card",
+      "ruleIndex": 1,
+      "selectorIndex": 0,
+      "status": "used",
+      "matchedBy": "static",
+      "estimatedBytes": 60,
+      "fileByteSize": 190,
+      "sourceType": "css",
+      "sourceKey": "theme.css",
+      "embeddedIndex": null,
+      "sourceLabel": "/Users/himanshi/Himanshi - TS/CSS Analyser - copy/backend/uploads/0a7ff304-a89c-493a-af28-7d2a7363004a/source/theme.css"
+    },
+    {
+      "id": "theme.css:2:0",
+      "filePath": "theme.css",
+      "fileName": "theme.css",
+      "selector": ".test",
+      "ruleIndex": 2,
+      "selectorIndex": 0,
+      "status": "unused",
+      "matchedBy": "none",
+      "estimatedBytes": 32,
+      "fileByteSize": 190,
+      "sourceType": "css",
+      "sourceKey": "theme.css",
+      "embeddedIndex": null,
+      "sourceLabel": "/Users/himanshi/Himanshi - TS/CSS Analyser - copy/backend/uploads/0a7ff304-a89c-493a-af28-7d2a7363004a/source/theme.css"
+    },
+    {
+      "id": "theme.css:3:0",
+      "filePath": "theme.css",
+      "fileName": "theme.css",
+      "selector": ".unused-class",
+      "ruleIndex": 3,
+      "selectorIndex": 0,
+      "status": "unused",
+      "matchedBy": "none",
+      "estimatedBytes": 59,
+      "fileByteSize": 190,
+      "sourceType": "css",
+      "sourceKey": "theme.css",
+      "embeddedIndex": null,
+      "sourceLabel": "/Users/himanshi/Himanshi - TS/CSS Analyser - copy/backend/uploads/0a7ff304-a89c-493a-af28-7d2a7363004a/source/theme.css"
+    }
+  ],
+  "warnings": [],
+  "jobId": "0a7ff304-a89c-493a-af28-7d2a7363004a"
+}

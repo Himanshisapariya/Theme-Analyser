@@ -1,0 +1,117 @@
+{%- style -%}
+  {% if section.settings.bg_image != blank %}
+      .tabbing_content_main {
+        background-image: url('{{ section.settings.bg_image | image_url: width:2000 }}');
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
+
+    {% endif %}
+
+  /* ul.tabs li.current {
+    background: #ededed;
+    color: #222;
+  } */
+  .tab-content {
+    display: none;
+  }
+  .tab-content.current {
+    display: block;
+  }
+{%- endstyle -%}
+<div class="tabbing_content_main {{ section.settings.extra_class }}">
+  <div class="xl_container container_y">
+    <div class="mattress_tab_block bg-mount_olympus rounded-24 overflow-hidden p-20 lg:p-30 small_desktop:p-55">
+      <ul class="tabs border-b-1 border-solid border-verdigris pb-0 mb-30 lg:mb-40 list-none flex items-center justify-start smscreen1:justify-center snap-x snap-mandatory">
+        {% for block in section.blocks %}
+          {% if block.settings.tab_tittle != blank %}
+            <li
+              class="tab-link{% if forloop.first %} current {% endif %}cursor-pointer flex-1 text-center relative pb-10 px-10 flex-nowrap cursor-pointer"
+              role="tab"
+              aria-controls="{{ block.settings.tab_tittle | handle }}"
+              data-id="{{ forloop.index }}"
+            >
+              <h4 class="leading-36 font-body font-extrabold text-verdigris transition-all duration-300 ease-in-out whitespace-nowrap">
+                {{ block.settings.tab_tittle }}
+              </h4>
+            </li>
+          {% endif %}
+        {% endfor %}
+      </ul>
+
+      <div class="mattress_contents">
+        {% for block in section.blocks %}
+          <div
+            id="{{ block.settings.tab_tittle | handle }}"
+            class="tab-content{% if forloop.first %} current{% endif %}"
+          >
+            {{ block.settings.content }}
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    var tabs = document.querySelectorAll('.tabs li');
+    var tabContents = document.querySelectorAll('.tab-content');
+
+    tabs.forEach(function (tab, index) {
+      tab.addEventListener('click', function () {
+        tabs.forEach(function (t) {
+          t.classList.remove('current');
+        });
+        tab.classList.add('current');
+
+        tabContents.forEach(function (content) {
+          content.classList.remove('current');
+        });
+        tabContents[index].classList.add('current');
+      });
+    });
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Tabbing Content",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "extra_class",
+      "label": "Extra Class"
+    },
+    {
+      "type": "image_picker",
+      "id": "bg_image",
+      "label": "Background Image"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "tittle_and_url",
+      "name": "Tittle and content",
+      "settings": [
+        {
+          "type": "text",
+          "label": "Tab Tittle ",
+          "id": "tab_tittle"
+        },
+        {
+          "type": "html",
+          "label": "Add content",
+          "id": "content"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Tabbing Content"
+    }
+  ]
+}
+{% endschema %}

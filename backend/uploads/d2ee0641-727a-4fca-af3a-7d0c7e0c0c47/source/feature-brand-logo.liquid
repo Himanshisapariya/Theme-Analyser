@@ -1,0 +1,71 @@
+<div class="feature_brand {{ section.settings.extra_class }}">
+  <div class="xl_container container_xl xlscreen2:!px-0">
+    <div class="ctm_featurebrand_main">
+      {% if section.settings.head != blank %}
+        <div class="ctm_brand_head text-center">
+          <h3>{{ section.settings.head }}</h3>
+        </div>
+      {% endif %}
+      <div class="featrure_brand_slider swiper !pt-40 desktop:!pt-55">
+        <div class="ctm_brand_bg_img swiper-wrapper desktop:justify-between">
+          {% for block in section.blocks %}
+            {% if block.settings.logo != blank %}
+              <div class="ctm_brand_img swiper-slide desktop:last:!mr-0">
+                <img
+                  class=" h-[70px] w-auto md:h-[100px] object-contain desktop:mx-auto"
+                  src="{{ block.settings.logo | image_url: width: 1500 }}"
+                  alt="{{ block.settings.logo.alt }}"
+                  loading="lazy"
+                  width="88"
+                  height="88"
+                >
+              </div>
+            {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Feature Brand Logo ",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "label": "Extra Class",
+      "id": "extra_class"
+    },
+    {
+      "type": "text",
+      "label": "Title",
+      "id": "head"
+    },
+    {
+      "type": "image_picker",
+      "label": "Background Image",
+      "id": "background_image"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "logo_image",
+      "name": "Logo Image",
+      "settings": [
+        {
+          "type": "image_picker",
+          "label": "Logo",
+          "id": "logo"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Feature Brand Logo"
+    }
+  ]
+}
+{% endschema %}

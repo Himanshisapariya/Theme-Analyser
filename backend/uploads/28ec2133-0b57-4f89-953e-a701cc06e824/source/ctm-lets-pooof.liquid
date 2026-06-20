@@ -1,0 +1,108 @@
+<div class="{{ section.settings.extra_class }}">
+    {% if section.settings.desktop_heading != blank %}
+        <div class="ctm-lets-pooof-heading-desktop mdscreen2:!block hidden text-center">
+            <h3 class="flex gap-x-8 justify-center items-center">{% render 'star-list-icon' %} {{ section.settings.desktop_heading }} {% render 'star-list-icon' %}</h3>
+        </div>
+    {% endif %}
+
+    <div class="ctm-lets-pooof-video-img flex max-mdscreen2:flex-col mdscreen2:items-stretch items-center gap-x-[22px] justify-center container_fluid max-mdscreen2:!px-0">
+      <div class="ctm-lets-video flex-1 overflow-hidden">
+        {% if section.settings.mobile_heading_lets_pooof != blank %}
+          <h3 class="mdscreen2:!hidden flex gap-x-8 justify-center items-center">
+            {% render 'star-list-icon' %} {{ section.settings.mobile_heading_lets_pooof }} {% render 'star-list-icon' %}
+          </h3>
+        {% endif %}
+      
+        {% if section.settings.pooof_video.preview_image %}
+          {% assign preview = section.settings.pooof_video.preview_image | image_url: width: 1000 %}
+          <video  
+            id="fairy-video"
+            class="h-full mdscreen2:rounded-10 object-cover max-mdscreen2:mt-24 cursor-pointer" 
+            playsinline 
+            poster="{{ preview }}">
+            {% for source in section.settings.pooof_video.sources %}
+              <source src="{{ source.url }}" type="{{ source.mime_type }}">
+            {% endfor %}
+            Your browser does not support the video tag.
+          </video>
+        {% else %}
+          <video  
+            id="fairy-video"
+            class="h-full mdscreen2:rounded-10 object-cover max-mdscreen2:mt-24 cursor-pointer" 
+            playsinline>
+            {% for source in section.settings.pooof_video.sources %}
+              <source src="{{ source.url }}" type="{{ source.mime_type }}">
+            {% endfor %}
+            Your browser does not support the video tag.
+          </video>
+        {% endif %}
+      </div>
+
+        <div class="ctm-lets-image flex-1">
+            {% if section.settings.mobile_results_heading != blank %}
+                <h3 class="mdscreen2:!hidden block max-mdscreen2:my-24 text-center">{{ section.settings.mobile_results_heading }}</h3>
+            {% endif %}
+            {% if section.settings.image != blank %}
+                <img src="{{ section.settings.image | image_url }}" height="auto" width="100%" alt="image" class="mdscreen2:rounded-10 max-mdscreen2:w-full h-full object-cover">
+            {% endif %}
+        </div>
+    </div>
+</div>
+<script>
+
+  document.addEventListener('DOMContentLoaded', function() {
+    const video = document.getElementById('fairy-video');
+  
+    video.addEventListener('click', function() {
+      if (video.paused) {
+        video.play();
+      } else {
+        video.pause();
+      }
+    });
+  });
+  </script>
+{% schema %}
+{
+  "name": "Lets Pooof",
+  "class": "ctm-pooof-main",
+  "settings": [
+    {
+      "type": "text",
+      "label": "Extra Class",
+      "id": "extra_class"
+    },
+    {
+      "type": "inline_richtext",
+      "label": "Desktop Heading",
+      "id": "desktop_heading"
+    },
+    {
+      "type": "inline_richtext",
+      "label": "Mobile Heading Lets Pooof",
+      "id": "mobile_heading_lets_pooof"
+    },
+    {
+      "type": "video",
+      "label": "Pooof Video",
+      "id": "pooof_video"
+    },
+    {
+      "type": "inline_richtext",
+      "label": "Mobile Results Heading",
+      "id": "mobile_results_heading"
+    },
+    {
+      "type": "image_picker",
+      "label": "Image",
+      "id": "image"
+    }
+  ],
+  "blocks": [],
+  "presets": [
+    {
+      "name": "Lets Pooof"
+    }
+  ]
+}
+{% endschema %}

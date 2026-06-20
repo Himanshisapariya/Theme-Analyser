@@ -1,0 +1,92 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "shogun-helper": {
+      "type": "shogun-helper",
+      "settings": {}
+    },
+    "pages": {
+      "type": "main-page",
+      "disabled": true,
+      "custom_css": [
+        ".container {padding-top: 50px; padding-bottom: 50px;}",
+        "h1 {text-align: center;}"
+      ],
+      "settings": {
+        "extra_class": ""
+      }
+    },
+    "shogun-optimizer": {
+      "type": "shogun-optimizer",
+      "settings": {}
+    },
+    "rich_text_XjbbHq": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_kk8EHa": {
+          "type": "heading",
+          "settings": {
+            "heading": "<p>Custom Gallery</p>",
+            "heading_size": "medium"
+          }
+        }
+      },
+      "block_order": [
+        "heading_kk8EHa"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "color_scheme": "background-1",
+        "full_width": true,
+        "padding_top": 100,
+        "padding_bottom": 0,
+        "margin_top": 0,
+        "margin_bottom": 20,
+        "spring_shop_text": ""
+      }
+    },
+    "image_grid_group_sale_jYnF37": {
+      "type": "image-grid-group-sale",
+      "name": "Image Grid Group Sale",
+      "settings": {
+        "extra_class": "",
+        "heading": "",
+        "button_text1": "GROUP SALE CATALOG",
+        "button_url1": "https://cdn.shopify.com/s/files/1/0575/2009/5363/files/Custom_Order_Catalog.pdf?v=1755103340",
+        "open_new_tab1": false,
+        "button_text2": "APPLY TO GROUP SALES",
+        "button_url2": "https://www.xx-xyathletics.com/pages/apply-to-group-sales",
+        "open_new_tab2": false,
+        "enable_arrow": false
+      }
+    },
+    "group_sales_gallery_rprXRr": {
+      "type": "group-sales-gallery",
+      "name": "Folder Image Gallery",
+      "settings": {
+        "folders": [
+          "boston-buddies",
+          "jhs-hockey",
+          "team-jamaica",
+          "team-women-run-club"
+        ]
+      }
+    }
+  },
+  "order": [
+    "shogun-helper",
+    "pages",
+    "shogun-optimizer",
+    "rich_text_XjbbHq",
+    "image_grid_group_sale_jYnF37",
+    "group_sales_gallery_rprXRr"
+  ]
+}

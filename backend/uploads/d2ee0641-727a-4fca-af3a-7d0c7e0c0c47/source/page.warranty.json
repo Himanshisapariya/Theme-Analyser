@@ -1,0 +1,212 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "settings": {
+        "extra_class": "",
+        "page_title_black": "Warranty",
+        "breadcrumb_image": "shopify://shop_images/header_content_21.png",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "image_with_text_mTVNnj": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_HtYLL9": {
+          "type": "heading",
+          "settings": {
+            "heading": "A Warranty That Lasts",
+            "heading_size": "h3"
+          }
+        },
+        "caption_tbKRkh": {
+          "type": "caption",
+          "settings": {
+            "caption": "For Products You'll Love",
+            "text_style": "subtitle",
+            "text_size": "medium"
+          }
+        },
+        "text_7mwyYr": {
+          "type": "text",
+          "settings": {
+            "text": "At 5 Little Monkeys, our focus is on providing exceptional products designed specifically for kids to promote healthier and more restful sleep. Our children's mattress and sleep system are meticulously crafted to meet the unique needs of growing bodies. With our products, your child can experience faster sleep onset, sounder sleep, and wake up feeling more refreshed.",
+            "text_style": "body"
+          }
+        }
+      },
+      "block_order": [
+        "heading_HtYLL9",
+        "caption_tbKRkh",
+        "text_7mwyYr"
+      ],
+      "settings": {
+        "extra_class": "ctm_warranty_section",
+        "image": "shopify://shop_images/image_20.png",
+        "txt_under_img": "",
+        "height": "adapt",
+        "desktop_image_width": "medium",
+        "layout": "image_first",
+        "image_radius": 24,
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "left",
+        "content_layout": "no-overlap",
+        "section_color_scheme": "",
+        "color_scheme": "",
+        "image_behavior": "none",
+        "mobile_content_alignment": "left",
+        "padding_top": 80,
+        "padding_bottom": 80
+      }
+    },
+    "rich_text_CdQJpL": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_xgPnFm": {
+          "type": "heading",
+          "settings": {
+            "heading": "Our Promise",
+            "heading_size": "h3"
+          }
+        },
+        "text_BMhECg": {
+          "type": "text",
+          "settings": {
+            "text": "<p>We are so confident in the quality of our mattresses and foundations that we offer an industry-leading 15-year limited warranty. Additionally, our mattress protectors, pillows, and bedding come with a 1-year limited warranty, ensuring your complete satisfaction and peace of mind.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_xgPnFm",
+        "text_BMhECg"
+      ],
+      "settings": {
+        "extra_class": "ctm_contactmattress_block ctm_ourpromise_block",
+        "desktop_content_position": "center",
+        "bg_image": "shopify://shop_images/background_image.jpg",
+        "content_alignment": "center",
+        "color_scheme": "",
+        "full_width": true,
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "warranty_BEMkJE": {
+      "type": "warranty",
+      "settings": {
+        "extra_class": "",
+        "first_accordion_open": true,
+        "search_bar_display": true
+      }
+    },
+    "image_with_text_LCCrGn": {
+      "type": "image-with-text",
+      "blocks": {
+        "caption_pdXqdk": {
+          "type": "caption",
+          "settings": {
+            "caption": "Children’s Mattress",
+            "text_style": "subtitle",
+            "text_size": "medium"
+          }
+        },
+        "heading_zLYHRg": {
+          "type": "heading",
+          "settings": {
+            "heading": "with a Warranty",
+            "heading_size": "h3"
+          }
+        },
+        "text_NPNC7F": {
+          "type": "text",
+          "settings": {
+            "text": "At 5 Little Monkeys, we've designed a groundbreaking kids mattress that gives children what their bodies need for healthier, more restful sleep. Our children's mattress and sleep system are built for kids from the ground up, helping your child fall asleep faster, sleep more soundly, and feel better rested after sleep. Best of all, we're so confident in our product that we offer an industry-leading 15-year limited warranty to back it up.",
+            "text_style": "body"
+          }
+        }
+      },
+      "block_order": [
+        "caption_pdXqdk",
+        "heading_zLYHRg",
+        "text_NPNC7F"
+      ],
+      "settings": {
+        "extra_class": "ctm_children_mattress",
+        "image": "shopify://shop_images/image_cb4a4bc4-5eb0-4eb8-9bbb-c77c65f4bfef.png",
+        "txt_under_img": "",
+        "height": "adapt",
+        "desktop_image_width": "medium",
+        "layout": "image_first",
+        "image_radius": 24,
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "left",
+        "content_layout": "no-overlap",
+        "section_color_scheme": "",
+        "color_scheme": "",
+        "image_behavior": "none",
+        "mobile_content_alignment": "left",
+        "padding_top": 80,
+        "padding_bottom": 80
+      }
+    },
+    "rich_text_87JzJi": {
+      "type": "rich-text",
+      "blocks": {
+        "caption_GmK6cr": {
+          "type": "caption",
+          "settings": {
+            "caption": "Contact",
+            "text_style": "subtitle",
+            "text_size": "large"
+          }
+        },
+        "heading_eHqPgn": {
+          "type": "heading",
+          "settings": {
+            "heading": "5 Little Monkeys",
+            "heading_size": "h3"
+          }
+        },
+        "text_HahJDE": {
+          "type": "text",
+          "settings": {
+            "text": "<p>We hope you enjoy your 5 Little Monkeys bedding products, and we hope our industry-leading warranty helps put your mind at ease. If you have any questions about our warranty or our children's mattress, we encourage you to reach out to us on our contact page. We look forward to hearing from you, and we hope that the 5 Little Monkeys bed helps your child sleep better than ever before!</p>"
+          }
+        }
+      },
+      "block_order": [
+        "caption_GmK6cr",
+        "heading_eHqPgn",
+        "text_HahJDE"
+      ],
+      "settings": {
+        "extra_class": "ctm_contactmattress_block ctm_ourpromise_block ctm_warrantyctc_block",
+        "desktop_content_position": "center",
+        "bg_image": "shopify://shop_images/background_image.jpg",
+        "content_alignment": "center",
+        "color_scheme": "",
+        "full_width": true,
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    }
+  },
+  "order": [
+    "main",
+    "image_with_text_mTVNnj",
+    "rich_text_CdQJpL",
+    "warranty_BEMkJE",
+    "image_with_text_LCCrGn",
+    "rich_text_87JzJi"
+  ]
+}

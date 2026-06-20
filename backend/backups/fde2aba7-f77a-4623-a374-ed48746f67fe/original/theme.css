@@ -1,0 +1,25 @@
+
+.used-class {
+  color: green;
+}
+
+.unused-class {
+  color: red;
+}
+
+.product-card {
+  padding: 20px;
+  border: 1px solid #ccc;
+}
+
+.old-banner {
+  background: yellow;
+}
+
+.hidden-mobile {
+  display: none;
+}
+
+.hdgvf  {
+  padding-block-start: 0;
+}

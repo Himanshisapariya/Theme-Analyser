@@ -1,0 +1,401 @@
+{%- style -%}
+  {% if section.settings.background_image != blank %}
+      .ctm_multi_video_bg {
+          background-image: url('{{ section.settings.background_image | image_url: width:2000 }}');
+          background-repeat: no-repeat;
+          background-size: cover;
+      }
+  {% endif %}
+
+  #shopify-section-{{ section.id }} .video-container {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+    height: 0;
+    overflow: hidden;
+    border-radius: 24px;
+  }
+
+  #shopify-section-{{ section.id }} .shorts-container {
+    position: relative;
+    padding-bottom: 100%;
+    height: 0;
+    overflow: hidden;
+    border-radius: 24px;
+  }
+
+  #shopify-section-{{ section.id }} .video-container iframe,
+  #shopify-section-{{ section.id }} .shorts-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+
+  #shopify-section-{{ section.id }} .video-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    z-index: 2;
+    background-color: #000;
+  }
+
+  #shopify-section-{{ section.id }} .video-embed {
+    display: none;
+  }
+
+  #shopify-section-{{ section.id }} .video-embed.active {
+    display: block;
+  }
+
+  #shopify-section-{{ section.id }} .youtube-thumbnail {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  #shopify-section-{{ section.id }} .play-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 68px;
+    height: 48px;
+    background-color: #212121;
+    opacity: 0.8;
+    border-radius: 20%;
+    transition: opacity 0.2s cubic-bezier(0, 0, 0.2, 1);
+    z-index: 3;
+  }
+
+  #shopify-section-{{ section.id }} .play-button:before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-35%, -50%);
+    border-style: solid;
+    border-width: 10px 0 10px 16px;
+    border-color: transparent transparent transparent #fff;
+  }
+
+  #shopify-section-{{ section.id }} .video-overlay:hover .play-button {
+    background-color: #ff0000;
+    opacity: 1;
+  }
+
+  #shopify-section-{{ section.id }} .schema-container {
+    display: none !important;
+  }
+{%- endstyle -%}
+
+<div class="ctm_multi_video_main pt-55 {{ section.settings.extra_class }}">
+  <div class="xl_container">
+    <div class="ctm_multi_video_heading ctm_multi_video_bg py-55 px-30 lg:px-55 desktop:px-75 rounded-24 overflow-hidden">
+      <div class="ctm_multi_video_head text-center mb-40">
+        <div class="mb-14">
+          <h3>{{ section.settings.heading }}</h3>
+        </div>
+        <div class="max-w-[746px] mx-auto mulit_video_content">
+          {{ section.settings.sub_heading }}
+        </div>
+      </div>
+
+      <div class="ctm_multi_video_grid !grid grid-cols-1 sm:grid-cols-2 small_desktop:grid-cols-3 gap-40 pb-40">
+        {% for block in section.blocks %}
+          {% assign video_embed = block.settings.video_embed | default: block.settings.youtube_shorts_embed %}
+          {% assign youtube_id = null %}
+
+          {% if video_embed contains 'youtube.com/embed/' %}
+            {% assign youtube_id = video_embed
+              | split: 'youtube.com/embed/'
+              | last
+              | split: '"'
+              | first
+              | split: '?'
+              | first
+            %}
+          {% elsif video_embed contains 'youtu.be/' %}
+            {% assign youtube_id = video_embed | split: 'youtu.be/' | last | split: '"' | first | split: '?' | first %}
+          {% elsif video_embed contains 'v=' %}
+            {% assign youtube_id = video_embed | split: 'v=' | last | split: '&' | first | split: '"' | first %}
+          {% endif %}
+
+          {% assign block_quality = block.settings.thumbnail_quality | default: 'default' %}
+
+          <div
+            class="multi_video_grid_list flex flex-col"
+            {% if forloop.index0 >= 9 %}
+              style="display: none;"
+            {% endif %}
+            data-youtube-id="{{ youtube_id }}"
+            data-video-index="{{ forloop.index0 }}"
+          >
+            {% if block.settings.video_type == 'shorts' and block.settings.youtube_shorts_embed != blank %}
+              <div class="shorts-container">
+                <div id="overlay-{{ forloop.index0 }}" class="video-overlay" onclick="showEmbed({{ forloop.index0 }})">
+                  <img
+                    id="thumbnail-{{ forloop.index0 }}"
+                    class="youtube-thumbnail"
+                    src="https://img.youtube.com/vi/{{ youtube_id }}/{{ block_quality }}.jpg"
+                    alt="{{ block.settings.video_title | escape }}"
+                    loading="lazy"
+                    onerror="handleThumbnailError(this, '{{ youtube_id }}')"
+                  >
+                  <div class="play-button"></div>
+                </div>
+                <div id="embed-{{ forloop.index0 }}" class="video-embed">
+                  {{ block.settings.youtube_shorts_embed }}
+                </div>
+              </div>
+            {% else %}
+              <div class="video-container">
+                <div id="overlay-{{ forloop.index0 }}" class="video-overlay" onclick="showEmbed({{ forloop.index0 }})">
+                  <img
+                    id="thumbnail-{{ forloop.index0 }}"
+                    class="youtube-thumbnail"
+                    src="https://img.youtube.com/vi/{{ youtube_id }}/{{ block_quality }}.jpg"
+                    alt="{{ block.settings.video_title | escape }}"
+                    loading="lazy"
+                    onerror="handleThumbnailError(this, '{{ youtube_id }}')"
+                  >
+                  <div class="play-button"></div>
+                </div>
+                <div id="embed-{{ forloop.index0 }}" class="video-embed">
+                  {{ block.settings.video_embed }}
+                </div>
+              </div>
+            {% endif %}
+
+            <div class="ctm_multi_video_head pt-28">
+              <h4 id="title-{{ forloop.index0 }}">{{ block.settings.video_title }}</h4>
+              <p id="description-{{ forloop.index0 }}" style="display: none;"></p>
+            </div>
+            <div id="schema-{{ forloop.index0 }}" class="schema-container">
+              <script type="application/ld+json">
+                {
+                  "@context": "https://schema.org",
+                  "@type": "VideoObject",
+                  "name": {{ block.settings.video_title | json }},
+                  "description": "Watch this video on our website",
+                  "thumbnailUrl": "https://img.youtube.com/vi/{{ youtube_id }}/maxresdefault.jpg",
+                  "embedUrl": "https://www.youtube.com/embed/{{ youtube_id }}",
+                  "contentUrl": "https://www.youtube.com/watch?v={{ youtube_id }}",
+                  "uploadDate": "",
+                  "duration": ""
+                }
+              </script>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+
+      {% if section.blocks.size > 9 %}
+        <button id="load-more-btn" class="aloe_leaf_btn mx-auto" onclick="loadMoreVideos()">See More Videos</button>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+<script>
+  const YOUTUBE_API_KEY = 'AIzaSyA8ZmBRuzR-pqnwfy3OhPeUY44pJ67IYs0';
+  let videosPerPage = 3;
+  let currentIndex = 9;
+  let videoData = {};
+
+  function handleThumbnailError(imgElement, videoId) {
+    const qualities = ['maxresdefault', 'sddefault', 'hqdefault', 'mqdefault', 'default'];
+    const currentQuality = imgElement.src.split('/').pop().split('.')[0];
+    const currentIndex = qualities.indexOf(currentQuality);
+    if (currentIndex < qualities.length - 1) {
+      const nextQuality = qualities[currentIndex + 1];
+      imgElement.src = `https://img.youtube.com/vi/${videoId}/${nextQuality}.jpg`;
+    }
+  }
+
+  async function checkYouTubeAPI() {
+    if (!YOUTUBE_API_KEY) return;
+    const testVideoId = 'dQw4w9WgXcQ';
+    try {
+      const response = await fetch(
+        `https://www.googleapis.com/youtube/v3/videos?part=snippet,contentDetails&id=${testVideoId}&key=${YOUTUBE_API_KEY}`,
+      );
+      const data = await response.json();
+      if (data.items && data.items.length > 0) {
+        console.log('YouTube API working:', data.items[0].snippet.title);
+      }
+    } catch (e) {
+      console.error(e);
+    }
+  }
+  function convertYouTubeDuration(duration) {
+    return duration;
+  }
+  function updateSchemaMarkup(videoId, index, snippet, contentDetails) {
+    const schemaContainer = document.getElementById(`schema-${index}`);
+    if (!schemaContainer) return;
+
+    const uploadDate = new Date(snippet.publishedAt).toISOString().split('T')[0];
+    const duration = convertYouTubeDuration(contentDetails.duration);
+
+    const schemaData = {
+      '@context': 'https://schema.org',
+      '@type': 'VideoObject',
+      name: snippet.title || 'YouTube Video',
+      description: snippet.description ? snippet.description.substring(0, 300) : 'Watch this video on our website',
+      thumbnailUrl: `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`,
+      uploadDate: uploadDate,
+      duration: duration,
+      embedUrl: `https://www.youtube.com/embed/${videoId}`,
+      contentUrl: `https://www.youtube.com/watch?v=${videoId}`,
+      publisher: {
+        '@type': 'Organization',
+        name: '{{ shop.name }}',
+        url: '{{ shop.url }}',
+      },
+    };
+    const scriptElement = schemaContainer.querySelector('script');
+    if (scriptElement) {
+      scriptElement.textContent = JSON.stringify(schemaData, null, 2);
+    }
+  }
+
+  async function fetchYouTubeData(videoId, index) {
+    if (!videoId || !YOUTUBE_API_KEY) return;
+    try {
+      const response = await fetch(
+        `https://www.googleapis.com/youtube/v3/videos?part=snippet,contentDetails&id=${videoId}&key=${YOUTUBE_API_KEY}`,
+      );
+      const data = await response.json();
+      if (data.items && data.items.length > 0) {
+        const videoInfo = data.items[0].snippet;
+        const contentDetails = data.items[0].contentDetails;
+
+        videoData[videoId] = {
+          snippet: videoInfo,
+          contentDetails: contentDetails,
+        };
+
+        const titleEl = document.getElementById(`title-${index}`);
+        if (titleEl && (!titleEl.textContent || titleEl.textContent.trim() === '')) {
+          titleEl.textContent = videoInfo.title;
+        }
+        const descEl = document.getElementById(`description-${index}`);
+        if (descEl) {
+          descEl.textContent = videoInfo.description;
+        }
+
+        updateSchemaMarkup(videoId, index, videoInfo, contentDetails);
+
+        console.log(`Schema updated for video ${videoId}`);
+      }
+    } catch (e) {
+      console.error('Error fetching YouTube data:', e);
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', function () {
+    checkYouTubeAPI();
+    const videos = document.querySelectorAll('.multi_video_grid_list');
+    videos.forEach((el, index) => {
+      const ytId = el.dataset.youtubeId;
+      if (ytId) {
+        fetchYouTubeData(ytId, index);
+      }
+    });
+  });
+
+  function loadMoreVideos() {
+    const videos = document.querySelectorAll('.multi_video_grid_list');
+    const nextIndex = currentIndex + videosPerPage;
+    for (let i = currentIndex; i < nextIndex && i < videos.length; i++) {
+      videos[i].style.display = 'flex';
+      const ytId = videos[i].dataset.youtubeId;
+      if (ytId) {
+        fetchYouTubeData(ytId, i);
+      }
+    }
+    currentIndex = nextIndex;
+    if (currentIndex >= videos.length) {
+      document.getElementById('load-more-btn').style.display = 'none';
+    }
+  }
+
+  function showEmbed(index) {
+    const overlay = document.getElementById('overlay-' + index);
+    const embed = document.getElementById('embed-' + index);
+    if (overlay) overlay.style.display = 'none';
+    if (embed) embed.classList.add('active');
+    const iframe = embed.querySelector('iframe');
+    if (iframe) {
+      let src = iframe.src;
+      if (src.includes('youtube.com') && !src.includes('autoplay=1')) {
+        iframe.src = src.includes('?') ? src + '&autoplay=1' : src + '?autoplay=1';
+      }
+    }
+  }
+  function validateSchema() {
+    const schemas = document.querySelectorAll('script[type="application/ld+json"]');
+    schemas.forEach((schema, index) => {
+      try {
+        JSON.parse(schema.textContent);
+        console.log(`Schema ${index} is valid JSON`);
+      } catch (e) {
+        console.error(`Schema ${index} has invalid JSON:`, e);
+      }
+    });
+  }
+  setTimeout(validateSchema, 2000);
+</script>
+
+{% schema %}
+{
+  "name": "Video Gallery",
+  "tag": "section",
+  "settings": [
+    { "type": "text", "label": "Extra Class", "id": "extra_class" },
+    { "type": "text", "label": "Heading", "id": "heading" },
+    { "type": "html", "label": "Sub Heading", "id": "sub_heading" },
+    { "type": "image_picker", "label": "Background Image", "id": "background_image" }
+  ],
+  "blocks": [
+    {
+      "type": "video_block",
+      "name": "Video",
+      "settings": [
+        {
+          "type": "select",
+          "id": "video_type",
+          "label": "Video Type",
+          "options": [
+            { "value": "regular", "label": "Regular Video" },
+            { "value": "shorts", "label": "YouTube Shorts" }
+          ],
+          "default": "regular"
+        },
+        { "type": "textarea", "id": "video_embed", "label": "YouTube Embed Code" },
+        { "type": "textarea", "id": "youtube_shorts_embed", "label": "YouTube Shorts Embed Code" },
+        { "type": "text", "id": "video_title", "label": "Video Title (optional - will auto-populate from YouTube)" },
+        {
+          "type": "select",
+          "id": "thumbnail_quality",
+          "label": "Thumbnail Quality",
+          "default": "default",
+          "options": [
+            { "value": "default", "label": "Default (120x90)" },
+            { "value": "mqdefault", "label": "Medium (320x180)" },
+            { "value": "hqdefault", "label": "High (480x360)" },
+            { "value": "sddefault", "label": "Standard (640x480)" },
+            { "value": "maxresdefault", "label": "Maximum (1280x720)" }
+          ]
+        }
+      ]
+    }
+  ],
+  "presets": [{ "name": "Video Gallery" }]
+}
+{% endschema %}

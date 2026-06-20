@@ -1,0 +1,214 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "shogun-helper": {
+      "type": "shogun-helper",
+      "settings": {}
+    },
+    "pages": {
+      "type": "main-page",
+      "disabled": true,
+      "custom_css": [
+        ".container {padding-top: 50px; padding-bottom: 50px;}",
+        "h1 {text-align: center;}"
+      ],
+      "settings": {
+        "extra_class": ""
+      }
+    },
+    "back_to_school_banner_yncNHE": {
+      "type": "back-to-school-banner",
+      "name": "Back To School Banner",
+      "settings": {
+        "extra_class": "hero-back-to-school-banner event-page-banner",
+        "desktop_image": "shopify://shop_images/DESKTOP_BANNER_1.png",
+        "mobile_image": "shopify://shop_images/Mobile_Banner_1.png",
+        "heading": "XX-XY Community",
+        "subheading": "",
+        "subheadline": "",
+        "button_text": "",
+        "button_url": "",
+        "second_button_text": "",
+        "second_button_url": "",
+        "additional_info": "",
+        "button_style": "primary"
+      }
+    },
+    "rich_text_BhAbqr": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_U63mTT": {
+          "type": "heading",
+          "settings": {
+            "heading": "<p>XX-XY Community</p>",
+            "heading_size": "medium",
+            "heading_padding_top": 0,
+            "padding_bottom": 0
+          }
+        },
+        "text_rA99mD": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Stronger Together.<br/>Whether you’re training hard, finding balance, or showing up for women’s sports, this is where our community connects. Check the <br/>schedule, RSVP, and get ready to sweat with us.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_U63mTT",
+        "text_rA99mD"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "color_scheme": "background-1",
+        "full_width": true,
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "margin_top": 40,
+        "margin_bottom": 100,
+        "spring_shop_text": "xy-community-rich-text"
+      }
+    },
+    "luma_events_BhVJLJ": {
+      "type": "luma-events",
+      "blocks": {
+        "event_iUfhVe": {
+          "type": "event",
+          "disabled": true,
+          "settings": {
+            "event_image": "shopify://shop_images/SUMMER_26_WITH_KRISTA.jpg",
+            "event_date": "Nov 27 - Dec 1",
+            "event_title": "Born Brave Virtual 5K",
+            "event_location": "Virtual",
+            "event_time": "",
+            "event_link": "https://luma.com/p6lan5oa",
+            "button_label": "RSVP",
+            "disable_button": false,
+            "event_category": "running"
+          }
+        },
+        "event_c7f3UP": {
+          "type": "event",
+          "disabled": true,
+          "settings": {
+            "event_image": "shopify://shop_images/Green_and_Pink_Paper_Maximalist_Run_Club_Instagram_Post.jpg",
+            "event_date": "Oct 26",
+            "event_title": "Sign-Making & Marathon Cheering Section",
+            "event_location": "Washington, DC",
+            "event_time": "",
+            "event_link": "https://luma.com/zj41uf5m",
+            "button_label": "CLOSED",
+            "disable_button": false,
+            "event_category": "fitness"
+          }
+        },
+        "event_GE3Q7E": {
+          "type": "event",
+          "disabled": true,
+          "settings": {
+            "event_image": "shopify://shop_images/New_Project_2_1.png",
+            "event_date": "Oct 24",
+            "event_title": "MCM Shakeout & Born Brave 5k",
+            "event_location": "Washington, District of Columbia",
+            "event_time": "",
+            "event_link": "https://luma.com/emb3g8wj",
+            "button_label": "RSVP HERE",
+            "disable_button": false,
+            "event_category": "fitness"
+          }
+        }
+      },
+      "block_order": [
+        "event_iUfhVe",
+        "event_c7f3UP",
+        "event_GE3Q7E"
+      ],
+      "name": "Events Grid",
+      "settings": {
+        "event_heading": "",
+        "extra_class": "",
+        "show_filters": true,
+        "button_style": "button button--primary"
+      }
+    },
+    "luma_events_jPAwmU": {
+      "type": "luma-events",
+      "blocks": {
+        "event_7MeWD6": {
+          "type": "event",
+          "settings": {
+            "event_image": "shopify://shop_images/SUMMER_26_WITH_KRISTA.jpg",
+            "event_date": "Nov 20",
+            "event_title": "Born Brave Virtual 5K",
+            "event_location": "Virtual",
+            "event_time": "",
+            "event_link": "",
+            "button_label": "CLOSED",
+            "disable_button": false,
+            "event_category": "running"
+          }
+        },
+        "event_AAf73k": {
+          "type": "event",
+          "settings": {
+            "event_image": "shopify://shop_images/Retro_Tosca_City_Run_Event_Flyer.jpg",
+            "event_date": "Oct 25",
+            "event_title": "Boston Buddies x Team Women Shakeout Run",
+            "event_location": "Washington, DC",
+            "event_time": "",
+            "event_link": "https://luma.com/emb3g8wj",
+            "button_label": "CLOSED",
+            "disable_button": false,
+            "event_category": "running"
+          }
+        },
+        "event_rXdWd8": {
+          "type": "event",
+          "settings": {
+            "event_image": "shopify://shop_images/Green_and_Pink_Paper_Maximalist_Run_Club_Instagram_Post.jpg",
+            "event_date": "Oct 26",
+            "event_title": "Sign-Making & Marathon Cheering Section",
+            "event_location": "Washington, DC",
+            "event_time": "",
+            "event_link": "https://luma.com/zj41uf5m",
+            "button_label": "CLOSED",
+            "disable_button": false,
+            "event_category": "volunteer"
+          }
+        }
+      },
+      "block_order": [
+        "event_7MeWD6",
+        "event_AAf73k",
+        "event_rXdWd8"
+      ],
+      "name": "Events Grid",
+      "settings": {
+        "event_heading": "Past Events",
+        "extra_class": "community-past-events",
+        "show_filters": false,
+        "button_style": "button--ctm_wb_global_button"
+      }
+    },
+    "shogun-optimizer": {
+      "type": "shogun-optimizer",
+      "settings": {}
+    }
+  },
+  "order": [
+    "shogun-helper",
+    "pages",
+    "back_to_school_banner_yncNHE",
+    "rich_text_BhAbqr",
+    "luma_events_BhVJLJ",
+    "luma_events_jPAwmU",
+    "shogun-optimizer"
+  ]
+}

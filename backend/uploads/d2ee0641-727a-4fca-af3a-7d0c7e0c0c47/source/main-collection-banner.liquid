@@ -1,0 +1,113 @@
+{% comment %}theme-check-disable ImgLazyLoading{% endcomment %}
+{{ 'component-collection-hero.css' | asset_url | stylesheet_tag }}
+{% liquid
+  assign collection_banner = collection.metafields.banner.acf
+  assign collection_banner_title = collection.metafields.title.acf
+  assign collection_banner_hide_title = collection.metafields.hide_title.acf | default: false
+  assign collection_banner_fit = collection.metafields.banner_fit.acf | default: 'Cover'
+  assign object_fit = 'object-cover'
+  if collection_banner_fit == 'Contain'
+    assign object_fit = 'object-contain'
+  endif
+%}
+
+{%- style -%}
+  @media screen and (max-width: 749px) {
+    .collection-hero--with-image .collection-hero__inner {
+      padding-bottom: calc({{settings.media_shadow_vertical_offset | at_least: 0}}px + 2rem);
+    }
+  }
+{%- endstyle -%}
+
+<div class="collection-hero{% if section.settings.show_collection_image and collection.image %} collection-hero--with-image{% endif %} color-{{ section.settings.color_scheme }} gradient">
+  <div class="collection-hero__inner page-widths {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %} {% if collection.handle == 'mattresses-bedding' %}ctm-mattresses-bedding{% endif %}">
+    <div class="collection-hero__text-wrapper ctm_breadcrumb_banner">
+      {% if collection_banner != blank %}
+        <img
+          class="w-full h-[280px] midlarge_desktop:h-[354px] {{ object_fit }}"
+          src="{{ collection_banner }}"
+          alt="collection_banner"
+          loading="lazy"
+          width="1512"
+          height="280"
+        >
+        {% unless collection_banner_hide_title %}
+          <div class="ctm_breadcrumb_content absolute top-1/2 -translate-y-1/2 left-0 right-0 z-1">
+            <div class="container_fluid">
+              {% if collection.title != blank %}
+                <h1>
+                  {% if collection.title == 'All Products' %}
+                    {{ collection_banner_title }}
+                  {% else %}
+                    {{- collection.title | escape -}}
+                  {% endif %}
+                </h1>
+              {% endif %}
+            </div>
+          </div>
+        {% endunless %}
+      {% endif %}
+      {%- if section.settings.show_collection_description -%}
+        <div class="collection-hero__description rte">{{ collection.description }}</div>
+      {%- endif -%}
+    </div>
+
+    {%- if section.settings.show_collection_image and collection.image -%}
+      <div class="collection-hero__image-container media gradient">
+        <img
+          srcset="
+            {%- if collection.image.width >= 165 -%}{{ collection.image | image_url: width: 165 }} 165w,{%- endif -%}
+            {%- if collection.image.width >= 360 -%}{{ collection.image | image_url: width: 360 }} 360w,{%- endif -%}
+            {%- if collection.image.width >= 535 -%}{{ collection.image | image_url: width: 535 }} 535w,{%- endif -%}
+            {%- if collection.image.width >= 750 -%}{{ collection.image | image_url: width: 750 }} 750w,{%- endif -%}
+            {%- if collection.image.width >= 1070 -%}{{ collection.image | image_url: width: 1070 }} 1070w,{%- endif -%}
+            {%- if collection.image.width >= 1500 -%}{{ collection.image | image_url: width: 1500 }} 1500w,{%- endif -%}
+            {{ collection.image | image_url }} {{ collection.image.width }}w
+          "
+          src="{{ collection.image | image_url: width: 750 }}"
+          sizes="(min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 | divided_by: 2 }}px, (min-width: 750px) calc(50vw - 130px), calc(50vw - 55px)"
+          alt="{{ collection.image.alt | escape }}"
+          width="{{ collection.image.width }}"
+          height="{{ collection.image.height }}"
+        >
+      </div>
+    {%- endif -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "t:sections.main-collection-banner.name",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "label": "Extra Class",
+      "id": "extra_class"
+    },
+    {
+      "type": "paragraph",
+      "content": "t:sections.main-collection-banner.settings.paragraph.content"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_collection_description",
+      "default": true,
+      "label": "t:sections.main-collection-banner.settings.show_collection_description.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_collection_image",
+      "default": false,
+      "label": "t:sections.main-collection-banner.settings.show_collection_image.label",
+      "info": "t:sections.main-collection-banner.settings.show_collection_image.info"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.label",
+      "default": "scheme-1"
+    }
+  ]
+}
+{% endschema %}

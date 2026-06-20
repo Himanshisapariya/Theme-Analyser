@@ -1,0 +1,94 @@
+{{ 'task1-2.css' | asset_url | stylesheet_tag }}
+
+{% schema %}
+{
+  "name": "image with name",
+  "settings": [
+     {
+    "type" : "text",
+    "label" : "Headline1",
+    "id" : "Headline1"
+    },
+    {
+    "type" : "text",
+    "label" : "Headline2",
+    "id" : "Headline2"
+    },
+    {
+    "type" : "text",
+    "label" : "button1",
+    "id" : "button1"
+    },
+    {
+    "type" : "text",
+    "label" : "button2",
+    "id" : "button2"
+    }
+  ],
+  "blocks": [
+    {
+      "name" : "item",
+      "type": "item",
+      "settings": [
+        {
+          "type": "image_picker",
+          "label" : "image",
+          "id" : "image"
+        },
+        {
+           "type": "text",
+          "id": "itemname",
+          "label": "itemname"
+        }
+      ],
+
+    }
+  ],
+  "presets": [
+    {
+      "name" : "image with name"
+    }
+  ],
+   "max_blocks": 6
+}
+{% endschema %}
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Page Title</title>
+  </head>
+
+  <body>
+    <div class="custom-content-section body">
+      <div class="headline">
+        <p class="finally">{{ section.settings.Headline1 }}</p>
+        <p>{{ section.settings.Headline2 }}</p>
+      </div>
+
+      <div class="custom-content-blocks">
+        {% for block in section.blocks %}
+          <div class="custom-content-block" id="block-{{ block.id }}">
+            {% if block.settings.image %}
+              <div class="custom-content-image">
+                <img src="{{ block.settings.image | img_url: width :130 }}" alt="{{ block.settings.itemname }}">
+              </div>
+            {% endif %}
+            {% if block.settings.itemname %}
+              <div class="custom-content2">
+                <p>{{ block.settings.itemname }}</p>
+              </div>
+            {% endif %}
+          </div>
+        {% endfor %}
+      </div>
+      <br>
+      <div class="buttons">
+        <button class="buynow">{{ section.settings.button1 }}</button>
+        <button class="learnmore">{{ section.settings.button2 }}</button>
+      </div>
+    </div>
+  </body>
+</html>

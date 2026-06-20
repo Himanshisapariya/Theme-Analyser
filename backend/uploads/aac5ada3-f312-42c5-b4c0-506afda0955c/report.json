@@ -1,0 +1,16 @@
+{
+  "createdAt": "2026-05-16T06:10:52.535Z",
+  "cssFiles": [],
+  "textFiles": [
+    "product.liquid"
+  ],
+  "summary": {
+    "totalRules": 0,
+    "usedRules": 0,
+    "unusedRules": 0,
+    "estimatedSavingsBytes": 0
+  },
+  "entries": [],
+  "warnings": [],
+  "jobId": "aac5ada3-f312-42c5-b4c0-506afda0955c"
+}

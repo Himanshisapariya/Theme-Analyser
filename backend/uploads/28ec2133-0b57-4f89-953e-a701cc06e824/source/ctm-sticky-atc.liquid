@@ -1,0 +1,355 @@
+<div class="ctm-atc-sticky-main">
+    <div class="ctm-sticky-data"></div>
+    <div class="ctm-sticky-price"></div>
+    <div class="ctm-sticky-atc max-mdscreen2:order-3">
+        <div id="ctm-featured-product" class="ctm-button uppercase secondary-button min-w-[289px] min-h-50 max-mdscreen1:px-24 max-mdscreen1:py-10 max-mdscreen1:text-16 max-mdscreen1:leading-20">Buy Now</div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const observer = new MutationObserver(function () {
+          const stickyBar = document.querySelector('.ctm-sticky-data');
+          const originalLabels = document.querySelectorAll('.product-form__input--pill label'); // Adjust selector if needed
+  
+          if (stickyBar && originalLabels.length > 0) {
+              observer.disconnect(); // Stop observing once ready
+              renderStickyVariants(stickyBar, originalLabels);
+              setupStickyInteractivity(originalLabels);
+              setupStickyBuyButton();
+              updateStickyPrice(); // Initialize price immediately after rendering
+          }
+      });
+  
+      observer.observe(document.body, { childList: true, subtree: true });
+    });
+  
+    // 1: Copy ALL classes/structure from original labels
+    function renderStickyVariants(stickyBar, originalLabels) {
+        stickyBar.innerHTML = '';
+  
+        // Create dropdown container for mobile
+        const mobileContainer = document.createElement('div');
+        mobileContainer.className = 'sticky-variant-mobile mobile-only';
+  
+        // Create dropdown
+        const mobileDropdown = document.createElement('select');
+        mobileDropdown.className = 'sticky-variant-dropdown';
+  
+        // Create display element to show selected value
+        const mobileDisplay = document.createElement('div');
+        mobileDisplay.className = 'sticky-mobile-display';
+  
+        // Create desktop container
+        const desktopContainer = document.createElement('div');
+        desktopContainer.className = 'sticky-variant-container desktop-only';
+  
+        originalLabels.forEach((label, index) => {
+            const inputId = label.getAttribute('for');
+            const input = document.querySelector(`#${inputId}`);
+            const value = input ? input.value : '';
+            
+            // Get only the visible text without hidden "sold out" info
+            const cloned = label.cloneNode(true);
+            cloned.querySelector('.visually-hidden')?.remove();
+            const text = cloned.textContent.trim();
+  
+            // Add option to dropdown
+            const option = document.createElement('option');
+            option.value = value;
+            option.textContent = text;
+            if (input?.checked) {
+                option.selected = true;
+                mobileDisplay.textContent = text; // Set initial display text
+            }
+            mobileDropdown.appendChild(option);
+  
+            // Clone the ENTIRE label (with all children + classes) for desktop
+            const clonedLabel = label.cloneNode(true);
+  
+            // Remove "sold out" text if exists
+            clonedLabel.querySelector('.visually-hidden')?.remove();
+  
+            // Add sticky-specific classes (optional)
+            clonedLabel.classList.add('sticky-variant');
+            clonedLabel.setAttribute('data-variant-price', input?.getAttribute('data-variant-price'));
+            clonedLabel.setAttribute('data-variant-id', input?.getAttribute('data-variant-id'));
+  
+            // Highlight selected
+            if (input?.checked) {
+                clonedLabel.classList.add('is-selected');
+            }
+  
+            desktopContainer.appendChild(clonedLabel);
+  
+            // Add divider (if not last item)
+            if (index < originalLabels.length - 1) {
+                const divider = document.createElement('span');
+                divider.classList.add('sticky-divider');
+                divider.textContent = '|';
+                desktopContainer.appendChild(divider);
+            }
+        });
+  
+        // Build mobile container structure
+        mobileContainer.appendChild(mobileDisplay);
+        mobileContainer.appendChild(mobileDropdown);
+  
+        // Append both to sticky bar
+        stickyBar.appendChild(mobileContainer);
+        stickyBar.appendChild(desktopContainer);
+  
+        // Add CSS for mobile/desktop display
+        const style = document.createElement('style');
+        style.textContent = `
+            @media (max-width: 989px) {
+                .sticky-variant-container.desktop-only {
+                    display: none !important;
+                }
+                .sticky-variant-mobile.mobile-only {
+                    display: flex !important;
+                }
+            }
+            @media (min-width: 990px) {
+                .sticky-variant-mobile.mobile-only {
+                    display: none !important;
+                }
+                .sticky-variant-container.desktop-only {
+                    display: flex !important;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+    }
+  
+    // 2: Make sticky variants clickable
+    function setupStickyInteractivity(originalLabels) {
+        // Desktop click handler
+        document.querySelector('.sticky-variant-container')?.addEventListener('click', (e) => {
+            const clickedLabel = e.target.closest('label');
+            if (!clickedLabel) return;
+  
+            e.preventDefault();
+            e.stopPropagation();
+            e.stopImmediatePropagation();
+  
+            const originalFor = clickedLabel.getAttribute('for');
+  
+            document.querySelectorAll('.sticky-variant-container .sticky-variant').forEach(label => {
+                label.classList.remove('is-selected');
+            });
+            clickedLabel.classList.add('is-selected');
+            
+            const input = document.getElementById(originalFor);
+            if (input) {
+                input.checked = true;
+            }
+            updateStickyPrice();
+        });
+  
+        // Mobile dropdown change handler
+        const mobileDropdown = document.querySelector('.sticky-variant-dropdown');
+        const mobileDisplay = document.querySelector('.sticky-mobile-display');
+  
+        if (mobileDropdown && mobileDisplay) {
+            mobileDropdown.addEventListener('change', function (e) {
+                const selectedValue = e.target.value;
+                const selectedOption = e.target.options[e.target.selectedIndex];
+  
+                // Update display text
+                mobileDisplay.textContent = selectedOption.textContent;
+  
+                // Find the original input with this value and change it
+                originalLabels.forEach(label => {
+                    const inputId = label.getAttribute('for');
+                    const input = document.querySelector(`#${inputId}`);
+                    if (input && input.value === selectedValue) {
+                        // Update selected state in desktop view
+                        document.querySelectorAll('.sticky-variant-container .sticky-variant').forEach(label => {
+                            label.classList.remove('is-selected');
+                        });
+                        const stickyLabel = document.querySelector(`.sticky-variant-container label[for="${inputId}"]`);
+                        if (stickyLabel) {
+                            stickyLabel.classList.add('is-selected');
+                        }
+                        updateStickyPrice();
+                        input.checked = true;
+                    }
+                });
+            });
+        }
+  
+        // Also listen for changes from the original inputs to keep sticky bar in sync
+        originalLabels.forEach(label => {
+            const inputId = label.getAttribute('for');
+            const input = document.querySelector(`#${inputId}`);
+            if (input) {
+                input.addEventListener('change', function() {
+                    if (this.checked) {
+                        // Update sticky bar selection
+                        document.querySelectorAll('.sticky-variant-container .sticky-variant').forEach(label => {
+                            label.classList.remove('is-selected');
+                        });
+                        const stickyLabel = document.querySelector(`.sticky-variant-container label[for="${inputId}"]`);
+                        if (stickyLabel) {
+                            stickyLabel.classList.add('is-selected');
+                        }
+                        
+                        // Update mobile dropdown
+                        if (mobileDropdown) {
+                            mobileDropdown.value = this.value;
+                        }
+                        if (mobileDisplay) {
+                            const option = mobileDropdown?.querySelector(`option[value="${this.value}"]`);
+                            if (option) {
+                                mobileDisplay.textContent = option.textContent;
+                            }
+                        }
+                    }
+                });
+            }
+        });
+    }
+  
+    // 3: Update sticky price from data-variant-price
+    function updateStickyPrice() {
+        const stickyDataDiv = document.querySelector('.sticky-variant.is-selected');
+        const formInput = document.querySelector('.product-variant-id');
+        const stickyPrice = document.querySelector('.ctm-sticky-price');
+
+        if (stickyDataDiv) {
+            const variantPrice = stickyDataDiv.getAttribute('data-variant-price');
+            const optionValueId = stickyDataDiv.getAttribute('data-variant-id');
+            const pricePTag = document.querySelector('#ctm-price-sticky');
+
+            if(formInput) {
+                formInput.value = optionValueId;
+            }
+            
+            if(pricePTag) {
+                pricePTag.innerHTML = variantPrice;
+            }
+
+            if(stickyPrice) {
+                stickyPrice.innerHTML = variantPrice;
+            }
+        }
+    }
+
+    // Add CSS for price display
+    const priceStyle = document.createElement('style');
+    priceStyle.textContent = `
+        .sticky-price-container {
+            display: flex;
+            align-items: center;
+            margin-right: 20px;
+            font-weight: bold;
+            font-size: 18px;
+        }
+        .sticky-price-container .price-display {
+            margin: 0;
+        }
+    `;
+    document.head.appendChild(priceStyle);
+  
+    // 5: Setup sticky buy button to add to cart
+    function setupStickyBuyButton() {
+        const stickyBuyButton = document.querySelector('.ctm-sticky-atc .ctm-button');
+        if (stickyBuyButton) {
+            // Remove any existing href to prevent navigation
+            stickyBuyButton.removeAttribute('href');
+            
+            stickyBuyButton.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // Find the main product form's submit button
+                const mainSubmitButton = document.querySelector('.product-form__submit');
+                
+                if (mainSubmitButton) {
+                    // Ensure quantity is set to 1
+                    const quantityInput = document.querySelector('input[name="quantity"]');
+                    if (quantityInput) {
+                        quantityInput.value = 1;
+                    }
+                    
+                    // Trigger a click on the main submit button
+                    mainSubmitButton.click();
+                }
+            });
+        }
+    }
+  
+    // Listen for variant changes to update price
+    document.addEventListener('variantChange', function (event) {  
+        const selectedInput = document.querySelector('.product-form__input--pill input:checked');
+        if (selectedInput) {
+            const dropdown = document.querySelector('.sticky-variant-dropdown');
+            const display = document.querySelector('.sticky-mobile-display');
+            if (dropdown && display) {
+                const selectedOption = dropdown.querySelector(`option[value="${selectedInput.value}"]`);
+                if (selectedOption) {
+                    dropdown.value = selectedInput.value;
+                    display.textContent = selectedOption.textContent;
+                }
+            }
+        }
+    });
+  
+    document.addEventListener('change', function (event) {
+        if (event.target.classList.contains('ctm-variant-input')) {
+            const variantId = event.target.getAttribute('data-variant-id');
+            const variantPrice = event.target.getAttribute('data-variant-price');
+            const stickyPrice = document.querySelector('.ctm-sticky-price');
+            const stickyMobiledisplay = document.querySelector('.sticky-mobile-display');
+
+            if (stickyPrice) {
+                stickyPrice.innerHTML = variantPrice;
+            }
+            const stickyLabels = document.querySelectorAll('.sticky-variant');
+            stickyLabels?.forEach(label => {
+                if(label){
+                    const labelVariantId = label.getAttribute('data-variant-id');
+                    if(variantId === labelVariantId) {
+                        label.classList.add('is-selected');
+                        if(stickyMobiledisplay) {
+                            const labelText = label.innerText.trim();
+                            stickyMobiledisplay.innerText = labelText;
+                            const stickyMobileDropdown = document.querySelector('.sticky-variant-dropdown  option[value="' + labelText + '"]');
+                            if(stickyMobileDropdown) {
+                                stickyMobileDropdown.selected = true;
+                            }
+                        }
+                    } else {
+                        label.classList.remove('is-selected');
+                    }
+                }
+            });
+        }
+
+        if (event.target.name === 'id') {  
+            const dropdown = document.querySelector('.sticky-variant-dropdown');
+            const display = document.querySelector('.sticky-mobile-display');
+            if (dropdown && display) {
+                const selectedOption = dropdown.querySelector(`option[value="${event.target.value}"]`);
+                if (selectedOption) {
+                    dropdown.value = event.target.value;
+                    display.textContent = selectedOption.textContent;
+                }
+            }
+        }
+    });
+</script>
+  
+{% schema %}
+{
+  "name": "Sticky ATC",
+  "class": "ctm-sticky-atc-main",
+  "settings": [],
+  "blocks": [],
+  "presets": [
+    {
+      "name": "Sticky ATC"
+    }
+  ]
+}
+{% endschema %}

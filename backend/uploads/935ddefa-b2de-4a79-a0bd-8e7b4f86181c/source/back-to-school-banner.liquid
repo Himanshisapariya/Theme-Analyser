@@ -1,0 +1,251 @@
+{%- if template.name == 'collection' -%}
+ {%- if collection.handle == 'the-outlet' -%} 
+
+<div class="back-school-banner-container {{ section.settings.extra_class }}">
+    <div class="image-container">
+        {% if section.settings.desktop_image != blank %}
+            <div class="desktop-banner-image">
+                <img src="{{ section.settings.desktop_image | image_url }}" alt="Back To School Desktop Image" height="100%" width="100%">
+            </div>
+        {% endif %}
+        {% if section.settings.mobile_image != blank %}
+            <div class="mobile-banner-image">
+                <img src="{{ section.settings.mobile_image | image_url }}" alt="Back To School Mobile Image" height="100%" width="100%">
+            </div>
+        {% endif %}
+    </div>
+    <div class="back-school-content-container">
+        {% if section.settings.heading != blank %}
+            <h1>{{ section.settings.heading }}</h1>
+        {% endif %}
+         {% if section.settings.subheading != blank %}
+            <p>{{ section.settings.subheading }}</p>
+        {% endif %}
+        <div class="ctm-back-to-school-buttons">
+        {% if section.settings.button_text != blank %}
+            <a href="{{ section.settings.button_url }}" class="button button--{{ section.settings.button_style }}">
+                {{ section.settings.button_text }}
+            </a>
+        {% endif %}
+        {% if section.settings.second_button_text != blank %}
+            <a href="{{ section.settings.second_button_url }}" class="button button--{{ section.settings.button_style }}">
+                {{ section.settings.second_button_text }}
+            </a>
+        {% endif %}
+        </div>
+    </div>
+    {% if section.blocks.size >= 1 %}
+  <div class="ctm-banner-buttons-bar">
+    {%  for block in section.blocks %}
+        {% if block.settings.button_url != blank %}
+          <a href="{{ block.settings.button_url }}" class="ctm-pill-btn">
+            {{ block.settings.button_text }}
+          </a>
+        {%  endif %}
+    {%  endfor %}
+  </div>
+     {% if section.settings.additional_info %}
+  <div class="add_info">
+    <p>{{ section.settings.additional_info }}</p>
+  </div>
+{%  endif %}
+{%  endif %}
+</div>
+
+{%  endif %} 
+
+{%- else -%}
+
+<div class="back-school-banner-container {{ section.settings.extra_class }}">
+    <div class="image-container">
+        {% if section.settings.desktop_image != blank %}
+            <div class="desktop-banner-image">
+                <img src="{{ section.settings.desktop_image | image_url }}" alt="Back To School Desktop Image" height="100%" width="100%">
+            </div>
+        {% endif %}
+        {% if section.settings.mobile_image != blank %}
+            <div class="mobile-banner-image">
+                <img src="{{ section.settings.mobile_image | image_url }}" alt="Back To School Mobile Image" height="100%" width="100%">
+            </div>
+        {% endif %}
+    </div>
+    <div class="back-school-content-container">
+        {% if section.settings.heading != blank %}
+            <h1>{{ section.settings.heading }}</h1>
+        {% endif %}
+         {% if section.settings.subheading != blank %}
+            <p>{{ section.settings.subheading }}</p>
+        {% endif %}
+        {% if section.settings.subheadline != blank %}
+            <span>{{ section.settings.subheadline }}</span>
+        {% endif %}
+        <div class="ctm-back-to-school-buttons">
+        {% if section.settings.button_text != blank %}
+            <a href="{{ section.settings.button_url }}" class="button button--{{ section.settings.button_style }}">
+                {{ section.settings.button_text }}
+            </a>
+        {% endif %}
+        {% if section.settings.second_button_text != blank %}
+            <a href="{{ section.settings.second_button_url }}" class="button button--{{ section.settings.button_style }}">
+                {{ section.settings.second_button_text }}
+            </a>
+        {% endif %}
+        </div>
+    </div>
+    {% if section.blocks.size >= 1 %}
+  <div class="ctm-banner-buttons-bar">
+    {%  for block in section.blocks %}
+        {% if block.settings.button_url != blank %}
+          <a href="{{ block.settings.button_url }}" class="ctm-pill-btn">
+            {{ block.settings.button_text }}
+          </a>
+        {%  endif %}
+    {%  endfor %}
+  </div>
+     {% if section.settings.additional_info %}
+  <div class="add_info">
+    <p>{{ section.settings.additional_info }}</p>
+  </div>
+{%  endif %}
+{%  endif %}
+</div>
+
+{%  endif %}
+
+<style>
+
+.back-school-banner-container {
+    position: relative;
+}
+
+.back-school-content-container {
+    position : absolute;
+    bottom: 0px;
+}
+
+.desktop-banner-image {
+  display: block;
+}
+
+.mobile-banner-image {
+  display: none;
+}
+
+@media screen and (max-width: 767px) {
+  .desktop-banner-image {
+    display: none;
+  }
+
+  .mobile-banner-image {
+    display: block;
+  }
+}
+
+</style>
+
+{% schema %}
+{
+  "name": "Back To School Banner",
+  "class": "ctm-back-to-school",
+  "settings": [
+    {
+      "type": "text",
+      "label": "Extra Class",
+      "id": "extra_class"
+    },
+    {
+      "type": "image_picker",
+      "label": "Desktop Image",
+      "id": "desktop_image"
+    },
+    {
+      "type": "image_picker",
+      "label": "Mobile Image",
+      "id": "mobile_image"
+    },
+    {
+      "type": "html",
+      "label": "Heading",
+      "id": "heading"
+    },
+    {
+      "type": "html",
+      "label": "Subheading",
+      "id": "subheading"
+    },
+    {
+      "type": "html",
+      "label": "Subheadline",
+      "id": "subheadline"
+    },
+    {
+      "type": "text",
+      "label": "Button Text",
+      "id": "button_text"
+    },
+    {
+      "type": "url",
+      "label": "Button URL",
+      "id": "button_url"
+    },
+    {
+      "type": "text",
+      "label": "Second Button Text",
+      "id": "second_button_text"
+    },
+    {
+      "type": "url",
+      "label": "Second Button URL",
+      "id": "second_button_url"
+    },
+    {
+      "type": "text",
+      "label": "Additional Info",
+      "id": "additional_info"
+    },
+    {
+        "type": "select",
+        "id": "button_style",
+        "options": [
+            {
+                "value": "primary",
+                "label": "Primary"
+            },
+            {
+                "value": "secondary",
+                "label": "Secondary"
+            },
+            {
+                "value": "tertiary",
+                "label": "Tertiary"
+            }
+        ],
+        "label": "Button Style"
+	}
+  ],
+  "blocks": [
+    {
+      "type": "Button",
+      "name": "Add Button",
+      "settings": [
+        {
+          "type": "text",
+          "label": "Button Text",
+          "id": "button_text"
+        },
+        {
+          "type": "url",
+          "label": "Button URL",
+          "id": "button_url"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Back To School Banner"
+    }
+  ]
+}
+{% endschema %}
+

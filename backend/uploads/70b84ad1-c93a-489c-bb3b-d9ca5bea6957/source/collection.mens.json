@@ -1,0 +1,240 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "banner": {
+      "type": "main-collection-banner",
+      "custom_css": [
+        ".collection-hero__text-wrapper {flex-direction: column-reverse; margin-bottom: 20px;}"
+      ],
+      "settings": {
+        "header_color_scheme": "light",
+        "add_word": "Collection",
+        "show_word": false,
+        "show_collection_description": true,
+        "show_collection_image": true,
+        "overlay_enable": true,
+        "overlay_opacity": 15
+      }
+    },
+    "product-grid": {
+      "type": "main-collection-product-grid",
+      "custom_css": [
+        ".collection-product-list {row-gap: 4rem;}"
+      ],
+      "settings": {
+        "products_per_page": 20,
+        "columns_mobile": "2",
+        "image_ratio": "portrait",
+        "image_fit": "cover",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_desc": false,
+        "show_sku": false,
+        "quickview_show": false,
+        "enable_filtering": false,
+        "enable_sorting": true
+      }
+    },
+    "slideshow_id8yeN": {
+      "type": "slideshow",
+      "blocks": {
+        "slide_mW8f8L": {
+          "type": "slide",
+          "settings": {
+            "color_scheme": "dark",
+            "image": "shopify://shop_images/XXXY_D1_2-4-241277.jpg",
+            "heading": "",
+            "additional_information": "",
+            "button_style": "secondary"
+          }
+        },
+        "slide_jYK9DR": {
+          "type": "slide",
+          "settings": {
+            "color_scheme": "dark",
+            "image": "shopify://shop_images/XX-XY-GiftCard-7_copy.jpg",
+            "heading": "",
+            "additional_information": "",
+            "button_style": "primary"
+          }
+        },
+        "slide_kHhJEY": {
+          "type": "slide",
+          "settings": {
+            "color_scheme": "dark",
+            "image": "shopify://shop_images/xxxy_0068_IMG_4160copy.jpg",
+            "heading": "",
+            "additional_information": "",
+            "button_style": "secondary"
+          }
+        }
+      },
+      "block_order": [
+        "slide_mW8f8L",
+        "slide_jYK9DR",
+        "slide_kHhJEY"
+      ],
+      "disabled": true,
+      "settings": {
+        "block_size": "twenty-one-by-nine",
+        "overlay_enable": false,
+        "overlay_opacity": 20,
+        "slideshow_speed": 1.5,
+        "slideshow_delay": 3.5,
+        "autoplay": false,
+        "hover_autoplay_stop": true,
+        "navigation": true,
+        "pagination": true,
+        "margin_top": 0,
+        "margin_bottom": 0
+      }
+    },
+    "155f5984-dac7-4a02-9ae0-0135f92dda04": {
+      "type": "image-with-text",
+      "disabled": true,
+      "settings": {
+        "row-reverse": "row-reverse",
+        "image": "shopify://shop_images/XXXY-duo-1_copy_fa7c52c6-fd91-470a-9bde-647febdde60c.jpg",
+        "image_size": "large",
+        "show_frame": false,
+        "color_scheme": "background-1",
+        "frame-text": "",
+        "frame-text-right": "",
+        "color_scheme_2": "background-1",
+        "heading": "<h3>Founded on Truth.<br/>Dedicated to Quality.</h3>",
+        "subheading": "",
+        "subheading_left_top": "",
+        "subheading_left_bottom": "",
+        "subheading_right_top": "",
+        "subheading_right_bottom": "",
+        "button_text": "Explore",
+        "button_link": "shopify://collections/accessories",
+        "button_style": "tertiary",
+        "margin_top": 0,
+        "margin_bottom": 0
+      }
+    },
+    "7e90dfea-5021-4e37-b882-d059ca0c8fa7": {
+      "type": "categories-list",
+      "blocks": {
+        "template--16717164118147__7e90dfea-5021-4e37-b882-d059ca0c8fa7-collection_item-1": {
+          "type": "collection_item",
+          "settings": {
+            "collection": "womens"
+          }
+        },
+        "template--16717164118147__7e90dfea-5021-4e37-b882-d059ca0c8fa7-collection_item-3": {
+          "type": "collection_item",
+          "settings": {
+            "collection": "accessories"
+          }
+        }
+      },
+      "block_order": [
+        "template--16717164118147__7e90dfea-5021-4e37-b882-d059ca0c8fa7-collection_item-1",
+        "template--16717164118147__7e90dfea-5021-4e37-b882-d059ca0c8fa7-collection_item-3"
+      ],
+      "settings": {
+        "title": "",
+        "per_row": 2,
+        "image_ratio": "landscape",
+        "overlay_enable": false,
+        "overlay_opacity": 10,
+        "margin_top": 0,
+        "margin_bottom": 80
+      }
+    },
+    "83a5574f-ecb8-4f46-be8d-eb815666fca1": {
+      "type": "instagram-collage",
+      "blocks": {
+        "template--16717164118147__83a5574f-ecb8-4f46-be8d-eb815666fca1-card-2": {
+          "type": "card",
+          "settings": {
+            "card_img": "shopify://shop_images/XX-XY-internals-heatPress-TShirt_copy.jpg",
+            "button_link": ""
+          }
+        },
+        "template--16717164118147__83a5574f-ecb8-4f46-be8d-eb815666fca1-card-3": {
+          "type": "card",
+          "settings": {
+            "card_img": "shopify://shop_images/XX-XY-apparel-label-embroidery-logo-mockup-2_copy.jpg",
+            "button_link": ""
+          }
+        },
+        "e45bce20-1565-4bf5-ae94-0d7933709c8e": {
+          "type": "card-text",
+          "settings": {
+            "card-text_description": "<p><strong>Gift Cards Available</strong></p>",
+            "heading_size": "medium",
+            "vertical_settings": "center",
+            "horizontal_settings": "left",
+            "color_scheme_2": "background-4"
+          }
+        },
+        "template--16717164118147__83a5574f-ecb8-4f46-be8d-eb815666fca1-card-1": {
+          "type": "card",
+          "settings": {
+            "card_img": "shopify://shop_images/XX-XY-GiftCard-1copy.jpg",
+            "button_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "template--16717164118147__83a5574f-ecb8-4f46-be8d-eb815666fca1-card-2",
+        "template--16717164118147__83a5574f-ecb8-4f46-be8d-eb815666fca1-card-3",
+        "e45bce20-1565-4bf5-ae94-0d7933709c8e",
+        "template--16717164118147__83a5574f-ecb8-4f46-be8d-eb815666fca1-card-1"
+      ],
+      "disabled": true,
+      "settings": {
+        "color_scheme": "background-3",
+        "title": "<p>Born Brave</p>",
+        "text": "",
+        "overlay_enable": false,
+        "overlay_opacity": 10,
+        "button_text": "",
+        "button_link": "shopify://collections",
+        "padding_top": 60,
+        "padding_bottom": 90,
+        "margin_top": 0,
+        "margin_bottom": 0
+      }
+    },
+    "product_carousel_LxQjtk": {
+      "type": "product-carousel",
+      "settings": {
+        "heading": "<p>Staff Picks</p>",
+        "products_count": 4,
+        "link": "",
+        "button_link": "",
+        "image_ratio": "portrait",
+        "image_fit": "cover",
+        "show_secondary_image": false,
+        "show_vendor": false,
+        "show_desc": false,
+        "show_sku": false,
+        "quickview_show": false,
+        "show_link_carousel": false,
+        "margin_top": 60,
+        "margin_bottom": 100
+      }
+    }
+  },
+  "order": [
+    "banner",
+    "product-grid",
+    "slideshow_id8yeN",
+    "155f5984-dac7-4a02-9ae0-0135f92dda04",
+    "7e90dfea-5021-4e37-b882-d059ca0c8fa7",
+    "83a5574f-ecb8-4f46-be8d-eb815666fca1",
+    "product_carousel_LxQjtk"
+  ]
+}

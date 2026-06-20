@@ -1,0 +1,65 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-account",
+      "settings": {
+      }
+    },
+    "d7b46d24-91e1-4aa8-b445-85c4f4724de8": {
+      "type": "product-carousel",
+      "settings": {
+        "heading": "<p>You May Also Like</p>",
+        "product_list": [
+          "womens-based-velour-track-jacket",
+          "womens-based-velour-track-pant",
+          "legit-legging-with-shine",
+          "womens-truth-fits-tank"
+        ],
+        "products_count": 4,
+        "link": "",
+        "button_link": "",
+        "image_ratio": "portrait",
+        "image_fit": "cover",
+        "show_secondary_image": false,
+        "show_vendor": false,
+        "show_desc": false,
+        "show_sku": false,
+        "quickview_show": false,
+        "show_link_carousel": false,
+        "margin_top": 140,
+        "margin_bottom": 0
+      }
+    },
+    "featured_blog_wK6mGp": {
+      "type": "featured-blog",
+      "settings": {
+        "blog_title": "NEWSROOM",
+        "blog": "newsroom",
+        "post_limit": 3,
+        "show_image": true,
+        "show_tags": false,
+        "show_date": false,
+        "show_author": false,
+        "show_excerpt": false,
+        "show_btn": false,
+        "show_view_all": true,
+        "margin_top": 110,
+        "margin_bottom": 0
+      }
+    }
+  },
+  "order": [
+    "main",
+    "d7b46d24-91e1-4aa8-b445-85c4f4724de8",
+    "featured_blog_wK6mGp"
+  ]
+}

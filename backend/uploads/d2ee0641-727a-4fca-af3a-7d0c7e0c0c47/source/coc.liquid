@@ -1,0 +1,288 @@
+{%- style -%}
+  .coc-section {
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+  }
+
+  .coc-section h1,
+  .coc-section h2 {
+    font-family: pf-marlet-display, sans-serif;
+    font-weight: 400;
+  }
+  .coc-section .coc-intro p{
+    color: #413432 !important;
+  }
+  .coc-section h4 {
+    font-family: pf-marlet-display, sans-serif;
+    font-weight: 400;
+    margin-bottom: 0px;
+  }
+
+  .coc-section .coc-body {
+    font-family: pf-marlet-display, sans-serif;
+    color: rgb(0, 0, 0);
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 1.625;
+  }
+
+  .coc-section a:not(.icon):not(.read-reviews):not(.button):link,
+  .coc-section a:not(.icon):not(.read-reviews):not(.button):visited {
+    font-weight: 600;
+    border-bottom: 2px solid #764f34;
+    text-decoration: none;
+  }
+
+  .coc-section a:not(.icon):not(.read-reviews):not(.button):hover {
+    opacity: 0.8;
+  }
+
+  .coc-item {
+    margin-top: 2rem;
+  }
+
+  .coc-item__preview {
+    margin-top: 1rem;
+  }
+
+  .coc-item__preview img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    outline: 2px solid #e0d9d3;
+    outline-offset: 6px;
+  }
+
+  .coc-item__pdf-embed {
+    width: 100%;
+    height: 600px;
+    border: 1px solid #e0d9d3;
+    margin-top: 1rem;
+    display: block;
+  }
+
+  .coc-item__pdf-link {
+    display: flex;
+    justify-content: center;
+    margin-top: 0.75rem;
+
+  }
+
+  @media screen and (max-width: 749px) {
+    .coc-item__pdf-embed {
+      height: 400px;
+    }
+  }
+{%- endstyle -%}
+
+<div class="module-wrapper custom-page coc-section">
+  <div class="module module-default-page page-width page-width--narrow">
+    <div class="module-header page-header">
+      <div class="module-title page-title pb-15 text-center">
+        <h1>{{ section.settings.page_title }}</h1>
+      </div>
+    </div>
+
+    <div class="module-body page-body rte coc-body">
+      {%- if section.settings.intro_text != blank -%}
+        <div class="coc-intro text-center">{{ section.settings.intro_text }}</div>
+      {%- endif -%}
+
+      {%- for block in section.blocks -%}
+        <div class="coc coc-item" {{ block.shopify_attributes }}>
+          {%- if block.settings.group_heading != blank -%}
+            <h4 class="text-center">{{ block.settings.group_heading }}</h4>
+          {%- endif -%}
+
+          {%- if block.settings.pdf_title != blank -%}
+            <p class="coc-item__title">{{ block.settings.pdf_title }}</p>
+          {%- endif -%}
+
+          {%- if block.settings.preview_image_url != blank -%}
+            <div class="coc-item__preview">
+              {%- if block.settings.pdf_cdn_url != blank -%}
+                <a
+                  class="coc-item__pdf-link"
+                  href="{{ block.settings.pdf_cdn_url }}"
+                  target="_blank"
+                  rel="noopener"
+                  tabindex="0"
+                >
+                  <img
+                    src="{{ block.settings.preview_image_url }}"
+                    alt="{{ block.settings.pdf_title | default: 'Certificate of Compliance preview' }}"
+                    width=""
+                    height=""
+                  >
+                </a>
+              {%- else -%}
+                <img
+                  src="{{ block.settings.preview_image_url }}"
+                  alt="{{ block.settings.pdf_title | default: 'Certificate of Compliance preview' }}"
+                  width=""
+                  height=""
+                >
+              {%- endif -%}
+            </div>
+          {%- elsif block.settings.preview_image != blank -%}
+            <div class="coc-item__preview">
+              {%- if block.settings.pdf_cdn_url != blank -%}
+                <a
+                  class="coc-item__pdf-link"
+                  href="{{ block.settings.pdf_cdn_url }}"
+                  target="_blank"
+                  rel="noopener"
+                  tabindex="0"
+                >
+                  {{
+                    block.settings.preview_image
+                    | image_url: width: 800
+                    | image_tag: alt: block.settings.pdf_title
+                    | default: 'Certificate of Compliance preview'
+                  }}
+                </a>
+              {%- else -%}
+                {{
+                  block.settings.preview_image
+                  | image_url: width: 800
+                  | image_tag: alt: block.settings.pdf_title
+                  | default: 'Certificate of Compliance preview'
+                }}
+              {%- endif -%}
+            </div>
+          {%- endif -%}
+
+          {%- if block.settings.pdf_cdn_url != blank and block.settings.show_embed -%}
+            <iframe
+              class="coc-item__pdf-embed"
+              src="{{ block.settings.pdf_cdn_url }}"
+              title="{{ block.settings.pdf_title | default: 'Certificate of Compliance' }}"
+              loading="lazy"
+              allowfullscreen
+            ></iframe>
+          {%- endif -%}
+
+          {%- if block.settings.pdf_cdn_url != blank
+            and block.settings.preview_image_url == blank
+            and block.settings.preview_image == blank
+          -%}
+            <a class="coc-item__pdf-link" href="{{ block.settings.pdf_cdn_url }}" target="_blank" rel="noopener">
+              {{ block.settings.pdf_title | default: 'View Certificate' }}
+            </a>
+          {%- endif -%}
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Cert. of Compliance",
+  "tag": "section",
+  "class": "section coc-section-wrapper",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "page_title",
+      "label": "Page Title",
+      "default": "Certificates of Compliance"
+    },
+    {
+      "type": "richtext",
+      "id": "intro_text",
+      "label": "Intro Text",
+      "default": "<p>The consumer product safety improvement act general certificates of conformity.</p>"
+    },
+    {
+      "type": "header",
+      "content": "Section Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 36
+    }
+  ],
+  "blocks": [
+    {
+      "type": "pdf_item",
+      "name": "Certificate PDF",
+      "settings": [
+        {
+          "type": "text",
+          "id": "group_heading",
+          "label": "Group Heading (h4)",
+          "info": "E.g. 'The Sleep System'. Leave blank to omit."
+        },
+        {
+          "type": "text",
+          "id": "pdf_title",
+          "label": "Certificate Title",
+          "info": "Optional label shown above the preview image."
+        },
+        {
+          "type": "url",
+          "id": "pdf_cdn_url",
+          "label": "PDF CDN URL",
+          "info": "Direct URL to the PDF file (e.g. from Shopify CDN or any host)."
+        },
+        {
+          "type": "image_picker",
+          "id": "preview_image",
+          "label": "Preview Image (Shopify hosted)",
+          "info": "Upload a preview image of the PDF certificate."
+        },
+        {
+          "type": "text",
+          "id": "preview_image_url",
+          "label": "Preview Image URL (external CDN)",
+          "info": "Paste an external CDN image URL here. Used instead of the image picker above if provided."
+        },
+        {
+          "type": "checkbox",
+          "id": "show_embed",
+          "label": "Embed PDF inline",
+          "default": false,
+          "info": "Enable to show the PDF in an embedded viewer below the preview image."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Cert. of Compliance",
+      "blocks": [
+        {
+          "type": "pdf_item",
+          "settings": {
+            "group_heading": "The Sleep System",
+            "pdf_title": "5 Little Monkeys Certificate of Compliance",
+            "pdf_cdn_url": "https://cdn.shopify.com/s/files/1/1564/3815/t/8/assets/5%20Little%20Monkeys%20Certificate%20of%20Compliance.pdf",
+            "preview_image_url": "https://cdn.shopify.com/s/files/1/1564/3815/t/8/assets/5%20Little%20Monkeys%20Certificate%20of%20Compliance%20Preview.png",
+            "show_embed": false
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

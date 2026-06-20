@@ -1,0 +1,178 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "banner": {
+      "type": "main-collection-banner",
+      "settings": {
+        "extra_class": "",
+        "show_collection_description": false,
+        "show_collection_image": false,
+        "color_scheme": "scheme-1"
+      }
+    },
+    "image_banner_7GWaaB": {
+      "type": "image-banner",
+      "blocks": {
+        "heading_67ePYk": {
+          "type": "heading",
+          "settings": {
+            "heading": "Kid's Mattresses",
+            "heading_size": "h1"
+          }
+        },
+        "text_m9gzFh": {
+          "type": "text",
+          "disabled": true,
+          "settings": {
+            "text": "<strong>Designed for kids. Certified safe. Built to last.</strong>",
+            "text_style": "body"
+          }
+        }
+      },
+      "block_order": [
+        "heading_67ePYk",
+        "text_m9gzFh"
+      ],
+      "disabled": true,
+      "name": "t:sections.image-banner.presets.name",
+      "settings": {
+        "image": "shopify://shop_images/5lm_2024_03_09-434_2000x800_7b2aaacc-ebe0-4dc0-85b9-4de01bfa22ce.jpg",
+        "image_overlay_opacity": 0,
+        "image_height": "small",
+        "desktop_content_position": "bottom-left",
+        "show_text_box": false,
+        "desktop_content_alignment": "left",
+        "color_scheme": "",
+        "image_behavior": "none",
+        "mobile_content_alignment": "center",
+        "stack_images_on_mobile": true,
+        "show_text_below": true
+      }
+    },
+    "rich_text_xTrLkw": {
+      "type": "rich-text",
+      "blocks": {
+        "text_VhfkUP": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Our kid's mattresses are available in memory foam and hybrid options to fit different sleep needs. Every mattress features CertiPUR-US® certified memory foam and OEKO-TEX® certified materials plus a phase change temperature regulation layer to help reduce night sweats. Both types result in gentle, cradling support that helps relieve pressure points and reduce tossing and turning.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "text_VhfkUP"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "extra_class": "",
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    },
+    "product-grid": {
+      "type": "main-collection-product-grid",
+      "disabled": true,
+      "settings": {
+        "products_per_page": 16,
+        "columns_desktop": 4,
+        "color_scheme": "scheme-1",
+        "image_ratio": "square",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": false,
+        "enable_quick_add": false,
+        "enable_filtering": false,
+        "filter_type": "horizontal",
+        "enable_sorting": true,
+        "columns_mobile": "2",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "featured_collection_tfbiKU": {
+      "type": "featured-collection",
+      "name": "t:sections.featured-collection.presets.name",
+      "settings": {
+        "extra_class": "matress-bedding-collection",
+        "title": "Memory Foam Mattress",
+        "button_text": "",
+        "button_url": "",
+        "heading_size": "h1",
+        "description": "",
+        "show_description": false,
+        "description_style": "body",
+        "collection": "memory-foam-mattress",
+        "products_to_show": 2,
+        "columns_desktop": 2,
+        "full_width": false,
+        "show_view_all": false,
+        "view_all_style": "solid",
+        "enable_desktop_slider": false,
+        "color_scheme": "",
+        "image_ratio": "square",
+        "image_shape": "default",
+        "show_secondary_image": false,
+        "show_vendor": false,
+        "show_rating": false,
+        "enable_quick_add": false,
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "featured_collection_pjDhxr": {
+      "type": "featured-collection",
+      "name": "t:sections.featured-collection.presets.name",
+      "settings": {
+        "extra_class": "matress-bedding-collection",
+        "title": "Hybrid Mattress",
+        "button_text": "",
+        "button_url": "",
+        "heading_size": "h1",
+        "description": "",
+        "show_description": false,
+        "description_style": "body",
+        "collection": "hybrid-mattress",
+        "products_to_show": 2,
+        "columns_desktop": 2,
+        "full_width": false,
+        "show_view_all": false,
+        "view_all_style": "solid",
+        "enable_desktop_slider": false,
+        "color_scheme": "",
+        "image_ratio": "square",
+        "image_shape": "default",
+        "show_secondary_image": false,
+        "show_vendor": false,
+        "show_rating": false,
+        "enable_quick_add": false,
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    }
+  },
+  "order": [
+    "banner",
+    "image_banner_7GWaaB",
+    "rich_text_xTrLkw",
+    "product-grid",
+    "featured_collection_tfbiKU",
+    "featured_collection_pjDhxr"
+  ]
+}

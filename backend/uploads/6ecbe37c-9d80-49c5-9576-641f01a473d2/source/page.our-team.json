@@ -1,0 +1,325 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "shogun-helper": {
+      "type": "shogun-helper",
+      "settings": {}
+    },
+    "pages": {
+      "type": "main-page",
+      "settings": {
+        "extra_class": ""
+      }
+    },
+    "banner-with-text": {
+      "type": "banner-with-text",
+      "custom_css": [
+        ".banner-with-text__content-wrapper {display: flex; flex-direction: column; justify-content: flex-end; height: 100%;}",
+        ".banner-with-text__content-box {width: 100%;}"
+      ],
+      "settings": {
+        "extra_class": "",
+        "spring_banner_class": "",
+        "color_scheme": "light",
+        "image": "shopify://shop_images/IMG_1574.jpg",
+        "image_mobile": "shopify://shop_images/IMG_1574.jpg",
+        "image_size": "medium",
+        "desktop_banner_height": 0,
+        "tablet_banner_height": 80,
+        "mobile_banner_height": 70,
+        "title": "<p>Our Team</p>",
+        "content_text": "",
+        "caption_class": "",
+        "text_alignment": "left",
+        "content_width": "max",
+        "overlay_enable": true,
+        "overlay_opacity": 15,
+        "button_link": "",
+        "button_label": "",
+        "second_button_link": "",
+        "second_button_label": "",
+        "button_style": "primary",
+        "mobile_button_style": "button--ctm_global_button",
+        "mobile_cta_button_link": "",
+        "mobile_cta_button_label": "",
+        "mobile_second_cta_button_link": "",
+        "mobile_second_cta_button_label": "",
+        "heading_font_family": "Poppins, sans-serif",
+        "subheading_font_family": "Poppins, sans-serif",
+        "caption_font_family": "Poppins, sans-serif",
+        "heading_font_size_desktop": 48,
+        "heading_font_size_tablet": 40,
+        "heading_font_size_mobile": 32,
+        "subheading_font_size_desktop": 18,
+        "subheading_font_size_mobile": 16,
+        "caption_font_size_desktop": 14,
+        "caption_font_size_mobile": 12,
+        "heading_font_weight": 600,
+        "heading_line_height": 1.2,
+        "heading_letter_spacing": 0,
+        "subheading_font_weight": 400,
+        "subheading_line_height": 1.5,
+        "subheading_margin": 0,
+        "caption_font_weight": 500,
+        "caption_line_height": 1.3,
+        "show_heading_mobile": true,
+        "show_subheading_mobile": true,
+        "desktop_content_position": "bottom-left",
+        "mobile_content_position": "center",
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "top_margin_mobile": 0,
+        "bottom_margin_mobile": 0,
+        "top_padding_desktop": 0,
+        "bottom_padding_desktop": 0,
+        "top_padding_mobile": 0,
+        "bottom_padding_mobile": 0
+      }
+    },
+    "rich_text_Fryhp6": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_rxh6cV": {
+          "type": "heading",
+          "disabled": true,
+          "settings": {
+            "heading": "<h3>Our Team</h3>",
+            "heading_size": "medium",
+            "heading_padding_top": 0,
+            "padding_bottom": 0
+          }
+        },
+        "subheading_piGMfw": {
+          "type": "subheading",
+          "disabled": true,
+          "settings": {
+            "subheading": "Meet Our Thought Criminals"
+          }
+        },
+        "text_LgXVAi": {
+          "type": "text",
+          "settings": {
+            "text": "<h5>Meet Our Thought Criminals</h5>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_rxh6cV",
+        "subheading_piGMfw",
+        "text_LgXVAi"
+      ],
+      "settings": {
+        "color_scheme": "background-1",
+        "full_width": true,
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "margin_top": 10,
+        "margin_bottom": 0,
+        "spring_shop_text": ""
+      }
+    },
+    "multicolumn_4cU969": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_UEB9VE": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/mugshot_0000s_0007_Generative_Fill_8.jpg",
+            "heading": "Jennifer Sey Founder and CEO",
+            "text": "Jennifer believes in hard work, telling the truth and standing by your principles. Even when – especially when? – its hard. Otherwise, they’re platitudes not principles.\nShe was the 1986 U.S. Women's Gymnastics National Champion and a 7x National Team member.<br><br>\nIn 2020, she was the only C-suite executive to speak out against covid lockdowns and school closures. That didn’t go super well for her. But she dusted herself off and now, she is the founder and CEO of XX-XY Athletics – the only athletic brand to stand up for women’s sports and female athletes.",
+            "button_label": "More About Jen",
+            "button_link": "shopify://pages/our-founder"
+          }
+        },
+        "column_XEXy96": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/mugshot_0000s_0026_Generative_Fill_29.jpg",
+            "heading": "Brett",
+            "text": "Brett Craig is an award-winning ad man who once created Super Bowl commercials for brands such as Taco Bell and Pepsi. Now he’s the creative genius behind all the viral ads from XX-XY Athletics. He can’t think of a more worthy cause than working for a company that stands up for his daughters’ right to participate in athletics on a level playing field.",
+            "button_label": "",
+            "button_link": ""
+          }
+        },
+        "column_WrQ8dX": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/mugshot_0000s_0021_Generative_Fill_24.jpg",
+            "heading": "Josh",
+            "text": "Josh is a retired pro athlete and sports industry vet. Occasionally accused of being deeply curious and analytical, his longest standing personal research project on “Truth” began in May 2006 with the birth of the first of four daughters. Despite many opportunities to give up on the experiment, he has never lied to his kids (and they are all doing just fine). The truth always fits.",
+            "button_label": "",
+            "button_link": ""
+          }
+        },
+        "column_ABLqEq": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/mugshot_0000s_0014_Generative_Fill_18.jpg",
+            "heading": "Krista",
+            "text": "Without Krista there are no amazing XX-XY Athletics clothing items to buy. She is proud and excited to be creating in an environment that TRULY values free speech and open debate. And guess what, it makes her work stronger. Because when you’re not afraid of offending someone all the time, your brain works better.",
+            "button_label": "",
+            "button_link": ""
+          }
+        },
+        "column_aenAWP": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/maggie.jpg",
+            "heading": "Maggie",
+            "text": "Maggie is a recent graduate of SCAD (Savannah College of Art and Design), where she earned her BFA in Graphic Design. She has a strong passion for truth, which is how our team discovered her. She was canceled at SCAD for creating an editorial that told and photographed the story of detransitioner Chloe Cole. Much of her artwork focuses on social, political, and cultural issues, making XX-XY Athletics the perfect match for Maggie!",
+            "button_label": "",
+            "button_link": ""
+          }
+        },
+        "column_yBj6iQ": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/cindy.jpg",
+            "heading": "Cindy",
+            "text": "Cindy is our numbers guru. For Cindy, numbers are more than just data—they are real truths that tell the story of a business. With a knack for scaling startups, Cindy ensures every dollar is put to work in ways that align with our mission of standing up for women’s sports.",
+            "button_label": "",
+            "button_link": ""
+          }
+        },
+        "column_w3MWE8": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/Screenshot_2025-02-26_at_10.03.09_AM.png",
+            "heading": "Brooke",
+            "text": "Brooke is the whiz behind the XX-XY Athletics website, making sure it’s more than just a place to shop—it’s a statement. Before jumping into the world of women’s sports and unapologetic truth, she was making moves in the beauty industry. But when the opportunity came to be part of something bigger, she traded lipstick for logos and never looked back.",
+            "button_label": "",
+            "button_link": ""
+          }
+        },
+        "column_UQ7XKa": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/Sarah.jpg",
+            "heading": "Sarah",
+            "text": "Sarah leads our PR and communications, bringing energy and a sharp focus to crafting communication campaigns and building partnerships for the first brand to take a stand for women’s sports. Sarah played Division I lacrosse at a time when speed and aggression were enough – but knows the secret that all women athletes hold close: they have yet to realize their full power.",
+            "button_label": "",
+            "button_link": ""
+          }
+        },
+        "column_dCdBBy": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/DSC09585.jpg",
+            "heading": "Milagros",
+            "text": "Milagros brings over 25 years of textile expertise, proudly representing Peru and having worked with top American high-end brands. At XX-XY Athletics, she drives innovation with a focus on excellence, integrity, and care. Affectionately known as the team’s “mom,” Milagros fosters a culture of authenticity, collaboration, and faith-driven leadership. Rooted in her traditional Catholic upbringing and love for dogs, she brings warmth and purpose to her work. Passionate about women’s sports, she is committed to protecting and supporting female athletes at every step.",
+            "button_label": "",
+            "button_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "column_UEB9VE",
+        "column_XEXy96",
+        "column_WrQ8dX",
+        "column_ABLqEq",
+        "column_aenAWP",
+        "column_yBj6iQ",
+        "column_w3MWE8",
+        "column_UQ7XKa",
+        "column_dCdBBy"
+      ],
+      "settings": {
+        "color_scheme": "background-1",
+        "multicolumn_to_show": 2,
+        "mobile_columns_per_row": 1,
+        "horizontal_alignment": "left",
+        "heading_size": "medium",
+        "img_size": "large",
+        "img_ratio": "portrait",
+        "object_fit": "cover",
+        "swipe_on_mobile": false,
+        "show_mobile_arrows": true,
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "margin_top": 0,
+        "margin_bottom": 90,
+        "extra_class": ""
+      }
+    },
+    "categories_list_JXUdyx": {
+      "type": "categories-list",
+      "blocks": {
+        "collection_item_dcdbAJ": {
+          "type": "collection_item",
+          "settings": {
+            "collection": "womens"
+          }
+        },
+        "collection_item_R4UaLk": {
+          "type": "collection_item",
+          "settings": {
+            "collection": "mens"
+          }
+        },
+        "collection_item_xATKRh": {
+          "type": "collection_item",
+          "settings": {
+            "collection": "accessories"
+          }
+        },
+        "collection_item_nJfyri": {
+          "type": "collection_item",
+          "disabled": true,
+          "settings": {
+            "collection": ""
+          }
+        }
+      },
+      "block_order": [
+        "collection_item_dcdbAJ",
+        "collection_item_R4UaLk",
+        "collection_item_xATKRh",
+        "collection_item_nJfyri"
+      ],
+      "settings": {
+        "title": "",
+        "per_row": 4,
+        "image_ratio": "portrait",
+        "overlay_enable": true,
+        "overlay_opacity": 15,
+        "margin_top": 30,
+        "margin_bottom": 90,
+        "image_resolution_enable": ""
+      }
+    },
+    "form": {
+      "type": "contact-form",
+      "disabled": true,
+      "settings": {
+        "heading": "<p>Contact us</p>",
+        "text": "Some text for your contact form. You can use multiple lines of text.",
+        "additional_text": "",
+        "margin_top": 40,
+        "margin_bottom": 40,
+        "button_style": "button button--primary"
+      }
+    },
+    "shogun-optimizer": {
+      "type": "shogun-optimizer",
+      "settings": {}
+    }
+  },
+  "order": [
+    "shogun-helper",
+    "pages",
+    "banner-with-text",
+    "rich_text_Fryhp6",
+    "multicolumn_4cU969",
+    "categories_list_JXUdyx",
+    "form",
+    "shogun-optimizer"
+  ]
+}

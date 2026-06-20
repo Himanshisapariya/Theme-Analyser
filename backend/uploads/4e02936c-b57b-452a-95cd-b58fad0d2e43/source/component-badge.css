@@ -1,0 +1,60 @@
+.card__badge {
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: column;
+  position: absolute;
+  top: 0.8rem;
+  right: 1.2rem;
+}
+@media (min-width: 576px) {
+  .card__badge {
+    top: 1.6rem;
+    right: 2.4rem;
+  }
+}
+@media (min-width: 576px) {
+  .card__badge.on_sale {
+    top: 1.1rem;
+    right: 2.4rem;
+  }
+}
+span.badge.not-available-sold-out.badge-text.badge--bottom-left,
+span.badge.badge-text.badge--bottom-left,
+span.badge.badge--bottom-left.color-inverse{
+  background-color: #28b473;
+  width: 80px;
+  padding: 6px;
+  font-size: 12px;
+  color: #f6f6f6;
+}
+.badge_new_arrivals span{
+  padding: 5px !important;
+}
+span.badge.not-available-sold-out.badge-text.badge--bottom-left, span.badge.badge-text.badge--bottom-left {
+  background-color: #28b473;
+  width: 80px;
+  padding: 5px;
+  color: #f6f6f6;
+}
+.badge {
+  display: inline-block;
+  text-align: center;
+  font-family: var(--font-body-family);
+  font-style: var(--font-body-style);
+  font-weight: var(--font-heading-weight);
+  text-transform: var(--font-button-text-transform);
+  word-break: break-word;
+  color: var(--color-badge-icon);
+  background-color: transparent;
+}
+
+.badge-text {
+  font-size: var(--badge-icon-size);
+  line-height: 20px;
+}
+
+.card__badge_italic .badge-discount {
+  font-family: var(--font-heading-alt-family);
+  font-style: var(--font-heading-alt-style);
+  font-weight: var(--font-heading-alt-weight);
+}

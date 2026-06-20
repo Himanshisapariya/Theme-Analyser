@@ -1,0 +1,292 @@
+{{ 'component-cart.css' | asset_url | stylesheet_tag }}
+{{ 'component-cart-items.css' | asset_url | stylesheet_tag }}
+{{ 'component-totals.css' | asset_url | stylesheet_tag }}
+{{ 'component-price.css' | asset_url | stylesheet_tag }}
+{{ 'component-cart-custom.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'cart-page.js' | asset_url }}" defer="defer"></script>
+
+{%- unless settings.cart_type == 'drawer' -%}
+  {{ 'component-discounts.css' | asset_url | stylesheet_tag }}
+  {{ 'component-loading-overlay.css' | asset_url | stylesheet_tag }}
+  <script src="{{ 'cart.js' | asset_url }}" defer="defer"></script>
+{%- endunless -%}
+
+{% assign has_gwp = false %}
+{% for block in section.blocks %}
+  {% if block.type == 'gift_with_purchase' %}
+    {% assign gift_product_handle = block.settings.gift_product %}
+    {% if gift_product_handle != blank %}
+      {% assign gift_product = all_products[gift_product_handle] %}
+      {% assign all_variants_out_of_stock = true %}
+      {% for variant in gift_product.variants %}
+        {% if variant.available %}
+          {% assign all_variants_out_of_stock = false %}
+          {% break %}
+        {% endif %}
+      {% endfor %}
+      {% unless all_variants_out_of_stock %}
+        {% assign has_gwp = true %}
+      {% endunless %}
+    {% endif %}
+  {% endif %}
+{% endfor %}
+
+<div class="ctm-main-cart-data {% if has_gwp %}has-gwp{% endif %} {% if cart.item_count == 0 %}cart-empty{% endif %}">
+  
+
+    {%- for block in section.blocks -%}
+      {%- case block.type -%}
+        {%- when 'gift_with_purchase' -%}
+            <div class="cart-gwp-section">
+              {% render 'gwp', block: block, section_id: section.id %}
+            </div>
+      {%- endcase -%}
+      
+    {%- endfor -%}
+
+
+  <div class="cart-free-shipping">
+    {% render 'free-shipping-bar' %}
+  </div>
+  
+  <div class="main-cart-left-items">
+    {% render 'main-cart-products', block: section.blocks %}
+  </div>
+
+    
+  <div class="cart-upsell-section">
+    {%- for block in section.blocks -%}
+      {%- case block.type -%}
+        {%- when 'upsell_products' -%}
+          {% render 'cart-upsell', block: block, section_id: section.id %}
+      {%- endcase -%}
+    {%- endfor -%}
+  </div>
+
+  
+  <div class="main-cart-right-items">
+    {% render 'main-cart-subtotal', block: section.blocks %}
+  </div>
+
+</div>
+
+{% schema %}
+{
+  "name": "t:sections.main-cart-items.name",
+  "class": "section-cart-items",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_vendor",
+      "default": false,
+      "label": "t:sections.main-cart-items.settings.show_vendor.label"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.section-padding.header.content"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 200,
+      "step": 10,
+      "default": 40,
+      "unit": "px",
+      "label": "t:sections.all.section-padding.padding_top.label"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 200,
+      "step": 10,
+      "default": 0,
+      "unit": "px",
+      "label": "t:sections.all.section-padding.padding_bottom.label"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.section-margin.header.content"
+    },
+    {
+      "type": "range",
+      "id": "margin_top",
+      "min": 0,
+      "max": 200,
+      "step": 10,
+      "default": 0,
+      "unit": "px",
+      "label": "t:sections.all.section-margin.margin_top.label"
+    },
+    {
+      "type": "range",
+      "id": "margin_bottom",
+      "min": 0,
+      "max": 200,
+      "step": 10,
+      "default": 0,
+      "unit": "px",
+      "label": "t:sections.all.section-margin.margin_bottom.label"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "subtotal",
+      "name": "t:sections.main-cart-footer.blocks.subtotal.name",
+      "limit": 1
+    },
+    {
+      "type": "buttons",
+      "name": "t:sections.main-cart-footer.blocks.buttons.name",
+      "limit": 1
+    },
+    {
+      "type": "accordion",
+      "name": "Accordion (FAQ)",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Accordion icon"
+        },
+        {
+          "type": "text",
+          "id": "question",
+          "label": "Question",
+          "default": "Shipping & Returns"
+        },
+        {
+          "type": "richtext",
+          "id": "answer",
+          "label": "Answer",
+          "default": "<p>Shipping and return information goes here.</p>"
+        }
+      ]
+    },
+    {
+      "type": "upsell_products",
+      "name": "Upsell Products",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Section Title",
+          "default": "Accessories"
+        },
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "Collection",
+          "info": "Select collection to show as upsell products"
+        },
+        {
+          "type": "range",
+          "id": "products_to_show",
+          "min": 4,
+          "max": 30,
+          "step": 1,
+          "default": 8,
+          "label": "Products to Show"
+        },
+        {
+          "type": "header",
+          "content": "Empty Cart"
+        },
+        {
+          "type": "text",
+          "id": "empty_title",
+          "label": "Empty Cart Title",
+          "default": "You May Also Like"
+        },
+        {
+          "type": "collection",
+          "id": "empty_collection",
+          "label": "Empty Cart Collection",
+          "info": "Collection to show when cart is empty"
+        }
+      ]
+    },
+    {
+      "type": "cart_banner_with_text",
+      "name": "Cart Banner With Text",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Background Image"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_mobile",
+          "label": "Mobile Image"
+        },
+        {
+          "type": "select",
+          "id": "image_size",
+          "label": "Banner Height",
+          "default": "medium",
+          "options": [
+            { "value": "adapt", "label": "Adapt to Image" },
+            { "value": "small", "label": "Small" },
+            { "value": "medium", "label": "Medium" },
+            { "value": "large", "label": "Large" }
+          ]
+        },
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading"
+        },
+        {
+          "type": "text",
+          "id": "subheading",
+          "label": "Subheading"
+        },
+        {
+          "type": "liquid",
+          "id": "custom_liquid",
+          "label": "Custom Liquid"
+        },
+        {
+          "type": "text",
+          "id": "extra_class",
+          "label": "Extra CSS Class"
+        }
+      ]
+    },
+    {
+      "type": "gift_with_purchase",
+      "name": "Gift with Purchase",
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading",
+          "default": "Free Gift With Purchase"
+        },
+        {
+          "type": "text",
+          "id": "subheading",
+          "label": "Subheading",
+          "default": "Spend $250, get a free gift.*"
+        },
+        {
+          "type": "product",
+          "id": "gift_product",
+          "label": "Gift Product"
+        },
+        {
+          "type": "number",
+          "id": "threshold",
+          "label": "Threshold Amount ($)",
+          "default": 250
+        }
+      ]
+    },
+    {
+      "type": "@app"
+    }
+  ]
+}
+{% endschema %}

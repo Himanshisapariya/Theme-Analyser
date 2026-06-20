@@ -1,0 +1,17 @@
+{
+  "createdAt": "2026-05-16T06:12:53.679Z",
+  "cssFiles": [],
+  "textFiles": [
+    "age-verification.liquid",
+    "test.liquid"
+  ],
+  "summary": {
+    "totalRules": 0,
+    "usedRules": 0,
+    "unusedRules": 0,
+    "estimatedSavingsBytes": 0
+  },
+  "entries": [],
+  "warnings": [],
+  "jobId": "8bff1b2a-3d14-4e52-9588-415c6b25c051"
+}

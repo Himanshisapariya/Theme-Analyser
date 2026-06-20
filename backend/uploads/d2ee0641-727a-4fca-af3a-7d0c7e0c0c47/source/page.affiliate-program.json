@@ -1,0 +1,142 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "settings": {
+        "extra_class": "",
+        "page_title_black": "",
+        "breadcrumb_image": "shopify://shop_images/HEADER_INNER_PAGE.jpg",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "icon_text_9Jxpqj": {
+      "type": "icon-text",
+      "blocks": {
+        "icon_text_kyTYaj": {
+          "type": "icon_text",
+          "settings": {
+            "icon_image": "shopify://shop_images/Sleep_Topics_1.png",
+            "icon_text": "Sleep topics",
+            "icon_description": ""
+          }
+        },
+        "icon_text_ETeitx": {
+          "type": "icon_text",
+          "settings": {
+            "icon_image": "shopify://shop_images/organic_products.png",
+            "icon_text": "Organic products",
+            "icon_description": ""
+          }
+        },
+        "icon_text_PNrMUy": {
+          "type": "icon_text",
+          "settings": {
+            "icon_image": "shopify://shop_images/children_family.png",
+            "icon_text": "Children and family",
+            "icon_description": ""
+          }
+        },
+        "icon_text_3gijTN": {
+          "type": "icon_text",
+          "settings": {
+            "icon_image": "shopify://shop_images/healthy_living.png",
+            "icon_text": "Healthy living",
+            "icon_description": ""
+          }
+        },
+        "icon_text_pzWMQV": {
+          "type": "icon_text",
+          "settings": {
+            "icon_image": "shopify://shop_images/purity_of_environment.png",
+            "icon_text": "Purity of environment",
+            "icon_description": ""
+          }
+        },
+        "icon_text_rmfbaf": {
+          "type": "icon_text",
+          "settings": {
+            "icon_image": "shopify://shop_images/Home_Decor.png",
+            "icon_text": "Home decor",
+            "icon_description": ""
+          }
+        }
+      },
+      "block_order": [
+        "icon_text_kyTYaj",
+        "icon_text_ETeitx",
+        "icon_text_PNrMUy",
+        "icon_text_3gijTN",
+        "icon_text_pzWMQV",
+        "icon_text_rmfbaf"
+      ],
+      "settings": {
+        "extra_class": "ctm_affiliate_program_block",
+        "upper_sub_head": "",
+        "main_head": "Partner With Us",
+        "lower_sub_head": "",
+        "description": "<p>Make money by sharing your recommendations for children’s products, home furnishings, and healthy living with your audience. Our affiliate program allows you to earn a 5% referral bonus for sharing our products on your website. Simply link to any page on <a href=\"https://5littlemonkeysbed.com/\">5littlemonkeysbed.com</a> within a blog post, banner advertisement, or other text link on your website. If your reader makes a qualified purchase, you receive a commission on that sale.</p>\n<p>5 Little Monkeys is looking for affiliates who share our mission to promote safe, healthy sleep for kids. Examples of companies that would align with our brand are those with content that includes:</p>",
+        "under_desc": "<p>We make the process very easy using Awin to easily handle the sign up process and payment processing. The more time and care you put into the program, the more money you can make! Upon sign up you will also have access to a discount code to further promote sales.</p>",
+        "button_text": "Sign Up",
+        "button_url": "https://ui.awin.com/awin/merchant/90095/profile",
+        "tick_if_third_party_link": true
+      }
+    },
+    "image_with_text_beQEem": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_iwqehg": {
+          "type": "heading",
+          "settings": {
+            "heading": "Getting Started",
+            "heading_size": "h3"
+          }
+        },
+        "text_PCVpPC": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Head over to <a href=\"https://ui.awin.com/\" target=\"_blank\" rel=\"noopener\">Awin</a> to sign up for a FREE account. We will review your website and determine if you are a good fit. If so, we will approve your application and you will receive an email confirmation of your application status.</p>",
+            "text_style": "body"
+          }
+        }
+      },
+      "block_order": [
+        "heading_iwqehg",
+        "text_PCVpPC"
+      ],
+      "settings": {
+        "extra_class": "ctm_affiliate_started_block",
+        "bg_image": "shopify://shop_images/our_story_BG-2.png",
+        "image": "shopify://shop_images/image_19.png",
+        "txt_under_img": "",
+        "height": "adapt",
+        "desktop_image_width": "medium",
+        "layout": "text_first",
+        "image_radius": 24,
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "left",
+        "content_layout": "no-overlap",
+        "section_color_scheme": "",
+        "color_scheme": "",
+        "image_behavior": "none",
+        "mobile_content_alignment": "left",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    }
+  },
+  "order": [
+    "main",
+    "icon_text_9Jxpqj",
+    "image_with_text_beQEem"
+  ]
+}

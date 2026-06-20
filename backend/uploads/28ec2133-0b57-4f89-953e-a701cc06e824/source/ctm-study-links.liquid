@@ -1,0 +1,340 @@
+<div class="{{ section.settings.extra_class }} main-study-links py-[75px] max-mdscreen:py-50">
+  <div class="container_fluid">
+    <!-- Desktop View -->
+    <div class="ctm-study-link-blocks desktop-view grid-auto-flow grid-cols-3 gap-x-[25px]">
+      {% for block in section.blocks %}
+        <a
+          href="{{ block.settings.link_url }}"
+          class="study-links border-2 border-solid border-primary-black rounded-[10px] px-24 py-18 flex flex-col gap-14 text-left text-primary-black no-underline transition-all duration-300 ease-in-out
+                 hover:border-transparent hover:bg-linear-(--hero-study-gradient) hover:text-white"
+        >
+          <p class="text-24 max-mdscreen:text-20 leading-100p font-bold">
+            {{ block.settings.number }}
+          </p>
+          <span class="text-20 max-mdscreen:text-18 leading-100p font-bold">
+            {{ block.settings.link_txt }}
+          </span>
+        </a>
+      {% endfor %}
+    </div>
+
+    <!-- Mobile View with Fixed Dropdown -->
+    <div class="mobile-view mobile-dropdown-wrapper" id="mobileDropdownWrapper">
+      <div class="custom-dropdown" id="customDropdown">
+        <div class="selected-option" id="selectedOption">
+          <span>{{ section.blocks[0].settings.number }} - {{ section.blocks[0].settings.link_txt }}</span>
+          <svg class="dropdown-chevron" width="17" height="10" viewBox="0 0 17 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M-3.24908e-05 1.50743L1.5074 -6.76552e-07L8.49254 6.98514L15.4777 -6.58919e-08L16.9851 1.50743L8.49254 10L-3.24908e-05 1.50743Z" fill="#1E1E1E"/>
+          </svg>
+        </div>
+        <ul class="dropdown-options" id="dropdownOptions">
+          {% for block in section.blocks %}
+            <li class="dropdown-item {% if forloop.first %}active{% endif %}" data-url="{{ block.settings.link_url }}">
+              <span class="number font-bold">{{ block.settings.number }}</span>
+              <span class="text font-bold">{{ block.settings.link_txt }}</span>
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .mobile-view {
+    display: none;
+  }
+  .dropdown-chevron {
+    transition: transform 0.3s ease;
+  }
+
+  .custom-dropdown.open .dropdown-chevron {
+    transform: rotate(180deg);
+  }
+
+  /* Active state for dropdown items */
+  .dropdown-item.active {
+    background-color: #f0f0f0;
+  }
+
+  @media screen and (max-width: 767px) {
+    .desktop-view {
+      display: none;
+    }
+
+    .mobile-view {
+      display: block;
+      width: 100%;
+    }
+
+    /* Initial state (not sticky) */
+    .mobile-dropdown-wrapper {
+      position: static;
+      margin-bottom: 20px;
+    }
+
+    /* Sticky state (applied via JS when scrolling) */
+    .mobile-dropdown-wrapper.sticky {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      background: white;
+      padding: 0px 15px;
+      padding-top: 30px;
+      animation: fadeIn 0.3s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .custom-dropdown {
+      background-color: #fff;
+      border: 2px solid #1E1E1E;
+      border-radius: 10px;
+      width: 100%;
+      margin: 0 auto;
+      overflow: hidden;
+    }
+
+    .selected-option {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 24px;
+      font-weight: bold;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .selected-option span, .dropdown-item {
+      color: #1E1E1E;
+    }
+
+    .dropdown-options .dropdown-item {
+      padding: 10px 24px;
+    }
+
+    .chevron {
+      transition: transform 0.3s ease;
+    }
+
+    .custom-dropdown.open .chevron {
+      transform: rotate(180deg);
+    }
+
+    .dropdown-options {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: none;
+      max-height: 300px;
+      overflow-y: auto;
+    }
+
+    .custom-dropdown.open .dropdown-options {
+      display: block;
+    }
+
+    .dropdown-item {
+      padding: 18px 24px;
+      cursor: pointer;
+      display: flex;
+      flex-direction: row;
+      align-items: start;
+      gap:10px;
+      font-size: 16px;
+      transition: background-color 0.2s ease;
+    }
+
+    .dropdown-item.active {
+      background-color: #0a589f;
+      color: white;
+    }
+
+    .dropdown-item .number {
+      font-weight: bold;
+    }
+
+    .dropdown-item .text {
+      font-weight: bold;
+    }
+
+    /* Prevent content jump when sticky is applied */
+    body.sticky-active {
+      padding-top: 60px;
+    }
+  }
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const customDropdown = document.getElementById('customDropdown');
+  const selectedOption = document.getElementById('selectedOption');
+  const dropdownOptions = document.getElementById('dropdownOptions');
+  const dropdownItems = document.querySelectorAll('.dropdown-item');
+  const mobileDropdownWrapper = document.getElementById('mobileDropdownWrapper');
+
+  let manualScrollOverride = false;
+  let overrideTimeout;
+
+  selectedOption.addEventListener('click', function() {
+    customDropdown.classList.toggle('open');
+  });
+
+  dropdownItems.forEach(item => {
+    item.addEventListener('click', function(e) {
+      e.preventDefault();
+
+      clearTimeout(overrideTimeout);
+      manualScrollOverride = true;
+
+      const url = this.getAttribute('data-url');
+      const number = this.querySelector('.number').textContent;
+      const text = this.querySelector('.text').textContent;
+
+      selectedOption.querySelector('span').textContent = `${number} - ${text}`;
+
+      dropdownItems.forEach(i => i.classList.remove('active'));
+      this.classList.add('active');
+      customDropdown.classList.remove('open');
+
+      const hashIndex = url.indexOf('#');
+
+      if (hashIndex !== -1) {
+        const hash = url.substring(hashIndex + 1);
+        const targetElement = document.getElementById(hash);
+
+        if (targetElement) {
+          const headerOffset = 100;
+          const elementPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
+          const offsetPosition = elementPosition - headerOffset;
+
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: 'smooth'
+          });
+
+          history.pushState(null, '', url);
+
+          overrideTimeout = setTimeout(() => {
+            manualScrollOverride = false;
+          }, 1000);
+        } else {
+          window.location.href = url;
+        }
+      } else {
+        window.location.href = url;
+      }
+    });
+  });
+
+  document.addEventListener('click', function(e) {
+    if (!customDropdown.contains(e.target)) {
+      customDropdown.classList.remove('open');
+    }
+  });
+
+  window.addEventListener('scroll', function() {
+    const target = document.getElementById('study_improved');
+  
+    if (!target || window.innerWidth > 767) {
+      mobileDropdownWrapper.classList.remove('sticky');
+      document.body.classList.remove('sticky-active');
+      return;
+    }
+  
+    const buffer = 40;
+    const offset = 100;
+    const targetTop = target.getBoundingClientRect().top + window.scrollY;
+    const scrolledY = window.scrollY;
+  
+    if (scrolledY + offset >= targetTop - buffer) {
+      mobileDropdownWrapper.classList.add('sticky');
+      document.body.classList.add('sticky-active');
+    } else {
+      mobileDropdownWrapper.classList.remove('sticky');
+      document.body.classList.remove('sticky-active');
+    }
+  });
+  
+  const items = Array.from(document.querySelectorAll('.dropdown-item'));
+  const selected = document.getElementById('selectedOption').querySelector('span');
+
+  const map = items.map(i => {
+    const id = i.getAttribute('data-url').split('#')[1];
+    return {
+      id,
+      el: document.getElementById(id),
+      item: i
+    };
+  }).filter(m => m.el);
+
+  const obs = new IntersectionObserver(entries => {
+    if (manualScrollOverride) return;
+
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        const entry = map.find(x => x.el === e.target);
+
+        items.forEach(i => i.classList.remove('active'));
+
+        entry.item.classList.add('active');
+
+        selected.textContent =
+          `${entry.item.querySelector('.number').textContent} - ` +
+          `${entry.item.querySelector('.text').textContent}`;
+      }
+    });
+  }, {
+    threshold: 0.3
+  });
+
+  map.forEach(m => obs.observe(m.el));
+});
+</script>
+
+{% schema %}
+{
+  "name": "Study Jump Links",
+  "class": "ctm-study-jump-links-main",
+  "settings": [
+    {
+      "type": "text",
+      "label": "Extra Class",
+      "id": "extra_class"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "study_hyper",
+      "name": "Page Links",
+      "settings": [
+        {
+          "type": "text",
+          "label": "Number",
+          "id": "number"
+        },
+        {
+          "type": "text",
+          "label": "Link Title",
+          "id": "link_txt"
+        },
+        {
+          "type": "url",
+          "label": "Link URL",
+          "id": "link_url"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Study Jump Links"
+    }
+  ]
+}
+{% endschema %}

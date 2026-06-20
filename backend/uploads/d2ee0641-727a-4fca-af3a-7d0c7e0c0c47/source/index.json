@@ -1,0 +1,850 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "slideshow_H4xjQm": {
+      "type": "slideshow",
+      "blocks": {
+        "slide_yx64XA": {
+          "type": "slide",
+          "disabled": true,
+          "settings": {
+            "show_text_box_mobile": true,
+            "heading": "The Perfect Mattresses <br> For Your Kids",
+            "heading_font": "helvetica_n4",
+            "heading_font_size": 48,
+            "heading_font_size_mobile": 28,
+            "heading_color": "",
+            "subtext": "Image slide",
+            "subtext_font": "helvetica_n4",
+            "subtext_font_size": 48,
+            "subtext_font_size_mobile": 14,
+            "subtext_color": "",
+            "subheading": "<p>Better Naps and Nights</p>",
+            "subheading_font_size": 48,
+            "subheading1": "",
+            "subheading1_font_size": 48,
+            "subheading_mobile": "",
+            "subheading_font_size_mobile": 20,
+            "subheading_mobile1": "",
+            "subheading1_font_size_mobile": 20,
+            "subheading_font": "'Abril Fatface', serif",
+            "subheading_color": "",
+            "button_label": "Shop Now",
+            "button_width": 50,
+            "link": "shopify://collections/shop-all",
+            "button_style_secondary": false,
+            "box_align": "middle-left",
+            "show_text_box": false,
+            "text_alignment": "left",
+            "image_overlay_opacity": 0,
+            "color_scheme": "",
+            "text_alignment_mobile": "center"
+          }
+        },
+        "slide_GKJ9xR": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/5_Little_Monkeys_Homepage_Banner_Desktop.jpg",
+            "mobile_image": "shopify://shop_images/5_Little_Monkeys_Homepage_Banner_Mobile.jpg",
+            "show_text_box_mobile": false,
+            "heading": "",
+            "heading_font": "'Poppins', Poppins",
+            "heading_font_size": 37,
+            "heading_font_size_mobile": 20,
+            "heading_color": "#413432",
+            "subtext": "Up to 50% Off Mattresses",
+            "subtext_font": "'Poppins', Poppins",
+            "subtext_font_size": 29,
+            "subtext_font_size_mobile": 22,
+            "subtext_color": "#417382",
+            "subheading": "<p>Mattresses Designed for Kids</p>",
+            "subheading_font_size": 50,
+            "subheading1": "",
+            "subheading1_font_size": 74,
+            "subheading_mobile": "",
+            "subheading_font_size_mobile": 27,
+            "subheading_mobile1": "",
+            "subheading1_font_size_mobile": 20,
+            "subheading_font": "pt-marlet-display, pt-marlet-display",
+            "subheading_color": "#417382",
+            "button_label": "Shop Now",
+            "button_width": 70,
+            "link": "shopify://collections/sale-hybrid-mattresses-organic-cotton-sheets",
+            "button_style_secondary": true,
+            "box_align": "middle-left",
+            "show_text_box": false,
+            "text_alignment": "left",
+            "image_overlay_opacity": 0,
+            "color_scheme": "",
+            "text_alignment_mobile": "center"
+          }
+        },
+        "slide_kXEKXQ": {
+          "type": "slide",
+          "disabled": true,
+          "settings": {
+            "image": "shopify://shop_images/5LM_Memorial_Day_Web_Banner.jpg",
+            "mobile_image": "shopify://shop_images/5LM_MemorialDay_Banner_Mobile.jpg",
+            "show_text_box_mobile": true,
+            "heading": "<span style=\"line-height: 1.6;\">\n  <span style=\"margin-bottom: 20px;\">Up to $463 Off Mattresses + Bedding Bundles</span><br><p>15% Off Everything Else</p></span>",
+            "heading_font": "helvetica_n4",
+            "heading_font_size": 48,
+            "heading_font_size_mobile": 28,
+            "heading_color": "#417382",
+            "subtext": "Image slide",
+            "subtext_font": "helvetica_n4",
+            "subtext_font_size": 48,
+            "subtext_font_size_mobile": 14,
+            "subtext_color": "",
+            "subheading": "<p><strong>Memorial day sale</strong></p>",
+            "subheading_font_size": 48,
+            "subheading1": "",
+            "subheading1_font_size": 48,
+            "subheading_mobile": "",
+            "subheading_font_size_mobile": 20,
+            "subheading_mobile1": "",
+            "subheading1_font_size_mobile": 20,
+            "subheading_font": "'Abril Fatface', serif",
+            "subheading_color": "#417382",
+            "button_label": "Shop Now",
+            "button_width": 50,
+            "link": "shopify://collections/shop-all",
+            "button_style_secondary": true,
+            "box_align": "middle-left",
+            "show_text_box": false,
+            "text_alignment": "left",
+            "image_overlay_opacity": 0,
+            "color_scheme": "",
+            "text_alignment_mobile": "center"
+          }
+        },
+        "slide_pkz69q": {
+          "type": "slide",
+          "disabled": true,
+          "settings": {
+            "image": "shopify://shop_images/slide2.jpg",
+            "mobile_image": "shopify://shop_images/Sisters_giggling_on_bed_1_1_1.png",
+            "show_text_box_mobile": true,
+            "heading": "Made For <br> Your Children",
+            "heading_font": "helvetica_n4",
+            "heading_font_size": 48,
+            "heading_font_size_mobile": 28,
+            "heading_color": "",
+            "subtext": "Image slide",
+            "subtext_font": "helvetica_n4",
+            "subtext_font_size": 48,
+            "subtext_font_size_mobile": 14,
+            "subtext_color": "",
+            "subheading": "<p>Designed For Our Kids</p>",
+            "subheading_font_size": 48,
+            "subheading1": "",
+            "subheading1_font_size": 48,
+            "subheading_mobile": "",
+            "subheading_font_size_mobile": 20,
+            "subheading_mobile1": "",
+            "subheading1_font_size_mobile": 20,
+            "subheading_font": "'Abril Fatface', serif",
+            "subheading_color": "",
+            "button_label": "Our Story",
+            "button_width": 50,
+            "link": "shopify://pages/our-story",
+            "button_style_secondary": false,
+            "box_align": "middle-left",
+            "show_text_box": false,
+            "text_alignment": "left",
+            "image_overlay_opacity": 0,
+            "color_scheme": "",
+            "text_alignment_mobile": "center"
+          }
+        },
+        "slide_QEaLNe": {
+          "type": "slide",
+          "disabled": true,
+          "settings": {
+            "image": "shopify://shop_images/slide3.jpg",
+            "mobile_image": "shopify://shop_images/Sisters_giggling_on_bed_1_1_2.png",
+            "show_text_box_mobile": true,
+            "heading": "Every Child <br> Deserves <br> to Sleep Well",
+            "heading_font": "helvetica_n4",
+            "heading_font_size": 48,
+            "heading_font_size_mobile": 28,
+            "heading_color": "",
+            "subtext": "Image slide",
+            "subtext_font": "helvetica_n4",
+            "subtext_font_size": 48,
+            "subtext_font_size_mobile": 14,
+            "subtext_color": "",
+            "subheading": "<p>Child Wellness Is Most Important</p>",
+            "subheading_font_size": 48,
+            "subheading1": "",
+            "subheading1_font_size": 48,
+            "subheading_mobile": "",
+            "subheading_font_size_mobile": 20,
+            "subheading_mobile1": "",
+            "subheading1_font_size_mobile": 20,
+            "subheading_font": "'Abril Fatface', serif",
+            "subheading_color": "",
+            "button_label": "Giving Back",
+            "button_width": 50,
+            "link": "shopify://pages/giving-back",
+            "button_style_secondary": false,
+            "box_align": "middle-left",
+            "show_text_box": false,
+            "text_alignment": "left",
+            "image_overlay_opacity": 0,
+            "color_scheme": "",
+            "text_alignment_mobile": "center"
+          }
+        }
+      },
+      "block_order": [
+        "slide_yx64XA",
+        "slide_GKJ9xR",
+        "slide_kXEKXQ",
+        "slide_pkz69q",
+        "slide_QEaLNe"
+      ],
+      "custom_css": [
+        "@media (min-width: 1440px) {.back-to-school-sale-heading span {font-size: 70px !important; }}",
+        "@media (max-width: 749px) {.banner__text {display: none; }}"
+      ],
+      "settings": {
+        "layout": "full_bleed",
+        "slide_height": "medium",
+        "slider_visual": "dots",
+        "auto_rotate": true,
+        "change_slides_speed": 3,
+        "image_behavior": "none",
+        "show_text_below": true,
+        "accessibility_info": "Slideshow about our brand"
+      }
+    },
+    "icon_with_text_jCVzyT": {
+      "type": "icon-with-text",
+      "blocks": {
+        "icon_text_slide_LcMPRj": {
+          "type": "icon_text_slide",
+          "settings": {
+            "icon": "shopify://shop_images/Hypoallergenic.svg",
+            "icon_title": "Hypoallergenic"
+          }
+        },
+        "icon_text_slide_GcQECc": {
+          "type": "icon_text_slide",
+          "settings": {
+            "icon": "shopify://shop_images/temp-icon.svg",
+            "icon_title": "Temperature <br> Regulating <br> Technology"
+          }
+        },
+        "icon_text_slide_FX8hDn": {
+          "type": "icon_text_slide",
+          "settings": {
+            "icon": "shopify://shop_images/Waterproof.svg",
+            "icon_title": "Water Resistant <br>\nand Removable <br> Cover"
+          }
+        },
+        "icon_text_slide_AFdQMr": {
+          "type": "icon_text_slide",
+          "settings": {
+            "icon": "shopify://shop_images/check-svgrepo-com.svg",
+            "icon_title": "CertiPUR-US ® <br> Certified Memory <br> Foam"
+          }
+        },
+        "icon_text_slide_Q68DnY": {
+          "type": "icon_text_slide",
+          "settings": {
+            "icon": "shopify://shop_images/Engineering.svg",
+            "icon_title": "Support <br>\nEngineered for <br> Growing Bodies"
+          }
+        },
+        "icon_text_slide_Bf4gCL": {
+          "type": "icon_text_slide",
+          "settings": {
+            "icon": "shopify://shop_images/bed-time.svg",
+            "icon_title": "Cradling Tech for <br> Reduced <br> Restlessness"
+          }
+        }
+      },
+      "block_order": [
+        "icon_text_slide_LcMPRj",
+        "icon_text_slide_GcQECc",
+        "icon_text_slide_FX8hDn",
+        "icon_text_slide_AFdQMr",
+        "icon_text_slide_Q68DnY",
+        "icon_text_slide_Bf4gCL"
+      ],
+      "settings": {
+        "extral_class": "",
+        "background_image_logo": "shopify://shop_images/GoodBed_Badge_1.png",
+        "background_image": "shopify://shop_images/icon_text.jpg",
+        "caption": "Finally",
+        "main_title": "A Mattress Designed for Kids",
+        "button_link": "https://5littlemonkeysbed.com/collections/all",
+        "button_label": "Shop All",
+        "button_link1": "",
+        "button_label1": ""
+      }
+    },
+    "featured_collection": {
+      "type": "featured-collection",
+      "disabled": true,
+      "settings": {
+        "extra_class": "",
+        "title": "Explore Our Best Sellers",
+        "button_text": "Shop All",
+        "button_url": "shopify://collections/shop-all",
+        "heading_size": "h3",
+        "description": "",
+        "show_description": false,
+        "description_style": "body",
+        "collection": "all",
+        "products_to_show": 3,
+        "columns_desktop": 3,
+        "full_width": false,
+        "show_view_all": false,
+        "view_all_style": "solid",
+        "enable_desktop_slider": false,
+        "color_scheme": "scheme-1",
+        "image_ratio": "square",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": false,
+        "enable_quick_add": false,
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 0,
+        "padding_bottom": 80
+      }
+    },
+    "ctm_feature_collection2_64GJxX": {
+      "type": "ctm-product-list",
+      "blocks": {
+        "product_slide_8hN3cf": {
+          "type": "product_slide",
+          "settings": {
+            "product": "foam-mattress-bundle",
+            "custom_title": "",
+            "extra_slide_class": ""
+          }
+        },
+        "product_slide_HhqFVU": {
+          "type": "product_slide",
+          "settings": {
+            "product": "hybrid-mattress-bundle",
+            "custom_title": "",
+            "extra_slide_class": "second-product-slide"
+          }
+        },
+        "product_slide_3HfBiB": {
+          "type": "product_slide",
+          "settings": {
+            "product": "original-memory-foam-mattress",
+            "custom_title": "",
+            "extra_slide_class": "last-product-slide"
+          }
+        }
+      },
+      "block_order": [
+        "product_slide_8hN3cf",
+        "product_slide_HhqFVU",
+        "product_slide_3HfBiB"
+      ],
+      "name": "Custom Product List",
+      "settings": {
+        "extra_class": "homepage-product-list",
+        "title": "Explore Our Best Sellers",
+        "show_secondary_image": false,
+        "cta_title": "",
+        "cta_url": ""
+      }
+    },
+    "ctm_feature_collection_MGcbAM": {
+      "type": "ctm-feature-collection",
+      "blocks": {
+        "collection_slide_ChCT3y": {
+          "type": "collection_slide",
+          "settings": {
+            "select_collection": "all"
+          }
+        }
+      },
+      "block_order": [
+        "collection_slide_ChCT3y"
+      ],
+      "disabled": true,
+      "settings": {
+        "extra_class": "",
+        "title": "Explore Our Best Sellers",
+        "small_title": "Shop All",
+        "url": "shopify://collections/all",
+        "show_secondary_image": true
+      }
+    },
+    "brand_logo_hBMyAP": {
+      "type": "brand-logo",
+      "blocks": {
+        "logo_image_7iB89G": {
+          "type": "logo_image",
+          "settings": {
+            "logo": "shopify://shop_images/CertiPUR-US_1.png"
+          }
+        },
+        "logo_image_H8tGN7": {
+          "type": "logo_image",
+          "settings": {
+            "logo": "shopify://shop_images/OEKO_TEX_1.png"
+          }
+        },
+        "logo_image_cErh8D": {
+          "type": "logo_image",
+          "settings": {
+            "logo": "shopify://shop_images/CPSIA-certified_1_upscayl_4x_realesrgan-x4plus_1.png"
+          }
+        },
+        "logo_image_HWqzLd": {
+          "type": "logo_image",
+          "settings": {
+            "logo": "shopify://shop_images/Prop_65_1.png"
+          }
+        },
+        "logo_image_Rkembz": {
+          "type": "logo_image",
+          "settings": {
+            "logo": "shopify://shop_images/fair_trade_1.png"
+          }
+        },
+        "logo_image_n6PWHm": {
+          "type": "logo_image",
+          "settings": {
+            "logo": "shopify://shop_images/organic_textile.png"
+          }
+        },
+        "logo_image_HjVPeU": {
+          "type": "logo_image",
+          "settings": {
+            "logo": "shopify://shop_images/Greenguard_1.png"
+          }
+        }
+      },
+      "block_order": [
+        "logo_image_7iB89G",
+        "logo_image_H8tGN7",
+        "logo_image_cErh8D",
+        "logo_image_HWqzLd",
+        "logo_image_Rkembz",
+        "logo_image_n6PWHm",
+        "logo_image_HjVPeU"
+      ],
+      "settings": {
+        "extra_class": "",
+        "head": "Certified Safe",
+        "background_image": "shopify://shop_images/background_image.jpg"
+      }
+    },
+    "award_slider_3Mbcz4": {
+      "type": "award-slider",
+      "blocks": {
+        "award_slide_PaUi8e": {
+          "type": "award_slide",
+          "disabled": true,
+          "settings": {
+            "award_image_2": "shopify://shop_images/bronze-1_b0d33d8a-685a-42d2-9a0e-fe93e5ee37a1.png",
+            "award_image_3": "shopify://shop_images/bronze_ac338d69-4978-4968-ba3a-4d6e5404b0e2.png",
+            "award_image_4": "shopify://shop_images/10-percent_b7f92640-f080-4dee-bb30-d34c71e55755.png",
+            "review_head": "Comfortable!",
+            "review_description": "\"I love how soft and comfortable it is for my 2 year old! I’m so happy I found a mattress like this! Thank you for helping me complete my child’s bedroom!\"",
+            "rate": 5
+          }
+        },
+        "award_slide_3WJh7f": {
+          "type": "award_slide",
+          "disabled": true,
+          "settings": {
+            "award_image_1": "shopify://shop_images/silver_2a22b48a-0945-4348-87c0-1aa25627ca2b.png",
+            "award_image_2": "shopify://shop_images/bronze-1_b0d33d8a-685a-42d2-9a0e-fe93e5ee37a1.png",
+            "award_image_3": "shopify://shop_images/bronze_ac338d69-4978-4968-ba3a-4d6e5404b0e2.png",
+            "award_image_4": "shopify://shop_images/10-percent_b7f92640-f080-4dee-bb30-d34c71e55755.png",
+            "review_head": "Great Find",
+            "review_description": "My little one loves her new bed. Super comfortable and brought her back to sleep in her room by herself 🤗",
+            "rate": 5
+          }
+        },
+        "award_slide_XEiVhT": {
+          "type": "award_slide",
+          "disabled": true,
+          "settings": {
+            "award_image_1": "shopify://shop_images/silver_2a22b48a-0945-4348-87c0-1aa25627ca2b.png",
+            "award_image_2": "shopify://shop_images/bronze-1_b0d33d8a-685a-42d2-9a0e-fe93e5ee37a1.png",
+            "award_image_3": "shopify://shop_images/bronze_ac338d69-4978-4968-ba3a-4d6e5404b0e2.png",
+            "award_image_4": "shopify://shop_images/10-percent_b7f92640-f080-4dee-bb30-d34c71e55755.png",
+            "review_head": "Amazing Product",
+            "review_description": "Just want to thank people involved in making a perfect mattress for our 3.5 year old. He loves it and we are comfortable laying down and reading bedtime stories. If you are looking for a truly great mattress for your child don’t even think twice and go with this mattress. Quick ship and perfect packaging.",
+            "rate": 5
+          }
+        },
+        "award_slide_7fwAki": {
+          "type": "award_slide",
+          "disabled": true,
+          "settings": {
+            "award_image_1": "shopify://shop_images/silver_2a22b48a-0945-4348-87c0-1aa25627ca2b.png",
+            "award_image_2": "shopify://shop_images/bronze-1_b0d33d8a-685a-42d2-9a0e-fe93e5ee37a1.png",
+            "award_image_3": "shopify://shop_images/bronze_ac338d69-4978-4968-ba3a-4d6e5404b0e2.png",
+            "award_image_4": "shopify://shop_images/10-percent_b7f92640-f080-4dee-bb30-d34c71e55755.png",
+            "review_head": "Love this mattress!!!",
+            "review_description": "Love this mattress, so comfortable, the set is perfect for my daughter for her new big girl bed, would definitely recommend to anyone and everyone!",
+            "rate": 5
+          }
+        },
+        "award_slide_j63tXi": {
+          "type": "award_slide",
+          "settings": {
+            "review_head": "Absolutely Perfect!",
+            "review_description": "\"We love this mattress! It's so comfortable and the kids don't feel it when you roll away.\" <span class=\"ctm-author\">\n- Dahra P.</span>",
+            "rate": 5
+          }
+        },
+        "award_slide_twen7K": {
+          "type": "award_slide",
+          "settings": {
+            "review_head": "BEST MATTRESS MONEY CAN BUY",
+            "review_description": "\"I bought this for my son because he kept sleeping in my bed but honestly his mattress is better than mine!\" <span class=\"ctm-author\">\n- Ocean S.</span>",
+            "rate": 5
+          }
+        },
+        "award_slide_dtmgDR": {
+          "type": "award_slide",
+          "settings": {
+            "review_head": "Twin monkeys",
+            "review_description": "\"Delighted with the 5 Monkeys mattress for a twin bed. Comfortable. Great service. Nice quality. Would order again!\" <span class=\"ctm-author\"> \n- Elizabeth G. </span>",
+            "rate": 5
+          }
+        }
+      },
+      "block_order": [
+        "award_slide_PaUi8e",
+        "award_slide_3WJh7f",
+        "award_slide_XEiVhT",
+        "award_slide_7fwAki",
+        "award_slide_j63tXi",
+        "award_slide_twen7K",
+        "award_slide_dtmgDR"
+      ],
+      "settings": {
+        "extra_class": "",
+        "background_image": "shopify://shop_images/our_story_BG.png",
+        "upper_sub_head": "Over 50,000",
+        "main_head": "Well-Rested Little Monkeys",
+        "button_text": "See More Reviews",
+        "button_url": "shopify://pages/reviews"
+      }
+    },
+    "video_with_text_gW94ei": {
+      "type": "video-with-text",
+      "blocks": {
+        "tick_text_F4j4DB": {
+          "type": "tick_text",
+          "settings": {
+            "text_with_tic": "Are better able to manage emotions"
+          }
+        },
+        "tick_text_eNetYX": {
+          "type": "tick_text",
+          "settings": {
+            "text_with_tic": "Are less likely to struggle with anxiety or depression"
+          }
+        },
+        "tick_text_H4B77H": {
+          "type": "tick_text",
+          "settings": {
+            "text_with_tic": "Are more likely to maintain a healthy weight"
+          }
+        },
+        "tick_text_WkiJWg": {
+          "type": "tick_text",
+          "settings": {
+            "text_with_tic": "Perform better in school"
+          }
+        },
+        "tick_text_MykeFg": {
+          "type": "tick_text",
+          "settings": {
+            "text_with_tic": "Enjoy better social development"
+          }
+        }
+      },
+      "block_order": [
+        "tick_text_F4j4DB",
+        "tick_text_eNetYX",
+        "tick_text_H4B77H",
+        "tick_text_WkiJWg",
+        "tick_text_MykeFg"
+      ],
+      "settings": {
+        "extra_Class": "",
+        "upper_sub_head": "Why Kids",
+        "main_head": "Need to Sleep Well",
+        "lower_sub_head": "Studies Show Well-Rested Kids...",
+        "description": "",
+        "button_text": "Shop Now",
+        "button_url": "/collections/all",
+        "video_title_mobile": "The Story Behind 5 Little Monkeys",
+        "enable_embed_video": false,
+        "play_btn_image": "shopify://shop_images/play-svgrepo-com.png",
+        "video_poster": "shopify://shop_images/imag213e.jpg",
+        "video": "https://cdn.shopify.com/videos/c/o/v/952380c166bb4f2ea9823fdce87ba544.mp4",
+        "video_url": "https://www.youtube.com/watch?v=lCR0jXqscCE&rel=0",
+        "align_right": false
+      }
+    },
+    "icon_text_hCGkkf": {
+      "type": "icon-text",
+      "blocks": {
+        "icon_text_iDCdHc": {
+          "type": "icon_text",
+          "settings": {
+            "icon_image": "shopify://shop_images/premium_comfort.png",
+            "icon_text": "100-Night<br>\nRest Test",
+            "icon_description": ""
+          }
+        },
+        "icon_text_wapgRj": {
+          "type": "icon_text",
+          "settings": {
+            "icon_image": "shopify://shop_images/image_3_5952b023-4915-4ebe-9d67-852b8894a2e8.png",
+            "icon_text": "15-Year<br>\nMattress Warranty",
+            "icon_description": ""
+          }
+        },
+        "icon_text_kjqmKj": {
+          "type": "icon_text",
+          "disabled": true,
+          "settings": {
+            "icon_image": "shopify://shop_images/time-icon.png",
+            "icon_text": "Ships in<br>\n24 Hours",
+            "icon_description": ""
+          }
+        },
+        "icon_text_RVaRrA": {
+          "type": "icon_text",
+          "settings": {
+            "icon_image": "shopify://shop_images/image_4_ae4eca3c-a8d4-458f-bf70-73e184035b0e.png",
+            "icon_text": "Free Shipping<br>\n&amp; Returns",
+            "icon_description": ""
+          }
+        }
+      },
+      "block_order": [
+        "icon_text_iDCdHc",
+        "icon_text_wapgRj",
+        "icon_text_kjqmKj",
+        "icon_text_RVaRrA"
+      ],
+      "settings": {
+        "extra_class": "",
+        "background_image": "shopify://shop_images/background_image.jpg",
+        "upper_sub_head": "Risk Free",
+        "main_head": "100-Night Rest Test",
+        "lower_sub_head": "",
+        "description": "We've worked hard to design the ideal kids mattress, and we're confident that you and your little one will fall in love with it. Try the 5 Little Monkeys mattress for 100 nights, completely risk free. If you don't love it, we'll give you a full refund -<b> no questions asked.</b>",
+        "under_desc": "",
+        "button_text": "",
+        "button_url": "",
+        "tick_if_third_party_link": false
+      }
+    },
+    "image_with_text_iEREbQ": {
+      "type": "image-with-text",
+      "blocks": {
+        "caption_GPqthF": {
+          "type": "caption",
+          "settings": {
+            "caption": "How 5 Little Monkeys",
+            "text_style": "subtitle",
+            "text_size": "medium"
+          }
+        },
+        "heading_igYxeR": {
+          "type": "heading",
+          "settings": {
+            "heading": "Helps Kids Get Better Sleep",
+            "heading_size": "h3"
+          }
+        },
+        "text_jkkXXH": {
+          "type": "text",
+          "settings": {
+            "text": "A mattress specifically designed to help kids sleep better.",
+            "text_style": "body"
+          }
+        }
+      },
+      "block_order": [
+        "caption_GPqthF",
+        "heading_igYxeR",
+        "text_jkkXXH"
+      ],
+      "disabled": true,
+      "settings": {
+        "extra_class": "ctm_badlayer_block",
+        "image": "shopify://shop_images/graphic-mattress.png",
+        "txt_under_img": "",
+        "image_mobile": "shopify://shop_images/graphic-mobile.png",
+        "height": "adapt",
+        "desktop_image_width": "medium",
+        "layout": "text_first",
+        "image_radius": 0,
+        "desktop_content_position": "top",
+        "desktop_content_alignment": "left",
+        "content_layout": "no-overlap",
+        "section_color_scheme": "",
+        "color_scheme": "",
+        "image_behavior": "none",
+        "mobile_content_alignment": "left",
+        "padding_top": 80,
+        "padding_bottom": 80
+      }
+    },
+    "image_with_text_CrGJeQ": {
+      "type": "image-with-text",
+      "blocks": {
+        "caption_F6pK7n": {
+          "type": "caption",
+          "settings": {
+            "caption": "A Simple Love for Sleep",
+            "text_style": "subtitle",
+            "text_size": "medium"
+          }
+        },
+        "heading_irLcKK": {
+          "type": "heading",
+          "settings": {
+            "heading": "Inspired By Our Children",
+            "heading_size": "h3"
+          }
+        },
+        "text_eNgbfK": {
+          "type": "text",
+          "settings": {
+            "text": "<p>With our expertise in the bedding industry and a few years of parenting under our belt, we set out to create the best mattress for kids on the market. The result is 5 Little Monkeys: a new approach to kids bedding that uses science-based design and organic, hypoallergenic materials to help kids get the restful sleep they truly need. Our kids have never slept better - and we're so excited to share it with you.</p>\n\n<p><b>Co-founders Jason &amp; Courtney Harrow &amp; their little monkeys</b></p>",
+            "text_style": "body"
+          }
+        },
+        "button_TVAXFe": {
+          "type": "button",
+          "settings": {
+            "button_label": "Learn More",
+            "button_link": "shopify://pages/our-story",
+            "button_style_secondary": false
+          }
+        }
+      },
+      "block_order": [
+        "caption_F6pK7n",
+        "heading_irLcKK",
+        "text_eNgbfK",
+        "button_TVAXFe"
+      ],
+      "settings": {
+        "extra_class": "ctm_inspire_section",
+        "image": "shopify://shop_images/familyimage.png",
+        "txt_under_img": "",
+        "height": "adapt",
+        "desktop_image_width": "medium",
+        "layout": "text_first",
+        "image_radius": 24,
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "left",
+        "content_layout": "no-overlap",
+        "section_color_scheme": "",
+        "color_scheme": "",
+        "image_behavior": "none",
+        "mobile_content_alignment": "left",
+        "padding_top": 80,
+        "padding_bottom": 80
+      }
+    },
+    "feature_brand_logo_c4CPRB": {
+      "type": "feature-brand-logo",
+      "blocks": {
+        "logo_image_xdzUz4": {
+          "type": "logo_image",
+          "settings": {
+            "logo": "shopify://shop_images/tiny-little-pads-logo_1.png"
+          }
+        },
+        "logo_image_VX8tD4": {
+          "type": "logo_image",
+          "settings": {
+            "logo": "shopify://shop_images/Pulling_Curls_1.png"
+          }
+        },
+        "logo_image_xXtWJq": {
+          "type": "logo_image",
+          "settings": {
+            "logo": "shopify://shop_images/abc.png"
+          }
+        },
+        "logo_image_xkdpV4": {
+          "type": "logo_image",
+          "settings": {
+            "logo": "shopify://shop_images/Forks_and_Folly_upscayl_4x_realesrgan-x4plus_1.png"
+          }
+        },
+        "logo_image_NAWCFR": {
+          "type": "logo_image",
+          "settings": {
+            "logo": "shopify://shop_images/Sleepopolis_1.png"
+          }
+        },
+        "logo_image_FhQr7V": {
+          "type": "logo_image",
+          "settings": {
+            "logo": "shopify://shop_images/peaceful_littles_1.png"
+          }
+        },
+        "logo_image_4P77eF": {
+          "type": "logo_image",
+          "settings": {
+            "logo": "shopify://shop_images/Grandparents_logo_1.png"
+          }
+        }
+      },
+      "block_order": [
+        "logo_image_xdzUz4",
+        "logo_image_VX8tD4",
+        "logo_image_xXtWJq",
+        "logo_image_xkdpV4",
+        "logo_image_NAWCFR",
+        "logo_image_FhQr7V",
+        "logo_image_4P77eF"
+      ],
+      "settings": {
+        "extra_class": "",
+        "head": "We’re Featured In..."
+      }
+    }
+  },
+  "order": [
+    "slideshow_H4xjQm",
+    "icon_with_text_jCVzyT",
+    "featured_collection",
+    "ctm_feature_collection2_64GJxX",
+    "ctm_feature_collection_MGcbAM",
+    "brand_logo_hBMyAP",
+    "award_slider_3Mbcz4",
+    "video_with_text_gW94ei",
+    "icon_text_hCGkkf",
+    "image_with_text_iEREbQ",
+    "image_with_text_CrGJeQ",
+    "feature_brand_logo_c4CPRB"
+  ]
+}

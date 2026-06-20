@@ -1,0 +1,267 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "settings": {
+        "extra_class": "",
+        "page_title_black": "",
+        "breadcrumb_image": "shopify:\/\/shop_images\/giving-banner.png",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "logo_heading_LPYqpM": {
+      "type": "logo-heading",
+      "blocks": {
+        "logo_DrJKcz": {
+          "type": "logo",
+          "settings": {
+            "logo_img": "shopify:\/\/shop_images\/Ellipse_27.png",
+            "logo_url": "https:\/\/www.beautybus.org\/"
+          }
+        },
+        "logo_WgRkGe": {
+          "type": "logo",
+          "settings": {
+            "logo_img": "shopify:\/\/shop_images\/2_916cf168-8078-47a3-961a-8e282778dc00.png",
+            "logo_url": "https:\/\/campbobwaldorf.org\/"
+          }
+        },
+        "logo_Ez9m48": {
+          "type": "logo",
+          "settings": {
+            "logo_img": "shopify:\/\/shop_images\/3_9e83f019-6fd4-41b4-8476-38b88c191e5b.png",
+            "logo_url": "https:\/\/www.cityofhope.org\/"
+          }
+        },
+        "logo_ta4qjz": {
+          "type": "logo",
+          "settings": {
+            "logo_img": "shopify:\/\/shop_images\/Ellipse_33.png",
+            "logo_url": "https:\/\/goodplusfoundation.org\/"
+          }
+        },
+        "logo_wVgcxN": {
+          "type": "logo",
+          "settings": {
+            "logo_img": "shopify:\/\/shop_images\/Ellipse_34.png",
+            "logo_url": "https:\/\/www.roddedeauxfoundation.org\/"
+          }
+        },
+        "logo_JdtRqk": {
+          "type": "logo",
+          "settings": {
+            "logo_img": "shopify:\/\/shop_images\/6_ceba6934-f588-4932-9f63-62719963a1f9.png",
+            "logo_url": "https:\/\/www.chla.org\/"
+          }
+        },
+        "logo_aM9w8E": {
+          "type": "logo",
+          "settings": {
+            "logo_img": "shopify:\/\/shop_images\/7_d5778641-c92d-4567-ad37-e0db4f0baefc.png",
+            "logo_url": "https:\/\/wish.org\/"
+          }
+        },
+        "logo_bGLDUq": {
+          "type": "logo",
+          "settings": {
+            "logo_img": "shopify:\/\/shop_images\/8_7297eb24-b4e4-4d18-83f5-bd7d4e828dd5.png",
+            "logo_url": "https:\/\/oscarlitwakfoundation.org\/"
+          }
+        },
+        "logo_xCkPeP": {
+          "type": "logo",
+          "settings": {
+            "logo_img": "shopify:\/\/shop_images\/9_5f1b9124-d8a6-4b07-bd67-16f9f6cb2dcf.png",
+            "logo_url": "https:\/\/makemarchmatter.org\/"
+          }
+        },
+        "logo_nCdQwi": {
+          "type": "logo",
+          "settings": {
+            "logo_img": "shopify:\/\/shop_images\/MTB_Logo_Circle.png",
+            "logo_url": "https:\/\/www.maxwellstoybox.com\/"
+          }
+        }
+      },
+      "block_order": [
+        "logo_DrJKcz",
+        "logo_WgRkGe",
+        "logo_Ez9m48",
+        "logo_ta4qjz",
+        "logo_wVgcxN",
+        "logo_JdtRqk",
+        "logo_aM9w8E",
+        "logo_bGLDUq",
+        "logo_xCkPeP",
+        "logo_nCdQwi"
+      ],
+      "settings": {
+        "extra_class": "",
+        "bg_image": "shopify:\/\/shop_images\/our_story_BG.png",
+        "caption": "Our Partners in",
+        "heading": "Building Hope",
+        "desc": "We're proud to make meaningful contributions to a wide variety of charities. That's why we believe in supporting and bringing awareness to an array of organizations focusing on children's health and wellness. We're proud to make meaningful contributions to the following charities:"
+      }
+    },
+    "image_with_text_hnGU7b": {
+      "type": "image-with-text",
+      "blocks": {
+        "caption_gFYt99": {
+          "type": "caption",
+          "settings": {
+            "caption": "Every Child",
+            "text_style": "subtitle",
+            "text_size": "medium"
+          }
+        },
+        "heading_cBXg9e": {
+          "type": "heading",
+          "settings": {
+            "heading": "Deserves to Sleep Well",
+            "heading_size": "h3"
+          }
+        },
+        "text_M6LFjx": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Imagine a future where every child enjoys a warm, healthy night's sleep in a toxin- free, hypoallergic sleep system designed to support their growing bodies.<\/p> <p>At 5 Little Monkeys, that's the future we hope to see. Because we believe that every child deserves the long-term benefits of getting a good night's rest. And that's why we make it a priority to provide new sleep systems to kids in need.<\/p>",
+            "text_style": "body"
+          }
+        }
+      },
+      "block_order": ["caption_gFYt99", "heading_cBXg9e", "text_M6LFjx"],
+      "settings": {
+        "extra_class": "ctm_deserves_section",
+        "image": "shopify:\/\/shop_images\/image_eca9d00c-68ec-43bb-86f8-70286953722d.png",
+        "txt_under_img": "",
+        "height": "adapt",
+        "desktop_image_width": "medium",
+        "layout": "text_first",
+        "image_radius": 24,
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "left",
+        "content_layout": "no-overlap",
+        "section_color_scheme": "",
+        "color_scheme": "",
+        "image_behavior": "none",
+        "mobile_content_alignment": "left",
+        "padding_top": 80,
+        "padding_bottom": 80
+      }
+    },
+    "custom_liquid_NXP4iw": {
+      "type": "custom-liquid",
+      "settings": {
+        "extra_class": "ctm_mattres_form",
+        "heading": "",
+        "sub_heading": "",
+        "background_color": "",
+        "custom_liquid": "<div class=\"xl_container\">\n <iframe id=\"JotFormIFrame-240881567015054\" title=\"Mattress & Kids Mattress Donations\" onload=\"window.parent.scrollTo(0,0)\" allowtransparency=\"true\" allow=\"geolocation; microphone; camera; fullscreen\" src=\"https:\/\/form.jotform.com\/240881567015054\" frameborder=\"0\" style=\"min-width:100%;max-width:100%;height:539px;border:none;\" scrolling=\"no\" > <\/iframe> <script src='https:\/\/form.jotform.com\/s\/umd\/latest\/for-form-embed-handler.js'><\/script> <script>window.jotformEmbedHandler(\"iframe[id='JotFormIFrame-240881567015054'\", \"https:\/\/form.jotform.com\/\")<\/script> \n<\/div>",
+        "color_scheme": "",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "image_with_text_k9G6MM": {
+      "type": "image-with-text",
+      "blocks": {
+        "caption_bx378Y": {
+          "type": "caption",
+          "settings": {
+            "caption": "How Everyone",
+            "text_style": "subtitle",
+            "text_size": "medium"
+          }
+        },
+        "heading_HE7NJF": {
+          "type": "heading",
+          "settings": {
+            "heading": "Can Help",
+            "heading_size": "h3"
+          }
+        },
+        "text_9eEfQc": {
+          "type": "text",
+          "settings": {
+            "text": "<p>But we're committed to doing more than mattress donations to build a better future for kids, and, there's something you can do to help. Roughly 15 to 20 million mattresses and box springs go to landfills every year in the US, which is a terrible waste when there are so many children in need of a quality kids mattress. By donating or recycling your child's used mattress, you can help to reduce the waste and help more kids get a great mattress.<\/p>\n<h4>An Old Mattress for a Better Future<\/h4>\n<p>Donating or recycling your child's used mattress keeps it out of a landfill, and you may even be improving the life of a child in need.<\/p>\n<h4>How to Donate a Mattress<\/h4>\n<p>Donating a gently-used mattress is easy. Visit DonationTown.com and look through a list of trustworthy, screened charities in need of mattress donations in your area - chances are, many will happily pick up the mattress for you.<\/p>\n<h4>How to Recycle a Mattress<\/h4>\n<p>Another option is recycling. Simply find a mattress recycling center by visiting the Mattress Recycling Center Locator on earth911.com, load up your mattress, and take it over.<\/p>",
+            "text_style": "body"
+          }
+        }
+      },
+      "block_order": ["caption_bx378Y", "heading_HE7NJF", "text_9eEfQc"],
+      "settings": {
+        "extra_class": "ctm_deserveshelp_section",
+        "image": "shopify:\/\/shop_images\/image_15.png",
+        "txt_under_img": "",
+        "height": "adapt",
+        "desktop_image_width": "medium",
+        "layout": "image_first",
+        "image_radius": 24,
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "left",
+        "content_layout": "no-overlap",
+        "section_color_scheme": "",
+        "color_scheme": "",
+        "image_behavior": "none",
+        "mobile_content_alignment": "left",
+        "padding_top": 80,
+        "padding_bottom": 0
+      }
+    },
+    "image_with_text_qxdPVp": {
+      "type": "image-with-text",
+      "blocks": {
+        "caption_BAPt4z": {
+          "type": "caption",
+          "settings": {
+            "caption": "Try the",
+            "text_style": "subtitle",
+            "text_size": "medium"
+          }
+        },
+        "heading_nCjTyE": {
+          "type": "heading",
+          "settings": {
+            "heading": "Five Little Monkeys Kids Bed",
+            "heading_size": "h3"
+          }
+        },
+        "text_dbxCDK": {
+          "type": "text",
+          "settings": {
+            "text": "We're proud to give back to the community that we love so much, and if you have more questions about how you can help more children get better sleep, we encourage you to reach out to us on our <a href=\"https:\/\/5littlemonkeysbed.com\/pages\/contact\">contact page<\/a>. If you haven't yet tried the 5 Little Monkeys mattress, remember: your first 100 nights are risk-free, and if you don't love it, we'll give you a full refund, no questions asked. Give your child the gift of a great night's sleep and try our <a href=\"https:\/\/5littlemonkeysbed.com\/collections\/mattresses-bedding\">revolutionary kids mattress<\/a> today!",
+            "text_style": "body"
+          }
+        }
+      },
+      "block_order": ["caption_BAPt4z", "heading_nCjTyE", "text_dbxCDK"],
+      "settings": {
+        "extra_class": "ctm_deserves_section ctm_deservesbed_section",
+        "image": "shopify:\/\/shop_images\/image_16.png",
+        "txt_under_img": "",
+        "height": "adapt",
+        "desktop_image_width": "medium",
+        "layout": "text_first",
+        "image_radius": 24,
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "left",
+        "content_layout": "no-overlap",
+        "section_color_scheme": "",
+        "color_scheme": "",
+        "image_behavior": "none",
+        "mobile_content_alignment": "left",
+        "padding_top": 80,
+        "padding_bottom": 80
+      }
+    }
+  },
+  "order": [
+    "main",
+    "logo_heading_LPYqpM",
+    "image_with_text_hnGU7b",
+    "custom_liquid_NXP4iw",
+    "image_with_text_k9G6MM",
+    "image_with_text_qxdPVp"
+  ]
+}

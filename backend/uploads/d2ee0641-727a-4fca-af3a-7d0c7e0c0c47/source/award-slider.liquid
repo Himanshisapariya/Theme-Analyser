@@ -1,0 +1,184 @@
+<style>
+  .ctm-award-bg {
+    background-image: url('{{ section.settings.background_image | image_url: width: 2000 }}');
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  .rating {
+    padding-left: 0;
+    list-style: none;
+  }
+
+  .rating li {
+    width: 30px;
+    height: 30px;
+    margin-right: 6px;
+    display: inline-block;
+    background-image: url('https://cdn.shopify.com/s/files/1/0792/4904/7864/files/download_1.svg?v=1761204730');
+  }
+
+  .rating li.rated {
+    background-image: url('https://cdn.shopify.com/s/files/1/0792/4904/7864/files/download.svg?v=1761204397');
+  }
+</style>
+
+<div class="{{ section.settings.extra_class }} ctm-award-slider-main px-30 lg:px-35 desktop:!px-55 pt-55 desktop:pt-80">
+  <div class="ctm-award-bg px-40 lg:px-55 desktop:px-75 py-55 rounded-24 overflow-hidden">
+    <div class="ctm-award-head text-center pb-20">
+      <div class="ctm_waed_caption mb-10">
+        <h5>{{ section.settings.upper_sub_head }}</h5>
+      </div>
+      <div class="ctm_award_section_title">
+        <h3>{{ section.settings.main_head }}</h3>
+      </div>
+    </div>
+
+    <div class="ctm_award_text_main swiper award-swiper !pb-[30px] mb-30">
+      <div class="swiper-wrapper">
+        {% for block in section.blocks %}
+          {% case block.type %}
+            {% when 'award_slide' %}
+              <div class="swiper-slide" {{ block.shopify_attributes }}>
+                <div class="ctm_award_text text-center">
+                  <div class="award_tittle_block mb-14">
+                    <h4 class="font-semibold">{{ block.settings.review_head }}</h4>
+                  </div>
+                  <div class="awart_big_content max-w-[894px] xlscreen:max-w-[680px] w-full mx-auto">
+                    <p class="text-16 leading-24 small_desktop:!text-[23px] small_desktop:!leading-[35px] font-medium text-bloodstone">
+                      {{ block.settings.review_description }}
+                    </p>
+                  </div>
+                  <ul class="rating text-center pt-20">
+                    {%- for i in (1..5) -%}
+                      {%- assign iMax = block.settings.rate -%}
+                      {%- if i <= iMax -%}
+                        <li class="rated">
+                      {%- else -%}
+                        <li>
+                      {%- endif -%}
+                    {%- endfor -%}
+                  </ul>
+                </div>
+              </div>
+
+            {% when '@app' %}
+              <!-- App block area -->
+              <div class="swiper-slide app-block" {{ block.shopify_attributes }}>
+                {% render block %}
+              </div>
+          {% endcase %}
+        {% endfor %}
+      </div>
+
+      <div class="next_prev_aero max-w-[93%] midlarge_desktop:max-w-[80%] w-full mx-auto absolute top-1/2 -translate-y-1/2 left-0 right-0 z-1 mdscreen1:!hidden">
+        <div class="swiper-button-next awardtext_next">{% render 'icon-next' %}</div>
+        <div class="swiper-button-prev awardtext_prev">{% render 'icon-prev' %}</div>
+      </div>
+
+      <div class="ctm_slide_pagination">
+        <div class="swiper-pagination award_pagination pagifill_alaloe_leaf"></div>
+      </div>
+    </div>
+
+    <div class="ctm_award_btn w-fit mx-auto">
+      <a class="aloe_leaf_btn" href="{{ section.settings.button_url }}">{{ section.settings.button_text }}</a>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Award Slider",
+  "tag": "section",
+  "enabled_on": {
+    "templates": ["product", "index", "page"]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "label": "Extra Class",
+      "id": "extra_class"
+    },
+    {
+      "type": "image_picker",
+      "label": "Background Image",
+      "id": "background_image"
+    },
+    {
+      "type": "text",
+      "label": "Upper Sub Head",
+      "id": "upper_sub_head"
+    },
+    {
+      "type": "text",
+      "label": "Main Head",
+      "id": "main_head"
+    },
+    {
+      "type": "text",
+      "label": "Button Text",
+      "id": "button_text"
+    },
+    {
+      "type": "url",
+      "label": "Button URL",
+      "id": "button_url"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "award_slide",
+      "name": "Award Slide",
+      "settings": [
+        {
+          "type": "image_picker",
+          "label": "Award Image 1",
+          "id": "award_image_1"
+        },
+        {
+          "type": "image_picker",
+          "label": "Award Image 2",
+          "id": "award_image_2"
+        },
+        {
+          "type": "image_picker",
+          "label": "Award Image 3",
+          "id": "award_image_3"
+        },
+        {
+          "type": "image_picker",
+          "label": "Award Image 4",
+          "id": "award_image_4"
+        },
+        {
+          "type": "text",
+          "label": "Review Head",
+          "id": "review_head"
+        },
+        {
+          "type": "html",
+          "label": "Review Description",
+          "id": "review_description"
+        },
+        {
+          "type": "range",
+          "id": "rate",
+          "min": 0,
+          "max": 5,
+          "step": 1,
+          "label": "Rating",
+          "default": 5
+        }
+      ]
+    },
+    {
+      "type": "@app"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Award Slider"
+    }
+  ]
+}
+{% endschema %}

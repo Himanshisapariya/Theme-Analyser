@@ -1,0 +1,58 @@
+<div class="{{ section.settings.extra_class }} container-xl" {% if section.settings.anchor_id !="blank" %}
+  id="{{ section.settings.anchor_id }}"
+{% endif %}>
+  {% if section.settings.heading != blank %}
+  <div class="ctm-video-banner-header">
+    <h3 class="flex items-center text-center mdscreen6:gap-x-[33px] gap-x-16 justify-center max-mdscreen6:max-w-[290px] max-mdscreen6:mx-auto max-mdscreen6:leading-24">
+      {% render 'stars-section' %} {{ section.settings.heading }} {% render 'stars-section' %}
+    </h3>
+  </div>
+  {% endif %}
+  {% if section.settings.select_video != blank %}
+  <div class="ctm-video-select-banner max-mdscreen6:-mx-16 max-mdscreen2:-mx-30 max-extlarge_desktop_1:max-w-[1098px] max-extlarge_desktop_1:mx-auto">
+    {{
+      section.settings.select_video
+      | video_tag:
+        loop: true,
+        controls: true,
+        muted: true,
+        autoplay: true,
+        playsinline: true,
+        class: 'hero_video-video ctm-desktop-hero-video object-cover w-full h-full mdscreen2:rounded-10'
+    }}
+  </div>
+  {% endif %}
+</div>
+{% schema %}
+{
+  "name": "CTM Video Banner",
+  "class": "ctm-video-banner",
+  "settings": [
+    {
+      "type": "text",
+      "label": "Extra Class",
+      "id": "extra_class"
+    },
+    {
+      "type": "text",
+      "label": "Anchor Link",
+      "id": "anchor_id"
+    },
+    {
+      "type": "text",
+      "label": "Heading",
+      "id": "heading"
+    },
+    {
+      "type": "video",
+      "label": "Select Video",
+      "id": "select_video"
+    }
+  ],
+  "presets": [
+    {
+      "name": "CTM Video Banner"
+    }
+  ]
+}
+{% endschema %}

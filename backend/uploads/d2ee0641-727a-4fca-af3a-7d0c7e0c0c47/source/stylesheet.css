@@ -1,0 +1,15 @@
+@font-face {
+  font-family: "GothamBook";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("https://cdn.shopify.com/s/files/1/0792/4904/7864/files/GothamBook.woff2?v=1740741635")
+    format("woff2");
+}
+@font-face {
+  font-family: "Gotham-Medium";
+  font-style: normal;
+  font-display: swap;
+  src: url("https://cdn.shopify.com/s/files/1/0792/4904/7864/files/Gotham-Medium.woff2?v=1748436086")
+    format("woff2");
+}

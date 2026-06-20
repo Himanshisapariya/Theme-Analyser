@@ -1,0 +1,101 @@
+{{ 'component-card.css' | asset_url | stylesheet_tag: preload: true }}
+<script src="{{ 'product-form.js' | asset_url }}" defer></script>
+
+<div class="ctm_feature_coll_main pt-55 pb-55 desktop:pb-80 {{ section.settings.extra_class }}">
+  <div class="xl_container lgscreen:!px-0">
+    <div class="ctm_feature_coll_inner">
+      <div class="ctm_title_block flex items-center justify-center lg:justify-between lgscreen:px-30 lgscreen:text-center">
+        {%- if section.settings.title != blank -%}
+          <div class="ctm_title">
+            <h3>{{ section.settings.title }}</h3>
+          </div>
+        {%- endif -%}
+        {%- if section.settings.url != blank or section.settings.small_title -%}
+          <div class="ctm_small_title lgscreen:hidden">
+            <a class="aloeleaf_fill_none_btn" href="{{ section.settings.url }}">{{ section.settings.small_title }}</a>
+          </div>
+        {%- endif -%}
+      </div>
+
+      {% for block in section.blocks %}
+        <div class="ctm_feature_coll_slider swiper !pt-40 mdscreen2:!pt-14 lgscreen:!pb-40">
+          {%- assign collection = collections[block.settings.select_collection] -%}
+          <div class="swiper-wrapper">
+            {%- for product in collection.products limit: 3 -%}
+              <div class="swiper-slide !h-auto">
+                <div class="ctm_feature_product flex flex-col h-full">
+                  {% render 'card-product',
+                    card_product: product,
+                    show_secondary_image: section.settings.show_secondary_image,
+                    section_id: section.id
+                  %}
+                </div>
+              </div>
+            {%- endfor -%}
+          </div>
+        </div>
+      {%- endfor -%}
+      {%- if section.settings.url != blank or section.settings.small_title -%}
+        <div class="ctm_small_title lg:hidden lgscreen:w-fit lgscreen:mx-auto">
+          <a class="aloeleaf_fill_none_btn" href="{{ section.settings.url }}">{{ section.settings.small_title }}</a>
+        </div>
+      {%- endif -%}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "custom feature collection",
+  "tag": "section",
+  "class": "ctm_featrure_collection",
+  "settings": [
+    {
+      "type": "text",
+      "label": "Extra Class",
+      "id": "extra_class"
+    },
+    {
+      "type": "text",
+      "label": "Title",
+      "id": "title",
+      "default": "Explore Our Best Sellers"
+    },
+    {
+      "type": "text",
+      "label": "Small Title",
+      "id": "small_title",
+      "default": "Shop All"
+    },
+    {
+      "type": "url",
+      "label": "URL",
+      "id": "url"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_secondary_image",
+      "default": false,
+      "label": "t:sections.main-collection-product-grid.settings.show_secondary_image.label"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "collection_slide",
+      "name": "Collection Slide",
+      "settings": [
+        {
+          "type": "collection",
+          "label": "Select Collection",
+          "id": "select_collection"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "custom feature collection"
+    }
+  ]
+}
+{% endschema %}

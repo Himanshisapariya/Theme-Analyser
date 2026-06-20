@@ -1,0 +1,101 @@
+{%- style -%}
+  {% if section.settings.bg_image != blank %}
+      .ctm_building_block {
+        background-image: url('{{ section.settings.bg_image | image_url: width:2000 }}');
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
+    {% endif %}
+{%- endstyle -%}
+
+<div class="main_logo_container pt-55 {{ section.settings.extra_class }}">
+  <div class="xl_container">
+    <div class="ctm_building_block rounded-24 overflow-hidden py-55 px-30 lg:px-55 desktop:px-75">
+      <div class="ctm_building_content_block text-center pb-40">
+        <div class="logo_caption mb-10">
+          <h6>{{ section.settings.caption }}</h6>
+        </div>
+        <div class="logo_heading mb-14">
+          <h3>{{ section.settings.heading }}</h3>
+        </div>
+        {% if section.settings.desc != blank %}
+          <div class="logo_desc max-w-[746px] w-full midlarge_desktop:max-w-[1000px] mx-auto">
+            <p>{{ section.settings.desc }}</p>
+          </div>
+        {% endif %}
+      </div>
+      <div class="building_brand_inner flex flex-wrap items-center justify-center gap-40 small_desktop:gap-55 desktop:!gap-x-[113px] desktop:!gap-y-40 midlarge_desktop:max-w-[1252px] midlarge_desktop:mx-auto">
+        {% for block in section.blocks %}
+          {% if block.settings.logo_img != blank %}
+            <a href="{{ block.settings.logo_url }}" target="_blank" class="building_brand flex-shrink-0 smscreen:w-2/5">
+              <img
+                src="{{ block.settings.logo_img | image_url: width: 500 }}"
+                alt="{{ block.settings.logo_img.alt }}"
+                loading="lazy"
+                width="160"
+                height="160"
+              >
+            </a>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Heading and Logo",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "extra_class",
+      "label": "Extra Class"
+    },
+    {
+      "type": "image_picker",
+      "id": "bg_image",
+      "label": "Background Image"
+    },
+    {
+      "type": "text",
+      "label": "Caption",
+      "id": "caption"
+    },
+    {
+      "type": "text",
+      "label": "Heading",
+      "id": "heading"
+    },
+    {
+      "type": "html",
+      "label": "Description ",
+      "id": "desc"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "logo",
+      "name": "Logo",
+      "settings": [
+        {
+          "type": "image_picker",
+          "label": "Add Logo",
+          "id": "logo_img"
+        },
+        {
+          "type": "url",
+          "label": "Add Logo URL",
+          "id": "logo_url"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Heading and Logo"
+    }
+  ]
+}
+{% endschema %}

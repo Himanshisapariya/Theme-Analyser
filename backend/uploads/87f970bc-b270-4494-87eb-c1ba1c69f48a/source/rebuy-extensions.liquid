@@ -1,0 +1,71 @@
+<script>
+  /* Modify Rebuy Search prices to support B2B and Market prices */
+  
+function updateSearchPrices(products, type) {
+  setTimeout(() => {
+    products.forEach(product => {
+      // console.log(type, product);
+      
+      fetch(Shopify.routes.root + "products/" + product.handle + ".js")
+        .then((res) => res.json())
+        .then((data) => {
+          var updatedProductData = data;
+          
+          // console.log(type, updatedProductData);
+          
+          if (Number(product.id) === updatedProductData.id || product.productId === updatedProductData.id) {
+
+            product.price = updatedProductData.price;
+            product.compareAtPrice = updatedProductData.compare_at_price;
+            
+            // if the product object has variants, loop over each variant and set the correct prices
+            if (product.variants) {
+              for (var j = 0, updatedProductVariant; j < updatedProductData.variants?.length; j++) {
+                updatedProductVariant = updatedProductData.variants[j];
+  
+                for (var x = 0, productVariant; x < product.variants?.length; x++) {
+                  productVariant = product.variants[x];
+  
+                  if (updatedProductVariant.id === Number(productVariant.id)) {
+                    productVariant.price = updatedProductVariant.price;
+                    productVariant.compareAtPrice = updatedProductVariant.compare_at_price;
+                    break;
+                  }
+                }
+              }
+            } else {
+                product.selected_variant.price = updatedProductData.price;
+                product.selected_variant.compareAtPrice = updatedProductData.compare_at_price;
+            }
+          }
+        });
+    })
+  }, 500)
+}
+
+
+  /* quick view loads, update suggested products*/
+  document.addEventListener('rebuy:smartsearch.quickview.ready', (event) => {
+    setTimeout(() => { 
+      updateSearchPrices(event.detail.smartSearchQuickView.setting.suggestedProducts, "QUICKVIEW ready");
+      // console.log("Quickview Ready");
+    }, 500)
+  });
+  
+  /* quickview search products returned */
+  document.addEventListener('rebuy:smartsearch.quickview.productsChange', (event) => {
+    updateSearchPrices(event.detail.products, "QUICKVIEW change");
+    // console.log("Quickview productsChange");
+  });
+
+  /* results page search products returned */
+  document.addEventListener('rebuy:smartsearch.resultsPage.productsChange', (event) => {
+    setTimeout(() => { 
+      updateSearchPrices(event.detail.products, "RESULTSPAGE");
+      // console.log("Results Page productsChange");
+    }, 500)
+  });
+
+
+  
+</script>

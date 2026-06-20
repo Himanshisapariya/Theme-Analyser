@@ -1,0 +1,116 @@
+<style>
+  @keyframes marquee {
+    0% { transform: translateX(0%); }
+    100% { transform: translateX(-50%); }
+  }
+  
+  .animate-marquee {
+    display: flex;
+    white-space: nowrap;
+    animation: marquee 15s linear infinite;
+  }
+</style>
+
+<div id="ctm-txt-list-logo" class="{{ section.settings.extra_class }} ctm-text-list-images-main bg-lightest-blue">
+<div class="bg-white shadow-xl rounded-20 ctm-text-list-images-inner max-w-[1280px] mx-auto relative z-[1]">
+  <div class="w-full">
+  <div class="ctm-list-logo-header">
+    {% if section.settings.header != blank %}
+    <h4 class="text-center max-mdscreen2:text-20 max-mdscreen2:leading-[130%] max-mdscreen6:max-w-[223px] max-mdscreen2:mx-auto">{{ section.settings.header }}</h4>
+    {% endif %}
+  </div>
+  <div class="flex justify-between items-stretch max-mdscreen2:flex-col">
+  <div class="ctm-list-left-text xl:max-w-[430px] mdscreen2:max-w-[380px]">
+    <ul class="flex flex-col gap-y-12">
+      {% for block in section.blocks %} 
+        {% if block.settings.list != blank %}
+            <li class="flex items-center gap-8 text-primary-black"><span>{% render 'star-list-icon' %}</span> <p>{{ block.settings.list }}</p></li>
+        {% endif %}
+      {% endfor %}
+    </ul>
+  </div>
+  <div class="mdscreen2:w-[1px] w-full small_desktop:h-[160px] mdscreen2:h-auto h-[1px] bg-gray !block seprator"></div>
+  <div class="ctm-list-right-image xl:max-w-[460px] mdscreen2:max-w-[380px] hidden mdscreen2:!block">
+    <img src="{{ section.settings.logos | image_url }}" width="auto" height="auto" class="h-full xl:object-none object-contain" alt="desk img">
+  </div> 
+  <!-- Mobile Logo Scroll (visible on mobile only) -->
+<div class="block mdscreen2:hidden mt-6 overflow-x-auto ctm-list-logo-scroll">
+  <div class="flex items-center gap-x-[22px] w-max px-4">
+    {% for block in section.blocks %}
+      {% if block.type == 'mobile_logo_slider' and block.settings.mobile_logo != blank %}
+        <img 
+          src="{{ block.settings.mobile_logo | image_url }}" 
+          alt="Mobile Logo" 
+          height="auto" width="140" />
+      {% endif %}
+    {% endfor %}
+  </div>
+</div>
+  </div>
+  <div class="ctm-logo-btn w-full flex justify-center">
+    {% if section.settings.button_text != blank %}
+    <a href="{{ section.settings.button_url }}" class="ctm-button primary-button mdscreen2:min-w-[210px] min-w-full">{{ section.settings.button_text }}</a>
+    {% endif %}
+  </div>
+  </div>
+  </div>
+</div>
+ 
+
+{% schema %}
+{
+  "name": "Text List With Logo",
+  "class": "ctm-list-logo-main",
+  "settings": [
+    {
+      "type": "text",
+      "label": "Header",
+      "id": "header"
+    },
+    {
+      "type": "image_picker",
+      "label": "Logos",
+      "id": "logos"
+    },
+    {
+      "type": "text",
+      "label": "Button Text",
+      "id": "button_text"
+    },
+    {
+      "type": "url",
+      "label": "Button URL",
+      "id": "button_url"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "star_list",
+      "name": "Star List",
+      "settings": [
+        {
+          "type": "html",
+          "label": "List",
+          "id": "list"
+        }
+      ]
+    },
+    {
+      "type": "mobile_logo_slider",
+      "name": "Mobile Logo Slider",
+      "settings": [
+        {
+          "type": "image_picker",
+          "label": "Mobile Logo",
+          "id": "mobile_logo"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Text List With Logo"
+    }
+  ]
+}
+{% endschema %}

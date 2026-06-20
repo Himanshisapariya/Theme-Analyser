@@ -1,0 +1,174 @@
+<style>
+  .ctm_icon_text_bg {
+    background-image: url('{{ section.settings.background_image | image_url: width:2000 }}');
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+</style>
+<div class="pt-55 desktop:pt-80 {{ section.settings.extra_class }}">
+  <div class="xl_container">
+    <div class="ctm_icon_text_bg rounded-24 overflow-hidden py-55">
+      <div class="ctm_icon_txt_head_main text-center pb-40 px-40 lg:px-55 desktop:px-75">
+        {% if section.settings.upper_sub_head != blank %}
+          <div class="text_caption_title mb-10">
+            <h5>{{ section.settings.upper_sub_head }}</h5>
+          </div>
+        {% endif %}
+        {% if section.settings.main_head != blank %}
+          <div class="text_section_title mb-15">
+            <h3>{{ section.settings.main_head }}</h3>
+          </div>
+        {% endif %}
+        {% if section.settings.lower_sub_head != blank %}
+          <div class="text_content_title">
+            <p>{{ section.settings.lower_sub_head }}</p>
+          </div>
+        {% endif %}
+        {% if section.settings.description != blank %}
+          <div class="text_descript_title max-w-[747px] mx-auto">
+            {{ section.settings.description }}
+          </div>
+        {% endif %}
+      </div>
+      <div class="ctm_icontext_block icon-swiper-text swiper xl:!px-55 desktop:!px-75 xlscreen2:!pb-50">
+        <div class="swiper-wrapper">
+          {% for block in section.blocks %}
+            <div class="swiper-slide">
+              <div class="ctm_icon_cont_block flex xlscreen2:flex-col gap-16 items-center">
+                <div class="ctm_icon_img flex-shrink-0">
+                  {% if block.settings.icon_image != blank %}
+                    <img
+                      src="{{ block.settings.icon_image | image_url: width: 500 }}"
+                      alt="{{ block.settings.icon_image.alt }}"
+                      loading="lazy"
+                      width="64"
+                      height="64"
+                    >
+                  {% endif %}
+                </div>
+                <div class="ctm_icon_text xlscreen2:text-center">
+                  <h6 class="font-extrabold text-bloodstone">{{ block.settings.icon_text }}</h6>
+                  {% if block.settings.icon_description != blank %}
+                    <div class="ctm_icon_description">
+                      {{ block.settings.icon_description }}
+                    </div>
+                  {% endif %}
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+        <div class="ctm_slide_pagination xl:hidden">
+          <div class="swiper-pagination pagifill_alaloe_leaf"></div>
+        </div>
+      </div>
+    </div>
+
+    {% if section.settings.under_desc != blank %}
+      <div class="text_descript_title max-w-[747px] mx-auto">
+        {{ section.settings.under_desc }}
+      </div>
+    {% endif %}
+    {% if section.settings.button_url != blank %}
+      <div class="sign_up_btn">
+        <a
+          class="aloe_leaf_btn"
+          {% if section.settings.tick_if_third_party_link %}
+            target="_blank"
+          {% endif %}
+          href="{{ section.settings.button_url }}"
+        >
+          {{- section.settings.button_text -}}
+        </a>
+      </div>
+    {% endif %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Icon Text",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "label": "Extra Class",
+      "id": "extra_class"
+    },
+    {
+      "type": "image_picker",
+      "label": "Background Image",
+      "id": "background_image"
+    },
+    {
+      "type": "text",
+      "label": "Upper Sub Head",
+      "id": "upper_sub_head"
+    },
+    {
+      "type": "text",
+      "label": "Main Head",
+      "id": "main_head"
+    },
+    {
+      "type": "text",
+      "label": "Lower Sub Head",
+      "id": "lower_sub_head"
+    },
+    {
+      "type": "html",
+      "label": "Description ",
+      "id": "description"
+    },
+    {
+      "type": "html",
+      "label": "Add Description ",
+      "id": "under_desc"
+    },
+    {
+      "type": "text",
+      "label": "Button Text",
+      "id": "button_text"
+    },
+    {
+      "type": "url",
+      "label": "Button URL",
+      "id": "button_url"
+    },
+    {
+      "type": "checkbox",
+      "label": "Tick if Third Party Link",
+      "id": "tick_if_third_party_link",
+      "default": false
+    }
+  ],
+  "blocks": [
+    {
+      "type": "icon_text",
+      "name": "Icon Text",
+      "settings": [
+        {
+          "type": "image_picker",
+          "label": "Icon Image",
+          "id": "icon_image"
+        },
+        {
+          "type": "html",
+          "label": "Icon Text",
+          "id": "icon_text"
+        },
+        {
+          "type": "html",
+          "label": "Icon Description",
+          "id": "icon_description"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Icon Text"
+    }
+  ]
+}
+{% endschema %}

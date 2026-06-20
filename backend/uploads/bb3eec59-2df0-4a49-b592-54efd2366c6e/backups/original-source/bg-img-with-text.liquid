@@ -1,0 +1,431 @@
+<section class="bg-img-width-text">
+  <div class="bg-main-content">
+    {% if section.settings.image != blank %}
+      <div class="bg-main-img">
+        <img
+          src="{{ section.settings.image | image_url: width: 4096}}"
+          alt=""
+          width="auto"
+          height="auto"
+        >
+      </div>
+    {% endif %}
+    {% if section.settings.background_image != blank %}
+      <div class="bg-main-content-img">
+        <div class="bg-content-inner">
+          {% if section.settings.sub_text != blank %}
+            <div class="sub-text">
+              <h3>{{ section.settings.sub_text }}</h3>
+            </div>
+          {% endif %}
+          {% if section.settings.title != blank %}
+            <div class="bg-title">
+              <h3>{{ section.settings.title }}</h3>
+            </div>
+          {% endif %}
+          {% if section.settings.description != blank %}
+            <div class="bg-title">
+              <div class="bg-description">{{ section.settings.description }}</div>
+            </div>
+          {% endif %}
+          {% if section.settings.button_url != blank %}
+            <div class="ctm-btn-main">
+                <a class="{{ section.settings.button_style }}" href="{{ section.settings.button_url }}">{{ section.settings.button_text }}</a>
+            </div>
+          {% endif %}
+        </div>
+        <div class="bg-image">
+          <img
+            src="{{ section.settings.background_image | image_url: width: 4096 }}"
+            width="auto"
+            height="auto"
+            alt=""
+          >
+        </div>
+      </div>
+    {% endif %}
+  </div>
+</section>
+
+{%- style -%}
+  .bg-img-width-text {
+  	padding-top: {{ section.settings.top_padding_desktop }}px;
+  	padding-bottom: {{ section.settings.bottom_padding_desktop }}px;
+  }
+  @media screen and (max-width: 990px) {
+  	.bg-img-width-text {
+  		padding-top: {{ section.settings.top_padding_mobile }}px;
+  		padding-bottom: {{ section.settings.bottom_padding_mobile }}px;
+  	}
+  }
+  .bg-img-width-text {
+  	margin-top: {{ section.settings.top_margin_desktop}}px;
+  	margin-bottom: {{ section.settings.bottom_margin_desktop }}px;
+  }
+
+  @media screen and (max-width: 990px) {
+  	.bg-img-width-text {
+  		margin-top: {{ section.settings.top_margin_mobile }}px;
+  		margin-bottom: {{ section.settings.bottom_margin_mobile }}px;
+  	}
+  }
+{%- endstyle -%}
+
+{% stylesheet %}
+  .bg-img-width-text {
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100%;
+    background-position: center center;
+  }
+  .bg-content-inner .bg-button {
+    font-size: 18px !important;
+    min-width: 350px !important;
+    background-color: #fff !important;
+    color: #2f484c;
+    border: 1px solid white !important;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 10rem;
+    min-height: 6rem;
+    padding: 0.85rem 3rem;
+    margin-top: 3rem;
+  }
+  .bg-content-inner .bg-button:hover {
+    background-color: #28b473 !important;
+    border: 1px solid #28b473 !important;
+  }
+  .bg-content-inner .bg-button:hover a {
+    color: #fff !important;
+  }
+  .bg-content-inner .bg-button a {
+    text-decoration: none;
+  }
+  .bg-content-inner .bg-title p,
+  .bg-title h3 {
+    color: white !important;
+  }
+  .bg-content-inner .sub-text h3 {
+    font-size: 36px;
+    margin: 0;
+    font-weight: 600;
+    color: #28b473 !important;
+  }
+  .bg-content-inner .bg-title h3 {
+    margin-top: 15px;
+    font-size: 46px;
+    margin-bottom: 0;
+  }
+  .bg-content-inner .bg-description p {
+    font-size: 24px;
+    line-height: 1.5;
+    font-weight: 600;
+  }
+  .bg-content-inner .bg-description {
+    padding-top: 10px;
+  }
+  .bg-main-content {
+    display: flex;
+    justify-content: end;
+  }
+  .bg-img-width-text img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    object-position: bottom;
+  }
+  .bg-image {
+    height: 100%;
+  }
+
+  .bg-main-img {
+    height:auto;
+    display: flex;
+    width: 40%;
+  }
+
+  .bg-main-content-img {
+    position: relative;
+    width: 68%;
+  }
+  .bg-content-inner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 90%;
+    transform: translate(-50%, -50%);
+  }
+
+.bg-content-inner .ctm-btn-main a{
+  margin-top: 10px;
+}
+
+  @media screen and (max-width: 1600px) {
+    .bg-content-inner .bg-title h3 {
+      font-size: 24px;
+      margin-bottom: 0;
+    }
+    .bg-content-inner .sub-text h3 {
+      font-size: 26px;
+    }
+    .bg-content-inner .bg-description h3 {
+      font-size: 20px;
+      line-height: 26px;
+      margin-bottom: 0;
+    }
+    .bg-content-inner .bg-button {
+      margin-top: 2rem;
+    }
+    .bg-content-inner .bg-description {
+      padding-top: 0;
+    }
+  }
+    @media screen and (max-width: 1440px) {
+      .bg-image-with-text .bg-content-inner .ctm-btn-main .bg-button {
+      min-width: 230px !important;
+      min-height: 5rem;
+    }
+
+    }
+  @media screen and (max-width: 1024px) {
+    .bg-content-inner .bg-description p {
+      font-size: 16px;
+      line-height: 26px;
+      margin-bottom: 0;
+    }
+    .bg-content-inner .bg-button {
+      margin-top: 2rem;
+    }
+  }
+  @media screen and (max-width: 990px) {
+    .bg-main-content {
+      flex-direction: column-reverse;
+    }
+    .bg-content-inner .bg-title h3 {
+      font-size: 28px;
+      margin-bottom: 0;
+    }
+    .bg-content-inner .sub-text h3 {
+      font-size: 26px;
+    }
+    .bg-content-inner .bg-description p {
+      font-size: 20px;
+      line-height: 26px;
+      margin-bottom: 0;
+    }
+
+    .bg-main-content-img {
+      position: relative;
+      height: 560px;
+    }
+    .bg-content-inner .ctm-btn-main {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+      .bg-main-img {
+    width: 100%;
+  }
+
+  .bg-main-content-img {
+    position: relative;
+    width: 100%;
+  }
+  .bg-content-inner .bg-button {
+      margin-top: 4rem;
+    }
+  }
+
+  @media screen and (max-width: 575px) {
+    .bg-content-inner .bg-title h3 {
+      font-size: 24px;
+      margin-bottom: 0;
+      line-height: 30px;
+    }
+
+    .bg-img-width-text .bg-content-inner .bg-button {
+      min-width: 320px !important;
+    }
+
+    .bg-content-inner .bg-description p {
+      font-size: 18px;
+      line-height: 24px;
+    }
+  }
+  @media screen and (max-width: 390px) {
+    .bg-main-content-img {
+      height: 660px;
+    }
+  }
+{% endstylesheet %}
+{% schema %}
+{
+  "name": "Bg Image With Text",
+  "class": "bg-image-with-text",
+  "settings": [
+    {
+      "type": "image_picker",
+      "label": "Image",
+      "id": "image"
+    },
+    {
+      "type": "image_picker",
+      "label": "Background Image",
+      "id": "background_image"
+    },
+    {
+      "type": "text",
+      "label": "Sub Text",
+      "id": "sub_text"
+    },
+    {
+      "type": "text",
+      "label": "Title",
+      "id": "title"
+    },
+    {
+      "type": "html",
+      "label": "Description",
+      "id": "description"
+    },
+    {
+      "type": "text",
+      "label": "Button Text",
+      "id": "button_text"
+    },
+    {
+      "type": "url",
+      "label": "Button URL",
+      "id": "button_url"
+    },
+      {
+			"type": "select",
+			"id": "button_style",
+			"options": [
+				{
+					"value": "button--ctm_global_button",
+					"label": "Global Button"
+				},
+				{
+					"value": "button--ctm_wb_global_button",
+					"label": "Global Button (White Background)"
+				},
+        {
+					"value": "ctm-custom-button",
+					"label": "Custom Button"
+				},
+        {
+          "value": "ctm-custom-outline-button",
+          "label": "Outline Button"
+        },
+				{
+					"value": "button button--primary",
+					"label": "t:sections.all.button.button_style.options__1.label"
+				},
+				{
+					"value": "button button--secondary",
+					"label": "t:sections.all.button.button_style.options__2.label"
+				},
+				{
+					"value": "button button--tertiary",
+					"label": "t:sections.all.button.button_style.options__3.label"
+				}
+			],
+			"default": "button button--primary",
+			"label": "t:sections.all.button.button_style.label"
+		},
+    {
+      "type": "header",
+      "content": "Section Spacing"
+    },
+    {
+      "type": "range",
+      "label": "Top Padding Desktop",
+      "id": "top_padding_desktop",
+      "default": 0,
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "label": "Bottom Padding Desktop",
+      "id": "bottom_padding_desktop",
+      "default": 0,
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "label": "Top Padding Mobile",
+      "id": "top_padding_mobile",
+      "default": 0,
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "label": "Bottom Padding Mobile",
+      "id": "bottom_padding_mobile",
+      "default": 0,
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "label": "Top Margin Desktop",
+      "id": "top_margin_desktop",
+      "default": 0,
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "label": "Bottom Margin Desktop",
+      "id": "bottom_margin_desktop",
+      "default": 0,
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "label": "Top Margin Mobile",
+      "id": "top_margin_mobile",
+      "default": 0,
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "label": "Bottom Margin Mobile",
+      "id": "bottom_margin_mobile",
+      "default": 0,
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px"
+    }
+  ],
+  "blocks": [],
+  "presets": [
+    {
+      "name": "Bg Image With Text"
+    }
+  ]
+}
+{% endschema %}

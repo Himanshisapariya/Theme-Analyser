@@ -1,0 +1,30 @@
+@media screen and (min-width: 990px) {
+}
+.video-section--banner .video-section__content {
+  position: relative;
+  width: 100%;
+  padding: 0 3rem;
+}
+@media (min-width: 990px) {
+  .video-section--banner .video-section__content {
+    padding: 0 11rem;
+  }
+}
+.video-section--banner .video-section__content h2 {
+  color: rgb(var(--color-base-background-2));
+}
+@media screen and (min-width: 1200px) {
+}
+.video-section--banner .video-section__images li {
+  gap: 1.5rem;
+}
+@media screen and (min-width: 990px) {
+}
+@media screen and (min-width: 990px) {
+  .video-section--banner .images__bottom img:nth-child(1) {
+    margin-bottom: 0;
+  }
+}
+.video-section--banner .deferred-media__poster {
+  cursor: default;
+}

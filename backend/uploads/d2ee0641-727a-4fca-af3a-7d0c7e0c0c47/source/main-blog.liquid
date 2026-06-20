@@ -1,0 +1,279 @@
+{{ 'component-article-card.css' | asset_url | stylesheet_tag }}
+{{ 'component-card.css' | asset_url | stylesheet_tag: preload: true }}
+{{ 'section-main-blog.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  {% if section.settings.bg_image != blank %}
+    .ctm_blog_bg {
+      background-image: url('{{ section.settings.bg_image | image_url: width:2000 }}');
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+  {% endif %}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.69 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.69 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+<div class="main-blog page-widths section-{{ section.id }}-padding">
+  <div class="xl_container">
+    <div class="search_input flex items-center justify-end gap-10 text-right py-16 px-32 border-1 border-solid border-dark_grey rounded-5 max-w-full md:max-w-[305px] w-full h-[54px] mb-40 md:ml-auto">
+      <svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <g clip-path="url(#clip0_8216_10313)">
+          <path d="M13 13.75L19 19.75M8 15.75C4.13401 15.75 1 12.616 1 8.75C1 4.88401 4.13401 1.75 8 1.75C11.866 1.75 15 4.88401 15 8.75C15 12.616 11.866 15.75 8 15.75Z" stroke="#62673C" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+        </g>
+        <defs>
+          <clipPath id="clip0_8216_10313">
+              <rect width="20" height="20" fill="white" transform="translate(0 0.75)"/>
+          </clipPath>
+        </defs>
+      </svg>
+      <div class="blog-search-input flex-grow">
+        <input
+          aria-label="search lable"
+          type="text"
+          id="blog_search_bar"
+          class="blog-search-box w-full focus-visible:outline-none"
+          placeholder="Search.."
+          autocomplete="off"
+        >
+      </div>
+      <div class="clear-icon hidden">
+        <img
+          src="https://cdn.shopify.com/s/files/1/0171/0160/files/close_2-new.png?v=1699513909"
+          width="20"
+          height="20"
+          loading="lazy"
+          alt="close-btn"
+        >
+      </div>
+    </div>
+  </div>
+  <div class="xl_container">
+    <div class="ctm_blog_bg px-30 lg:px-55 desktop:px-75 py-55 rounded-24 overflow-hidden">
+      <div
+        class="blog-articles !grid !grid-cols-1 sm:!grid-cols-2 lg:!grid-cols-3 {% if section.settings.layout == 'collage' %}blog-articles--collage{% endif %}"
+        id="blog-articles-container"
+      >
+        {%- for article in blog.articles -%}
+          <div
+            class="blog-articles__article ctm_bloggrid_list article{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+            {% if settings.animations_reveal_on_scroll %}
+              data-cascade
+              style="--animation-order: {{ forloop.index }};"
+            {% endif %}
+          >
+            {%- render 'article-card',
+              article: article,
+              media_height: section.settings.image_height,
+              media_aspect_ratio: article.image.aspect_ratio,
+              show_image: section.settings.show_image,
+              show_date: section.settings.show_date,
+              show_author: section.settings.show_author,
+              show_excerpt: true
+            -%}
+          </div>
+        {% endfor %}
+      </div>
+      {% comment %} <button id="load-more-button" class="load-more-button aloe_leaf_btn mx-auto mt-30 md:mt-55">See More Posts</button> {% endcomment %}
+      <div class="blog_loadmore flex justify-center items-center desktop:pt-60">
+        <div class="w-fit mx-auto">
+          <button id="load_more_blog" class="load-more-button aloe_leaf_btn mx-auto mt-30 md:mt-55">
+            See More Posts
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    $('.ctm_bloggrid_list').hide();
+    $('.ctm_bloggrid_list').slice(0, 9).show();
+    function toggleLoadMoreButton() {
+      if ($('.ctm_bloggrid_list:hidden').length > 0) {
+        $('.blog_loadmore').show();
+      } else {
+        $('.blog_loadmore').hide();
+      }
+    }
+    toggleLoadMoreButton();
+    $('body').on('click touchstart', '#load_more_blog', function (e) {
+      e.preventDefault();
+      $('.ctm_bloggrid_list:hidden').slice(0, 3).slideDown();
+      toggleLoadMoreButton();
+    });
+  });
+
+  // Search
+  document.addEventListener('DOMContentLoaded', function () {
+    $('.ctm_bloggrid_list').hide();
+    $('.ctm_bloggrid_list').slice(0, 9).show();
+
+    function toggleLoadMoreButton() {
+      if ($('.ctm_bloggrid_list:hidden').length > 0) {
+        $('.blog_loadmore').show();
+      } else {
+        $('.blog_loadmore').hide();
+      }
+    }
+
+    toggleLoadMoreButton();
+
+    // Function to filter articles based on search input
+    function filterArticles(searchQuery) {
+      $('.ctm_bloggrid_list').hide(); // Hide all articles
+
+      // Filter articles based on search query
+      $('.ctm_bloggrid_list')
+        .filter(function () {
+          return $(this).text().toLowerCase().includes(searchQuery.toLowerCase());
+        })
+        .show();
+
+      toggleLoadMoreButton(); // Toggle load more button visibility
+    }
+
+    // Event listener for search input
+    $('#blog_search_bar').on('input', function () {
+      var searchQuery = $(this).val().trim(); // Trim whitespace from search query
+      filterArticles(searchQuery);
+    });
+
+    $('body').on('click touchstart', '#load_more_blog', function (e) {
+      e.preventDefault();
+      $('.ctm_bloggrid_list:hidden').slice(0, 3).slideDown();
+      toggleLoadMoreButton();
+    });
+  });
+</script>
+
+{% schema %}
+{
+  "name": "t:sections.main-blog.name",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "label": "Extra Class",
+      "id": "extra_class"
+    },
+    {
+      "type": "html",
+      "label": "Title",
+      "id": "page_title_black"
+    },
+    {
+      "type": "image_picker",
+      "id": "bg_image",
+      "label": "Background Image"
+    },
+    {
+      "type": "image_picker",
+      "label": "Image",
+      "id": "breadcrumb_image"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.main-blog.settings.header.content"
+    },
+    {
+      "type": "select",
+      "id": "layout",
+      "options": [
+        {
+          "value": "grid",
+          "label": "t:sections.main-blog.settings.layout.options__1.label"
+        },
+        {
+          "value": "collage",
+          "label": "t:sections.main-blog.settings.layout.options__2.label"
+        }
+      ],
+      "default": "collage",
+      "label": "t:sections.main-blog.settings.layout.label",
+      "info": "t:sections.main-blog.settings.layout.info"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_image",
+      "default": true,
+      "label": "t:sections.main-blog.settings.show_image.label"
+    },
+    {
+      "type": "select",
+      "id": "image_height",
+      "options": [
+        {
+          "value": "adapt",
+          "label": "t:sections.main-blog.settings.image_height.options__1.label"
+        },
+        {
+          "value": "small",
+          "label": "t:sections.main-blog.settings.image_height.options__2.label"
+        },
+        {
+          "value": "medium",
+          "label": "t:sections.main-blog.settings.image_height.options__3.label"
+        },
+        {
+          "value": "large",
+          "label": "t:sections.main-blog.settings.image_height.options__4.label"
+        }
+      ],
+      "default": "medium",
+      "label": "t:sections.main-blog.settings.image_height.label",
+      "info": "t:sections.main-blog.settings.image_height.info"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_date",
+      "default": true,
+      "label": "t:sections.main-blog.settings.show_date.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_author",
+      "default": false,
+      "label": "t:sections.main-blog.settings.show_author.label"
+    },
+    {
+      "type": "paragraph",
+      "content": "t:sections.main-blog.settings.paragraph.content"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 36
+    }
+  ]
+}
+{% endschema %}

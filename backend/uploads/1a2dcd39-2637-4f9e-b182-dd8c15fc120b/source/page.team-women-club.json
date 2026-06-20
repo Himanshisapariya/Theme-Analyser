@@ -1,0 +1,107 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "shogun-helper": {
+      "type": "shogun-helper",
+      "settings": {}
+    },
+    "pages": {
+      "type": "main-page",
+      "custom_css": [
+        ".container {padding-top: 50px; padding-bottom: 50px;}",
+        "h1 {text-align: center;}"
+      ],
+      "settings": {
+        "extra_class": "ctm-women-run-club-main"
+      }
+    },
+    "shogun-optimizer": {
+      "type": "shogun-optimizer",
+      "settings": {}
+    },
+    "ctm_tabbing_collection_8nB639": {
+      "type": "ctm_tabbing_collection",
+      "blocks": {
+        "collection_rQJnQf": {
+          "type": "collection",
+          "settings": {
+            "collection_ctm": "womens-running-1",
+            "enable_img": false
+          }
+        }
+      },
+      "block_order": [
+        "collection_rQJnQf"
+      ],
+      "name": "Collection Tabs",
+      "settings": {
+        "heading_ctm": "READY FOR THE MILES",
+        "ctm_subtitle": "Everything You Need for the Season of Sweat",
+        "btn_text": "",
+        "btn_link": "",
+        "bottom_btn_text": "",
+        "bottom_btn_link": "",
+        "tab_1": "",
+        "tab_2": "",
+        "desktop_slide": 6,
+        "spring_slider_class": "ctm-women-run-club-product-grid"
+      }
+    },
+    "rich_text_adPefc": {
+      "type": "rich-text",
+      "blocks": {
+        "button_4CfHBA": {
+          "type": "button",
+          "settings": {
+            "button_label": "SHOP WOMEN’S RUNNING",
+            "button_link": "shopify://collections/womens-running-1",
+            "button_style": "primary"
+          }
+        },
+        "heading_8CHVU7": {
+          "type": "heading",
+          "settings": {
+            "heading": "<h3>GOT QUESTIONS?</h3>",
+            "heading_size": "medium"
+          }
+        },
+        "text_9d4ApG": {
+          "type": "text",
+          "settings": {
+            "text": "<p>We’re here for you! Reach out to us at <a href=\"mailto:orders@xx-xyathletics.com\" title=\"mailto:orders@xx-xyathletics.com\">orders@xx-xyathletics.com</a> so that we can answer your questions.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "button_4CfHBA",
+        "heading_8CHVU7",
+        "text_9d4ApG"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "color_scheme": "background-1",
+        "full_width": true,
+        "padding_top": 0,
+        "padding_bottom": 10,
+        "margin_top": 20,
+        "margin_bottom": 60,
+        "spring_shop_text": "ctm-women-run-club-richtext"
+      }
+    }
+  },
+  "order": [
+    "shogun-helper",
+    "pages",
+    "shogun-optimizer",
+    "ctm_tabbing_collection_8nB639",
+    "rich_text_adPefc"
+  ]
+}

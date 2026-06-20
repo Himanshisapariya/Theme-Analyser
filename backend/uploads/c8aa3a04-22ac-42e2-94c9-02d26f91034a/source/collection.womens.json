@@ -1,0 +1,124 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "banner": {
+      "type": "main-collection-banner",
+      "custom_css": [
+        ".collection-hero__text-wrapper {flex-direction: column-reverse; margin-bottom: 20px;}",
+        "h2 {text-size: 21px;}"
+      ],
+      "settings": {
+        "header_color_scheme": "light",
+        "add_word": "",
+        "show_word": false,
+        "show_collection_description": true,
+        "show_collection_image": true,
+        "overlay_enable": false,
+        "overlay_opacity": 15
+      }
+    },
+    "custom_liquid_hb4Vni": {
+      "type": "custom-liquid",
+      "custom_css": [
+        ".banner_text_ctm {font-size: 18px;}",
+        ".banner_text_ctm a {display: inline-block;}"
+      ],
+      "settings": {
+        "custom_liquid": "<div class=\"banner_text_ctm\" ><strong><i>\"Being brave doesn't mean not having fear, but rather overcoming that fear to do the right, just and moral thing.\"</i></strong><br>\n\n<p>Perhaps no other female athlete has demonstrated more bravery than Riley Gaines, who made waves after speaking out after tying University of Pennsylvania's Lia Thomas, a biological male swimmer. When no one else spoke up, Riley did. And she has been tirelessly standing up for the protection of women's sports and spaces ever since. <a href=\"https://xx-xy-athletics.myshopify.com/blogs/newsroom/riley-gaines-championing-fair-play-and-supporting-xx-xy-athletics\">Learn More</a></p></div>"
+      }
+    },
+    "product-grid": {
+      "type": "main-collection-product-grid",
+      "custom_css": [
+        ".card__title {font-weight: bold;}",
+        ".collection-product-list {row-gap: 4rem;}"
+      ],
+      "settings": {
+        "show_gender_filter": false,
+        "collection_product_title_invisible": "",
+        "product_lists": "{{ collection.products }}",
+        "products_per_page": 22,
+        "columns_mobile": "2",
+        "image_ratio": "portrait",
+        "image_fit": "cover",
+        "show_secondary_image": false,
+        "show_vendor": false,
+        "show_desc": false,
+        "show_sku": false,
+        "quickview_show": true,
+        "enable_filtering": false,
+        "enable_sorting": true,
+        "image_filter_ratio": "4/5",
+        "image_filter_fit": "cover",
+        "image_filter_columns": 5
+      }
+    },
+    "product_carousel_WR6qDW": {
+      "type": "product-carousel",
+      "disabled": true,
+      "custom_css": [
+        ".card__title {font-weight: bold;}"
+      ],
+      "settings": {
+        "heading": "<p>New Arrivals</p>",
+        "product_list": [
+          "legit-knit-tank",
+          "mens-honest-tank-with-logo",
+          "honest-long-sleeve-xx",
+          "legit-multipurpose-skort"
+        ],
+        "products_count": 4,
+        "link": "",
+        "button_link": "",
+        "image_ratio": "portrait",
+        "image_fit": "cover",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_desc": false,
+        "show_sku": false,
+        "quickview_show": false,
+        "show_link_carousel": false,
+        "margin_top": 40,
+        "margin_bottom": 100,
+        "lookbook_slider_class": ""
+      }
+    },
+    "faq_accorddion_QF7BQ8": {
+      "type": "faq-accorddion",
+      "blocks": {
+        "faq_TVQPHV": {
+          "type": "faq",
+          "repeater": "{{ collection.metafields.custom.collection_page_summary.value.collection_faqs.value }}",
+          "settings": {
+            "question": "<p><strong>{{ block.repeater.question.value }}</strong></p>",
+            "answer": "",
+            "faq_answer": "{{ block.repeater.answer | metafield_tag }}"
+          }
+        }
+      },
+      "block_order": [
+        "faq_TVQPHV"
+      ],
+      "name": "FAQ Accordion",
+      "settings": {
+        "title": "",
+        "desc": ""
+      }
+    }
+  },
+  "order": [
+    "banner",
+    "custom_liquid_hb4Vni",
+    "product-grid",
+    "product_carousel_WR6qDW",
+    "faq_accorddion_QF7BQ8"
+  ]
+}

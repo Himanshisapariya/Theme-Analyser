@@ -1,0 +1,171 @@
+<style>
+  .cart__footer-dynamic-checkout {
+    margin-top: 12px;
+  }
+
+  .cart-help-accordion {
+    margin-top: 20px;
+    border: 1px solid #e5e5e5;
+    border-radius: 4px;
+    margin-bottom: 12px;
+  }
+
+  .cart-help-accordion__header {
+    width: 100%;
+    background: transparent;
+    border: none;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px;
+    cursor: pointer;
+  }
+
+  .cart-help-accordion__icon {
+    width: 30px;
+    height: 30px;
+    flex-shrink: 0;
+  }
+
+  .cart-help-accordion__question {
+    color: #2f484c;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+
+  .cart-help-accordion__arrow {
+    margin-left: auto;
+    transition: transform 0.3s ease;
+  }
+
+  .cart-help-accordion__content {
+    display: none;
+    padding: 0 16px 16px 52px;
+    color: #666;
+    line-height: 1.6;
+  }
+
+  .cart-help-accordion.is-open .cart-help-accordion__content {
+    display: block;
+  }
+
+  .cart-help-accordion.is-open .cart-help-accordion__arrow {
+    transform: rotate(180deg);
+  }
+
+  .help-accordion {
+    border: 1px solid #e5e7eb;
+  }
+
+  .accordion-item:not(:last-child) {
+    border-bottom: 1px solid #e5e7eb;
+  }
+
+  .accordion-header {
+    width: 100%;
+    background: transparent;
+    border: none;
+    padding: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+  }
+
+  .accordion-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .accordion-icon img {
+    width: 20px;
+    height: 20px;
+  }
+
+  .accordion-title {
+    letter-spacing: 0.06em;
+  }
+
+  .accordion-chevron svg {
+    width: 16px;
+    height: 16px;
+    transition: transform 0.3s ease;
+  }
+
+  .accordion-item.active .accordion-chevron {
+    transform: rotate(180deg);
+  }
+
+  .accordion-content {
+    display: none;
+    padding: 0 16px 16px 48px;
+    line-height: 1.6;
+    color: #4b5563;
+  }
+
+  .accordion-item.active .accordion-content {
+    display: block;
+  }
+
+  .ctm-cart-ctas {
+    justify-content: center;
+    display: flex;
+    gap: 8px;
+    margin-top: 12px;
+  }
+
+  .ctm-cart-ctas a {
+    padding: 0.4em;
+    max-width: 70px !important;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #d1d5db;
+    border-radius: 4px;
+    background: #fff;
+    text-decoration: none;
+    color: #1c1d1f;
+    transition: all 0.2s;
+  }
+
+  .ctm-cart-ctas a:hover {
+    background: #f9fafb;
+  }
+
+  @media (max-width: 768px) {
+    .cart-help-accordion {
+      margin-top: 0;
+    }
+    .cart-help-accordion__content p {
+      margin: 0;
+    }
+  }
+</style>
+
+<div class="cart-help-accordion" {{ block.shopify_attributes }}>
+  <button class="cart-help-accordion__header" type="button">
+    {% if block.settings.icon != blank %}
+      <img
+        src="{{ block.settings.icon | image_url: width: 40 }}"
+        alt=" {{ block.settings.question }}"
+        class="cart-help-accordion__icon"
+        height="auto"
+        width="auto"
+      >
+    {% endif %}
+
+    <span class="cart-help-accordion__question">
+      {{ block.settings.question }}
+    </span>
+
+    <span class="cart-help-accordion__arrow">
+      {% render 'icon-caret' %}
+    </span>
+  </button>
+
+  <div class="cart-help-accordion__content">
+    {{ block.settings.answer }}
+  </div>
+</div>

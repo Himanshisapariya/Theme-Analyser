@@ -1,0 +1,99 @@
+{
+  "createdAt": "2026-05-21T13:29:32.612Z",
+  "cssFiles": [
+    "theme.css"
+  ],
+  "textFiles": [
+    "product.liquid"
+  ],
+  "summary": {
+    "totalRules": 5,
+    "usedRules": 2,
+    "unusedRules": 3,
+    "estimatedSavingsBytes": 103
+  },
+  "entries": [
+    {
+      "id": "theme.css:0:0",
+      "filePath": "theme.css",
+      "fileName": "theme.css",
+      "selector": ".used-class",
+      "ruleIndex": 0,
+      "selectorIndex": 0,
+      "status": "used",
+      "matchedBy": "static",
+      "estimatedBytes": 31,
+      "fileByteSize": 204,
+      "sourceType": "css",
+      "sourceKey": "theme.css",
+      "embeddedIndex": null,
+      "sourceLabel": "/Users/himanshi/Himanshi - TS/Himanshi - github/CSS Analyser - copy/backend/uploads/ca27a12f-c2a7-4ced-ae36-9b4c02d4d791/source/theme.css"
+    },
+    {
+      "id": "theme.css:1:0",
+      "filePath": "theme.css",
+      "fileName": "theme.css",
+      "selector": ".unused-class",
+      "ruleIndex": 1,
+      "selectorIndex": 0,
+      "status": "unused",
+      "matchedBy": "none",
+      "estimatedBytes": 31,
+      "fileByteSize": 204,
+      "sourceType": "css",
+      "sourceKey": "theme.css",
+      "embeddedIndex": null,
+      "sourceLabel": "/Users/himanshi/Himanshi - TS/Himanshi - github/CSS Analyser - copy/backend/uploads/ca27a12f-c2a7-4ced-ae36-9b4c02d4d791/source/theme.css"
+    },
+    {
+      "id": "theme.css:2:0",
+      "filePath": "theme.css",
+      "fileName": "theme.css",
+      "selector": ".product-card",
+      "ruleIndex": 2,
+      "selectorIndex": 0,
+      "status": "used",
+      "matchedBy": "static",
+      "estimatedBytes": 60,
+      "fileByteSize": 204,
+      "sourceType": "css",
+      "sourceKey": "theme.css",
+      "embeddedIndex": null,
+      "sourceLabel": "/Users/himanshi/Himanshi - TS/Himanshi - github/CSS Analyser - copy/backend/uploads/ca27a12f-c2a7-4ced-ae36-9b4c02d4d791/source/theme.css"
+    },
+    {
+      "id": "theme.css:3:0",
+      "filePath": "theme.css",
+      "fileName": "theme.css",
+      "selector": ".old-banner",
+      "ruleIndex": 3,
+      "selectorIndex": 0,
+      "status": "unused",
+      "matchedBy": "none",
+      "estimatedBytes": 37,
+      "fileByteSize": 204,
+      "sourceType": "css",
+      "sourceKey": "theme.css",
+      "embeddedIndex": null,
+      "sourceLabel": "/Users/himanshi/Himanshi - TS/Himanshi - github/CSS Analyser - copy/backend/uploads/ca27a12f-c2a7-4ced-ae36-9b4c02d4d791/source/theme.css"
+    },
+    {
+      "id": "theme.css:4:0",
+      "filePath": "theme.css",
+      "fileName": "theme.css",
+      "selector": ".hidden-mobile",
+      "ruleIndex": 4,
+      "selectorIndex": 0,
+      "status": "unused",
+      "matchedBy": "none",
+      "estimatedBytes": 35,
+      "fileByteSize": 204,
+      "sourceType": "css",
+      "sourceKey": "theme.css",
+      "embeddedIndex": null,
+      "sourceLabel": "/Users/himanshi/Himanshi - TS/Himanshi - github/CSS Analyser - copy/backend/uploads/ca27a12f-c2a7-4ced-ae36-9b4c02d4d791/source/theme.css"
+    }
+  ],
+  "warnings": [],
+  "jobId": "ca27a12f-c2a7-4ced-ae36-9b4c02d4d791"
+}

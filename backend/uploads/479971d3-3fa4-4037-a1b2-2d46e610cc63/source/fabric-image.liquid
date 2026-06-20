@@ -1,0 +1,229 @@
+{{ 'section-fabric-image.css' | asset_url | stylesheet_tag }}
+
+<div class="fabric-image-section {{ section.settings.extra_class }}">
+  <div class="fabric-container fullscreen-container {{ section.settings.extra_class_for_container }}">
+
+    {% if section.settings.title != blank %}
+    <div class="fabric-title">
+      <h3>{{ section.settings.title }}</h3>
+    </div>
+    {% endif %}
+    {% if section.settings.button_text != blank %}
+    <div class="fabric-button">
+      <h5 class="link-btn">
+      <a href="{{ section.settings.button_url }}" class="btn button--rebuy btn-primary">
+        {{ section.settings.button_text }}
+      </a>
+      </h5>
+    </div>
+    {% endif %}
+    
+    <div class="fabric-image-container swiper swiper-container-{{ section.id }}">
+      <div class="swiper-wrapper">
+    {% for block in section.blocks %}
+      {% if block.settings.images != blank %}
+      <div class="fabric-image-block swiper-slide">
+        <img src="{{ block.settings.images | img_url: '800x' }}" alt="{{ block.settings.image.alt | escape }}" />
+      </div>
+    {% endif %}
+    {% endfor %}
+      </div>
+    {% if section.settings.display_arrow == true %}
+      <div class="fabric-aerrows">
+        <div class="swiper-button-prev peev-tabbing-btn swiper-prev-{{ section.id }}">
+          <svg xmlns="http://www.w3.org/2000/svg" width="10" height="18" viewBox="0 0 10 18" fill="none" class="icon icon-caret-left">
+            <path d="M9 17L0.999999 9L9 1" stroke="currentcolor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg>
+        </div>
+        <div class="swiper-button-next next-tabbing-btn swiper-next-{{ section.id }}">
+          <svg xmlns="http://www.w3.org/2000/svg" width="10" height="18" viewBox="0 0 10 18" fill="none" class="icon icon-caret-right">
+            <path d="M1 1L9 9L1 17" stroke="currentcolor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg>
+        </div>
+      </div>
+    {% endif %}
+    </div>
+
+  <div class="fabric-section__content {{ section.settings.extra_class_title }} {% if section.settings.we_love_position == 'right' %}fabric-love-right{% else %}fabric-love-left{% endif %}">
+    {% if section.settings.description != blank %}
+    <div class="fabric-description">
+      {{ section.settings.description }}
+    </div>
+    {% endif %}
+
+    {% if section.settings.why_we_love != blank %}
+    <div class="fabric-love fabric-love--{{ section.settings.we_love_position }}">
+      {{ section.settings.why_we_love }}
+    </div>
+    {% endif %}
+  </div>
+
+  {% if section.settings.tip_text != blank %}
+    <div class="fabric-tip-text {{ section.settings.extra_class_title }}">
+      <div class="fabric-tip-text-inside">
+        {{ section.settings.tip_text }}
+       </div>
+    </div>
+  {% endif %}
+  
+  </div>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    new Swiper('.swiper-container-{{ section.id }}', {
+      slidesPerView: 4,
+      spaceBetween: 20,
+      navigation: {
+        nextEl: ".swiper-next-{{ section.id }}",
+        prevEl: ".swiper-prev-{{ section.id }}",
+      },
+      breakpoints: {
+        320: { slidesPerView: 1, spaceBetween: 20 },
+        576: { slidesPerView: 1.45, spaceBetween: 20 },
+        768: { slidesPerView: 2, spaceBetween: 20 },
+        992: { slidesPerView: 2, spaceBetween: 20 },
+        1200: { slidesPerView: 3, spaceBetween: 20 },
+        1400: { slidesPerView: 3, spaceBetween: 20 },
+        1600: { slidesPerView: 2.3, spaceBetween: 20 },
+      },
+    });
+  });
+</script>
+
+
+{% style %}
+  .fabric-section__content {
+    display: flex;
+  }
+  .fabric-section__content.fabric-love-right {
+    flex-direction: row-reverse;
+  }
+  .fabric-section__content.fabric-love-left {
+    flex-direction: row;
+  }
+{% endstyle %}
+
+{% schema %}
+
+{
+  "name": "Fabric Image section",
+  "settings": [
+    {
+      "type": "text",
+      "label": "Extra Class",
+      "id": "extra_class"
+    },
+    {
+      "type": "text",
+      "label": "Extra Class Title",
+      "id": "extra_class_title"
+    },
+    {
+      "type": "text",
+      "id": "extra_class_for_container",
+      "label": "Container Extra Class"
+    },
+    {
+      "type": "text",
+      "label": "Title",
+      "id": "title"
+    },
+    {
+      "type": "text",
+      "label": "Button Text",
+      "id": "button_text"
+    },
+    {
+      "type": "url",
+      "label": "Button URL",
+      "id": "button_url"
+    },
+    {
+      "type": "html",
+      "label": "Description",
+      "id": "description"
+    },
+    {
+      "type": "html",
+      "label": "Why We Love",
+      "id": "why_we_love"
+    },
+    {
+      "type": "select",
+      "label": "We Love Position",
+      "id": "we_love_position",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "right"
+    },
+    {
+      "type": "html",
+      "label": "Tip Text",
+      "id": "tip_text"
+    },
+    {
+      "type": "checkbox",
+      "id": "display_arrow",
+      "label": "Display Swipper Arrows",
+      "default": false
+    },
+     {
+      "type": "select",
+      "id": "button_style",
+      "options": [
+        {
+          "value": "button--ctm_global_button",
+          "label": "Global Button"
+        },
+        {
+          "value": "button--ctm_wb_global_button",
+          "label": "Global Button (White Background)"
+        },
+        {
+          "value": "ctm-custom-button",
+          "label": "Custom Button"
+        },
+        {
+          "value": "ctm-custom-outline-button",
+          "label": "Outline Button"
+        },
+        {
+          "value": "button button--primary",
+          "label": "t:sections.all.button.button_style.options__1.label"
+        },
+        {
+          "value": "button button--secondary",
+          "label": "t:sections.all.button.button_style.options__2.label"
+        },
+        {
+          "value": "button button--tertiary",
+          "label": "t:sections.all.button.button_style.options__3.label"
+        }
+      ],
+      "default": "button button--primary",
+      "label": "t:sections.all.button.button_style.label"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "images",
+      "name": "Images",
+      "settings": [
+        {
+          "type": "image_picker",
+          "label": "Images",
+          "id": "images"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Fabric Image section"
+    }
+  ]
+}
+{% endschema %}

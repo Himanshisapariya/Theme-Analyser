@@ -1,0 +1,248 @@
+{% style %}
+  {% if section.settings.bg_color != blank %}
+    .collection-with-content-main {
+      background-color: {{ section.settings.bg_color }};
+    }
+    .collection-with-content-main .collection-with-content .collection_content_title, .collection-with-content-main .collection-with-content .collection_content_desc {
+      color: {{ section.settings.text_color }};
+    }
+  {% endif %}
+{% endstyle %}
+{% if collection.metafields.custom.display_collections_content == true or page.metafields.custom.display_collections_content %}
+<div class="collection-with-content-main {{ section.settings.extra_class }}">
+  <div class="fullscreen-container">
+    <div class="collection-with-content-section">
+      <div class="collection-with-content-start">
+        <div class="collection-with-content">
+          {% if section.settings.title != blank %}
+            <div class="collection_content_title">
+              <h2>{{ section.settings.title }}</h2>
+            </div>
+          {% endif %}
+          {% if section.settings.desc != blank %}
+            <div class="collection_content_desc">
+            {{ section.settings.desc }}
+            </div>
+          {% endif %}
+          {% if section.settings.extra_class == blank and section.settings.button_link != blank %}
+            <div class="collection_content_button {% if section.settings.btn_as_link == true %} spring-shop-class {% endif %}">
+              <a href="{{ section.settings.button_link }}" class="{% if section.settings.btn_as_link == true %} new-button-text button--secondary red_secondary_btn {% else %} btn button--rebuybutton {% endif %}">{{ section.settings.button_text }}</a>
+            </div>
+          {% endif %}
+          {% if section.settings.extra_class != blank and section.settings.button_link != blank %}
+            <div class="collection_content_button-for-riley {% if section.settings.btn_as_link == true %} spring-shop-class {% endif %}">
+              <a href="{{ section.settings.button_link }}" class="{% if section.settings.btn_as_link == true %} button new-button-text button--secondary red_secondary_btn {% else %} btn button--rebuybutton {% endif %}">{{ section.settings.button_text }}</a>
+            </div>
+          {% endif %}
+        </div>
+        <div class="collection-with-content-slider-start">
+          <div class="swiper collection-content-image">
+            <div class="swiper-wrapper">
+
+              {% if section.settings.select_collection != blank %}
+                {% assign collection = collections[section.settings.select_collection] %}
+                {% for product in collection.products limit: 8 %}
+                  <li class="swiper-slide collection-product-card product-recommendations__product quickview{%- if settings.quickview_hover -%}--hover{% endif %}">
+                    {% render 'product-card',
+                    product_card_product: product,
+                    quickview_show: section.settings.quickview_show,
+                    section_id: section.id
+                    %} 
+                  </li>
+                {% endfor %}
+              {% else %}
+
+              {% for block in section.blocks %}
+                <div class="swiper-slide image-cards-main">
+                  {% if block.settings.collection_img %}
+                    <div class="collection-image-card">
+                      <img src="{{ block.settings.collection_img | image_url: width: auto }}" alt="{{ block.settings.button_text }}">
+                    </div>
+                  {% endif %}
+                  {% if block.settings.button_text != blank %}
+                    <div class="collection-image-button">
+                      <a href="{{ block.settings.button_link }}" class="btn button--rebuybutton">{{ block.settings.button_text }}</a>
+                    </div>
+                  {% endif %}
+                </div>
+              {% endfor %}
+              {% endif %}
+
+            </div>
+            {% if section.settings.display_arrow == true %}
+            <div class="tabbing-aerrows">
+              <div class="swiper-button-prev peev-tabbing-btn swiper-prev-{{ section.id }}">
+                <svg xmlns="http://www.w3.org/2000/svg" width="10" height="18" viewBox="0 0 10 18" fill="none" class="icon icon-caret-left">
+                  <path d="M9 17L0.999999 9L9 1" stroke="currentcolor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                </svg>
+              </div>
+              <div class="swiper-button-next next-tabbing-btn swiper-next-{{ section.id }}">
+                <svg xmlns="http://www.w3.org/2000/svg" width="10" height="18" viewBox="0 0 10 18" fill="none" class="icon icon-caret-right">
+                  <path d="M1 1L9 9L1 17" stroke="currentcolor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                </svg>
+              </div>
+            </div>
+              {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endif %}
+
+<script>
+  (function() {
+   const swiper = new Swiper('.collection-content-image', {
+      slidesPerView: 4,
+      spaceBetween: 20,
+      breakpoints: {
+        320: {
+          slidesPerView: 1.45,
+          spaceBetween: 10,
+        },
+        576: {
+          slidesPerView: 2.45,
+          spaceBetween: 10,
+        },
+        768: {
+          slidesPerView: 4,
+          spaceBetween: 10,
+        },
+        992: {
+          slidesPerView: 2.5,
+          spaceBetween: 10,
+        },
+        1200: {
+          slidesPerView: 4,
+          spaceBetween: 10,
+        },
+        1400: {
+          slidesPerView: 4,
+          spaceBetween: 10,
+        },
+      },
+    });
+    const swiper1 = new Swiper('.mens-section-for-riley .collection-content-image', {
+      slidesPerView: 4,
+      spaceBetween: 20,
+      navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+      },
+      breakpoints: {
+        320: {
+          slidesPerView: 1.45,
+          spaceBetween: 20,
+        },
+        576: {
+          slidesPerView: 2.45,
+          spaceBetween: 20,
+        },
+        768: {
+          slidesPerView: 4,
+          spaceBetween: 20,
+        },
+        992: {
+          slidesPerView: 2.2,
+          spaceBetween: 20,
+        },
+        1200: {
+          slidesPerView: 2.4,
+          spaceBetween: 20,
+        },
+        1400: {
+          slidesPerView: 3.3,
+          spaceBetween: 20,
+        },
+      },
+    });
+  })();
+</script>
+
+{% schema %}
+  {
+    "name": "Collection With Content",
+    "settings": [
+      {
+        "type": "text",
+        "label": "Extra Class",
+        "id": "extra_class"
+      },
+      {
+        "type": "text",
+        "label": "Title",
+        "id": "title"
+      },
+      {
+        "type": "html",
+        "label": "Description",
+        "id": "desc"
+      },
+    {
+      "type": "color",
+      "label": "Text Color",
+      "id": "text_color",
+      "default": "#ffffff"
+    },
+    {
+        "type": "checkbox",
+        "id": "btn_as_link",
+        "label": "Display button as link",
+        "default": true
+    },
+    {
+        "type": "checkbox",
+        "id": "display_arrow",
+        "label": "Display Swipper Arrows",
+        "default": false
+    },
+    {
+        "type": "url",
+        "id": "button_link",
+        "label": "Button Link"
+      },
+      {
+        "type": "text",
+        "id": "button_text",
+        "label": "Button Text"
+      }, 
+      {
+        "type": "color",
+        "label": "Background Color",
+        "id": "bg_color"
+      },
+      {
+      "type": "collection",
+      "label": "Select Collection",
+      "id": "select_collection"
+    }
+    ],
+    "blocks": [
+      {
+        "type": "image_card",
+        "name": "Image Card",
+        "settings": [
+          {
+            "type": "image_picker",
+            "label": "Collection Image",
+            "id": "collection_img"
+          }, {
+            "type": "url",
+            "id": "button_link",
+            "label": "Button Link"
+          }, {
+            "type": "text",
+            "id": "button_text",
+            "label": "Button Text"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Collection With Content"
+      }
+    ]
+  }
+{% endschema %}

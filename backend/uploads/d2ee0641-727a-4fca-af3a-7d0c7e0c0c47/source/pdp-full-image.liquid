@@ -1,0 +1,62 @@
+{% liquid
+  assign pdp-mattress-headline = product.metafields.headline.acf
+  assign pdp-mattress-sub-head = product.metafields['lower-sub-heading-matterss'].acf
+  assign pdp-mattress-desc = product.metafields['description-matterss'].acf
+  assign pdp-mattress-image = product.metafields['image-mattress'].acf
+%}
+
+<div class="pdp_spicification_mattress  desktop:px-30 container_xl {% if pdp-mattress-headline == blank %} !pt-0 {% endif %} {{ section.settings.extra_class }} ">
+  <div class="container_fluid">
+    {% if pdp-mattress-headline != blank and pdp-mattress-sub-head != blank %}
+      <div class="pdp_spicification_inner pb-40 text-center">
+        {% if pdp-mattress-headline != blank and pdp-mattress-sub-head != blank %}
+          <div class="content_heading mb-14">
+            <div class="pdp_spicif_title mb-10">
+              <h3>{{ pdp-mattress-headline }}</h3>
+            </div>
+            <div class="pdp_spicif_title">
+              <h6>{{ pdp-mattress-sub-head }}</h6>
+            </div>
+          </div>
+        {% endif %}
+        {% if pdp-mattress-desc != blank %}
+          <div class="content_description">
+            <h6>{{ pdp-mattress-desc }}</h6>
+          </div>
+        {% endif %}
+      </div>
+    {% endif %}
+    {% if pdp-mattress-image != blank %}
+      <div class="content_image rounded-24 overflow-hidden">
+        <img
+          class="w-full h-full object-cover"
+          src="{{ pdp-mattress-image }}"
+          alt="img_logo"
+          loading="lazy"
+          width="1252"
+          height="491"
+        >
+      </div>
+    {% endif %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "PDP Full Image",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "extra_class",
+      "label": "Extra Class"
+    }
+  ],
+  "blocks": [],
+  "presets": [
+    {
+      "name": "PDP Full Image"
+    }
+  ]
+}
+{% endschema %}

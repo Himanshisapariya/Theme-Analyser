@@ -1,0 +1,181 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "title": {
+          "type": "title",
+          "settings": {}
+        },
+        "judge_me_reviews_all_reviews_text_GdLpnL": {
+          "type": "shopify://apps/judge-me-reviews/blocks/all_reviews_text/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {}
+        },
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "button",
+            "swatch_shape": "circle"
+          }
+        },
+        "price": {
+          "type": "price",
+          "settings": {}
+        },
+        "description": {
+          "type": "description",
+          "settings": {}
+        },
+        "you_may_also_like_m9gb9Y": {
+          "type": "you_may_also_like",
+          "settings": {}
+        },
+        "quantity_selector": {
+          "type": "quantity_selector",
+          "settings": {}
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": false,
+            "show_gift_card_recipient": false
+          }
+        },
+        "product_details_RgYY4d": {
+          "type": "product-details",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "title",
+        "judge_me_reviews_all_reviews_text_GdLpnL",
+        "variant_picker",
+        "price",
+        "description",
+        "you_may_also_like_m9gb9Y",
+        "quantity_selector",
+        "buy_buttons",
+        "product_details_RgYY4d"
+      ],
+      "settings": {
+        "enable_sticky_info": true,
+        "color_scheme": "scheme-1",
+        "media_size": "small",
+        "constrain_to_viewport": true,
+        "media_fit": "contain",
+        "gallery_layout": "thumbnail_slider",
+        "media_position": "left",
+        "image_zoom": "none",
+        "mobile_thumbnails": "hide",
+        "hide_variants": true,
+        "enable_video_looping": false,
+        "padding_top": 0,
+        "padding_bottom": 80
+      }
+    },
+    "related-products": {
+      "type": "related-products",
+      "disabled": true,
+      "settings": {
+        "heading": "You may also like",
+        "heading_size": "h2",
+        "products_to_show": 4,
+        "columns_desktop": 4,
+        "color_scheme": "scheme-1",
+        "image_ratio": "square",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": false,
+        "columns_mobile": "2",
+        "padding_top": 36,
+        "padding_bottom": 28
+      }
+    },
+    "pdp_multicolumn_xwrK4j": {
+      "type": "pdp-multicolumn",
+      "settings": {}
+    },
+    "pdp_zig_zag_fjG6Hg": {
+      "type": "pdp-zig-zag",
+      "settings": {
+        "extra_class": ""
+      }
+    },
+    "pdp_icon_text_VFyY6g": {
+      "type": "pdp-icon-text",
+      "settings": {
+        "extra_class": ""
+      }
+    },
+    "pdp_full_image_d9pAwg": {
+      "type": "pdp-full-image",
+      "disabled": true,
+      "settings": {
+        "extra_class": ""
+      }
+    },
+    "pdp_video_txt_GAbT4n": {
+      "type": "pdp-video-txt",
+      "settings": {
+        "extra_Class": ""
+      }
+    },
+    "pdp_image_txt_VqYhYU": {
+      "type": "pdp-image-txt",
+      "settings": {
+        "extra_class": ""
+      }
+    },
+    "pdp_icon_text_link_qYaA4V": {
+      "type": "pdp-icon-text-link",
+      "settings": {
+        "extra_class": ""
+      }
+    },
+    "17133413847c57b9b2": {
+      "type": "apps",
+      "blocks": {
+        "judge_me_reviews_review_widget_6JErGb": {
+          "type": "shopify://apps/judge-me-reviews/blocks/review_widget/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {
+            "review_data": "sample_data",
+            "max_width": 1200,
+            "show_shop_reviews": false,
+            "empty_state": "empty_widget"
+          }
+        }
+      },
+      "block_order": [
+        "judge_me_reviews_review_widget_6JErGb"
+      ],
+      "settings": {
+        "extra_class": "pdp_review_block",
+        "background_image": "shopify://shop_images/background_image.jpg",
+        "background_color": "",
+        "include_margins": true
+      }
+    }
+  },
+  "order": [
+    "main",
+    "related-products",
+    "pdp_multicolumn_xwrK4j",
+    "pdp_zig_zag_fjG6Hg",
+    "pdp_icon_text_VFyY6g",
+    "pdp_full_image_d9pAwg",
+    "pdp_video_txt_GAbT4n",
+    "pdp_image_txt_VqYhYU",
+    "pdp_icon_text_link_qYaA4V",
+    "17133413847c57b9b2"
+  ]
+}

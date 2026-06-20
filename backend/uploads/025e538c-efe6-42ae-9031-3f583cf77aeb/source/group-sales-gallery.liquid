@@ -1,0 +1,404 @@
+<style>
+.gallery-grid {
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 2rem;
+}
+@media (min-width: 768px) and (max-width: 1024px) {
+  .gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (min-width: 1025px) {
+  .gallery-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+.folder-card {
+  position: relative;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.folder-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 6px;
+  transition: transform 0.3s ease;
+}
+.folder-card:hover img {
+  transform: scale(1.03);
+}
+.folder-overlay {
+  display: none;
+}
+.folder-overlay__title {
+  position: absolute;
+  bottom: 18px;
+  left: 0;      
+  right: 0;   
+  padding: 0 20px; 
+  color: #fff;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.2;
+  z-index: 10;
+}
+.gallery-modal {
+  position: fixed !important;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100dvh !important;
+  display: none;
+  background: rgba(0,0,0,0.85);
+  z-index: 999999;
+  justify-content: center;
+  align-items: center;
+}
+.gallery-modal.active {
+  display: flex;
+}
+.modal-content {
+  width: 90%;
+  max-width: 1000px;
+  max-height: 80dvh;
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.modal-images {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 15px;
+  width: 100%;
+}
+.modal-images img {
+  width: 100%;
+  height: 350px;
+  object-fit: cover;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.close-modal, .close-zoom {
+  color: #2f484c;
+  cursor: pointer;
+  font-size: 22px;
+  font-weight: 500;
+  align-self: flex-end;
+  margin-bottom: 15px;
+}
+.custom-dropdown {
+  position: relative;
+  display: inline-block;
+}
+.dropdown-btn {
+  padding: 10px 15px;
+  background: #E8E8E9;
+  text-align: left;
+  cursor: pointer;
+  width: 100%;
+  border: none;
+  display: flex;
+  gap: 10px;
+}
+.dropdown-label,
+.dropdown-arrow {
+  color: #2f484c;
+}
+.dropdown-arrow {
+  float: right;
+  transition: transform 0.3s ease;
+}
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  padding: 0;
+  top: 100%;
+  right: 0;
+  width: 100%;
+  border: 1px solid rgb(var(--color-border-input));
+  background: #E8E8E9;
+  border-radius: 4px;
+  z-index: 9999;
+  width: 200px;
+}
+.dropdown-menu li {
+  list-style: none;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  text-align: center;
+}
+.dropdown-menu li:hover {
+  background: #2f484c;
+  color: #fff;
+}
+.ctm-gallery-modal, .ctm-gallery-modal {
+  overflow: hidden !important;
+}
+.ctm-gallery-modal .shopify-section-header, .ctm-gallery-modal .footer {
+  z-index: unset !important;
+}
+.ctm-gallery-subheading-filter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+}
+
+.ctm-gallery-subheading {
+  flex: 1;
+}
+
+.ctm-gallery-dropdown {
+  flex-shrink: 0;
+}
+
+@media (max-width: 768px) {
+  .ctm-gallery-subheading-filter {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+  
+  .ctm-gallery-dropdown {
+    width: 100%;
+    display: flex;
+    justify-content: end;
+  }
+}
+#zoomModal .modal-content {
+  padding: 10px;
+  background: #fff;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+}
+#zoomModal img {
+  max-height: 85vh;
+  object-fit: contain;
+}
+.ctm-gallery-heading h2 {
+  margin: 10px 0;
+}
+</style>
+
+{% assign folders = section.settings.folders %}
+{% assign all_categories = "" %}
+{% for folder in folders %}
+  {% assign all_categories = all_categories | append: folder.category | append: "," %}
+{% endfor %}
+{% assign categories = all_categories | split: "," | uniq %}
+
+<div class="gts collection-container collection-border">
+  <div class="ctm-gallery-heading">
+    <h2>{{ section.settings.heading }}</h2>
+  </div>
+  <div class="ctm-gallery-subheading-filter">
+    <div class="ctm-gallery-subheading">
+      <h6>{{ section.settings.subheading }}</h6>
+    </div>
+    <div class="ctm-gallery-dropdown">
+      <div class="custom-dropdown gts" id="galleryDropdown">
+        <button class="dropdown-btn">
+          <span class="dropdown-label">All Categories</span>
+          <span class="dropdown-arrow">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="12"
+              height="8"
+              viewBox="0 0 12 8"
+              fill="none"
+              class="icon icon-button-arrow"
+            >
+              <path d="M11 1.5L6 6.5L1 1.5" stroke="currentcolor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+        </button>
+        <ul class="dropdown-menu gts">
+          <li data-value="all">All Categories</li>
+          {% for cat in categories %}
+            {% if cat != blank %}
+              <li data-value="{{ cat | strip }}">{{ cat }}</li>
+            {% endif %}
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="gallery-grid collection-container">
+  {% for folder in folders %}
+    <div class="folder-card"
+         data-folder="{{ folder.system.id }}"
+         data-category="{{ folder.category | strip }}">
+      <img src="{{ folder.thumbnail.value | image_url: width: 600 }}" alt="{{ folder.folder_name | escape }}">
+        <div class="folder-overlay__title hover-underline-arrow">
+          <span class="hover-underline-arrow__text">{{ folder.folder_name }}</span>
+          <span class="hover-underline-arrow__arrow">
+            <svg fill="#3db671" height="16px" width="16px" version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" xml:space="preserve">
+              <polygon points="315.1,48.6 196.9,48.6 354.5,206.1 0,206.1 0,284.9 354.5,284.9 196.9,442.4 315.1,442.4 512,245.5"></polygon>
+            </svg>
+          </span>
+          </div>
+        </div>
+  {% endfor %}
+</div>
+
+<div id="galleryModal" class="gallery-modal">
+  <div class="modal-content">
+    <span class="close-modal">✕</span>
+    <div class="modal-images"></div>
+  </div>
+</div>
+
+<div id="zoomModal" class="gallery-modal">
+  <div class="modal-content" style="width:max-content; max-height:90%">
+    <span class="close-zoom">✕</span>
+    <img id="zoomImage" style="width:100%; height:auto; border-radius:6px;" />
+  </div>
+</div>
+
+<script>
+window.galleryData = {
+  {% for folder in section.settings.folders %}
+  "{{ folder.system.id }}": {
+    "title": "{{ folder.folder_name | escape }}",
+    "images": [
+      {% for img in folder.images.value %}
+      "{{ img | image_url: width: 2000 }}"{% unless forloop.last %},{% endunless %}
+      {% endfor %}
+    ]
+  }{% unless forloop.last %},{% endunless %}
+  {% endfor %}
+};
+
+document.querySelectorAll('.folder-card').forEach(card => {
+  card.addEventListener('click', () => {
+    let id = card.dataset.folder;
+    if (!window.galleryData[id]) return;
+    let modal = document.getElementById('galleryModal');
+    let container = modal.querySelector('.modal-images');
+    container.innerHTML = "";
+    window.galleryData[id].images.forEach(img => {
+      container.innerHTML += `<img src="${img}" />`;
+    });
+    modal.classList.add('active');
+    document.body.classList.add('ctm-gallery-modal');
+  });
+});
+
+function closeModal() {
+  let modal = document.getElementById('galleryModal');
+  modal.classList.remove('active');
+  document.body.classList.remove('ctm-gallery-modal');
+}
+
+document.querySelector('.close-modal').addEventListener('click', closeModal);
+document.getElementById('galleryModal').addEventListener('click', (e) => {
+  if (e.target === e.currentTarget) closeModal();
+});
+
+document.addEventListener("DOMContentLoaded", function () {
+  const dropdown = document.querySelector("#galleryDropdown");
+  const btn = dropdown.querySelector(".dropdown-btn");
+  const menu = dropdown.querySelector(".dropdown-menu");
+  const options = dropdown.querySelectorAll("li");
+  const label = dropdown.querySelector(".dropdown-label");
+  const arrow = dropdown.querySelector(".dropdown-arrow");
+  const cards = document.querySelectorAll(".folder-card");
+
+  let open = false, selectedCategory = "all";
+
+  btn.addEventListener("click", function (e) {
+    e.stopPropagation();
+    open = !open;
+    menu.style.display = open ? "block" : "none";
+    arrow.style.transform = open ? "rotate(180deg)" : "rotate(0deg)";
+  });
+
+  options.forEach(option => {
+    option.addEventListener("click", () => {
+      selectedCategory = option.dataset.value;
+      label.textContent = option.textContent;
+      open = false;
+      menu.style.display = "none";
+      arrow.style.transform = "rotate(0deg)";
+      cards.forEach(card => {
+        const cat = card.dataset.category;
+        card.style.display =
+          selectedCategory === "all" || cat === selectedCategory ? "block" : "none";
+      });
+    });
+  });
+
+  document.addEventListener("click", function (e) {
+    if (!dropdown.contains(e.target)) {
+      open = false;
+      menu.style.display = "none";
+      arrow.style.transform = "rotate(0deg)";
+    }
+  });
+});
+
+document.addEventListener("click", function (e) {
+  if (e.target.closest(".modal-images img")) {
+    const imgSrc = e.target.getAttribute("src");
+    document.getElementById("zoomImage").setAttribute("src", imgSrc);
+    document.getElementById("zoomModal").classList.add("active");
+  }
+});
+
+document.querySelector(".close-zoom").addEventListener("click", () => {
+  document.getElementById("zoomModal").classList.remove("active");
+});
+
+document.getElementById("zoomModal").addEventListener("click", (e) => {
+  if (e.target === e.currentTarget) {
+    document.getElementById("zoomModal").classList.remove("active");
+  }
+});
+</script>
+
+{% schema %}
+{
+  "name": "Folder Image Gallery",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Gallery"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Browse our collection by category"
+    },
+    {
+      "type": "metaobject_list",
+      "id": "folders",
+      "label": "Select Folders",
+      "metaobject_type": "event_gallery_folder"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Folder Image Gallery"
+    }
+  ]
+}
+{% endschema %}

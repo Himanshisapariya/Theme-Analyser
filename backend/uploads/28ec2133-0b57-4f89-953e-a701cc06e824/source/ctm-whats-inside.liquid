@@ -1,0 +1,202 @@
+<div class="whats-inside-section {{ section.settings.section_class }}">
+    <div class="container_fluid">
+      <div class="text-center flex flex-col items-center">
+      {% if section.settings.star_image %}
+        <div class="star-icon !mb-16">
+          <img src="{{ section.settings.star_image | image_url: width: 150 }}" alt="Star Icon" width="98" height="74">
+        </div>
+      {% endif %}
+  
+      {% if section.settings.heading %}
+        <h2 class="h1">{{ section.settings.heading }}</h2>
+      {% endif %}
+  
+      {% if section.settings.sub_heading %}
+        <h3 class="sub-heading max-mdscreen2:text-24 max-mdscreen2:leading-100p">{{ section.settings.sub_heading }}</h3>
+      {% endif %}
+      </div>
+  
+      <div class="whats-inside-grid flex items-center mdscreen2:justify-between justify-center max-extlarge_desktop:max-w-[1320px] max-extlarge_desktop:mx-auto">
+        <div class="left-column desktop-only mdscreen2:!flex hidden flex-col desktop_1:gap-y-[38px] gap-y-16 flex-[1_1_calc(100%_-400px)] small_desktop:flex-[1_1_calc(100%_-600px)] desktop_1:flex-[1_1_calc(100%_-820px)] extlarge_desktop_1:flex-[1_1_calc(100%_-1300px)]">
+          {% for block in section.blocks %}
+            {% if block.type == 'left_image_with_text' %}
+              <div class="info-box min-h-[121px] items-center left-box flex gap-x-8 bg-white rounded-[80px] shadow-[0px_0px_14px_6px_#1E1E1E1A]" {{ block.shopify_attributes }}>
+                {% if block.settings.icons %}
+                  <img src="{{ block.settings.icons | image_url: width: 100 }}" alt="Icon" class="info-icon shrink-0 max-xl:w-40 max-xl:h-40" width="60" height="60">
+                {% endif %}
+                <div class="info-text">
+                  {{ block.settings.left_text }}
+                </div>   
+              </div>
+            {% endif %}
+          {% endfor %}
+        </div>
+  
+        <div class="center-image relative -z-[1]" {{ section.shopify_attributes }}>
+          {% if section.settings.center_image %}
+            <img src="{{ section.settings.center_image | image_url: width: 608 }}" alt="Center Image" width="608" height="608">
+          {% endif %}
+        </div>
+  
+        <div class="right-column desktop-only mdscreen2:!flex hidden flex-col desktop_1:gap-y-[38px] gap-y-16 flex-[1_1_calc(100%_-400px)] small_desktop:flex-[1_1_calc(100%_-600px)] desktop_1:flex-[1_1_calc(100%_-820px)] extlarge_desktop_1:flex-[1_1_calc(100%_-1300px)]">
+          {% for block in section.blocks %}
+            {% if block.type == 'right_image_with_text' %}
+              <div class="info-box min-h-[121px] items-center right-box flex gap-x-8 bg-white rounded-[80px] shadow-[0px_0px_14px_6px_#1E1E1E1A]" {{ block.shopify_attributes }}>
+                {% if block.settings.right_image %}
+                  <img src="{{ block.settings.right_image | image_url: width: 100 }}" alt="Icon" class="info-icon shrink-0 max-xl:w-40 max-xl:h-40" width="60" height="60">
+                {% endif %}
+                <div class="info-text">
+                  {{ block.settings.right_text }}
+                </div>
+              </div>
+            {% endif %}
+          {% endfor %}
+        </div>
+      </div>  
+  
+      <div class="mobile-accordions mobile-only mdscreen2:!hidden flex flex-col max-mdscreen6:!mt-20">
+        {% for block in section.blocks %}
+          {% if block.type == 'accordion_mobile' %}
+            <div class="accordion-item bg-white overflow-hidden border-t border-primary-black {% if forloop.first %}active{% endif %}" {{ block.shopify_attributes }}>
+              <button class="accordion-header flex items-center justify-between w-full py-14 px-10 text-left border-none cursor-pointer gap-x-8">
+                {% if block.settings.accordion_image %}
+                  <img src="{{ block.settings.accordion_image | image_url: width: 40 }}" alt="Accordion Icon" width="40" height="40" class="shrink-0">
+                {% endif %}
+                <h6 class="text-primary-blue grow font-semibold max-mdscreen6:leading-[150%]">{{ block.settings.accordion_question }}</h6>
+                <span class="accordion-icon relative inline-block h-full !pr-[25px]"></span>
+              </button>
+              <div class="accordion-content">
+                <div class="accordion-content--inner !px-12 !pb-[15px] text-left text-dark-gray text-16 leading-[150%]">
+                  {{ block.settings.accordion_answer }}
+                </div>
+              </div>
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+  
+  <style>
+    .accordion-content {
+      max-height:0;
+      transition: all .3s;
+    }
+    .accordion-item.active .accordion-content {
+      max-height:75px; 
+    }
+    .accordion-content {
+      display: none;
+    }
+  
+    .accordion-item.active .accordion-content {
+      display: block;
+    }
+  </style>
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const accordionHeaders = document.querySelectorAll('.accordion-header');
+  
+      accordionHeaders.forEach((header, index) => {
+        header.addEventListener('click', function() {
+          const accordionItem = this.parentElement;
+          accordionItem.classList.toggle('active');
+        });
+  
+        // Open the first accordion by default
+        if (index === 0) {
+          header.parentElement.classList.add('active');
+        }
+      });
+    });
+  </script>
+
+{% schema %}
+{
+  "name": "Whats Inside",
+  "class": "ctm-whats-inside-main",
+  "settings": [
+    {
+      "type": "image_picker",
+      "label": "Star Image",
+      "id": "star_image"
+    },
+    {
+      "type": "text",
+      "label": "Heading",
+      "id": "heading"
+    },
+    {
+      "type": "text",
+      "label": "Sub Heading",
+      "id": "sub_heading"
+    },
+    {
+      "type": "image_picker",
+      "label": "Center Image",
+      "id": "center_image"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "left_image_with_text",
+      "name": "Left Image with Text",
+      "settings": [
+        {
+          "type": "image_picker",
+          "label": "Icons",
+          "id": "icons"
+        },
+        {
+          "type": "html",
+          "label": "Left Text",
+          "id": "left_text"
+        }
+      ]
+    },
+    {
+      "type": "right_image_with_text",
+      "name": "Right Image with Text",
+      "settings": [
+        {
+          "type": "image_picker",
+          "label": "Right Image",
+          "id": "right_image"
+        },
+        {
+          "type": "html",
+          "label": "Right Text",
+          "id": "right_text"
+        }
+      ]
+    },
+     {
+      "type": "accordion_mobile",
+      "name": "Accordion Mobile",
+      "settings": [
+        {
+          "type": "image_picker",
+          "label": "Accordion Image",
+          "id": "accordion_image"
+        },
+        {
+          "type": "text",
+          "label": "Accordion Question",
+          "id": "accordion_question"
+        },
+        {
+          "type": "html",
+          "label": "Accordion Answer",
+          "id": "accordion_answer"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Whats Inside"
+    }
+  ]
+}
+{% endschema %}

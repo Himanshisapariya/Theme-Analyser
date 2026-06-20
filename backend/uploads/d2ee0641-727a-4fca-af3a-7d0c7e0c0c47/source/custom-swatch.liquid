@@ -1,0 +1,40 @@
+{% for option in product.options %}
+  {% assign option_handle = option | handle %}
+  {% assign option_index = forloop.index0 %}
+  {% capture downcased_option %}{{ option | handle }}{% endcapture %}
+
+  {% if downcased_option contains 'size' %}
+    {% capture related_id %} product-listing-{{ product.id }} {% endcapture %}
+    {% assign id = related_id %}
+    <div class="custom-swatch">
+      <ul data-option-index="{{ option_index }}" class="{{ option_handle }} options flex items-center gap-[8px]">
+        {% assign values = '' %}
+        {% for variant in product.variants limit: 5 %}
+          {% assign value = variant.options[option_index] %}
+          {% capture wrapped_value %},{{ value }},{% endcapture %}
+          {% unless values contains wrapped_value %}
+            {% if variant.available %}
+              <li
+                data-sku="{{ variant.sku }}"
+                data-option-title="{{ value | escape }}"
+                data-href="{% if variant.featured_image != blank %} {{ variant.featured_image | product_img_url: 'large' }} {% else %} {{ product.featured_image | product_img_url: 'large' }}{% endif %}"
+                class="color {{ value | handle }} {% if variant == product.selected_or_first_available_variant %} selected_shade {% endif %}"
+                data-price="{{ variant.price | money }}"
+                data-sale="{{ variant.compare_at_price | money }}"
+              >
+                <div class="custom_swatch_label">
+                  {% if variant.available %}
+                    <span>{{ value }}</span>
+                  {% else %}
+                    <span class="variant_disabled">{{ value }}</span>
+                  {% endif %}
+                </div>
+              </li>
+            {% endif %}
+            {% capture values %}{{ values }}{{ wrapped_value }}{% endcapture %}
+          {% endunless %}
+        {% endfor %}
+      </ul>
+    </div>
+  {% endif %}
+{% endfor %}

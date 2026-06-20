@@ -1,0 +1,214 @@
+{% comment %}
+  Renders header mega menu with left image + links and right menu content
+{% endcomment %}
+
+<link rel="stylesheet" href="{{ 'mega-menu.css' | asset_url }}" media="all">
+
+<div class="header-megamenu-wrapper">
+  <a style="text-decoration: none;" href="{{ link.url }}">
+    <span
+      class="header__menu-item list-menu__item list-menu__item-first link"
+      {% if link.current %}
+        aria-current="page"
+      {% endif %}
+      aria-label="{{ link.title | escape }}"
+    >
+      <span
+        {% if link.active %}
+          class="header__active-menu-item"
+        {% endif %}
+        title="{{ link.title | escape }}"
+      >
+        {{ link.title | escape }}
+      </span>
+    </span>
+  </a>
+</div>
+
+<div class="header-mega-menu color-background-1 ctm-{{ link.title | downcase | replace: ' ', '-' }}">
+  <div class="fullscreen-container">
+    <!-- MAIN LAYOUT -->
+    <div class="header-mega-menu__layout">
+      <!-- LEFT IMAGE + LINKS SECTION -->
+
+      <div class="header-mega-menu__left">
+        <div class="ctm-megamenu-hover-links-content">
+          <div class="ctm-megamenu-image-column">
+            <div class="ctm-megamenu-image-slide-wrapper">
+              <div
+                class="ctm-megamenu-image-slide {% if forloop.first %}active{% endif %}"
+                data-index="{{ forloop.index0 }}"
+              >
+                <img
+                  src="{{ block.settings.left_image | image_url: width: 1000 }}"
+                  alt="{{ block.settings.left_image.alt }}"
+                  loading="lazy"
+                  width="auto"
+                  height="auto"
+                >
+
+                <div class="ctm-megamenu-image-overlay">
+                  {% if block.settings.image_heading != blank %}
+                    <h4>{{ block.settings.image_heading }}</h4>
+                  {% endif %}
+
+                  {% if block.settings.image_subheading != blank %}
+                    <p>{{ block.settings.image_subheading }}</p>
+                  {% endif %}
+
+                  {% if block.settings.custom_liquid != blank %}
+                    <div class="">
+                      {{ block.settings.custom_liquid }}
+                    </div>
+                  {% endif %}
+
+                  {% if block.settings.button_text != blank %}
+                    <a href="{{ block.settings.button_url  }}" class="button--ctm_global_button">
+                      {{ block.settings.button_text }}
+                    </a>
+                  {% endif %}
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- LINKS COLUMN -->
+        </div>
+      </div>
+      <div class="ctm-megamenu-right-wrapper">
+        <div class="ctm-megamenu-right-wrapper-above">
+          <div class="ctm-megamenu-left-links {% if block.settings.ctm_megamenu_links_heading != blank %} bg-grey {% endif %}">
+            <div class="ctm-megamenu-links-column">
+              <div class="ctm-megamenu-links-column-top">
+                {% if block.settings.ctm_megamenu_links_heading != blank %}
+                  <h6 class="ctm-megamenu-hover-links-heading">
+                    {{ block.settings.ctm_megamenu_links_heading }}
+                  </h6>
+                {% endif %}
+
+                {% if block.settings.ctm_megamenu_links != blank %}
+                  <ul class="list-unstyled">
+                    {% for link in block.settings.ctm_megamenu_links.links %}
+                      <li class="ctm-megamenu-link-item">
+                        <a
+                          href="{{ link.url }}"
+                          class="ctm-megamenu-hover-link {% if forloop.first %}active{% endif %}"
+                          data-index="{{ forloop.index0 }}"
+                        >
+                          {{ link.title }}
+                        </a>
+                      </li>
+                    {% endfor %}
+                  </ul>
+                {% endif %}
+              </div>
+
+              <div class="ctm-megamenu-links-column-bottom">
+                {% if block.settings.ctm_megamenu_button_text != blank %}
+                  <div class="ctm-static-link">
+                    <a href="{{ block.settings.ctm_megamenu_button_url }}" class="link">
+                      {{ block.settings.ctm_megamenu_button_text }}
+                    </a>
+                  </div>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+
+          <!-- RIGHT EXISTING MEGA MENU -->
+          <div class="header-mega-menu__right">
+            {% if block.type == 'mega_menu_collection' %}
+              <div class="header-mega-menu__wrapper">
+                <ul class="header-mega-menu__have-submenu__list list-unstyled">
+                  {% for childlink in links %}
+                    <li>
+                      <ul class="header-mega-menu__have-submenu__list-submenu list-unstyled">
+                        <p class="mega-menu-childlink">
+                          {{ childlink.title | escape }}
+                        </p>
+
+                        {% for grandchildlink in childlink.links %}
+                          {% assign new_links = section.settings.new_badge_links | split: ',' %}
+                          <li class="{% if grandchildlink.current %}current-link{% endif %}">
+                            <a
+                              href="{{ grandchildlink.url }}"
+                              class="link line-link"
+                            >
+                              {{ grandchildlink.title | escape }}
+                              {% for handle in new_links %}
+                                {% if grandchildlink.url contains handle %}
+                                  <span class="ctm-navigation-menu-badge">NEW</span>
+                                {% endif %}
+                              {% endfor %}
+                            </a>
+                          </li>
+                        {% endfor %}
+                        {% if forloop.last %}
+                          {% if block.settings.ctm_extra_navigation_link_url != blank %}
+                            <li class="ctm-static-link">
+                              <a href="{{ block.settings.ctm_extra_navigation_link_url }}" class="link">
+                                {{ block.settings.ctm_extra_navigation_link_text }}
+                              </a>
+                            </li>
+                          {% endif %}
+                        {% endif %}
+                      </ul>
+                    </li>
+                  {% endfor %}
+                </ul>
+
+                {% if block.settings.image_ctm != blank %}
+                  <div class="header-mega-menu__card megamenu_image-ctm">
+                    <img
+                      src="{{ block.settings.image_ctm | image_url: width: 350 }}"
+                      alt="{{ block.settings.image_title }}"
+                      loading="lazy"
+                    >
+                    <a href="{{ block.settings.title_link }}" class="linktext_belowimage">
+                      {{ block.settings.image_title }}
+                    </a>
+                  </div>
+                {% endif %}
+              </div>
+            {% endif %}
+
+            {% if block.type == 'mega_menu_only_collection' %}
+              {% assign count = block.settings.collection_list | size %}
+              <ul class="header-mega-menu__collection-list list-unstyled mega-menu__collection-{{ count }}">
+                {% for collection in block.settings.collection_list %}
+                  <li class="collections-grid__card color-background-4">
+                    {% render 'collection-card',
+                      block_collection: collection,
+                      media_size: 'square',
+                      url: collection.url,
+                      collection_title: collection.title,
+                      collection_image: collection.image,
+                      overlay_enable: true
+                    %}
+                  </li>
+                {% endfor %}
+              </ul>
+            {% endif %}
+          </div>
+        </div>
+
+        <div class="ctm-megamenu-right-wrapper-below">
+          <div class="ctm-megamenu-blue-footer">
+            <div class="ctm-megamenu-content-wrapper">
+              {% if block.settings.footer_navigation_menu != blank %}
+                {% for link in block.settings.footer_navigation_menu.links %}
+                  <div class="ctm-megamenu-content">
+                    <a href="{{ link.url }}">
+                      {{ link.title }}
+                    </a>
+                  </div>
+                {% endfor %}
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="mega-menu_overflow"></div>

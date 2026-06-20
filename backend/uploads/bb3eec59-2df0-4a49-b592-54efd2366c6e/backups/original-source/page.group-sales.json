@@ -1,0 +1,364 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "banner_with_text_mz7eat": {
+      "type": "banner-with-text",
+      "name": "t:sections.banner-with-text.name",
+      "settings": {
+        "extra_class": "women-day champion_ctm ctm-sales-group custom-group",
+        "spring_banner_class": "",
+        "color_scheme": "light",
+        "image": "shopify://shop_images/DESKTOP_BANNER_DIMS_2_62e58d7e-ef09-4950-a55e-dd75c06c2d21.jpg",
+        "image_mobile": "shopify://shop_images/MOBILE_BANNER_DIMS_473127a3-fe59-4147-a63f-b8abc562f7b2.jpg",
+        "image_size": "large",
+        "desktop_banner_height": 0,
+        "tablet_banner_height": 95,
+        "mobile_banner_height": 70,
+        "title": "INTRODUCING OUR CUSTOM CO-BRANDING\nAND UNIFORM PROGRAM",
+        "content_text": "<p>Where we partner with you to promote your brand or outfit your sports team with the highest quality athletic apparel. Partner with us, the only athletic brand truly empowering female athletes. You'll get premium gear of the highest quality. And you'll know that you are supporting fair competition for ALL athletes.</p>",
+        "caption_class": "",
+        "text_alignment": "right",
+        "content_width": "max",
+        "overlay_enable": false,
+        "overlay_opacity": 20,
+        "button_link": "shopify://pages/gallery-folder",
+        "button_label": "VIEW GALLERY",
+        "second_button_link": "",
+        "second_button_label": "",
+        "button_style": "ctm-underline-button",
+        "mobile_button_style": "button--ctm_global_button",
+        "mobile_cta_button_link": "",
+        "mobile_cta_button_label": "",
+        "mobile_second_cta_button_link": "",
+        "mobile_second_cta_button_label": "",
+        "heading_font_family": "Anton, sans-serif",
+        "subheading_font_family": "Poppins, sans-serif",
+        "caption_font_family": "Poppins, sans-serif",
+        "heading_font_size_desktop": 26,
+        "heading_font_size_tablet": 40,
+        "heading_font_size_mobile": 20,
+        "subheading_font_size_desktop": 18,
+        "subheading_font_size_mobile": 16,
+        "caption_font_size_desktop": 14,
+        "caption_font_size_mobile": 12,
+        "heading_font_weight": 600,
+        "heading_line_height": 1.2,
+        "heading_letter_spacing": 2,
+        "subheading_font_weight": 400,
+        "subheading_line_height": 1.5,
+        "subheading_margin": 0,
+        "caption_font_weight": 500,
+        "caption_line_height": 1.3,
+        "show_heading_mobile": true,
+        "show_subheading_mobile": true,
+        "desktop_content_position": "bottom-right",
+        "mobile_content_position": "bottom",
+        "margin_top": 0,
+        "margin_bottom": 70,
+        "top_margin_mobile": 0,
+        "bottom_margin_mobile": 0,
+        "top_padding_desktop": 0,
+        "bottom_padding_desktop": 0,
+        "top_padding_mobile": 0,
+        "bottom_padding_mobile": 0
+      }
+    },
+    "shogun-helper": {
+      "type": "shogun-helper",
+      "disabled": true,
+      "settings": {}
+    },
+    "pages": {
+      "type": "main-page",
+      "disabled": true,
+      "custom_css": [
+        ".container {padding-top: 50px; padding-bottom: 50px;}",
+        "h1 {text-align: center;}"
+      ],
+      "settings": {
+        "extra_class": ""
+      }
+    },
+    "shogun-optimizer": {
+      "type": "shogun-optimizer",
+      "disabled": true,
+      "settings": {}
+    },
+    "rich_text_qh43qQ": {
+      "type": "rich-text",
+      "blocks": {
+        "button_HNbtLk": {
+          "type": "button",
+          "settings": {
+            "button_label": "View Gallery",
+            "button_link": "shopify://pages/gallery-folder",
+            "button_style": "primary"
+          }
+        }
+      },
+      "block_order": [
+        "button_HNbtLk"
+      ],
+      "disabled": true,
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "color_scheme": "background-2",
+        "full_width": true,
+        "padding_top": 0,
+        "padding_bottom": 20,
+        "margin_top": 0,
+        "margin_bottom": 40,
+        "spring_shop_text": "ctm-group-sale fullscreen-container"
+      }
+    },
+    "image_grid_group_sale_jaqxQx": {
+      "type": "image-grid-group-sale",
+      "blocks": {
+        "feature_3dyK7c": {
+          "type": "feature",
+          "settings": {
+            "image": "shopify://shop_images/PHOTOSFORPDF-10.png",
+            "caption": "Fleece",
+            "title": "Intrepid Quarter Zip",
+            "description": "This isn’t your average layer. The Intrepid Quarter Zip delivers premium comfort and structure, designed to keep your team warm without losing edge. Ideal for travel days, sidelines, or casual wear—built to represent, not just blend in."
+          }
+        },
+        "feature_zWteD8": {
+          "type": "feature",
+          "settings": {
+            "image": "shopify://shop_images/PHOTOSFORPDF-09.png",
+            "caption": "Performance",
+            "title": "HONEST TEE",
+            "description": "Our Honest Tees are made to unify your crew—whether you're rallying on the court, running a clinic, or repping your team off-duty. Built from our signature Honest Fabric for breathable comfort, clean lines, and a sharp look that holds its own anywhere."
+          }
+        },
+        "feature_DhQGUG": {
+          "type": "feature",
+          "settings": {
+            "image": "shopify://shop_images/PHOTOSFORPDF-12.png",
+            "caption": "Performance",
+            "title": "COURAGEOUS CORE SHORTS",
+            "description": "Built for teams that train hard and show up harder. With a compressive fit, mid-thigh cut, and no front seam, they’re made to support every rep, run, and rally. Bold, functional, and ready to represent your crew."
+          }
+        },
+        "feature_FEhEDE": {
+          "type": "feature",
+          "settings": {
+            "image": "shopify://shop_images/Untitled_design_1_c84cd02a-7a1a-45fe-9a1b-7ab93c113c53.png",
+            "caption": "Performance",
+            "title": "Racerback Training Tank",
+            "description": "Lightweight, breathable racerback tank designed for unrestricted movement and all-day training comfort."
+          }
+        },
+        "feature_PAX6zU": {
+          "type": "feature",
+          "settings": {
+            "image": "shopify://shop_images/PHOTOSFORPDF-13.png",
+            "caption": "Headwear",
+            "title": "CLASSIC FIT CAP",
+            "description": "Made from 100% cotton, this lightweight and breathable hat is easy to clean and built for everyday wear. The adjustable dad-cap style features a low crown for a shallower fit, making it perfect for game day, travel, or wherever your team shows up strong."
+          }
+        },
+        "feature_njnAjn": {
+          "type": "feature",
+          "settings": {
+            "image": "shopify://shop_images/EmptyName_971.jpg",
+            "caption": "Base Layer",
+            "title": "PLAINSPOKEN TEE",
+            "description": "These tees say just enough. Made from 100% cotton, they deliver soft, durable comfort for everyday wear, group events, or when your team just wants to keep it honest."
+          }
+        },
+        "feature_db9xBE": {
+          "type": "feature",
+          "settings": {
+            "image": "shopify://shop_images/PHOTOSFORPDF-14.png",
+            "caption": "Performance",
+            "title": "HONEST TANK",
+            "description": "This long, flowy silhouette is made from our signature Honest performance fabric: soft, breathable, and moisture-wicking to keep up with every kind of body and every kind of workout."
+          }
+        }
+      },
+      "block_order": [
+        "feature_3dyK7c",
+        "feature_zWteD8",
+        "feature_DhQGUG",
+        "feature_FEhEDE",
+        "feature_PAX6zU",
+        "feature_njnAjn",
+        "feature_db9xBE"
+      ],
+      "name": "Image Grid Group Sale",
+      "settings": {
+        "extra_class": "ctm-grid-group-sale-heading",
+        "heading": "Available Products for Group Custom Sales. Uniform options available upon request.",
+        "button_text1": "GROUP SALE CATALOG",
+        "button_url1": "https://cdn.shopify.com/s/files/1/0575/2009/5363/files/Custom_Order_Catalog.pdf?v=1755103340",
+        "open_new_tab1": true,
+        "button_text2": "APPLY TO GROUP SALES",
+        "button_url2": "https://www.xx-xyathletics.com/pages/apply-to-group-sales",
+        "open_new_tab2": false,
+        "enable_arrow": true,
+        "button_style": "button--ctm_wb_global_button"
+      }
+    },
+    "ctm_icon_text_grid_VTzewk": {
+      "type": "ctm-icon-text-grid",
+      "blocks": {
+        "item_iPaLTm": {
+          "type": "item",
+          "settings": {
+            "icon_type": "svg",
+            "svg_code": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewbox=\"0 0 100 140\" aria-hidden=\"true\">\n  <text x=\"50%\" y=\"115\" text-anchor=\"middle\" font-size=\"140\" font-weight=\"900\" font-family=\"Arial, Helvetica, sans-serif\" fill=\"#16a34a\" stroke=\"#16a34a\" stroke-width=\"10\">\n    1\n  </text>\n</svg>",
+            "heading": " BRAND FIRST",
+            "description": "Your brand takes the spotlight. We design and develop custom products made to stand out—while staying true to your values."
+          }
+        },
+        "item_dgyyGf": {
+          "type": "item",
+          "settings": {
+            "icon_type": "svg",
+            "svg_code": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewbox=\"0 0 100 140\" aria-hidden=\"true\">\n  <text x=\"50%\" y=\"115\" text-anchor=\"middle\" font-size=\"140\" font-weight=\"900\" font-family=\"Arial, Helvetica, sans-serif\" fill=\"#16a34a\" stroke=\"#16a34a\" stroke-width=\"8\">\n    2\n  </text>\n</svg>",
+            "heading": "YOUR CONCEPT",
+            "description": "We turn your ideas into one-of-a-kind creations that reflect strength, fairness, and commitment to women’s sports."
+          }
+        },
+        "item_PBgacP": {
+          "type": "item",
+          "settings": {
+            "icon_type": "svg",
+            "svg_code": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewbox=\"0 0 100 140\" aria-hidden=\"true\">\n  <text x=\"50%\" y=\"115\" text-anchor=\"middle\" font-size=\"140\" font-weight=\"900\" font-family=\"Arial Black, Arial, Helvetica, sans-serif\" fill=\"#16a34a\" transform=\"translate(50 115) scale(1.06) translate(-50 -115)\">\n    3\n  </text>\n</svg>",
+            "heading": "DEDICATED SERVICE",
+            "description": "A Custom Project Manager keeps you in the loop every step of the way, making sure your project aligns with your vision—and ours."
+          }
+        },
+        "item_zGGAVA": {
+          "type": "item",
+          "settings": {
+            "icon_type": "svg",
+            "svg_code": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewbox=\"0 0 100 140\" aria-hidden=\"true\">\n  <text x=\"50%\" y=\"115\" text-anchor=\"middle\" font-size=\"140\" font-weight=\"900\" font-family=\"Arial Black, Arial, Helvetica, sans-serif\" fill=\"#16a34a\" transform=\"translate(50 115) scale(1.05) translate(-50 -115)\">\n    4\n  </text>\n</svg>",
+            "heading": "FAST & FLEXIBLE",
+            "description": "In-stock items ship in under 4 weeks. Bigger orders take a little longer but let you go all-in on customization without compromising your values."
+          }
+        },
+        "item_mhjt79": {
+          "type": "item",
+          "settings": {
+            "icon_type": "svg",
+            "svg_code": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewbox=\"0 0 100 140\" aria-hidden=\"true\">\n  <text x=\"50%\" y=\"115\" text-anchor=\"middle\" font-size=\"140\" font-weight=\"900\" font-family=\"Arial Black, Arial, Helvetica, sans-serif\" fill=\"#16a34a\" transform=\"translate(50 115) scale(1.06) translate(-50 -115)\">\n    5\n  </text>\n</svg>",
+            "heading": "LOW MINIMUMS",
+            "description": "Order as few as 50 pieces per print or embroidery—small runs, big impact."
+          }
+        },
+        "item_AKUmm8": {
+          "type": "item",
+          "settings": {
+            "icon_type": "svg",
+            "svg_code": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewbox=\"0 0 100 140\" aria-hidden=\"true\">\n  <text x=\"50%\" y=\"115\" text-anchor=\"middle\" font-size=\"140\" font-weight=\"900\" font-family=\"Arial Black, Arial, Helvetica, sans-serif\" fill=\"#16a34a\" transform=\"translate(50 115) scale(1.06) translate(-50 -115)\">\n    6\n  </text>\n</svg>",
+            "heading": " PROVEN RESULTS",
+            "description": "We deliver standout products on time, backed by a track record of satisfied clients and a commitment to quality. When you choose us, you’re supporting a brand that truly stands up for female athletes and aligns with your values."
+          }
+        }
+      },
+      "block_order": [
+        "item_iPaLTm",
+        "item_dgyyGf",
+        "item_PBgacP",
+        "item_zGGAVA",
+        "item_mhjt79",
+        "item_AKUmm8"
+      ],
+      "name": "Icon with Text Grid",
+      "settings": {
+        "top_label": "OUR MISSION:",
+        "main_heading": "Custom Gear That Reflects <br> What You Stand For",
+        "intro_text": "On-time delivery, uncompromising quality,<br> and a mission that matters.",
+        "label_font_size": 28,
+        "title_font_size": 48,
+        "intro_font_size": 22,
+        "columns_desktop": 2,
+        "columns_mobile": 1,
+        "grid_gap": 40,
+        "icon_size": 50,
+        "heading_font_size": 25,
+        "description_font_size": 19,
+        "section_padding": 40,
+        "background_color": "#f7f7f7"
+      }
+    },
+    "slideshow_DtEMNE": {
+      "type": "slideshow",
+      "blocks": {
+        "slide_V6G3UD": {
+          "type": "slide",
+          "settings": {
+            "extra_class": "women-day champion_ctm ctm-be-bold-banner ctm-sales-group",
+            "color_scheme": "dark",
+            "image": "shopify://shop_images/BIGGER_DESKTOP_BANNER_DIMS_bd86d401-7cdb-4e62-9955-c9bfa5082296.jpg",
+            "image2": "shopify://shop_images/MOBILE_BANNER_DIMS_d830ee37-e1ff-49f1-b6a3-aaaca2b4e8ea.jpg",
+            "image_size": "adapt",
+            "caption": "",
+            "heading": "WHY XX-XY AHTLETICS?",
+            "subtitle": "Because women deserve better.",
+            "additional_information": "XX-XY Athletics is the only brand unapologetically standing up for women’s sports. We build performance gear that fits, functions, and respects the integrity of female athletes. No noise. No compromises. Just quality apparel and a commitment to keep women's sports female.",
+            "show_review_rating": false,
+            "review_count": 5,
+            "text_content_alignment": "top-left",
+            "text_alignment": "left",
+            "max_width": 1200,
+            "button_label1": "OUR WHY",
+            "button_link1": "shopify://pages/our-mission",
+            "button_label2": "",
+            "button_link2": "",
+            "button_style": "primary",
+            "underline_color": "#000000"
+          }
+        }
+      },
+      "block_order": [
+        "slide_V6G3UD"
+      ],
+      "disabled": true,
+      "name": "t:sections.slideshow.presets.name",
+      "settings": {
+        "extra_class": "",
+        "block_size": "full-screen",
+        "overlay_enable": false,
+        "overlay_opacity": 20,
+        "slideshow_speed": 1.1,
+        "slideshow_delay": 3,
+        "autoplay": true,
+        "hover_autoplay_stop": true,
+        "navigation": true,
+        "pagination": true,
+        "margin_top": 80,
+        "margin_bottom": 0,
+        "top_padding_desktop": 0,
+        "bottom_padding_desktop": 0,
+        "top_padding_mobile": 0,
+        "bottom_padding_mobile": 0,
+        "top_margin_desktop": 0,
+        "bottom_margin_desktop": 0,
+        "top_margin_mobile": 0,
+        "bottom_margin_mobile": 0
+      }
+    }
+  },
+  "order": [
+    "banner_with_text_mz7eat",
+    "shogun-helper",
+    "pages",
+    "shogun-optimizer",
+    "rich_text_qh43qQ",
+    "image_grid_group_sale_jaqxQx",
+    "ctm_icon_text_grid_VTzewk",
+    "slideshow_DtEMNE"
+  ]
+}

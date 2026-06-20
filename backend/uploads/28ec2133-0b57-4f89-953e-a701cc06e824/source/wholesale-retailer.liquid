@@ -1,0 +1,76 @@
+
+<div class="retailer-container-main {{ section.settings.extra_class }}">
+{% if section.settings.title != blank %}    
+<div class="contact-container-title">
+        <h3>{{ section.settings.title }}</h3>
+    </div>    
+{% endif %}
+
+    <div class="contact-container max-w-[944px] mx-auto flex max-mdscreen6:flex-col max-mdscreen6:gap-y-20 justify-between py-50">
+        {% for block in section.blocks %}
+            <div class="retailer-details mdscreen6:w-2/4 flex flex-col justify-center items-center gap-y-16">
+            {% if block.settings.retailer_name != blank %}
+            <div class="retailer-name">
+                <h4>{{ block.settings.retailer_name }}</h4>
+            </div>
+            {% endif %}
+            {% if block.settings.description != blank %}
+                <div class="retailer-desc">
+                    <p>{{ block.settings.description }}</p>
+                </div>
+                {% endif %}
+                {% if block.settings.retailer_mail != blank %}
+                    <div class="retailer-mail">
+                        <a href="mailto:{{ block.settings.retailer_mail }}" class="underline hover:text-dark-blue text-primary-black">{{ block.settings.retailer_mail }}</a>
+                    </div>
+                    {% endif %}
+                </div>
+        {% endfor %}
+    </div>
+</div>
+{% schema %}
+
+    {
+      "name": "Wholesale Retailer",
+      "settings": [
+        {
+          "type": "text",
+          "label": "Extra Class",
+          "id": "extra_class"
+        },
+        {
+          "type": "text",
+          "label": "Title",
+          "id": "title"
+        }
+      ],
+      "blocks": [
+        {
+        "type": "retailer_details",
+        "name": "Retailer Details",
+          "settings": [
+            {
+              "type": "text",
+              "label": "Retailer Name",
+              "id": "retailer_name"
+            },
+            {
+              "type": "html",
+              "label": "Description",
+              "id": "description"
+            },
+            {
+              "type": "text",
+              "label": "Retailer Mail",
+              "id": "retailer_mail"
+            }
+          ]
+        }
+      ],
+      "presets": [
+        {
+          "name": "Wholesale Retailer"
+        }
+      ]
+    }
+    {% endschema %}

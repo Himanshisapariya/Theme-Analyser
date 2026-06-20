@@ -1,0 +1,267 @@
+{%- style -%}
+  .sale-banner-main {
+  	padding-top: {{ section.settings.top_padding_desktop }}px;
+  	padding-bottom: {{ section.settings.bottom_padding_desktop }}px;
+  }
+
+     .sale-ctm-banner {
+         background-color: {{ section.settings.color_code }}
+  }
+
+  @media screen and (max-width: 990px) {
+  	.sale-banner-main {
+  		padding-top: {{ section.settings.top_padding_mobile }}px;
+  		padding-bottom: {{ section.settings.bottom_padding_mobile }}px;
+  	}
+  }
+.sale-ctm-banner {
+  	margin-top: {{ section.settings.top_margin_desktop}}px;
+  	margin-bottom: {{ section.settings.bottom_margin_desktop }}px;
+  }
+
+  @media screen and (max-width: 990px) {
+  	.sale-ctm-banner {
+  		margin-top: {{ section.settings.top_margin_mobile }}px;
+  		margin-bottom: {{ section.settings.bottom_margin_mobile }}px;
+  	}
+  }
+
+.sale-buttons{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap:80px;
+}
+
+@media(max-width: 767px){
+  .sale-buttons{
+      flex-direction: column;
+      gap: 10px;
+    }
+}
+
+
+.sale-banner-main {
+    text-align: center;
+    padding: 0 25px;
+}
+
+.sale-title h4 {
+    margin-top: 0;
+    margin-bottom: 7px;
+    color: white;
+}
+
+.sale-banner-main p {
+    margin-top: 0;
+    margin-bottom: 7px;
+    color: white;
+    font-weight: 600;
+}
+
+.sale-banner-main .banner-button a {
+    padding-top: 5px;
+    color: white;
+    text-decoration-color: white;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+
+@media (max-width: 1200px) {
+    .sale-title h4 {
+        font-size: 30px;
+    }
+}
+
+@media (max-width: 640px) {
+    .sale-title h4 {
+        font-size: 20px;
+    }
+
+    .sale-banner-main p {
+        font-size: 14px;
+        line-height: 20px;
+    }
+
+    .sale-banner-main .banner-button a {
+        padding-top: 0px;
+        font-size: 13px;
+    }
+}
+
+{%- endstyle -%}
+
+<section class="sale-ctm-banner {{ section.settings.extra_class }}">
+  <div class="sale-banner-main">
+    <div class="sale-banner-inner">
+      {%- if section.settings.caption != blank -%}
+        <div class="sale-cption">
+          <p>{{ section.settings.caption }}</p>
+        </div>
+      {% endif %}
+      {%- if section.settings.sale_title -%}
+        <div class="sale-title">
+          <h4>{{ section.settings.sale_title }}</h4>
+        </div>
+      {% endif %}
+      {%- if section.settings.description != blank -%}
+        <div class="sale-description">
+          <p>{{ section.settings.description }}</p>
+        </div>
+      {% endif %}
+      <div class="sale-buttons">
+        {% for block in section.blocks %}
+          {%- if block.settings.button_text != blank -%}
+            <div class="banner-button">
+              <a class="button--rebuy" href="{{ block.settings.button_url }}">{{ block.settings.button_text }}</a>
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+
+</section>
+
+{% schema %}
+{
+  "name": "Sale Banner",
+  "class": "ctm-sale-banner",
+  "settings": [
+    {
+      "type": "text",
+      "label": "Extra Class",
+      "id": "extra_class"
+    },
+    {
+      "type": "text",
+      "label": "Caption",
+      "id": "caption"
+    },
+    {
+      "type": "html",
+      "label": "Sale Title",
+      "id": "sale_title"
+    },
+    {
+      "type": "html",
+      "label": "Description",
+      "id": "description"
+    },
+    {
+      "type": "text",
+      "label": "Color Schema",
+      "id": "color_code",
+      "info": "Add Only Hex Code"
+    },
+    {
+      "type": "header",
+      "content": "Section Spacing"
+    },
+    {
+      "type": "range",
+      "label": "Top Padding Desktop",
+      "id": "top_padding_desktop",
+      "default": 0,
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "label": "Bottom Padding Desktop",
+      "id": "bottom_padding_desktop",
+      "default": 0,
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "label": "Top Padding Mobile",
+      "id": "top_padding_mobile",
+      "default": 0,
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "label": "Bottom Padding Mobile",
+      "id": "bottom_padding_mobile",
+      "default": 0,
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "label": "Top Margin Desktop",
+      "id": "top_margin_desktop",
+      "default": 0,
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "label": "Bottom Margin Desktop",
+      "id": "bottom_margin_desktop",
+      "default": 0,
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "label": "Top Margin Mobile",
+      "id": "top_margin_mobile",
+      "default": 0,
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "label": "Bottom Margin Mobile",
+      "id": "bottom_margin_mobile",
+      "default": 0,
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px"
+    }
+  ],
+  "blocks": [
+    {
+    "type": "Button",
+    "name": "Button",
+    "settings": [
+      {
+      "type": "text",
+      "label": "Button Text",
+      "id": "button_text"
+    },
+    {
+      "type": "url",
+      "label": "Button URL",
+      "id": "button_url"
+    }
+    ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Sale Banner"
+    }
+  ]
+}
+{% endschema %}

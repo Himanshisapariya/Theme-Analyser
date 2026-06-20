@@ -1,0 +1,196 @@
+{% style  %}     
+.multo-column_main_container .multo-column_main{
+  display: flex;
+}
+.multo-column_main_container .multo-column_main .multi-col-images{
+  display: flex;  
+  flex-direction: row;
+  gap: 1px;
+  padding-top: 10px;
+} 
+{% for block in section.blocks %}
+{% if block.settings.display_2_images == true %}
+.multo-column_main.ctm-multi_column {
+  width: 100%;
+  flex: unset;
+}
+.multo-column_main.ctm-multi_column .multi-col-images img {
+  object-fit: cover;
+    max-width: 50%;
+    width: 100%;
+}
+.pdp-multicolumn-main .multo-column_main.ctm-multi_column .pdp-multicolumn-text-main {
+  max-width: 100%;
+}
+@media (max-width: 768px) {
+  .multo-column_main.ctm-multi_column .multi-col-images img { 
+    max-width: 100%;
+  }
+  .multo-column_main.ctm-multi_column .multi-col-images  {
+    flex-direction: column;
+  }
+}
+{% endif %}
+{% endfor %}
+{% endstyle %}
+
+
+<div class="multo-column_main_container {{ section.settings.pdp_multicolumn_extra_class }}">
+    {% if section.settings.heading != blank %}
+    <div class="column-heading">
+        <h2>{{ section.settings.heading }}</h2>
+    </div>
+    {% endif %}
+    {% for block in section.blocks %}
+      
+{% if block.settings.column_url != blank %}
+  <a href="{{ block.settings.column_url }}" class="multo-column_main {% if block.settings.display_2_images == true %}ctm-multi_column{% endif %}">
+{% endif %}
+    <div class="multo-column_main {% if block.settings.display_2_images == true %}ctm-multi_column{% endif %}">
+    {% if block.settings.column_image2 != blank %}<div class="multi-col-images">{% endif %}
+        {% if block.settings.column_image != blank %}
+        <img src="{{ block.settings.column_image | img_url:'master' }}" alt="column image" loading="lazy" class="pdp-multicolumn-img-main">
+        {% endif %}
+        {% if block.settings.column_image2 != blank %}
+          <img src="{{ block.settings.column_image2 | img_url:'master' }}" alt="column image" loading="lazy" class="pdp-multicolumn-img-main">
+          {% endif %}
+        {% if block.settings.column_image2 != blank %}</div>{% endif %}
+          <div class="ctm_mobile_image">
+          {% if block.settings.mobile_image != blank %}
+            <img src="{{ block.settings.mobile_image | img_url:'master' }}" alt="column image" loading="lazy" class="slideshow__background-img">
+            {% endif %}
+            </div>
+        <div class="pdp-multicolumn-details-start">
+          <div class="pdp-multicolumn-details-above">
+            {% if block.settings.column_image != blank %}
+            <div class="pdp-multicolumn-title-main-above">
+              <h2 class="pdp-multicolumn-title-main">{{ block.settings.column_title }}</h2>
+            </div>
+            {% endif %}
+            {% if block.settings.column_image != blank %}
+            {% endif %}
+            <div class="pdp-multicolumn-text-main">
+              <p>{{ block.settings.column_desc }}</p>
+            </div>
+          </div>
+          <div class="pdp-multicolumn-below">
+            <div class="column-btn">
+                {% if block.settings.url_1 != blank %}
+                <div class="column-btn-start color-background-5 bg-transparent br-0">
+                  <a href="{{ block.settings.url_1 }}" class="button button--secondary new-button-text {{ block.settings.button_extra_class }}">{{ block.settings.button_1 }}</a>
+                </div>
+                {% endif %}
+                {% if block.settings.url_1 != blank %}
+                <div class="column-btn-start color-background-5 bg-transparent br-0">
+                  <a href="{{ block.settings.url_2 }}" class="button button--secondary new-button-text button-green-transparent {{ block.settings.button_extra_class }}">{{ block.settings.button_2 }}</a>
+                </div>
+                {% endif %}
+            </div>
+          </div>
+        </div>
+    </div>
+    {% if block.settings.column_url != blank %}
+  </a>
+    {% endif %}
+    {% endfor %}
+</div>
+
+{% schema %}
+
+    {
+      "name": "PDP Multicolumn",
+      "settings": [
+        {
+          "type": "text",
+          "label": "Heading",
+          "id": "heading"
+        },
+        {
+          "type": "text",
+          "label": "Extra Class",
+          "id": "pdp_multicolumn_extra_class"
+        }
+      ],
+      "blocks": [
+        {
+          "type": "column",
+          "name": "Column",
+          "settings": [
+            {
+              "type": "image_picker",
+              "label": "Column Image",
+              "id": "column_image"
+            },
+            {
+              "type": "checkbox",
+              "label": "Display 2 Images",
+              "id": "display_2_images",
+              "default": false            
+            },
+            {
+              "type": "image_picker",
+              "label": "Column Image 2",
+              "id": "column_image2",
+              "visible_if": "{{ block.settings.display_2_images == true }}"
+            },
+            {
+              "type": "checkbox",
+              "label": "Display Different image for Mobile",
+              "id": "diff_mobile_img"
+            },
+            {
+              "type": "image_picker",
+              "label": "Mobile Image",
+              "id": "mobile_image",
+              "visible_if": "{{ block.settings.diff_mobile_img == true }}"
+            },
+            {
+              "type": "text",
+              "label": "Column Title",
+              "id": "column_title"
+            },
+            {
+              "type": "html",
+              "label": "Column Description",
+              "id": "column_desc"
+            },
+            {
+              "type": "text",
+              "label": "Button 1 Text",
+              "id": "button_1"
+            },
+            {
+              "type": "url",
+              "label": "Button 1 URL",
+              "id": "url_1"
+            },
+            {
+              "type": "url",
+              "label": "Button 2 URL",
+              "id": "url_2"
+            },
+            {
+              "type": "text",
+              "label": "Button 2 Text",
+              "id": "button_2"
+            },
+            {
+              "type": "text",
+              "label": "Button extra class",
+              "id": "button_extra_class"
+            },
+            {
+              "type": "url",
+              "label": "Column URL",
+              "id": "column_url"
+            }
+          ]
+        }
+      ],
+      "presets": [
+        {
+          "name": "PDP Multicolumn"
+        }
+      ]
+    }
+    {% endschema %}

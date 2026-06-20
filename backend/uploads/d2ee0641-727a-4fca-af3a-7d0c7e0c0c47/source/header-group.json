@@ -1,0 +1,94 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "name": "t:sections.header.name",
+  "type": "header",
+  "sections": {
+    "announcement-bar": {
+      "type": "announcement-bar",
+      "blocks": {
+        "announcement_YHy4Ky": {
+          "type": "announcement",
+          "settings": {
+            "text": "Up to 50% Off Kids Mattresses",
+            "link": "https://5littlemonkeysbed.com/collections/kids-hybrid-mattresses"
+          }
+        },
+        "announcement_MgAfXG": {
+          "type": "announcement",
+          "disabled": true,
+          "settings": {
+            "text": "35% Off Organic Cotton Sheets",
+            "link": "https://5littlemonkeysbed.com/products/sheets"
+          }
+        },
+        "announcement_Fgcqt6": {
+          "type": "announcement",
+          "settings": {
+            "text": "Risk-Free 100-Day Rest Test",
+            "link": ""
+          }
+        },
+        "announcement_CGwAxQ": {
+          "type": "announcement",
+          "settings": {
+            "text": "Fast & Free Shipping!",
+            "link": "https://5littlemonkeysbed.com/"
+          }
+        }
+      },
+      "block_order": [
+        "announcement_YHy4Ky",
+        "announcement_MgAfXG",
+        "announcement_Fgcqt6",
+        "announcement_CGwAxQ"
+      ],
+      "settings": {
+        "bg_color": "#fcfdc9",
+        "color_scheme": "scheme-1",
+        "show_line_separator": false,
+        "show_social": false,
+        "auto_rotate": true,
+        "change_slides_speed": 5,
+        "enable_country_selector": false,
+        "enable_language_selector": false,
+        "contact_no": "844.325.5555",
+        "enable_contact_no": true
+      }
+    },
+    "header": {
+      "type": "header",
+      "custom_css": [
+        "#HeaderMenu-sale {font-weight: bold;}"
+      ],
+      "settings": {
+        "logo_position": "middle-left",
+        "menu": "duplicate-header-menu",
+        "menu_type_desktop": "dropdown",
+        "sticky_header_type": "always",
+        "show_line_separator": false,
+        "color_scheme": "scheme-1",
+        "menu_color_scheme": "scheme-1",
+        "enable_country_selector": false,
+        "enable_language_selector": false,
+        "mobile_logo_position": "center",
+        "margin_bottom": 0,
+        "padding_top": 20,
+        "padding_bottom": 20,
+        "contact_button": "Contact Us",
+        "contact_button_url": ""
+      }
+    }
+  },
+  "order": [
+    "announcement-bar",
+    "header"
+  ]
+}

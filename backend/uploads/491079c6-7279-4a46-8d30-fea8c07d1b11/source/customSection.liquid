@@ -1,0 +1,70 @@
+{{ 'section-faq.css' | asset_url | stylesheet_tag }}
+
+<div>
+  {% render 'customSnippet' %}
+</div>
+
+<div class="faq-section">
+  <h2>{{ section.settings.headline }}</h2>
+
+  {% for block in section.blocks %}
+    <div class="custom-content-section">
+      <h2>{{ block.settings.blog_name }}</h2>
+
+      <div class="custom-content-image">
+        <img
+          src="{{ block.settings.image | img_url: width: 1500 }}"
+          alt="{{ block.settings.blog_name }}"
+        >
+      </div>
+
+      <div class="custom-content">
+        <p>{{ block.settings.content }}</p>
+      </div>
+    </div>
+  {% endfor %}
+
+  <!-- Add more FAQ items as needed -->
+</div>
+
+{% schema %}
+{
+  "name": "Blog",
+  "settings": [
+    {
+    "type" : "text",
+    "label" : "Headline",
+    "id" : "Headline"
+    }
+  ],
+  "blocks": [
+    {
+      "name" : "Blog",
+      "type": "Blog",
+      "settings": [
+        {
+           "type": "text",
+          "id": "blog_name",
+          "label": "BlogName"
+        },
+        {
+          "type": "image_picker",
+          "label" : "image",
+          "id" : "image"
+        },
+        {
+           "type" : "textarea",
+          "id" : "content",
+          "label" : "content"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name" : "Blog"
+    }
+  ]
+}
+{% endschema %}
+\

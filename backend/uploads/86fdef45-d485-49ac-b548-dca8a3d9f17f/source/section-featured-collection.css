@@ -1,0 +1,100 @@
+.featured-collection__wrapper .subtitle {
+  color: var(--color-foreground-title);
+}
+
+.featured-collection .subtitle {
+  position: absolute;
+  left: -2.8rem;
+  width: 1.8rem;
+  bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.8rem;
+  margin: 0;
+  writing-mode: vertical-rl;
+  color: rgba(var(--color-foreground-title), 1);
+  transform: rotate(-180deg);
+}
+
+.featured-collection__wrapper .icon-star {
+  width: 10px;
+  height: 10px;
+  fill: rgba(var(--color-foreground-title), 1);
+}
+
+.color-background-5 .featured-collection__text {
+  color: rgba(var(--color-foreground), 0.6);
+}
+.collection-product__slider--no-js .collection-product-list {
+  padding: 0;
+}
+.collection-product__slider--no-js .collection-product-card {
+  margin-left: -1px;
+  min-width: 43.2rem;
+}
+@media screen and (max-width: 750px) {
+  .collection-product__slider--no-js .collection-product-card {
+    width: 36.2rem;
+  }
+}
+@media screen and (max-width: 475px) {
+  .collection-product__slider--no-js .collection-product-card {
+    width: 32rem;
+  }
+}
+@media screen and (max-width: 340px) {
+  .collection-product__slider--no-js .collection-product-card {
+    width: 28rem;
+  }
+}
+
+@media screen and (min-width: 990px) {
+}
+.collection-product-list {
+  display: flex;
+  margin-top: 4rem;
+}
+.collection-product-list.slick-initialized {
+  display: block;
+}
+.collection-product-list .collection-product-card {
+  flex: none;
+}
+
+.featured-collection-section .collection-product-card {
+  height: 100%;
+}
+
+.featured-collection-section .slick-slide > div {
+  height: 100%;
+}
+
+.featured-collection-section .slick-list {
+  overflow: visible;
+}
+
+@media screen and (max-width: 1329px) {
+}
+@media screen and (max-width: 1199px) {
+}
+@media screen and (max-width: 989px) {
+  .featured-collection-section .slider.slider--tablet {
+    overflow: visible;
+  }
+  .collection-product-list {
+    margin-top: 2rem;
+  }
+  .collection-product-list {
+    padding-bottom: 0;
+  }
+}
+@media screen and (max-width: 750px) {
+  .featured-collection .subtitle {
+    top: 0.8rem;
+  }
+}
+@media screen and (max-width: 475px) {
+}
+@media screen and (max-width: 340px) {
+}

@@ -1,0 +1,27 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "parent": "product.json",
+  "context": {
+    "market": "us"
+  },
+  "sections": {
+    "main": {
+      "custom_css": [
+        ".promo-message,.promo-message a {padding-top: 10px; font-size: 18px; color: #2ab572; font-weight: bold;}",
+        ".promo-message a {text-decoration: underline; text-decoration-color: #2ab572;}",
+        ".product__subtitle,.yotpo-widget-instance {display: block; width: 100%;}",
+        ".product-form__buttons {margin-bottom: 10px;}"
+      ],
+      "settings": {},
+      "blocks": {}
+    }
+  }
+}

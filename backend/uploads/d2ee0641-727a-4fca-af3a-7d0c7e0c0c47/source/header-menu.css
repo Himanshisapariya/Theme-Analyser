@@ -1,0 +1,89 @@
+/* Header MENU CSS */
+
+    /* Header Iocn Css */
+    .header_icon_right .header__icon svg path[stroke="currentColor"] {
+        @apply stroke-dark_grey transition-all duration-300 ease-in-out;
+    }
+    .header_icon_right .header__icon:hover svg path[stroke="currentColor"] {
+        @apply stroke-warm_neutral;
+    }
+
+    /* Header MeNu */
+
+    .menufixed {  
+        @apply z-9 transition-all duration-500 ease-in-out !fixed left-0 right-0 top-0 shadow-shadow-xl;
+        -webkit-animation-name: stickySlideDown;
+        animation-name: stickySlideDown;
+        -webkit-animation-duration: .5s;
+        animation-duration: .5s;
+      }
+      @-webkit-keyframes stickySlideDown{
+        0%{
+          opacity:.7;
+          transform:translateY(-100%)
+        }
+    
+        to{
+          opacity:1;
+          transform:translateY(0)
+        }
+      }
+    
+      @keyframes stickySlideDown{
+        0%{
+          opacity:.7;
+          transform:translateY(-100%)
+        }
+    
+        to{
+          opacity:1;
+          transform:translateY(0)
+        }
+      }  
+
+     .ctm_header nav ul li a {
+      @apply py-0 px-10 text-16 leading-24 transition-all duration-300 ease-in-out; 
+     } 
+     .ctm_header nav ul li a:hover span {
+      @apply !no-underline text-warm_neutral transition-all duration-300 ease-in-out;
+     }
+     .ctm_header nav ul li a .header__active-menu-item {
+      @apply text-warm_neutral !no-underline;
+     }
+     .ctm_header header-drawer .menu-opening .icon-hamburger path[stroke="currentColor"] {
+      @apply stroke-warm_neutral;
+     }
+     details[open] > summary {
+      @apply menu-drawer__menu-item--active;
+    }
+/* Header MENU CSS END  */
+.menu-drawer__menu-item--active{
+  @apply bg-spilt_milk;
+}
+
+@screen mdscreen1 {
+
+    .ctm_header_wrapper .ctm_header {
+        @apply flex gap-20 
+    }
+    .ctm_header .menu-drawer__navigation {
+      @apply py-0;
+    }
+    .ctm_header .menu-drawer {
+      @apply bg-transparent;
+    }
+    .ctm_header header-drawer .menu-drawer__utility-links {
+      @apply flex items-center bg-white py-14 px-28;
+    }
+    .ctm_header header-drawer .menu-drawer__utility-links a {
+      @apply w-full text-center;
+    }
+    .ctm_header header-drawer nav ul li a {
+      @apply px-28 py-14 text-16 leading-20;
+    }
+    .ctm_header header-drawer nav ul li a:hover, .ctm_header header-drawer nav ul li .menu-drawer__menu-item--active {
+      @apply bg-spilt_milk;
+    }    
+
+ 
+}

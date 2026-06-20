@@ -1,0 +1,218 @@
+{{ 'faq-accordion.css' | asset_url | stylesheet_tag }}
+
+<main class="main_faq_accordian">
+  <div class="heading_content fullscreen-container">
+    {% if section.settings.heading != blank or section.settings.desc != blank %}
+      <div class="text_content_main text-align-{{ section.settings.heading_alignment }}">
+        <h2>{{ section.settings.heading }}</h2>
+        <p>{{ section.settings.desc }}</p>
+      </div>
+    {% endif %}
+    <div class="main-container">
+      <div class="accordian-image">
+        
+        {% if section.settings['main-img'] != blank %}
+          <img
+            src="{{ section.settings.main-img | img_url:'master' }}"
+            alt="placeholder"
+            loading="lazy"
+            width="100%"
+            height="100%">
+        {% endif %}
+      </div>
+      <div class="faq-accordion" data-open-first="{{ section.settings.open_first }}">
+        {% for block in section.blocks %}
+          <div class="faq-item">
+              {% if block.settings.question != blank %}
+            <button class="faq-question">
+              {{ block.settings.question }}
+              <span class="faq-icon">+</span>
+            </button>
+            {% endif %}
+            {% if block.settings.answer  != blank %}
+            <div class="faq-answer">
+              <div class="faq-answer-inner">
+              <p>{{ block.settings.answer }}</p>
+              </div>
+            </div>
+          {% endif %}
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</main>
+
+<style>
+  .faq-search {
+    padding-bottom: 50px;
+    max-width: 300px;
+  }
+  input#faqSearch {
+    height: 40px;
+    border: 2px solid black;
+    border-radius: 5px;
+    padding-left: 20px;
+    width: 270px;
+  }
+  .heading_content {
+    text-align: start;
+    max-width: 100%;
+  }
+  .heading_content h2 {
+    font-weight: 600;
+    font-size: 44px;
+    padding-bottom: 20px;
+  }
+  .heading_content .text_content_main.text-align-left {
+    text-align: left;
+  }
+  .heading_content .text_content_main.text-align-center {
+    text-align: center;
+  }
+  .heading_content .text_content_main.text-align-right {
+    text-align: right;
+  }
+  .heading_content p {
+    padding-bottom: 40px;
+  }
+  .ans_block {
+    text-align: start;
+  }
+  .main-abc {
+    display: flex;
+  }
+  .main_faq_accordian {
+    padding: 20px 0;
+  }
+  .faq-answer {
+    
+    max-height: 0;
+    background: #fff;
+    opacity: 0;
+    transition: all 300ms ease-in-out;
+  }
+  .faq-item.active .faq-answer {
+    
+    max-height: 5000px;
+    opacity: 1;
+    transition: all 300ms ease-in-out;
+  }
+  .faq-item.active .faq-icon {
+    transform: rotate(135deg);
+    content: "x";
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const faqWrapper = document.querySelector('.faq-accordion');
+    const openFirst = faqWrapper?.dataset.openFirst === 'true';
+    const faqItems = document.querySelectorAll('.faq-item');
+
+    faqItems.forEach((item, index) => {
+      const question = item.querySelector('.faq-question');
+      const icon = item.querySelector('.faq-icon');
+
+      question.addEventListener('click', () => {
+        faqItems.forEach(innerItem => {
+          if (innerItem !== item && innerItem.classList.contains('active')) {
+            innerItem.classList.remove('active');
+            innerItem.querySelector('.faq-icon').textContent = '+';
+            innerItem.querySelector('.faq-icon').style.transform = 'rotate(0deg)';
+          }
+        });
+
+        item.classList.toggle('active');
+
+        if (item.classList.contains('active')) {
+          icon.textContent = '×';
+          icon.style.transform = 'rotate(180deg)';
+        } else {
+          icon.textContent = '+';
+          icon.style.transform = 'rotate(0deg)';
+        }
+      });
+
+      if (openFirst && index === 0) {
+        item.classList.add('active');
+        icon.textContent = '×';
+        icon.style.transform = 'rotate(180deg)';
+      }
+    });
+  });
+</script>
+
+
+{% schema %}
+  {
+    "name": "Faq Image Accordian",
+    "tag": "section",
+    "settings": [
+      {
+        "type": "text",
+        "label": "Heading",
+        "id": "heading"
+      },
+      {
+        "type": "text",
+        "label": "Description ",
+        "id": "desc"
+      },
+      {
+        "type": "select",
+        "id": "heading_alignment",
+        "options": [
+          {
+            "value": "left",
+            "label": "left"
+          },
+          {
+            "value": "center",
+            "label": "center"
+          },
+          {
+            "value": "right",
+            "label": "right"
+          }
+        ],
+        "default": "left",
+        "label": "Heading Alignment"
+      },
+      {
+        "type": "image_picker",
+        "label": "Main Image",
+        "id": "main-img"
+      },
+      {
+        "type": "checkbox",
+        "label": "Open first accordion by default",
+        "id": "open_first",
+        "default": false
+      }
+    ],
+    "blocks": [
+      {
+        "type": "faq",
+        "name": "FAQ Item",
+        "settings": [
+          {
+            "type": "richtext",
+            "id": "question",
+            "label": "Question"
+          },
+          {
+            "type": "html",
+            "id": "answer",
+            "label": "Answer"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Faq Image Accordian"
+      }
+    ]
+  }
+{% endschema %}

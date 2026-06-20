@@ -1,0 +1,114 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "name": "t:sections.footer.name",
+  "type": "footer",
+  "sections": {
+    "17133381040721f42a": {
+      "type": "apps",
+      "blocks": {
+        "instafeed_app_block_h83gdt": {
+          "type": "shopify://apps/instafeed/blocks/app-block/c447db20-095d-4a10-9725-b5977662c9d5",
+          "settings": {
+            "title": "",
+            "title_color": "",
+            "title_size_v2": 0,
+            "alignment": "center",
+            "instafeed_margin_top": 0,
+            "instafeed_margin_bottom": 0,
+            "instafeed_margin_sides": 0,
+            "show_instagram_link": false,
+            "link_alignment": "left",
+            "link_color": "#000000",
+            "background_color": "",
+            "feed_id": "",
+            "html_area": "<div class=\"insta_footer_block\">\n    <div class=\"ctm_insta_footer\">\n        <h3>Connect With Us <a href=\"https://www.instagram.com/5lilmonkeysbed\" target=\"_blank\">@5lilmonkeysbed</a>\n    </h3>\n    </div>\n    <div class=\"ctm_insta_btn\">\n        <a class=\"aloe_leaf_btn\" href=\"https://www.instagram.com/5lilmonkeysbed\" target=\"_blank\">Follow Us</a>\n    </div>\n</div>"
+          }
+        }
+      },
+      "block_order": [
+        "instafeed_app_block_h83gdt"
+      ],
+      "settings": {
+        "extra_class": "ctm_instagram_section",
+        "background_color": "",
+        "include_margins": true
+      }
+    },
+    "footer": {
+      "type": "footer",
+      "blocks": {
+        "link_list_dFkLXP": {
+          "type": "link_list",
+          "settings": {
+            "heading": "Shop",
+            "menu": "new-footer-shop-menu"
+          }
+        },
+        "link_list_ed4A97": {
+          "type": "link_list",
+          "settings": {
+            "heading": "Our Company",
+            "menu": "new-footer-our-company-menu"
+          }
+        },
+        "link_list_LN3XVz": {
+          "type": "link_list",
+          "settings": {
+            "heading": "Learn More",
+            "menu": "new-footer-learn-more-menu"
+          }
+        },
+        "link_list_TG9whx": {
+          "type": "link_list",
+          "settings": {
+            "heading": "Support",
+            "menu": "new-footer-support-menu"
+          }
+        },
+        "link_list_tzgRDK": {
+          "type": "link_list",
+          "settings": {
+            "heading": "Collaborate",
+            "menu": "new-footer-collaborate-menu"
+          }
+        }
+      },
+      "block_order": [
+        "link_list_dFkLXP",
+        "link_list_ed4A97",
+        "link_list_LN3XVz",
+        "link_list_TG9whx",
+        "link_list_tzgRDK"
+      ],
+      "settings": {
+        "color_scheme": "scheme-1",
+        "newsletter_enable": true,
+        "email_image": "shopify://shop_images/footer-email-image.png",
+        "newsletter_heading": "Be the first to know",
+        "email_footer_background": "shopify://shop_images/our_story_BG.png",
+        "email_sub_txt": "Subscribe and you’ll hear first about our new collections, giveaways, and exclusive offers.",
+        "enable_follow_on_shop": false,
+        "show_social": false,
+        "enable_country_selector": false,
+        "enable_language_selector": false,
+        "payment_enable": false,
+        "show_policy": false,
+        "margin_top": 0,
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    }
+  },
+  "order": [
+    "17133381040721f42a",
+    "footer"
+  ]
+}

@@ -1,0 +1,71 @@
+{% liquid
+  assign left-txt = product.metafields['left-txt-image-txt'].acf
+  assign right-txt = product.metafields['right-txt-image-txt'].acf
+  assign slide-img = product.metafields['slide-image'].acf
+  assign head = product.metafields['heading-comfort'].acf
+  assign description = product.metafields['description-comfort'].acf
+  assign image-comfort = product.metafields['image-comfort'].acf
+%}
+
+{% if left-txt != blank %}
+  <div class="ctm_pdp_comfort_section pt-55 desktop:pt-80 {{ section.settings.extra_class }}">
+    <div class="xl_container">
+      <div class="ctm_pdp_comfort_inner flex items-center mdscreen1:flex-col gap-40 mdscreen2:gap-55 desktop:!gap-100">
+        <div class="ctm_pdp_comfort_txt w-full mdscreen2:w-1/2 desktop:w-[37%] midlarge_desktop:w-1/2 desktop:pl-[45px]">
+          <div class="ctm_pdp_comfort_left flex items-center justify-between">
+            <div class="ctm_pdp_left_comfort_txt">
+              <h6 class="text-12 leading-18 text-dark_grey">{{ left-txt }}</h6>
+            </div>
+            <div class="ctm_pdp_right_comfort_txt">
+              <h6 class="text-12 leading-18 text-dark_grey">{{ right-txt }}</h6>
+            </div>
+          </div>
+          {% if slide-img != blank %}
+            <div class="ctm_pdp_comfort_slide_img">
+              <img class="w-full" src="{{ slide-img }}" alt="img_logo" loading="lazy" width="477" height="64">
+            </div>
+          {% endif %}
+          {% if head != blank and description != blank %}
+            <div class="ctm_pdp_comfort_head mdscreen1:text-center">
+              <div class="pdp_comfort_title mb-14">
+                <h3>{{ head }}</h3>
+              </div>
+              <div class="pdp_comfort_content">{{ description }}</div>
+            </div>
+          {% endif %}
+        </div>
+        {% if image-comfort != blank %}
+          <div class="ctm_pdp_image_comfort w-full mdscreen2:w-[calc(67%_-_55px)] desktop:w-[calc(67%_-_100px)] midlarge_desktop:w-[calc(50%_-_100px)] rounded-24 overflow-hidden">
+            <img
+              class="w-full h-full object-cover"
+              src="{{ image-comfort }}"
+              alt="{{ image-comfort.alt }}"
+              loading="lazy"
+              width="780"
+              height="446"
+            >
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+{% endif %}
+{% schema %}
+{
+  "name": "PDP Image Txt",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "label": "Extra Class",
+      "id": "extra_class"
+    }
+  ],
+  "blocks": [],
+  "presets": [
+    {
+      "name": "PDP Image Txt"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,70 @@
+<script>
+  const preorderCustom = {
+      render: function(){
+          this.initSelectors()
+          this.handleEvents()
+      },
+      initSelectors: function(){
+          window.GloboPreorderParams = window.GloboPreorderParams || {};
+          window.GloboPreorderParams.selectors = window.GloboPreorderParams.selectors || {};
+          window.GloboPreorderParams.selectors.productPositionMessage = ".product-form__buttons";
+          window.GloboPreorderParams.selectors.productPositionLimitMessage = ".product-form__buttons";
+          window.GloboPreorderParams.selectors.productVariantActivator += ", variant-radios label";
+          window.GloboPreorderParams.selectors.collectionProductForms = '.gPreorderCollectionForm, .spf-product__form, .collection-product-card form[action*="/cart/add"]:not(#product-form-installment):not(.installment), .boost-pfs-addtocart-product-form, .pf-product-form'
+
+      },
+      handleEvents: function(){
+          const app = this;
+          document.addEventListener('globo.preorder.show.preorder', e => {
+              const form = e.detail.form;
+              form.classList.add('gPreorderShowing')
+          })
+          document.addEventListener('globo.preorder.show.addtocart', e => {
+              const form = e.detail.form;
+              form.classList.remove('gPreorderShowing')
+          })
+
+          window.addEventListener('load', () => {
+              app.removeDisabledVariant()
+          })
+      },
+      removeDisabledVariant: function(){
+          const app = this;
+          let productVariantElements = document.querySelectorAll(window.GloboPreorderParams.selectors.productVariantActivator)
+          if(productVariantElements.length){
+              productVariantElements.forEach(productVariantElement => {
+                  ['click', 'change'].forEach(action => {
+                      productVariantElement.addEventListener(action, function(){
+                           let disabledVariants = document.querySelectorAll('variant-radios input[disabled], variant-radios input.disabled')
+                            if(disabledVariants.length){
+                                app.removeAttributeElement(disabledVariants, 'disabled', 'class')
+                            }
+                      })
+                  })
+              })
+          }
+      },
+      removeAttributeElement: function(elements, name, name2){
+          elements.forEach(element => {
+              element.removeAttribute(name)
+              if(name2){
+                  element.removeAttribute(name2)
+              }
+          })
+      },
+      appSetInterval: function(t, e, r) {
+          t();
+          var n = 0
+            , o = window.setInterval((function() {
+              t(),
+              ++n === r && window.clearInterval(o)
+          }), e)
+      }
+  }
+  preorderCustom.render()
+</script>
+<style>
+  .gPreorderShowing .product-form__buttons{
+      margin-bottom: 0rem !important;
+  }
+</style>

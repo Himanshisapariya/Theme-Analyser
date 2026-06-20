@@ -1,0 +1,336 @@
+{% comment %}
+    Renders a product with a specific color as an individual product card
+    Shows all size variants for that color with swatches at the bottom
+    Accepts:
+    - product_card_product: {Object} Product Liquid object
+    - variant_color: {String} The color to display
+    - color_option_index: {Number} Index of the color option
+    - media_size: {String} Size of the product image card
+    - show_secondary_image: {Boolean} Show the secondary image on hover
+    - show_vendor: {Boolean} Show the product vendor
+    - show_desc: {Boolean} Show the product description
+    - show_sku: {Boolean} Show sku
+    - section_id: {String} The ID of the section that contains this card
+    Usage:
+    {% render 'product-card-variant', product_card_product: product, variant_color: 'Red', color_option_index: 0 %}
+{% endcomment %}
+
+
+{%- comment -%} Find the first variant with this color {%- endcomment -%}
+{%- assign first_color_variant = nil -%}
+{% for variant in product_card_product.variants %}
+  {%- if variant.options[color_option_index] == variant_color -%}
+    {%- assign first_color_variant = variant -%}
+    {%- break -%}
+  {%- endif -%}
+{% endfor %}
+
+<div
+    class="card-wrapper js-color-swatches-wrapper variant-color-card gts"
+    data-product="{{ product_card_product.handle }}"
+    data-variant-color="{{ variant_color }}"
+    role="group"
+    aria-label="product card"
+>
+    <span class="visually-hidden">{{ product_card_product.title | escape }} - {{ variant_color }}</span>
+
+    <div class="card card--product">
+        <div class="card__inner full-unstyled-link">
+            {%- liquid
+                assign variant_image = first_color_variant.image | default: product_card_product.featured_media
+                assign featured_media_aspect_ratio = variant_image.aspect_ratio
+
+                if variant_image.aspect_ratio == null
+                    assign featured_media_aspect_ratio = 1
+                endif
+            -%}
+
+            <div
+                class="media media--transparent media--{{ media_size }} media--hover-effect"
+                {%- if media_size == 'landscape' -%}
+                    style="padding-bottom: 70%;"
+                {%- endif -%}
+                {%- if media_size == 'portrait' -%}
+                    style="padding-bottom: 130%;"
+                {%- endif -%}
+                {%- if media_size == 'square' -%}
+                    style="padding-bottom: 100%;"
+                {%- endif -%}
+            >
+                {%- if variant_image -%}
+                    {% assign fit = '' %}
+                    {% if media_fit == 'contain' %}
+                        {% assign fit = 'object-fit: contain;' %}
+                    {% endif %}
+                    {% if media_fit == 'cover' %}
+                        {% assign fit = 'object-fit: cover;' %}
+                    {% endif %}
+
+                    {{
+                        variant_image
+                        | image_url: width: variant_image.width
+                        | image_tag:
+                            loading: 'lazy',
+                            sizes: sizes,
+                            widths: '360, 533, 720, 940, 1066, 1200, 1400, 1600, 1800, 2000, 2200, 2400, 2600',
+                            class: 'motion-reduce media--first',
+                            style: fit,
+                            width: variant_image.width,
+                            height: variant_image.height
+                    }}
+                    {%- if product_card_product.media[1] != null and show_secondary_image -%}
+                        {%- capture sizes -%}
+                            (min-width: 1100px) 535px, (min-width: 750px) calc((100vw - 130px) / 2), calc((100vw - 50px) / 2)
+                        {%- endcapture -%}
+                        {{
+                            product_card_product.media[1]
+                            | image_url: width: product_card_product.media[1].width
+                            | image_tag:
+                                loading: 'lazy',
+                                sizes: sizes,
+                                widths: '360, 533, 720, 940, 1066, 1200, 1400, 1600, 1800, 2000, 2200, 2400, 2600',
+                                class: 'motion-reduce media--first',
+                                style: fit,
+                                width: product_card_product.media[1].width,
+                                height: product_card_product.media[1].height
+                        }}
+                    {%- endif -%}
+                {%- else -%}
+                    {{ 'collection-1' | placeholder_svg_tag: 'placeholder-svg' }}
+                {%- endif -%}
+            </div>
+            
+            {%- if quickview_show -%}
+                <div class="quick-add no-js-hidden">
+                    {%- assign product_form_id = 'quick-add-'
+                        | append: section_id
+                        | append: product_card_product.id
+                        | append: '-'
+                        | append: variant_color
+                    -%}
+                    <modal-opener data-modal="#QuickAdd-{{ product_card_product.id }}">
+                        <button
+                            id="{{ product_form_id }}-submit"
+                            type="submit"
+                            name="add"
+                            class="card__link button--{{ settings.quickview_button_style }} js-color-swatches-link"
+                            aria-haspopup="dialog"
+                            data-product-url="{{ product_card_product.url }}?variant={{ first_color_variant.id }}"
+                        >
+                            <span>{{- 'general.card.quick__view' | t -}}</span>
+                            <div class="loading-overlay__spinner hidden">
+                                <svg
+                                    aria-hidden="true"
+                                    focusable="false"
+                                    role="presentation"
+                                    class="spinner"
+                                    viewBox="0 0 66 66"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                >
+                                    <circle class="path" fill="none" stroke-width="6" cx="33" cy="33" r="30"></circle>
+                                </svg>
+                            </div>
+                        </button>
+                    </modal-opener>
+                    <quick-add-modal
+                        id="QuickAdd-{{ product_card_product.id }}"
+                        class="quick-add-modal"
+                    >
+                        <div
+                            role="dialog"
+                            aria-label="{{ 'products.product.choose_product_options' | t: product_name: product_card_product.title | escape }}"
+                            aria-modal="true"
+                            class="quick-add-modal__content global-settings-popup"
+                            tabindex="-1"
+                        >
+                            <button
+                                id="ModalClose-{{ product_card_product.id }}"
+                                type="button"
+                                class="quick-add-modal__toggle modal-close-button"
+                                aria-label="{{ 'accessibility.close' | t }}"
+                            >
+                                {% render 'icon-close' %}
+                            </button>
+                            <div class="quick-add-modal__content-wrapper">
+                                <div
+                                    id="QuickAddInfo-{{ product_card_product.id }}"
+                                    class="quick-add-modal__content-info"
+                                ></div>
+                            </div>
+                        </div>
+                    </quick-add-modal>
+                </div>
+            {%- endif -%}
+            
+            <div class="card__badge {% if settings.badge_italic %}card__badge_italic{% endif %} {% if first_color_variant.compare_at_price > first_color_variant.price and first_color_variant.available %}on_sale{% endif %}">
+                {%- comment -%} Check if any variant with this color is available {%- endcomment -%}
+                {%- assign any_color_available = false -%}
+                {%- for variant in product_card_product.variants -%}
+                    {%- if variant.options[color_option_index] == variant_color and variant.available -%}
+                        {%- assign any_color_available = true -%}
+                        {%- break -%}
+                    {%- endif -%}
+                {%- endfor -%}
+
+                {%- unless any_color_available -%}
+                    <span class="badge badge-text badge--bottom-left color-{{ settings.badge_icon_color }}" aria-hidden="true">
+                        {{ 'products.product.sold_out' | t }}
+                    </span>
+                {%- endunless -%}
+
+            </div>
+
+            <div class="ctm-promo-badges">
+                {% assign bestseller_promo = first_color_variant.metafields.custom.best_seller %}
+                {% assign newarrival_promo = first_color_variant.metafields.custom.new_arrival %}
+                {% assign preformance_promo = first_color_variant.metafields.custom.performance %}
+                
+                {% if bestseller_promo == 'best_promo' %}
+                    <div data-variant-id="{{ first_color_variant.id }}" class="promotag_ctm best_promo color-{{ settings.badge_icon_color }}" data-finalsale="">
+                        BEST SELLER
+                    </div>
+                {% endif %}
+                {% if newarrival_promo == 'new_promo' %}
+                    <div data-variant-id="{{ first_color_variant.id }}" class="promotag_ctm new_promo color-{{ settings.badge_icon_color }}">
+                        NEW ARRIVAL
+                    </div>
+                {% endif %}
+                {% if preformance_promo == 'pref_promo' %}
+                    <div data-variant-id="{{ first_color_variant.id }}" class="promotag_ctm pref_promo color-{{ settings.badge_icon_color }}">
+                        PERFORMANCE
+                    </div>
+                {% endif %} 
+                
+                <div 
+                    data-variant-id="{{ first_color_variant.id }}"
+                    class="lowstock-badge color-{{ settings.badge_icon_color }}"
+                    {% unless first_color_variant.metafields.custom.low_stock %}
+                        style="display:none;"
+                    {% endunless %}
+                >
+                    {{ first_color_variant.metafields.custom.low_stock }}
+                </div>
+            </div>
+        </div>
+        <a
+            href="{{ product_card_product.url | default: '#' }}?variant={{ first_color_variant.id }}"
+            class="link link--overlay card-wrapper__link--overlay card-product__link js-color-swatches-link"
+            aria-label="{{ product_card_product.title }} - {{ variant_color }} Product"
+        ></a>
+    </div>
+
+    <div class="card-information">
+        {%- comment -%} Show ALL color swatches like normal product card {%- endcomment -%}
+        <div class="product-parameters no-js-hidden">
+            {%- unless product_card_product.has_only_default_variant -%}
+                {%- for option in product_card_product.options_with_values -%}
+                    {% liquid
+                        assign color_trigger = settings.trigger_swatch | handle | strip
+                        assign name_option = option.name | handle | strip
+                    %}
+
+                    {% if settings.show_color_swatch and color_trigger == name_option %}
+                        <div class="swatch-swiper js-color-swatches swiper"
+                            data-option-name="{{ option.name | downcase }}"
+                            data-current-color="{{ variant_color }}">
+                            <fieldset class="product-form__controls-group swiper-wrapper">
+                                <legend class="visually-hidden">Swatches</legend>
+                                {% render 'product-variant-options', product: product_card_product, option: option, no_form_id: true %}
+                            </fieldset>
+                        </div>
+                    {% endif %}
+                {%- endfor -%}
+            {% endunless %}
+        </div>
+
+        <div class="card-information__wrapper">
+            {%- if show_sku and first_color_variant.sku.size > 0 -%}
+                <p
+                    class="card__sku no-js-hidden"
+                    id="Sku-{{ section.id }}-{{ first_color_variant.id }}"
+                    role="status"
+                >
+                    <span class="visually-hidden">{{ 'products.product.sku' | t }}:</span> {{- first_color_variant.name -}}
+                </p>
+            {%- endif -%}
+            
+            {%- if show_vendor -%}
+                <span class="visually-hidden">{{ 'accessibility.vendor' | t }}</span>
+                <div class="caption-with-letter-spacing">
+                    {{ product_card_product.vendor }}
+                </div>
+            {%- endif -%}
+            
+            <div class="title_with-reviews">
+                <div class="card__title">
+                    <h3 class="h3" style="margin: 0;">
+                        <a
+                            style="text-transform: {{ settings.product_title_text_transform }}"
+                            class="full-unstyled-link js-color-swatches-link card_product_title"
+                            aria-label="{{ product_card_product.title }} - {{ variant_color }} Product"
+                        >
+                            {{ product_card_product.title }}
+                        </a>
+                    </h3>
+                </div>
+            </div>
+            
+            <div class="card-title_info">
+                {% render 'price',
+                    product: product_card_product,
+                    price_class: 'mini-price',
+                    use_variant: first_color_variant
+                %}
+                {% render 'price',
+                    product: product_card_product,
+                    price_class: 'wide-price',
+                    use_variant: first_color_variant
+                %}
+            </div>
+
+            {%- if show_desc and product_card_product.description != blank -%}
+                <div class="card__description">
+                    {{ product_card_product.description | strip_html | truncate: 220 }}
+                </div>
+            {%- endif -%}
+        </div>
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Auto-select the current color variant on variant cards
+    const variantCards = document.querySelectorAll('.variant-color-card');
+    
+    variantCards.forEach(function(card) {
+        const currentColor = card.dataset.variantColor;
+        if (!currentColor) return;
+        
+        const swatches = card.querySelectorAll('.color-swatch-input');
+        swatches.forEach(function(swatch) {
+            const swatchValue = swatch.dataset.variantValue;
+            
+            // Uncheck all first
+            swatch.checked = false;
+            swatch.closest('.swiper-slide')?.classList.remove('active-color');
+            
+            // Check and highlight the current color
+            if (swatchValue === currentColor) {
+                swatch.checked = true;
+                swatch.setAttribute('checked', 'checked');
+                swatch.closest('.swiper-slide')?.classList.add('active-color');
+                
+                // Also add checked class to the label for visual feedback
+                const label = swatch.nextElementSibling;
+                if (label && label.classList.contains('color-swatch')) {
+                    label.classList.add('selected');
+                }
+            }
+        });
+    });
+});
+</script>
+
+
+
+

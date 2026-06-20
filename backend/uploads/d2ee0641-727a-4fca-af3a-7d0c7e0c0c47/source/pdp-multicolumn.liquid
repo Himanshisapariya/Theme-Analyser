@@ -1,0 +1,113 @@
+{%- style -%}
+  {% if product.metafields['bg-image'].acf != blank %}
+      .pdp_icon_text_bg {
+        background-image: url('{{ product.metafields['bg-image'].acf }}');
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
+    {% endif %}
+{%- endstyle -%}
+
+{% liquid
+  assign pdp-extra_class = product.metafields.extra_class.acf
+  assign pdp-multicolumn-headline = product.metafields['headline-icon-text'].acf
+  assign pdp-icon-heading = product.metafields['heading-text'].acf
+  assign pdp-icon-desc = product.metafields.desc.acf
+  assign pdp-multicolumn-icon = product.metafields['icon-text'].acf
+
+  assign pdp-5-extaclass = product.metafields.icon_txt_5_extra_class.acf
+  assign pdp-5-icon = product.metafields.icon_txt_5_icon.acf
+  assign pdp-5-head = product.metafields.icon_heading_5.acf
+  assign pdp-5-desc = product.metafields.des_5_icon.acf
+%}
+{% if pdp-multicolumn-headline != blank %}
+  <div class="pdp_multicolumn {{ pdp-extra_class }}">
+    <div class="xl_container">
+      <div class="pdp_icon_text_bg rounded-24 overflow-hidden">
+        <div class="py-55 px-30 lg:px-55 desktop:px-75">
+          {% if pdp-multicolumn-headline != blank %}
+            <div class="pdp_multicolumn_headline text-center mb-40">
+              <h3>{{ pdp-multicolumn-headline }}</h3>
+            </div>
+          {% endif %}
+          <div class="pdp_icon_content">
+            {% for j in (0..pdp-icon-heading.size) %}
+              {% if pdp-multicolumn-icon[j] != blank %}
+                <div class="pdp_little_grid_list text-center">
+                  <div class="pdp_icon_img mb-28 w-[64px] mx-auto">
+                    {% if pdp-multicolumn-icon[j] != blank %}
+                      <img
+                        class="w-full h-[64px] object-cover"
+                        src="{{ pdp-multicolumn-icon[j] }}"
+                        alt="img_logo"
+                        loading="lazy"
+                        width="64"
+                        height="64"
+                      >
+                    {% endif %}
+                  </div>
+                  <div class="pdp_icon_heading mb-8">
+                    {% if pdp-icon-heading[j] != blank %}
+                      <h5 class="h6">{{ pdp-icon-heading[j] }}</h5>
+                    {% endif %}
+                  </div>
+                  <div class="pdp_icon_desc">
+                    {% if pdp-icon-desc[j] != blank %}
+                      <h5>{{ pdp-icon-desc[j] }}</h5>
+                    {% endif %}
+                  </div>
+                </div>
+              {% endif %}
+            {% endfor %}
+          </div>
+          <div class="pdp_include_5icongrid pt-[44px] {{ pdp-5-extaclass }}">
+            <div class="pdp_icon_content">
+              {% for j in (0..pdp-5-head.size) %}
+                {% if pdp-5-icon[j] != blank %}
+                  <div class="pdp_little_grid_list text-center">
+                    <div class="pdp_icon_img mb-28 w-[64px] mx-auto">
+                      {% if pdp-5-icon[j] != blank %}
+                        <img
+                          class="w-full h-[64px] object-cover"
+                          src="{{ pdp-5-icon[j] }}"
+                          alt="img_logo"
+                          loading="lazy"
+                          width="64"
+                          height="64"
+                        >
+                      {% endif %}
+                    </div>
+                    <div class="pdp_icon_heading mb-8">
+                      {% if pdp-5-head[j] != blank %}
+                        <h5 class="h6">{{ pdp-5-head[j] }}</h5>
+                      {% endif %}
+                    </div>
+                    <div class="pdp_icon_desc">
+                      {% if pdp-5-desc[j] != blank %}
+                        <h5>{{ pdp-5-desc[j] }}</h5>
+                      {% endif %}
+                    </div>
+                  </div>
+                {% endif %}
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endif %}
+
+{% schema %}
+{
+  "name": "PDP Multicolumn",
+  "tag": "section",
+  "settings": [],
+  "blocks": [],
+  "presets": [
+    {
+      "name": "PDP Multicolumn"
+    }
+  ]
+}
+{% endschema %}

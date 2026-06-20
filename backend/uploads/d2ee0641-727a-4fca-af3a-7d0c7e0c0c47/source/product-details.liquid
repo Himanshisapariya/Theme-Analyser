@@ -1,0 +1,117 @@
+{% if product.metafields.custom.product_details %}
+  {% assign pd = product.metafields.custom.product_details.value %}
+
+  {% if pd.dimensions_weights != blank or pd.product_care != blank %}
+    <div class="product-accordion-wrapper">
+      {% if pd.dimensions_weights != blank %}
+        <div class="accordion-item accordion product-detail-accordian">
+          <button class="accordion-toggle" type="button">
+            Dimensions & Weights
+            <span class="accordion-icon"></span>
+          </button>
+          <div class="accordion-content">
+            {{ pd.dimensions_weights | metafield_tag }}
+          </div>
+        </div>
+      {% endif %}
+
+      {% if pd.product_care != blank %}
+        <div class="accordion-item accordion">
+          <button class="accordion-toggle" type="button">
+            Product Care
+            <span class="accordion-icon"></span>
+          </button>
+          <div class="accordion-content">
+            {{ pd.product_care | metafield_tag }}
+          </div>
+        </div>
+      {% endif %}
+    </div>
+  {% endif %}
+{% endif %}
+
+<style>
+  .product-accordion-wrapper {
+    margin-top: 25px;
+  }
+
+  .product-detail-accordian {
+    margin-top: 0 !important;
+  }
+
+  .accordion-toggle {
+    color: rgb(65 52 50 / var(--tw-text-opacity, 1));
+    width: 100%;
+    text-align: left;
+    background: transparent;
+    border: none;
+    padding: 15px;
+    font-size: 16px;
+    font-weight: 600;
+    position: relative;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .accordion-icon {
+    font-size: 20px;
+    transition: transform 0.3s ease;
+  }
+
+  .accordion-icon {
+    width: 10px;
+    height: 10px;
+    border-right: 2px solid #333;
+    border-bottom: 2px solid #333;
+    transform: rotate(45deg);
+    transition: transform 0.3s ease;
+    margin-left: auto;
+  }
+
+  .accordion.active .accordion-icon {
+    transform: rotate(-135deg); /* points up when open */
+  }
+
+  .accordion-content {
+    display: none;
+    padding: 0 15px 15px;
+    font-size: 14px;
+    line-height: 1.6;
+    color: #444;
+  }
+  .accordion-content ul {
+    list-style: disc !important;
+    padding-left: 20px;
+  }
+  .accordion-content ol {
+    list-style: auto !important;
+    padding-left: 20px;
+  }
+</style>
+
+<script>
+  document.querySelectorAll('.accordion-toggle').forEach((button) => {
+    button.addEventListener('click', () => {
+      const currentAccordion = button.parentElement;
+      const currentContent = currentAccordion.querySelector('.accordion-content');
+
+      // Close all other accordions
+      document.querySelectorAll('.accordion-item').forEach((item) => {
+        if (item !== currentAccordion) {
+          item.classList.remove('active');
+          item.querySelector('.accordion-content').style.display = 'none';
+        }
+      });
+
+      // Toggle current
+      currentAccordion.classList.toggle('active');
+      if (currentAccordion.classList.contains('active')) {
+        currentContent.style.display = 'block';
+      } else {
+        currentContent.style.display = 'none';
+      }
+    });
+  });
+</script>

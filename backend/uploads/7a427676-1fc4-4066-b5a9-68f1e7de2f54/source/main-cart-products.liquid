@@ -1,0 +1,154 @@
+<cart-items class="{% if cart == empty %} is-empty{% endif %} blocks section-{{ section.id }}-padding">
+  <div class="page-header ">
+    <div class="page-header__inner ">
+      <h2 class="main-page-title page-title title--page">
+        {{ 'sections.cart.title_first' | t }}
+        <em>{{ 'sections.cart.title_last' | t }}</em>
+      </h2>
+      <a
+        href="{{ routes.all_products_collection_url }}"
+        class="button--with-underline"
+      >
+        {{ 'general.continue_shopping' | t }}
+      </a>
+    </div>
+  </div>
+
+  <div class="cart__warnings">
+    {% render 'icon-account-order-none' %}
+    <p class="cart__empty-text">{{ 'general.cart.empty_cart' | t }}</p>
+    {% if settings.empty_cart_button_url != blank %}
+      <a
+        href="{{ settings.empty_cart_button_url }}"
+        class="button--ctm_wb_global_button"
+      >
+        <span>
+          {{ settings.empty_cart_button_text | default: 'Shop Now' }}
+        </span>
+      </a>
+    {% endif %}
+  </div>
+
+  <form
+    action="{{ routes.cart_url }}"
+    class="cart__contents critical-hidden"
+    method="post"
+    id="cart"
+  >
+    <div id="main-cart-items" data-id="{{ section.id }}">
+      <div class="js-contents">
+        {%- if cart != empty -%}
+          <ul class="cart-items gwp-container" role="list">
+            <h2>
+              MY BAG <span class="h3" aria-hidden="true">[{{ cart.item_count }}]</span><span class="visually-hidden">{{ cart.item_count }} items in cart</span>
+            </h2>
+
+            {%- for item in cart.items -%}
+              <li class="cart-item" id="CartItem-{{ item.index | plus: 1 }}">
+                <div role="group" aria-label="{{ item.product.title | escape }}" style="display: contents;">
+                
+                <div class="cart-item__image">
+                  {% if item.image %}
+                    <img
+                      src="{{ item.image | image_url: width: 150 }}"
+                      alt="{{ item.image.alt | escape }}"
+                      loading="lazy"
+                      width="auto"
+                      height="auto"
+                    >
+                  {% endif %}
+                </div>
+
+                
+                <div class="cart-item__content">
+                  
+                  <div class="cart-item__top">
+                    <div class="cart-item__info">
+                      <h3 class="cart-item__name">
+                        <a href="{{ item.product.url }}">
+                          {{ item.product.title }}
+                        </a>
+                      </h3>
+
+                      {% unless item.product.has_only_default_variant %}
+                        <span class="cart-item__variant">
+                          {{ item.variant.title }}
+                        </span>
+                      {% endunless %}
+                    </div>
+
+                    <div class="cart-item__price">
+                      {% if item.original_line_price != item.final_line_price %}
+                        <span class="ctm-price"><span class="visually-hidden">Sale price: </span>{{ item.final_line_price | money }}</span>
+                        <span class="ctm-old-price"><span class="visually-hidden">Original price: </span>{{ item.original_line_price | money }}</span>
+                      {% else %}
+                        <span class="ctm-price">{{ item.original_line_price | money }}</span>
+                      {% endif %}
+                    </div>
+                  </div>
+
+                  
+                  <div class="cart-item__bottom">
+                    <div class="cart-item__quantity">
+                    {% unless item.product.tags contains 'remove-buy-buttons' %}
+                      <label for="quantity-{{ item.index | plus: 1 }}" class="visually-hidden">Quantity for {{ item.product.title | escape }}</label>
+                      <quantity-input class="quantity">
+                        <button class="quantity__button" type="button" name="minus" aria-label="Decrease quantity for {{ item.product.title | escape }}">
+                          {% render 'icon-minus' %}
+                        </button>
+
+                        <input
+                          type="number"
+                          id="quantity-{{ item.index | plus: 1 }}"
+                          class="quantity__input"
+                          name="updates[]"
+                          value="{{ item.quantity }}"
+                          min="0"
+                          aria-label="Quantity for {{ item.product.title | escape }}"
+                          data-index="{{ item.index | plus: 1 }}"
+                        >
+
+                        <button class="quantity__button" type="button" name="plus" aria-label="Increase quantity for {{ item.product.title | escape }}">
+                          {% render 'icon-plus' %}
+                        </button>
+                      </quantity-input>
+                    {%  endunless %}
+                    </div>
+                    <div class="cart-item__remove">
+                      <cart-remove-button data-index="{{ item.index | plus: 1 }}">
+                        <div class="remove-button-wrapper">
+                          <a href="{{ item.url_to_remove }}" class="remove-text">REMOVE</a>
+                          <div class="remove-loader hidden">
+                            <div class="spinner"></div>
+                          </div>
+                        </div>
+                      </cart-remove-button>
+                    </div>
+                  </div>
+                </div>
+                </div>
+              </li>
+            {%- endfor -%}
+            <div class="bevy_share_button" id="bevyshare_button"></div>
+          </ul>
+        {%- endif -%}
+      </div>
+    </div>
+
+    <p
+      class="visually-hidden"
+      id="cart-live-region-text"
+      aria-live="polite"
+      role="status"
+    ></p>
+    <p
+      class="visually-hidden"
+      id="shopping-cart-line-item-status"
+      aria-live="polite"
+      aria-hidden="true"
+      role="status"
+    >
+      {{ 'accessibility.loading' | t }}
+    </p>
+  </form>
+</cart-items>

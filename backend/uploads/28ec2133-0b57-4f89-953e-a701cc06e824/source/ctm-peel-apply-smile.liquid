@@ -1,0 +1,63 @@
+<div class="ctm-smile-peel-apply-main {{ section.settings.extra_class }}">
+    <div class="spe-container xl:max-w-[1054px] max-w-[990px] mx-auto max-mdscreen2:overflow-scroll">
+      <div class="spe-steps flex items-center justify-between max-mdscreen2:gap-x-[34px]">
+        {% for block in section.blocks %}
+          <div class="spe-step flex flex-col items-center text-center gap-y-20">
+            <div class="spe-step-circle">
+                <h3 class="spe-step-head !mb-20 text-32 leading-42">{{ block.settings.head }}</h3>
+              {% if block.settings.circle_image %}
+                <img src="{{ block.settings.circle_image | image_url }}" alt="{{ block.settings.head }}" width="320" height="320" class="spe-step-image max-xl:max-w-[280px] max-mdscreen2:max-w-[258px]">
+              {% else %}
+                <span class="spe-step-number">#{{ forloop.index }}</span>
+              {% endif %}
+            </div>
+            <div class="spe-step-desc max-w-[296px] mx-auto leading-150p min-h-48 text-16 text-dark-gray">
+              {{ block.settings.description }}
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+
+{% schema %}
+{
+  "name": "Smile Peel Apply",
+  "class": "ctm-smile-peel-apply-main",
+  "settings": [
+    {
+      "type": "text",
+      "label": "Extra Class",
+      "id": "extra_class"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "circle_with_head_des",
+      "name": "Circle With Head & Des",
+      "settings": [
+        {
+          "type": "text",
+          "label": "Head",
+          "id": "head"
+        },
+        {
+          "type": "image_picker",
+          "label": "Circle Image",
+          "id": "circle_image"
+        },
+        {
+          "type": "html",
+          "label": "Description",
+          "id": "description"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Smile Peel Apply"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,379 @@
+<section class="product-feature-grid {{ section.settings.extra_class }}">
+  {% if section.settings.heading != blank %}
+    <h2 class="section-title">{{ section.settings.heading }}</h2>
+  {% endif %}
+
+  
+  <div class="swiper image-grid-group-sale">
+    
+    <div class="swiper-wrapper">
+      {% for block in section.blocks %}
+        <div class="swiper-slide feature-card" {{ block.shopify_attributes }}>
+          <div class="grid__item_inner">
+            <div class="feature-icard-img-main">
+              {% if block.settings.image %}
+                <div class="feature-card__image">
+                  <img src="{{ block.settings.image | img_url: '600x' }}" alt="{{ block.settings.title }}" loading="lazy">
+                </div>
+              {% endif %}
+            </div>
+            <div class="feature-icard-content-main">
+              <div class="feature-card__content">
+                <p class="feature-card__category">{{ block.settings.caption }}</p>
+                <h5 class="feature-card__title">{{ block.settings.title }}</h5>
+                <div class="feature-card__description">{{ block.settings.description }}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+          {% if section.settings.enable_arrow == true %}
+        <div class="slider-controls-box">
+          {% if section.blocks.size > 1 %}
+            <div class="tabbing-aerrows">
+              <div class="swiper-button-prev peev-tabbing-btn swiper-prev-{{ section.id }} swiper-button-disabled">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="10"
+                  height="18"
+                  viewBox="0 0 10 18"
+                  fill="none"
+                  class="icon icon-caret-left"
+                >
+                  <path d="M9 17L0.999999 9L9 1" stroke="currentcolor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                </svg>
+              </div>
+              <div class="swiper-button-next next-tabbing-btn swiper-next-{{ section.id }}">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="10"
+                  height="18"
+                  viewBox="0 0 10 18"
+                  fill="none"
+                  class="icon icon-caret-right"
+                >
+                  <path d="M1 1L9 9L1 17" stroke="currentcolor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                </svg>
+              </div>
+            </div>
+          {% endif %}
+        </div>
+      {% endif %}
+    
+    <div class="swiper-scrollbar hidden"></div>
+  </div>
+
+  
+  <div class="feature-buttons">
+    <a href="{{ section.settings.button_url1 }}" {% if section.settings.open_new_tab1 == true %} target="_blank" {% endif %} class="{{ section.settings.button_style }}">
+      {{- section.settings.button_text1 -}}
+    </a>
+    <a href="{{ section.settings.button_url2 }}" {% if section.settings.open_new_tab1 == true %} target="_blank" {% endif %} class="{{ section.settings.button_style }}">
+      {{- section.settings.button_text2 -}}
+    </a>
+  </div>
+</section>
+
+<style>
+  .hidden {
+    display: none;
+  }
+
+  .feature-card {
+    text-align: left;
+    background: #fff;
+  }
+
+  .feature-card__image {
+    padding: 10px 10px 20px 10px;
+    background-color: #f7f7f7;
+  }
+
+  .feature-card__image img {
+    width: 100%;
+    border-radius: 8px;
+  }
+
+  .feature-card__content {
+    padding: 10px;
+    background-color: #f7f7f7;
+  }
+
+  .feature-card__category {
+    font-size: 20px;
+    color: #2f484c;
+    font-weight: 600;
+    margin-top: 5px;
+    margin-bottom: 0;
+  }
+
+  .feature-card__title {
+    font-weight: bold;
+    margin: 10px 0;
+  }
+
+  .feature-buttons {
+    text-align: center;
+    margin-top: 80px;
+    margin-bottom: 100px;
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    flex-wrap: wrap;
+  }
+
+  .product-feature-grid .swiper-slide {
+    height: auto;
+    align-items: start;
+    background-color: #f7f7f7;
+  }
+
+  .bg-dark-transparent {
+    border: 1px solid #2f484c;
+    color: #2f484c;
+    min-width: 250px;
+    padding: 0.85rem 3rem;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 6rem;
+    background-color: transparent;
+    font-size: 20px;
+  }
+
+  .bg-dark-transparent:hover {
+    background-color: #2f484c;
+    border: 1px solid #2f484c;
+    color: white;
+  }
+
+  .feature-card__description {
+    font-size: 20px;
+    line-height: 26px;
+}
+
+ @media (max-width: 1440px) {
+    .feature-card__description {
+    font-size: 18px;
+    line-height: 24px;
+}
+
+ }
+
+  @media (max-width: 990px) {
+
+    .feature-card__description {
+    font-size: 16px;
+    line-height: 22px;
+
+ }
+
+      .feature-card__title {
+    margin: 6px 0;
+  }
+
+    .bg-dark-transparent {
+      min-width: 200px;
+      align-items: center;
+      min-height: 40px;
+      font-size: 13px;
+    }
+
+    .feature-buttons {
+      gap: 10px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .feature-card__title {
+      font-size: 20px;
+    }
+
+    .feature-card__description {
+      font-size: 14px;
+      line-height: 18px;
+    }
+
+    .feature-card__category {
+      font-size: 16px;
+    }
+
+    .feature-buttons {
+      margin-bottom: 50px;
+      margin-top:60px;
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const swiperEl = document.querySelector('.image-grid-group-sale');
+
+    new Swiper(swiperEl, {
+      loop: false,
+      spaceBetween: 0,
+      scrollbar: {
+        el: '.swiper-scrollbar',
+        draggable: true,
+      },
+      navigation: {
+        nextEl: swiperEl.querySelector('.swiper-button-next'),
+        prevEl: swiperEl.querySelector('.swiper-button-prev'),
+      },
+      breakpoints: {
+        0: {
+          slidesPerView: 1.3,
+        },
+        375: {
+          slidesPerView: 1.3,
+        },
+        576: {
+          slidesPerView: 1.7,
+        },
+        640: {
+          slidesPerView: 2.3,
+        },
+        990: {
+          slidesPerView: 2.3,
+          spaceBetween: 0,
+        },
+        1400: {
+          slidesPerView: 4.2,
+          spaceBetween: 0,
+        },
+      },
+    });
+  });
+</script>
+
+
+{% schema %}
+{
+  "name": "Image Grid Group Sale",
+  "settings": [
+    {
+      "type": "text",
+      "id": "extra_class",
+      "label": "Extra Class"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Section Heading"
+    },
+    {
+      "type": "text",
+      "id": "button_text1",
+      "label": "Button Text 1"
+    },
+    {
+      "type": "url",
+      "id": "button_url1",
+      "label": "Button URL 1"
+    },
+    {
+      "type": "checkbox",
+      "id": "open_new_tab1",
+      "label": "Open in new Tab",
+      "default": false
+    },
+    {
+      "type": "text",
+      "id": "button_text2",
+      "label": "Button Text 2"
+    },
+    {
+      "type": "url",
+      "id": "button_url2",
+      "label": "Button URL 2"
+    },
+    {
+      "type": "checkbox",
+      "id": "open_new_tab2",
+      "label": "Open in new Tab",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_arrow",
+      "label": "Enable Navigation Arrow",
+      "default": false
+    },
+    {
+    "type": "select",
+    "id": "button_style",
+    "options": [
+      {
+        "value": "button--ctm_global_button",
+        "label": "Global Button"
+      },
+      {
+        "value": "button--ctm_wb_global_button",
+        "label": "Global Button (White Background)"
+      },
+      {
+        "value": "ctm-custom-button",
+        "label": "Custom Button"
+      },
+      {
+        "value": "ctm-custom-outline-button",
+        "label": "Outline Button"
+      },
+      {
+        "value": "button bg-dark-transparent",
+        "label": "Dark Transparent Button"
+      },
+      {
+        "value": "button button--primary",
+        "label": "t:sections.all.button.button_style.options__1.label"
+      },
+      {
+        "value": "button button--secondary",
+        "label": "t:sections.all.button.button_style.options__2.label"
+      },
+      {
+        "value": "button button--tertiary",
+        "label": "t:sections.all.button.button_style.options__3.label"
+      }
+    ],
+    "default": "button button--primary",
+    "label": "t:sections.all.button.button_style.label"
+  }
+  ],
+  "blocks": [
+    {
+      "type": "feature",
+      "name": "Feature Item",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Product Image"
+        },
+        {
+          "type": "text",
+          "id": "caption",
+          "label": "Caption"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        },
+        {
+          "type": "html",
+          "id": "description",
+          "label": "Description"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Image Grid Group Sale",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}

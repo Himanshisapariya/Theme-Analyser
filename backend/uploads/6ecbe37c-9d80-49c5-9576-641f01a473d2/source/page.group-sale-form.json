@@ -1,0 +1,200 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "shogun-helper": {
+      "type": "shogun-helper",
+      "disabled": true,
+      "settings": {}
+    },
+    "pages": {
+      "type": "main-page",
+      "disabled": true,
+      "custom_css": [
+        ".container {padding-top: 50px; padding-bottom: 50px;}",
+        "h1 {text-align: center;}"
+      ],
+      "settings": {
+        "extra_class": ""
+      }
+    },
+    "shogun-optimizer": {
+      "type": "shogun-optimizer",
+      "disabled": true,
+      "settings": {}
+    },
+    "custom_liquid_tFJmHB": {
+      "type": "custom-liquid",
+      "name": "t:sections.custom-liquid.presets.name",
+      "settings": {
+        "custom_liquid": "<div class=\"ctm-group-sale-form\">\n<div class=\"powr-form-builder\" id=\"b70697ce_1753941031\"></div><script src=\"https://www.powr.io/powr.js?platform=shopify\"></script>\n</div>"
+      }
+    },
+    "custom_liquid_JprXRt": {
+      "type": "custom-liquid",
+      "disabled": true,
+      "settings": {
+        "custom_liquid": "<h3 style=\"text-align: center;\">Frequently Asked Questions</h3>"
+      }
+    },
+    "faq_accorddion_NJ8D4N": {
+      "type": "faq-accorddion",
+      "blocks": {
+        "faq_48fFm9": {
+          "type": "faq",
+          "settings": {
+            "question": "<h6>How long will it take for my order to arrive?</h6>",
+            "answer": "Custom order processing times vary based on order size and availability. Typically, orders ship within <strong>10-15 business days</strong>. Shipping times depend on the selected shipping method and destination. If you have a specific deadline, please contact us at <a href=\"mailto:orders@xx-xyathletics.com\">orders@xx-xyathletics.com</a> before placing your order.",
+            "faq_answer": ""
+          }
+        },
+        "faq_dXNpMb": {
+          "type": "faq",
+          "settings": {
+            "question": "<h6>Can I customize products for my bulk order?</h6>",
+            "answer": "Yes! Once you submit your form, a representative will contact you to gather more details about your design. Please see our design catalog for more information. The best part? Customization is free!",
+            "faq_answer": ""
+          }
+        },
+        "faq_DTWcha": {
+          "type": "faq",
+          "settings": {
+            "question": "<h6>Can I return or exchange items from a bulk order?</h6>",
+            "answer": "Bulk orders are <strong>final sale</strong> and cannot be returned or exchanged. If you need to make <strong>minor adjustments</strong>, please reach out to us at <a href=\"mailto:orders@xx-xyathletics.com\">orders@xx-xyathletics.com</a> as soon as possible—we’ll do our best to accommodate changes before your order ships.",
+            "faq_answer": ""
+          }
+        },
+        "faq_XarjLA": {
+          "type": "faq",
+          "settings": {
+            "question": "<h6>Can I modify my bulk order after it has been placed?</h6>",
+            "answer": "We can <strong>try</strong> to accommodate changes <strong>before</strong> your order ships, but once it has been processed and sent out, we cannot make modifications. If you need adjustments, email us immediately at <a href=\"mailto:orders@xx-xyathletics.com\">orders@xx-xyathletics.com</a>.",
+            "faq_answer": ""
+          }
+        },
+        "faq_k6jEW6": {
+          "type": "faq",
+          "settings": {
+            "question": "<h6>Do you provide invoices or receipts for tax purposes?</h6>",
+            "answer": "Yes, an <strong>invoice will be provided</strong> with your order confirmation. If you need additional documentation, please email <a href=\"mailto:orders@xx-xyathletics.com\">orders@xx-xyathletics.com</a>.",
+            "faq_answer": ""
+          }
+        },
+        "faq_L7JMEx": {
+          "type": "faq",
+          "settings": {
+            "question": "<h6>How do I track my bulk order once it’s placed?</h6>",
+            "answer": "Once your order ships, you’ll receive an <strong>automated email</strong> with a tracking number. If you don’t see it, check your spam folder or reach out to us for assistance.",
+            "faq_answer": ""
+          }
+        },
+        "faq_QUdaGQ": {
+          "type": "faq",
+          "settings": {
+            "question": "<h6>Is there a minimum order quantity for bulk orders?</h6>",
+            "answer": "Yes, we require a <strong>50-unit minimum</strong> for bulk orders.",
+            "faq_answer": ""
+          }
+        },
+        "faq_wKwjKL": {
+          "type": "faq",
+          "settings": {
+            "question": "<h6>What payment methods do you accept for bulk orders?</h6>",
+            "answer": "We accept <strong>Shopify-supported payment methods and PayPal</strong> for bulk orders.",
+            "faq_answer": ""
+          }
+        },
+        "faq_bpkP6q": {
+          "type": "faq",
+          "settings": {
+            "question": "<h6>Can I apply a promo code or affiliate discount to bulk orders?</h6>",
+            "answer": "No additional promo codes or affiliate discounts can be applied to bulk orders. However, customization <strong>is free</strong>.",
+            "faq_answer": ""
+          }
+        },
+        "faq_h4yDzj": {
+          "type": "faq",
+          "settings": {
+            "question": "<h6>How does shipping work for bulk orders?</h6>",
+            "answer": "Standard shipping is included, but if you need <strong>priority shipping</strong>, it can be arranged for an additional cost. Contact us before placing your order to discuss expedited options.",
+            "faq_answer": ""
+          }
+        },
+        "faq_m8z33L": {
+          "type": "faq",
+          "settings": {
+            "question": "<h6>Do bulk orders qualify for free shipping?</h6>",
+            "answer": "Yes, bulk orders qualify for <strong>free standard shipping</strong>.",
+            "faq_answer": ""
+          }
+        },
+        "faq_dAgeGT": {
+          "type": "faq",
+          "settings": {
+            "question": "<h6>Do you ship bulk orders internationally?</h6>",
+            "answer": "Yes, we ship <strong>internationally</strong>. Shipping times and costs may vary based on location.",
+            "faq_answer": ""
+          }
+        },
+        "faq_J8rHRb": {
+          "type": "faq",
+          "settings": {
+            "question": "<h6>Are there any restrictions on reselling bulk order products?</h6>",
+            "answer": "Yes, <strong>reselling is not allowed</strong>. Bulk orders are intended for personal use, teams, groups, and organizations.",
+            "faq_answer": ""
+          }
+        },
+        "faq_NC848L": {
+          "type": "faq",
+          "settings": {
+            "question": "<h6>Who do I contact for questions about my bulk order?</h6>",
+            "answer": "For any bulk order inquiries, reach out to us at <a href=\"mailto:orders@xx-xyathletics.com\">orders@xx-xyathletics.com</a>. We’re happy to help!",
+            "faq_answer": ""
+          }
+        }
+      },
+      "block_order": [
+        "faq_48fFm9",
+        "faq_dXNpMb",
+        "faq_DTWcha",
+        "faq_XarjLA",
+        "faq_k6jEW6",
+        "faq_L7JMEx",
+        "faq_QUdaGQ",
+        "faq_wKwjKL",
+        "faq_bpkP6q",
+        "faq_h4yDzj",
+        "faq_m8z33L",
+        "faq_dAgeGT",
+        "faq_J8rHRb",
+        "faq_NC848L"
+      ],
+      "name": "FAQ Accordion",
+      "settings": {
+        "title": "Frequently Asked Questions",
+        "desc": "",
+        "extra_class": "gts",
+        "desktop_margin_top": 50,
+        "desktop_margin_bottom": 50,
+        "mobile_margin_top": 30,
+        "mobile_margin_bottom": 30
+      }
+    }
+  },
+  "order": [
+    "shogun-helper",
+    "pages",
+    "shogun-optimizer",
+    "custom_liquid_tFJmHB",
+    "custom_liquid_JprXRt",
+    "faq_accorddion_NJ8D4N"
+  ]
+}
+

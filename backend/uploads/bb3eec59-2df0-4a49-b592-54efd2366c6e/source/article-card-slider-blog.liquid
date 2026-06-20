@@ -1,0 +1,128 @@
+{% comment %}
+	Renders an article card for a given blog with settings to either show the image or not.
+
+	Accepts:
+	- blog: {Object} Blog object
+	- article: {Object} Article object
+	- show_image: {String} The setting either show the article image or not. If it's not included it will show the image by default
+	- show_date: {String} The setting either show the article date or not. If it's not included it will not show the image by default
+	- show_author: {String} The setting either show the article author or not. If it's not included it will not show the author by default
+
+	Usage:
+	{% render 'article-card' blog: blog, article: article, show_image: section.settings.show_image %}
+{% endcomment %}
+
+<article class="article {% if color_scheme == 'dark' %}theme-light color-background-1{% elsif color_scheme == 'light' %}theme-dark color-background-5{% endif %}">
+	<div class="article__item">
+		{%- if show_image -%}
+			<a class="article__img" href="{% if article.metafields.custom.url != blank %}{{ article.metafields.custom.url }}{% else %}{{ article.url }}{% endif %}" {% if article.metafields.custom.url != blank %}target="_blank"{% endif %}>
+				<div class="article__img__container">
+					{%- if article.image -%}
+						{%- capture sizes -%}
+          (min-width: 1800px)
+          {{ 1800 | minus: 100 | divided_by: 2 }}px,
+          (min-width: 750px) calc((100vw - 130px) / 2), calc((100vw - 50px) /
+          2)
+        {%- endcapture -%}
+						{{
+							article.image
+							| image_url: width: 3840
+							| image_tag:
+								loading: 'lazy',
+								sizes: sizes,
+								widths: '375, 550, 750, 1100, 1500, 1780, 2000, 3000, 3840',
+								class: 'motion-reduce',
+								style: cover,
+								width: article.image.width,
+								height: article.image.height
+						}}
+					{%- endif -%}
+				</div>
+			</a>
+		{%- endif -%}
+		<div class="article__content">
+			{%- if show_tags and article.tags != blank -%}
+				<ul class="article__tags">
+					{% for tag in article.tags %}
+						<li class="article__tag">
+							<a
+								href="{{ blog.url }}/tagged/{{ tag | handle }}"
+								class="full-unstyled-link"
+							>
+								<span title="{{ tag }}">{{ tag }}</span>
+							</a>
+						</li>
+						{% if forloop.last == false %}
+							<li class="article__line"></li>
+						{% endif %}
+					{% endfor %}
+				</ul>
+			{%- endif -%}
+			{%- if article.title != blank -%}
+				<h6 class="article__title">
+					<a href="{% if article.metafields.custom.url != blank %}{{ article.metafields.custom.url }}{% else %}{{ article.url }}{% endif %}" class="h6" {% if article.metafields.custom.url != blank %}target="_blank"{% endif %}>{{ article.title | escape }}</a>
+				</h6>
+			{% else %}
+				<h6 class="article__title">
+					<a href="javasccript:;"class="h6">
+						{{- 'sections.featured_blog.onboarding_title' | t -}}
+					</a>
+				</h6>
+			{%- endif -%}
+			<div class="article__info">
+				{%- if show_date and article.published_at != blank -%}
+					<span class="article__date">
+						{{- 'sections.featured_blog.posted_on' | t }}
+						{{- article.published_at | time_tag: '%B %d, %Y' -}}
+					</span>
+				{%- endif -%}
+				{%- if show_author and show_date -%}
+					<span class="article__line"></span>
+				{%- endif -%}
+				{%- if show_author and article.author != blank -%}
+					<span class="article__auther">{{- article.author -}}</span>
+				{%- endif -%}
+			</div>
+			{%- if show_excerpt and article.excerpt != blank -%}
+				<p class="article__excerpt">
+					{{ article.excerpt | strip_html | truncate: 70 }}
+				</p>
+			{%- endif -%}
+			{%- if show_btn != blank -%}
+				<div class="article__link_btn">
+					<a
+						type="button"
+						class="button--simple-move button button--{{ section.settings.button_style }}"
+						href="{% if article.metafields.custom.url != blank %}{{ article.metafields.custom.url }}{% else %}{{ article.url }}{% endif %}"
+						{% if article.metafields.custom.url != blank %}target="_blank"{% endif %}
+					>
+						<span>{{ 'sections.featured_blog.view_now' | t -}}</span>
+					</a>
+					<a
+						class="button--with-underline"
+						href="{% if article.metafields.custom.url != blank %}{{ article.metafields.custom.url }}{% else %}{{ article.url }}{% endif %}"
+						{% if article.metafields.custom.url != blank %}target="_blank"{% endif %}
+						aria-label="{{ "accessibility.article_link" | t }}"
+					>
+					</a>
+				</div>
+			{%- endif -%}
+		</div>
+	</div>
+</article>
+
+{% comment %}
+		Renders an article card for a given blog with settings to either show the image or not.
+
+		Accepts:
+		- blog: {Object} Blog object
+		- article: {Object} Article object
+		- show_image: {String} The setting either show the article image or not. If it's not included it will show the image by default
+		- show_date: {String} The setting either show the article date or not. If it's not included it will not show the image by default
+		- show_author: {String} The setting either show the article author or not. If it's not included it will not show the author by default
+
+		Usage:
+	{% render 'article-card' blog: blog, article: article, show_image: section.settings.show_image %}
+{% endcomment %}
+
+

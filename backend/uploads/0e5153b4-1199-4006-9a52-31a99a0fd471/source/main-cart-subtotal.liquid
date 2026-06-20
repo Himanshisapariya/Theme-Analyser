@@ -1,0 +1,242 @@
+<div
+  class="cart__footer-container {% if cart == empty %} is-empty{% endif %}"
+  id="main-cart-footer"
+>
+  <div class="cart__footer">
+    {%- if section.settings.show_cart_note -%}
+      <cart-note class="cart__note field">
+        <label for="Cart-note">{{ 'sections.cart.note' | t }}</label>
+        <textarea
+          class="text-area text-area--resize-vertical field__input"
+          name="note"
+          id="Cart-note"
+          placeholder="{{ 'sections.cart.note' | t }}"
+        >{{ cart.note }}</textarea>
+      </cart-note>
+    {%- endif -%}
+
+    <div class="cart__blocks">
+      
+      <h4 class="cart-summary-heading">Order Summary</h4>
+
+      {% for block in section.blocks %}
+        {% case block.type %}
+          {% when 'subtotal' %}
+            <div
+              class="cart__blocks-content js-contents"
+              {{ block.shopify_attributes }}
+            >
+              
+              <div class="summary-row">
+                <span>Subtotal</span>
+                <span id="cart-subtotal-value">
+                  {{ cart.original_total_price | money }}
+                </span>
+              </div>
+
+              
+              <div
+                class="summary-row discount"
+                id="cart-discounts-wrapper"
+                {% if cart.cart_level_discount_applications.size == 0 %}
+                  style="display:none"
+                {% endif %}
+              >
+                <div class="discount-left">
+                  {% render 'icon-discount' %}
+                  <span id="discount-title">
+                    {% for discount in cart.cart_level_discount_applications %}
+                      {{ discount.title }}
+                    {% endfor %}
+                  </span>
+                </div>
+
+                <span id="discount-amount">
+                  {% for discount in cart.cart_level_discount_applications %}
+                    -{{ discount.total_allocated_amount | money }}
+                  {% endfor %}
+                </span>
+              </div>
+
+              <div id="automatic-discounts-wrapper" style="display: none;" class="summary-row discount">
+                <div class="discount-left">
+                  {% render 'icon-discount' %}
+                  <span id="automatic-discount-title"></span>
+                </div>
+                <span id="automatic-discount-amount"></span>
+              </div>
+
+              <div class="summary-row">
+                <span>Tax</span>
+                <span>Calculated at checkout</span>
+              </div>
+
+              <hr>
+
+              
+              <div class="summary-row summary-total">
+                <span>Estimated Total</span>
+                <span>{{ cart.total_price | money }}</span>
+              </div>
+            </div>
+
+          {% when '@app' %}
+            <div class="afterpay-block" {{ block.shopify_attributes }}>
+              {% render block %}
+            </div>
+
+          {% when 'buttons' %}
+            <p class="discount-form__required-note m-0 sr-only"><span aria-hidden="true">*</span> indicates a required field</p>
+            <label for="discount-code-input" class="discount-form__label sr-only m-0">
+              <span aria-hidden="true">*</span> Discount code or gift card
+            </label>
+            <form id="cart-discount-form" class="discount-form">
+              <input
+                id="discount-code-input"
+                placeholder="Enter Your Discount Code Here"
+                required
+                aria-required="true"
+                aria-describedby="discount-code-error"
+                aria-invalid="false"
+              >
+              <button type="submit">
+                <span class="discount-btn-text">Apply</span>
+                <span class="discount-loader"></span>
+              </button>
+            </form>
+
+            <div id="discount-code-error" class="discount-alert" role="alert" aria-live="assertive" hidden>
+              <span class="discount-alert__text"></span>
+              <button
+                type="button"
+                class="discount-alert__close"
+                aria-label="Close error"
+              >
+                ✕
+              </button>
+            </div>
+
+            <div
+              id="applied-discount-wrapper"
+              class="applied-discount"
+              style="display:none;"
+            >
+              <span class="applied-discount__icon">
+                {% render 'icon-discount' %}
+              </span>
+              <span id="applied-discount-code"></span>
+              <button
+                id="remove-discount"
+                type="button"
+                aria-label="Remove discount"
+              >
+                ✕
+              </button>
+            </div>
+
+            <label class="cart-gift-checkbox">
+              <input type="checkbox" id="giftCheckbox">
+              <span class="custom-checkbox"></span>
+              <span>This order is a gift</span>
+            </label>
+
+            <div id="giftMessageContainer" style="display:none; margin-top:10px;">
+              <label for="giftMessage"><span>Gift Message:</span></label>
+              <textarea id="giftMessage" rows="3" style="width:100%;"></textarea>
+            </div>
+
+            {%- comment -%} Donation — rendered only when: USD + product exists + not already in cart {%- endcomment -%}
+            {%- assign donation_handle = 'donation-to-charity' -%}
+            {%- assign donation_in_cart = false -%}
+            {%- for item in cart.items -%}
+              {%- if item.handle == donation_handle -%}
+                {%- assign donation_in_cart = true -%}
+                {%- break -%}
+              {%- endif -%}
+            {%- endfor -%}
+            {%- if cart.currency.iso_code == 'USD' and donation_in_cart == false -%}
+              {%- assign donation_product = all_products[donation_handle] -%}
+              {%- if donation_product.variants.size > 0 and donation_product.variants.first.available -%}
+                {%- assign donation_variant_id = donation_product.variants.first.id -%}
+                <div class="donation-wrapper" id="donation-checkbox-row">
+                  <hr />
+                  <div class="donation-row gts">
+                    <div class="donation-check">
+                      <input type="checkbox" id="donationCheckbox" data-variant-id="{{ donation_variant_id }}" />
+                      <label for="donationCheckbox">$1 {{ donation_product.title }}</label>
+                      <span id="donationInfoIcon" style="cursor:pointer; margin-left:8px; color:#007bff;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 50 50">
+                          <path d="M25,2C12.297,2,2,12.297,2,25s10.297,23,23,23s23-10.297,23-23S37.703,2,25,2z M25,11c1.657,0,3,1.343,3,3s-1.343,3-3,3 s-3-1.343-3-3S23.343,11,25,11z M29,38h-2h-4h-2v-2h2V23h-2v-2h2h4v2v13h2V38z"/>
+                        </svg>
+                      </span>
+                      <div id="donationTooltip" style="display:none; position:absolute; background:#fff; border:1px solid #ccc; padding:15px 10px; border-radius:4px; font-size:12px; width:300px; z-index:10; box-shadow:0 2px 6px rgba(0,0,0,0.15);">
+                        {{ donation_product.description }}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              {%- endif -%}
+            {%- endif -%}
+
+            <div class="cart__ctas" {{ block.shopify_attributes }}>
+              <button
+                type="submit"
+                name="checkout"
+                class="cart__checkout-button button--ctm_wb_global_button"
+                form="cart"
+                {% if cart == empty %}
+                  disabled
+                {% endif %}
+              >
+                Checkout →
+              </button>
+              {%- if additional_checkout_buttons -%}
+                <div class="cart__footer-dynamic-checkout">
+                  <div class="cart__dynamic-checkout-buttons additional-checkout-buttons">
+                    {{ content_for_additional_checkout_buttons }}
+                  </div>
+                </div>
+              {%- endif -%}
+            </div>
+
+            <div class="ctm-cart-cta-content">
+              <h4 class="ctm-cart-line m-0">
+                <p style="max-width:fit-content;margin:auto;">More Express Options in Checkout.</p>
+              </h4>
+              <div class="ctm-cart-ctas">
+                <a href="/checkout" aria-label="Checkout with PayPal">
+                  <img
+                    src="https://images.contentstack.io/v3/assets/bltac573b73f5a955a6/blt5e94287e0f643f9b/68e97798c2504ef5d01ff98d/paypal.svg?width=3000&crop=center"
+                    alt="PayPal"
+                    height=""
+                    width=""
+                  >
+                </a>
+                <a href="/checkout" aria-label="Checkout with Google Pay">
+                  <img
+                    src="https://images.contentstack.io/v3/assets/bltac573b73f5a955a6/blte6e74c2822ce6c30/68e974d3f0b3bdd207593ffd/google_pay.svg?width=3000&crop=center"
+                    alt="Google Pay"
+                    height=""
+                    width=""
+                  >
+                </a>
+                <a href="/checkout" aria-label="Checkout with Afterpay">
+                  <img
+                    src="https://cdn.shopify.com/s/files/1/0575/2009/5363/files/ap.png?v=1767963933"
+                    alt="Afterpay"
+                    height=""
+                    width=""
+                  >
+                </a>
+              </div>
+            </div>
+
+          {% when 'accordion' %}
+            {% render 'main-cart-accordian', block: block %}
+        {% endcase %}
+      {% endfor %}
+    </div>
+  </div>
+  <div class="cart-errors" id="cart-errors"></div>
+</div>
+

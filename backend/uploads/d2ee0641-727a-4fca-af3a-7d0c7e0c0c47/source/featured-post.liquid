@@ -1,0 +1,160 @@
+{% liquid
+  assign default_title = 'Test'
+  assign default_content = 'Test Test'
+%}
+
+<section
+  class="blog-page py-55 desktop:py-80 xl_container"
+  data-section-id="{{ section.id }}"
+  data-section-type="blog-template"
+>
+  <div class="blog-editorial" style="background-color: {{section.settings.section_bg}};">
+    <div
+      class="editorial__slider editorial__slider--{{ section.id }}"
+      data-slider="{{ section.id }}"
+      data-dots="hidden"
+      data-arrows="true"
+    >
+      {%- if section.settings.select_blog != blank -%}
+        {%- assign selected_blog = blogs[section.settings.select_blog] -%}
+        {%- if selected_blog != null and selected_blog.articles.size > 0 -%}
+          {%- assign latest_article = selected_blog.articles.first -%}
+          <div
+            class="editorial__slide zigzag-inner flex items-center flex-wrap flex-col-reverse mdscreen2:flex-row-reverse editorial__slide--{{ section.id }}"
+            data-slide="{{ section.id }}"
+            data-slide-index="{{ forloop.index0 }}"
+            {{ section.shopify_attributes }}
+          >
+            <div class="editorial__content zigzag-right w-full mdscreen2:w-1/2 px-15 mdscreen2:px-40 lg:pl-55 small_desktop:pl-100 desktop:pr-45">
+              <p class="editorial__subheading caps">{{ section.settings.subheading }}</p>
+              <h3 class="editorial__title mb-10">
+                <a
+                  class="font-heading font-bold text-bloodstone transition-all duration-300 ease-in-out hover:text-warm_neutral"
+                  href="{{ latest_article.url }}"
+                  title="{{ latest_article.title | escape }}"
+                >
+                  {{ latest_article.title | default: default_title }}
+                </a>
+              </h3>
+              {%- if section.settings.show_date or section.settings.show_author -%}
+                <h6 class="editorial__meta font-extrabold text-bloodstone mb-14">
+                  {%- if section.settings.show_date -%}
+                    {% assign published_at = latest_article.published_at | default: 'now' | date: format: 'full_date' %}
+                    <time datetime="{{ latest_article.published_at | date: "%m/%d/%Y" }}">
+                      {{- latest_article.published_at | date: '%m/%d/%Y' -}}
+                    </time>
+                  {%- endif -%}
+                  {%- if section.settings.show_author -%}
+                    {% assign article_author = latest_article.author | default: 'Jane Doe' %}
+                    <span class="editorial__meta__author">
+                      {{- 'blogs.article.by_author' | t: author: article_author }}
+                    </span>
+                  {%- endif -%}
+                </h6>
+              {%- endif -%}
+              {%- unless latest_article.excerpt_or_content == blank -%}
+                <div class="editorial__excerpt">
+                  <p>
+                    {{ latest_article.excerpt_or_content | default: default_content | strip_html | truncatewords: 35 }}
+                  </p>
+                </div>
+              {%- endunless -%}
+              {%- if section.settings.show_button -%}
+                <div class="article__link flex mt-20">
+                  <a
+                    href="{{ latest_article.url }}"
+                    class="standard__cta caps--large text_scots_pine underline underline-offset-2 hover:!no-underline"
+                    >Read More</a
+                  >
+                </div>
+              {%- endif -%}
+            </div>
+            {%- if latest_article.image -%}
+              {% assign img_object = latest_article.image.src %}
+            {%- else -%}
+              {% assign img_object = 'blank.svg' | asset_url %}
+            {%- endif -%}
+            {%- if section.settings.image -%}
+              {% assign img_object = section.settings.image %}
+            {%- endif -%}
+            <div class="zigzag-left w-full mdscreen2:w-1/2 mdscreen1:mb-40">
+              <div class="img-zig-zag bg-light-pink rounded-24 overflow-hidden">
+                <img
+                  class="h-full w-full object-cover max-h-[412px]"
+                  src="{{ img_object | image_url: width: 2500 }}"
+                  alt="img-post"
+                  width="732"
+                  height="412"
+                  loading="lazy"
+                >
+              </div>
+            </div>
+          </div>
+        {%- endif -%}
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Featured blog posts",
+  "settings": [
+    {
+      "type": "blog",
+      "label": "Select Blog",
+      "id": "select_blog"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Featured post"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image",
+      "info": "Optional: replace the article featured image."
+    },
+    {
+      "type": "select",
+      "id": "bg_position",
+      "label": "Position",
+      "default": "center-center",
+      "options": [
+        { "label": "Top", "value": "center-top" },
+        { "label": "Right", "value": "right-center" },
+        { "label": "Center", "value": "center-center" },
+        { "label": "Left", "value": "left-center" },
+        { "label": "Bottom", "value": "center-bottom" }
+      ]
+    },
+    {
+      "type": "checkbox",
+      "id": "show_author",
+      "label": "Show author",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "show_date",
+      "label": "Show date",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "show_button",
+      "label": "Show 'Read more' button",
+      "default": true
+    }
+  ],
+
+  "presets": [
+    {
+      "name": "Featured blog posts",
+      "category": "Text"
+    }
+  ]
+}
+{% endschema %}

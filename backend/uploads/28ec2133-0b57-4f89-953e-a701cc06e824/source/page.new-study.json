@@ -1,0 +1,385 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "image_with_text_RCMrKU": {
+      "type": "image-with-text",
+      "blocks": {
+        "caption_EfVjW8": {
+          "type": "caption",
+          "settings": {
+            "caption": "Research studies",
+            "text_style": "caption-with-letter-spacing",
+            "text_size": "medium"
+          }
+        },
+        "heading_VCmEGX": {
+          "type": "heading",
+          "settings": {
+            "heading": "Our dissolving teeth whitening strips with [p]<sup>3</sup> technology",
+            "heading_size": "h2"
+          }
+        },
+        "text_34ExHD": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Proven to be more effective than leading competing products while also offering a far more convenient one step solution.</p>",
+            "text_style": "body"
+          }
+        }
+      },
+      "block_order": [
+        "caption_EfVjW8",
+        "heading_VCmEGX",
+        "text_34ExHD"
+      ],
+      "name": "t:sections.image-with-text.presets.name",
+      "settings": {
+        "extra_class": "ctm-study-zigzag",
+        "image": "shopify://shop_images/Mask_group.png",
+        "height": "adapt",
+        "desktop_image_width": "medium",
+        "layout": "text_first",
+        "image_behavior": "none",
+        "content_layout": "no-overlap",
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "left",
+        "mobile_content_alignment": "left",
+        "section_color_scheme": "",
+        "color_scheme": "",
+        "padding_top": 72,
+        "padding_bottom": 100
+      }
+    },
+    "study_benefits_tL97Aq": {
+      "type": "study-benefits",
+      "blocks": {
+        "image_with_text_jLDEMU": {
+          "type": "image_with_text",
+          "settings": {
+            "icons": "shopify://shop_images/time.png",
+            "text": "Convenient"
+          }
+        },
+        "image_with_text_mJi6GU": {
+          "type": "image_with_text",
+          "settings": {
+            "icons": "shopify://shop_images/lightning.png",
+            "text": "Less Sensitivity"
+          }
+        },
+        "image_with_text_Cfei4H": {
+          "type": "image_with_text",
+          "settings": {
+            "icons": "shopify://shop_images/teeth.png",
+            "text": "Improved Whitening"
+          }
+        },
+        "image_with_text_kgUJqx": {
+          "type": "image_with_text",
+          "settings": {
+            "icons": "shopify://shop_images/dustbin.png",
+            "text": "Less Waste"
+          }
+        },
+        "image_with_text_LbmPM3": {
+          "type": "image_with_text",
+          "settings": {
+            "icons": "shopify://shop_images/lips.png",
+            "text": "Great Taste"
+          }
+        },
+        "image_with_text_BLFCRQ": {
+          "type": "image_with_text",
+          "settings": {
+            "icons": "shopify://shop_images/no_plastic.png",
+            "text": "No PlaStic"
+          }
+        },
+        "slider_reviews_64fkmJ": {
+          "type": "slider_reviews",
+          "settings": {
+            "review_text": "I just put these strips on my teeth after brushing in the morning, by the time I shower, fix my hair and apply makeup the strips are gone and I am ready to go!!"
+          }
+        },
+        "slider_reviews_Tyxm3f": {
+          "type": "slider_reviews",
+          "settings": {
+            "review_text": "I just put these strips on my teeth after brushing in the morning, by the time I shower, fix my hair and apply makeup the strips are gone and I am ready to go!!"
+          }
+        },
+        "slider_reviews_W97LpG": {
+          "type": "slider_reviews",
+          "settings": {
+            "review_text": "I just put these strips on my teeth after brushing in the morning, by the time I shower, fix my hair and apply makeup the strips are gone and I am ready to go!!"
+          }
+        },
+        "slider_reviews_RanKNr": {
+          "type": "slider_reviews",
+          "settings": {
+            "review_text": "I just put these strips on my teeth after brushing in the morning, by the time I shower, fix my hair and apply makeup the strips are gone and I am ready to go!!"
+          }
+        }
+      },
+      "block_order": [
+        "image_with_text_jLDEMU",
+        "image_with_text_mJi6GU",
+        "image_with_text_Cfei4H",
+        "image_with_text_kgUJqx",
+        "image_with_text_LbmPM3",
+        "image_with_text_BLFCRQ",
+        "slider_reviews_64fkmJ",
+        "slider_reviews_Tyxm3f",
+        "slider_reviews_W97LpG",
+        "slider_reviews_RanKNr"
+      ],
+      "name": "Study Benefits",
+      "settings": {
+        "extra_class": "",
+        "heading": "Benefits",
+        "reviews_heading": "Customer feedback",
+        "reviews_code": ""
+      }
+    },
+    "ctm_study_links_bMUdjQ": {
+      "type": "ctm-study-links",
+      "blocks": {
+        "study_hyper_wNmzWT": {
+          "type": "study_hyper",
+          "settings": {
+            "number": "01.",
+            "link_txt": "In Vitro Teeth Whitening Study",
+            "link_url": "#study_improved"
+          }
+        },
+        "study_hyper_A8aVWa": {
+          "type": "study_hyper",
+          "settings": {
+            "number": "02.",
+            "link_txt": "Shade Change Consumer Study",
+            "link_url": "#study_improvement"
+          }
+        },
+        "study_hyper_yPVcbY": {
+          "type": "study_hyper",
+          "settings": {
+            "number": "03.",
+            "link_txt": "Reduced Sensitivity Study",
+            "link_url": "#study_reduced"
+          }
+        }
+      },
+      "block_order": [
+        "study_hyper_wNmzWT",
+        "study_hyper_A8aVWa",
+        "study_hyper_yPVcbY"
+      ],
+      "name": "Study Jump Links",
+      "settings": {
+        "extra_class": "main-jump-study-links"
+      }
+    },
+    "sticky_content_study_tiNqNE": {
+      "type": "sticky-content-study",
+      "blocks": {
+        "text_with_graph_image_wdYDxa": {
+          "type": "text_with_graph_image",
+          "settings": {
+            "black_head": "Faster and superior whitening",
+            "description": "observed for Pooof! 12% Peroxide + [P]<sup>3</sup> + HA",
+            "graph_image": "shopify://shop_images/Graph_1.png"
+          }
+        },
+        "text_with_graph_image_Kk68wK": {
+          "type": "text_with_graph_image",
+          "settings": {
+            "black_head": "37% Better Whitening",
+            "description": "observed after <strong>10 day</strong> in-vitro study against the leading white strips",
+            "graph_image": "shopify://shop_images/Graph_2.png"
+          }
+        }
+      },
+      "block_order": [
+        "text_with_graph_image_wdYDxa",
+        "text_with_graph_image_Kk68wK"
+      ],
+      "name": "Text with Image Scroll",
+      "settings": {
+        "main_id": "study_improved",
+        "extra_class": "ctm-study-improved",
+        "blue_heading": "01.  Improved Teeth  Whitening efficacy",
+        "text": "Study Outline",
+        "bullet_text": "<ul><li>Extrinsically stained extracted human teeth model used</li><li>Surface covered with drop of artificial saliva then whitening strip applied</li><li>A drop of artificial saliva placed onto the back of whitening strip every five minutes in order to maintain hydration</li><li>After 30 minutes had elapsed, the samples were rinsed with deionised water and gently wiped with a tissue to remove any whitening strip residue</li><li>The samples were then immersed in artificial saliva to ensure each sample remained fully hydrated</li><li>Products texted for 14 treatments with colour change measured after 1, 2, 3, 4, 5, 6, 7, 10, 14 applications using Konica Minolta Spectrophotomer which was calibrated against a Vita R-20 Shade Guide.</li></ul>",
+        "ctm_bullet_text": "",
+        "bubble_txt": "10% &amp; 12% hydrogen peroxide with [P]3 dissolving strip\nvs. leading non-dissolving whitestrip"
+      }
+    },
+    "sticky_content_study_DBtjFz": {
+      "type": "sticky-content-study",
+      "blocks": {
+        "text_with_graph_image_knCe3c": {
+          "type": "text_with_graph_image",
+          "settings": {
+            "black_head": "Faster and superior whitening",
+            "description": "observed for Pooof! 12% Peroxide + [P]<sup>3</sup> vs. Leading Whitestrip",
+            "graph_image": "shopify://shop_images/Graph_3.png"
+          }
+        }
+      },
+      "block_order": [
+        "text_with_graph_image_knCe3c"
+      ],
+      "name": "Text with Image Scroll",
+      "settings": {
+        "main_id": "study_improvement",
+        "extra_class": "ctm-study-teeth",
+        "blue_heading": "02.  Improvement of Teeth Shade",
+        "text": "Study Outline",
+        "bullet_text": "",
+        "ctm_bullet_text": "<ul>\n    <li>Approximately 50 consumers per arm of study</li>\n    <li>Consumers given a full course treatment (14 days) of one of:</li>\n    <ul>\n        <li>10% HP + [P]<sup>3 </sup>technology + HA</li>\n        <li>12% HP + [P]<sup>3 </sup>technology + HA</li>\n        <li>Leading non-dissolving Whitestrips</li>\n    </ul>\n    <li>One strip per day</li>\n    <li>Whitening self-assessed at time-points of 1, 3, 6, 7, 10, and 14 days using a Superbright shade guide</li>\n    <li>Additional questions around tooth sensitivity, ease of use, taste during study or at end of the study</li>\n    <li>Consumer study in approx. n=50 patients per arm</li>\n    <li>Shade change self-assessed using Superbright shade guide</li>\n</ul>",
+        "bubble_txt": "10% &amp; 12% hydrogen peroxide with [P]3 dissolving strip\nvs. leading non-dissolving whitestrip"
+      }
+    },
+    "sticky_content_study_a7hBWj": {
+      "type": "sticky-content-study",
+      "blocks": {
+        "text_with_graph_image_mqpLeV": {
+          "type": "text_with_graph_image",
+          "settings": {
+            "black_head": "only 8% of our users",
+            "description": "experienced tooth sensitivity vs. 28% of Leading Whitestrip users after 7-10 days",
+            "graph_image": "shopify://shop_images/Graph_4.png"
+          }
+        },
+        "text_with_graph_image_8tywDL": {
+          "type": "text_with_graph_image",
+          "settings": {
+            "black_head": "<10% of Users",
+            "description": "experience tooth sensitivity with POOOF!® whitening™ and it doesn’t increase. The leading whitestrips start at 10% and increase dramatically",
+            "graph_image": "shopify://shop_images/Graph_5.png"
+          }
+        }
+      },
+      "block_order": [
+        "text_with_graph_image_mqpLeV",
+        "text_with_graph_image_8tywDL"
+      ],
+      "name": "Text with Image Scroll",
+      "settings": {
+        "main_id": "study_reduced",
+        "extra_class": "ctm-study-reduced",
+        "blue_heading": "03.  Reduced Sensitivity",
+        "text": "<span>By incorporating 12% HP + [P]<sup>3</sup> technology + HA our strips offer superior results without the discomfort often associated with traditional whitening methods. Experience a brighter smile with less sensitivity, thanks to our innovative teeth whitening solution.</span>",
+        "bullet_text": "",
+        "ctm_bullet_text": "",
+        "bubble_txt": "10% &amp; 12% hydrogen peroxide with [P]3 dissolving strip\nvs. leading non-dissolving whitestrip"
+      }
+    },
+    "ctm_banner_list_p3M7qt": {
+      "type": "ctm-banner-list",
+      "name": "Banner with list",
+      "settings": {
+        "extra_class": "ctm-study-banner-main",
+        "banner_desktop": "shopify://shop_images/Group_12.png",
+        "banner_mobile": "shopify://shop_images/Group_13.png",
+        "banner_heading": "[P]<sup>3</sup> Dissolving Whitening Strips Reduce Tooth Sensitivity Better Than Others",
+        "banner_description": ""
+      }
+    },
+    "multicolumn_3BzdDA": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_MNyzGM": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/target.png",
+            "title": "",
+            "text": "<p>Adheres directly onto teeth</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_wJz9Yc": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/note.png",
+            "title": "",
+            "text": "<p>Dissolves to release agent and block dentine tubules</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_eif7R8": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/paste.png",
+            "title": "",
+            "text": "<p>More accurate placement than gel</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_eY64yp": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/toothbrush.png",
+            "title": "",
+            "text": "<p>Longer residence time than toothpaste</p>",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "column_MNyzGM",
+        "column_wJz9Yc",
+        "column_eif7R8",
+        "column_eY64yp"
+      ],
+      "name": "t:sections.multicolumn.presets.name",
+      "settings": {
+        "extra_class": "ctm-dissolving-multicol",
+        "title": "Dissolving strips excel with hydroxyapatite for sensitivity and enamel protection",
+        "heading_size": "h2",
+        "image_width": "full",
+        "image_ratio": "adapt",
+        "button_label": "",
+        "button_link": "",
+        "columns_desktop": 4,
+        "column_alignment": "left",
+        "background_style": "none",
+        "color_scheme": "",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 36,
+        "padding_bottom": 76
+      }
+    }
+  },
+  "order": [
+    "main",
+    "image_with_text_RCMrKU",
+    "study_benefits_tL97Aq",
+    "ctm_study_links_bMUdjQ",
+    "sticky_content_study_tiNqNE",
+    "sticky_content_study_DBtjFz",
+    "sticky_content_study_a7hBWj",
+    "ctm_banner_list_p3M7qt",
+    "multicolumn_3BzdDA"
+  ]
+}

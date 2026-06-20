@@ -1,0 +1,327 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "pdp_promo_tag_HMnXJC": {
+          "type": "pdp_promo_tag",
+          "settings": {
+            "show_promo_tag": true
+          }
+        },
+        "custom_liquid_LnbgfJ": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "{% if  product.metafields.custom.promo_message %}\n        <div class=\"promo-message pdp-promo-message\">\n            {{ product.metafields.custom.promo_message }}\n        </div>\n    {% endif %}"
+          }
+        },
+        "price": {
+          "type": "price",
+          "settings": {
+            "show_shoppay": false
+          }
+        },
+        "d7d20120-c860-4d76-89a0-5c5b7cc4350f": {
+          "type": "shopify://apps/yotpo-product-reviews/blocks/star-rating/eb7dfd7d-db44-4334-bc49-c893b51b36cf",
+          "disabled": true,
+          "settings": {
+            "product": "{{product}}"
+          }
+        },
+        "custom_liquid_HaxTGE": {
+          "type": "custom_liquid",
+          "disabled": true,
+          "settings": {
+            "custom_liquid": "<div class=\"yotpo-widget-instance\" data-yotpo-instance-id=\"733680\" data-yotpo-product-id=\"{{product.id}}\" data-yotpo-cart-product-id=\"{{item.product.id}}\" data-yotpo-section-id=\"{{template.name}}\"></div>"
+          }
+        },
+        "yotpo_product_reviews_ugc_star_rating_TCmwmW": {
+          "type": "shopify://apps/yotpo-product-reviews/blocks/star-rating/eb7dfd7d-db44-4334-bc49-c893b51b36cf",
+          "disabled": true,
+          "settings": {
+            "product": "{{product}}"
+          }
+        },
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "button"
+          }
+        },
+        "inventory_status_iH6jDw": {
+          "type": "inventory_status",
+          "settings": {}
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": false,
+            "show_gift_card_recipient": false
+          }
+        },
+        "custom_liquid_NMdt6c": {
+          "type": "custom_liquid",
+          "disabled": true,
+          "settings": {
+            "custom_liquid": "{% if  product.metafields.custom.extra_variant_message %}\n        <div class=\"variant-message\">\n            {{ product.metafields.custom.extra_variant_message }}\n        </div>\n    {% endif %}"
+          }
+        },
+        "afterpay_on_site_messaging_payments_messaging_cbLLj8": {
+          "type": "shopify://apps/afterpay-on-site-messaging/blocks/payments-messaging/f45a5524-d177-4475-bf59-281efd2215a8",
+          "settings": {
+            "text_align": "center",
+            "margin_top": 0,
+            "margin_bottom": 10,
+            "color": "",
+            "size": "sm",
+            "intro_text": "Or",
+            "show_interest_free": false,
+            "payment_amount_is_bold": false,
+            "show_with": false,
+            "logo_type": "lockup",
+            "logo_theme": "black",
+            "modal_link_style": "circled-info-icon",
+            "modal_theme": "white",
+            "breakpoint": 749,
+            "text_align_mobile": "center",
+            "margin_top_mobile": 0,
+            "margin_bottom_mobile": 10,
+            "show_lower_limit": true,
+            "show_upper_limit": true,
+            "show_if_outside_limits": true,
+            "product": "{{product}}"
+          }
+        },
+        "custom_liquid_RqKffA": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "{% if product.handle != 'team-women-running-club-membership' %}\n<div class=\"ctm-shipping-wrapper\">\n  <div class=\"ctm-svg-wrapper\">\n    <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"30\" height=\"30\" aria-hidden=\"true\" viewBox=\"0 0 25 24\" fill=\"none\">\n      <path d=\"M16.5804 17.5267V12.9131M16.5804 17.5267C16.5804 18.7258 17.5524 19.6979 18.7515 19.6979C19.9506 19.6979 20.9226 18.7258 20.9226 17.5267M16.5804 17.5267C16.5804 17.0514 16.7332 16.6117 16.9923 16.2541M16.5804 8.84225V5.13925C16.5804 4.7862 16.2942 4.5 15.9411 4.5H5.82124C5.46819 4.5 5.18199 4.7862 5.18199 5.13925V15.8422C5.18199 16.0697 5.36641 16.2541 5.5939 16.2541M16.5804 8.84225H19.8371L23.0938 12.9131M16.5804 8.84225V12.9131M23.0938 12.9131V17.5267H20.9226M23.0938 12.9131H16.5804M20.9226 17.5267C20.9226 16.3277 19.9506 15.3556 18.7515 15.3556C18.0278 15.3556 17.3868 15.7097 16.9923 16.2541M13.231 11.5368H5.18199H1.34375M10.674 9.29779H5.18199H2.30331M16.9923 16.2541H9.11232M9.11232 16.2541C8.71782 15.7097 8.07682 15.3556 7.35311 15.3556C6.62941 15.3556 5.98841 15.7097 5.5939 16.2541M9.11232 16.2541C9.37146 16.6117 9.52423 17.0514 9.52423 17.5267C9.52423 18.7258 8.55219 19.6979 7.35311 19.6979C6.15403 19.6979 5.18199 18.7258 5.18199 17.5267C5.18199 17.0514 5.33477 16.6117 5.5939 16.2541\"\n        stroke=\"#1C1519\"></path>\n    </svg>\n  </div>\n\n  <div class=\"ctm-content\">\n    <div class=\"delivery-promise__promise-container\"></div>\n    <div class=\"ctm-shipping-info\" style=\"font-size: 14px; color: black; text-align:center;\">\n      <a href=\"https://www.xx-xyathletics.com/policies/shipping-policy\">Free Shipping</a> on orders over $100+ within the U.S\n      <br>\n      <a href=\"https://www.xx-xyathletics.com/a/service?\">Free Returns</a> within 45 days\n    </div>\n  </div>\n</div>\n{% endif %}"
+          }
+        },
+        "upsell_products_UyWzPR": {
+          "type": "upsell_products",
+          "settings": {
+            "extra_class": ""
+          }
+        },
+        "product-description": {
+          "type": "product-description",
+          "settings": {
+            "default_open": true
+          }
+        },
+        "c6f584b1-238f-4b65-910e-22958012e6f2": {
+          "type": "about",
+          "settings": {
+            "default_open": false,
+            "about_heading": "PRODUCT DETAILS",
+            "about_heading_content": "{{ product.metafields.custom.product_feature_main | metafield_tag }}"
+          }
+        },
+        "146d82e5-eaaf-49d0-b4da-d73923f32680": {
+          "type": "about",
+          "settings": {
+            "default_open": false,
+            "about_heading": "SIZE CHART",
+            "about_heading_content": ""
+          }
+        },
+        "about_1": {
+          "type": "about",
+          "settings": {
+            "default_open": false,
+            "about_heading": "CARE INFORMATION",
+            "about_heading_content": "{{ product.metafields.custom.care_info | metafield_tag }}"
+          }
+        },
+        "perfect-fit": {
+          "type": "perfect-fit",
+          "settings": {
+            "about_heading": "Perfect Fit",
+            "about_heading_content": "<p>Some description</p>",
+            "show_link_slider": false
+          }
+        },
+        "pickup_availability": {
+          "type": "pickup_availability",
+          "settings": {}
+        },
+        "sku_AqYWf3": {
+          "type": "sku",
+          "disabled": true,
+          "settings": {}
+        },
+        "build_a_look_yRaTWz": {
+          "type": "build_a_look",
+          "settings": {
+            "extra_class": "ctm-build-a-look-mobile"
+          }
+        }
+      },
+      "block_order": [
+        "pdp_promo_tag_HMnXJC",
+        "custom_liquid_LnbgfJ",
+        "price",
+        "d7d20120-c860-4d76-89a0-5c5b7cc4350f",
+        "custom_liquid_HaxTGE",
+        "yotpo_product_reviews_ugc_star_rating_TCmwmW",
+        "variant_picker",
+        "inventory_status_iH6jDw",
+        "buy_buttons",
+        "custom_liquid_NMdt6c",
+        "afterpay_on_site_messaging_payments_messaging_cbLLj8",
+        "custom_liquid_RqKffA",
+        "upsell_products_UyWzPR",
+        "product-description",
+        "c6f584b1-238f-4b65-910e-22958012e6f2",
+        "146d82e5-eaaf-49d0-b4da-d73923f32680",
+        "about_1",
+        "perfect-fit",
+        "pickup_availability",
+        "sku_AqYWf3",
+        "build_a_look_yRaTWz"
+      ],
+      "custom_css": [
+        ".pdp-promo-message {padding-top: 10px; font-size: 18px; color: #2ab572; font-weight: bold;}",
+        ".pdp-promo-message a {padding-top: 10px; font-size: 18px; color: #2ab572; font-weight: bold;}",
+        ".pdp-promo-message a {text-decoration: underline; text-decoration-color: #2ab572;}",
+        ".product__subtitle,.yotpo-widget-instance {display: block; width: 100%;}",
+        "@media (max-width: 1024px) {.ctm-shipping-info {font-size: 11px !important; }}"
+      ],
+      "settings": {
+        "image_gallery_collage": "stacked",
+        "image_grid": "2",
+        "desktop_alignment": "right",
+        "mobile_alignment": "after",
+        "image_fit": "cover",
+        "show_share_facebook": false,
+        "show_share_twitter": false,
+        "show_share_pinterest": false,
+        "show_share_copy": false
+      }
+    },
+    "product-recommendations": {
+      "type": "product-recommendations",
+      "custom_css": [
+        "h2 {font-size: 24px; padding-top: 20px;}"
+      ],
+      "settings": {
+        "heading": "<p>You Might Also Like</p>",
+        "link": "View All",
+        "button_link": "shopify://collections/mix-match-for-20-off",
+        "products_limit": 40,
+        "enable_swiper": true,
+        "image_ratio": "portrait",
+        "image_fit": "cover",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_desc": false,
+        "show_sku": false,
+        "quickview_show": true,
+        "show_link": true,
+        "margin_top": 40,
+        "margin_bottom": 60
+      }
+    },
+    "recetly_product_HAPeMi": {
+      "type": "recetly-product",
+      "name": "Recently Viewed Product",
+      "settings": {
+        "title": "Recently Viewed",
+        "products_limit": 10,
+        "desk_slides_per_view": 5.5
+      }
+    },
+    "f7d0684b3932c1b79b63": {
+      "type": "apps",
+      "blocks": {
+        "98c13756-dc34-4953-8818-c1f58543b699": {
+          "type": "shopify://apps/yotpo-product-reviews/blocks/reviews/eb7dfd7d-db44-4334-bc49-c893b51b36cf",
+          "settings": {
+            "product": "{{product}}"
+          }
+        }
+      },
+      "block_order": [
+        "98c13756-dc34-4953-8818-c1f58543b699"
+      ],
+      "settings": {
+        "include_margins": true
+      }
+    },
+    "custom_liquid_6BVt3f": {
+      "type": "custom-liquid",
+      "disabled": true,
+      "settings": {
+        "custom_liquid": "<div class=\"yotpo-widget-instance\" data-yotpo-instance-id=\"733679\" data-yotpo-product-id=\"{{product.id}}\" data-yotpo-name=\"{{ product.title | escape }}\" data-yotpo-url=\"{{ shop.url }}{{ product.url }}\" data-yotpo-image-url=\"{{ product.featured_image | product_img_url: \"large\" | prepend: \"https:\" | replace: '?', '%3F' | replace: '&','%26'}}\" data-yotpo-price=\"{{ product.price | divided_by: 100.00 }}\" data-yotpo-currency=\"{{ shop.currency }}\" data-yotpo-description=\"{{ product.description | escape }}\"></div>"
+      }
+    },
+    "171387656909b19bfa": {
+      "type": "apps",
+      "blocks": {
+        "yotpo_product_reviews_ugc_reviews_gCcG7p": {
+          "type": "shopify://apps/yotpo-product-reviews/blocks/reviews/eb7dfd7d-db44-4334-bc49-c893b51b36cf",
+          "disabled": true,
+          "settings": {
+            "product": "{{product}}"
+          }
+        }
+      },
+      "block_order": [
+        "yotpo_product_reviews_ugc_reviews_gCcG7p"
+      ],
+      "custom_css": [],
+      "settings": {
+        "include_margins": true
+      }
+    },
+    "17573366964147a6f9": {
+      "type": "apps",
+      "blocks": {
+        "rebuy_personalization_engine_rebuy_widget_zt9x6g": {
+          "type": "shopify://apps/rebuy-personalization-engine/blocks/rebuy-widget/a26ae9b9-933b-40bf-bbc6-bf1220bbc4dc",
+          "settings": {
+            "enabled": true,
+            "id": "238484",
+            "product_id_enabled": true,
+            "collection_id_enabled": false
+          }
+        },
+        "rebuy_personalization_engine_rebuy_widget_DYk3jE": {
+          "type": "shopify://apps/rebuy-personalization-engine/blocks/rebuy-widget/a26ae9b9-933b-40bf-bbc6-bf1220bbc4dc",
+          "settings": {
+            "enabled": true,
+            "id": "241398",
+            "product_id_enabled": true,
+            "collection_id_enabled": false
+          }
+        }
+      },
+      "block_order": [
+        "rebuy_personalization_engine_rebuy_widget_zt9x6g",
+        "rebuy_personalization_engine_rebuy_widget_DYk3jE"
+      ],
+      "settings": {
+        "include_margins": true
+      }
+    }
+  },
+  "order": [
+    "main",
+    "product-recommendations",
+    "recetly_product_HAPeMi",
+    "f7d0684b3932c1b79b63",
+    "custom_liquid_6BVt3f",
+    "171387656909b19bfa",
+    "17573366964147a6f9"
+  ]
+}

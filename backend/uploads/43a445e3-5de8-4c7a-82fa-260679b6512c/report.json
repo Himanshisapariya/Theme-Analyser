@@ -1,0 +1,15 @@
+{
+  "createdAt": "2026-05-15T13:34:53.033Z",
+  "cssFiles": [],
+  "textFiles": [
+    "test.liquid"
+  ],
+  "summary": {
+    "totalRules": 0,
+    "usedRules": 0,
+    "unusedRules": 0,
+    "estimatedSavingsBytes": 0
+  },
+  "entries": [],
+  "jobId": "43a445e3-5de8-4c7a-82fa-260679b6512c"
+}

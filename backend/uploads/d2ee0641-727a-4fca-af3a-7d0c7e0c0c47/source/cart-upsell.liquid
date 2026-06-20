@@ -1,0 +1,226 @@
+{% comment %}
+  Cart Upsell Snippet
+
+  Displays an upsell product suggestion within the cart.
+
+  Top-Level Variables Used:
+    highest_priced_item: (Cart Line Item object) Pass this in only if you want to remove this item when adding the upsell item.
+    highest_priced_item_upsell: (Product object) The product to display as an upsell.
+    section: (Object) Current section object.
+    block: (Object) Current block object.
+
+    // Not sure where these are coming from?
+    productnumber: (String/Number) An identifier, likely for CSS or JS targeting (e.g., remove-{{ productnumber }}).
+    update_url: (Boolean) Passed to variant-selects to control URL updating behavior. Default is true if not specified.
+    product_form_id: (String) The ID for the product form, constructed from the section ID and product ID.
+
+  Usage Example:
+    {%- render 'cart-upsell',
+      highest_priced_item_upsell: highest_priced_item_upsell,
+      highest_priced_item: main_cart_item_for_upsell_key
+    -%}
+{% endcomment %}
+
+<div class="ctm_cart">
+  <div class="cart_related_product px-20 py-40 mdscreen2:p-40 bg-spilt_milk rounded-24 overflow-hidden mb-40">
+    <div class="cart_related_iner_main">
+      <div class="ctm_yml_head text-black-900 mb-28">
+        <h4 class="!text-24 !leading-26 font-bold text-bloodstone">{{ settings['cart-upsell-title'] }}</h4>
+      </div>
+      <div
+        class="collection-list card_relatedslide_block contains-card contains-card--collection{% if settings.card_style == 'standard' %} contains-card--standard{% endif %} grid grid--{{ section.settings.columns_desktop }}-col-desktop grid--{{ section.settings.columns_mobile }}-col-tablet-down{% if section.settings.swipe_on_mobile %} slider slider--tablet grid--peek{% endif %} collection-list--{{ section.blocks.size }}-items"
+        id="Slider-{{ section.id }}"
+        role="list"
+      >
+        <div class="related-main related-products collection-list__item border-2 border-solid border-green_eggs rounded-10 p-20 mdscreen2:p-20 remove-{{ productnumber }}">
+          <div class="main-img-related">
+            <div class="related-inner-block flex items-center gap-20 mb-20">
+              <div class="related-img shrink-0">
+                {% if highest_priced_item_upsell.featured_image %}
+                  <img
+                    class="max-w-[175px] w-full object-cover rounded-24 overflow-hidden"
+                    src="{{ highest_priced_item_upsell.featured_image | image_url: width: 2000 }}"
+                    alt="upsell-image"
+                    loading="lazy"
+                    height="175"
+                    width="175"
+                  >
+                {% else %}
+                  <img
+                    class="max-w-[175px] w-full object-cover rounded-24 overflow-hidden"
+                    src="https://cdn.shopify.com/s/files/1/0633/2524/1527/files/500x500.gif"
+                    alt="upsell-image"
+                    loading="lazy"
+                    height="175"
+                    width="175"
+                  >
+                {% endif %}
+              </div>
+              <div class="related_content flex gap-10">
+                <div class="related_contentgrp group">
+                  <div class="related-img_title mb-5">
+                    <a
+                      class="group-hover:text-warm_neutral transition-all duration-300 ease-in-out text-bloodstone"
+                      href="{{ highest_priced_item_upsell.url }}"
+                    >
+                      <h4 class="group-hover:text-warm_neutral transition-all duration-300 ease-in-out">
+                        {% if highest_priced_item_upsell.metafields.custom.upsell_title != blank -%}
+                          {{- highest_priced_item_upsell.metafields.custom.upsell_title -}}
+                        {%- else -%}
+                          {{- highest_priced_item_upsell.title -}}
+                        {%- endif %}
+                      </h4>
+                    </a>
+                  </div>
+                  <div class="related_price">
+                    <span class="text-16 !leading-24 text-black-800 font-extrabold tracking-wide flex items-center gap-10">
+                      {{- highest_priced_item_upsell.price | money }}
+                      <s class="font-normal">{{ highest_priced_item_upsell.compare_at_price | money }}</s>
+                    </span>
+                  </div>
+                  {%- unless highest_priced_item_upsell.has_only_default_variant -%}
+                    <variant-selects
+                      id="variant-selects-{{ section.id }}"
+                      class="no-js-hidden pdp_carient_block cart-upsell"
+                      data-section="{{ section.id }}"
+                      data-url="{{ highest_priced_item_upsell.url }}"
+                      {% if update_url == false %}
+                        data-update-url="false"
+                      {% endif %}
+                      {{ block.shopify_attributes }}
+                    >
+                      {%- for option in highest_priced_item_upsell.options_with_values -%}
+                        {% assign parent_index = forloop.index0 %}
+                        <fieldset class="js product-form__input product-form__input--pill cmt_swatch_block{{ forloop.index }}">
+                          <legend class="form__label hidden">{{ option.name }}</legend>
+                          {%- for value in option.values -%}
+                            {% assign input_id = section.id
+                              | append: '-'
+                              | append: highest_priced_item_upsell.id
+                              | append: '-'
+                              | append: parent_index
+                              | append: '-'
+                              | append: forloop.index0
+                              | append: '-'
+                            %}
+                            <input
+                              type="radio"
+                              id="{{ input_id }}"
+                              name="{{ option.name }}-{{ highest_priced_item_upsell.id }}"
+                              value="{{ value | escape }}"
+                              form="{{ product_form_id }}"
+                              data-variant-id="{{ highest_priced_item_upsell.variants[forloop.index0].id }}"
+                              data-variant-price="{{ highest_priced_item_upsell.variants[forloop.index0].price | money }}"
+                              data-variant-compare-price="{{ highest_priced_item_upsell.variants[forloop.index0].compare_at_price | money }}"
+                              data-variant-options="{{ highest_priced_item_upsell.variants[forloop.index0].options | join: ',' }}"
+                              {% if option.selected_value == value or forloop.first %}
+                                checked
+                              {% endif %}
+                              {% if option_disabled %}
+                                class="disabled"
+                              {% endif %}
+                            >
+                            <label for="{{ input_id }}">{{ value }}</label>
+                          {%- endfor -%}
+                        </fieldset>
+                      {%- endfor -%}
+                    </variant-selects>
+                  {%- endunless -%}
+                </div>
+
+                <div class="related_remove hidden">
+                  <cart-remove-button
+                    class=""
+                    id="CartDrawer-Remove-{{ highest_priced_item_upsell.index | plus: 1 }}"
+                    data-index="{{ highest_priced_item_upsell.index | plus: 1 }}"
+                  >
+                    <button
+                      type="button"
+                      class="button button--tertiary cart-remove-button"
+                      aria-label="{{ 'sections.cart.remove_title' | t: title: highest_priced_item_upsell.title }}"
+                      data-variant-id="{{ highest_priced_item_upsell.variants.first.id }}"
+                    >
+                      {% render 'icon-close' %}
+                    </button>
+                  </cart-remove-button>
+                </div>
+              </div>
+            </div>
+            <div class="qty_related_btn">
+              {% if highest_priced_item_upsell.available %}
+                <product-form data-section-id="slide-cart">
+                  {%- assign product_form_id = 'quick-add-'
+                    | append: 'slide-cart'
+                    | append: highest_priced_item_upsell.id
+                  -%}
+                  {%- form 'product',
+                    highest_priced_item_upsell,
+                    id: product_form_id,
+                    class: 'form cart_relaterd_form',
+                    novalidate: 'novalidate',
+                    data-type: 'add-to-cart-form'
+                  -%}
+                    <input type="hidden" name="id" value="{{ highest_priced_item_upsell.variants.first.id }}">
+                    {%- render 'loading-spinner' -%}
+                    <button
+                      type="submit"
+                      class="aloe_leaf_btn upsell-atc-button w-full"
+                      data-quantity="1"
+                      data-id="{{ highest_priced_item_upsell.selected_or_first_available_variant.id }}"
+                      {% if highest_priced_item %}
+                        data-key="{{ highest_priced_item.key }}"
+                      {% endif %}
+                    >
+                      {{ settings['cart-upsell-btn'] }}
+                    </button>
+                  {%- endform -%}
+                </product-form>
+              {% else %}
+                <button class="btn_blue" disabled>Sold Out</button>
+              {% endif %}
+              {% if highest_priced_item_upsell.metafields['hide-show-short-desc'].acf == 'True' %}
+                <div class="ctm_pdp_shortdesc flex flex-wrap items-center gap-[11px]">
+                  {% if highest_priced_item_upsell.metafields.yml_1.acf != blank %}
+                    {{ highest_priced_item_upsell.metafields.yml_1.acf }}
+                    <img
+                      src="https://cdn.shopify.com/s/files/1/0792/4904/7864/files/check_c0da4210-7c16-4165-adb2-13eacd0ce161.png"
+                      alt="plus_icon"
+                      loading="lazy"
+                      width="20"
+                      height="20"
+                    >
+                  {% endif %}
+                  {% if highest_priced_item_upsell.metafields.yml_2.acf != blank %}
+                    {{ highest_priced_item_upsell.metafields.yml_2.acf }}
+                    <img
+                      src="https://cdn.shopify.com/s/files/1/0792/4904/7864/files/check_c0da4210-7c16-4165-adb2-13eacd0ce161.png"
+                      alt="plus_icon"
+                      loading="lazy"
+                      width="20"
+                      height="20"
+                    >
+                  {% endif %}
+                  {% if highest_priced_item_upsell.metafields.yml_3.acf != blank %}
+                    {{ highest_priced_item_upsell.metafields.yml_3.acf }}
+                    <img
+                      src="https://cdn.shopify.com/s/files/1/0792/4904/7864/files/check_c0da4210-7c16-4165-adb2-13eacd0ce161.png"
+                      alt="plus_icon"
+                      loading="lazy"
+                      width="20"
+                      height="20"
+                    >
+                  {% endif %}
+                  {% if highest_priced_item_upsell.metafields.yml_4.acf != blank %}
+                    {{ highest_priced_item_upsell.metafields.yml_4.acf }}
+                  {% endif %}
+                </div>
+              {% else %}
+
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

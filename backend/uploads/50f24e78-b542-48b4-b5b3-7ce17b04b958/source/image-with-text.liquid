@@ -1,0 +1,703 @@
+{{ 'section-image-with-text.css' | asset_url | stylesheet_tag }}
+{{ 'spring-page-layout.css' | asset_url | stylesheet_tag }}
+
+{% style %}
+	{% render 'spaced-section' %}
+{% endstyle %}
+
+{%- style -%}
+  .image-with-text.section-{{ section.id }} {
+  	padding-top: {{ section.settings.top_padding_desktop }}px;
+  	padding-bottom: {{ section.settings.bottom_padding_desktop }}px;
+  }
+
+  @media screen and (max-width: 990px) {
+  	.image-with-text.section-{{ section.id }} {
+  		padding-top: {{ section.settings.top_padding_mobile }}px;
+  		padding-bottom: {{ section.settings.bottom_padding_mobile }}px;
+  	}
+  }
+.image-with-text.section-{{ section.id }} {
+  	margin-top: {{ section.settings.top_margin_desktop}}px;
+  	margin-bottom: {{ section.settings.bottom_margin_desktop }}px;
+  }
+
+  @media screen and (max-width: 990px) {
+  	.image-with-text.section-{{ section.id }} {
+  		margin-top: {{ section.settings.top_margin_mobile }}px;
+  		margin-bottom: {{ section.settings.bottom_margin_mobile }}px;
+  	}
+  }
+{%- endstyle -%}
+
+<div class="image-with-text section-{{ section.id }} {{ section.settings.image_size }} image-text-{{ section.settings.row-reverse }} {{ section.settings.lookbook_detail_class }}">
+	{% liquid
+	assign image_size = section.settings.image_size
+
+	case image_size
+		when 'adapt'
+			assign section_size = 'adapt'
+		when 'small'
+			assign section_size = '30vh'
+		when 'medium'
+			assign section_size = '60vh'
+		when 'large'
+			assign section_size = 'calc(100vh - var(--header-height) - var(--announcement-height))'
+		else
+			assign section_size = 'calc(100vh - var(--header-height) - var(--announcement-height))'
+	endcase
+%}
+	{% liquid
+				assign image_height = section.settings.image.width | divided_by: section.settings.image.aspect_ratio
+				assign adapt_height = 0.6 | divided_by: section.settings.image.aspect_ratio | times: 85.7 | append: '%'
+				assign underline_color = section.settings.underline_color | default: '#000000'
+
+				if image_size == 'adapt'
+					assign section_size = adapt_height
+				endif
+			%}
+			{% style %}
+				.image-with-text {
+					--slide-height : {{ section_size }};
+				}
+			{% endstyle %}
+{% if section.settings.show_frame %}<div class="frame-true color-{{ section.settings.color_scheme }}">{% endif %}
+		<div class="image-with-text__image color-{{ section.settings.color_scheme }} {% if section.settings.show_frame %} image-with-text__image--frame {% endif %}">
+			
+			{%- if section.settings.image != blank -%}
+        				{{
+					section.settings.image
+					| image_url: width: auto
+					| image_tag:
+						loading: 'lazy',
+						widths: auto,
+						class: 'motion-reduce',
+						width: auto,
+						height: auto
+				}}
+				{% if section.settings.show_frame == false %}
+          {%- if section.settings.frame-text != blank -%}
+
+					<span
+						class="frame-text-second">
+						{{- section.settings['frame-text'] -}}
+					</span>
+          {% endif %}
+          {%- if section.settings.frame-text-right != blank -%}
+					<span
+						class="frame-text-second"
+					>
+						{{- section.settings['frame-text-right'] -}}
+					</span>
+          {% endif %}
+				{% endif %}
+			{% else %}
+			{{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+		
+			{%- endif -%}
+      {% if section.settings.mobile_image != blank %}
+        {{
+					section.settings.mobile_image
+					| image_url: width: auto
+					| image_tag:
+						loading: 'lazy',
+						widths: auto,
+						class: 'motion-reduce mobile-image',
+						width: auto,
+						height: auto,
+            alt: section.settings.mobile_image.alt
+				}}
+      {% endif %}
+		</div>
+		{% if section.settings.show_frame %}
+		<div class="frame-text-container">
+			<span
+				class="frame-text color-{{ section.settings.color_scheme }}"
+			>
+				{{- section.settings['frame-text'] -}}
+			</span>
+			<span
+			class="frame-text color-{{ section.settings.color_scheme }}"
+			>
+				{{- section.settings['frame-text-right'] -}}
+			</span>
+		</div>
+		{% endif %}
+	{% if section.settings.show_frame %}</div>{% endif %}
+
+	<div class="image-with-text__content image-with-text__content color-{{ section.settings.color_scheme_2 }}">
+		{% if section.settings.subheading_left_top != blank or section.settings.subheading_right_top != blank %}
+		<div class="image-with-text__content-top">
+			<span>{{ section.settings.subheading_left_top }}</span>
+			<span>{{ section.settings.subheading_right_top }}</span>
+		</div>
+	{% endif %}
+
+		<div class="image-with-text__content-item">
+			{{ section.settings.heading }}
+        {% if section.settings.second_image != blank %}
+          {% if section.settings.lookbook_detail_class == 'lookbook-detail-section' %}
+              <img src="{{ section.settings.second_image | image_url: width: auto }}" />
+          {% else %}
+              <img src="{{ section.settings.second_image | image_url: width: 300 }}" />
+          {% endif %}
+        {% endif %}
+        {% if section.settings.subheading != blank %}
+			<div class="h6 ctm-img-subheading">{{ section.settings.subheading }}</div>
+        {% endif %}
+      {% if section.settings.desc != blank %}
+			<div class="h6 ctm-img-desc">{{ section.settings.desc }}</div>
+        {% endif %}
+			{%- if section.settings.signatureimage != blank or section.settings.signatureimage_2 != blank -%}
+        <div class="signature-image">
+          {%- if section.settings.signatureimage_2 != blank -%}
+            {{
+              section.settings.signatureimage_2
+              | image_url: width: 300
+              | image_tag:
+                loading: 'lazy',
+                widths: '150, 300',
+                class: 'motion-reduce image-with-text-img-dark',
+                width: section.settings.signatureimage_2.width,
+                height: image_height
+            }}
+          {% endif %}
+          {%- if section.settings.signatureimage != blank -%}
+              {{
+                section.settings.signatureimage
+                | image_url: width: 300
+                | image_tag:
+                  loading: 'lazy',
+                  widths: '150, 300',
+                  class: 'motion-reduce image-with-text-img-light',
+                  width: section.settings.signatureimage.width,
+                  height: image_height
+              }}
+          {% endif %}
+        </div>
+			{% endif %}
+
+			{% if section.settings.button_text != blank %}
+				<a
+					{% if section.settings.button_link.url != blank %}
+						href="{{ section.settings.button_link }}"
+					{% endif %}
+					type="button"
+					{% if section.settings.button_link.url == blank %}
+						aria-disabled="true"
+					{% endif %}
+					class="button {% if section.settings.button_style == 'link' %} button--rebuy {% else %} ctm_img_txtbtn {% endif %} button--{{ section.settings.button_style }}"
+				>
+					{{ section.settings.button_text }}
+				</a>
+		{% endif %}
+		</div>
+		{% if section.settings.subheading_left_bottom != blank or section.settings.subheading_right_bottom != blank %}
+			<div class="image-with-text__content-bottom">
+				<span>
+					{{- section.settings.subheading_left_bottom -}}
+				</span>
+				<span>
+					{{- section.settings.subheading_right_bottom -}}
+				</span>
+			</div>
+		{% endif %}
+	</div>
+</div>
+<div class="size-chart-popup" style="display: none;">
+  <div class="size-chart-popup-content">
+    <span class="close-popup">&times;</span>
+    <h3>Size Chart</h3>
+    {% render 'size-chart-w-bottoms' %}
+  </div>
+</div>
+{%  style  %}  
+.button.button--link.ctm_img_txtbtn {
+	position: relative;
+	color: inherit;
+}
+.button.button--link.ctm_img_txtbtn::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -8px;
+  height: 2px;
+  width: 100%;
+  background: {{ underline_color }};
+  transition: width 0.3s ease;
+}
+.button.button--link.ctm_img_txtbtn:hover::after {
+    width: 0;
+}
+{% endstyle %} 
+
+{% schema %}
+{
+  "name": "t:sections.image_with_text.name",
+  "tag": "section",
+  "class": "ctm-image-text-section",
+  "enabled_on": {
+    "templates": [
+      "*"
+    ]
+  },
+  "settings": [
+    {
+      "type": "select",
+      "id": "row-reverse",
+      "options": [
+        {
+          "value": "row",
+          "label": "t:sections.all.image.position.left.label"
+        },
+        {
+          "value": "row-reverse",
+          "label": "t:sections.all.image.position.right.label"
+        }
+      ],
+      "default": "row",
+      "label": "t:sections.all.image.position.label"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "t:sections.all.image.label"
+    },
+    {
+      "type": "image_picker",
+      "id": "mobile_image",
+      "label": "Mobile Image"
+    },
+    {
+      "type": "select",
+      "id": "image_size",
+      "options": [
+        {
+          "value": "adapt",
+          "label": "t:sections.all.image.image_size.options__1.label"
+        },
+        {
+          "value": "small",
+          "label": "t:sections.all.image.image_size.options__2.label"
+        },
+        {
+          "value": "medium",
+          "label": "t:sections.all.image.image_size.options__3.label"
+        },
+        {
+          "value": "large",
+          "label": "t:sections.all.image.image_size.options__4.label"
+        }
+      ],
+      "default": "small",
+      "label": "t:sections.all.image.image_size.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_frame",
+      "default": false,
+      "label": "t:sections.image_with_text.settings.show_frame.label"
+    },
+    {
+      "type": "select",
+      "id": "color_scheme",
+      "options": [
+        {
+          "value": "background-1",
+          "label": "t:sections.all.color_scheme.options__1.label"
+        },
+        {
+          "value": "background-2",
+          "label": "t:sections.all.color_scheme.options__2.label"
+        },
+        {
+          "value": "background-3",
+          "label": "t:sections.all.color_scheme.options__3.label"
+        },
+        {
+          "value": "background-4",
+          "label": "t:sections.all.color_scheme.options__4.label"
+        },
+        {
+          "value": "background-5",
+          "label": "t:sections.all.color_scheme.options__5.label"
+        }
+      ],
+      "default": "background-1",
+      "label": "t:sections.image_with_text.settings.color_scheme.label"
+    },
+    {
+      "type": "text",
+      "id": "frame-text",
+      "label": "t:sections.image_with_text.settings.frame-text.label",
+      "default": "With love for every detail"
+    },
+    {
+      "type": "text",
+      "id": "frame-text-right",
+      "label": "t:sections.image_with_text.settings.frame-text-right.label"
+    },
+		{
+      "type": "header",
+      "content": "t:sections.image_with_text.settings.text-column.content"
+    },
+    {
+      "type": "select",
+      "id": "color_scheme_2",
+      "options": [
+        {
+          "value": "background-1",
+          "label": "t:sections.all.color_scheme.options__1.label"
+        },
+        {
+          "value": "background-2",
+          "label": "t:sections.all.color_scheme.options__2.label"
+        },
+        {
+          "value": "background-3",
+          "label": "t:sections.all.color_scheme.options__3.label"
+        },
+        {
+          "value": "background-4",
+          "label": "t:sections.all.color_scheme.options__4.label"
+        },
+        {
+          "value": "background-5",
+          "label": "t:sections.all.color_scheme.options__5.label"
+        }
+      ],
+      "default": "background-2",
+      "label": "t:sections.image_with_text.settings.color_scheme_2.label"
+    },
+    {
+      "type": "richtext",
+      "id": "heading",
+      "label": "t:sections.all.heading.label",
+      "default": "<p>Your heading text here</p>"
+    },
+    {
+      "type": "image_picker",
+      "id": "second_image",
+      "label": "Image Second"
+    },
+    {
+      "type": "html",
+      "id": "subheading",
+      "label": "t:sections.image_with_text.settings.subheading.label"
+    },
+    {
+      "type": "html",
+      "id": "desc",
+      "label": "Description",
+    },
+		{
+      "type": "image_picker",
+      "id": "signatureimage",
+      "label": "t:sections.image_with_text.settings.logo-image.label"
+    },
+    {
+      "type": "image_picker",
+      "id": "signatureimage_2",
+      "label": "t:sections.image_with_text.settings.logo-image_2.label"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.image_with_text.settings.subheading_content.content"
+    },
+    {
+      "type": "text",
+      "id": "subheading_left_top",
+      "label": "t:sections.image_with_text.settings.subheading_left_top.label",
+      "default": "Your text"
+    },
+    {
+      "type": "text",
+      "id": "subheading_left_bottom",
+      "label": "t:sections.image_with_text.settings.subheading_left_bottom.label",
+      "default": "Your text"
+    },
+    {
+      "type": "text",
+      "id": "subheading_right_top",
+      "label": "t:sections.image_with_text.settings.subheading_right_top.label",
+      "default": "Your text"
+    },
+    {
+      "type": "text",
+      "id": "subheading_right_bottom",
+      "label": "t:sections.image_with_text.settings.subheading_right_bottom.label",
+      "default": "Your text"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.button.header_button.content"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "t:sections.all.button.button_text.label",
+      "default": "Explore"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "t:sections.all.button.button_link.label"
+    },
+    {
+      "type": "select",
+      "id": "button_style",
+      "options": [
+        {
+          "value": "primary",
+          "label": "t:sections.all.button.button_style.options__1.label"
+        },
+        {
+          "value": "secondary",
+          "label": "t:sections.all.button.button_style.options__2.label"
+        },
+        {
+          "value": "tertiary",
+          "label": "t:sections.all.button.button_style.options__3.label"
+        },
+        {
+          "value": "link",
+          "label": "As Link"
+        }
+      ],
+      "default": "primary",
+      "label": "t:sections.all.button.button_style.label"
+    },
+    {
+      "type": "text",
+      "label": "Underline Color",
+      "id": "underline_color",
+      "default": "#000000",
+      "info": "Add Only Hex Code",
+      "visible_if": "{{ section.settings.button_style == 'link' }}"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.section-margin.header.content"
+    },
+    {
+      "type": "range",
+      "id": "margin_top",
+      "min": 0,
+      "max": 200,
+      "step": 10,
+      "default": 100,
+      "unit": "px",
+      "label": "t:sections.all.section-margin.margin_top.label"
+    },
+    {
+      "type": "range",
+      "id": "margin_bottom",
+      "min": 0,
+      "max": 200,
+      "step": 10,
+      "default": 100,
+      "unit": "px",
+      "label": "t:sections.all.section-margin.margin_bottom.label"
+    },
+    {
+      "type": "text",
+      "label": "Lookbook Detail Class",
+      "id": "lookbook_detail_class"
+    },
+    {
+      "type": "header",
+      "content": "Section Spacing"
+    },
+    {
+      "type": "range",
+      "label": "Top Padding Desktop",
+      "id": "top_padding_desktop",
+      "default": 0,
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "label": "Bottom Padding Desktop",
+      "id": "bottom_padding_desktop",
+      "default": 0,
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "label": "Top Padding Mobile",
+      "id": "top_padding_mobile",
+      "default": 0,
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "label": "Bottom Padding Mobile",
+      "id": "bottom_padding_mobile",
+      "default": 0,
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "label": "Top Margin Desktop",
+      "id": "top_margin_desktop",
+      "default": 0,
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "label": "Bottom Margin Desktop",
+      "id": "bottom_margin_desktop",
+      "default": 0,
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "label": "Top Margin Mobile",
+      "id": "top_margin_mobile",
+      "default": 0,
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "label": "Bottom Margin Mobile",
+      "id": "bottom_margin_mobile",
+      "default": 0,
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.image_with_text.name"
+    }
+  ]
+}
+{% endschema %}
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const popup = document.querySelector(".size-chart-popup");
+  const openBtn = document.querySelector(".size-chart-button");
+  const closeBtn = document.querySelector(".close-popup");
+
+  if (openBtn && popup && closeBtn) {
+    openBtn.addEventListener("click", function () {
+      popup.style.display = "block";
+      document.body.classList.add("ctm-size-chart");
+    });
+
+    closeBtn.addEventListener("click", function () {
+      popup.style.display = "none";
+      document.body.classList.remove("ctm-size-chart");
+    });
+
+    window.addEventListener("click", function (event) {
+      if (event.target === popup) {
+        popup.style.display = "none";
+        document.body.classList.remove("ctm-size-chart");
+      }
+    });
+  }
+});
+</script>
+<style>
+.size-chart-popup {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.size-chart-popup-content {
+  background: #fff;
+  margin: 120px auto 5%; 
+  padding: 20px;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 600px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  position: relative;
+  animation: popupFadeIn 0.3s ease;
+  z-index: 10000; 
+}
+
+button.button.button--rebuy.button--link.size-chart-button {
+    border: none;
+    background-color: transparent;
+}
+
+.close-popup {
+  position: absolute;
+  top: 12px;
+  right: 15px;
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.close-popup:hover {
+  color: #000;
+}
+
+body.ctm-size-chart {
+  overflow: hidden !important;
+}
+
+body.ctm-size-chart .shopify-section-header {
+  z-index: 2;
+}
+
+.size-chart-popup-content h3 {
+  margin:15px 0;
+  text-align: center;
+  -webkit-text-size-adjust: 100%;
+}
+
+@media (max-width: 1024px) {
+  .size-chart-popup-content h3 {
+      font-size: 28px;
+  }
+}
+
+@media (max-width: 575px) {
+    .size-chart-popup-content h3 {
+        font-size: 26px;
+    }
+}
+
+
+@keyframes popupFadeIn {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+</style>

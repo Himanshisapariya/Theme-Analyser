@@ -1,0 +1,525 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "type": "header",
+  "name": "Header Group",
+  "sections": {
+    "announcement_bar_3dUBtj": {
+      "type": "announcement-bar",
+      "blocks": {
+        "slide_FDKWq8": {
+          "type": "slide",
+          "settings": {
+            "text_us": "",
+            "text_ca": "",
+            "text_global": "",
+            "text_two": "<p>New to XX-XY Athletics? <a href=\"https://www.xx-xyathletics.com/pages/our-mission\" title=\"https://www.xx-xyathletics.com/pages/our-mission\">Start Here</a></p>"
+          }
+        },
+        "slide_k947re": {
+          "type": "slide",
+          "settings": {
+            "text_us": "<p>Free Standard Shipping on Orders $100+</p>",
+            "text_ca": "<p>Free Shipping on CA Orders $200+ USD</p>",
+            "text_global": "<p>Free Shipping on Worldwide Orders $200+ USD</p>",
+            "text_two": ""
+          }
+        }
+      },
+      "block_order": [
+        "slide_FDKWq8",
+        "slide_k947re"
+      ],
+      "custom_css": [
+        ".announcement-bar__text,a {color: white;}"
+      ],
+      "settings": {
+        "announcement_bar_color": "#3DB671",
+        "announcement_bar_height": 45
+      }
+    },
+    "icon_with_text_RB3PwB": {
+      "type": "icon-with-text",
+      "blocks": {
+        "column_xhekGw": {
+          "type": "column",
+          "settings": {
+            "grid_title": "",
+            "grid_description": "<a href=\"/collections/the-outlet\" title=\"The Outlet\">THE OUTLET</a>",
+            "svg_icon": "<svg width=\"200\" height=\"200\" viewbox=\"0 0 200 200\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\" aria-hidden=\"true\">\n<path d=\"M79.051 86.2969L46.1604 76.8125C44.5354 76.3437 43.6291 74.625 44.1447 73.0156L49.426 56.7812C49.5522 56.3953 49.7558 56.039 50.0242 55.7342C50.2926 55.4295 50.6203 55.1826 50.9873 55.0086C51.3542 54.8346 51.7528 54.7372 52.1586 54.7223C52.5645 54.7074 52.9691 54.7753 53.3479 54.9219L85.8166 67.4844C87.8322 68.2656 89.9729 66.7187 89.8791 64.5625L88.2541 27.125C88.176 25.4219 89.5354 24 91.2385 24H108.504C110.207 24 111.567 25.4219 111.488 27.125L109.848 65.375C109.754 67.5312 111.91 69.0625 113.91 68.2969L145.692 56C147.301 55.375 149.098 56.25 149.629 57.8906L154.848 74.4844C155.348 76.0938 154.426 77.7969 152.817 78.25L119.254 87.7656C118.788 87.8997 118.362 88.1447 118.012 88.4796C117.661 88.8144 117.397 89.2292 117.242 89.6884C117.087 90.1476 117.045 90.6376 117.121 91.1163C117.196 91.5951 117.387 92.0484 117.676 92.4375L139.488 121.469C140.488 122.797 140.207 124.687 138.863 125.672L124.863 135.906C123.457 136.938 121.488 136.547 120.567 135.078L101.129 104C99.9573 102.141 97.2541 102.125 96.0822 103.969L76.9104 134.016C75.9885 135.453 74.0666 135.828 72.676 134.859L58.5979 125.031C58.2671 124.801 57.9863 124.505 57.7724 124.163C57.5586 123.822 57.416 123.44 57.3532 123.042C57.2905 122.643 57.3089 122.236 57.4073 121.845C57.5057 121.454 57.6821 121.087 57.926 120.766L80.5822 90.9844C81.8791 89.3125 81.0822 86.8906 79.051 86.2969Z\" fill=\"url(#paint0_linear_2_9)\" stroke=\"black\" stroke-width=\"0.0015\"></path>\n<rect x=\"58\" y=\"160\" width=\"83.24\" height=\"16\" rx=\"3\" fill=\"black\"></rect>\n<defs>\n<lineargradient id=\"paint0_linear_2_9\" x1=\"99.4916\" y1=\"136.619\" x2=\"99.4916\" y2=\"24.9922\" gradientunits=\"userSpaceOnUse\">\n<stop offset=\"0.485\"></stop>\n<stop offset=\"1\"></stop>\n</lineargradient>\n</defs>\n</svg>"
+          }
+        },
+        "column_aCF7Vt": {
+          "type": "column",
+          "settings": {
+            "grid_title": "",
+            "grid_description": "Save More With Bundles. <a href=\"/pages/bundle-builder\" title=\"Bundle Builder\">Shop Now</a>",
+            "svg_icon": "<svg width=\"200\" height=\"200\" viewbox=\"0 0 200 200\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\" aria-hidden=\"true\">\n<path d=\"M79.051 86.2969L46.1604 76.8125C44.5354 76.3437 43.6291 74.625 44.1447 73.0156L49.426 56.7812C49.5522 56.3953 49.7558 56.039 50.0242 55.7342C50.2926 55.4295 50.6203 55.1826 50.9873 55.0086C51.3542 54.8346 51.7528 54.7372 52.1586 54.7223C52.5645 54.7074 52.9691 54.7753 53.3479 54.9219L85.8166 67.4844C87.8322 68.2656 89.9729 66.7187 89.8791 64.5625L88.2541 27.125C88.176 25.4219 89.5354 24 91.2385 24H108.504C110.207 24 111.567 25.4219 111.488 27.125L109.848 65.375C109.754 67.5312 111.91 69.0625 113.91 68.2969L145.692 56C147.301 55.375 149.098 56.25 149.629 57.8906L154.848 74.4844C155.348 76.0938 154.426 77.7969 152.817 78.25L119.254 87.7656C118.788 87.8997 118.362 88.1447 118.012 88.4796C117.661 88.8144 117.397 89.2292 117.242 89.6884C117.087 90.1476 117.045 90.6376 117.121 91.1163C117.196 91.5951 117.387 92.0484 117.676 92.4375L139.488 121.469C140.488 122.797 140.207 124.687 138.863 125.672L124.863 135.906C123.457 136.938 121.488 136.547 120.567 135.078L101.129 104C99.9573 102.141 97.2541 102.125 96.0822 103.969L76.9104 134.016C75.9885 135.453 74.0666 135.828 72.676 134.859L58.5979 125.031C58.2671 124.801 57.9863 124.505 57.7724 124.163C57.5586 123.822 57.416 123.44 57.3532 123.042C57.2905 122.643 57.3089 122.236 57.4073 121.845C57.5057 121.454 57.6821 121.087 57.926 120.766L80.5822 90.9844C81.8791 89.3125 81.0822 86.8906 79.051 86.2969Z\" fill=\"url(#paint0_linear_2_9)\" stroke=\"black\" stroke-width=\"0.0015\"></path>\n<rect x=\"58\" y=\"160\" width=\"83.24\" height=\"16\" rx=\"3\" fill=\"black\"></rect>\n<defs>\n<lineargradient id=\"paint0_linear_2_9\" x1=\"99.4916\" y1=\"136.619\" x2=\"99.4916\" y2=\"24.9922\" gradientunits=\"userSpaceOnUse\">\n<stop offset=\"0.485\"></stop>\n<stop offset=\"1\"></stop>\n</lineargradient>\n</defs>\n</svg>"
+          }
+        },
+        "column_8EmCDE": {
+          "type": "column",
+          "settings": {
+            "grid_title": "",
+            "grid_description": "The Team Women Run Club. <a href=\"https://www.xx-xyathletics.com/pages/team-women-run-club\" title=\"https://www.xx-xyathletics.com/pages/team-women-run-club\">Join Today</a>",
+            "svg_icon": "<svg width=\"200\" role=\"img\" aria-label=\"icon\" height=\"200\" viewbox=\"0 0 200 200\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\" aria-hidden=\"true\">\n<path d=\"M79.051 86.2969L46.1604 76.8125C44.5354 76.3437 43.6291 74.625 44.1447 73.0156L49.426 56.7812C49.5522 56.3953 49.7558 56.039 50.0242 55.7342C50.2926 55.4295 50.6203 55.1826 50.9873 55.0086C51.3542 54.8346 51.7528 54.7372 52.1586 54.7223C52.5645 54.7074 52.9691 54.7753 53.3479 54.9219L85.8166 67.4844C87.8322 68.2656 89.9729 66.7187 89.8791 64.5625L88.2541 27.125C88.176 25.4219 89.5354 24 91.2385 24H108.504C110.207 24 111.567 25.4219 111.488 27.125L109.848 65.375C109.754 67.5312 111.91 69.0625 113.91 68.2969L145.692 56C147.301 55.375 149.098 56.25 149.629 57.8906L154.848 74.4844C155.348 76.0938 154.426 77.7969 152.817 78.25L119.254 87.7656C118.788 87.8997 118.362 88.1447 118.012 88.4796C117.661 88.8144 117.397 89.2292 117.242 89.6884C117.087 90.1476 117.045 90.6376 117.121 91.1163C117.196 91.5951 117.387 92.0484 117.676 92.4375L139.488 121.469C140.488 122.797 140.207 124.687 138.863 125.672L124.863 135.906C123.457 136.938 121.488 136.547 120.567 135.078L101.129 104C99.9573 102.141 97.2541 102.125 96.0822 103.969L76.9104 134.016C75.9885 135.453 74.0666 135.828 72.676 134.859L58.5979 125.031C58.2671 124.801 57.9863 124.505 57.7724 124.163C57.5586 123.822 57.416 123.44 57.3532 123.042C57.2905 122.643 57.3089 122.236 57.4073 121.845C57.5057 121.454 57.6821 121.087 57.926 120.766L80.5822 90.9844C81.8791 89.3125 81.0822 86.8906 79.051 86.2969Z\" fill=\"url(#paint0_linear_2_9)\" stroke=\"black\" stroke-width=\"0.0015\"></path>\n<rect x=\"58\" y=\"160\" width=\"83.24\" height=\"16\" rx=\"3\" fill=\"black\"></rect>\n<defs>\n<lineargradient id=\"paint0_linear_2_9\" x1=\"99.4916\" y1=\"136.619\" x2=\"99.4916\" y2=\"24.9922\" gradientunits=\"userSpaceOnUse\">\n<stop offset=\"0.485\"></stop>\n<stop offset=\"1\"></stop>\n</lineargradient>\n</defs>\n</svg>"
+          }
+        },
+        "column_gAqMAq": {
+          "type": "column",
+          "settings": {
+            "grid_title": "",
+            "grid_description": "<a href=\"https://www.xx-xyathletics.com/collections/xx-xy-logo-gear\" title=\"https://www.xx-xyathletics.com/collections/xx-xy-logo-gear\">Explore XX-XY Logo Gear</a>",
+            "svg_icon": "<svg width=\"200\" role=\"img\" aria-label=\"icon\" height=\"200\" viewbox=\"0 0 200 200\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\" aria-hidden=\"true\">\n<path d=\"M79.051 86.2969L46.1604 76.8125C44.5354 76.3437 43.6291 74.625 44.1447 73.0156L49.426 56.7812C49.5522 56.3953 49.7558 56.039 50.0242 55.7342C50.2926 55.4295 50.6203 55.1826 50.9873 55.0086C51.3542 54.8346 51.7528 54.7372 52.1586 54.7223C52.5645 54.7074 52.9691 54.7753 53.3479 54.9219L85.8166 67.4844C87.8322 68.2656 89.9729 66.7187 89.8791 64.5625L88.2541 27.125C88.176 25.4219 89.5354 24 91.2385 24H108.504C110.207 24 111.567 25.4219 111.488 27.125L109.848 65.375C109.754 67.5312 111.91 69.0625 113.91 68.2969L145.692 56C147.301 55.375 149.098 56.25 149.629 57.8906L154.848 74.4844C155.348 76.0938 154.426 77.7969 152.817 78.25L119.254 87.7656C118.788 87.8997 118.362 88.1447 118.012 88.4796C117.661 88.8144 117.397 89.2292 117.242 89.6884C117.087 90.1476 117.045 90.6376 117.121 91.1163C117.196 91.5951 117.387 92.0484 117.676 92.4375L139.488 121.469C140.488 122.797 140.207 124.687 138.863 125.672L124.863 135.906C123.457 136.938 121.488 136.547 120.567 135.078L101.129 104C99.9573 102.141 97.2541 102.125 96.0822 103.969L76.9104 134.016C75.9885 135.453 74.0666 135.828 72.676 134.859L58.5979 125.031C58.2671 124.801 57.9863 124.505 57.7724 124.163C57.5586 123.822 57.416 123.44 57.3532 123.042C57.2905 122.643 57.3089 122.236 57.4073 121.845C57.5057 121.454 57.6821 121.087 57.926 120.766L80.5822 90.9844C81.8791 89.3125 81.0822 86.8906 79.051 86.2969Z\" fill=\"url(#paint0_linear_2_9)\" stroke=\"black\" stroke-width=\"0.0015\"></path>\n<rect x=\"58\" y=\"160\" width=\"83.24\" height=\"16\" rx=\"3\" fill=\"black\"></rect>\n<defs>\n<lineargradient id=\"paint0_linear_2_9\" x1=\"99.4916\" y1=\"136.619\" x2=\"99.4916\" y2=\"24.9922\" gradientunits=\"userSpaceOnUse\">\n<stop offset=\"0.485\"></stop>\n<stop offset=\"1\"></stop>\n</lineargradient>\n</defs>\n</svg>"
+          }
+        }
+      },
+      "block_order": [
+        "column_xhekGw",
+        "column_aCF7Vt",
+        "column_8EmCDE",
+        "column_gAqMAq"
+      ],
+      "custom_css": [
+        ".icon-with-text-inner.swiper.icon-with-text-slider.section-sections--18679156736131__icon_with_text_RB3PwB-padding.swiper-initialized.swiper-horizontal.swiper-backface-hidden {padding-right: 20px;}"
+      ],
+      "settings": {
+        "extra_class": "ctm-announcement-bar",
+        "heading": "",
+        "sec_content": "",
+        "heading_size": "h1",
+        "heading_alignment": "left",
+        "desktop_columns": 3,
+        "column_alignment": "left",
+        "icon_alignment": "icon_top",
+        "columns_mobile": "1",
+        "icon_bg": "none",
+        "icon_background_color": "#acacac",
+        "icon_color": "#000000",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "show_mobile_slider": true,
+        "show_pagination": true
+      }
+    },
+    "header": {
+      "type": "header",
+      "blocks": {
+        "mega_menu_collection_XpipUA": {
+          "type": "mega_menu_collection",
+          "settings": {
+            "mega_menu_trigger": "NEW & FEATURED",
+            "collection": [],
+            "title_link": "",
+            "image_title": "",
+            "ctm_megamenu_links_heading": "Performance Fabrics",
+            "ctm_megamenu_links": "performance-fabrics",
+            "ctm_megamenu_button_text": "Explore The Fabric Guide >",
+            "ctm_megamenu_button_url": "shopify://pages/fabric-guide",
+            "left_image": "shopify://shop_images/NAV_PROMO_IMAGES_3_9fe96d16-137c-409d-bff0-dfe0e207c90c.jpg",
+            "image_heading": "USA 250",
+            "image_subheading": "Celebrating 250 years of freedom. For the patriots who wear their values.",
+            "custom_liquid": "",
+            "button_text": "SHOP USA 250",
+            "button_url": "shopify://collections/usa-250",
+            "footer_navigation_menu": "navigation-footer-menu",
+            "ctm_extra_navigation_link_text": "",
+            "ctm_extra_navigation_link_url": ""
+          }
+        },
+        "mega_menu_collection_pbfGC7": {
+          "type": "mega_menu_collection",
+          "settings": {
+            "mega_menu_trigger": "women | xx",
+            "collection": [],
+            "title_link": "shopify://collections/xx-xy-logo-gear",
+            "image_title": "",
+            "ctm_megamenu_links_heading": "What Moves You",
+            "ctm_megamenu_links": "womens-what-moves-you",
+            "ctm_megamenu_button_text": "Shop Our Featured Athlete's Favorites >",
+            "ctm_megamenu_button_url": "shopify://collections/kaillie-humphries-favorites",
+            "left_image": "shopify://shop_images/NAV_PROMO_IMAGES_3.jpg",
+            "image_heading": "The Ultimate Training Capsule",
+            "image_subheading": "Introducing the All-Sport collection.",
+            "custom_liquid": "",
+            "button_text": "SHOP NOW",
+            "button_url": "shopify://collections/all-sport-collection",
+            "footer_navigation_menu": "navigation-footer-menu",
+            "ctm_extra_navigation_link_text": "",
+            "ctm_extra_navigation_link_url": ""
+          }
+        },
+        "mega_menu_collection_ydwcfP": {
+          "type": "mega_menu_collection",
+          "settings": {
+            "mega_menu_trigger": "men|xy",
+            "collection": [],
+            "title_link": "shopify://collections/on-his-list",
+            "image_title": "On His List: Best Gifts for Men",
+            "ctm_megamenu_links_heading": "What Moves You",
+            "ctm_megamenu_links": "mens-what-moves-you",
+            "ctm_megamenu_button_text": "Shop Our Featured Athlete's Favorites >",
+            "ctm_megamenu_button_url": "shopify://collections/dakota-meyers-favorites",
+            "left_image": "shopify://shop_images/NAV_PROMO_IMAGES_40f51590-8b64-4571-b361-e8663f454d0e.jpg",
+            "image_heading": "Father's Day, Upgraded.",
+            "image_subheading": "The Father’s Day gift guide for the guy who does it all.",
+            "custom_liquid": "",
+            "button_text": "EXPLORE GIFT GUIDE",
+            "button_url": "https://www.xx-xyathletics.com/pages/fathers-day",
+            "footer_navigation_menu": "navigation-footer-menu",
+            "ctm_extra_navigation_link_text": "",
+            "ctm_extra_navigation_link_url": ""
+          }
+        },
+        "mega_menu_collection_fhXwWA": {
+          "type": "mega_menu_collection",
+          "disabled": true,
+          "settings": {
+            "mega_menu_trigger": "OUR WHY",
+            "collection": [],
+            "title_link": "https://www.xx-xyathletics.com/pages/sign-up-for-text-updates",
+            "image_title": "Sign Up for the Latest News",
+            "ctm_megamenu_links_heading": "",
+            "ctm_megamenu_links": "",
+            "ctm_megamenu_button_text": "",
+            "ctm_megamenu_button_url": "",
+            "image_heading": "",
+            "image_subheading": "",
+            "custom_liquid": "",
+            "button_text": "",
+            "button_url": "",
+            "footer_navigation_menu": "navigation-footer-menu",
+            "ctm_extra_navigation_link_text": "",
+            "ctm_extra_navigation_link_url": ""
+          }
+        },
+        "mega_menu_collection_eTEM7V": {
+          "type": "mega_menu_collection",
+          "settings": {
+            "mega_menu_trigger": "OUR WHY",
+            "collection": [],
+            "title_link": "https://www.xx-xyathletics.com/pages/sign-up-for-text-updates",
+            "image_title": "Sign Up for the Latest News",
+            "ctm_megamenu_links_heading": "Our Why",
+            "ctm_megamenu_links": "",
+            "ctm_megamenu_button_text": "",
+            "ctm_megamenu_button_url": "",
+            "left_image": "shopify://shop_images/HERO_BANNER_014138bc-71af-4a6f-ab09-f7a20196a172.jpg",
+            "image_heading": "Join The Mission <br>\n<span>Get 20% Off &amp; Free Shipping </span>",
+            "image_subheading": "You'll get 20% off and free shipping on your first order. And we promise not to drown you in emails.",
+            "custom_liquid": "{% form 'customer', class: 'newsletter-form' %}\n<div class=\"\n                                                    newsletter-form__inner newsletter-form__inner_column \n                                                     newsletter-form__inner_column-check \n                                                \">\n    <input type=\"hidden\" name=\"contact[tags]\" value=\"newsletter\">\n\n<p class=\"form-required-note sr-only\">\n  * indicates a required field\n</p>\n\n    <div class=\"newsletter-form__field-wrapper\">\n        <div class=\"field\">\n            <input id=\"NewsletterForm--{{ section.id }}\" type=\"email\" name=\"contact[email]\" class=\"field__input field\"\n                value=\"{{ form.email }}\" aria-required=\"true\" autocorrect=\"off\" autocapitalize=\"off\"\n                autocomplete=\"email\" {% if form.errors %} autofocus aria-invalid=\"true\"\n                aria-describedby=\"Newsletter-error--{{ section.id }}\" {% elsif form.posted_successfully? %}\n                aria-describedby=\"Newsletter-success--{{ section.id }}\" {% endif %}\n                placeholder=\"{{ 'newsletter.label' | t }}\" required>\n            <label class=\"field__label\" for=\"NewsletterForm--{{ section.id }}\" placeholder=\"*Enter Your Email\"\n                type=\"hidden\"></label>\n        </div>\n        {%- if form.errors -%}\n        <small class=\"newsletter-form__message form__message\" id=\"Newsletter-error--{{ section.id }}\">\n            {%- render 'icon-error' -%}\n            {{-\n            form.errors.translated_fields.email\n            | capitalize\n            }}\n            {{ form.errors.messages.email -}}\n        </small>\n        {%- endif -%}\n    </div>\n    <button type=\"submit\" class=\"newsletter__button button--ctm_global_button\" name=\"commit\">\n        <span> SIGN UP</span>\n    </button>\n</div>\n{%- if form.posted_successfully? -%}\n<p class=\"newsletter-form__message newsletter-form__message--success form__message\"\n    id=\"Newsletter-success--{{ section.id }}\" tabindex=\"-1\" role=\"status\" autofocus>\n    {% render 'icon-success' -%}\n    {{- 'newsletter.success' | t }}\n</p>\n{%- endif -%}\n{% endform %}",
+            "button_text": "",
+            "button_url": "",
+            "footer_navigation_menu": "navigation-footer-menu-donate",
+            "ctm_extra_navigation_link_text": "Explore The Newsroom >",
+            "ctm_extra_navigation_link_url": "shopify://blogs/newsroom"
+          }
+        },
+        "mobile_menu_icon_text_N8iNzy": {
+          "type": "mobile_menu_icon_text",
+          "settings": {
+            "icon": "shopify://shop_images/checked_5758135_1.png",
+            "icon_title": "free shipping $100+",
+            "icon_url": "https://www.xx-xyathletics.com/policies/shipping-policy"
+          }
+        },
+        "mobile_menu_icon_text_j6DxDr": {
+          "type": "mobile_menu_icon_text",
+          "settings": {
+            "icon": "shopify://shop_images/fast_12790990.png",
+            "icon_title": "Free returns & exchanges",
+            "icon_url": "https://www.xx-xyathletics.com/a/service?"
+          }
+        },
+        "mobile_menu_icon_text_GViY8T": {
+          "type": "mobile_menu_icon_text",
+          "settings": {
+            "icon": "shopify://shop_images/people_14762035.png",
+            "icon_title": "20% off your first order",
+            "icon_url": "https://www.xx-xyathletics.com/pages/email-sign-up"
+          }
+        },
+        "mobile_menu_icon_text_qrqX7A": {
+          "type": "mobile_menu_icon_text",
+          "settings": {
+            "icon": "shopify://shop_images/bag_14768101.png",
+            "icon_title": "join email",
+            "icon_url": "https://www.xx-xyathletics.com/pages/email-sign-up"
+          }
+        },
+        "account_dropdown_6GhHA9": {
+          "type": "account_dropdown",
+          "settings": {
+            "label": "Account",
+            "link": "https://www.xx-xyathletics.com/account/login",
+            "icon_svg": "shopify://shop_images/Icon-Account-Off.png"
+          }
+        },
+        "account_dropdown_NLNrLA": {
+          "type": "account_dropdown",
+          "settings": {
+            "label": "Order Status",
+            "link": "shopify://pages/order-tracking",
+            "icon_svg": "shopify://shop_images/Icon-clock_1.png"
+          }
+        },
+        "account_dropdown_AnrWVP": {
+          "type": "account_dropdown",
+          "settings": {
+            "label": "Customer Service",
+            "link": "shopify://pages/customer-service",
+            "icon_svg": "shopify://shop_images/Icon-chat-new.png"
+          }
+        },
+        "account_dropdown_gVzhcy": {
+          "type": "account_dropdown",
+          "settings": {
+            "label": "Get 20% Off",
+            "link": "shopify://pages/email-sign-up",
+            "icon_svg": "shopify://shop_images/Icon-service-new.png"
+          }
+        },
+        "account_dropdown_iGGWmU": {
+          "type": "account_dropdown",
+          "settings": {
+            "label": "Return / Exchange",
+            "link": "https://www.xx-xyathletics.com/apps/redo/returns-portal/login?referralId=6968013d41b4662c3e29acd1",
+            "icon_svg": "shopify://shop_images/Icon-return-new.png"
+          }
+        },
+        "account_dropdown_iE7RUb": {
+          "type": "account_dropdown",
+          "settings": {
+            "label": "FAQ",
+            "link": "shopify://pages/faq",
+            "icon_svg": "shopify://shop_images/Icon-truck-new.png"
+          }
+        }
+      },
+      "block_order": [
+        "mega_menu_collection_XpipUA",
+        "mega_menu_collection_pbfGC7",
+        "mega_menu_collection_ydwcfP",
+        "mega_menu_collection_fhXwWA",
+        "mega_menu_collection_eTEM7V",
+        "mobile_menu_icon_text_N8iNzy",
+        "mobile_menu_icon_text_j6DxDr",
+        "mobile_menu_icon_text_GViY8T",
+        "mobile_menu_icon_text_qrqX7A",
+        "account_dropdown_6GhHA9",
+        "account_dropdown_NLNrLA",
+        "account_dropdown_AnrWVP",
+        "account_dropdown_gVzhcy",
+        "account_dropdown_iGGWmU",
+        "account_dropdown_iE7RUb"
+      ],
+      "custom_css": [
+        ".header__submenu {border: 0px; margin-top: 0px; padding-top: 0px;}"
+      ],
+      "settings": {
+        "height": 90,
+        "font_size": 26,
+        "logo": "shopify://shop_images/logo-horizontal_240112.png",
+        "logo_2": "shopify://shop_images/Asset_10.png",
+        "logo_width": 135,
+        "logo_position": "center",
+        "menu": "new-megamenu-with-our-why-section",
+        "mobile_navigation_menu": "mobile-megamenu-with-our-why-section",
+        "new_badge_links": "",
+        "enable_fullscreen_menu": false,
+        "enable_country_selector": false,
+        "enable_language_selector": false,
+        "sticky_header_type": "on-scroll-up",
+        "mobile_menu": "mobile-header-menu",
+        "header_overlay": false,
+        "color_scheme": "light",
+        "enable_search": true,
+        "show_items": true,
+        "product_header": "<p>heading</p>",
+        "product_list_search": [],
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_desc": false,
+        "show_sku": false,
+        "quickview_show": false,
+        "show_product_btn": false,
+        "show_collection_card": true,
+        "collection_header": "<p>Collection</p>",
+        "collection_list_search": [],
+        "show_articles": true,
+        "article_header": "<p>Articles</p>",
+        "blog": "",
+        "show_image": true,
+        "show_date": true,
+        "show_author": false,
+        "show_btn": true
+      }
+    },
+    "discount_drawer_gYfrLH": {
+      "type": "discount-drawer",
+      "blocks": {
+        "discount_card_JpwhNE": {
+          "type": "discount_card",
+          "disabled": true,
+          "settings": {
+            "card_image": "shopify://shop_images/DISCOUNT_SIDE_BAR_1_ce2a1df5-5d64-4ef9-9240-9777e1202d4d.jpg",
+            "card_height": 380,
+            "card_heading": "<span>20% OFF SITEWIDE</span>",
+            "card_heading_size": 30,
+            "card_subheading": "<p>Father's Day Sale | Ends 6.14</p>",
+            "card_subheading_size": 16,
+            "custom_liquid": "",
+            "content_position": "center",
+            "content_alignment": "left",
+            "image_fit": "cover",
+            "button_text": "SHOP WOMEN'S",
+            "button_url": "shopify://collections/womens",
+            "button_style": "button",
+            "button_bg_color": "#3db671",
+            "button_text_color": "#ffffff",
+            "button2_text": "SHOP MEN'S",
+            "button2_url": "shopify://collections/mens",
+            "button2_style": "button",
+            "button2_bg_color": "#3db671",
+            "button2_text_color": "#ffffff",
+            "footer_text": "OUTLET styles & bundles excluded",
+            "footer_link_text": "",
+            "footer_link_color": "#3db671",
+            "card_description": "",
+            "description_link": "",
+            "description_bg_color": "#000000",
+            "description_text_color": "#ffffff",
+            "card_class": ""
+          }
+        },
+        "discount_card_tePDzR": {
+          "type": "discount_card",
+          "settings": {
+            "card_image": "shopify://shop_images/No_Prime_No_Problem._081483c7-2960-48b2-b0da-60a8b7c2c888.png",
+            "card_height": 300,
+            "card_heading": "<span>Bundle &amp; Save</span>",
+            "card_heading_size": 30,
+            "card_subheading": "<p>Get up to 50% off</p>",
+            "card_subheading_size": 14,
+            "custom_liquid": "",
+            "content_position": "bottom",
+            "content_alignment": "left",
+            "image_fit": "cover",
+            "button_text": "",
+            "button_url": "",
+            "button_style": "link",
+            "button_bg_color": "#000000",
+            "button_text_color": "#ffffff",
+            "button2_text": "",
+            "button2_url": "",
+            "button2_style": "link",
+            "button2_bg_color": "#000000",
+            "button2_text_color": "#ffffff",
+            "footer_text": "No Code Needed",
+            "footer_link_text": "BUILD MY BUNDLE",
+            "footer_link_color": "#2f484c",
+            "card_description": "",
+            "description_link": "shopify://pages/bundle-builder",
+            "description_bg_color": "#2f484c",
+            "description_text_color": "#d8d8d8",
+            "card_class": ""
+          }
+        },
+        "discount_card_ABDPEb": {
+          "type": "discount_card",
+          "settings": {
+            "card_image": "shopify://shop_images/HERO_BANNER_014138bc-71af-4a6f-ab09-f7a20196a172.jpg",
+            "card_height": 400,
+            "card_heading": "Join The Misson \n<p>GET 20% OFF + FREE SHIPPING</p>",
+            "card_heading_size": 26,
+            "card_subheading": "<p>You'll get 20% off & free shipping on your first order. And we promise not to drown you in emails.</p>",
+            "card_subheading_size": 14,
+            "custom_liquid": "{% form 'customer', class: 'newsletter-form' %}\n<div class=\"\n                                                    newsletter-form__inner newsletter-form__inner_column \n                                                     newsletter-form__inner_column-check \n                                                \">\n    <input type=\"hidden\" name=\"contact[tags]\" value=\"newsletter\">\n\n<p class=\"form-required-note sr-only\">\n  * indicates a required field\n</p>\n\n    <div class=\"newsletter-form__field-wrapper\">\n        <div class=\"field\">\n            <input id=\"NewsletterForm--{{ section.id }}\" type=\"email\" name=\"contact[email]\" class=\"field__input field\"\n                value=\"{{ form.email }}\" aria-required=\"true\" autocorrect=\"off\" autocapitalize=\"off\"\n                autocomplete=\"email\" {% if form.errors %} autofocus aria-invalid=\"true\"\n                aria-describedby=\"Newsletter-error--{{ section.id }}\" {% elsif form.posted_successfully? %}\n                aria-describedby=\"Newsletter-success--{{ section.id }}\" {% endif %}\n                placeholder=\"{{ 'newsletter.label' | t }}\" required>\n            <label class=\"field__label\" for=\"NewsletterForm--{{ section.id }}\" placeholder=\"*Enter Your Email\"\n                type=\"hidden\"   aria-label=\"Newsletterform\"></label>\n        </div>\n        {%- if form.errors -%}\n        <small class=\"newsletter-form__message form__message\" id=\"Newsletter-error--{{ section.id }}\">\n            {%- render 'icon-error' -%}\n            {{-\n            form.errors.translated_fields.email\n            | capitalize\n            }}\n            {{ form.errors.messages.email -}}\n        </small>\n        {%- endif -%}\n    </div>\n    <button type=\"submit\" class=\"newsletter__button button button--tertiary button-footer-subscribe\" name=\"commit\">\n        <span>Sign UP</span>\n    </button>\n</div>\n{%- if form.posted_successfully? -%}\n<p class=\"newsletter-form__message newsletter-form__message--success form__message\"\n    id=\"Newsletter-success--{{ section.id }}\" tabindex=\"-1\" autofocus>\n    {% render 'icon-success' -%}\n    {{- 'newsletter.success' | t }}\n</p>\n{%- endif -%}\n{% endform %}",
+            "content_position": "bottom",
+            "content_alignment": "left",
+            "image_fit": "cover",
+            "button_text": "",
+            "button_url": "",
+            "button_style": "button",
+            "button_bg_color": "#000000",
+            "button_text_color": "#ffffff",
+            "button2_text": "",
+            "button2_url": "",
+            "button2_style": "button",
+            "button2_bg_color": "#000000",
+            "button2_text_color": "#ffffff",
+            "footer_text": "",
+            "footer_link_text": "",
+            "footer_link_color": "#0066cc",
+            "card_description": "",
+            "description_link": "",
+            "description_bg_color": "#000000",
+            "description_text_color": "#ffffff",
+            "card_class": "ctm-email-signup-offer"
+          }
+        },
+        "discount_card_WqFWpp": {
+          "type": "discount_card",
+          "settings": {
+            "card_image": "shopify://shop_images/MOBILE_BANNER_DIMS_1.jpg",
+            "card_height": 340,
+            "card_heading": "<span>THE OUTLET</span>",
+            "card_heading_size": 40,
+            "card_subheading": "<p>Limited, loved, gone.<br/>All sales final.</p>",
+            "card_subheading_size": 14,
+            "custom_liquid": "",
+            "content_position": "space-between",
+            "content_alignment": "right",
+            "image_fit": "cover",
+            "button_text": "SHOP THE OUTLET",
+            "button_url": "shopify://collections/the-outlet",
+            "button_style": "link",
+            "button_bg_color": "#000000",
+            "button_text_color": "#ffffff",
+            "button2_text": "",
+            "button2_url": "",
+            "button2_style": "button",
+            "button2_bg_color": "#000000",
+            "button2_text_color": "#ffffff",
+            "footer_text": "",
+            "footer_link_text": "",
+            "footer_link_color": "#0066cc",
+            "card_description": "",
+            "description_link": "",
+            "description_bg_color": "#000000",
+            "description_text_color": "#ffffff",
+            "card_class": "ctm-outlet-banner-sidebar"
+          }
+        }
+      },
+      "block_order": [
+        "discount_card_JpwhNE",
+        "discount_card_tePDzR",
+        "discount_card_ABDPEb",
+        "discount_card_WqFWpp"
+      ],
+      "name": "CTM Discount Sidebar",
+      "settings": {
+        "heading": "<span>Special Offers</span>",
+        "subheading": "<p>Today's top offers — only while they last.</p>",
+        "heading_font_size": 26,
+        "subheading_font_size": 14,
+        "sidebar_width": 400,
+        "section_class": ""
+      }
+    }
+  },
+  "order": [
+    "announcement_bar_3dUBtj",
+    "icon_with_text_RB3PwB",
+    "header",
+    "discount_drawer_gYfrLH"
+  ]
+}

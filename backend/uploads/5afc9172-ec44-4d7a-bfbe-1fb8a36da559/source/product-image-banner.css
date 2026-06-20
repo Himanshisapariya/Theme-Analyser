@@ -1,0 +1,32 @@
+@media screen and (min-width: 990px) {
+}
+@media screen and (min-width: 1200px) {
+}
+.product-image-banner__poster.deferred-media__poster:focus {
+  outline-offset: 0.3rem;
+}
+@media (min-width: 990px) {
+}
+.product-image-banner__content h2 {
+  max-width: 92rem;
+  color: rgb(var(--color-base-background-2));
+}
+@media screen and (min-width: 990px) {
+}
+@media screen and (min-width: 1200px) {
+}
+.product-image-banner__images li {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  list-style: none;
+  z-index: 3;
+  gap: 1.5rem;
+}
+@media screen and (min-width: 990px) {
+}
+@media screen and (min-width: 990px) {
+  .product-image-banner .images__bottom img:nth-child(1) {
+    margin-bottom: 0;
+  }
+}

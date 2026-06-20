@@ -1,0 +1,218 @@
+{
+  "sections": {
+    "image_banner": {
+      "type": "image-banner",
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "Browse our latest products",
+            "heading_size": "h0"
+          }
+        },
+        "button": {
+          "type": "buttons",
+          "settings": {
+            "button_label_1": "Shop all",
+            "button_link_1": "shopify:\/\/collections\/all",
+            "button_style_secondary_1": true,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "heading",
+        "button"
+      ],
+      "settings": {
+        "image": "shopify:\/\/shop_images\/8kultratv-2.png",
+        "image_overlay_opacity": 40,
+        "image_height": "large",
+        "desktop_content_position": "bottom-center",
+        "show_text_box": false,
+        "desktop_content_alignment": "center",
+        "color_scheme": "scheme-3",
+        "image_behavior": "zoom-in",
+        "mobile_content_alignment": "center",
+        "stack_images_on_mobile": false,
+        "show_text_below": true
+      }
+    },
+    "featured_collection": {
+      "type": "featured-collection",
+      "settings": {
+        "title": "Featured Products",
+        "heading_size": "h1",
+        "description": "<p><strong>Ready for a shopping spree? Explore our hand-picked selection of must-have items in our featured products section.<\/strong><\/p>",
+        "show_description": false,
+        "description_style": "subtitle",
+        "collection": "all",
+        "products_to_show": 4,
+        "columns_desktop": 4,
+        "full_width": true,
+        "show_view_all": true,
+        "view_all_style": "solid",
+        "enable_desktop_slider": false,
+        "color_scheme": "scheme-1",
+        "image_ratio": "square",
+        "image_shape": "round",
+        "show_secondary_image": true,
+        "show_vendor": true,
+        "show_rating": true,
+        "quick_add": "bulk",
+        "columns_mobile": "2",
+        "swipe_on_mobile": true,
+        "padding_top": 44,
+        "padding_bottom": 36
+      }
+    },
+    "faq_3zt9pd": {
+      "type": "faq",
+      "blocks": {
+        "question_dGHgAR": {
+          "type": "question",
+          "settings": {
+            "question": "Company policy",
+            "answer": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+            "article": ""
+          }
+        },
+        "question_c9dJgQ": {
+          "type": "question",
+          "settings": {
+            "question": "Return Policy",
+            "answer": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+            "article": ""
+          }
+        },
+        "question_hX3xnd": {
+          "type": "question",
+          "settings": {
+            "question": "",
+            "answer": "",
+            "article": "news\/electronics"
+          }
+        }
+      },
+      "block_order": [
+        "question_dGHgAR",
+        "question_c9dJgQ",
+        "question_hX3xnd"
+      ],
+      "settings": {
+        "Headline": "Frequently Asked Questions"
+      }
+    },
+    "collection_list_P4GUCc": {
+      "type": "collection-list",
+      "blocks": {
+        "featured_collection_RRcXmN": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "electronics"
+          }
+        },
+        "featured_collection_NfineU": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "kitchen-products"
+          }
+        },
+        "featured_collection_PVApU9": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "frontpage"
+          }
+        }
+      },
+      "block_order": [
+        "featured_collection_RRcXmN",
+        "featured_collection_NfineU",
+        "featured_collection_PVApU9"
+      ],
+      "settings": {
+        "title": "Collections",
+        "heading_size": "h1",
+        "image_ratio": "square",
+        "columns_desktop": 3,
+        "color_scheme": "",
+        "show_view_all": false,
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "main_slider_iaT6wq": {
+      "type": "main-slider",
+      "blocks": {
+        "slide_hJbezx": {
+          "type": "slide",
+          "settings": {
+          }
+        },
+        "slide_mzW9tx": {
+          "type": "slide",
+          "settings": {
+          }
+        }
+      },
+      "block_order": [
+        "slide_hJbezx",
+        "slide_mzW9tx"
+      ],
+      "settings": {
+        "title": "Slideshow"
+      }
+    },
+    "collage_FEGeGr": {
+      "type": "collage",
+      "blocks": {
+        "collection_phKz8Y": {
+          "type": "collection",
+          "settings": {
+            "collection": "frontpage"
+          }
+        },
+        "product_9JLheH": {
+          "type": "product",
+          "settings": {
+            "product": "juicer",
+            "second_image": false
+          }
+        },
+        "collection_WWdBhM": {
+          "type": "collection",
+          "settings": {
+            "collection": "electronics"
+          }
+        }
+      },
+      "block_order": [
+        "collection_phKz8Y",
+        "product_9JLheH",
+        "collection_WWdBhM"
+      ],
+      "settings": {
+        "heading": "Multimedia collage",
+        "heading_size": "h1",
+        "desktop_layout": "left",
+        "mobile_layout": "column",
+        "card_styles": "product-card-wrapper",
+        "color_scheme": "",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    }
+  },
+  "order": [
+    "image_banner",
+    "featured_collection",
+    "faq_3zt9pd",
+    "collection_list_P4GUCc",
+    "main_slider_iaT6wq",
+    "collage_FEGeGr"
+  ]
+}

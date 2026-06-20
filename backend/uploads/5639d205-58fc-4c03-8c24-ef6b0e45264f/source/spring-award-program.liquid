@@ -1,0 +1,417 @@
+{{ 'spring-page-layout.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+
+.spring-award-main-mobile {
+    display: none;
+}
+
+.spring-award-main {
+  margin-top: 70px;
+}
+
+.spring-award-section {
+  background-color: rgb(47, 72, 76);
+  padding: 50px 0;
+}
+
+.spring-award-titles {
+  margin-bottom: 30px;
+}
+
+.spring-award-title {
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 120%;
+  color: #3db671;
+  text-transform: capitalize;
+  margin-bottom: 0;
+}
+
+.spring-award-title * {
+  font-weight: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  color: inherit;
+  text-transform: inherit;
+  font-style: inherit;
+  margin: 0;
+}
+
+.spring-award-title.spring-award-title-2 {
+  font-weight: 700;
+  font-style: italic;
+}
+
+.spring-award-text {
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 120%;
+  color: #FFFFFF;
+  margin-bottom: 50px;
+}
+
+.spring-award-text * {
+  font-weight: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  color: inherit;
+}
+
+.spring-award-text * {
+  margin-top: 0;
+}
+
+.spring-award-text *:last-child {
+  margin-bottom: 0;
+}
+
+.spring-award-buttons.color-background-5 {
+  background-color: transparent;
+}
+
+.spring-award-button {
+  margin-bottom: 20px;
+}
+
+.spring-award-button .button {
+  border-radius: 0;
+  padding: 10px 30px;
+  {% comment %} min-width: auto;
+  min-height: auto; {% endcomment %}
+}
+
+.color-background-5 .spring-award-button .button--secondary:not(.button[aria-disabled=true]):hover {
+  border-color: #3db671;
+}
+
+.spring-award-inside {
+  display: flex;
+  gap: 40px;
+}
+
+.spring-award-left {
+  flex: 0 0 calc(40% - 20px);
+  padding: 0 70px;
+}
+
+.spring-award-right {
+  flex: 0 0 calc(60% - 20px);
+}
+
+.spring-award-review {
+  padding: 50px 90px 0 90px;
+}
+
+.spring-award-review-text {
+  font-weight: 500;
+  font-style: italic;
+  font-size: 30px;
+  line-height: 120%;
+  color: #FFFFFF;
+  margin-bottom: 20px;
+}
+
+.spring-award-review-text * {
+  font-weight: inherit;
+  font-style: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  color: inherit;
+  margin-top: 0;
+}
+
+.spring-award-review-text *:last-child {
+  margin-bottom: 0;
+}
+
+.spring-award-reviewer {
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 120%;
+  color: #FFFFFF;
+  margin-bottom: 0;
+}
+
+.spring-award-reviewer * {
+  font-weight: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  color: inherit;
+  margin-top: 0;
+}
+
+.spring-award-reviewer *:last-child {
+  margin-bottom: 0;
+}
+
+@media (min-width: 1600px) {
+  .spring-award-title {
+    font-size: 34px;
+  }
+  .spring-award-text {
+    font-size: 32px;
+  }
+  .spring-award-button .button {
+    font-size: 18px;
+  }
+}
+
+@media (min-width: 1400px) and (max-width: 1599px)  {
+  .spring-award-title {
+    font-size: 30px;
+  }
+  .spring-award-text {
+    font-size: 28px;
+  }
+  .spring-award-button .button {
+    font-size: 14px;
+  }
+}
+
+@media (min-width: 990px) and (max-width: 1359px) {
+  .spring-award-left {
+    padding: 0 30px;
+  }
+  .spring-award-review {
+    padding: 30px 30px 0 30px;
+  }
+  
+}
+
+@media (max-width: 989px) {
+    .spring-award-main-desktop {
+      display: none;
+    }
+    .spring-award-main-mobile {
+        display: block;
+    }
+    .spring-award-inside {
+      display: block;
+    }
+    .spring-award-section {
+      padding: 50px 30px;
+      text-align: center;
+    }
+    .spring-award-main .fullscreen-container {
+      padding: 0 !important;
+    }
+    .spring-award-title {
+      font-size: 20px;
+    }
+    .spring-award-title.spring-award-title-1 {
+      margin-bottom: 4px;
+    }
+    .spring-award-text {
+      font-size: 18px;
+      margin-bottom: 30px;
+      margin-top: 30px;
+      padding: 0 15px;
+    }
+    .spring-award-review {
+      padding: 40px;
+    }
+}
+
+{%- endstyle -%}
+
+<section class="spring-award-main spring-award-main-desktop">
+    <div class="fullscreen-container">
+        <div class="spring-award-section">
+            <div class="spring-award-inside">
+                <div class="spring-award-left">
+                    <div class="spring-award-titles">
+                        <div class="spring-award-title spring-award-title-1">
+                            <h4>{{ section.settings.headline }}</h4>
+                        </div>
+                        <div class="spring-award-title spring-award-title-2">
+                            <h3>{{ section.settings.headline_award }}</h3>
+                        </div>
+                    </div>
+                    <div class="spring-award-text">
+                        <p>{{ section.settings.content }}</p>
+                    </div>
+                    <div class="spring-award-buttons color-background-5">
+                        <div class="spring-award-button">
+                            <a href="{{ section.settings.button_1_url }}" class="button button--secondary">{{ section.settings.button_1_text }}</a>
+                        </div>
+                        <div class="spring-award-button">
+                            <a href="{{ section.settings.button_2_url }}" class="button button--secondary">{{ section.settings.button_2_text }}</a>
+                        </div>
+                        <div class="spring-award-button">
+                            <a href="{{ section.settings.button_3_url }}" class="button button--secondary">{{ section.settings.button_3_text }}</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="spring-award-right">
+                    <div class="spring-award-img">
+                        <div class="swiper myAwardSwiper">
+                            <div class="swiper-wrapper">
+                                {% for block in section.blocks %}
+                                    <div class="swiper-slide">
+                                        <img src="{{ block.settings.image |  image_url }}" alt="img">
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="spring-award-review">
+                        <div class="spring-award-review-text">
+                            {{ section.settings.review_text }}
+                        </div>
+                        <div class="spring-award-reviewer">
+                            <p>{{ section.settings.reviewer_name }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="spring-award-main spring-award-main-mobile">
+    <div class="fullscreen-container">
+        <div class="spring-award-section">
+            <div class="spring-award-inside">
+                <div class="spring-award-titles">
+                    <div class="spring-award-title spring-award-title-1">
+                        <h4>{{ section.settings.headline }}</h4>
+                    </div>
+                    <div class="spring-award-title spring-award-title-2">
+                        <h3>{{ section.settings.headline_award }}</h3>
+                    </div>
+                </div>
+                <div class="spring-award-img">
+                    <div class="swiper myAwardSwiper">
+                        <div class="swiper-wrapper">
+                            {% for block in section.blocks %}
+                                <div class="swiper-slide">
+                                    <img src="{{ block.settings.image |  image_url }}" alt="img">
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                <div class="spring-award-text">
+                    <p>{{ section.settings.content }}</p>
+                </div>
+                <div class="spring-award-buttons color-background-5">
+                    <div class="spring-award-button">
+                        <a href="{{ section.settings.button_1_url }}" class="button button--secondary">{{ section.settings.button_1_text }}</a>
+                    </div>
+                </div>
+                <div class="spring-award-review">
+                    <div class="spring-award-review-text">
+                        <p>{{ section.settings.review_text }}</p>
+                    </div>
+                    <div class="spring-award-reviewer">
+                        <p>{{ section.settings.reviewer_name }}</p>
+                    </div>
+                </div>
+                <div class="spring-award-buttons color-background-5">
+                    <div class="spring-award-button">
+                        <a href="{{ section.settings.button_2_url }}" class="button button--secondary">{{ section.settings.button_2_text }}</a>
+                    </div>
+                    <div class="spring-award-button">
+                        <a href="{{ section.settings.button_3_url }}" class="button button--secondary">{{ section.settings.button_3_text }}</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% schema %}
+{
+  "name": "Award Program",
+  "settings": [
+    {
+      "type": "html",
+      "label": "Headline",
+      "id": "headline",
+    },
+    {
+        "type": "html",
+        "label": "Headline Award",
+        "id": "headline_award",
+    },
+    {
+      "type": "textarea",
+      "label": "content",
+      "id": "content"
+    },
+    {
+      "type": "text",
+      "label": "Button 1 Text",
+      "id": "button_1_text"
+    },
+    {
+      "type": "url",
+      "label": "Button 1 URL",
+      "id": "button_1_url"
+    },
+    {
+      "type": "text",
+      "label": "Button 2 Text",
+      "id": "button_2_text"
+    },
+    {
+      "type": "url",
+      "label": "Button 2 URL",
+      "id": "button_2_url"
+    },
+    {
+      "type": "text",
+      "label": "Button 3 Text",
+      "id": "button_3_text"
+    },
+    {
+      "type": "url",
+      "label": "Button 3 URL",
+      "id": "button_3_url"
+    },
+    {
+      "type": "richtext",
+      "label": "Review Text",
+      "id": "review_text"
+    },
+    {
+      "type": "text",
+      "label": "Reviewer Name",
+      "id": "reviewer_name"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "image",
+      "name": "Image",
+      "settings": [
+        {
+          "type": "image_picker",
+          "label": "Image",
+          "id": "image"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Award Program"
+    }
+  ]
+}
+{% endschema %}
+
+
+{% comment %} <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script> {% endcomment %}
+
+<script>
+
+var swiper = new Swiper(".myAwardSwiper", {
+autoplay: {
+delay: 100000,
+disableOnInteraction: false,  
+},
+loop: true,
+});
+</script>

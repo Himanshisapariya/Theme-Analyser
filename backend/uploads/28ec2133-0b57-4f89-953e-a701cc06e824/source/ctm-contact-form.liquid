@@ -1,0 +1,50 @@
+<div class="{{ section.settings.extra_class }}  max-mdscreen2:px-24 ctm-contact-form mdscreen2:mt-60 mdscreen2:mb-[308px] mt-[39px] mb-[36px]">
+    <div class="mdscreen2:max-w-[875px] w-full mx-auto bg-lightest-blue rounded-[50px] xl:px-[86px] xl:pt-[51px] px-20 pt-[45px] pb-[52px] xl:pb-[64px]">
+        <div class="title-head mdscreen2:mb-[53px] mb-20">
+            <h1 class="mdscreen2:text-32 text-24 mdscreen2:leading-42 leading-32 text-center mdscreen2:mb-[19px] mb-[15px]">
+                {{ section.settings.heading }}    
+            </h1>
+            <div class="text-center">{{ section.settings.subtext }}</div>
+        </div>
+        <div class="klavio-contact-form">
+            {{ section.settings.contact_form_code }}
+        </div>
+    </div>
+</div>
+{% schema %}
+{
+  "name": "Custom Contact Form",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+        "type": "text",
+        "label": "Extra Class",
+        "id": "extra_class"
+    },
+    {
+        "type": "inline_richtext",
+        "label": "Heading",
+        "id": "heading"
+    },
+    {
+        "type": "richtext",
+        "label": "Subtext",
+        "id": "subtext"
+    },
+    {
+        "type": "html",
+        "label": "Contact Form Code",
+        "id": "contact_form_code"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom Contact Form"
+    }
+  ]
+}
+{% endschema %}

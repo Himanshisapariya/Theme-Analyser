@@ -1,0 +1,505 @@
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+
+.ctm-hover-card-content-{{ ai_gen_id }} {
+margin-bottom:50px;
+}
+
+  .ctm-hover-card-{{ ai_gen_id }} {
+    position: relative;
+    border-radius: {{ block.settings.border_radius }}px;
+    overflow: hidden;
+    cursor: pointer;
+    max-width: 100%;
+  }
+
+  .ctm-hover-card-image-{{ ai_gen_id }} {
+    width: 100%;
+    object-fit: cover;
+    display: block;
+    transition: filter {{ block.settings.transition_duration }}s ease {{ block.settings.hover_delay }}s;
+  }
+
+  .ctm-hover-card-{{ ai_gen_id }}:hover .ctm-hover-card-image-{{ ai_gen_id }} {
+    filter: brightness({{ block.settings.image_brightness }});
+  }
+
+  .ctm-hover-card-placeholder-{{ ai_gen_id }} {
+    width: 100%;
+    background-color: #f4f4f4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+
+  .ctm-hover-card-placeholder-{{ ai_gen_id }} svg {
+    width: 100%;
+    height: 100%;
+    max-width: 200px;
+    max-height: 200px;
+  }
+
+  .ctm-hover-card-empty-state-{{ ai_gen_id }} {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 8px 16px;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 4px;
+    font-size: 14px;
+    color: #666;
+    text-align: center;
+    pointer-events: none;
+  }
+
+  .ctm-hover-card-overlay-{{ ai_gen_id }} {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: {{ block.settings.overlay_color }};
+    opacity: 0;
+    transition: opacity {{ block.settings.transition_duration }}s ease {{ block.settings.overlay_delay }}s;
+    display: flex;
+    flex-direction: column;
+    justify-content: {{ block.settings.content_position }};
+    align-items: {{ block.settings.content_alignment }};
+    padding: {{ block.settings.content_padding }}px;
+  }
+
+  .ctm-hover-card-{{ ai_gen_id }}:hover .ctm-hover-card-overlay-{{ ai_gen_id }} {
+    opacity: {{ block.settings.overlay_opacity }};
+  }
+
+  .ctm-hover-card-content-{{ ai_gen_id }} {
+    opacity: 0;
+    transition: opacity {{ block.settings.transition_duration }}s ease {{ block.settings.content_delay }}s;
+    text-align: {{ block.settings.text_alignment }};
+    width: 100%;
+  }
+
+  .ctm-hover-card-{{ ai_gen_id }}:hover .ctm-hover-card-content-{{ ai_gen_id }} {
+    opacity: 1;
+  }
+
+  .ctm-hover-card-title-{{ ai_gen_id }} {
+    color: {{ block.settings.title_color }};
+    font-size: {{ block.settings.title_size }}px;
+    font-weight: {{ block.settings.title_weight }};
+    margin: 0 0 {{ block.settings.title_spacing }}px 0;
+    line-height: 1.2;
+  }
+
+  .ctm-hover-card-text-{{ ai_gen_id }} {
+    color: {{ block.settings.text_color }};
+    font-size: {{ block.settings.text_size }}px;
+    line-height: 1.4;
+    margin: 0;
+  }
+
+  .ctm-hover-card-text-{{ ai_gen_id }} p {
+    margin: 0 0 8px 0;
+  }
+
+  .ctm-hover-card-text-{{ ai_gen_id }} p:last-child {
+    margin-bottom: 0;
+  }
+
+  @media screen and (max-width: 749px) {
+    .ctm-hover-card-{{ ai_gen_id }} {
+      border-radius: {{ block.settings.border_radius | times: 0.8 }}px;
+    }
+
+    .ctm-hover-card-{{ ai_gen_id }}:hover .ctm-hover-card-overlay-{{ ai_gen_id }} {
+      opacity: 0;
+    }
+
+    .ctm-hover-card-{{ ai_gen_id }}:hover .ctm-hover-card-content-{{ ai_gen_id }} {
+      opacity: 0;
+    }
+
+    .ctm-hover-card-{{ ai_gen_id }}:hover .ctm-hover-card-image-{{ ai_gen_id }} {
+      filter: none;
+    }
+
+    .ctm-hover-card-{{ ai_gen_id }}.active .ctm-hover-card-overlay-{{ ai_gen_id }} {
+      opacity: {{ block.settings.overlay_opacity }};
+    }
+
+    .ctm-hover-card-{{ ai_gen_id }}.active .ctm-hover-card-content-{{ ai_gen_id }} {
+      opacity: 1;
+    }
+
+    .ctm-hover-card-{{ ai_gen_id }}.active .ctm-hover-card-image-{{ ai_gen_id }} {
+      filter: brightness({{ block.settings.image_brightness }});
+    }
+
+    .ctm-hover-card-title-{{ ai_gen_id }} {
+      font-size: {{ block.settings.title_size | times: 0.9 }}px;
+    }
+
+    .ctm-hover-card-text-{{ ai_gen_id }} {
+      font-size: {{ block.settings.text_size | times: 0.9 }}px;
+    }
+
+    .ctm-hover-card-overlay-{{ ai_gen_id }} {
+      padding: {{ block.settings.content_padding | times: 0.8 }}px;
+    }
+  }
+{% endstyle %}
+
+<hover-card-{{ ai_gen_id }} class="ctm-card-hover ctm-hover-card-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+  {% if block.settings.image %}
+    <img
+      src="{{ block.settings.image | image_url: width: 800 }}"
+      alt="{{ block.settings.image.alt | escape }}"
+      class="ctm-hover-card-image-{{ ai_gen_id }}"
+      loading="lazy"
+      width="auto"
+      height="auto"
+    >
+  {% else %}
+    <div class="ctm-hover-card-placeholder-{{ ai_gen_id }}">
+      {{ 'image' | placeholder_svg_tag }}
+      <div class="ctm-hover-card-empty-state-{{ ai_gen_id }}">
+        Add an image to get started
+      </div>
+    </div>
+  {% endif %}
+  
+  <div class="ctm-hover-card-overlay-{{ ai_gen_id }}">
+    <div class="ctm-athlete-hover-card-content ctm-hover-card-content-{{ ai_gen_id }}">
+      {% if block.settings.title != blank %}
+        <h3 class="ctm-athlete-hover-card-title ctm-hover-card-title-{{ ai_gen_id }}">{{ block.settings.title }}</h3>
+      {% endif %}
+      {% if block.settings.text != blank %}
+        <div class="ctm-athlete-hover-card-text ctm-hover-card-text-{{ ai_gen_id }}">{{ block.settings.text }}</div>
+      {% endif %}
+    </div>
+  </div>
+</hover-card-{{ ai_gen_id }}>
+
+<script>
+  (function() {
+    class HoverCard{{ ai_gen_id }} extends HTMLElement {
+      constructor() {
+        super();
+        this.isMobile = window.innerWidth <= 749;
+        this.isActive = false;
+      }
+
+      connectedCallback() {
+        this.setupEventListeners();
+        this.handleResize();
+      }
+
+      setupEventListeners() {
+        this.addEventListener('click', this.handleClick.bind(this));
+        window.addEventListener('resize', this.handleResize.bind(this));
+        document.addEventListener('click', this.handleOutsideClick.bind(this));
+      }
+
+      handleClick(event) {
+        if (this.isMobile) {
+          event.preventDefault();
+          this.toggleActive();
+        }
+      }
+
+      handleOutsideClick(event) {
+        if (this.isMobile && !this.contains(event.target) && this.isActive) {
+          this.setActive(false);
+        }
+      }
+
+      handleResize() {
+        const wasMobile = this.isMobile;
+        this.isMobile = window.innerWidth <= 749;
+        
+        if (wasMobile && !this.isMobile && this.isActive) {
+          this.setActive(false);
+        }
+      }
+
+      toggleActive() {
+        this.setActive(!this.isActive);
+      }
+
+      setActive(active) {
+        this.isActive = active;
+        this.classList.toggle('active', active);
+      }
+    }
+
+    customElements.define('hover-card-{{ ai_gen_id }}', HoverCard{{ ai_gen_id }});
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Custom Hover card",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "type": "range",
+      "id": "image_brightness",
+      "min": 0.3,
+      "max": 1,
+      "step": 0.1,
+      "label": "Image brightness on hover",
+      "default": 0.7
+    },
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "title",
+      "label": "Title",
+      "default": "Hover to reveal"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Text",
+      "default": "<p>Add your description text here. This content will appear with a smooth fade-in animation when users hover over the card.</p>"
+    },
+    {
+      "type": "select",
+      "id": "content_position",
+      "label": "Content vertical position",
+      "options": [
+        {
+          "value": "flex-start",
+          "label": "Top"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "flex-end",
+          "label": "Bottom"
+        }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "select",
+      "id": "content_alignment",
+      "label": "Content horizontal alignment",
+      "options": [
+        {
+          "value": "flex-start",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "flex-end",
+          "label": "Right"
+        }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "select",
+      "id": "text_alignment",
+      "label": "Text alignment",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "range",
+      "id": "content_padding",
+      "min": 10,
+      "max": 60,
+      "step": 5,
+      "unit": "px",
+      "label": "Content padding",
+      "default": 30
+    },
+    {
+      "type": "header",
+      "content": "Overlay"
+    },
+    {
+      "type": "color",
+      "id": "overlay_color",
+      "label": "Overlay color",
+      "default": "#000000"
+    },
+    {
+      "type": "range",
+      "id": "overlay_opacity",
+      "min": 0.1,
+      "max": 0.9,
+      "step": 0.1,
+      "label": "Overlay opacity",
+      "default": 0.7
+    },
+    {
+      "type": "header",
+      "content": "Typography"
+    },
+    {
+      "type": "color",
+      "id": "title_color",
+      "label": "Title color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "title_size",
+      "min": 16,
+      "max": 48,
+      "step": 2,
+      "unit": "px",
+      "label": "Title size",
+      "default": 28
+    },
+    {
+      "type": "select",
+      "id": "title_weight",
+      "label": "Title weight",
+      "options": [
+        {
+          "value": "400",
+          "label": "Normal"
+        },
+        {
+          "value": "500",
+          "label": "Medium"
+        },
+        {
+          "value": "600",
+          "label": "Semibold"
+        },
+        {
+          "value": "700",
+          "label": "Bold"
+        }
+      ],
+      "default": "600"
+    },
+    {
+      "type": "range",
+      "id": "title_spacing",
+      "min": 0,
+      "max": 30,
+      "step": 2,
+      "unit": "px",
+      "label": "Title bottom spacing",
+      "default": 12
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "text_size",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "label": "Text size",
+      "default": 16
+    },
+    {
+      "type": "header",
+      "content": "Animation timing"
+    },
+    {
+      "type": "range",
+      "id": "transition_duration",
+      "min": 0.1,
+      "max": 1,
+      "step": 0.1,
+      "unit": "s",
+      "label": "Transition duration",
+      "default": 0.4
+    },
+    {
+      "type": "range",
+      "id": "hover_delay",
+      "min": 0,
+      "max": 0.5,
+      "step": 0.1,
+      "unit": "s",
+      "label": "Card hover delay",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "overlay_delay",
+      "min": 0,
+      "max": 0.5,
+      "step": 0.1,
+      "unit": "s",
+      "label": "Overlay delay",
+      "default": 0.1
+    },
+    {
+      "type": "range",
+      "id": "content_delay",
+      "min": 0,
+      "max": 0.5,
+      "step": 0.1,
+      "unit": "s",
+      "label": "Content delay",
+      "default": 0.2
+    },
+    {
+      "type": "header",
+      "content": "Style"
+    },
+    {
+      "type": "range",
+      "id": "border_radius",
+      "min": 0,
+      "max": 30,
+      "step": 2,
+      "unit": "px",
+      "label": "Border radius",
+      "default": 12
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom Hover card"
+    }
+  ],
+  "tag": null
+}
+{% endschema %}

@@ -1,0 +1,86 @@
+<div class="{{ section.settings.class }}">
+    <div class="certified-badges text-center container_fluid">
+      {% if section.settings.heading != blank %}
+        <div class="certified-heading">
+          <h3 class="max-mdscreen2:text-24">{{ section.settings.heading }}</h3> 
+        </div>
+      {% endif %}
+      
+      <div class="badge-grid flex max-mdscreen2:flex-wrap grid-cols-2 items-center justify-center mdscreen2:gap-x-[56px] gap-x-[33px] max-mdscreen2:gap-y-26 !mt-20 max-mdscreen6:max-w-[340px] max-mdscreen6:mx-auto">
+        {% for block in section.blocks %}
+          {% if block.type == 'logos' and block.settings.logo_images != blank %}
+            <div class="badge-item" {{ block.shopify_attributes }}>
+              {% comment %} {{ block.settings.logo_images | image_url: width: 105 | image_tag: loading: 'lazy', class: 'max-mdscreen2:w-[93px]' }} {% endcomment %}
+              {{
+                block.settings.logo_images
+                | image_url: width: 360
+                | image_tag:
+                  loading: 'lazy',
+                  width: media.preview_image.width,
+                  height: image_height,
+                  sizes: '100vw',
+                  widths: '550, 750, 1100, 1445, 1680, 2048, 2890, 4096',
+                  class: 'w-[105px] max-mdscreen2:w-[93px]'
+              }}
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+      
+      {% if section.settings.second_heading != blank or section.settings.description != blank %}
+        <div class="free-from">
+          {% if section.settings.second_heading != blank %}
+            <h3 class="free-from-heading max-mdscreen2:text-24">{{ section.settings.second_heading }}</h3>
+          {% endif %}
+          
+          {% if section.settings.description != blank %}
+            <div class="free-from-items body-18-600 text-primary-blue max-mdscreen6:max-w-[312px] max-mdscreen6:mx-auto max-mdscreen6:leading-[150%] uppercase">
+              {{ section.settings.description }}
+            </div>
+          {% endif %}
+        </div>
+      {% endif %}
+    </div>
+  </div>
+  
+{% schema %}
+{
+  "name": "Certified",
+  "class": "ctm-main-certified",
+  "settings": [
+    {
+      "type": "text",
+      "label": "Heading",
+      "id": "heading"
+    },
+    {
+      "type": "text",
+      "label": "Second Heading",
+      "id": "second_heading"
+    },
+    {
+      "type": "html",
+      "label": "Description",
+      "id": "description"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "logos",
+      "name": "Logos",
+      "settings": [
+        {
+          "type": "image_picker",
+          "label": "Logo Images",
+          "id": "logo_images"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Certified"
+    }
+  ]
+}
+{% endschema %}

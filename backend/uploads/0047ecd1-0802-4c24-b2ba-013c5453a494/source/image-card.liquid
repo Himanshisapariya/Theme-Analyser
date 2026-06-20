@@ -1,0 +1,565 @@
+{%- style -%}
+  .collection-grid-section.section-{{ section.id }} {
+  	padding-top: {{ section.settings.top_padding_desktop }}px;
+  	padding-bottom: {{ section.settings.bottom_padding_desktop }}px;
+  }
+
+     .sale-ctm-banner {
+         background-color: {{ section.settings.color_code }}
+  }
+
+  @media screen and (max-width: 990px) {
+  	.collection-grid-section.section-{{ section.id }} {
+  		padding-top: {{ section.settings.top_padding_mobile }}px;
+  		padding-bottom: {{ section.settings.bottom_padding_mobile }}px;
+  	}
+  }
+  .collection-grid-section.section-{{ section.id }} {
+  	margin-top: {{ section.settings.top_margin_desktop}}px;
+  	margin-bottom: {{ section.settings.bottom_margin_desktop }}px;
+  }
+
+  @media screen and (max-width: 990px) {
+  	.collection-grid-section.section-{{ section.id }} {
+  		margin-top: {{ section.settings.top_margin_mobile }}px;
+  		margin-bottom: {{ section.settings.bottom_margin_mobile }}px;
+  	}
+  }
+{%- endstyle -%}
+<section
+  class="collection-grid-section section-{{ section.id }} {% if section.settings.enable_full_width == false %} fullscreen-container{% endif %}  {{ section.settings.section_extra_class }}"
+  style="{% if section.settings.background_color != blank %}background-color: {{ section.settings.background_color }};{% endif %}"
+>
+  <div class="text-btn-container fullscreen-container">
+    <div class="grid-title">
+      {% if section.settings.heading != blank %}
+        <h2 class="collection-grid-heading alignmnet-{{ section.settings.text_alignment }}">{{ section.settings.heading }}</h2>
+      {% endif %}
+    </div>
+    {% if section.settings.button_label != blank %}
+      <a href="{{ section.settings.button_link }}" class="button button--rebuy collection-grid-btn">
+        {{- section.settings.button_label -}}
+      </a>
+    {% endif %}
+  </div>
+  <div
+    class="collection-grid swiper-collection-container swiper-container-{{ section.id }}"
+    data-desktop-slides="{{ section.settings.desktop_slide | default: 4 }}" data-mobile-slides="{{ section.settings.mobile_slide | default: 4 }}"
+  >
+    <div class="swiper-wrapper">
+      {% for block in section.blocks %}
+        {% assign collection = collections[block.settings.collection] %}
+        <div class="swiper-slide collection-item-wrapper {% if section.settings.text-placement == 'above_product' %} ctm-image-above-title {% endif %}" {{ block.shopify_attributes }}>
+          <div class="collection-item">
+              <a href="{% if collection.url != blank %} {{ collection.url }}{% else %}{{ block.settings.link }}{% endif %}" class="card-link">
+            <div class="image-card-inner_img">
+                {% if block.settings.custom_image %}
+              <img
+                src="{{ block.settings.custom_image | image_url: width: 4096 }}"
+                alt="{{ block.settings.custom_image.alt | default: block.settings.title | escape }}"
+                class="collection-image"
+                height="auto"
+                width="auto"
+              >
+            {% elsif collection.image %}
+              <img
+                src="{{ collection.image | image_url: width: 4096 }}"
+                alt="{{ block.settings.custom_image.alt | default: block.settings.title | escape }}"
+                class="collection-image"
+                height="auto"
+                width="auto"
+              >
+            {% endif %}   
+                          </div>          
+            <div class="collection-content">
+              {% if block.settings.title == blank and block.settings.enable_title %}
+                {%  if collection.title != blank %}
+                <h3 class="collection-title">{{ collection.title }}</h3>
+                {% endif %}
+              {% else %}
+                {% if block.settings.title != blank %}
+                <h3 class="collection-title">{{ block.settings.title }}</h3>
+                {% endif %}
+              {% endif %}
+              {% if block.settings.subtext != blank %}
+                <div class="collection-subtext">
+                    <p class="collection-subtext">{{ block.settings.subtext }}</p>
+                </div>
+              {% endif %}
+              <div class="collection-desc-btn">
+                {% if block.settings.description != blank %}
+                  <div class="collection-description-main">
+                    {{ block.settings.description }}
+                  </div>
+                {% endif %}
+                <div class="collection-button-main">
+                  {% if block.settings.button_label != blank %}
+                    <div class="button collection-button">
+                      {{- block.settings.button_label -}}
+                      </div>
+                  {% endif %}
+                </div>
+              </div>
+            </div>
+            </a>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% stylesheet %}
+
+.ctm-image-above-title .collection-item {
+  position: relative;
+  overflow: hidden;
+}
+
+.ctm-image-above-title .collection-item::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to top, rgb(0 0 0 / 35%), transparent);
+  z-index: 1;
+  pointer-events: none;
+}
+
+  .ctm-fit-game {
+    padding: 40px 0;
+    margin-top: 50px;
+  }
+  .collection-grid-btn {
+    font-size: 16px;
+  }
+  .collection-grid-section .text-btn-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  .collection-grid-heading.alignmnet-center {
+    text-align: center;
+  }
+  .collection-grid-heading.alignmnet-left {
+    text-align: left;
+  }
+  .collection-grid-heading.alignmnet-right {
+    text-align: right;
+  }
+  .swiper {
+    width: 100%;
+    height: 100%;
+  }
+  .swiper-slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .collection-grid {
+    max-width: 100%;
+    margin: 0 auto;
+    overflow-x: hidden;
+  }
+  .collection-item {
+    text-align: center;
+  }
+  .collection-image {
+    width: 100%;
+    aspect-ratio: 327.83/409.78;
+    object-fit: cover;
+    margin-bottom: 15px;
+    display: block;
+  }
+  .collection-title {
+    font-weight: bold;
+    font-size: 22px;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+  }
+  .collection-subtext {
+    font-size: 18px;
+    color: #2f484c;
+    margin-bottom: 10px;
+    font-weight: 600;
+  }
+  .collection-subtext {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+  }
+  .collection-subtext::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 2px;
+    width: 0;
+    background-color: #2f484c;
+    transition: width 0.3s ease;
+  }
+  .collection-button {
+    font-size: 20px;
+    text-decoration: underline;
+    color: #000;
+  }
+.card-link .collection-content .button {
+  transition: text-decoration-color 0.3s ease 0.2s; /* Smooth + delay */
+  text-decoration: underline;
+  text-decoration-color: transparent; /* Hide underline initially */
+  line-height: 28px;
+}
+
+.card-link:hover .collection-content .button {
+  text-decoration-color: currentColor; /* Show underline smoothly */
+}
+
+.ctm-collection-grid .ctm-image-above-title .card-link .collection-content .button {
+  text-decoration: none;
+}
+  @media only screen and (max-width: 1200px) {
+    .custom-button-outline .collection-grid,
+    .ctm-by-color .collection-grid {
+      padding: 0;
+    }
+    .ctm-fit-game {
+      margin-top: 30px;
+    }
+    .custom-button-outline .collection-grid-heading , .back-to-school-women-collection-grid .collection-grid-heading, .back-to-school-men-collection-grid .collection-grid-heading {
+      font-size: 28px;
+      line-height: 36px;
+    }
+    .collection-image {
+      aspect-ratio: 100/125;
+    }
+  } 
+  
+{% endstylesheet %}
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    initializeCollectionSliders();
+  });
+  if (typeof Shopify !== 'undefined') {
+    document.addEventListener('shopify:section:load', function (event) {
+      initializeCollectionSliders(event.target);
+    });
+  }
+  function initializeCollectionSliders(container = document) {
+    const sliders = container.querySelectorAll('.swiper-collection-container:not(.swiper-initialized)');
+
+    sliders.forEach((sliderContainer) => {
+      const desktopSlides = parseFloat(sliderContainer.dataset.desktopSlides) || 4;
+      const mobileSlides = parseFloat(sliderContainer.dataset.mobileSlides) || 1;
+      
+      const swiper = new Swiper(sliderContainer, {
+        slidesPerView: mobileSlides,
+        spaceBetween: 2,
+        centeredSlides: false,
+        loop: false,
+        slideClass: 'swiper-slide',
+        wrapperClass: 'swiper-wrapper',
+        breakpoints: {
+          425: {
+            slidesPerView: mobileSlides,
+            spaceBetween: 4,
+          },
+          575: {
+            slidesPerView: 1.6,
+            spaceBetween: 4,
+          },
+          768: {
+            slidesPerView: 2.1,
+            spaceBetween: 4,
+          },
+          1024: {
+            slidesPerView: 2.6,
+            spaceBetween: 4,
+          },
+          1200: {
+            slidesPerView: 3,
+            spaceBetween: 4,
+          },
+          1440: {
+            slidesPerView: 3,
+            spaceBetween: 4,
+          },
+          1575: {
+            slidesPerView: desktopSlides,
+            spaceBetween: 4,
+          },
+        },
+        on: {
+          init: function () {
+            this.update();
+          },
+          resize: function () {
+            this.update();
+          },
+        },
+      });
+
+      const resizeObserver = new ResizeObserver(() => {
+        swiper.update();
+      });
+      resizeObserver.observe(sliderContainer);
+      sliderContainer.classList.add('swiper-initialized');
+    });
+  }
+</script>
+
+{% schema %}
+{
+  "name": "Collection Grid",
+  "settings": [
+    {
+      "type": "text",
+      "label": "Section Extra Class",
+      "id": "section_extra_class"
+    },
+    {
+			"type": "checkbox",
+			"id": "enable_full_width",
+			"label": "Enable Full Width",
+			"default":false
+		},
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading"
+    },
+    {
+      "type": "text_alignment",
+      "label": "Text Alignment",
+      "id": "text_alignment",
+      "default": "left"
+    },
+    {
+      "type": "select",
+      "id": "text-placement",
+      "label": "Text Placement",
+      "options": [
+        {
+          "value": "above_product",
+          "label": "Above Product"
+        },
+        {
+          "value": "below_product",
+          "label": "Below Product"
+        }
+      ],
+      "default": "below_product"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#f7f7f7"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button Label"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    },
+    {
+      "type": "select",
+      "id": "button_style",
+      "options": [
+        {
+          "value": "primary",
+          "label": "t:sections.all.button.button_style.options__1.label"
+        },
+        {
+          "value": "secondary",
+          "label": "t:sections.all.button.button_style.options__2.label"
+        },
+        {
+          "value": "tertiary",
+          "label": "t:sections.all.button.button_style.options__3.label"
+        },
+        {
+          "value": "link",
+          "label": "As Link"
+        }
+      ],
+      "default": "primary",
+      "label": "t:sections.all.button.button_style.label"
+    },
+    {
+      "type": "text",
+      "label": "Underline Color",
+      "id": "underline_color",
+      "default": "#000000",
+      "info": "Add Only Hex Code",
+      "visible_if": "{{ section.settings.button_style == 'link' }}"
+    },
+    {
+      "type": "range",
+      "label": "Desktop Slide per view",
+      "id": "desktop_slide",
+      "default": 4,
+      "min": 3,
+      "max": 6,
+      "step": 0.1
+    },
+    {
+      "type": "range",
+      "label": "Mobile Slide per view",
+      "id": "mobile_slide",
+      "default": 1,
+      "min": 1,
+      "max": 4,
+      "step": 0.1
+    },
+    {
+      "type": "header",
+      "content": "Section Spacing"
+    },
+    {
+      "type": "range",
+      "label": "Top Padding Desktop",
+      "id": "top_padding_desktop",
+      "default": 0,
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "label": "Bottom Padding Desktop",
+      "id": "bottom_padding_desktop",
+      "default": 0,
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "label": "Top Padding Mobile",
+      "id": "top_padding_mobile",
+      "default": 0,
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "label": "Bottom Padding Mobile",
+      "id": "bottom_padding_mobile",
+      "default": 0,
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "label": "Top Margin Desktop",
+      "id": "top_margin_desktop",
+      "default": 0,
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "label": "Bottom Margin Desktop",
+      "id": "bottom_margin_desktop",
+      "default": 0,
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "label": "Top Margin Mobile",
+      "id": "top_margin_mobile",
+      "default": 0,
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "label": "Bottom Margin Mobile",
+      "id": "bottom_margin_mobile",
+      "default": 0,
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "collection_item",
+      "name": "Collection Item",
+      "settings": [
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "Select Collection"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link"
+        },
+        {
+          "type": "image_picker",
+          "id": "custom_image",
+          "label": "Custom Image (optional)"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        },
+        {
+          "type": "checkbox",
+          "id": "enable_title",
+          "label": "Display Collection Title",
+          "default": false
+        },
+        {
+          "type": "html",
+          "id": "subtext",
+          "label": "Subtext"
+        },
+        {
+          "type": "html",
+          "id": "description",
+          "label": "Description"
+        },
+        {
+          "type": "text",
+          "id": "button_label",
+          "label": "Button Label",
+          "default": "Shop Now"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Collection Grid",
+      "category": "Custom",
+      "blocks": []
+    }
+  ]
+}
+{% endschema %}

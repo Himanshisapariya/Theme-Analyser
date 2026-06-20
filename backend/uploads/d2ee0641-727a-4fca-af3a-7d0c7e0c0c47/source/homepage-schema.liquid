@@ -1,0 +1,135 @@
+<!--
+  5 Little Monkeys Homepage JSON-LD
+  Place this inside <head> on the homepage only.
+  In Shopify: wrap in {% if template.name == 'index' %}...{% endif %}
+  Validate after deployment at: https://search.google.com/test/rich-results
+-->
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://5littlemonkeysbed.com/#organization",
+        "name": "5 Little Monkeys",
+        "alternateName": "5 Little Monkeys Bed",
+        "url": "https://5littlemonkeysbed.com/",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://5littlemonkeysbed.com/cdn/shop/files/Logo.png",
+          "width": 600,
+          "height": 600
+        },
+        "image": "https://5littlemonkeysbed.com/cdn/shop/files/Logo.png",
+        "description": "5 Little Monkeys designs mattresses, bedding, and foundations engineered specifically for children ages 3 to 18. Products feature CertiPUR-US certified memory foam, OEKO-TEX certified organic cotton, temperature-regulating technology, and a waterproof removable cover. Made in California.",
+        "foundingDate": "2018",
+        "founder": [
+          {
+            "@type": "Person",
+            "name": "Jason Harrow",
+            "jobTitle": "Co-Founder"
+          },
+          {
+            "@type": "Person",
+            "name": "Courtney Harrow",
+            "jobTitle": "Co-Founder"
+          }
+        ],
+        "address": {
+          "@type": "PostalAddress",
+          "addressCountry": "US",
+          "addressRegion": "CA",
+          "postalCode": "90040",
+          "streetAddress": "5959 Corvette Street",
+          "addressLocality": "Commerce"
+        },
+        "contactPoint": [
+          {
+            "@type": "ContactPoint",
+            "telephone": "+1-844-325-5555",
+            "contactType": "customer service",
+            "email": "info@5littlemonkeysbed.com",
+            "areaServed": "US",
+            "availableLanguage": ["English"]
+          }
+        ],
+        "sameAs": [
+          "https://www.instagram.com/5lilmonkeysbed/",
+          "https://www.facebook.com/5lilmonkeysbed",
+          "https://www.tiktok.com/@5littlemonkeysbed",
+          "https://www.youtube.com/@5littlemonkeysbed",
+          "https://twitter.com/5LilMonkeysBed"
+        ],
+        "knowsAbout": [
+          "Kids mattresses",
+          "Children's bedding",
+          "Memory foam mattresses for children",
+          "Hybrid mattresses for kids",
+          "Organic children's bedding",
+          "Hypoallergenic kids mattresses",
+          "Bunk bed mattresses"
+        ],
+        "slogan": "A Mattress Designed for Kids",
+        "hasCredential": [
+          {
+            "@type": "EducationalOccupationalCredential",
+            "name": "CertiPUR-US Certified Foam"
+          },
+          {
+            "@type": "EducationalOccupationalCredential",
+            "name": "OEKO-TEX Standard 100 Certified"
+          },
+          {
+            "@type": "EducationalOccupationalCredential",
+            "name": "UL GreenGuard Gold Certified"
+          },
+          {
+            "@type": "EducationalOccupationalCredential",
+            "name": "CPSIA Compliant"
+          }
+        ],
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "4.92",
+          "reviewCount": "1537",
+          "bestRating": "5",
+          "worstRating": "1"
+        }
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://5littlemonkeysbed.com/#website",
+        "url": "https://5littlemonkeysbed.com/",
+        "name": "5 Little Monkeys",
+        "description": "Best Kids Mattress - Healthy Sleep for Little Ones",
+        "publisher": {
+          "@id": "https://5littlemonkeysbed.com/#organization"
+        },
+        "inLanguage": "en-US",
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": {
+            "@type": "EntryPoint",
+            "urlTemplate": "https://5littlemonkeysbed.com/search?q={search_term_string}"
+          },
+          "query-input": "required name=search_term_string"
+        }
+      },
+      {
+        "@type": "WebPage",
+        "@id": "https://5littlemonkeysbed.com/#webpage",
+        "url": "https://5littlemonkeysbed.com/",
+        "name": "Best Kids Mattress - Healthy Sleep for Little Ones - 5 Little Monkeys",
+        "isPartOf": {
+          "@id": "https://5littlemonkeysbed.com/#website"
+        },
+        "about": {
+          "@id": "https://5littlemonkeysbed.com/#organization"
+        },
+        "description": "Shop CertiPUR-US certified memory foam and hybrid mattresses designed for kids ages 3-18. Features OEKO-TEX organic cotton, temperature regulation, waterproof covers, 100-night trial, and 15-year warranty.",
+        "inLanguage": "en-US"
+      }
+    ]
+  }
+</script>

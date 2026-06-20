@@ -1,0 +1,495 @@
+{{ 'customer.css' | asset_url | stylesheet_tag }}
+
+<div class="customer account">
+    <div class="container">
+        <div class="account-header">
+            <h1 class="account-title">Your Account</h1>
+            <h2 class="account-questions h6">
+                Questions? We've got you. Reach us at <a href="mailto:orders@xx-xyathletics.com">orders@xx-xyathletics.com.</a>
+            </h2>
+        </div>
+
+        <div class="account-grid">
+            <!-- Left Column -->
+            <div class="account-details-column">
+                <!-- Personal Details Card -->
+                <div class="account-card">
+                    <div class="account-card-header">
+                        <h2 class="h6">Personal Details</h2>
+                        <a href="{{ routes.account_addresses_url }}" class="edit-link">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </a>
+                    </div>
+                    <div class="account-card-content">
+                        <!-- Desktop Layout -->
+                        <div class="desktop-layout">
+                            <div class="detail-row">
+                                <span class="detail-label">Email</span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-value">{{ customer.email }}</span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-label">Name</span>
+                                <span class="detail-label">Mobile number</span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-value">{% if customer.addresses_count > 0 %}{{ customer.addresses.first.first_name }}{% else %}{{ customer.first_name }}{% endif %}</span>
+                                <span class="detail-value">{% if customer.addresses_count > 0 %}{{ customer.addresses.first.phone }}{% else %}-{% endif %}</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Mobile Layout -->
+                        <div class="mobile-layout">
+                            <div class="detail-row">
+                                <span class="detail-label">Email</span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-value">{{ customer.email }}</span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-label">Name</span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-value">{% if customer.addresses_count > 0 %}{{ customer.addresses.first.first_name }}{% else %}{{ customer.first_name }}{% endif %}</span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-label">Mobile number</span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-value">{% if customer.addresses_count > 0 %}{{ customer.addresses.first.phone }}{% else %}-{% endif %}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Saved Addresses Card -->
+                <div class="account-card">
+                    <div class="account-card-header">
+                        <h2 class="h6">Saved Addresses</h2>
+                        <a href="{{ routes.account_addresses_url }}" class="add-link">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+                                <path d="M12 8v8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                <path d="M8 12h8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                        </a>
+                    </div>
+                    <div class="account-card-content">
+                        {%- if customer.addresses_count > 0 -%}
+                            {%- for address in customer.addresses limit: 3 -%}
+                                <p class="address-item">
+                                    {{ address.first_name }} {{ address.last_name }}<br>
+                                    {{ address.address1 }}<br>
+                                    {%- if address.address2 != "" -%}{{ address.address2 }}<br>{% endif %}
+                                    {{ address.city }}, {{ address.province }} {{ address.zip }}<br>
+                                    {{ address.country }}
+                                </p>
+                            {%- endfor -%}
+                            {%- if customer.addresses_count > 3 -%}
+                                <p class="more-addresses">+{{ customer.addresses_count | minus: 3 }} more addresses</p>
+                            {%- endif -%}
+                        {%- else -%}
+                            <p class="no-addresses">You haven't saved anything yet.</p>
+                        {%- endif -%}
+                    </div>
+                </div>
+
+                <!-- Password Card -->
+                <div class="account-card" style="border: none;">
+                    <div class="account-card-header">
+                        <h2 class="h6">Password</h2>
+                    </div>
+                    <div class="account-card-content">
+                        <div class="detail-row">
+                            <span class="detail-label">Email</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-value">{{ customer.email }}</span>
+                        </div>
+                        <div class="detail-row" style="margin-top: 20px;">
+                            <span class="detail-label">Password</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-value">*********</span>
+                        </div>
+                        <div class="detail-row" style="margin-top: 20px;">
+                            <a href="https://www.xx-xyathletics.com/account/login#recover" class="reset-password-link">RESET PASSWORD</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Column - Order History -->
+            <div class="order-history-column">
+                <div class="account-card">
+                    <div class="account-card-header">
+                        <h2 class="h6">Order History</h2>
+                    </div>
+                    <div class="account-card-content" style="text-align: center;">
+                        {% paginate customer.orders by 20 %}
+                            {%- if customer.orders.size > 0 -%}
+                                <div class="order-list">
+                                    {%- for order in customer.orders -%}
+                                        <div class="order-item">
+                                            <a href="{{ order.customer_url }}" class="order-link">
+                                                <div class="order-info">
+                                                    <p class="order-number">Order {{ order.name }}</p>
+                                                    <p class="order-date">{{ order.created_at | time_tag: format: 'date' }}</p>
+                                                </div>
+                                                <div class="order-status">
+                                                    <span class="status-badge {{ order.financial_status }}">{{ order.financial_status_label }}</span>
+                                                    <p class="order-total">{{ order.total_price | money_with_currency }}</p>
+                                                </div>
+                                            </a>
+                                            <div class="order-actions">
+                                                <a href="https://www.xx-xyathletics.com/apps/redo/returns-portal/login?referralId=6968013d41b4662c3e29acd1" class="order-action-link start-return" target="_blank">
+                                                    START A RETURN
+                                                </a>
+                                                <a href="https://www.xx-xyathletics.com/pages/order-tracking?order_number={{ order.name | remove: '#' }}" class="order-action-link track-order" target="_blank">
+                                                    TRACK MY ORDER
+                                                </a>
+                                            </div>
+                                        </div>
+                                    {%- endfor -%}
+                                </div>
+
+                                {%- if paginate.pages > 1 -%}
+                                    <div class="pagination-wrapper">
+                                        <nav class="pagination" role="navigation" aria-label="{{ 'general.pagination.label' | t }}">
+                                            <ul role="list">
+                                                {%- if paginate.previous -%}
+                                                    <li>
+                                                        <a href="{{ paginate.previous.url }}" aria-label="{{ 'general.pagination.previous' | t }}">
+                                                            <svg aria-hidden="true" focusable="false" viewBox="0 0 10 6">
+                                                                <path fill-rule="evenodd" clip-rule="evenodd" d="M9.354.646a.5.5 0 00-.708 0L5 4.293 1.354.646a.5.5 0 00-.708.708l4 4a.5.5 0 00.708 0l4-4a.5.5 0 000-.708z" fill="currentColor" fill-rule="evenodd">
+                                                            </svg>
+                                                        </a>
+                                                    </li>
+                                                {%- endif -%}
+
+                                                {%- for part in paginate.parts -%}
+                                                    <li>
+                                                        {%- if part.is_link -%}
+                                                            <a
+                                                                href="{{ part.url }}"
+                                                                aria-label="{{ 'general.pagination.page' | t: number: part.title }}"
+                                                            >
+                                                                {{- part.title -}}
+                                                            </a>
+                                                        {%- else -%}
+                                                            {%- if part.title == paginate.current_page -%}
+                                                                <span
+                                                                    aria-current="page"
+                                                                    aria-label="{{ 'general.pagination.page' | t: number: part.title }}"
+                                                                >
+                                                                    {{- part.title -}}
+                                                                </span>
+                                                            {%- else -%}
+                                                                <span>{{ part.title }}</span>
+                                                            {%- endif -%}
+                                                        {%- endif -%}
+                                                    </li>
+                                                {%- endfor -%}
+
+                                                {%- if paginate.next -%}
+                                                    <li>
+                                                        <a
+                                                                href="{{ paginate.next.url }}"
+                                                                aria-label="{{ 'general.pagination.next' | t }}"
+                                                            >
+                                                                <svg
+                                                                    aria-hidden="true"
+                                                                    focusable="false"
+                                                                    viewBox="0 0 10 6"
+                                                                >
+                                                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M9.354.646a.5.5 0 00-.708 0L5 4.293 1.354.646a.5.5 0 00-.708.708l4 4a.5.5 0 00.708 0l4-4a.5.5 0 000-.708z" fill="currentColor">
+                                                                </svg>
+                                                            </a>
+                                                    </li>
+                                                {%- endif -%}
+                                            </ul>
+                                        </nav>
+                                    </div>
+                                {%- endif -%}
+                            {%- else -%}
+                                <div class="no-orders">
+                                    <p>You currently don't have any purchases.</p>
+                                    <a href="{{ routes.all_products_collection_url }}" class="btn btn-primary">
+                                        START SHOPPING
+                                    </a>
+                                </div>
+                            {%- endif -%}
+                        {% endpaginate %}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+                <!-- You May Also Like Section - XX-XY Logo Gear -->
+        <div class="recently-viewed-wrapper">
+                <div class="recently-viewed-section">
+                    <!-- Header -->
+                    <div class="product-recommendations__header--container recently-viewed-header">
+                        <h2 class="recently-viewed-title product-recommendations__heading h2 title--section you-might-title">
+                            Explore XX-XY Logo Gear
+                        </h2>
+                    </div>
+                    <!-- Swiper -->
+                    <div class="swiper logo-gear-swiper recent_change-position-next">
+                        <div class="swiper-wrapper logo-gear-list">
+                            {% assign logo_gear_collection = collections['xx-xy-logo-gear'] %}
+                            {% if logo_gear_collection != blank and logo_gear_collection.products_count > 0 %}
+                                {% for product in logo_gear_collection.products %}
+                                    {% comment %} {% unless product.id == 8603453948035 or product.id == 8494143963267 %} {% endcomment %}
+                                        <div class="swiper-slide recently-viewed-item collection-product-card product-recommendations__product quickview--hover">
+                                            <div class="card-wrapper gts">
+                                                <div class="card card--product">
+                                                    <div class="card__inner full-unstyled-link">
+                                                        <div class="recently-viewed-image media media--transparent media--portrait media--hover-effect">
+                                                            <a href="{{ product.url }}">
+                                                                <img src="{{ product.featured_image | image_url: width: 300 }}" alt="{{ product.title }}" width="300" height="400" />
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="card-information">
+                                                    <div class="recently-viewed-info card-information__wrapper">
+                                                        <div class="title_with-reviews">
+                                                            <div class="recently-viewed-title card__title">
+                                                                <a style="text-transform: none; color: rgba(47, 72, 76, 1) !important;" class="full-unstyled-link js-color-swatches-link card_product_title">{{ product.title }}</a>
+                                                            </div>
+                                                        </div>
+                                                        <div class="card-title_info recently-viewed-price">
+                                                            <div class="price mini-price">
+                                                                <div class="price__regular">
+                                                                    <span class="price-item price-item--regular">{{ product.price | money }}</span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    {% comment %} {% endunless %} {% endcomment %}
+                                {% endfor %}
+                            {% endif %}
+                        </div>
+                        <div class="swiper-scrollbar"></div>
+                    </div>
+                </div>
+        </div>
+
+        <!-- Logo Gear Swiper Script -->
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                // Wait a bit to ensure DOM is fully loaded and other scripts have run
+                setTimeout(function() {
+                    const logoGearSwiper = document.querySelector('.logo-gear-swiper');
+                    const logoGearWrapper = document.querySelector('.logo-gear-swiper .swiper-wrapper');
+                    
+                    // Debug: Check if logo gear products are loaded
+                    if (logoGearWrapper) {
+                        const logoGearProducts = logoGearWrapper.querySelectorAll('.swiper-slide');
+                        console.log('Logo Gear products found:', logoGearProducts.length);
+                        
+                        // Re-initialize the swiper to ensure it's properly set up
+                        if (logoGearSwiper && logoGearProducts.length > 0) {
+                            // Destroy any existing swiper instance
+                            if (logoGearSwiper.swiper) {
+                                logoGearSwiper.swiper.destroy(true, true);
+                            }
+                            
+                            // Initialize new swiper
+                            new Swiper(".logo-gear-swiper", {
+                                loop: false,
+                                spaceBetween: 10,
+                                scrollbar: {
+                                    el: '.swiper-scrollbar',
+                                    draggable: true,
+                                },
+                                breakpoints: {
+                                    0: {
+                                        slidesPerView: 1.3,
+                                    },
+                                    375: {
+                                        slidesPerView: 2.3,
+                                    },
+                                    576: {
+                                        slidesPerView: 2.3,
+                                    },
+                                    990: {
+                                        slidesPerView: 3.3,
+                                    },
+                                    1280: {
+                                        slidesPerView: 5.5,
+                                    },
+                                },
+                            });
+                        }
+                    }
+                }, 1000); // Wait 1 second after DOM load
+            });
+        </script>
+
+        <!-- Recently Viewed Section -->
+        <div class="recently-viewed-wrapper">
+                <div class="recently-viewed-section">
+                    <!-- Header -->
+                    <div class="product-recommendations__header--container recently-viewed-header">
+                        <h2 class="recently-viewed-title product-recommendations__heading h2 title--section you-might-title">
+                            Recently Viewed
+                        </h2>
+                    </div>
+                    <!-- Swiper -->
+                    <div class="swiper recently-viewed-swiper recent_change-position-next">
+                        <div class="swiper-wrapper recently-viewed-list">
+                            <!-- JS injected items -->
+                        </div>
+                        <div class="swiper-scrollbar"></div>
+                    </div>
+                </div>
+        </div>
+
+        <!-- Recently Viewed Script -->
+        <script>
+document.addEventListener('DOMContentLoaded', function () {
+    var recentlyViewed = JSON.parse(localStorage.getItem('recentlyViewed')) || [];
+    
+    // Hide the entire recently viewed wrapper if no items
+    if (recentlyViewed.length < 1) {
+        var recentlyViewedWrapper = document.querySelector('.recently-viewed-swiper')?.closest('.recently-viewed-wrapper');
+        if (recentlyViewedWrapper) {
+            recentlyViewedWrapper.style.display = 'none';
+        }
+        return; // Exit early, no need to do anything else
+    }
+
+    var container = document.querySelector('.recently-viewed-swiper .swiper-wrapper');
+    if (container && recentlyViewed.length > 0) {
+        container.innerHTML = recentlyViewed.map(function (item) {
+            return `
+                <div class="swiper-slide recently-viewed-item collection-product-card product-recommendations__product quickview--hover">
+                    <div class="card-wrapper">
+                        <div class="card card--product">
+                            <div class="card__inner full-unstyled-link">
+                                <div class="recently-viewed-image media media--transparent media--portrait media--hover-effect">
+                                    <a href="${item.url}">
+                                        <img src="${item.image}" alt="${item.title}" />
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-information">
+                            <div class="recently-viewed-info card-information__wrapper">
+                                <div class="title_with-reviews">
+                                    <div class="recently-viewed-title card__title">
+                                        <a style="text-transform: none; color: rgba(47, 72, 76, 1) !important;" class="full-unstyled-link js-color-swatches-link card_product_title">${item.title}</a>
+                                    </div>
+                                </div>
+                                <div class="card-title_info recently-viewed-price">
+                                    <div class="price mini-price">
+                                        <div class="price__regular">
+                                            <span class="price-item price-item--regular">${item.price}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> 
+            `;
+        }).join('');
+
+        new Swiper(".recently-viewed-swiper", {
+            loop: false,
+            spaceBetween: 10,
+            scrollbar: {
+                el: '.swiper-scrollbar',
+                draggable: true,
+            },
+            breakpoints: {
+                0: { slidesPerView: 1.3 },
+                375: { slidesPerView: 2.3 },
+                576: { slidesPerView: 2.3 },
+                990: { slidesPerView: 3.3 },
+                1280: { slidesPerView: 5.5 },
+            },
+        });
+    }
+});
+        </script>
+
+    </div>
+</div>
+
+ <script>
+	async function updateReturnLink() {
+		const url = 'https://api.loopreturns.com/api/v1/order/link';
+	
+		document.querySelectorAll('.return-data').forEach(async (link) => {
+			const orderId = link.getAttribute('data-id');
+			const zipCode = link.getAttribute('data-zip');
+	
+			const data = { name: orderId, zip: zipCode };
+	
+			const options = {
+				method: 'POST',
+				headers: {
+					'Accept': 'application/json',
+					'Content-Type': 'application/json',
+					'X-Authorization': 'fa58fbbbf5dfe8a42c4ae2d3703c01ab8e2323ca'
+				},
+				body: JSON.stringify(data)
+			};
+	
+			link.classList.add('skeleton-loader');
+			link.innerHTML = 'Loading...';
+	
+			try {
+				const response = await fetch(url, options);
+				if (!response.ok) {
+					throw new Error(`HTTP error! Status: ${response.status}`);
+				}
+	
+				const result = await response.json();
+				const returnUrl = result.url;
+	
+				// Store the return URL in the span's data-url attribute
+				link.setAttribute('data-url', returnUrl);
+				link.classList.remove('skeleton-loader');
+				link.innerHTML = 'Return item';
+			} catch (error) {
+				
+				link.classList.remove('skeleton-loader');
+				link.innerHTML = `<a href="mailto:orders@xx-xyathletics.com">Contact us for help</a>`;
+			}
+		});
+	}
+	
+	updateReturnLink();
+	
+	document.querySelectorAll('.return-data').forEach(function(returnButton) {
+		returnButton.addEventListener('click', function() {
+			// Get the return URL from the data-url attribute
+			var returnUrl = returnButton.getAttribute('data-url');
+	
+			if (returnUrl) {
+				// Open the return URL in a new tab
+				window.open(returnUrl, '_blank');
+			} else {
+			}
+		});
+	});
+	
+	
+	</script> 
+		
+{% schema %}
+{
+	"name": "t:sections.main-account.name"
+}
+{% endschema %}

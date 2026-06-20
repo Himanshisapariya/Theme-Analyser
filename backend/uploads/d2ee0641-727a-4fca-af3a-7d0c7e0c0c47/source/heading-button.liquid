@@ -1,0 +1,72 @@
+<div class="ctm_contact_question {{ section.settings.extra_class }}">
+  <div class="xl_container container_xl">
+    <div class="contact_question_grp text-center">
+      <div class="contact_question_heading mb-14">
+        <h3>{{ section.settings.headline }}</h3>
+      </div>
+      <div class="contact_question_descript mb-14">
+        <p>{{ section.settings.desc }}</p>
+      </div>
+    </div>
+    <div class="flex items-center justify-center gap-14">
+      {%- if section.settings.button_url != blank or section.settings.button != blank -%}
+        <div class="button-container">
+          <a href="{{ section.settings.button_url }}" class="aloe_leaf_btn">{{ section.settings.button }}</a>
+        </div>
+      {%- endif -%}
+      {%- if section.settings.button_url1 != blank or section.settings.button1 != blank -%}
+        <div class="button-container">
+          <a href="{{ section.settings.button_url1 }}" class="aloeleaf_fill_none_btn">{{ section.settings.button1 }}</a>
+        </div>
+      {%- endif -%}
+    </div>
+  </div>
+</div>
+{% schema %}
+{
+  "name": "Button and Heading",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "label": "Extra Class",
+      "id": "extra_class"
+    },
+    {
+      "type": "text",
+      "id": "headline",
+      "label": "Headline"
+    },
+    {
+      "type": "html",
+      "label": "Description ",
+      "id": "desc"
+    },
+    {
+      "type": "text",
+      "label": "Button",
+      "id": "button"
+    },
+    {
+      "type": "url",
+      "label": "Button URL",
+      "id": "button_url"
+    },
+    {
+      "type": "text",
+      "label": "Button",
+      "id": "button1"
+    },
+    {
+      "type": "url",
+      "label": "Button URL",
+      "id": "button_url1"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Button and Heading"
+    }
+  ]
+}
+{% endschema %}

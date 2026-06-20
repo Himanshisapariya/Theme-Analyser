@@ -1,0 +1,161 @@
+
+
+<style>
+.article__img__container {
+  position: relative;
+  width: 100%;
+  padding-bottom: 66%; 
+  overflow: hidden;
+}
+
+.article__img__container img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+@media screen and (max-width: 749px) {
+  .article__img__container {
+    padding-bottom: var(--mobile-aspect-ratio, 66%);
+  }
+}
+
+</style>
+
+<article class="article gts">
+	<div class="article__item">
+		<div class="article__item--img--content">
+			{%- if show_image -%}
+				<a class="article__img" href="{% if article.metafields.custom.url != blank %}{{ article.metafields.custom.url }}{% else %}{{ article.url }}{% endif %}" {% if article.metafields.custom.url != blank %}target="_blank"{% endif %}>
+					{%- assign mobile_image = article.metafields.custom.article_mobile_image.value -%}
+
+{%- if article.image -%}
+<div
+    class="article__img__container"
+    {% if mobile_image %}
+    style="--mobile-aspect-ratio: {{ 1 | divided_by: mobile_image.aspect_ratio | times: 100 }}%;"
+  {% endif %}
+  >
+    {% if mobile_image %}
+      <picture>
+        <!-- Mobile -->
+        <source
+          media="(max-width: 749px)"
+          srcset="{{ mobile_image | image_url: width: 1100 }}"
+        >
+
+        <!-- Desktop -->
+        <source
+          media="(min-width: 750px)"
+          srcset="{{ article.image | image_url: width: 1840 }}"
+        >
+
+        <img
+          src="{{ article.image | image_url: width: 1840 }}"
+          alt="{{ article.image.alt | escape }}"
+          loading="lazy"
+          class="motion-reduce"
+          sizes="{{ sizes }}"
+        >
+      </picture>
+    {% else %}
+      {{
+        article.image
+        | image_url: width: 1840
+        | image_tag:
+          loading: 'lazy',
+          sizes: sizes,
+          widths: '360, 533, 720, 940, 1066, 1340, 1640, 1840',
+          class: 'motion-reduce',
+          width: article.image.width,
+          height: article.image.height
+      }}
+    {% endif %}
+  </div>
+{%- endif -%}
+
+				</a>
+			{%- endif -%}
+			<div class="article__content">
+				{%- if show_tags and article.tags != blank -%}
+					<ul class="article__tags">
+						{% for tag in article.tags %}
+							
+
+							<li class="article__tag">
+								<a
+									href="{{ blog.url }}/tagged/{{ tag | handle }}"
+									class="full-unstyled-link"
+								>
+									<span title="{{ tag }}">{{ tag }}</span>
+								</a>
+							</li>
+							{% if forloop.last == false %}
+								<li class="article__line"></li>
+							{% endif %}
+						{% endfor %}
+					</ul>
+				{%- endif -%}
+				{%- if article.title != blank -%}
+					<h6 class="article__title">
+						<a href="{% if article.metafields.custom.url != blank %}{{ article.metafields.custom.url }}{% else %}{{ article.url }}{% endif %}" class="h6" {% if article.metafields.custom.url != blank %}target="_blank"{% endif %}>{{ article.title | escape }}</a>
+					</h6>
+				{% else %}
+					<h6 class="article__title" class="h6">
+						<a href="javasccript:;">
+							{{- 'sections.featured_blog.onboarding_title' | t -}}
+						</a>
+					</h6>
+				{%- endif -%}
+				<div class="article__info">
+					{%- if show_date and article.published_at != blank -%}
+						<span class="article__date">
+							{{- 'sections.featured_blog.posted_on' | t }}
+							{{- article.published_at | time_tag: '%B %d, %Y' -}}
+						</span>
+					{%- endif -%}
+					{%- if show_author and show_date -%}
+						<span class="article__line"></span>
+					{%- endif -%}
+					{%- if show_author and article.author != blank -%}
+						<span class="article__auther">{{- article.author -}}</span>
+					{%- endif -%}
+				</div>
+				{%- if show_excerpt and article.excerpt != blank -%}
+					<p class="article__excerpt">
+						{{ article.excerpt | strip_html | truncate: 70 }}
+					</p>
+				{%- endif -%}
+			</div>
+		</div>
+		<div class="article__item--link--btn">
+			{%- if show_btn != blank -%}
+				<div class="article__link_btn">
+					<a
+						type="button"
+						class="button--simple-move button button--with-underline"
+						href="{% if article.metafields.custom.url != blank %}{{ article.metafields.custom.url }}{% else %}{{ article.url }}{% endif %}"
+						{% if article.metafields.custom.url != blank %}target="_blank"{% endif %}
+					>
+						<span>{{ 'sections.featured_blog.view_now' | t -}}</span>
+					</a>
+					<a
+						class="button--with-underline"
+						href="{% if article.metafields.custom.url != blank %}{{ article.metafields.custom.url }}{% else %}{{ article.url }}{% endif %}"
+						{% if article.metafields.custom.url != blank %}target="_blank"{% endif %}
+						aria-label="{{ "accessibility.article_link" | t }}"
+					>
+					</a>
+				</div>
+			{%- endif -%}
+		</div>
+	</div>
+</article>
+
+
+
+
+
+

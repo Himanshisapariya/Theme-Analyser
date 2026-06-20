@@ -1,0 +1,68 @@
+{
+  "sections": {
+    "main": {
+      "type": "task1",
+      "blocks": {
+        "item_rYbLAB": {
+          "type": "item",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/1svg.png",
+            "itemname": "Hypoallergenic"
+          }
+        },
+        "item_3acNtn": {
+          "type": "item",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/2svg.png",
+            "itemname": "Temperature Regulating Technology"
+          }
+        },
+        "item_XjAgGw": {
+          "type": "item",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/3svg.png",
+            "itemname": "Water Resistantant and Removable Cover"
+          }
+        },
+        "item_YynwR9": {
+          "type": "item",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/4svg.png",
+            "itemname": "CertiPUR-US ® Certified Memory Foam"
+          }
+        },
+        "item_pTXi3C": {
+          "type": "item",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/5svg.png",
+            "itemname": "SupportEngineered for Growing Bodies"
+          }
+        },
+        "item_jVxbwP": {
+          "type": "item",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/6svg.png",
+            "itemname": "Cradling Tech for Reduced Restlessness"
+          }
+        }
+      },
+      "block_order": [
+        "item_rYbLAB",
+        "item_3acNtn",
+        "item_XjAgGw",
+        "item_YynwR9",
+        "item_pTXi3C",
+        "item_jVxbwP"
+      ],
+      "settings": {
+        "Headline1": "Finally",
+        "Headline2": "A Mattress Designed for Kids",
+        "button1": "Buy Now",
+        "button2": "Read More"
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

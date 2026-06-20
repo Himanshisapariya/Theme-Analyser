@@ -1,0 +1,80 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "rich_text_GPbeXW": {
+      "type": "rich-text",
+      "blocks": {
+        "text_HYX6qG": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Pooof is working with a select group of retail partners.<br/>If you are interested in partnering with us, please shoot us a note - we'll be happy to chat.</p>",
+            "extra_class_caption": ""
+          }
+        }
+      },
+      "block_order": [
+        "text_HYX6qG"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "extra_class": "",
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    },
+    "wholesale_retailer_nLahRe": {
+      "type": "wholesale-retailer",
+      "blocks": {
+        "retailer_details_ETQqEA": {
+          "type": "retailer_details",
+          "settings": {
+            "retailer_name": "Holly Larsen",
+            "description": "COO, Pooof",
+            "retailer_mail": "Holly@pooof.com"
+          }
+        },
+        "retailer_details_7Gntyt": {
+          "type": "retailer_details",
+          "settings": {
+            "retailer_name": "Michael Murphy",
+            "description": "Director of Sales, Pooof",
+            "retailer_mail": "Michael@kickballz.com"
+          }
+        }
+      },
+      "block_order": [
+        "retailer_details_ETQqEA",
+        "retailer_details_7Gntyt"
+      ],
+      "name": "Wholesale Retailer",
+      "settings": {
+        "extra_class": "",
+        "title": ""
+      }
+    }
+  },
+  "order": [
+    "main",
+    "rich_text_GPbeXW",
+    "wholesale_retailer_nLahRe"
+  ]
+}

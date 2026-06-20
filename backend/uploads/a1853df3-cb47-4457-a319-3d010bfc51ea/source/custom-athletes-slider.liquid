@@ -1,0 +1,731 @@
+{% style %}
+  .athelics-grid {
+    margin-top: {{ section.settings.top_margin_desktop}}px;
+    margin-bottom: {{ section.settings.bottom_margin_desktop }}px;
+  }
+
+  @media screen and (max-width: 990px) {
+    .athelics-grid {
+      margin-top: {{ section.settings.top_margin_mobile }}px;
+      margin-bottom: {{ section.settings.bottom_margin_mobile }}px;
+    }
+  }
+
+@media (max-width:768px){
+  .athelics-grid .swiper-slide{
+    width:300px !important;
+    height: 100% !important;
+  }
+}
+{% comment %} {% if section.settings.enable_fixed_hw %}
+@media (min-width: 768px) {
+  .athelics-grid .swiper-slide{
+    {% if section.settings.fixed_width != blank %}
+      width : {{ section.settings.fixed_width }}px;
+    {% else %}
+      width: 350px !important;
+    {% endif %}
+     height: 500px;
+    }
+}
+{% endif %} {% endcomment %}
+
+@media (max-width: 768px) {
+  /* Kill hover on mobile */
+  .ctm-card-hover:hover .hover-content {
+    opacity: 0 !important;
+    visibility: hidden !important;
+  }
+}
+
+.collection-grid-heading {
+  color: grey;
+  font-size: 16px;
+  margin: 0;
+}
+
+{% endstyle %}
+
+<section class="athelics-grid  section-id-{{ section.id }} {{ section.settings.section_extra_class }}">
+  <div class="athletes-title fullscreen-container">
+    <div class="athletes-header-row">
+      {% if section.settings.heading != blank %}
+        <p class="collection-grid-heading alignmnet-{{ section.settings.heading_alignment }}">{{ section.settings.heading }}</p>
+      {% endif %}
+      {% if section.settings.view_all_text != blank and section.settings.view_all_url != blank %}
+        <a href="{{ section.settings.view_all_url }}" class="view-all-link">{{ section.settings.view_all_text }}</a>
+      {% endif %}
+    </div>
+  </div>
+
+  <div class="athelics-section-grid swiper athelics-slider-{{ section.id }}">
+    <div class="swiper-wrapper">
+      {% for block in section.blocks %}
+        <div class="swiper-slide">
+          {% render block %}
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+
+  <div class="tabbing-aerrows{% unless section.settings.show_arrows %} hidden{% endunless %}">
+    <button
+      type="button"
+      class="swiper-button-prev peev-tabbing-btn athletes-prev-{{ section.id }}"
+      aria-label="Previous"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="10"
+        height="18"
+        viewBox="0 0 10 18"
+        fill="none"
+        class="icon icon-caret-left"
+      >
+        <path d="M9 17L0.999999 9L9 1" stroke="currentcolor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+      </svg>
+    </button>
+
+    <button type="button" class="swiper-button-next next-tabbing-btn athletes-next-{{ section.id }}" aria-label="Next">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="10"
+        height="18"
+        viewBox="0 0 10 18"
+        fill="none"
+        class="icon icon-caret-right"
+      >
+        <path d="M1 1L9 9L1 17" stroke="currentcolor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+      </svg>
+    </button>
+  </div>
+  <div class="swiper-scrollbar"></div>
+</section>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    if (typeof Swiper === 'undefined') return;
+  
+    let sliderInstance; // global ref
+  
+    // Preload images function
+    function preloadImages() {
+      const slides = document.querySelectorAll('.athelics-slider-{{ section.id }} .swiper-slide');
+      slides.forEach(slide => {
+        const img = slide.querySelector('img');
+        if (!img) return;
+  
+        const loadingEl = document.createElement('div');
+        loadingEl.className = 'slide-loading';
+        slide.appendChild(loadingEl);
+  
+        if (img.dataset.lowres) {
+          const placeholder = document.createElement('img');
+          placeholder.className = 'slide-image';
+          placeholder.src = img.dataset.lowres;
+          slide.appendChild(placeholder);
+        }
+  
+        const actualImage = new Image();
+        actualImage.onload = function () {
+          if (loadingEl) loadingEl.remove();
+          const placeholder = slide.querySelector('.slide-image');
+          if (placeholder) placeholder.remove();
+          img.classList.add('fade-in');
+          img.style.opacity = 1;
+        };
+        actualImage.src = img.src;
+      });
+    }
+  
+    // init Swiper
+    function initSlider() {
+      const sliderElement = document.querySelector(".athelics-slider-{{ section.id }}");
+      if (!sliderElement) return;
+  
+      preloadImages();
+  
+      // destroy old instance before creating new
+      if (sliderInstance) {
+        sliderInstance.destroy(true, true);
+        sliderInstance = null;
+      }
+  
+      sliderInstance = new Swiper(sliderElement, {
+        slidesPerView: 'auto',
+        spaceBetween: {{ section.settings.mobile_gap }},
+        loop: true,
+        centeredSlides: window.innerWidth <= 575,
+        slideToClickedSlide: false,
+        preventClicks: false,
+        preventClicksPropagation: false,
+        observer: true,
+        observeParents: true,
+        navigation: {
+          nextEl: ".athletes-next-{{ section.id }}",
+          prevEl: ".athletes-prev-{{ section.id }}",
+        },
+        scrollbar: {
+          el: ".athelics-grid.section-id-{{ section.id }} .swiper-scrollbar",
+          hide: false,
+          draggable: true,
+        },
+        {%  if template == 'index' %}
+   breakpoints: {
+        576: {
+          spaceBetween: {{ section.settings.mobile_gap }},
+          centeredSlides: false
+        },
+        700: {
+          spaceBetween: {{ section.settings.mobile_gap }},
+          centeredSlides: true
+        },
+        1024: {
+          {% if section.settings.enable_fixed_hw != true %}
+          slidesPerView:{{ section.settings.very_small_desktop }},
+           {% endif %}
+          spaceBetween: {{ section.settings.desktop_gap }},
+          centeredSlides: true
+        },
+        1440: {
+           {% if section.settings.enable_fixed_hw != true %}
+          slidesPerView:{{ section.settings.small_desktop }},
+           {% endif %}
+          spaceBetween: {{ section.settings.desktop_gap }},
+        },
+        1580: {
+          {% if section.settings.enable_fixed_hw != true %}
+          slidesPerView:{{ section.settings.medium_desktop }},
+          {% endif %}
+          spaceBetween: {{ section.settings.desktop_gap }} ,
+        },
+        1800: {
+          {% if section.settings.enable_fixed_hw != true %}
+          slidesPerView:{{ section.settings.large_desktop }},
+          {% endif %} 
+          spaceBetween: {{ section.settings.desktop_gap }},
+        } 
+      }, 
+    {% else %}
+ breakpoints: {
+        576: {
+          spaceBetween: {{ section.settings.desktop_gap }},
+          centeredSlides: false
+        },
+              }, 
+    {%  endif %}
+        on: {
+          init: function () {
+            preloadAdjacentImages(this);
+            setupMobileClick(this);
+          }
+        }
+      });
+    }
+  
+    function preloadAdjacentImages(swiper) {
+      const nextIndex = swiper.activeIndex + 1;
+      const prevIndex = swiper.activeIndex - 1;
+  
+      [nextIndex, prevIndex].forEach(i => {
+        if (swiper.slides[i]) {
+          const img = swiper.slides[i].querySelector('img');
+          if (img && !img.complete) {
+            const preload = new Image();
+            preload.src = img.src;
+          }
+        }
+      });
+    }
+  
+    function setupMobileClick(swiper) {
+      if (window.innerWidth > 768) return;
+  
+      swiper.slides.forEach(slide => {
+        slide.querySelector('.ctm-card-hover')?.classList.remove('active');
+      });
+  
+      const wrapper = swiper.wrapperEl;
+      wrapper.onclick = (e) => {
+        const slide = e.target.closest('.swiper-slide');
+        if (!slide || !wrapper.contains(slide)) return;
+  
+        const hover = slide.querySelector('.ctm-card-hover');
+        if (!hover) return;
+  
+        swiper.slides.forEach(s => {
+          s.querySelector('.ctm-card-hover')?.classList.remove('active');
+        });
+  
+        hover.classList.add('active');
+      };
+    }
+  
+    // init on load
+    initSlider();
+  
+    // re-init on resize
+    window.addEventListener('resize', function () {
+      setTimeout(() => {
+        initSlider();
+      }, 150);
+    });
+  });
+  </script>
+{% stylesheet %}
+
+/* Existing hover effect */
+.ctm-card-hover:hover .hover-content {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Extra line for mobile (when JS adds .active) */
+.ctm-card-hover.active .hover-content {
+  opacity: 1;
+  visibility: visible;
+}
+
+
+  /* Add these styles to your existing CSS */
+  .athelics-slider-{{ section.id }} .swiper-slide {
+    position: relative;
+  }
+  
+  /* Blurred low-quality image placeholder */
+  .slide-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    filter: blur(10px);
+    transform: scale(1.05);
+    transition: opacity 0.3s ease;
+    opacity: 1;
+  }
+  
+  .slide-image.loaded {
+    filter: blur(0);
+    transform: scale(1);
+  }
+  
+  /* Fade in effect for images */
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  
+  .slide-image.fade-in {
+    animation: fadeIn 0.5s ease forwards;
+  }
+  
+  /* Loading indicator */
+  .slide-loading {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 40px;
+    height: 40px;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    border-top-color: #2f484c;
+    animation: spin 1s ease-in-out infinite;
+  }
+  
+  @keyframes spin {
+    to { transform: translate(-50%, -50%) rotate(360deg); }
+  }
+
+
+  /* Slides */
+  .athelics-section-grid .swiper-slide {
+    height: auto;
+  }
+  .ctm-card-hover {
+    height: 100%;
+    width: 100%;
+  }
+
+  /* Title alignment */
+  .athletes-title .alignmnet-center {
+    text-align: center;
+  }
+  .athletes-title .alignmnet-left {
+    text-align: left;
+  }
+  .athletes-title .alignmnet-right {
+    text-align: right;
+  }
+
+  /* Header row layout */
+  .athletes-header-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+
+  .athletes-title .alignmnet-center .athletes-header-row {
+    justify-content: center;
+    text-align: center;
+  }
+
+  .athletes-title .alignmnet-right .athletes-header-row {
+    justify-content: flex-end;
+    text-align: right;
+  }
+
+  .athletes-title.fullscreen-container 
+  {
+    padding-bottom: 25px;
+  }
+
+  /* View all link styling */
+  .view-all-link {
+    color: #2f484c;
+    text-decoration: underline;
+    font-weight: 500;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    transition: opacity 0.3s ease;
+  }
+
+  .view-all-link:hover {
+    opacity: 0.8;
+  }
+/* 
+  .view-all-link::after {
+    content: "→";
+    font-size: 16px;
+  } */
+
+  /* Scrollbar styles */
+  .ctm-how-it-fits .swiper-scrollbar {
+    display: block !important;
+    position: relative !important;
+    left: 50% !important;
+    bottom: 0 !important;
+    margin: 30px !important;
+    transform: translateX(-50%) !important;
+    background: #E8E8E9 !important;
+    border-radius: 3px !important;
+    height: 3px !important;
+    width: 250px !important;
+  }
+
+  .athelics-grid.section-id-{{ section.id }} .swiper-scrollbar-drag {
+    cursor: pointer;
+    background: #2f484c !important;
+    border-radius: 3px;
+  }
+
+  .athelics-grid .tabbing-aerrows.hidden {
+    display: none;
+  }
+
+  .athelics-section-grid {
+    margin-bottom: 25px;
+  }
+
+  /* Controls layout */
+  .slider-controls-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    margin-top: 16px;
+  }
+
+  /* Arrow buttons */
+  .swiper-button-prev,
+  .swiper-button-next {
+    position: static;
+    width: 36px;
+    height: 36px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    background: transparent;
+    color: #fff;
+  }
+  .swiper-button-prev::after,
+  .swiper-button-next::after {
+    display: none;
+  }
+  .swiper-button-disabled {
+    opacity: 0.4;
+    cursor: default;
+  }
+
+  /* Pagination (dashed bullets style) */
+  .swiper-pagination {
+    position: static;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+  }
+  .swiper-pagination-bullet {
+    width: 24px;
+    height: 3px;
+    border-radius: 2px;
+    background: rgba(255, 255, 255, 0.35);
+    opacity: 1;
+    margin: 0 !important;
+  }
+  .swiper-pagination-bullet-active {
+    background: #fff;
+    width: 32px;
+  }
+  .athelics-grid {
+    position: relative;
+  }
+
+  .athelics-section-grid.swiper {
+    padding-left: 24px;
+  }
+
+  .athelics-grid .swiper-button-prev.peev-tabbing-btn,
+  .athelics-grid .swiper-button-next.next-tabbing-btn {
+    top: 55%;
+  }
+
+    .athelics-grid .swiper-slide img {
+      width: 100%;
+      height: 100%;
+    }
+
+  @media (min-width: 1800px) {
+    .athelics-grid .swiper-slide img {
+      width: 100%;
+      height: 100%;
+    }
+    }
+
+  @media (max-width: 1440px) {
+    .athelics-grid .swiper-button-prev.peev-tabbing-btn,
+    .athelics-grid .swiper-button-next.next-tabbing-btn {
+      top: 60%;
+    }
+    .athletes-title.fullscreen-container h3 {
+      margin: 0;
+    }
+  }
+
+  @media (max-width: 575px) {
+    .athelics-section-grid.swiper {
+      padding-left: 0px;
+    }
+  }
+
+  @media (max-width: 749px) {
+    .athelics-grid .swiper-button-prev.peev-tabbing-btn,
+    .athelics-grid .swiper-button-next.next-tabbing-btn {
+      top: 60%;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Athletes Slider",
+  "settings": [
+    {
+      "type": "text",
+      "label": "Section Extra Class",
+      "id": "section_extra_class"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading"
+    },
+    {
+      "type": "select",
+      "id": "heading_alignment",
+      "label": "Heading Alignment",
+      "default": "left",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ]
+    },
+    {
+      "type": "range",
+      "id": "heading_spacing",
+      "label": "Heading Bottom Spacing (px)",
+      "default": 20,
+      "min": 0,
+      "max": 100,
+      "step": 5
+    },
+    {
+      "type" : "header",
+      "content" :"Desktop Slides Per View"
+    },
+    {
+      "type": "checkbox",
+      "label": "Enable Fixed Height Width",
+      "id": "enable_fixed_hw",
+      "info": "If this option is enabled, the selected slides-per-view setting will not apply, and the images will use a fixed width."
+    },
+    {
+      "type": "range",
+      "label": "Fixed Card Width",
+      "id": "fixed_width",
+      "default": 350,
+      "min": 250,
+      "max": 600,
+      "step": 50,
+       "unit": "px"
+    },
+    {
+      "type": "range",
+      "label": "Very Small Desktop",
+      "id": "very_small_desktop",
+      "default": 3.9,
+      "min": 2,
+      "max": 5,
+      "step": 0.1
+    },
+    {
+      "type": "range",
+      "label": "Small Desktop",
+      "id": "small_desktop",
+      "default": 3.9,
+      "min": 2,
+      "max": 5,
+      "step": 0.1
+    },
+    {
+      "type": "range",
+      "label": "Medium Desktop",
+      "id": "medium_desktop",
+      "default": 4.2,
+      "min": 3,
+      "max": 5,
+      "step": 0.1
+    },
+    {
+      "type": "range",
+      "label": "Large Desktop",
+      "id": "large_desktop",
+      "default": 5.1,
+      "min": 3,
+      "max": 6,
+      "step": 0.1
+    },
+    {
+      "type": "range",
+      "label": "Gap",
+      "id": "desktop_gap",
+      "default": 20,
+      "min": 5,
+      "max": 50,
+      "step": 1
+    },
+    {
+      "type": "range",
+      "label": "Mobile Gap",
+      "id": "mobile_gap",
+      "default": 10,
+      "min": 5,
+      "max": 50,
+      "step": 1
+    },
+    {
+      "type": "range",
+      "label": "Top Margin Desktop",
+      "id": "top_margin_desktop",
+      "default": 0,
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "label": "Bottom Margin Desktop",
+      "id": "bottom_margin_desktop",
+      "default": 0,
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "label": "Top Margin Mobile",
+      "id": "top_margin_mobile",
+      "default": 0,
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "label": "Bottom Margin Mobile",
+      "id": "bottom_margin_mobile",
+      "default": 0,
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px"
+    },
+    {
+      "type": "header",
+      "content": "View All Link"
+    },
+    {
+      "type": "text",
+      "id": "view_all_text",
+      "label": "View All Text",
+      "default": "EXPLORE ATHLETES"
+    },
+    {
+      "type": "url",
+      "id": "view_all_url",
+      "label": "View All URL"
+    },
+    {
+      "type": "header",
+      "content": "Arrow Settings"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_arrows",
+      "label": "Show navigation arrows",
+      "default": true
+    }
+  ],
+  "blocks": [
+    {
+      "type": "hover-card"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Athletes Slider",
+      "category": "Custom",
+      "blocks": []
+    }
+  ]
+}
+{% endschema %}

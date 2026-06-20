@@ -1,0 +1,77 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "settings": {
+        "extra_class": ""
+      }
+    },
+    "order_tracking_NVPww8": {
+      "type": "order-tracking",
+      "blocks": {
+        "slide_RKWUwA": {
+          "type": "slide",
+          "settings": {
+            "slide_image": "shopify://shop_images/ordertrack-desktop1.jpg",
+            "slide_image_tablet": "shopify://shop_images/ordertrach-tab1.jpg",
+            "slide_image_mobile": "shopify://shop_images/order1_ae1e098f-62db-4b94-8160-ea6c38dcdc18.jpg",
+            "heading": "Empowering Women Starts Here.",
+            "subheading": "Keep up with your order and stay ready for every workout. Fairness in sports begins with you.",
+            "button_text": "",
+            "button_link": ""
+          }
+        },
+        "slide_TmfMkV": {
+          "type": "slide",
+          "settings": {
+            "slide_image": "shopify://shop_images/order2.jpg",
+            "slide_image_tablet": "shopify://shop_images/order2_70dee0f0-647e-4ccf-b228-f0e9b77c443a.jpg",
+            "slide_image_mobile": "shopify://shop_images/order2_04eec40b-82b1-40e8-ba13-754827bb7d68.jpg",
+            "heading": "Empowering Women Starts Here",
+            "subheading": "Keep up with your order and stay ready for every workout. Fairness in sports begins with you.",
+            "button_text": "",
+            "button_link": ""
+          }
+        },
+        "slide_8Q9tN4": {
+          "type": "slide",
+          "settings": {
+            "slide_image": "shopify://shop_images/ordertrack-desktop3.jpg",
+            "slide_image_tablet": "shopify://shop_images/ordertrack-tab3.jpg",
+            "slide_image_mobile": "shopify://shop_images/order3_3232eadb-e730-4c23-970c-ea86c1ff79fc.jpg",
+            "heading": "Empowering Women Starts Here",
+            "subheading": "Keep up with your order and stay ready for every workout. Fairness in sports begins with you.",
+            "button_text": "",
+            "button_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "slide_RKWUwA",
+        "slide_TmfMkV",
+        "slide_8Q9tN4"
+      ],
+      "name": "Order Tracking",
+      "settings": {
+        "header_color_scheme": "dark",
+        "color_scheme_customer": "background-1",
+        "subtitle": "Some text for section",
+        "autoplay": true,
+        "logo": "shopify://shop_images/Logo-Horiz-Reduced-Green_copy.png"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "order_tracking_NVPww8"
+  ]
+}

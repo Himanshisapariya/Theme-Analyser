@@ -1,0 +1,173 @@
+.spring-new-banner-start > * {
+    flex: 0 0 50%;
+  }
+  .spring-new-banner-start .flex_two img {
+      max-width: 100%;
+      height: auto;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+  }
+  .spring-new-banner-start .flex_one .flex_one_inside {
+      max-width: max-content;
+      width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+  }
+  .spring-new-banner-start .spring-new-banner-small-text {
+      margin-bottom: 30px;
+  }
+  .spring-new-banner-start .spring-new-banner-small-text * {
+      font-size: 20px;
+      line-height: 120%;
+      margin: 0;
+  }
+  .spring-new-banner-start .spring-new-banner-title {
+        margin-bottom: 10px;
+  }
+  .spring-new-banner-start .spring-new-banner-title * {
+      /* font-weight: 500; */
+      margin: 0;
+      max-width: 400px;
+  }
+  .spring-new-banner-start .spring-new-banner-text {
+        margin-bottom: 30px;
+  }
+  .spring-new-banner-start .spring-new-banner-text * {
+    font-size: 26px;
+    line-height: 120%;
+    margin: 0;
+  }
+  .spring-new-banner-start .spring-new-banner-btn {
+      display: inline-flex;
+      flex-direction: column;
+      gap: 15px;
+      max-width: max-content;
+  }
+  .spring-new-banner-start .spring_banner.flex_one {
+      padding: 5rem;
+  }
+  .spring-new-banner-start .spring-new-banner-btn .button  {
+      border-radius: 0;
+      text-transform: capitalize;
+      margin-top: 0;
+  }
+  .spring-new-banner-start .spring-new-lookout-mobile {
+    display: none;
+  }
+  
+  @media (min-width: 1400px) and (max-width: 1799px) {
+    .spring-new-banner-start .spring_banner.flex_one {
+      padding: 5rem 5rem 16rem 5rem;
+    }
+  }
+  
+  @media (min-width: 1200px) and (max-width: 1399px) {
+    .spring-new-banner-start .spring_banner.flex_one {
+      padding: 4rem 4rem 14rem 4rem;
+    }
+  }
+  @media (max-width: 1799px) {
+    .spring-new-banner-start .spring-new-banner-text * {
+      font-size: 20px;
+    }
+  }
+  @media (min-width: 992px) {
+    .spring-new-banner-start .spring-new-banner-text {
+      max-width: 420px;
+    }
+  }
+  @media (min-width: 992px) and (max-width: 1199px) {
+    .spring-new-banner-start .spring_banner.flex_one {
+      padding: 4rem 4rem 10rem 4rem;
+    }
+    .spring-new-banner-start .flex_one .flex_one_inside {
+      width: auto;
+    }
+    .spring-new-banner-start .spring-new-banner-small-text * {
+      font-size: 24px;
+    }
+    .spring-new-banner-start .spring-new-banner-text {
+      max-width: 408px;
+    }
+  }
+  @media (min-width: 768px) and (max-width: 991px) {
+    .spring-new-banner-start .spring_banner.flex_one {
+      padding: 4rem 4rem 10rem 4rem;
+    }
+    .spring-new-banner-start .flex_one .flex_one_inside {
+      width: auto;
+      max-width: 100%;
+    }
+    .spring-new-banner-start .spring-new-banner-small-text * {
+      font-size: 24px;
+    }
+    .spring-new-banner-start .spring-new-banner-text {
+      max-width: max-content;
+      margin-bottom: 60px;
+    }
+    .spring_banner-main.spring-new-banner-start {
+      flex-direction: column-reverse;
+    }
+    .spring-new-banner-start > * {
+      flex: 0 0 100%;
+    }
+    .spring-new-banner-start .spring-new-banner-title * {
+      max-width: max-content;
+      font-size: 30px;
+    }
+  }
+  @media (max-width: 767px) {
+    .spring-new-banner-start .spring_banner.flex_one {
+      padding: 3rem 4rem 8rem 4rem;
+    }
+    .spring-new-banner-start .flex_one .flex_one_inside {
+      width: auto;
+      max-width: 100%;
+    }
+    .spring-new-banner-start .spring-new-banner-small-text * {
+      font-size: 18px;
+    }
+    .spring-new-banner-start .spring-new-banner-text * {
+      font-size: 16px;
+    }
+    .spring-new-banner-start .spring-new-banner-text {
+      max-width: max-content;
+      margin-bottom: 40px;
+    }
+    .spring_banner-main.spring-new-banner-start {
+      flex-direction: column-reverse;
+    }
+    .spring-new-banner-start > * {
+      flex: 0 0 100%;
+    }
+    .spring-new-banner-start .spring-new-banner-title * {
+      max-width: max-content;
+    }
+    .spring-new-banner-start .spring-new-banner-title {
+      margin-bottom: 10px;
+    }
+    .spring-new-banner-start .spring-new-banner-small-text {
+      margin-bottom: 10px;
+    }
+    .spring-new-banner-start .spring-new-banner-title * {
+      font-size: 28px;
+    }
+  }
+  @media (max-width: 575px) {
+    .spring-new-banner-start .spring_banner.flex_one {
+        padding: 3rem 3rem 6rem 3rem;
+    }
+    .spring-new-banner-start .spring-new-banner-btn {
+        display: flex;
+    }
+    .spring-new-banner-start.fullscreen-container {
+      padding: 0;
+    }
+    .spring-new-banner-start .spring-new-lookout-desktop {
+      display: none;
+    }
+    .spring-new-banner-start .spring-new-lookout-mobile {
+      display: block;
+    }
+  }

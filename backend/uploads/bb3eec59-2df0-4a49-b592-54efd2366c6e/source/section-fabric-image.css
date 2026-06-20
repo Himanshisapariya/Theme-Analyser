@@ -1,0 +1,292 @@
+/* fabric-legit */
+
+.fabric-guide-legit-fabric-main .fabric-title,
+.fabric-guide-legit-fabric-main .fabric-button,
+.fabric-guide-legit-fabric-main .fabric-section__content,
+.fabric-guide-legit-fabric-main .fabric-tip-text {
+    padding: 0 20px;
+}
+
+.fabric-guide-legit-fabric-main .fabric-title {
+    margin-bottom: 20px;
+}
+
+.fabric-guide-legit-fabric-main .fabric-title h3 {
+    margin: 0;
+}
+
+.fabric-guide-legit-fabric-main .fabric-button {
+    margin-bottom: 40px;
+}
+
+.fabric-guide-legit-fabric-main .fabric-button * {
+    margin: 0;
+}
+
+.fabric-guide-legit-fabric-main .fabric-button a {
+    text-decoration: none !important;
+    color: #000000;
+}
+
+
+
+.fabric-guide-legit-fabric-main .fabric-image-block img {
+    width: 100%;
+    aspect-ratio: 1/0.9;
+    object-fit: cover;
+}
+
+.fabric-guide-legit-fabric-main .swiper-button-prev.peev-tabbing-btn {
+    left: 10px !important;
+}
+
+.fabric-guide-legit-fabric-main .swiper-button-next.next-tabbing-btn {
+    right: 10px !important;
+}
+
+.fabric-guide-legit-fabric-main .fabric-section__content {
+    display: flex;
+    gap: 40px;
+    margin-top: 30px;
+    margin-bottom: 40px;
+}
+
+.fabric-guide-legit-fabric-main .fabric-section__content b {
+    display: block;
+    min-height: 24px;
+    margin-bottom: 14px;
+}
+
+.fabric-guide-legit-fabric-main .fabric-section__content .fabric-description * {
+    margin: 0;
+    margin-bottom: 4px;
+}
+
+.fabric-guide-legit-fabric-main .fabric-section__content .fabric-description *:last-child {
+    margin-bottom: 0;
+}
+
+.fabric-guide-legit-fabric-main .fabric-section__content .fabric-love ul {
+    margin-bottom: 0;
+}
+
+.fabric-guide-legit-fabric-main .fabric-tip-text .fabric-tip-text-inside {
+    padding: 30px;
+    border: 2px solid #D3D3D3;
+}
+
+.fabric-guide-legit-fabric-main .fabric-tip-text .fabric-tip-text-inside * {
+    margin: 0;
+    margin-bottom: 16px;
+}
+
+.fabric-guide-legit-fabric-main .fabric-tip-text .fabric-tip-text-inside *:last-child {
+    margin-bottom: 0;
+}
+
+.fabric-guide-legit-fabric-main .link-btn {
+    font-weight: 400;
+}
+
+@media (min-width: 1800px) {
+    .fabric-guide-legit-fabric-main .fabric-section__content > * {
+        flex: 0 0 calc(50% - 20px);
+    }
+}
+
+@media (min-width:1400px) {
+    .fabric-guide-legit-fabric-main .fabric-tip-text .fabric-tip-text-inside p {
+        font-size: 18px;
+        line-height: normal;
+    }
+}
+
+@media (min-width:1400px) and (max-width: 1799px) {
+    .fabric-guide-legit-fabric-main .fabric-section__content > * {
+        flex: 0 0 calc(50% - 20px);
+    }
+}
+
+@media (min-width:1200px) and (max-width: 1399px) {
+    .fabric-guide-legit-fabric-main .fabric-section__content > * {
+        flex: 0 0 calc(50% - 20px);
+    }
+}
+
+@media (min-width:992px) and (max-width: 1199px) {
+    .fabric-guide-legit-fabric-main .fabric-section__content > * {
+        flex: 0 0 calc(50% - 20px);
+    }
+}
+
+@media (min-width:768px) and (max-width: 991px) {
+    .fabric-guide-legit-fabric-main .fabric-section__content {
+        flex-direction: column !important;
+    }
+    .fabric-guide-legit-fabric-main .fabric-section__content b {
+        min-height: unset;
+    }
+    .fabric-guide-legit-fabric-main .fabric-tip-text .fabric-tip-text-inside {
+        padding: 20px;
+    }
+    .fabric-guide-legit-fabric-main .fabric-section__content {
+        gap: 30px;
+        margin-bottom: 30px;
+    }
+}
+
+@media (min-width:576px) and (max-width: 767px) {
+    .fabric-guide-legit-fabric-main .fabric-section__content {
+        flex-direction: column !important;
+    }
+    .fabric-guide-legit-fabric-main .fabric-section__content b {
+        min-height: unset;
+    }
+    .fabric-guide-legit-fabric-main .fabric-tip-text .fabric-tip-text-inside {
+        padding: 20px;
+    }
+    .fabric-guide-legit-fabric-main .fabric-section__content {
+        gap: 30px;
+        margin-bottom: 30px;
+    }
+}
+
+@media (max-width: 575px) {
+    .fabric-guide-legit-fabric-main .fabric-section__content {
+        flex-direction: column !important;
+    }
+    .fabric-guide-legit-fabric-main .fabric-section__content b {
+        min-height: unset;
+    }
+    .fabric-guide-legit-fabric-main .fabric-tip-text .fabric-tip-text-inside {
+        padding: 20px;
+    }
+    .fabric-guide-legit-fabric-main .fabric-section__content {
+        gap: 30px;
+        margin-bottom: 30px;
+    }
+}
+
+/* fabric-legit */
+
+/* fabric-shop-all */
+
+.fabric-page-shop-all-main .fullscreen-container {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+}
+
+.fabric-page-shop-all-main .fabric-button {
+    margin-bottom: 40px;
+}
+
+.fabric-page-shop-all-main .fabric-button a {
+    text-decoration: none;
+}
+
+.fabric-page-shop-all-main .fabric-button h5 {
+    font-weight: 400;
+    margin: 0;
+}
+
+
+
+
+
+.fabric-page-shop-all-main .fabric-product-grid .fabric-product-item .product-card__image a {
+    display: flex;
+}
+
+.fabric-page-shop-all-main .fabric-product-grid .fabric-product-item .product-card__image img {
+    max-width: 100%;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 0.67/1;
+    object-fit: cover;
+}
+.fabric-page-shop-all-main .product-card__title {
+    font-weight: 400;
+    margin: 0;
+}
+
+.fabric-page-shop-all-main .product-card__title a {
+    text-decoration: none;
+}
+
+@media (min-width: 1651px) {
+.fabric-page-shop-all-main .product-card__info {
+    margin: 20px 0 20px 0;
+}
+}
+
+@media (min-width:768px) and (max-width: 1650px) {
+    .fabric-page-shop-all-main .product-card__info {
+        margin: 15px 0 15px 0;
+    }
+}
+
+@media (min-width:1200px) and (max-width: 1399px) {
+    
+    
+    .fabric-page-shop-all-main .product-card__title a {
+        font-size: 20px;
+    }
+}
+
+@media (min-width:992px) and (max-width: 1199px) {
+    
+    
+    .fabric-page-shop-all-main .product-card__title a {
+        font-size: 20px;
+    }
+}
+
+@media (min-width:768px) and (max-width: 991px) {
+    
+    
+    .fabric-page-shop-all-main .product-card__title a {
+        font-size: 20px;
+    }
+}
+
+@media (min-width:576px) and (max-width: 767px) {
+    
+    
+    .fabric-page-shop-all-main .product-card__title a {
+        font-size: 18px;
+    }
+    .fabric-card-main .button--rebuy,
+    .fabric-guide-legit-fabric-main .button--rebuy,
+    .fabric-page-shop-all-main .button--rebuy {
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 767px) {
+    .fabric-guide-legit-fabric-main .fabric-title {
+        margin-bottom: 10px;
+    }
+    .fabric-guide-legit-fabric-main .fabric-button {
+        margin-bottom: 30px;
+    }
+}
+
+@media (max-width: 575px) {
+    
+    
+    .fabric-page-shop-all-main .product-card__title a {
+        font-size: 16px;
+        line-height: normal;
+        display: inline-block;
+    }
+    .fabric-page-shop-all-main .product-card__info {
+        margin: 16px 0;
+    }
+    .fabric-card-main .button--rebuy,
+    .fabric-guide-legit-fabric-main .button--rebuy,
+    .fabric-page-shop-all-main .button--rebuy {
+        font-size: 16px;
+    }
+}
+
+/* fabric-shop-all */

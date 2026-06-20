@@ -1,0 +1,204 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "product-grid": {
+      "type": "main-collection-product-grid",
+      "custom_css": [
+        ".card__title {font-weight: bold;}",
+        ".collection-product-list {row-gap: 4rem;}",
+        ".collection-product {margin-bottom: 60px;}"
+      ],
+      "settings": {
+        "collection_product_title_invisible": "",
+        "product_lists": [],
+        "products_per_page": 22,
+        "columns_mobile": "2",
+        "image_ratio": "portrait",
+        "image_fit": "cover",
+        "show_secondary_image": false,
+        "show_vendor": false,
+        "show_desc": false,
+        "show_sku": false,
+        "quickview_show": true,
+        "enable_filtering": false,
+        "enable_sorting": false,
+        "image_filter_ratio": "4/5",
+        "image_filter_fit": "cover",
+        "image_filter_columns": 5
+      }
+    },
+    "banner": {
+      "type": "main-collection-banner",
+      "disabled": true,
+      "custom_css": [
+        ".collection-hero__text-wrapper {flex-direction: column-reverse; margin-bottom: 20px;}",
+        "h2 {text-size: 21px;}"
+      ],
+      "settings": {
+        "header_color_scheme": "light",
+        "add_word": "",
+        "show_word": false,
+        "show_collection_description": false,
+        "show_collection_image": true,
+        "overlay_enable": false,
+        "overlay_opacity": 15
+      }
+    },
+    "image_with_text_cpQtFF": {
+      "type": "image-with-text",
+      "settings": {
+        "row-reverse": "row-reverse",
+        "image": "shopify://shop_images/lookbook-1-big.jpg",
+        "image_size": "adapt",
+        "show_frame": false,
+        "color_scheme": "background-1",
+        "frame-text": "",
+        "frame-text-right": "",
+        "color_scheme_2": "background-2",
+        "heading": "<p>Performance Intrepid Set</p>",
+        "second_image": "shopify://shop_images/lookbook-1-small.jpg",
+        "subheading": "<p>This super soft, high performance all around layering piece, is perfect for a run in cooler weather or on the sidelines at the Saturday soccer game.</p>",
+        "subheading_left_top": "",
+        "subheading_left_bottom": "",
+        "subheading_right_top": "",
+        "subheading_right_bottom": "",
+        "button_text": "",
+        "button_link": "",
+        "button_style": "primary",
+        "margin_top": 0,
+        "margin_bottom": 30,
+        "lookbook_detail_class": "lookbook-detail-section"
+      }
+    },
+    "product_carousel_mCPJhg": {
+      "type": "product-carousel",
+      "settings": {
+        "heading": "",
+        "products_count": 4,
+        "link": "",
+        "button_link": "",
+        "image_ratio": "portrait",
+        "image_fit": "cover",
+        "show_secondary_image": false,
+        "show_vendor": false,
+        "show_desc": false,
+        "show_sku": false,
+        "quickview_show": false,
+        "show_link_carousel": false,
+        "margin_top": 0,
+        "margin_bottom": 30,
+        "lookbook_slider_class": "lookbook-slider-section"
+      }
+    },
+    "image_with_text_ECdaMe": {
+      "type": "image-with-text",
+      "settings": {
+        "row-reverse": "row",
+        "image": "shopify://shop_images/lookbook-2-big.jpg",
+        "image_size": "adapt",
+        "show_frame": false,
+        "color_scheme": "background-1",
+        "frame-text": "",
+        "frame-text-right": "",
+        "color_scheme_2": "background-2",
+        "heading": "<p>Truth Fits Set</p>",
+        "second_image": "shopify://shop_images/lookbook-2-small.jpg",
+        "subheading": "<p>This lightweight tank is perfect for everything. Working out, hanging out, lounging about. It's cropped and clever with a twist for cuteness, and pairs perfectly with our Legit Legging for a bit of coverage.</p>",
+        "subheading_left_top": "",
+        "subheading_left_bottom": "",
+        "subheading_right_top": "",
+        "subheading_right_bottom": "",
+        "button_text": "",
+        "button_link": "",
+        "button_style": "primary",
+        "margin_top": 30,
+        "margin_bottom": 30,
+        "lookbook_detail_class": "lookbook-detail-section"
+      }
+    },
+    "product_carousel_7xBnH6": {
+      "type": "product-carousel",
+      "settings": {
+        "heading": "",
+        "products_count": 4,
+        "link": "",
+        "button_link": "",
+        "image_ratio": "portrait",
+        "image_fit": "cover",
+        "show_secondary_image": false,
+        "show_vendor": false,
+        "show_desc": false,
+        "show_sku": false,
+        "quickview_show": false,
+        "show_link_carousel": false,
+        "margin_top": 0,
+        "margin_bottom": 30,
+        "lookbook_slider_class": "lookbook-slider-section"
+      }
+    },
+    "image_with_text_jg4NtM": {
+      "type": "image-with-text",
+      "settings": {
+        "row-reverse": "row-reverse",
+        "image": "shopify://shop_images/lookbook-3-big.jpg",
+        "image_size": "small",
+        "show_frame": false,
+        "color_scheme": "background-1",
+        "frame-text": "",
+        "frame-text-right": "",
+        "color_scheme_2": "background-2",
+        "heading": "<p>Performance Honest Set</p>",
+        "second_image": "shopify://shop_images/lookbook-3-small.jpg",
+        "subheading": "<p>Made with our super-soft, sweat-wicking Honest performance fabric. This light-weight set is perfect for outside workouts in cooler weather.</p>",
+        "subheading_left_top": "",
+        "subheading_left_bottom": "",
+        "subheading_right_top": "",
+        "subheading_right_bottom": "",
+        "button_text": "",
+        "button_link": "",
+        "button_style": "primary",
+        "margin_top": 30,
+        "margin_bottom": 30,
+        "lookbook_detail_class": "lookbook-detail-section"
+      }
+    },
+    "product_carousel_grt7gc": {
+      "type": "product-carousel",
+      "settings": {
+        "heading": "",
+        "products_count": 4,
+        "link": "",
+        "button_link": "",
+        "image_ratio": "portrait",
+        "image_fit": "cover",
+        "show_secondary_image": false,
+        "show_vendor": false,
+        "show_desc": false,
+        "show_sku": false,
+        "quickview_show": false,
+        "show_link_carousel": false,
+        "margin_top": 0,
+        "margin_bottom": 100,
+        "lookbook_slider_class": "lookbook-slider-section"
+      }
+    }
+  },
+  "order": [
+    "product-grid",
+    "banner",
+    "image_with_text_cpQtFF",
+    "product_carousel_mCPJhg",
+    "image_with_text_ECdaMe",
+    "product_carousel_7xBnH6",
+    "image_with_text_jg4NtM",
+    "product_carousel_grt7gc"
+  ]
+}

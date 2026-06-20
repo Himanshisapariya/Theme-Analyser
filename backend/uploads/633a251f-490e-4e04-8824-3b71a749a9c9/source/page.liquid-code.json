@@ -1,0 +1,12 @@
+{
+  "sections": {
+    "main": {
+      "type": "liquid-code",
+      "settings": {
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

@@ -1,0 +1,449 @@
+{% comment %}
+  Renders product variant options
+  Accepts:
+  - product: {Object} product object.
+  - option: {Object} current product_option object.
+  - block: {Object} block object.
+  Usage:
+  {% render 'product-variant-options',
+    product: product,
+    option: option,
+    block: block
+  %}
+{% endcomment %}
+{%- liquid
+  assign variants_available_arr = product.variants | map: 'available'
+  assign variants_option1_arr = product.variants | map: 'option1'
+  assign variants_option2_arr = product.variants | map: 'option2'
+  assign variants_option3_arr = product.variants | map: 'option3'
+
+  assign product_form_id = 'product-form-' | append: section.id
+-%}
+
+{%- liquid
+  assign color_trigger = settings.trigger_swatch | handle | strip
+  assign name_option = option.name | handle | strip
+  assign is_color_option = false
+  if settings.show_color_swatch and color_trigger == name_option
+    assign is_color_option = true
+  endif
+-%}
+
+{%- if is_color_option -%}
+  {%- comment -%} For COLOR options, we need to separate limited edition from regular {%- endcomment -%}
+  
+  {%- comment -%} First pass: Identify which values are limited edition {%- endcomment -%}
+  {%- assign limited_edition_map = '' -%}
+  {%- for value in option.values -%}
+    {%- liquid
+      assign is_limited_edition = false
+      for variant in product.variants
+        assign has_value = false
+        for option_variant in variant.options
+          if option_variant == value
+            assign has_value = true
+            break
+          endif
+        endfor
+        if has_value
+          if variant.metafields.custom.limited_edition_varinats == true
+            assign is_limited_edition = true
+          endif
+          break
+        endif
+      endfor
+      
+      if is_limited_edition
+        assign limited_edition_map = limited_edition_map | append: value | append: '||LE||'
+      endif
+    -%}
+  {%- endfor -%}
+  
+  {%- comment -%} Check if we have any limited edition values {%- endcomment -%}
+  {%- assign has_limited_edition = false -%}
+  {%- if limited_edition_map != blank -%}
+    {%- assign has_limited_edition = true -%}
+  {%- endif -%}
+  
+  {%- comment -%} Determine initial selected color and its type {%- endcomment -%}
+  {%- liquid
+    assign selected_variant_color = product.selected_or_first_available_variant.title | split: " / " | first
+    assign selected_is_limited = false
+    assign check_selected = selected_variant_color | append: '||LE||'
+    if limited_edition_map contains check_selected
+      assign selected_is_limited = true
+    endif
+    
+    assign first_limited_edition_color = ''
+    for value in option.values
+      assign check_value = value | append: '||LE||'
+      if limited_edition_map contains check_value
+        assign first_limited_edition_color = value
+        break
+      endif
+    endfor
+  -%}
+  
+  {%- comment -%} Render Limited Edition row if exists {%- endcomment -%}
+  {%- if has_limited_edition -%}
+    <div class="limited-edition-label">
+      LIMITED EDITION: <span class="product-form-color-value limited-edition-value"{% unless selected_is_limited %} style="display:none;"{% endunless %}>{{ selected_variant_color }}</span>
+    </div>
+    <div class="limited-edition-swatches swiper-wrapper">
+      {%- for value in option.values -%}
+        {%- liquid
+          assign check_value = value | append: '||LE||'
+          assign is_this_limited = false
+          if limited_edition_map contains check_value
+            assign is_this_limited = true
+          endif
+        -%}
+        
+        {%- if is_this_limited -%}
+          {%- liquid
+            assign option_disabled = true
+
+            for option1_name in variants_option1_arr
+              case option.position
+                when 1
+                  if variants_option1_arr[forloop.index0] == value and variants_available_arr[forloop.index0]
+                    assign option_disabled = false
+                  endif
+                when 2
+                  if option1_name == product.selected_or_first_available_variant.option1 and variants_option2_arr[forloop.index0] == value and variants_available_arr[forloop.index0]
+                    assign option_disabled = false
+                  endif
+                when 3
+                  if option1_name == product.selected_or_first_available_variant.option1 and variants_option2_arr[forloop.index0] == product.selected_or_first_available_variant.option2 and variants_option3_arr[forloop.index0] == value and variants_available_arr[forloop.index0]
+                    assign option_disabled = false
+                  endif
+              endcase
+            endfor
+          -%}
+
+          <div class="swiper-slide">
+            {% liquid
+              assign color_value = value | handle | strip
+              assign color_value_custom = color_value
+              if settings.custom_colors != blank
+                assign custom_colors_string = settings.custom_colors | strip
+                assign custom_colors_obj = custom_colors_string | newline_to_br | split: '<br />'
+                for obj in custom_colors_obj
+                  assign obj_strip = obj | strip
+                  assign obj_key = obj_strip | split: ':' | first
+                  assign obj_value = obj_strip | split: ':' | last
+                  assign obj_color_name = obj_key | handle | strip
+                  if color_value == obj_color_name
+                    assign obj_color_value = obj_value
+                    assign color_value_custom = obj_color_value | strip
+                    break
+                  endif
+                endfor
+              endif
+            %}
+
+            {% liquid
+              assign variant_link = product.url
+              for variant in product.variants
+                assign variant_tag = variant.metafields.custom.product_tag
+                assign flag = false
+                assign variant_status = 'soldout'
+                if variant.available
+                  for option_variant in variant.options
+                    if option_variant == value
+                      assign flag = true
+                      assign variant_status = 'available'
+                      break
+                    endif
+                  endfor
+                endif
+                if flag == true
+                  assign variant_link = variant.url
+                  assign variant_price = variant.price
+                  assign variant_compare_price = variant.compare_at_price
+                  assign variant_id = variant.id
+                  assign variant_model_sizing = variant.metafields.custom.model_sizing
+                  assign variant_low_stock = variant.metafields.custom.low_stock
+                  break
+                endif
+              endfor
+            %}
+
+            <input
+              type="radio"
+              id="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}-{{ product.id }}"
+              name="{{ option.name }}-{{ section.id }}-{{ product.id }}"
+              data-variant-name="{{ option.name }}"
+              data-variant-value="{{ value }}"
+              data-variant="{{ variant_id }}"
+              data-low-stock="{{ variant_low_stock }}"
+              data-tag="{{ variant_tag }}"
+              data-available="{{ variant_status }}"
+              data-model-sizing="{{ variant_model_sizing | escape }}"
+              data-best-seller="{{ variant_best_seller | escape }}"
+              data-new-arrival="{{ variant_new_arrival | escape }}"
+              data-performance="{{ variant_performance | escape }}"
+              data-variant-type="limited-edition"
+              data-radio-group="color-{{ product.id }}"
+              value="{{ value | escape }}"
+              class="color-swatch-input"
+              {% if variant_link %} data-variant-link="{{ variant_link }}" {% endif %}
+              {% if no_form_id != true %} form="{{ product_form_id }}" {% endif %}
+              {% if option.selected_value == value %} checked {% endif %}
+              {% if option_disabled and no_form_id != true %} class="disabled" {% endif %}
+            >
+
+            <label
+              for="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}-{{ product.id }}"
+              class="color-swatch"
+              data-variant="{{ variant_id }}"
+              data-low-stock="{{ variant_low_stock }}"
+              data-radio-group="color-{{ product.id }}"
+              data-price="{{ variant_price | money }}"
+              data-compare-price="{{ variant_compare_price | money }}"
+              data-available="{{ variant_status }}"
+              title="{{ value }}"
+              style="--swatch-color: url('{{ color_value_custom }}'); border-radius: {{ settings.swatch_border_radius }}px;"
+            >
+              <span class="visually-hidden">{{ value }}{% if variant_status == 'soldout' %} - Sold Out{% endif %}</span>
+            </label>
+          </div>
+        {%- endif -%} 
+      {%- endfor -%}
+    </div>
+  {%- endif -%}
+  
+  {%- comment -%} Render Regular COLOR row {%- endcomment -%}
+  {%- liquid
+    assign first_regular_color = ''
+    assign has_regular_colors = false
+    for value in option.values
+      assign check_value = value | append: '||LE||'
+      unless limited_edition_map contains check_value
+        assign first_regular_color = value
+        assign has_regular_colors = true
+        break
+      endunless
+    endfor
+  -%}
+  {%- if has_regular_colors -%}
+    <div class="regular-color-label">
+      COLOR: <span class="product-form-color-value regular-color-value"{% if selected_is_limited %} style="display:none;"{% endif %}>{{ selected_variant_color }}</span>
+    </div>
+    <div class="regular-color-swatches swiper-wrapper">
+    {%- for value in option.values -%}
+      {%- liquid
+        assign check_value = value | append: '||LE||'
+        assign is_this_limited = false
+        if limited_edition_map contains check_value
+          assign is_this_limited = true
+        endif
+      -%}
+      
+      {%- unless is_this_limited -%}
+        {%- liquid
+          assign option_disabled = true
+
+          for option1_name in variants_option1_arr
+            case option.position
+              when 1
+                if variants_option1_arr[forloop.index0] == value and variants_available_arr[forloop.index0]
+                  assign option_disabled = false
+                endif
+              when 2
+                if option1_name == product.selected_or_first_available_variant.option1 and variants_option2_arr[forloop.index0] == value and variants_available_arr[forloop.index0]
+                  assign option_disabled = false
+                endif
+              when 3
+                if option1_name == product.selected_or_first_available_variant.option1 and variants_option2_arr[forloop.index0] == product.selected_or_first_available_variant.option2 and variants_option3_arr[forloop.index0] == value and variants_available_arr[forloop.index0]
+                  assign option_disabled = false
+                endif
+            endcase
+          endfor
+        -%}
+
+        <div class="swiper-slide">
+          {% liquid
+            assign color_value = value | handle | strip
+            assign color_value_custom = color_value
+            if settings.custom_colors != blank
+              assign custom_colors_string = settings.custom_colors | strip
+              assign custom_colors_obj = custom_colors_string | newline_to_br | split: '<br />'
+              for obj in custom_colors_obj
+                assign obj_strip = obj | strip
+                assign obj_key = obj_strip | split: ':' | first
+                assign obj_value = obj_strip | split: ':' | last
+                assign obj_color_name = obj_key | handle | strip
+                if color_value == obj_color_name
+                  assign obj_color_value = obj_value
+                  assign color_value_custom = obj_color_value | strip
+                  break
+                endif
+              endfor
+            endif
+          %}
+
+          {% liquid
+            assign variant_link = product.url
+            for variant in product.variants
+              assign variant_tag = variant.metafields.custom.product_tag
+              assign flag = false
+              assign variant_status = 'soldout'
+              if variant.available
+                for option_variant in variant.options
+                  if option_variant == value
+                    assign flag = true
+                    assign variant_status = 'available'
+                    break
+                  endif
+                endfor
+              endif
+              if flag == true
+                assign variant_link = variant.url
+                assign variant_price = variant.price
+                assign variant_compare_price = variant.compare_at_price
+                assign variant_id = variant.id
+                assign variant_model_sizing = variant.metafields.custom.model_sizing
+                assign variant_low_stock = variant.metafields.custom.low_stock
+                break
+              endif
+            endfor
+          %}
+
+          <input
+            type="radio"
+            id="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}-{{ product.id }}"
+            name="{{ option.name }}-{{ section.id }}-{{ product.id }}"
+            data-variant-name="{{ option.name }}"
+            data-variant-value="{{ value }}"
+            data-variant="{{ variant_id }}"
+            data-low-stock="{{ variant_low_stock }}"
+            data-tag="{{ variant_tag }}"
+            data-available="{{ variant_status }}"
+            data-model-sizing="{{ variant_model_sizing | escape }}"
+            data-variant-type="regular"
+            data-radio-group="color-{{ product.id }}"
+            value="{{ value | escape }}"
+            class="color-swatch-input"
+            {% if variant_link %} data-variant-link="{{ variant_link }}" {% endif %}
+            {% if no_form_id != true %} form="{{ product_form_id }}" {% endif %}
+            {% if option.selected_value == value %} checked {% endif %}
+            {% if option_disabled and no_form_id != true %} class="disabled" {% endif %}
+          >
+
+          <label
+            for="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}-{{ product.id }}"
+            class="color-swatch"
+            data-variant="{{ variant_id }}"
+            data-low-stock="{{ variant_low_stock }}"
+            data-radio-group="color-{{ product.id }}"
+            data-price="{{ variant_price | money }}"
+            data-compare-price="{{ variant_compare_price | money }}"
+            data-available="{{ variant_status }}"
+            title="{{ value }}"
+            style="--swatch-color: url('{{ color_value_custom }}'); border-radius: {{ settings.swatch_border_radius }}px;"
+          >
+            <span class="visually-hidden">{{ value }}{% if variant_status == 'soldout' %} - Sold Out{% endif %}</span>
+          </label>
+        </div>
+      {%- endunless -%}
+    {%- endfor -%}
+  </div>
+  {%- endif -%}
+
+  <script>
+    // Update COLOR or LIMITED EDITION label when variant selection changes
+    document.addEventListener('DOMContentLoaded', function() {
+      const colorInputs = document.querySelectorAll('.color-swatch-input');
+      
+      // Get first limited edition and regular variant names
+      const limitedEditionInputs = document.querySelectorAll('.color-swatch-input[data-variant-type="limited-edition"]');
+      const regularInputs = document.querySelectorAll('.color-swatch-input[data-variant-type="regular"]');
+      
+      const firstLimitedEditionName = limitedEditionInputs.length > 0 ? limitedEditionInputs[0].getAttribute('data-variant-value') : '';
+      const firstRegularName = regularInputs.length > 0 ? regularInputs[0].getAttribute('data-variant-value') : '';
+      
+      colorInputs.forEach(input => {
+        input.addEventListener('change', function() {
+          if (this.checked) {
+            const colorName = this.getAttribute('data-variant-value');
+            const variantType = this.getAttribute('data-variant-type');
+            const limitedEditionLabel = document.querySelector('.limited-edition-label');
+            const regularLabel = document.querySelector('.regular-color-label');
+
+            const leValue = limitedEditionLabel ? limitedEditionLabel.querySelector('.limited-edition-value') : null;
+            const regularValue = regularLabel ? regularLabel.querySelector('.regular-color-value') : null;
+
+            if (variantType === 'limited-edition') {
+              if (leValue) { leValue.textContent = colorName; leValue.style.display = ''; }
+              if (regularValue) regularValue.style.display = 'none';
+            } else if (variantType === 'regular') {
+              if (regularValue) { regularValue.textContent = colorName; regularValue.style.display = ''; }
+              if (leValue) leValue.style.display = 'none';
+            }
+          }
+        });
+      });
+    });
+  </script>
+  
+{%- else -%}
+  {%- comment -%} Non-color options (size, etc.) render normally {%- endcomment -%}
+  {%- for value in option.values -%}
+    {%- liquid
+      assign option_disabled = true
+
+      for option1_name in variants_option1_arr
+        case option.position
+          when 1
+            if variants_option1_arr[forloop.index0] == value and variants_available_arr[forloop.index0]
+              assign option_disabled = false
+            endif
+          when 2
+            if option1_name == product.selected_or_first_available_variant.option1 and variants_option2_arr[forloop.index0] == value and variants_available_arr[forloop.index0]
+              assign option_disabled = false
+            endif
+          when 3
+            if option1_name == product.selected_or_first_available_variant.option1 and variants_option2_arr[forloop.index0] == product.selected_or_first_available_variant.option2 and variants_option3_arr[forloop.index0] == value and variants_available_arr[forloop.index0]
+              assign option_disabled = false
+            endif
+        endcase
+      endfor
+    -%}
+
+    {%- if block.settings.picker_type == 'button' or picker_type == 'button' -%}
+      <input
+        type="radio"
+        id="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}"
+        name="{{ option.name }}"
+        value="{{ value | escape }}"
+        data-radio-group="option-{{ product.id }}"
+        class="{% if value.available %} available {% else %} out-of-stock {% endif %}"
+        {% if no_form_id != true %} form="{{ product_form_id }}" {% endif %}
+        {% if option.selected_value == value %} checked class="button--with-underline" {% endif %}
+      >
+      <label
+        data-variant="{{ variant_id }}"
+        data-low-stock="{{ variant_low_stock }}"
+        class="link-hover-line-outer product-size-label"
+        for="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}"
+      >
+        <span class="uppercase">{{ value -}}</span>
+        <span class="visually-hidden">
+          {{- 'products.product.variant_sold_out_or_unavailable' | t -}}
+        </span>
+      </label>
+    {%- elsif block.settings.picker_type == 'dropdown' -%}
+      <option
+        value="{{ value | escape }}"
+        {% if option.selected_value == value %} selected="selected" {% endif %}
+      >
+        {% if option_disabled -%}
+          {{- 'products.product.value_unavailable' | t: option_value: value -}}
+        {%- else -%}
+          {{- value -}}
+        {%- endif %}
+      </option>
+    {%- endif -%}
+  {%- endfor -%}
+{%- endif -%}

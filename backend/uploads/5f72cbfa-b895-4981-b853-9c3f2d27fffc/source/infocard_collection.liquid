@@ -1,0 +1,393 @@
+<style>
+  .banner_promo-ctm {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+  }
+
+  .banner_promo-ctm .arrival-img-card-new {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 702/521px;
+      overflow: hidden;
+  }
+
+
+
+  .banner_promo-ctm img.MetaobjectDrop__container,
+  .banner_promo-ctm .arrival-img-card-new img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: 50% 70%;
+  }
+
+  
+  .banner_promo-ctm .arrival-img-card-content {
+      padding: 8px 0 0 5px; 
+      flex-shrink: 0;
+  }
+
+  .banner_promo-ctm.wrap--{{ number }} {
+      grid-row: {{ block.settings.tablet_row }} / span 1;
+      grid-column: {{ block.settings.tablet_column }} / span 2;
+  }
+
+  @media (max-width:1279px) {
+      .banner_promo-ctm.wrap--{{ number }} {
+        grid-row: {{ block.settings.tablet_row }} / span 1;
+        grid-column: {{ block.settings.tablet_column }} / span 1;
+      }
+  }
+
+  @media (min-width: 1200px) {
+      .new-button-text.button--secondary {
+          font-size: 15px;
+          padding-inline: 15px;
+      }
+  }
+
+  @media (max-width:749px) {
+      .banner_promo-ctm .infocard-btn{
+          display: flex;
+          flex-direction: column;
+          gap: 10px;
+      }
+  }
+
+  @media (max-width:639px) {
+      .banner_promo-ctm.wrap--{{ number }} {
+        grid-row: {{ block.settings.mobile_row }} / span 1;
+        grid-column: {{ block.settings.mobile_column }} / span 1;
+      }
+  }
+
+  @media (max-width:575px) {
+      .banner_promo-ctm .MetaobjectDrop__container,
+      .banner_promo-ctm .arrival-img-card-new img {
+        object-fit: contain !important;
+        object-position: 50% 70%;
+      }
+  }
+
+  li.MetaobjectDrop.leggings.banner_promo-ctm.wrap--1{
+      grid-row: 2 / span 1;
+      grid-column: 1 / span 1;
+  }
+
+  @media (max-width: 990px) {
+      li.MetaobjectDrop.leggings.banner_promo-ctm.wrap--1 {
+          grid-row: 4 / span 1;
+          grid-column: 2 / span 1;
+      }
+  }
+
+  @media (max-width: 1279px) {
+    li.MetaobjectDrop.leggings.banner_promo-ctm.wrap--1 {
+          grid-row: 3 / span 1;
+          grid-column: 2 / span 1;
+      }
+  }
+
+  .tabbing-content.swiper.swiper_tabbing.swiper-initialized.swiper-horizontal.swiper-backface-hidden {
+    margin-left: 10px;
+  }
+
+.arrival-img-card-new .tabbing-content.swiper.swiper_tabbing.swiper-initialized.swiper-horizontal.swiper-backface-hidden {
+  margin-left: 10px;
+}
+
+  .button_donation-2,
+  .button_donation-1{
+      position: relative;
+      color: #507176;
+      text-decoration: underline;
+      font-weight: 700;
+      font-size: 20px;
+      padding: 0px 15px;
+      display: flex;
+      justify-content: end;
+      bottom: 6.8rem;
+  }
+
+  
+  .arrival-img-card-new {
+    position: relative;
+  }
+
+  .arrival-img-card-new .button_donation-2,
+  .arrival-img-card-new .button_donation-1 {
+    position: absolute;
+    right: 0;
+    bottom: 35px;
+    max-width: 140px;
+  }
+
+  .infocard-btn{
+    display: flex;
+    gap: 10px;
+  }
+
+  .color-background-5 {
+    background-color: transparent;
+  }
+
+  .infocard-btn a.ic_btn{
+    text-decoration: none;
+  }
+
+  @media (min-width: 1200px) and (max-width: 1389px) {
+    .arrival-img-card-new .button_donation-2,
+    .arrival-img-card-new .button_donation-1 {
+      bottom: 30px;
+    }
+  }
+
+  @media (min-width: 576px) and (max-width: 649px) {
+    .arrival-img-card-new .button_donation-2,
+    .arrival-img-card-new .button_donation-1 {
+      bottom: 25px;
+      font-size: 16px;
+    }
+  }
+
+  @media (max-width: 575px) {
+    .arrival-img-card-new .button_donation-2,
+    .arrival-img-card-new .button_donation-1 {
+      position: relative;
+      max-width: unset;
+      font-size: 16px;
+      bottom: unset;
+      right: unset;
+      padding: 0;
+      justify-content: flex-start;
+    }
+    .button--info {
+      font-size: 12px !important;
+    }
+    .infocard-btn:has(.button--info){
+      gap: 10px !important;
+    }
+    .arrival-img-card-content h4{
+      font-size: {{ section.settings.infocard_heading_font_mobile }}px !important;
+    }
+  	.arrival-img-card-content p{
+  		font-size: {{  section.settings.infocard_subheading_font_mobile}}px !important;
+  	}
+  }
+
+  .button--info {
+    position: relative;
+    display: inline-block;
+    color: #2f484c;
+    font-size: 15px;
+  }
+
+  .button--info::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 2px;
+    width: 100%;
+    background: currentColor;
+    transition: width 0.3s ease;
+  }
+
+  .infocard-btn:has(.button--info){
+    gap: 20px;
+  }
+
+  .button--info:hover::after {
+    width: 0;
+  }
+
+
+
+  
+  .template-collection-general-collection .banner_promo-ctm .MetaobjectDrop__container,
+  .arrival-img-card-new img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    object-position: 50% 70%;
+  }
+
+  .banner_promo-ctm .arrival-img-card-new {
+    aspect-ratio: 702/521 !important;
+  }
+
+  @media(max-width:990px){
+    .template-collection-general-collection .banner_promo-ctm .MetaobjectDrop__container,
+    .arrival-img-card-new img {
+      width: 100% !important;
+      object-fit: cover !important;
+      height: 100% !important;
+      object-position: 50% 70%;
+    }
+
+    .banner_promo-ctm .arrival-img-card-new {
+      aspect-ratio: 615/615 !important;
+    }
+     .arrival-img-card-content .button--ctm_wb_global_button {
+        min-width: 200px !important;
+        font-size: 13px !important;
+        padding: 10px 12px;
+      }
+  }
+
+
+  
+
+  li.banner_promo-ctm {
+      display: flex;
+      flex-direction: column;
+  }
+
+  .arrival-img-card-content{
+      padding: 0px;
+  }
+
+  .arrival-img-card-content h4, .arrival-img-card-content p {
+      margin: 0;
+  }
+
+  .arrival-img-card-content h4{
+      font-weight: 400;
+      padding-top: 10px;
+  }
+
+  .arrival-img-card-content, .arrival-img-card-content .infocard-btn{
+      text-align: center;
+      justify-content: center;
+  }
+
+  .arrival-img-card-content .infocard-btn{
+      text-align: center;
+      justify-content: center;
+      padding: 0 !important;
+  }
+
+  .arrival-img-card-content .infocard-btn div a{
+      letter-spacing: 0px;
+  }
+
+  @media(min-width:769px){
+      .arrival-img-card-content .infocard-btn{
+          padding: 5px 0 0 0 !important;
+      }
+  }
+
+  .arrival-img-card-content h4{
+     font-size: {{ section.settings.infocard_heading_font_desktop }}px;
+  }
+  .arrival-img-card-content p{
+  	font-size: {{ section.settings.infocard_subheading_font_desktop}}px;
+    margin-top: {{ section.settings.infocard_subheading_margin_top}}px;
+    margin-bottom: {{ section.settings.infocard_subheading_margin_bottom}}px;
+    color: {{ section.settings.infocard_subheading_color }};
+  }
+</style>
+
+{% assign additional_banner = collection.metafields.custom.additional_banner.value %}
+
+{% for collection in additional_banner %}
+  {% liquid
+    assign ic_img = collection.image
+    assign ic_mobile_img = collection.mobile_image
+    assign number = forloop.index
+    assign ic_url = collection.url
+    assign ic_row = collection.row
+    assign ic_column = collection.column
+    assign ic_rowtab = collection.row_tablet
+    assign ic_columntab = collection.column_tablet
+    assign ic_rowmob = collection.row_mobile
+    assign ic_columnmob = collection.column_mobile
+    assign ic_button = collection.button
+    assign ic_button1 = collection.btn_text1
+    assign ic_button_url1 = collection.button_1_url
+    assign ic_button2 = collection.btn_text_2
+    assign ic_button_url2 = collection.button_2_url
+    assign as_btn = collection.display_as_button
+    assign ic_heading = collection.heading
+    assign ic_subheading = collection.subheading
+  %}
+
+  <style>
+    .banner_promo-ctm.wrap--{{ number }} {
+        grid-row: {{ ic_row }} / span 1;
+        grid-column: {{ ic_column }} / span 2;
+    }
+    @media (max-width:1199px) {
+        .banner_promo-ctm.wrap--{{ number }} {
+          grid-row: {{ ic_rowtab }} / span 1;
+          grid-column: {{ ic_columntab }} / span 2;
+        }
+    }
+
+    @media (max-width:990px) {
+        .banner_promo-ctm.wrap--{{ number }} {
+          grid-row: {{ ic_rowmob }} / span 1;
+          grid-column: {{ ic_columnmob }} / span 2;
+        }
+    }
+    
+  </style>
+
+  <a href="{{ ic_url }}">
+    <li class="{{ collection }} {{ collection.handle }} banner_promo-ctm wrap--{{ number }}">
+      <div class="arrival-img-card-new">
+        <picture>
+          {% if ic_mobile_img != blank %}
+            <source
+              media="(max-width: 749px)"
+              srcset="{{ ic_mobile_img | img_url: 'master' }}"
+            >
+          {% endif %}
+
+          <img
+            class="{{ collection }}__container --{{ number }} ctm-info"
+            src="{{ ic_img | img_url: 'master' }}"
+            loading="lazy"
+            tabindex="0"
+            alt="donation info-card"
+            height="auto"
+            width="auto"
+          >
+        </picture>
+
+        <a class="{{ collection }}--url button_donation-{{ number }}" href="{{ ic_url }}">
+          {{ ic_button }}
+        </a>
+      </div>
+      <div class="arrival-img-card-content">
+        <h4>{{ ic_heading }}</h4>
+        <p>{{ ic_subheading }}</p>
+        {% if ic_button1 != blank %}
+          <div class="infocard-btn">
+            {% if ic_button1 != blank or ic_button2 != blank %}
+              <div class="color-background-5 bg-transparent br-0">
+                <a
+                  href="{{ ic_button_url1 }}"
+                  class="button {% if as_btn == true %} button--info {% else %} button--ctm_wb_global_button {% endif %}"
+                >
+                  {{- ic_button1 -}}
+                </a>
+              </div>
+            {% endif %}
+            {% if ic_button2 != blank %}
+              <div class="color-background-5 bg-transparent br-0">
+                <a
+                  href="{{ ic_button_url2 }}"
+                  class="button {% if as_btn == true %} button--info {% else %} button--ctm_wb_global_button {% endif %}"
+                >
+                  {{- ic_button2 -}}
+                </a>
+              </div>
+            {% endif %}
+          </div>
+        {% endif %}
+      </div>
+    </li>
+  </a>
+{% endfor %}

@@ -1,0 +1,797 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "ctm_sticky_atc_bCemmf": {
+      "type": "ctm-sticky-atc",
+      "settings": {}
+    },
+    "ctm_video_hero_YTycj3": {
+      "type": "ctm-video-hero",
+      "settings": {
+        "extra_class": "video-ctm-banner",
+        "heading": "From Dr. Bill Dorfman the Dentist who created ZOOM!",
+        "description": "<p class=\"body-18-500\">The #1 in-office Teeth Whitening system in the world,</p>\n\n<h4 class=\"leading-100p\"> now brings you POOOF! the most advanced at-home teeth whitening experience.</h4>\n\n<p class=\"body-18-500\">POOOF! dissolving teeth whitening strips are 50% more effective than the leading competitor in a 3 day lab study.</p>",
+        "bottom_text": "",
+        "button_text": "Shop Now",
+        "button_url": "#ctm-featured-product1",
+        "video": "shopify://files/videos/-42a7-4155-baaf-698598e90017.mp4",
+        "mobile-video": "shopify://files/videos/-1c04-4b1f-a793-815730488fe8.mp4"
+      }
+    },
+    "ctm_text_list_with_logo_JwY6hr": {
+      "type": "ctm-text-list-with-logo",
+      "blocks": {
+        "star_list_DcFEcp": {
+          "type": "star_list",
+          "settings": {
+            "list": "The featured dentist on ABC’s Extreme Makeover"
+          }
+        },
+        "star_list_Kbnwmw": {
+          "type": "star_list",
+          "settings": {
+            "list": "Guest co-host on CBS’s The Doctors"
+          }
+        },
+        "star_list_cB4Q9q": {
+          "type": "star_list",
+          "settings": {
+            "list": "Author of the NY Times best-selling cosmetic dentistry book, <i>Billion Dollar Smile</i>"
+          }
+        },
+        "star_list_VaJht9": {
+          "type": "star_list",
+          "settings": {
+            "list": "Ranked by <b>Chat GPT</b> as the <b>#1</b> most recognized and respected dentist in the USA"
+          }
+        },
+        "mobile_logo_slider_QrepYt": {
+          "type": "mobile_logo_slider",
+          "settings": {
+            "mobile_logo": "shopify://shop_images/DrLogos-ABC.png"
+          }
+        },
+        "mobile_logo_slider_4d8cUT": {
+          "type": "mobile_logo_slider",
+          "settings": {
+            "mobile_logo": "shopify://shop_images/DrLogos-DR.png"
+          }
+        },
+        "mobile_logo_slider_aCdBNc": {
+          "type": "mobile_logo_slider",
+          "settings": {
+            "mobile_logo": "shopify://shop_images/DrLogos-Oprah.png"
+          }
+        },
+        "mobile_logo_slider_bUjKiw": {
+          "type": "mobile_logo_slider",
+          "settings": {
+            "mobile_logo": "shopify://shop_images/DrLogos-LK.png"
+          }
+        },
+        "mobile_logo_slider_rhGUfh": {
+          "type": "mobile_logo_slider",
+          "settings": {
+            "mobile_logo": "shopify://shop_images/Google.png"
+          }
+        },
+        "mobile_logo_slider_yhTj4G": {
+          "type": "mobile_logo_slider",
+          "settings": {
+            "mobile_logo": "shopify://shop_images/Yelp.png"
+          }
+        },
+        "mobile_logo_slider_LYzHYH": {
+          "type": "mobile_logo_slider",
+          "settings": {
+            "mobile_logo": "shopify://shop_images/IG.png"
+          }
+        }
+      },
+      "block_order": [
+        "star_list_DcFEcp",
+        "star_list_Kbnwmw",
+        "star_list_cB4Q9q",
+        "star_list_VaJht9",
+        "mobile_logo_slider_QrepYt",
+        "mobile_logo_slider_4d8cUT",
+        "mobile_logo_slider_aCdBNc",
+        "mobile_logo_slider_bUjKiw",
+        "mobile_logo_slider_rhGUfh",
+        "mobile_logo_slider_yhTj4G",
+        "mobile_logo_slider_LYzHYH"
+      ],
+      "settings": {
+        "header": "Where You’ve seen Dr. Bill Dorfman",
+        "logos": "shopify://shop_images/Frame_81.png",
+        "button_text": "Read More",
+        "button_url": "#dr-bill-read-more"
+      }
+    },
+    "featured_product_bkQj8R": {
+      "type": "featured-product",
+      "blocks": {
+        "title_B7cDt3": {
+          "type": "title",
+          "disabled": true,
+          "settings": {
+            "heading_size": "h1"
+          }
+        },
+        "text_3GWhMQ": {
+          "type": "text",
+          "settings": {
+            "text": "POOOF!® Dissolving Teeth Whitening Strips",
+            "text_style": "subtitle"
+          }
+        },
+        "price_LYVeYL": {
+          "type": "price",
+          "settings": {}
+        },
+        "description_43RNE7": {
+          "type": "description",
+          "settings": {}
+        },
+        "variant_picker_q8Nf94": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "button",
+            "swatch_shape": "circle"
+          }
+        },
+        "quantity_selector_gzpgNk": {
+          "type": "quantity_selector",
+          "settings": {}
+        },
+        "buy_buttons_hMdrt7": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": false,
+            "show_gift_card_recipient": false
+          }
+        },
+        "text_medefw": {
+          "type": "text",
+          "settings": {
+            "text": "Free Shipping On All Orders",
+            "text_style": "uppercase"
+          }
+        }
+      },
+      "block_order": [
+        "title_B7cDt3",
+        "text_3GWhMQ",
+        "price_LYVeYL",
+        "description_43RNE7",
+        "variant_picker_q8Nf94",
+        "quantity_selector_gzpgNk",
+        "buy_buttons_hMdrt7",
+        "text_medefw"
+      ],
+      "settings": {
+        "product": "pooof-vanishing-teeth-whitening-strips",
+        "ctm_html": "",
+        "button_text": "",
+        "button_url": "",
+        "color_scheme": "",
+        "secondary_background": false,
+        "media_size": "medium",
+        "constrain_to_viewport": false,
+        "media_fit": "contain",
+        "media_position": "left",
+        "image_zoom": "none",
+        "hide_variants": false,
+        "enable_video_looping": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "17461700699dd5bd84": {
+      "type": "apps",
+      "blocks": {
+        "okendo_reviews_carousel_Fgc4pP": {
+          "type": "shopify://apps/okendo/blocks/reviews-carousel/bb689e69-ea70-4661-8fb7-ad24a2e23c29",
+          "settings": {
+            "show_heading": true,
+            "heading": "Our customers can’t stop smiling",
+            "badge_link": "",
+            "product": "pooof-vanishing-teeth-whitening-strips"
+          }
+        }
+      },
+      "block_order": [
+        "okendo_reviews_carousel_Fgc4pP"
+      ],
+      "settings": {
+        "extra_class": "",
+        "include_margins": true
+      }
+    },
+    "rich_text_6LWBxX": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_HgXNEJ": {
+          "type": "heading",
+          "settings": {
+            "extra_class_heading": "",
+            "heading": "Why we shine brighter",
+            "heading_size": "h1"
+          }
+        },
+        "rich_image_KX3neT": {
+          "type": "rich-image",
+          "settings": {
+            "rich_image": "shopify://shop_images/Group_3.svg",
+            "rich_image_mob": "shopify://shop_images/Group_1.svg"
+          }
+        }
+      },
+      "block_order": [
+        "heading_HgXNEJ",
+        "rich_image_KX3neT"
+      ],
+      "settings": {
+        "extra_class": "ctm-shine-table-main",
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    },
+    "ctm_lets_pooof_Qywcnn": {
+      "type": "ctm-lets-pooof",
+      "settings": {
+        "extra_class": "ctm-lets-main ttttt",
+        "desktop_heading": "Let’s Pooof!® Together and see results fast!",
+        "mobile_heading_lets_pooof": "Let’s pooof!® Together",
+        "pooof_video": "shopify://files/videos/d4a308cce0c4442a8cedc0ab73387a0b.mp4",
+        "mobile_results_heading": "And see results fast!",
+        "image": "shopify://shop_images/03fc530254d923437f4dead4ab2be483.jpg"
+      }
+    },
+    "ctm_whats_inside_cDDPf3": {
+      "type": "ctm-whats-inside",
+      "blocks": {
+        "left_image_with_text_Hk6LPj": {
+          "type": "left_image_with_text",
+          "settings": {
+            "icons": "shopify://shop_images/dentistry.svg",
+            "left_text": "<b>Hydroxyapatite</b> not only reduces sensitivity but also helps remineralize teeth."
+          }
+        },
+        "left_image_with_text_7eEmzr": {
+          "type": "left_image_with_text",
+          "settings": {
+            "icons": "shopify://shop_images/experiment.svg",
+            "left_text": "<b>[P]<sup>3</sup> Technology:</b>  a proprietary formula of phosphates that allows for more effective peroxide utilization and faster whitening."
+          }
+        },
+        "left_image_with_text_hEGgac": {
+          "type": "left_image_with_text",
+          "settings": {
+            "icons": "shopify://shop_images/sun.svg",
+            "left_text": "<b>12% Hydrogen peroxide</b> effectively penetrates and brightens enamel to remove stains."
+          }
+        },
+        "right_image_with_text_rzLrLh": {
+          "type": "right_image_with_text",
+          "settings": {
+            "right_image": "shopify://shop_images/ph.svg",
+            "right_text": "<b>ph Balanced</b> formula ensures effective whitening without compromising enamel integrity."
+          }
+        },
+        "right_image_with_text_hWEpQd": {
+          "type": "right_image_with_text",
+          "settings": {
+            "right_image": "shopify://shop_images/temp_preferences_eco.svg",
+            "right_text": "Experience the refreshing sensation of <b>mint</b> while achieving a brighter smile."
+          }
+        },
+        "right_image_with_text_UfH4f6": {
+          "type": "right_image_with_text",
+          "settings": {
+            "right_image": "shopify://shop_images/water_do.svg",
+            "right_text": "Made with <b>food-grade quality starch,</b> our strips dissolves in saliva in 10-15 minutes."
+          }
+        },
+        "accordion_mobile_HEHjaE": {
+          "type": "accordion_mobile",
+          "settings": {
+            "accordion_image": "shopify://shop_images/sun.svg",
+            "accordion_question": "12% Hydrogen Peroxide",
+            "accordion_answer": "Effectively penetrates and brightens enamel to remove stains."
+          }
+        },
+        "accordion_mobile_h6PMBf": {
+          "type": "accordion_mobile",
+          "settings": {
+            "accordion_image": "shopify://shop_images/ph.svg",
+            "accordion_question": "pH Balanced",
+            "accordion_answer": "Ensures effective whitening without compromising enamel integrity."
+          }
+        },
+        "accordion_mobile_PKRMjy": {
+          "type": "accordion_mobile",
+          "settings": {
+            "accordion_image": "shopify://shop_images/experiment.svg",
+            "accordion_question": "[P]3 TECHNOLOGY",
+            "accordion_answer": "Our proprietary formula that allows for more effective peroxide utilization and faster whitening."
+          }
+        },
+        "accordion_mobile_XVf8ad": {
+          "type": "accordion_mobile",
+          "settings": {
+            "accordion_image": "shopify://shop_images/dentistry.svg",
+            "accordion_question": "Hydroxyapatite",
+            "accordion_answer": "Hydroxyapatite not only reduces sensitivity but also helps remineralize teeth."
+          }
+        },
+        "accordion_mobile_tRr437": {
+          "type": "accordion_mobile",
+          "settings": {
+            "accordion_image": "shopify://shop_images/water_do.svg",
+            "accordion_question": "Strips made with food grade quality starch",
+            "accordion_answer": "Dissolves in saliva in 10-15 minutes"
+          }
+        },
+        "accordion_mobile_GyABfV": {
+          "type": "accordion_mobile",
+          "settings": {
+            "accordion_image": "shopify://shop_images/temp_preferences_eco.svg",
+            "accordion_question": "MINT",
+            "accordion_answer": "Experience the refreshing sensation of mint while achieving a brighter smile."
+          }
+        }
+      },
+      "block_order": [
+        "left_image_with_text_Hk6LPj",
+        "left_image_with_text_7eEmzr",
+        "left_image_with_text_hEGgac",
+        "right_image_with_text_rzLrLh",
+        "right_image_with_text_hWEpQd",
+        "right_image_with_text_UfH4f6",
+        "accordion_mobile_HEHjaE",
+        "accordion_mobile_h6PMBf",
+        "accordion_mobile_PKRMjy",
+        "accordion_mobile_XVf8ad",
+        "accordion_mobile_tRr437",
+        "accordion_mobile_GyABfV"
+      ],
+      "settings": {
+        "star_image": "shopify://shop_images/Group_11111.png",
+        "heading": "What’s Inside",
+        "sub_heading": "Conscientiously Crafted",
+        "center_image": "shopify://shop_images/POOOF_Amazon_ImagesPOOOF_Front_1.png"
+      }
+    },
+    "ctm_certified_L7bk7w": {
+      "type": "ctm-certified",
+      "blocks": {
+        "logos_dmbcge": {
+          "type": "logos",
+          "settings": {
+            "logo_images": "shopify://shop_images/11.png"
+          }
+        },
+        "logos_rymXqH": {
+          "type": "logos",
+          "settings": {
+            "logo_images": "shopify://shop_images/22.png"
+          }
+        },
+        "logos_KqW8yb": {
+          "type": "logos",
+          "settings": {
+            "logo_images": "shopify://shop_images/33.png"
+          }
+        },
+        "logos_Dt769f": {
+          "type": "logos",
+          "settings": {
+            "logo_images": "shopify://shop_images/44.png"
+          }
+        }
+      },
+      "block_order": [
+        "logos_dmbcge",
+        "logos_rymXqH",
+        "logos_KqW8yb",
+        "logos_Dt769f"
+      ],
+      "settings": {
+        "heading": "Certified",
+        "second_heading": "And Free From",
+        "description": "Sulfates (SLS/SLES) • Triclosan • Parabens • Artificial Flavors • Plastic"
+      }
+    },
+    "ctm_video_banner_hqyCbB": {
+      "type": "ctm-video-banner",
+      "settings": {
+        "extra_class": "ctm-video-banners",
+        "anchor_id": "instructions",
+        "heading": "Rapidly Brighten SMILES with EASE",
+        "select_video": "shopify://files/videos/6c660abadea24562a06115b0cf1d2340.HD-1080p-3.3Mbps-42933219.mp4"
+      }
+    },
+    "ctm_peel_apply_smile_wzU7fk": {
+      "type": "ctm-peel-apply-smile",
+      "blocks": {
+        "circle_with_head_des_nJFFiE": {
+          "type": "circle_with_head_des",
+          "settings": {
+            "head": "Open",
+            "circle_image": "shopify://shop_images/Frame_85.png",
+            "description": "With dry hands, peel from corner and remove strip."
+          }
+        },
+        "circle_with_head_des_fGrTNF": {
+          "type": "circle_with_head_des",
+          "settings": {
+            "head": "Apply",
+            "circle_image": "shopify://shop_images/Steps2.png",
+            "description": "Place strip on wet teeth, fold excess over edge."
+          }
+        },
+        "circle_with_head_des_eL3Wmq": {
+          "type": "circle_with_head_des",
+          "settings": {
+            "head": "Smile!",
+            "circle_image": "shopify://shop_images/Steps3.png",
+            "description": "Strip dissolves in 10-15 minutes!"
+          }
+        }
+      },
+      "block_order": [
+        "circle_with_head_des_nJFFiE",
+        "circle_with_head_des_fGrTNF",
+        "circle_with_head_des_eL3Wmq"
+      ],
+      "settings": {
+        "extra_class": "ctm-circle-img-main"
+      }
+    },
+    "ctm_banner_list_zxGFFz": {
+      "type": "ctm-banner-list",
+      "blocks": {
+        "star_list_HU7BMU": {
+          "type": "star_list",
+          "settings": {
+            "list_text": "<span>ABC’s “Extreme Makeover”</span>\nPerformed amazing dental transformations on the show’s participants"
+          }
+        },
+        "star_list_4bTX4P": {
+          "type": "star_list",
+          "settings": {
+            "list_text": "<span>CBS’ “The Doctors”</span>\nRecurring guest co-host on the Emmy Awarded daytime talk show"
+          }
+        },
+        "star_list_dgn3Nz": {
+          "type": "star_list",
+          "settings": {
+            "list_text": "<span>Featured on Amazon PRIME's new hit show 60 Day Hustle</span>"
+          }
+        },
+        "star_list_QxHqbM": {
+          "type": "star_list",
+          "settings": {
+            "list_text": "<span>Author of the NY Times best-selling cosmetic dentistry book, Billion Dollar Smile</span>"
+          }
+        },
+        "star_list_iE7AMW": {
+          "type": "star_list",
+          "settings": {
+            "list_text": "<span>Award-winning innovations</span>\nThe accomplished doctor is an energy-brimming inventor and brilliant entrepreneur who brought ZOOM! Teeth Whitening to the world of dentistry"
+          }
+        },
+        "star_list_zfTjEt": {
+          "type": "star_list",
+          "settings": {
+            "list_text": "<span>21 Life-Time Achievement Awards</span>"
+          }
+        },
+        "star_list_HxgBBa": {
+          "type": "star_list",
+          "settings": {
+            "list_text": "<span>2 Guinness World Book records</span>"
+          }
+        },
+        "star_list_PKCjBa": {
+          "type": "star_list",
+          "settings": {
+            "list_text": "<span>Rated by ChatGPT as the number #1 cosmetic dentist worldwide</span>"
+          }
+        }
+      },
+      "block_order": [
+        "star_list_HU7BMU",
+        "star_list_4bTX4P",
+        "star_list_dgn3Nz",
+        "star_list_QxHqbM",
+        "star_list_iE7AMW",
+        "star_list_zfTjEt",
+        "star_list_HxgBBa",
+        "star_list_PKCjBa"
+      ],
+      "settings": {
+        "extra_class": "ctm-main-banner-list",
+        "banner_desktop": "shopify://shop_images/ABOUT-IMG_e1800901-6d86-463e-aac7-272cb296664a.png",
+        "banner_mobile": "shopify://shop_images/6df75acb4b36115fd9eb0be620919c84.jpg",
+        "banner_heading": "DR. BILL DORFMAN:<br>\nSETTING THE STANDARD<br>\nFOR COSMETIC DENTISTRY<br>\nAROUND THE WORLD",
+        "banner_description": "Affectionately known as “America’s Dentist,” Dr. Bill is widely recognized worldwide as the leading dentist who is responsible for creating smiles for many of Hollywood’s brightest stars and creating ZOOM, the #1 teeth whitening product in the world. In fact, Dr. Dorfman has become a star in his own right and includes achievements such as:"
+      }
+    },
+    "1746001626b8dcd7f6": {
+      "type": "apps",
+      "blocks": {
+        "gsc_instagram_feed_instafeed_xeiLqT": {
+          "type": "shopify://apps/gsc-instagram-feed/blocks/instafeed/96970b1b-b770-454f-b16b-51f47e1aa4ed",
+          "settings": {
+            "widget_id": "GSC-LJpMIqQLTtgFzXJ"
+          }
+        }
+      },
+      "block_order": [
+        "gsc_instagram_feed_instafeed_xeiLqT"
+      ],
+      "settings": {
+        "extra_class": "ctm-expert-instafeed",
+        "include_margins": true
+      }
+    },
+    "rich_text_rTYexa": {
+      "type": "rich-text",
+      "blocks": {
+        "button_DCgDhE": {
+          "type": "button",
+          "settings": {
+            "button_label": "Follow @drbilldorfman",
+            "button_link": "https://www.instagram.com/drbilldorfman",
+            "button_style_secondary": false,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "button_DCgDhE"
+      ],
+      "settings": {
+        "extra_class": "ctm-tips-the-expert-btn",
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "",
+        "full_width": true,
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "ctm_banner_list_gF4dXX": {
+      "type": "ctm-banner-list",
+      "settings": {
+        "extra_class": "ctm-pooof-banner ctm-rapid-dazzle-banner",
+        "banner_desktop": "shopify://shop_images/Frame_17.png",
+        "banner_mobile": "shopify://shop_images/Frame_22_f79e24c6-3741-4f2a-bc69-f660522589d3.png",
+        "banner_heading": "Rapidly Dazzle with your pearly whites",
+        "banner_description": ""
+      }
+    },
+    "multirow_XC7UwR": {
+      "type": "multirow",
+      "blocks": {
+        "row_VG4xqU": {
+          "type": "row",
+          "settings": {
+            "image": "shopify://shop_images/c06d44787146e7ca932f269d2bb70ddd.png",
+            "caption": "",
+            "heading": "Revitalize Your Smile with POOOF!®",
+            "text": "<p>Not only will stains and discoloration disappear, but so do POOOF!® strips!</p>",
+            "button_label": "",
+            "button_link": ""
+          }
+        },
+        "row_8W6Vff": {
+          "type": "row",
+          "settings": {
+            "image": "shopify://shop_images/5c17ac072f0079dfd0eff0ce4391cea3.gif",
+            "caption": "",
+            "heading": "The most convenient makeover on the market",
+            "text": "<p>Whether you’re scrolling, lifting, lounging or driving you can POOOF!® and go!</p>",
+            "button_label": "",
+            "button_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "row_VG4xqU",
+        "row_8W6Vff"
+      ],
+      "settings": {
+        "extra_class": "ctm-hp-multirow",
+        "image_height": "medium",
+        "desktop_image_width": "medium",
+        "image_layout": "alternate-right",
+        "heading_size": "h1",
+        "text_style": "body",
+        "button_style": "secondary",
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "center",
+        "mobile_content_alignment": "center",
+        "section_color_scheme": "",
+        "row_color_scheme": "",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "ctm_faq_AB9j7B": {
+      "type": "ctm-faq",
+      "blocks": {
+        "faq_block_NpkWhT": {
+          "type": "faq_block",
+          "settings": {
+            "faq_question": "What ingredients are in POOOF!® whitening™ Strips?",
+            "faq_answer": "PVP, Hydrogen Peroxide, Hydroxyapatite, Aqua, Pectin, Glycerin, Pentasodium Triphosphate, Sodium Hexametaphosphate, peppermint flavoring (Aroma), Polysorbate 80, Sucralose, Polycarbophil, Limonene, Linalool are part of the whitening components. The actual STRIP is made of a food-grade water soluble polymer (starch) which is infused with the whitening components for optimal teeth whitening (note: Limonene and Linalool are components of the Peppermint flavoring and listed as are potential allergens)."
+          }
+        },
+        "faq_block_Mb9mRz": {
+          "type": "faq_block",
+          "settings": {
+            "faq_question": "Are POOOF!® whitening™ Strips safe for my teeth?",
+            "faq_answer": "Yes! They are created with a neutral pH and the HA (hydroxyapatite) actually helps remineralize enamel."
+          }
+        },
+        "faq_block_JfPzRP": {
+          "type": "faq_block",
+          "settings": {
+            "faq_question": "Can I eat and drink while wearing whitening strips?",
+            "faq_answer": "No! Wait until the strips dissolve. Typically 10-15 minutes.."
+          }
+        },
+        "faq_block_zCKrHd": {
+          "type": "faq_block",
+          "settings": {
+            "faq_question": "Can I use whitening strips if I have sensitive teeth?",
+            "faq_answer": "YES!!! Even if you have had sensitivity in the past, you may not have any with POOOF!®. We have designed POOOF!® with a ZERO sensitivity formula. First hydroxyapatite will remineralize teeth and block the sponge-like pores on your teeth. We also have a proprietary compound called P3 which maximizes the whitening effect of our 12% Hydrogen Peroxide. Although we have not had any POOOF! users complain of sensitivity; important to know that any tooth sensitivity as a result of whitening is always transitory and will always dissipate."
+          }
+        },
+        "faq_block_pRK3qr": {
+          "type": "faq_block",
+          "settings": {
+            "faq_question": "How long will it take to see results with whitening strips?",
+            "faq_answer": "Results are often seen immediately after the first use! However, in an independent clinical study demonstrated that POOOF! is 2X more effective than the leading strips after 3 days and a 10-day in-vitro utilization, POOOF!® Whitening Strips showed 37% BETTER whitening than the leading whitening strips."
+          }
+        },
+        "faq_block_7cA3iW": {
+          "type": "faq_block",
+          "settings": {
+            "faq_question": "How do I store whitening strips properly?",
+            "faq_answer": "It is best to store strips at room temperature. If you live in a warm climate you may keep the strips in a refrigerator, however under normal circumstances, this is not required."
+          }
+        },
+        "faq_block_9wPCLT": {
+          "type": "faq_block",
+          "settings": {
+            "faq_question": "Are whitening strips suitable for everyone?",
+            "faq_answer": "White strips only work on natural teeth. However, if you have crowns or veneers and have stains in between your teeth, POOOF!® may be effective in removing superficial stains."
+          }
+        },
+        "faq_block_xUgKix": {
+          "type": "faq_block",
+          "settings": {
+            "faq_question": "Can I use whitening strips if I have braces or other orthodontic appliances?",
+            "faq_answer": "If you are doing Invisalign, or your braces are lingual braces (behind your teeth), you can use POOOF!®. If your braces are on the front surfaces of your teeth, then you should wait until you are finished with your orthodontic treatment to use POOOF!®."
+          }
+        },
+        "faq_block_TJRKFJ": {
+          "type": "faq_block",
+          "settings": {
+            "faq_question": "Isn't a whitening toothpaste enough to whiten my teeth?",
+            "faq_answer": "No! Whitening toothpastes can't ACTUALLY whiten teeth. The best that they can do is possibly remove superficial stains, which POOOF!® will also do."
+          }
+        },
+        "faq_block_3KDAR8": {
+          "type": "faq_block",
+          "settings": {
+            "faq_question": "How do POOOF!® Whitening Strips dissolve?",
+            "faq_answer": "POOOF!® strips are mainly made of a food-grade water soluble polymer (starch) which has been created to dissolve and melt in 10-15 minutes with normal saliva. These strips are infused with hydrogen peroxide, hydroxyapatite and P3 technology."
+          }
+        }
+      },
+      "block_order": [
+        "faq_block_NpkWhT",
+        "faq_block_Mb9mRz",
+        "faq_block_JfPzRP",
+        "faq_block_zCKrHd",
+        "faq_block_pRK3qr",
+        "faq_block_7cA3iW",
+        "faq_block_9wPCLT",
+        "faq_block_xUgKix",
+        "faq_block_TJRKFJ",
+        "faq_block_3KDAR8"
+      ],
+      "settings": {
+        "main_title": "<h3>FAQs</h3>",
+        "extra_class": "ctm-faq-hp",
+        "button_text": "Have a Question? Ask US!",
+        "button_url": "shopify://pages/contact",
+        "first_accordion_open": false
+      }
+    },
+    "174489226484bbc33b": {
+      "type": "apps",
+      "blocks": {
+        "instasync_instasync_feed_RE7jEy": {
+          "type": "shopify://apps/instasync-instagram-feed/blocks/instasync_feed/98ab4ac6-e751-4136-9aa2-fada4b7a70e8",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "instasync_instasync_feed_RE7jEy"
+      ],
+      "settings": {
+        "extra_class": "ctm-hp-instagrid",
+        "include_margins": true
+      }
+    },
+    "rich_text_yrEkYN": {
+      "type": "rich-text",
+      "blocks": {
+        "button_t9PUmk": {
+          "type": "button",
+          "settings": {
+            "button_label": "Follow @pooofwhitening",
+            "button_link": "https://www.instagram.com/pooofwhitening/",
+            "button_style_secondary": false,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "button_t9PUmk"
+      ],
+      "settings": {
+        "extra_class": "",
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    }
+  },
+  "order": [
+    "ctm_sticky_atc_bCemmf",
+    "ctm_video_hero_YTycj3",
+    "ctm_text_list_with_logo_JwY6hr",
+    "featured_product_bkQj8R",
+    "17461700699dd5bd84",
+    "rich_text_6LWBxX",
+    "ctm_lets_pooof_Qywcnn",
+    "ctm_whats_inside_cDDPf3",
+    "ctm_certified_L7bk7w",
+    "ctm_video_banner_hqyCbB",
+    "ctm_peel_apply_smile_wzU7fk",
+    "ctm_banner_list_zxGFFz",
+    "1746001626b8dcd7f6",
+    "rich_text_rTYexa",
+    "ctm_banner_list_gF4dXX",
+    "multirow_XC7UwR",
+    "ctm_faq_AB9j7B",
+    "174489226484bbc33b",
+    "rich_text_yrEkYN"
+  ]
+}

@@ -1,0 +1,93 @@
+<div class="cartidicated_zigzag_main {{ section.settings.extra_class }} ">
+  <div class="xl_container container_xl">
+    <div class="cartidicated_zigzag_inner flex items-center flex-wrap mdscreen1:flex-col">
+      <div class="ctm_pdpzigzag_img w-full mdscreen2:w-1/2 desktop:w-[51%]">
+        <div class="ctm_zigzag_img rounded-24 overflow-hidden mb-10">
+          <img
+            class="w-full h-full object-cover"
+            src="{{ section.settings.image | image_url: width: 2500 }}"
+            alt="{{ section.settings.image.alt }}"
+            loading="lazy"
+            width="732"
+            height="411"
+          >
+        </div>
+        <div class="ctm_zigzag_imgcaption">
+          <h5 class="text-14 leading-22 text-bloodstone font-extrabold">{{ section.settings.image_caption }}</h5>
+        </div>
+      </div>
+      <div class="ctm_pdp_zig_zag_text_main w-full mdscreen1:pt-40 mdscreen2:w-1/2 desktop:w-[48.8%] mdscreen2:pl-55 small_desktop:pl-100 mdscreen2:pr-55">
+        {% if section.settings.upper_sub_head != blank %}
+          <div class="ctm_pdp_zz_txt">
+            <div class="mb-10">
+              <h5>{{ section.settings.upper_sub_head }}</h5>
+            </div>
+            <div class="mb-14">
+              <h3>{{ section.settings.heading }}</h3>
+            </div>
+          </div>
+        {% endif %}
+        <div class="text-dark_grey pb-[22px]">{{ section.settings.description }}</div>
+        <div class="ctm_certi-btn">
+          <a class="aloe_leaf_btn" href="{{ section.settings.button_url }}">{{ section.settings.button_text }}</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Certificate Zig Zag",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "label": "Extra Class",
+      "id": "extra_class"
+    },
+    {
+      "type": "text",
+      "label": "Upper Sub Head",
+      "id": "upper_sub_head"
+    },
+    {
+      "type": "text",
+      "label": "Heading",
+      "id": "heading"
+    },
+    {
+      "type": "text",
+      "label": "Image Caption",
+      "id": "image_caption"
+    },
+    {
+      "type": "image_picker",
+      "label": "Image ",
+      "id": "image"
+    },
+
+    {
+      "type": "text",
+      "label": "Button Text",
+      "id": "button_text"
+    },
+    {
+      "type": "url",
+      "label": "Button URL",
+      "id": "button_url"
+    },
+    {
+      "type": "html",
+      "label": "Description",
+      "id": "description"
+    }
+  ],
+  "blocks": [],
+  "presets": [
+    {
+      "name": "Certificate Zig Zag"
+    }
+  ]
+}
+{% endschema %}

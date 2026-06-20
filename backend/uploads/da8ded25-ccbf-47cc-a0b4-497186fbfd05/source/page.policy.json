@@ -1,0 +1,91 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "shogun-helper": {
+      "type": "shogun-helper",
+      "settings": {}
+    },
+    "4bab39f4-9df1-4044-9d00-22b78088f864": {
+      "type": "banner-with-text",
+      "settings": {
+        "extra_class": "customer_banner",
+        "spring_banner_class": "",
+        "color_scheme": "dark",
+        "image": "shopify://shop_images/Collection_Page_Banners_e1d906d0-e2eb-46df-a73e-7ac66a2bf9a8.jpg",
+        "image_size": "medium",
+        "title": "Customer Support",
+        "content_text": "",
+        "caption_class": "",
+        "text_alignment": "left",
+        "content_width": "max",
+        "overlay_enable": false,
+        "overlay_opacity": 15,
+        "button_link": "",
+        "button_label": "",
+        "second_button_link": "",
+        "second_button_label": "",
+        "button_style": "primary",
+        "mobile_button_style": "button--ctm_global_button",
+        "mobile_cta_button_link": "",
+        "mobile_cta_button_label": "",
+        "margin_top": 30,
+        "margin_bottom": 40,
+        "top_margin_mobile": 0,
+        "bottom_margin_mobile": 0,
+        "top_padding_desktop": 0,
+        "bottom_padding_desktop": 0,
+        "top_padding_mobile": 0,
+        "bottom_padding_mobile": 0
+      }
+    },
+    "pages": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "extra_class": ""
+      }
+    },
+    "contact_form_UTf7Pe": {
+      "type": "contact-form",
+      "custom_css": [
+        ".contact__text h2 {margin: 0;}"
+      ],
+      "settings": {
+        "heading": "<h6>Have a quick question? Check our <a href=\"/pages/faq\" title=\"FAQ\"><strong>FAQs </strong></a>for a quick answer</h6>",
+        "text": "",
+        "additional_text": "",
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "button_style": "button--ctm_wb_global_button"
+      }
+    },
+    "shogun_custom_6735ae928f9dc68cdb21338b_QdqHCn": {
+      "type": "shogun-custom-6735ae928f9dc68cdb21338b",
+      "custom_css": [
+        ".shogun-accordion-wrapper .shogun-accordion-body h6 {margin-block: 15px;}",
+        ".shogun-accordion-wrapper .shogun-accordion-body h5 {margin-block: 30px;}"
+      ],
+      "settings": {}
+    },
+    "shogun-optimizer": {
+      "type": "shogun-optimizer",
+      "settings": {}
+    }
+  },
+  "order": [
+    "shogun-helper",
+    "4bab39f4-9df1-4044-9d00-22b78088f864",
+    "pages",
+    "contact_form_UTf7Pe",
+    "shogun_custom_6735ae928f9dc68cdb21338b_QdqHCn",
+    "shogun-optimizer"
+  ]
+}
